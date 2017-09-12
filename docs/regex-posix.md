@@ -19,7 +19,7 @@ Il existe deux familles :
 
 ---
 
-Il ne faut pas confondre les regex POSIX et les [wildcards](wildcard). Afin d'empêcher que le shell interprète un caractère de regex en wildcard, il est nécessaire entourer les regex de quotes. :  `ls | grep '^file'`.
+Il ne faut pas confondre les regex POSIX et les [wildcards](wildcard.md). Afin d'empêcher que le shell interprète un caractère de regex en wildcard, il est nécessaire entourer les regex de quotes. :  `ls | grep '^file'`.
 
 ---
 
@@ -42,7 +42,7 @@ Il ne faut pas confondre les regex POSIX et les [wildcards](wildcard). Afin d'em
     \s         Caractère d'espace ([ \t\r\n\v\f])
     \S         PAS un caractère d'espace
 
-Il est évidemment possible d'utiliser les [classes POSIX](regex#classe-posix)
+Il est évidemment possible d'utiliser les [classes POSIX](regex.md#classe-posix)
 
 ### Quantificateurs
 

@@ -23,7 +23,12 @@
       {% endif %}
       <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
 
-       {{ content | replace: '<li>[ ]', '<li class="box">' | replace: '<li>[x]', '<li class="box_done">'  }}
+       {{ content
+        | replace: '<li>[ ]', '<li class="box">'
+        | replace: '<li>[x]', '<li class="box_done">'
+        | replace: '.md">', '">'
+        | replace: '.md#', '#'
+        }}
 
       {% if site.github.private != true and site.github.license %}
       <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">

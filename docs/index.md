@@ -18,8 +18,8 @@
   - [ ] WAMP/LAMP
 
 - Linux shell
-  - [x] [Wildcard](wildcard)
-  - [x] [Regex POSIX](regex-posix)
+  - [x] [Wildcard](wildcard.md)
+  - [x] [Regex POSIX](regex-posix.md)
   - [ ] Awk
   - [ ] Sed
   - [ ] Vim
@@ -29,6 +29,6 @@
 - Other
   - [ ] Git
   - [ ] Text editing shortcuts
-  - [x] [Regex](regex)
+  - [x] [Regex](regex.md)
   - [ ] Markdown
   - [ ] Latex

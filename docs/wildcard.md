@@ -21,7 +21,7 @@ Attention à échapper les caractères des wildcards pour les commandes qui veul
     *          Tout caractère, de 0 à n fois
     ?          Tout caractère, 1 fois (classe universelle)
 
-```
+``` text
 {abc,def}  abc ou def
 ```
 

@@ -1,3 +1,8 @@
+---
+title: Wildcard
+category: Linux
+---
+
 Les wildcards permettent de cibler un ensemble de fichier :
 par exemple, `ls *.html` liste tous les fichiers html du répertoire en cours.
 
@@ -16,11 +21,9 @@ Attention à échapper les caractères des wildcards pour les commandes qui veul
     *          Tout caractère, de 0 à n fois
     ?          Tout caractère, 1 fois (classe universelle)
 
-<!-- -->
-
-    {abc,def}  abc ou def
-
-<!-- -->
+```
+{abc,def}  abc ou def
+```
 
     [ab]       a ou b
     [!ab]      Ni a ni b

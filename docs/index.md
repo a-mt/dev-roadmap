@@ -1,4 +1,5 @@
 ---
+---
 
 - Web technologies
   - [ ] HTML
@@ -26,6 +27,6 @@
 - Other
   - [ ] Git
   - [ ] Text editing shortcuts
-  - [ ] Regex
+  - [x] [Regex](regex)
   - [ ] Markdown
   - [ ] Latex

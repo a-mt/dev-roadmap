@@ -1,3 +1,8 @@
+---
+title: Regex POSIX
+category: Linux
+---
+
 Les commandes du shell Linux, comme grep, sed, ou awk, acceptent des regex POSIX
 (POSIX est ni plus ni moins que le nom des normes qui s'appliquent aux commandes et logiciels des plateformes UNIX).
 

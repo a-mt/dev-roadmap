@@ -44,9 +44,9 @@ Tester les regex en live : https://regex101.com/ (syntaxe PHP)
 
 ---
 
-# B.A.-BA
+## B.A.-BA
 
-## Ancres
+### Ancres
 
     ^a         Commence par a
     a$         Finit par a (ignore les retours chariots à la fin [\r\n])
@@ -60,7 +60,7 @@ Pour qu'un metacaractère ou un délimiteur (! ^ $ ( ) [ ] { } | ? + * . \\) soi
 
     \^         Contient le caractère ^
 
-## Groupes
+### Groupes
 
     ab         a suivit de b
     (ab)       a suivit de b, dans un groupe capturant (maximum 99 groupes capturants)
@@ -70,7 +70,7 @@ Pour qu'un metacaractère ou un délimiteur (! ^ $ ( ) [ ] { } | ? + * . \\) soi
     a|bc       a ou bc
     (a|b)c     ac ou bc
 
-## Classes de caractère
+### Classes de caractère
 
     .          Classe universelle (tout caractère sauf le retour à la ligne \n)
 
@@ -85,7 +85,7 @@ Pour qu'un metacaractère ou un délimiteur (! ^ $ ( ) [ ] { } | ? + * . \\) soi
     [\\. !]    Contient \ . espace ou !
     (\\|\.|\!) Idem
 
-## Quantificateurs 
+### Quantificateurs 
 
     a?         0 ou 1 a
     a+         Au moins 1 a
@@ -106,7 +106,7 @@ Pour qu'un metacaractère ou un délimiteur (! ^ $ ( ) [ ] { } | ? + * . \\) soi
     (ba){2}    2 fois ba
     (.*[a-z]){3} Contient 3 lettres minuscules (abcABC, aAbBcC, abABCc correspondent)
 
-## Caractères spéciaux
+### Caractères spéciaux
 
     \          Caractère d'échappement
     
@@ -126,9 +126,9 @@ Liste caractères de contrôle : http://www.aivosto.com/vbtips/control-character
 
 ---
 
-# Classes
+## Classes
 
-## Classe POSIX
+### Classe POSIX
 
 Une classe POSIX est le raccourcis d'un ensemble de caractères, il faut quand même l'utiliser à l'intérieur de classe de caractères : `/[[:word:]]/`, `/[[:word:][:punct:]]/`
 
@@ -152,7 +152,7 @@ Une classe POSIX est le raccourcis d'un ensemble de caractères, il faut quand m
 
 Liste des caractères ASCII : http://www.ascii-code.com/
 
-## Classe PCRE
+### Classe PCRE
 
 Une classe PCRE se suffit à elle-même, les crochets sont inutiles : `\d{1,3}` = un nombre qui contient entre 1 et 3 chiffres
 
@@ -166,7 +166,7 @@ Une classe PCRE se suffit à elle-même, les crochets sont inutiles : `\d{1,3}` 
     \w         Caractère alphanumérique ou _ ([a-zA-Z0-9_])
     \W         PAS un alphanumérique ou _ ([^a-zA-Z0-9_])
 
-## Classe Unicode
+### Classe Unicode
 
 Pas de crochets.
 
@@ -200,9 +200,9 @@ Liste des alphabets disponibles : http://www.regular-expressions.info/unicode.ht
 
 ---
 
-# Niveau avancé
+## Niveau avancé
 
-## Assertions
+### Assertions
 
 Les assertions ne consomment aucun caractère : `/(\bmot\b)/g` != `/((^|$|[ ,!.;:])mot(^|$|[ ,!.;:]))/g` (ex "mot mot")
 
@@ -215,9 +215,9 @@ Les assertions ne consomment aucun caractère : `/(\bmot\b)/g` != `/((^|$|[ ,!.;
 
     \G         Début de chaîne ou fin de la correspondance précédente
 
-## Backreference
+### Backreference
 
-### Avec groupe capturant
+#### Avec groupe capturant
 
 Les captures imbriquées se comptent du global au local: `(a(bcd))` 1=abcd, 2=bcd
 
@@ -226,14 +226,14 @@ Les captures imbriquées se comptent du global au local: `(a(bcd))` 1=abcd, 2=bc
     \10        syntaxe Python
     ${10}      syntaxe C#
 
-### Avec backreference nommée
+#### Avec backreference nommée
 
 Les references nommés restent numérotées, on peut y accéder via son nom ET son numéro
 
     (?P<NAME>'|")a(?P=NAME)  a entouré de " " ou ' ' (syntaxe Python ou PHP)
     (?<NAME>'|")a(\k<NAME>)  idem (syntaxe .NET, Perl, Ruby ou PHP)
 
-## Condition
+### Condition
 
     (<)?abcd(?(1)>)   abcd ou <abcd>
     (<)?abcd(?(1)>|e) <abcd> ou abcde
@@ -242,7 +242,7 @@ Il est possible de sélectionner le groupe capturant par position relative : `-1
 
     (<)?abcd(?(-1)>)
 
-## Lookahead / lookbehind
+### Lookahead / lookbehind
 
 Sont des assertions et ne consomment donc aucun caractère
 
@@ -259,7 +259,7 @@ Sont des assertions et ne consomment donc aucun caractère
 
     (?=(.*[a-z]){3})(?=(.*[0-9]){2}).{6,} Au moins 6 caractères, dont moins 3 lettres et 2 chiffres (dans n'importe quel ordre)
 
-## Autres
+### Autres
 
     (?>a|b)        a ou b, dans un groupe atomique (empêche le backtrack)
     \Q*. !\E       Recherche littérale de *. !
@@ -271,14 +271,14 @@ Les groupes atomiques permettent principalement d'optimiser les performances du 
 
 ---
 
-# Options
+## Options
 
     (?i)       Activer l'option i pour le reste de l'expression
     (?-i)      Désactiver l'option i pour le reste de l'expression
     (?x-im)    Activer l'option x et désactiver les options i et m
     (?i:bc)    Activer l'option i pour un groupe spécifique (bc)
 
-## Quelques options utiles
+### Quelques options utiles
 
     i      [case insentitive mode] Insensible à la casse
     s      [single line mode]      La classe universelle comprend le retour à la ligne

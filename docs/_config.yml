@@ -1,4 +1,14 @@
+title: Roadmap
+
 markdown: kramdown
 kramdown:
   input: GFM
   hard_wrap: false
+
+theme: jekyll-theme-primer
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"

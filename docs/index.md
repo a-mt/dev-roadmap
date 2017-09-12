@@ -10,14 +10,16 @@
   - [ ] NoSQL
   - [ ] NodeJS
 
-- Web development tools
+- Web development environments
   - [ ] Github Pages
   - [ ] Codepen
   - [ ] c9
   - [ ] Heroku
   - [ ] WAMP/LAMP
 
-- Linux Tools
+- Linux shell
+  - [x] [Wildcard](wildcard)
+  - [x] [Regex POSIX](regex-posix)
   - [ ] Awk
   - [ ] Sed
   - [ ] Vim

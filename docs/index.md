@@ -20,7 +20,7 @@
 - Linux shell
   - [x] [Wildcard](wildcard.md)
   - [x] [Regex POSIX](regex-posix.md)
-  - [ ] Awk
+  - [x] [Awk](awk.md)
   - [ ] Sed
   - [ ] Vim
   - [ ] Nano

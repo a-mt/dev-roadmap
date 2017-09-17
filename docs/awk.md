@@ -1,3 +1,8 @@
+---
+title: Awk
+category: Linux
+---
+
 Awk permet d'extraire et manipuler des données organisées par lignes et colonnes dans un fichier texte.  
 C'est un outil qui contient tous les éléments d'un langage de programmation (conditions, opérations mathématiques, etc)  
 Nommé d'après ses inventeurs : Al **A**ho, Peter **W**einberger et Briand **K**ernighan. Crée en 1978.
@@ -261,7 +266,7 @@ Tous les blocks admettent des filtres. Si une ligne matche les deux conditions, 
 
 ---
 
-## Script
+## Langage de programmation
 
 Pour rappel, awk peut executer les commandes qui se situent dans un fichier : `awk -f script file`.
 Cela permet de créer plus facilement des commandes plus complexes et d'inclure des boucles, conditions, etc, sans avoir à se soucier des retours à la ligne.
@@ -271,7 +276,7 @@ La syntaxe awk est la suivante :
 
     # Commentaire
 
-### Conditions
+### If
 
     if(NF<2) {
         print "Un seul champ"
@@ -285,9 +290,7 @@ La syntaxe awk est la suivante :
 
     print NF<2 ? "Un" : "Plusieurs"
 
-### Boucles
-
-#### For
+### For
 
     for(i=1; i<=3; i++) {
         print $i
@@ -302,7 +305,7 @@ La syntaxe awk est la suivante :
         print k ": " aName[k]
     }
 
-##### Exemple
+#### Exemple
 
 Transformer des données séparées par tabulation et retours à la ligne en un tableau HTML  
 Données (fichier scores.txt) :
@@ -357,7 +360,7 @@ Awk :
 
 `awk -F"\t" -f script scores.txt `
 
-#### While
+### While
 
     i=0
     while(i++ < 10) {
@@ -371,19 +374,36 @@ Awk :
        print i
     } while(++i < 10);
 
-#### Break, continue
+### Break, continue
 
     break
     continue
 
-### Fonctions
+### Expressions
 
-    function pwr(a, b) {
-      return exp(b*log(a))
+#### Regex
+
+| Opérateur | Opération        |
+| ---       | ---              |
+|     ~     | matche une regex |
+|     !~    | ne matche pas    |
+    
+    open = 0
+    if ($0~/^---/) {
+      open = 1-open
     }
-    pwr($1, $2)
 
-### Opérations
+#### Incrémentation
+
+Post-incrémentation (retourne la valeur en cours puis incrémente la variable)
+
+    a++
+    a--
+
+Pré-incrémentation (incrémente la variable puis retourne la nouvelle valeur)
+
+    ++a
+    --a
 
 #### Maths
 
@@ -399,29 +419,13 @@ Awk :
     a  = a + 2
     a += 2
 
-#### Incrémentation
+### Fonctions
 
-Post-incrémentation (retourne la valeur en cours puis incrémente la variable)
-
-    a++
-    a--
-
-Pré-incrémentation (incrémente la variable puis retourne la nouvelle valeur)
-
-    ++a
-    --a
-
-#### Regex
-
-| Opérateur | Opération        |
-| ---       | ---              |
-|     ~     | matche une regex |
-|     !~    | ne matche pas    |
-    
-    open = 0
-    if ($0~/^---/) {
-      open = 1-open
+    function pwr(a, b) {
+      return exp(b*log(a))
     }
+    pwr($1, $2)
+
 
 ### Fonctions prédéfinies
 
@@ -452,8 +456,7 @@ Pré-incrémentation (incrémente la variable puis retourne la nouvelle valeur)
 
 #### Regex
 
-Il est possible de vérifier si une chaîne matche une regex avec des expressions (`$0~/regex/`),
-mais pour des besoins plus complexes, comme récupérer ou remplacer le match trouvé, il y a des fonctions.
+Pour des besoins plus complexes que simplement vérifier si le texte matche une regex, awk dispose de fonctions.
  
 `echo "A/b/c" | awk '{if(match($0, /[a-z]/)){ print substr($0, RSTART, RLENGTH) }}' # b`
 
@@ -472,10 +475,14 @@ mais pour des besoins plus complexes, comme récupérer ou remplacer le match tr
                                    Retourne la longueur du tableau crée
                                    Il est inutile de déclarer la variable var au préalable
 
-##### Exemple
+##### Exemples
+
+Remplacer des caractères :
 
 `echo "A/b/c" | awk '{sub(/\//, "-", $0); print $0}' # A-b/c`  
 `echo "A/b/c" | awk '{gsub(/\//, "-", $0); print $0}' # A-b-c` 
+
+Utiliser split :
 
     # Contenu du fichier "script" :
     {
@@ -495,7 +502,9 @@ mais pour des besoins plus complexes, comme récupérer ou remplacer le match tr
     # Nom: Smith
     # Adresse: 1 rue au hasard
 
-### Multiligne
+---
+
+## Multiligne
 
 awk commence au début du document et execute les commandes ligne par ligne en avançant d'une ligne à fin de chaque commande.
 Mais il est également possible d'avancer d'une ligne (ou de plusieurs) à l'intérieur d'une commande.
@@ -503,7 +512,7 @@ Mais il est également possible d'avancer d'une ligne (ou de plusieurs) à l'int
     getline var       Récupérer la ligne suivante et la mettre dans la variable var
                       Retourne 1 si une ligne a été récupéré, 0 sinon (fin du document)
 
-#### Exemples
+### Exemples
 
 Concaténer toutes les deux lignes :
 

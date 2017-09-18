@@ -1,3 +1,8 @@
+---
+title: Raccourcis édition de texte
+category: Linux
+---
+
 Raccourcis clavier et actions souris usuels pour éditer du texte (sous Linux) : sélection de texte, copier, couper, coller...
 
 ---

@@ -28,7 +28,7 @@
 
 - Other
   - [ ] Git
-  - [ ] Text editing shortcuts
+  - [x] [Text editing shortcuts](text-editing.md)
   - [x] [Regex](regex.md)
   - [ ] Markdown
   - [ ] Latex

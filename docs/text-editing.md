@@ -1,9 +1,9 @@
 ---
 title: Raccourcis édition de texte
-category: Linux
+category: Other
 ---
 
-Raccourcis clavier et actions souris usuels pour éditer du texte (sous Linux) : sélection de texte, copier, couper, coller...
+Raccourcis clavier et actions souris usuels pour éditer du texte : sélection de texte, copier, couper, coller... Les actions souris listées sont celles supportées sous Linux, toutes ne le sont pas sous Windows (notamment le clic molette).
 
 ---
 

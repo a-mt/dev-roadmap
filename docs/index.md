@@ -7,6 +7,7 @@
   - [ ] JS
   - [ ] SQL
   - [ ] PHP
+    - [x] [Composer](composer.md)
   - [ ] NoSQL
   - [ ] NodeJS
 
@@ -34,3 +35,11 @@
   - [x] [Regex](regex.md)
   - [ ] Markdown
   - [ ] Latex
+
+- Blog Generators
+  - [ ] Jekyll
+
+- Templating
+  - [ ] Liquid
+  - [ ] Smarty
+  - [ ] Twig

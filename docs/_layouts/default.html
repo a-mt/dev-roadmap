@@ -14,7 +14,7 @@
         <ul class="breadcrumb">
           <li><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></li>
           {% if page.category %}
-            <li>{{ page.category }}</li>
+            <li>{{ page.category | split:", " | join:"</li><li>" }}</li>
           {% endif %}
           {% if page.title %}
             <li>{{ page.title }}</li>

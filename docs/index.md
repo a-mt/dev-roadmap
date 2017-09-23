@@ -30,7 +30,7 @@
 - Other
   - [x] [Sémantique de version](semver.md)
   - [ ] Git
-  - [x] [Text editing shortcuts](text-editing.md)
+  - [x] [Raccourcis édition de texte](text-editing.md)
   - [x] [Regex](regex.md)
   - [ ] Markdown
   - [ ] Latex

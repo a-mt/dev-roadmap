@@ -28,6 +28,7 @@
   - [ ] Bash Script
 
 - Other
+  - [x] [Sémantique de version](semver.md)
   - [ ] Git
   - [x] [Text editing shortcuts](text-editing.md)
   - [x] [Regex](regex.md)

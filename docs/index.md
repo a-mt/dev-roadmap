@@ -21,7 +21,8 @@
   - [x] [Wildcard](wildcard.md)
   - [x] [Regex POSIX](regex-posix.md)
   - [x] [Awk](awk.md)
-  - [ ] Sed
+  - [x] [Sed](sed.md)
+  - [ ] Grep
   - [ ] Vim
   - [ ] Nano
   - [ ] Bash Script

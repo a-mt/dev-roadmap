@@ -119,12 +119,9 @@ Conventions : Ci-dessous la liste des touches du clavier, leur nom (en anglais) 
 <pre>
 <kbd>Ctrl</kbd> + <kbd>c</kbd>            Copier la sélection dans le presse-papier
 <kbd>Ctrl</kbd> + <kbd>Ins</kbd>          Idem
-
 <kbd>Ctrl</kbd> + <kbd>v</kbd>            Coller le presse-papier à l'endroit du curseur
 <kbd>Shft</kbd> + <kbd>Ins</kbd>          Item
-
 <kbd>Ctrl</kbd> + <kbd>x</kbd>            Couper la sélection dans le presse-papier
-<kbd>Maj</kbd> + <kbd>Ins</kbd>           Coller la sélection à l'endroit du curseur (simule lun clic du milieu)
 </pre>
 
 ---

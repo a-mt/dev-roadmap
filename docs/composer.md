@@ -1,6 +1,6 @@
 ---
 title: Composer
-category: web, PHP
+category: Web, PHP
 ---
 
 Composer est un système de gestion de dépendances PHP, qui permet de télécharger des libraires et API de manière automatique.
@@ -63,7 +63,7 @@ N'importe quel développeur peut créer ses propres packages ou réutiliser les 
 
 | Fichier       | Utilité | Contient | Utiliser en |
 |---            |---      |---       |---            |
-| composer.json | contrat | Liste des packages à installer (utilisation possible de jokers) | dev |
+| composer.json | contrat | Liste des packages à installer (utilisation possible de [patterns](semver.md#gestionnaires-de-packets)) | dev |
 | composer.lock | build   | Liste des packages et dépendances effectivement installés (version précise) | prod |
 
     composer install              Installer via .lock si existant

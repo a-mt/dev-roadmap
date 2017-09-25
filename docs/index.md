@@ -24,7 +24,7 @@
   - [x] [Awk](awk.md)
   - [x] [Sed](sed.md)
   - [ ] Grep
-  - [ ] Vim
+  - [x] [Vim](vim.md)
   - [ ] Nano
   - [ ] Bash Script
 

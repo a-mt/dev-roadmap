@@ -10,6 +10,8 @@
     - [x] [Composer](composer.md)
   - [ ] NoSQL
   - [ ] NodeJS
+  - [x] [YAML](yaml.md)
+  - [ ] JSON
 
 - Web development environments
   - [ ] Github Pages

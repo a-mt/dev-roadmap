@@ -5,13 +5,14 @@
   - [ ] HTML
   - [ ] CSS
   - [ ] JS
+    - [ ] JSONP
   - [ ] SQL
   - [ ] PHP
     - [x] [Composer](composer.md)
   - [ ] NoSQL
   - [ ] NodeJS
+  - [x] [JSON](json.md)
   - [x] [YAML](yaml.md)
-  - [ ] JSON
 
 - Web development environments
   - [ ] Github Pages

@@ -39,11 +39,14 @@ Ressources :
 
 ## Structure
 
-- En Yaml, la structure n'est pas marquée par des accolades mais par l'indentation.  
-  Attention, les tabulations ne sont pas autorisées.
-- Les éléments de même niveau ont la même indentation.
-- Les clés et valeurs sont séparées par deux-points, avec au moins un espace après les deux-points.  
-  Les espaces supplémentaires sont ignorés.
+En Yaml, la structure n'est pas marquée par des accolades mais par l'indentation : les éléments de même niveau ont la même indentation. Attention, les tabulations ne sont pas autorisées.
+
+---
+
+## Objets
+
+Les clés et valeurs sont séparées par deux-points, avec au moins un espace après les deux-points.  
+Les espaces supplémentaires sont ignorés.
 
 ``` yml
 # YAML
@@ -755,7 +758,6 @@ YAML accepte les [tagURI](https://tools.ietf.org/html/rfc4151) pour tag.
 
     tag:URI,DATE:PATH
 
-Où
 - `URI` est soit un nom de domaine ou un email,
 - `DATE` est une date au format `YYYY`, `YYYY-MM` ou `YYYY-MM-DD`,
 - `PATH` est le path du tag sur l'URI définie (peut être vide)

@@ -16,3 +16,47 @@ ul.breadcrumb {
         content: ">";
     }
 }
+
+.summary {
+    padding: 5px 0;
+
+    .actions {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            display: inline-block;
+            &:not(:first-child)::before {
+                display: inline-block;
+                content: "\2022";
+                padding-right: 5px;
+            }
+        }
+    }
+    span[title] {
+        display: inline-block;
+        border-bottom: 1px dashed #bbb;
+        line-height: 1.2em;
+    }
+    .toggle {
+        font-size: .9em;
+    }
+    .toc {
+        margin-bottom: 5px;
+    }
+    .title {
+        padding: 20px 0 10px 0;
+        display: block;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 1.2em;
+    }
+    &.hide {
+        .toc, .title {
+            display: none
+        }
+    }
+}

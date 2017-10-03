@@ -6,11 +6,13 @@
 
 {% seo %}
     <link href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}" rel="stylesheet">
+    <script src="{{ '/assets/js/common.js?v=' | append: site.github.build_revision | relative_url }}"></script>
   </head>
   <body>
     <div class="container-lg px-3 my-5 markdown-body">
 
       {% if page.title and site.title != page.title %}
+        <!-- BREADCRUMB -->
         <ul class="breadcrumb">
           <li><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></li>
           {% if page.category %}
@@ -20,9 +22,28 @@
             <li>{{ page.title }}</li>
           {% endif %}
         </ul>
+
+        <!-- SUMMARY -->
+        {% assign words = content | number_of_words %}
+        <div class="summary hide">
+          <ul class="actions"
+            <li><i>Durée estimée:
+              <span title="{{ words }} mots">
+                {% if words > 275 %}{{ words | divided_by: 275 | round }}{% else %}1{% endif %}
+              </span> min
+            </i></li>
+            <li><a class="toggle" href="#">Afficher le sommaire</a></li>
+          </ul>
+          <label class="title">Sommaire: {{ page.title }}</label>
+
+          {% include toc.html html=content class="toc" %}
+        </div>
       {% endif %}
+
+      <!-- TITLE -->
       <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
 
+       <!-- CONTENT -->
        {{ content
         | replace: '<li>[ ]', '<li class="box">'
         | replace: '<li>[x]', '<li class="box_done">'

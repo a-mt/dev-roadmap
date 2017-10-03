@@ -26,7 +26,7 @@
         <!-- SUMMARY -->
         {% assign words = content | number_of_words %}
         <div class="summary hide">
-          <ul class="actions"
+          <ul class="actions">
             <li><i>Durée estimée:
               <span title="{{ words }} mots">
                 {% if words > 275 %}{{ words | divided_by: 275 | round }}{% else %}1{% endif %}

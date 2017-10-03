@@ -15,7 +15,7 @@
   - [x] [YAML](yaml.md)
 
 - Web development environments
-  - [ ] Github Pages
+  - [x] [Github Pages](github-pages.md)
   - [ ] Codepen
   - [ ] c9
   - [ ] Heroku

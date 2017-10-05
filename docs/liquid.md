@@ -1,3 +1,7 @@
+---
+title: Liquid
+category: Web, Template
+---
 
 Liquid est un langage de template. Il a été crée par Shopify en 2006
 et a depuis été adopté par de nombreuses applications web, dont notamment Jekyll.

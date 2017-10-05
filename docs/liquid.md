@@ -3,6 +3,7 @@ title: Liquid
 category: Web, Template
 ---
 
+{% raw %}
 Liquid est un langage de template. Il a été crée par Shopify en 2006
 et a depuis été adopté par de nombreuses applications web, dont notamment Jekyll.
 Différentes applications ajoutent différents objets, tags et filtres mais la syntaxe de base reste la même.
@@ -19,77 +20,99 @@ Il existe deux types de balisage en Liquid :
 
 - les balises `{% %}` executent du code
 
-      {% assign name = "Bob" %}
+  ``` liquid
+  {% assign name = "Bob" %}
+  ```
 
 - les balises `{{ }}` interprètent et affichent le contenu
 
-      Hello {{ name }}
+  ``` liquid
+  Hello {{ name }}
+  ```
 
   À l'intérieur de ces balises, on peut ajouter des filtres, qui modifient le résultat.  
   Les filtres se cumulent (s'executent sur le résultat des précédents) de gauche à droite.
 
-      Hello {{ name | upcase }}
+  ``` liquid
+  Hello {{ name | upcase }}
+  ```
 
   Les filtres peuvent prendre un ou plusieurs paramètres après deux-points
 
-      {{ "Hello World !" | replace:" ","-" }}
+  ``` liquid
+  {{ "Hello World !" | replace:" ","-" }}
+  ```
 
 ---
 
 ## Assigner une variable
 
-    {% assign myvar = "Hello" %}
-    {% capture myvar %}Hello{% endcapture %}
+``` liquid
+{% assign myvar = "Hello" %}
+{% capture myvar %}Hello{% endcapture %}
+```
 
 Pour debugger le contenu d'une variable :
 
-    {{ myvar | inspect }}
+``` liquid
+{{ myvar | inspect }}
+```
 
 ## Afficher du texte
 
-    Hello {{ name }}
-    Hello {{ user.name }}
-    Hello {{ "Bob" }}
+``` liquid
+Hello {{ name }}
+Hello {{ user.name }}
+Hello {{ "Bob" }}
+```
 
 Pour que le texte ne soit pas interprété en Liquid :
 
-    {% raw %}Le contenu de ce {{ bloc }} n'est pas interprété{% endraw %}
+<pre>
+&lbrace;% raw %}Le contenu de ce {{ bloc }} n'est pas interprété&lbrace;% endraw %}
+</pre>
 
 ## Gérer les espacements
 
 Tous les espaces/retours à la ligne à l'intérieur des balises sont ignorés, ceux en dehors sont gardés.  
 Les balises d'execution n'affichent rien mais créent des lignes vides dans le résultat.
 
-    a
-    {% assign name = "Bob" %}        # a\n\nb
-    b
+``` liquid
+a
+{% assign name = "Bob" %}        # a\n\nb
+b
+```
 
-<!-- -->
-
-    "{{ name }}"                     # "Bob"
-    " {{ name }} "                   # " Bob "
+``` liquid
+"{{ name }}"                     # "Bob"
+" {{ name }} "                   # " Bob "
+```
 
 On peut modifier ce comportement en ajoutant des tirets, à gauche et/ou à droite
 
-    a
-    {%- assign name = "Bob" %}       # a\nb
-    b
+``` liquid
+a
+{%- assign name = "Bob" %}       # a\nb
+b
+```
 
-<!-- -->
+``` liquid
+a
+{%- assign myvar = "Hello" -%}   # ab
+b
+```
 
-    a
-    {%- assign myvar = "Hello" -%}   # ab
-    b
-
-<!-- -->
-
-    " {{- myvar -}} "                # "Bob"
+``` liquid
+" {{- myvar -}} "                # "Bob"
+```
 
 ---
 
 ## Commentaires
 
-    {% comment %}Le commentaire{% encomment %} 
+``` liquid
+{% comment %}Le commentaire{% encomment %} 
+```
 
 ---
 
@@ -97,17 +120,23 @@ On peut modifier ce comportement en ajoutant des tirets, à gauche et/ou à droi
 
 Le texte peut être entourée de simples ou doubles quotes.
 
-    {% assign name = "Bob" %}
-    {% assign name = 'Bob' %}
+``` liquid
+{% assign name = "Bob" %}
+{% assign name = 'Bob' %}
+```
 
 Pour concaténer, il est nécessaire d'utiliser des filtres
 
-    {% assign myvar = "Hello " | append: name  %}
-    {% assign myvar = name     | prepend: "Hello "  %}
+``` liquid
+{% assign myvar = "Hello " | append: name  %}
+{% assign myvar = name     | prepend: "Hello "  %}
+```
 
 Ou d'utliser la balises `capture`
 
-    {% capture myvar %}Hello {{ name }}{% endcapture %}
+``` liquid
+{% capture myvar %}Hello {{ name }}{% endcapture %}
+```
 
 ## Dates
 
@@ -122,42 +151,56 @@ Quelques exemples de dates valides :
 
 Une date peut être formattée avec le filtre `date`. Les directives à utiliser sont celles de [strftime](http://ruby-doc.org/core-2.4.2/Time.html#method-i-strftime).
 
-    {{ date | date: "%Y-%m-%d" }}
+``` liquid
+{{ date | date: "%Y-%m-%d" }}
+```
 
 ## Nombres
 
 Liquid accepte les entiers et les réels.
 
-    {% assign my_int = 25 %}
-    {% assign my_float = 39.756 %}
+``` liquid
+{% assign my_int = 25 %}
+{% assign my_float = 39.756 %}
+```
 
 Pour effectuer des opérations mathématiques, il est nécessaire d'utiliser des filtres
 
-    {{ 15 | plus: 15 }}
+``` liquid
+{{ 15 | plus: 15 }}
+```
 
 ## Valeur nulle
 
-    {% assign myvar = nil %}
+``` liquid
+{% assign myvar = nil %}
+```
 
 ## Booléens
 
 Les booléens sont `true` et `false`.
 
-    {% assign foo = true %}
-    {% assign bar = false %}
+``` liquid
+{% assign foo = true %}
+{% assign bar = false %}
+```
 
 Dans une expression `false`et `nil` sont évaluées comme faux.  
 Toutes les autres comme vrai.
 
-    {% assign tobi = "Tobi" %}
-    {% if tobi %}
-      This condition will always be true.
-    {% endif %}
+``` liquid
+{% assign tobi = "Tobi" %}
+{% if tobi %}
+  This condition will always be true.
+{% endif %}
+```
 
 La valeur `nil` n'affiche rien tandis que la valeur `false` oui.
 
-    {{ nil }}    # (rien)
-    {{ false }}  # false
+``` liquid
+{{ nil }}    # (rien)
+{{ false }}  # false
+```
 
 ## Listes
 
@@ -165,62 +208,74 @@ La valeur `nil` n'affiche rien tandis que la valeur `false` oui.
 
 En Liquid, il n'existe pas de syntaxe pour créer des listes de valeur. On peut cependant utiliser le filtre `split`.
 
-    {% assign list = "" | split: "|" %}
+``` liquid
+{% assign list = "" | split: "|" %}
+```
 
 #### Liste d'entiers
 
 Pour un `for`, on peut créer une liste d'entiers (mais pas de réels).
 La borne inférieure et/ou supérieure peut être une variable.
 
-    {% assign list = (1..10) %}
-    {% assign list = (from..to) %}
+``` liquid
+{% assign list = (1..10) %}
+{% assign list = (from..to) %}
+```
 
 On peut parcourir et afficher sur une liste ainsi créée (avec `join` par exemple)
 mais pas accéder à ses index (utiliser `push`, `list[0]`).
 
-    {% assign list = "1,2,3,4,5" | split: "," %}
-    Valeur: {{ list[3] }}         # 4
-    Join  : {{ list | join:"" }}  # 12345
+``` liquid
+{% assign list = "1,2,3,4,5" | split: "," %}
+Valeur: {{ list[3] }}         # 4
+Join  : {{ list | join:"" }}  # 12345
+```
 
-<!-- -->
-
-    {% assign list = (1..5) %}
-    Valeur: {{ list[3] }}         # nil
-    Join  : {{ list | join:"" }}  # 12345
+``` liquid
+{% assign list = (1..5) %}
+Valeur: {{ list[3] }}         # nil
+Join  : {{ list | join:"" }}  # 12345
+```
 
 ### Modifier une liste
 
 Pour modifier une liste, il est nécessaire d'utiliser des filtres
 
-    {% assign list = list | push: "n" %}       Ajoute un élément à la fin
-    {% assign list = list | unshift: "1" %}    Ajoute un élément au début
+``` liquid
+{% assign list = list | push: "n" %}       Ajoute un élément à la fin
+{% assign list = list | unshift: "1" %}    Ajoute un élément au début
 
-    {% assign list = list | pop %}             Supprime le dernier élément
-    {% assign list = list | shift %}           Supprime le premier élément
+{% assign list = list | pop %}             Supprime le dernier élément
+{% assign list = list | shift %}           Supprime le premier élément
+```
 
 ### Accéder à ses éléments
 
-    {{ list | first }}                         Premier élément
-    {{ list | last }}                          Dernier élément
-    {{ list[2] }}                              Élément à l'index 2 (3ème)
-    {{ list.name }}                            Élément à l'index "name"
-    {{ list['last-modified'] }}                Élément à l'index "last-modified"
+``` liquid
+{{ list | first }}                         Premier élément
+{{ list | last }}                          Dernier élément
+{{ list[2] }}                              Élément à l'index 2 (3ème)
+{{ list.name }}                            Élément à l'index "name"
+{{ list['last-modified'] }}                Élément à l'index "last-modified"
+```
 
-<!-- -->
-
-    {{ list.size }}                            Taille du tableau
+``` liquid
+{{ list.size }}                            Taille du tableau
+```
 
 ---
 
 ## If
 
-    {% if myvar %}                     # Si !=nil && !=false
-        {{ myvar }}
-    {% elsif anothervar != false %}    # Sinon si != false
-        {{ anothervar }}
-    {% else %}
-        NOP
-    {% endif %}
+``` liquid
+{% if myvar %}                     # Si !=nil && !=false
+    {{ myvar }}
+{% elsif anothervar != false %}    # Sinon si != false
+    {{ anothervar }}
+{% else %}
+    NOP
+{% endif %}
+```
 
 ### Expressions
 
@@ -236,12 +291,16 @@ Le `if` peut évaluer une expression.
 | <=        | inférieur ou égal                |
 | contains  | contient (pour texte ou tableau) |
 
-    {% if name contains "world" %}
+``` liquid
+{% if name contains "world" %}
+```
 
 On peut évaluer plusieurs expressions avec `and` (ET) et `or` (OU) mais les parenthèses ne sont pas autorisées.  
 Le ET est prioritaire au OU.
 
-    {% if page.title or page.category %}
+``` liquid
+{% if page.title or page.category %}
+```
 
 ### Valeurs vides
 
@@ -251,61 +310,73 @@ Plusieurs valeurs peuvent être considérées comme vides : nil, null, false, ""
 - `""` est vrai pour une chaîne vide
 - `empty` est vrai pour un tableau ou une chaîne vide
 
-<!-- -->
-
-    {% assign list = "" | split:"|" %}
-    {% if list == empty %}
-      The list is empty !
-    {% endif %}
+``` liquid
+{% assign list = "" | split:"|" %}
+{% if list == empty %}
+  The list is empty !
+{% endif %}
+```
 
 Le filtre `default` permet de spécifier une valeur par défaut dans le cas où la valeur de la variable est vide (`nil`, `false`, ou empty)
 
-    {{ product_price | default: 2.99 }}
+``` liquid
+{{ product_price | default: 2.99 }}
+```
 
 ## Unless
 
 `unless` est l'inverse du  `if`. Il accepte les mêmes expressions que le `if`.
 
-    {% unless page == empty %}
-        <h1>{{ page.title }}</h1>
-    {% else %}
-        Empty
-    {% endif %}
+``` liquid
+{% unless page == empty %}
+    <h1>{{ page.title }}</h1>
+{% else %}
+    Empty
+{% endif %}
+```
 
 ## Case
 
-    {% case myvar %}
-      {% when 1 %}
-         Hit 1
-      {% when 2 or 3 %}
-        Hit 2 or 3
-      {% else %}
-         Else
-    {% endcase %}
+``` liquid
+{% case myvar %}
+  {% when 1 %}
+     Hit 1
+  {% when 2 or 3 %}
+    Hit 2 or 3
+  {% else %}
+     Else
+{% endcase %}
+```
 
 ---
 
 ## For
 
-    {% for value in list %}
-        {{ forloop.index }} : {{ value }}
-    {% else %}
-        Empty list
-    {% endfor %}
+``` liquid
+{% for value in list %}
+    {{ forloop.index }} : {{ value }}
+{% else %}
+    Empty list
+{% endfor %}
+```
 
 À l'intérieur d'un `for`, il est possible d'utilser les tags break et continue.
 
-    {% break %}
-    {% continue %}
+``` liquid
+{% break %}
+{% continue %}
+```
 
 Le `for` accepte des paramètres : `offset`, `limit` et `reversed`
 
-    {% for i in (1..10) %}             1 2 3 4 5 6 7 8 9 10
-    {% for i in (1..10) reversed %}    10 9 8 7 6 5 4 3 2 1
-    {% for i in (1..10) limit:5 %}     1 2 3 4 5
-    {% for i in (1..10) offset:5 %}    6 7 8 9 10
+``` liquid
+{% for i in (1..10) %}             1 2 3 4 5 6 7 8 9 10
+{% for i in (1..10) reversed %}    10 9 8 7 6 5 4 3 2 1
+{% for i in (1..10) limit:5 %}     1 2 3 4 5
+{% for i in (1..10) offset:5 %}    6 7 8 9 10
 
-    {% for i in (1..10) reversed offset:2 limit:4 %}    6 5 4 3
+{% for i in (1..10) reversed offset:2 limit:4 %}    6 5 4 3
+```
 
 ### forloop
 
@@ -326,71 +397,83 @@ de récupérer des informations telles que le numéro de l'itération en cours, 
 
 Boucle sur un ensemble de chaîne. À chaque appel d'un cycle, la prochaine chaîne en paramètre est retournée.
 
-    <ul>
-    {% for i in (1..10) %}
-      <li class="{% cycle 'odd', 'even' %}">{{ i }}</li>
-    {%- endfor %}
-    </ul>
+``` liquid
+<ul>
+{% for i in (1..10) %}
+  <li class="{% cycle 'odd', 'even' %}">{{ i }}</li>
+{%- endfor %}
+</ul>
+```
 
 Si plusieurs cycles sont appelés à l'intérieur d'une page,
 il faut leur donner un label afin que l'itération du deuxième cycle reparte du début (dans l'exemple, qu'il reparte de "odd")
 et non continue à la suite du premier (de "even").
 
-    <ul>
-    {% for i in (1..5) %}
-        <li class="{% cycle '1': 'odd', 'even' %}">{{ i }}</li>
-    {%- endfor %}
-    </ul>
+``` liquid
+<ul>
+{% for i in (1..5) %}
+    <li class="{% cycle '1': 'odd', 'even' %}">{{ i }}</li>
+{%- endfor %}
+</ul>
 
-    <ul>
-    {% for i in (1..5) %}
-        <li class="{% cycle '2': 'odd', 'even' %}">{{ i }}</li>
-    {%- endfor %}
-    </ul>
+<ul>
+{% for i in (1..5) %}
+    <li class="{% cycle '2': 'odd', 'even' %}">{{ i }}</li>
+{%- endfor %}
+</ul>
+```
 
 ## Tablerow
 
 Génère des lignes pour une table HTML.
 
-    <table>
-    {% tablerow i in (1..3) %}
-      {{ i }}
-    {% endtablerow %}
-    </table>
+``` liquid
+<table>
+{% tablerow i in (1..3) %}
+  {{ i }}
+{% endtablerow %}
+</table>
+```
 
 Génère :
 
-    <table>
-    <tr class="row1">
-      <td class="col1">1</td>
-      <td class="col2">2</td>
-      <td class="col3">3</td>
-    </tr>
-    </table>
+``` html
+<table>
+<tr class="row1">
+  <td class="col1">1</td>
+  <td class="col2">2</td>
+  <td class="col3">3</td>
+</tr>
+</table>
+```
 
 `tablerow` accepte des paramètres : `offset`, `limit` et `cols`.
 
-    <table>
-    {% tablerow i in (1..20) cols:2 offset:2 limit:6 %}
-      {{ i }}
-    {% endtablerow %}
+``` liquid
+<table>
+{% tablerow i in (1..20) cols:2 offset:2 limit:6 %}
+  {{ i }}
+{% endtablerow %}
+```
 
 Génère :
 
-    <table>
-    <tr class="row1">
-      <td class="col1">3</td>
-      <td class="col2">4</td>
-    </tr>
-    <tr class="row2">
-      <td class="col1">5</td>
-      <td class="col2">6</td>
-    </tr>
-    <tr class="row3">
-      <td class="col1">7</td>
-      <td class="col2">8</td>
-    </tr>
-    </table>
+``` html
+<table>
+<tr class="row1">
+  <td class="col1">3</td>
+  <td class="col2">4</td>
+</tr>
+<tr class="row2">
+  <td class="col1">5</td>
+  <td class="col2">6</td>
+</tr>
+<tr class="row3">
+  <td class="col1">7</td>
+  <td class="col2">8</td>
+</tr>
+</table>
+```
 
 ---
 
@@ -399,11 +482,13 @@ Génère :
 Le tag `increment` crée ou incrémente une valeur à chaque appel et affiche la valeur. La valeur de départ est 0.  
 Cette variable est indépendante des valeurs créées avec `assign`.
 
-    {% assign var = 10 %}
-    {% increment var %}  # 0
-    {% increment var %}  # 1
-    {% increment var %}  # 2
-    {{ var }}            # 10
+``` liquid
+{% assign var = 10 %}
+{% increment var %}  # 0
+{% increment var %}  # 1
+{% increment var %}  # 2
+{{ var }}            # 10
+```
 
 **Attention**, dans Jekyll les variables crée via `increment` ou `decrement` sont crées dans le contexte global et ne peuvent pas être réinitialisées.
 Un `increment` en début de fichier peut donc ne pas commencer à 0 s'il existe un `increment` de la même variable dans un autre fichier !  
@@ -414,21 +499,25 @@ mis à part pour générer des ids uniques.
 
 Même principe pour le tag `decrement`. La valeur de départ est -1.
 
-    {% assign var = 10 %}
-    {% decrement var %}  # -1
-    {% decrement var %}  # -2
-    {% decrement var %}  # -3
-    {{ var }}            # 10
+``` liquid
+{% assign var = 10 %}
+{% decrement var %}  # -1
+{% decrement var %}  # -2
+{% decrement var %}  # -3
+{{ var }}            # 10
+```
 
 Les valeurs crées par `increment` sont communes à `decrement`.
 
-    {% increment var %}  # 0
-    {% increment var %}  # 1
-    {% increment var %}  # 2
+``` liquid
+{% increment var %}  # 0
+{% increment var %}  # 1
+{% increment var %}  # 2
 
-    {% decrement var %}  # 2
-    {% decrement var %}  # 1
-    {% decrement var %}  # 0
+{% decrement var %}  # 2
+{% decrement var %}  # 1
+{% decrement var %}  # 0
+```
 
 ---
 
@@ -440,41 +529,57 @@ Le tag `include` permet d'inclure d'autres fichiers. La syntaxe diffère légèr
 
 Inclus un snippet du répertoire `snippets`. Il est inutile d'écrire l'extension .liquid.
 
-    {% include 'my-snippet-file' %}
+``` liquid
+{% include 'my-snippet-file' %}
+```
 
 Le fichier a accès à toutes les variables de son parent.
 On peut cependant passer des variables supplémentaires au fichier, crées à la volée, uniquement pour le fichier inclus.
 
-    {% include 'snippet', my_variable: 'apples', my_other_variable: 'oranges' %}
+``` liquid
+{% include 'snippet', my_variable: 'apples', my_other_variable: 'oranges' %}
+```
 
 Le paramètre `with` assigne une variable du même nom que le snippet.
 
-    {% include 'color' with 'red' %}
-    {% include 'color', color: 'red' %}
+``` liquid
+{% include 'color' with 'red' %}
+{% include 'color', color: 'red' %}
+```
 
 Et à l'intérieur du snippet
 
-    color: '{{ color }}'
+``` liquid
+color: '{{ color }}'
+```
 
 ### Jekyll
 
 Inclus un fichier du répertoire `_includes`.
 
-    {% include footer.html %}
-    {% include {{ my_variable }} %}
+``` liquid
+{% include footer.html %}
+{% include {{ my_variable }} %}
+```
 
 On peut également inclure des fichiers relativement au répertoire en cours
 
-    {% include_relative somedir/footer.html %}
+``` liquid
+{% include_relative somedir/footer.html %}
+```
 
 Et passer des variables supplémentaires au fichier
 
-    {% include note.html content="This is my sample note." %}
-    {% include note.html content=download_note %}
+``` liquid
+{% include note.html content="This is my sample note." %}
+{% include note.html content=download_note %}
+```
 
 Qui sont accessibles via la variable `include` dans le fichier inclus
 
-    {{ include.content }}
+``` liquid
+{{ include.content }}
+```
 
 ---
 
@@ -596,39 +701,51 @@ Les filtres de Shopify sont disponibles avec exemples [dans la doc](https://help
 * where  
   `{{ site.posts | where:"year","2015" }}`
 
-      {"title"=>"Post1","year"=>2015}
+  ``` liquid
+  {"title"=>"Post1","year"=>2015}
+  ```
 
 * where_exp  
   `{{ site.posts | where_exp:"item","item.year >= 2015" }}`
 
-      {"title"=>"Post3","year"=>2017}
-      {"title"=>"Post2","year"=>2017}
-      {"title"=>"Post1","year"=>2015}
+  ``` liquid
+  {"title"=>"Post3","year"=>2017}
+  {"title"=>"Post2","year"=>2017}
+  {"title"=>"Post1","year"=>2015}
+  ```
 
 * group_by  
   `{{ site.posts | group_by:"year" }}`
 
-      {"name"=>"2017","items"=>[
-          {"title"=>"Post3","year"=>2017},
-          {"title"=>"Post2","year"=>2017}
-      ],"size"=>2}
-      {"name"=>"2015","items"=>[
-          {"title"=>"Post1","year"=>2015}
-      ],"size"=>1}
+  ``` liquid
+  {"name"=>"2017","items"=>[
+      {"title"=>"Post3","year"=>2017},
+      {"title"=>"Post2","year"=>2017}
+  ],"size"=>2}
+  {"name"=>"2015","items"=>[
+      {"title"=>"Post1","year"=>2015}
+  ],"size"=>1}
+  ```
 
 * sort  
   `{{ site.posts | sort: "year" }}`
 
-      {"title"=>"Post1","year"=>2015}
-      {"title"=>"Post3","year"=>2017}
-      {"title"=>"Post2","year"=>2017}
+  ``` liquid
+  {"title"=>"Post1","year"=>2015}
+  {"title"=>"Post3","year"=>2017}
+  {"title"=>"Post2","year"=>2017}
+  ```
 
 * map  
   `{{ site.posts | map:"title" }}`
 
-      ["Post3","Post2","Post1"]
+  ``` liquid
+  ["Post3","Post2","Post1"]
+  ```
 
 ---
 
 Tags supplémentaires spécifiques à Shopify :
 https://help.shopify.com/themes/liquid/tags/theme-tags
+
+{% endraw %}

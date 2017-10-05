@@ -1,21 +1,28 @@
 ---
 ---
 
-- Web technologies
+- Web langages
   - [ ] HTML
   - [ ] CSS
   - [ ] JS
+    - [ ] AJAX
     - [ ] JSONP
   - [ ] SQL
   - [ ] PHP
     - [x] [Composer](composer.md)
   - [ ] NoSQL
   - [ ] NodeJS
-  - [x] [JSON](json.md)
-  - [x] [YAML](yaml.md)
+  - [x] Data formatting
+    - [x] [JSON](json.md)
+    - [x] [YAML](yaml.md)
+  - Template
+    - [x] [Liquid](liquid.md)
+    - [ ] Smarty
+    - [ ] Twig
 
 - Web development environments
   - [x] [Github Pages](github-pages.md)
+  - [ ] Jekyll
   - [ ] Codepen
   - [ ] c9
   - [ ] Heroku
@@ -36,13 +43,7 @@
   - [ ] Git
   - [x] [Raccourcis édition de texte](text-editing.md)
   - [x] [Regex](regex.md)
-  - [ ] Markdown
-  - [ ] Latex
+  - [ ] Document formatting
+    - [ ] Markdown
+    - [ ] Latex
 
-- Blog Generators
-  - [ ] Jekyll
-
-- Templating
-  - [ ] Liquid
-  - [ ] Smarty
-  - [ ] Twig

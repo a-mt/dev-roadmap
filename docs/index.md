@@ -34,7 +34,7 @@ searchbar: true
   - [x] [Regex POSIX](regex-posix.md)
   - [x] [Awk](awk.md)
   - [x] [Sed](sed.md)
-  - [ ] Grep
+  - [x] [Grep](grep.md)
   - [x] [Vim](vim.md)
   - [ ] Nano
   - [ ] Bash Script

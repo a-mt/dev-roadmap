@@ -3,6 +3,8 @@ title: Grep
 category: Linux
 ---
 
+{% raw %}
+
 Grep est une commande Unix qui permet de filtrer des données. Elle affiche toutes les lignes qui contiennent un mot ou, de manière générale, qui correspondent à un motif (POSIX BRE ou ERE).
 
 ## Données en entrées
@@ -283,3 +285,5 @@ semver.md:Les gestionnaires de packets tels que NPM (node.js) et Composer (PHP),
 semver.md:- Utiliser [npm server calculator](https://semver.npmjs.com/) pour tester les versions matchées par
 yaml.md:- [Parser en ligne](http://yaml-online-parser.appspot.com/) pour tester la conversion du yaml en json
 ```
+
+{% endraw %}

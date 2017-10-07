@@ -60,3 +60,138 @@ ul.breadcrumb {
         }
     }
 }
+
+.searchbar {
+    margin-bottom: 1em;
+}
+.search .form-control {
+    text-align: right;
+}
+.search-result {
+    margin-top: 1em;
+
+    ul {
+        list-style: none;
+    }
+    .match {
+        padding-left: 10px;
+        color: #bbb;
+    }
+    .highlight {
+        text-decoration: underline;
+    }
+}
+
+/* BOOTSTRAP */
+
+.alert {
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border-radius: .25rem;
+
+    &.alert-danger {
+        background-color: #f2dede;
+        border-color: #ebcccc;
+        color: #a94442;
+    }
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .2s ease-in-out;
+
+    &.btn-primary {
+        color: #fff;
+        background-color: #0275d8;
+        border-color: #0275d8;
+
+        &:hover {
+            background-color: #025aa5;
+            border-color: #01549b;
+        }
+    }
+}
+
+.form-control {
+    display: inline-block;
+    width: 100%;
+    padding: .5rem .75rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #464a4c;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+
+    &:focus {
+        color: #464a4c;
+        border-color: #5cb3fd;
+    }
+}
+
+.input-group {
+    display: flex;
+    width: 100%;
+
+    .form-control:not(:last-child) {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+    }
+    .input-group-btn .btn {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        &:not(:last-child) {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+    .form-control, .input-group-addon, .input-group-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.loading-pulse {
+    position: relative;
+    width: 6px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: pulse 750ms infinite;
+    animation-delay: 250ms;
+    filter: brightness(0.6);
+
+    &::before, &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        height: 16px;
+        width: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        top: 50%;
+        transform: translateY(-50%);
+        animation: pulse 750ms infinite;
+    }
+    &::before {
+      left: -12px;
+    }
+    &::after {
+      left: 12px;
+      animation-delay: 500ms;
+    }
+}
+@keyframes pulse {
+  50% {
+    background: rgb(255,255,255);
+  }
+}

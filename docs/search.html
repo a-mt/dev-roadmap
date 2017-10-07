@@ -1,0 +1,145 @@
+---
+title: Recherche
+summary: false
+---
+
+<div class="search">
+  <div class="input-group">
+    <input type="text" name="q" class="form-control" autocomplete="off" placeholder="Recherche...">
+    <div class="input-group-btn">
+      <button type="button" class="btn btn-primary">Chercher</button>
+    </div>
+  </div>
+  <div class="search-result"></div>
+</div>
+
+<noscript><div class="alert alert-danger">Ce site nécessite que le JavaScript soit activé pour fonctionner</div></noscript>
+
+<script>
+(function(){
+
+    // Listen form submit
+    var container = document.querySelector('.search'),
+        input     = container.querySelector('input');
+
+    input.addEventListener('keyup', function(e){
+        if(e.keyCode == 13) {
+            querySearch(input.value);
+        }
+    });
+    container.querySelector('button').addEventListener('click', function(){
+        querySearch(input.value);
+    });
+
+    // Preload data
+    getData();
+
+    // Parse GET parameters
+    var params = window.location.search.split(/[?&]/g),
+        get = {};
+    for(var i=1; i<params.length; i++) {
+        var param = params[i].split('=');
+        get[param[0]] = (param.length == 2 ? param[1] : null);
+    }
+    if(!get.q) {
+        return;
+    }
+    querySearch(get.q);
+}());
+
+/**
+ * Get data
+ */
+function getData(callback) {
+    if(typeof window._searchData == "undefined") {
+        fetch("{{ "/search.json" | relative_url }}")
+        .then(response => response.json())
+        .then(data => {
+            window._searchData = data;
+            callback && callback(data);
+        })
+    } else {
+        callback(window._searchData);
+    }
+}
+
+/**
+ * Trigger a search
+ */
+function querySearch(q) {
+
+    // Check minimum length
+    var container = document.querySelector('.search-result');
+    if(q.length < 3) {
+        container.innerHTML = '<div class="alert alert-danger">Veuillez entrer au moins 3 caractères</div>';
+        return;
+    }
+    q = q.toLowerCase();
+
+    // Proceed to search
+    container.innerHTML = '';
+    var ul = document.createElement('ul');
+    container.appendChild(ul);
+
+    // Loading
+    var loader = document.createElement('li');
+    loader.setAttribute('class', 'loading-pulse');
+    loader.innerHTML = '';
+    ul.appendChild(loader);
+
+    getData((data) => {
+        var c = 0;
+
+        for(var i=0; i<data.length; i++) {
+            var d       = data[i],
+                matches = false,
+                title   = d.title,
+                content = false;
+
+            var k = d.title.toLowerCase().indexOf(q);
+            if(k != -1) {
+                matches = true;
+                title   = highlight(title, k, q.length, false);
+            }
+            k = d.content.toLowerCase().indexOf(q);
+            if(k != -1) {
+                matches = true;
+                content = highlight(d.content, k, q.length, 20);
+            }
+            if(!matches) {
+                continue;
+            }
+            c++;
+
+            var li = document.createElement('li');
+            li.innerHTML = '<a href="' + d.url + '" target="_blank">' + title + '</a>'
+                         + (content ? '<span class="match">' + content + '</span>' : '');
+            ul.appendChild(li);
+        }
+        loader.setAttribute('class', 'loaded');
+        loader.innerHTML = c + ' résultat' + (c > 1 ? 's' : '');
+    })
+}
+
+function highlight(str, k, n, limit) {
+    var res = "";
+
+    // Before
+    if(!limit || k - limit < 0) {
+        res += str.substr(0, k);
+    } else {
+        res += '...' + str.substr(k - limit, limit);
+    }
+
+    // Match
+    res += '<span class="highlight">' + str.substr(k, n) + '</span>';
+
+    // After
+    if(!limit || str.length < k + n) {
+        res += str.substr(k + n);
+    } else {
+        res += str.substr(k + n, limit) + '...';
+    }
+    return res;
+}
+</script>

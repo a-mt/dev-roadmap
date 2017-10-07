@@ -1,4 +1,5 @@
 ---
+searchbar: true
 ---
 
 - Web langages

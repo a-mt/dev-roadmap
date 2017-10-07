@@ -24,20 +24,22 @@
         </ul>
 
         <!-- SUMMARY -->
-        {% assign words = content | number_of_words %}
-        <div class="summary hide">
-          <ul class="actions">
-            <li><i>Durée estimée:
-              <span title="{{ words }} mots">
-                {% if words > 275 %}{{ words | divided_by: 275 | round }}{% else %}1{% endif %}
-              </span> min
-            </i></li>
-            <li><a class="toggle" href="#">Afficher le sommaire</a></li>
-          </ul>
-          <label class="title">Sommaire: {{ page.title }}</label>
+        {% if page.summary %}
+          {% assign words = content | number_of_words %}
+          <div class="summary hide">
+            <ul class="actions">
+              <li><i>Durée estimée:
+                <span title="{{ words }} mots">
+                  {% if words > 275 %}{{ words | divided_by: 275 | round }}{% else %}1{% endif %}
+                </span> min
+              </i></li>
+              <li><a class="toggle" href="#">Afficher le sommaire</a></li>
+            </ul>
+            <label class="title">Sommaire: {{ page.title }}</label>
 
-          {% include toc.html html=content class="toc" %}
-        </div>
+            {% include toc.html html=content class="toc" %}
+          </div>
+        {% endif %}
       {% endif %}
 
       <!-- TITLE -->
@@ -51,11 +53,14 @@
         | replace: '.md#', '#'
         }}
 
-      {% if site.github.private != true and site.github.license %}
       <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
-        This site is open source. {% github_edit_link "Improve this page" %}.
+          {% if page.searchbar %}
+            {% include searchbar.html %}
+          {% endif %}
+          {% if site.github.private != true and site.github.license %}
+            This site is open source. {% github_edit_link "Improve this page" %}.
+          {% endif %}
       </div>
-      {% endif %}
     </div>
     <script src="{{ "assets/javascript/anchor-js/anchor.min.js" | relative_url }}"></script>
     <script>anchors.add();</script>

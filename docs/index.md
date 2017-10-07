@@ -16,6 +16,7 @@ searchbar: true
   - [x] Data formatting
     - [x] [JSON](json.md)
     - [x] [YAML](yaml.md)
+    - [ ] XML
   - Template
     - [x] [Liquid](liquid.md)
     - [ ] Smarty
@@ -38,6 +39,11 @@ searchbar: true
   - [x] [Grep](grep.md)
   - [x] [Vim](vim.md)
   - [ ] Nano
+  - [ ] Less
+  - [ ] Expansions
+    - [ ] De l'historique
+    - [ ] De variables
+    - [ ] De fichiers
   - [ ] Bash Script
 
 - Other

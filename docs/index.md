@@ -20,6 +20,7 @@ searchbar: true
     - [x] [Liquid](liquid.md)
     - [ ] Smarty
     - [ ] Twig
+    - [ ] Pug
 
 - Web development environments
   - [x] [Github Pages](github-pages.md)

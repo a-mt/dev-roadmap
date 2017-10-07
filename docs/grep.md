@@ -39,7 +39,7 @@ $ grep BRE regex-posix.md     # Les lignes qui contiennent "BRE" dans le fichier
 - et les regex POSIX ERE (Extended Regex Expression), une extension des BRE, qui ajoute le support des groupe
 | BRE           | grep, vi, sed, csplit, dbx, dbxtool, more, ed, expr, lex, pg, nl, rdist |
 `grep` utilise par défaut les regex BRE, il est possible d'utiliser les caractères ERE pourvu qu'ils soient p
-## POSIX Basic Regex Expression (BRE)
+ ## POSIX Basic Regex Expression (BRE)
 ```
 
 Ou même de plusieurs fichiers :

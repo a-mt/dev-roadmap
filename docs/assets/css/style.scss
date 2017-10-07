@@ -195,3 +195,12 @@ ul.breadcrumb {
     background: rgb(255,255,255);
   }
 }
+
+.language-shell_session {
+    code {
+        color: #005cc5;
+    }
+    .highlight .k, .highlight .nc, .highlight .kv {
+        font-weight: normal;
+    }
+}

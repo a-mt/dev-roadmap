@@ -123,7 +123,7 @@ $ grep -i jekyll github-pages.md
 - Github supporte Jekyll, un générateur de site statique et qui permet
 Github fait tourner Jekyll sur son serveur à chaque commit pour générer le site publié,
 Le parser utilisé par Jekyll pour convertir le Markdown en HTML est kramdown.
-## Faire tourner Jekyll en local
+ ## Faire tourner Jekyll en local
 Installer Jekyll en local est utile pour prévisualiser le site qui sera publié par Github avant de commiter.
 2. Créer un fichier `/_config.yml` (le fichier de configuration de Jekyll), et y placer les configurations pa
        theme: jekyll-theme-primer

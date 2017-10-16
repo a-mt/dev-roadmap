@@ -235,6 +235,9 @@ Les references nommés restent numérotées, on peut y accéder via son nom ET s
 
 ### Condition
 
+Vérifie si un groupe capturant donné a été définit.
+Attention un groupe vide est vrai : `(<?)` (vrai) != `(<)?` (faux).
+
     (<)?abcd(?(1)>)   abcd ou <abcd>
     (<)?abcd(?(1)>|e) <abcd> ou abcde
 
@@ -257,17 +260,34 @@ Sont des assertions et ne consomment donc aucun caractère
     ^(?!lorem)  Ne commence pas par lorem
     (?<!ispum)$ Ne finit pas par ipsum
 
-    (?=(.*[a-z]){3})(?=(.*[0-9]){2}).{6,} Au moins 6 caractères, dont moins 3 lettres et 2 chiffres (dans n'importe quel ordre)
+    (?=(.*[a-z]){3})(?=(.*[0-9]){2}).{6,}       Au moins 6 caractères, dont moins 3 lettres et 2 chiffres (dans n'importe quel ordre)
+    (?<=([[:punct:]])|)[a-z]+(?(1)|[[:punct:]]) Lettres soit précédées soit suivies d'un caractère de ponctuation
 
-### Autres
+### Groupe atomique
 
     (?>a|b)        a ou b, dans un groupe atomique (empêche le backtrack)
+    
+Les groupes atomiques permettent principalement d'optimiser les performances du regex : `(?>compt|essay)er` = si le début commence de la chaîne par "compt" mais n'est pas suivit pas "er", ne pas essayer avec "essay"
+
+### Q...E
+
     \Q*. !\E       Recherche littérale de *. !
+
+### Commentaires
 
     a(?#comment)b  Commentaire (option x non activée)
     a #comment     Commentaire (option x activée)
 
-Les groupes atomiques permettent principalement d'optimiser les performances du regex : `(?>compt|essay)er` = si le début commence de la chaîne par "compt" mais n'est pas suivit pas "er", ne pas essayer avec "essay"
+### Récursion
+
+    \*((?:[^*]|(?R))+)\*        Recursion du pattern entier (*foo *bar**)
+    ^(\*((?:[^*]|(?1))+)\*)$    Recursion d'un groupe capturant
+
+La récursion du groupe entier ne peut pas être ancrée (puisque la récursion ne matchera pas le début de la chaîne)  
+Vérifier si un niveau de récursion a été atteint :
+
+    (?(R)A)                     Vérifie si l'on est à l'intérieur d'une récursion
+    (?(R1)A)                    Vérifie si l'on est dans une récursion du groupe capturant 1
 
 ---
 

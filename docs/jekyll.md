@@ -3,6 +3,8 @@ title: Jekyll
 category: Webenv
 ---
 
+{% raw %}
+
 Jekyll est un générateur de site statique. Il permet notamment
 1. de convertir les fichiers Markdown en fichiers HTML
 2. d'utiliser des layouts (pour mettre en commun header et footer par exemple)
@@ -988,3 +990,5 @@ Pour ajouter des plugins, il faut
    Pour utiliser un plugin avec Github Pages, il faut que ce plugin soit dans la [whitelist de Github Pages](https://pages.github.com/versions/).  
 
 Quelques plugins utiles : https://help.github.com/articles/adding-jekyll-plugins-to-a-github-pages-site/
+
+{% endraw %}

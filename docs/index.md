@@ -25,7 +25,7 @@ searchbar: true
 
 - Web development environments
   - [x] [Github Pages](github-pages.md)
-  - [ ] Jekyll
+  - [x] [Jekyll](jekyll.md)
   - [ ] Codepen
   - [ ] c9
   - [ ] Heroku

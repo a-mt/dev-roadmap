@@ -85,9 +85,9 @@ Pour formatter du texte à l'intérieur d'un `pre`, utiliser des balises HTML.
     <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Après&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
   </tr></thead>
   <tbody>
-    <tr><td>&lt;strong>This is bold text&lt;/del></td><td><strong>This is bold text<strong></td></tr>
-    <tr><td>&lt;em>This is italic text&lt;/em></td><td><em>This is italic text<em></td></tr>
-    <tr><td>&lt;del>Strikethrough&lt;/del></td><td><del>Strikethrough<del></td></tr>
+    <tr><td>&lt;strong>This is bold text&lt;/del></td><td><strong>This is bold text</strong></td></tr>
+    <tr><td>&lt;em>This is italic text&lt;/em></td><td><em>This is italic text</em></td></tr>
+    <tr><td>&lt;del>Strikethrough&lt;/del></td><td><del>Strikethrough</del></td></tr>
     <tr><td>&lt;s>Strikethrough&lt;/s></td><td><s>Strikethrough</s></td></tr>
     <tr><td>&lt;ins>Underline&lt;/ins></td><td><ins>Underline</ins></td></tr>
     <tr><td>Indice &lt;sub>sub&lt;/sub></td><td>Indice <sub>sub</sub></td></tr>

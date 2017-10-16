@@ -235,11 +235,11 @@ Syntaxe interprétée à l'intérieur d'un `pre`
 
 | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Avant&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Après&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; |
 |--- |--- |
-| !\[Alt](h&#8203;ttp://placehold.it/50x50)         | ![Alt](http://placehold.it/50x50)         |
-| !\[Alt](h&#8203;ttp://placehold.it/50x50 "title") | ![Alt](http://placehold.it/50x50 "title") |
-| !\[Alt]\[id_img]<br>\[id_img]: h&#8203;ttp://placehold.it/50x50 | ![Alt][id_img]              |
+| !\[Alt](h&#8203;ttps://placehold.it/50x50)         | ![Alt](https://placehold.it/50x50)         |
+| !\[Alt](h&#8203;ttps://placehold.it/50x50 "title") | ![Alt](https://placehold.it/50x50 "title") |
+| !\[Alt]\[id_img]<br>\[id_img]: h&#8203;ttps://placehold.it/50x50 | ![Alt][id_img]              |
 
-[id_img]: http://placehold.it/50x50
+[id_img]: https://placehold.it/50x50
 
 ---
 

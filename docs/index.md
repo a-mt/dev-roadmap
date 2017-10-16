@@ -52,6 +52,6 @@ searchbar: true
   - [x] [Raccourcis édition de texte](text-editing.md)
   - [x] [Regex](regex.md)
   - [ ] Document formatting
-    - [ ] [Markdown](gfm.md)
+    - [x] [Markdown](gfm.md)
     - [ ] Latex
 

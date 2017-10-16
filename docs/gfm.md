@@ -1,3 +1,8 @@
+---
+title: Markdown (Github Flavored)
+category: Other
+---
+
 Markdown est un langage de balisage (*markup langage* en anglais).
 Un peu à la manière du HTML, il permet de formatter le texte via un système d'annotations.
 Le Markdown se veut facile à lire, y compris dans sa version texte, et il est donc plus instinctif à apprendre.

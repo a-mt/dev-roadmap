@@ -46,12 +46,13 @@
       <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
 
        <!-- CONTENT -->
-       {{ content
+       {% assign content = content
         | replace: '<li>[ ]', '<li class="box">'
         | replace: '<li>[x]', '<li class="box_done">'
         | replace: '.md">', '">'
         | replace: '.md#', '#'
-        }}
+        %}
+      {% include highlight_pre.html html=content %}
 
       <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
           {% if page.searchbar %}

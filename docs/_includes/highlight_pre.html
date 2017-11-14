@@ -1,0 +1,9 @@
+{%- assign nodes = include.html | split: '<pre lang="' -%}
+{%- for node in nodes -%}
+    {%- if forloop.first %}{{ node }}{% else -%}{%- assign parts = node | split: '</pre>' -%}
+    {{ parts | first | replace_first: '">','
+' | prepend: '``` ' | append: '
+```' | replace: '&amp;':'&' | replace: '&lt;':'<' | replace: '&gt;':'>' | markdownify }}
+    {{ parts | shift | join:'</pre>' }}
+    {%- endif -%}
+{%- endfor -%}

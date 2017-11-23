@@ -45,6 +45,11 @@ Pour lancer la compilation à partir de la ligne de commande, on a les commande 
     latex file.tex       Compile en file.dvi
     pdflatex file.tex    Compile en file.pdf
 
+Pour exporter en png, compiler en PDF puis convertir en PNG (avec ImageMagick)
+
+    pdflatex tmp.tex
+    convert -density 300 -quality 90 tmp.pdf tmp.png
+
 ### Éditeur
 
 On peut utiliser un éditeur spécial Latex, qui gère la coloration syntaxique des commandes Latex et ajoute des raccourcis par rapport un éditeur texte classique - mais ce n'est pas indispensable.

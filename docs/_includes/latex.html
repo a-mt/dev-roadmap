@@ -1,0 +1,20 @@
+{%- assign in = false -%}
+{%- assign nodes = include.html | split: '%%' -%}
+{%- assign newline = "\\\\" -%}
+{%- for node in nodes -%}
+  {% if forloop.last %}{% endif %}
+  {%- if in -%}
+      {{ node
+            | replace:"<br />":newline
+            | strip_html
+            | replace:"&amp;","&"
+            | replace:"‘","'" | replace:"“",'"'
+      }}</script>
+      {%- assign in = false -%}
+  {%- else -%}
+      {{ node }}
+      {% unless forloop.last %}<script type="document/tex">{%- assign in = true -%}{% endunless %}
+  {%- endif -%}
+{%- endfor -%}
+{%- if in -%}</script>{%- endif -%}
+

@@ -1,0 +1,221 @@
+---
+---
+
+.MathJax_Text {
+    font-family: MathJax_Main;
+    font-size: 120%;
+
+    &.document {
+        border: 1px solid #24292e;
+        padding: 0 10px .4em 10px;
+        font-size: 110%;
+        text-align: justify;
+    }
+
+    /* body */
+    .envblock { border: 0; }
+    > .par:first-child, .preamble + .par { margin-top: 0; }
+    .envblock:last-child { margin-bottom: 0; }
+
+    /* table of contents */
+    .toc:empty { display: none; }
+    .contentname { margin: 0.4em 0em; font-size: 1.5em; }
+    .toc-chapter { margin: 0.3em 0em; }
+    .toc-section { margin: 0.3em 1em; }
+    .toc-subsection { margin: 0.3em 2.5em; }
+
+    .the-toc-part::before { content: counter(-toc-part, upper-roman) '\0000a0\0000a0'; }
+    .the-toc-chapter::before { content: counter(-toc-chapter) '\0000a0\0000a0'; }
+    .the-toc-section::before { content: counter(-toc-chapter) '.' counter(-toc-section) '\0000a0'; }
+    .the-toc-subsection::before { content: counter(-toc-chapter) '.' counter(-toc-section) '.' counter(-toc-subsection) '\0000a0'; }
+
+    /* pages */
+    .tableofcontents {
+        margin: 0;
+        border-bottom: 1px dashed;
+        padding-bottom: .4em;
+    }
+    .chapter {
+        margin-bottom: .9em;
+        margin-top: .7em;
+        border-top: 1px dashed;
+        padding-top: .4em;
+    }
+    .part {
+        margin: .7em 0;
+    }
+
+    /* titles */
+    .thepart, .thechapter { display: block; font-size: .9em; }
+    .chapter, .section { text-align: left; }
+    .thesection, .thesubsection { padding-right: 5px; }
+
+    .thesection::before { content: counter(chapter) '.' counter(section) '\0000a0'; }
+    .thesubsection::before { content: counter(chapter) '.' counter(section) '.' counter(subsection) '\0000a0'; }
+
+    /* abstract */
+    .abstract {
+        text-align: center;
+        padding: 0 1.5em;
+        span:nth-child(2) { padding-left: 20px; }
+    }
+    .label {
+        font-weight: 600;
+        display: block;
+    }
+
+    /* span */
+    .tiny { font-size: 60%; line-height: 1.66em; }
+    .scriptsize { font-size: 70%; line-height: 1.4em; }
+    .footnotesize { font-size: 75%; line-height: 1.33em; }
+    .small { font-size: 80%; line-height: 1.25em; }
+    .normalsize { font-size: 100%; line-height: 1em; }
+    .large { font-size: 120%; line-height: .8em; }
+    .Large { font-size: 144%; line-height: .8em; }  /* should not overlap not get out of borders */
+    .LARGE { font-size: 173%; line-height: .8em; }
+    .huge { font-size: 207%; line-height: .8em; }
+    .Huge { font-size: 249%; line-height: .8em; }
+    .color { display: none; }
+
+    /* paragraphs */
+    .\{\} .itext {
+        font-weight: 600;
+        padding-right: 10px;
+    }
+    .envblock {
+        margin: 0.75em 0.06em;
+    }
+    .mdframed {
+        padding-left: 1em;
+        position: relative;
+    }
+    .par {
+        text-indent: 1.5em;
+    }
+    li > .par {
+        text-indent: 0;
+    }
+    .paragraph, .subparagraph {
+        text-indent: -1.5em;
+        display: inline-block;
+    }
+    .subparagraph {
+        padding-left: 1.5em;
+    }
+    .chapter + .par, .section + .par, .subsection + .par {
+        text-indent: 0;
+
+        .paragraph, .subparagraph {
+            text-indent: 0;
+        }
+    }
+    .flushleft {
+        text-indent: 1.5em;
+        text-align: left;
+    }
+    .flushright {
+        text-indent: 1.5em;
+        text-align: right;
+    }
+
+    /* quotes */
+    .quote,
+    .quotation,
+    .verse {
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+    .quote .par {
+        text-indent: 0;
+    }
+    .quotation .par {
+        margin: 0 0.06em;
+    }
+    .verse {
+        padding-left: 1.5em;
+        .par {
+            text-indent: -1.5em;
+            margin: 0 0.06em;
+        }
+    }
+
+    /* verbatim */
+    .Verbatim {
+        white-space: pre;
+    }
+
+    /* lists */
+    li.hasLabel {
+        list-style-type: none;
+        padding-left: 0;
+        text-indent: -1em;
+
+        > .\[\] {
+            display: inline-block;
+            min-width: 1em;
+            text-align: right;
+            float: left;
+            padding-right: .5em;
+        }
+    }
+    .description > li > .\[\] {
+        font-weight: bold;
+    }
+
+    /* footnotes */
+    .footnote {
+        vertical-align: super;
+        font-size: .7em;
+    }
+    .footnotes {
+        position: relative;
+        margin-top: 30px;
+        &::before {
+            content: "";
+            position: absolute;
+            border-top: 1px solid black;
+            width: 25%;
+        }
+    }
+    .footnote-desc .footnote {
+        padding-right: .25em;
+    }
+
+    /* rules */
+    .rule {
+        width: 94%;
+        height: 2px;
+        background: black;
+        display: inline-block;
+        overflow: hidden;
+        margin-top: -0.75em;
+    }
+
+    /* tables */
+    table {
+        margin: 0;
+        margin-top: 15px;
+        border: 0;
+    }
+    .tabular table td, .tabular table th {
+        border: 0;
+        padding: 0 5px;
+    }
+    .tabular td:empty {
+        height: 0.5em;
+    }
+    .tabular table tr {
+        border: 0;
+        background: none;
+    }
+    td.pad {
+        display: block;
+    }
+
+    /* images */
+    .includegraphics {
+        font-size: 0;
+        display: inherit;
+        margin-top: 7px;
+    }
+}

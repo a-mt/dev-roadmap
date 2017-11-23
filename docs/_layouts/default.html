@@ -7,6 +7,9 @@
 {% seo %}
     <link href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}" rel="stylesheet">
     <script src="{{ '/assets/js/common.js?v=' | append: site.github.build_revision | relative_url }}"></script>
+    {% if page.latex %}
+      <link href="{{ '/assets/css/latex.css?v=' | append: site.github.build_revision | relative_url }}" rel="stylesheet">
+    {% endif %}
   </head>
   <body>
     <div class="container-lg px-3 my-5 markdown-body">
@@ -52,7 +55,12 @@
         | replace: '.md">', '">'
         | replace: '.md#', '#'
         %}
-      {% include highlight_pre.html html=content %}
+
+       {% if page.latex %}
+           {% include latex.html html=content %}
+       {% else %}
+           {% include highlight_pre.html html=content %}
+       {% endif %}
 
       <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
           {% if page.searchbar %}
@@ -63,6 +71,21 @@
           {% endif %}
       </div>
     </div>
+
+    {% if page.latex %}
+      <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          "TeX": { extensions: ["color.js", "extpfeil.js"] },
+          "HTML-CSS": { imageFont: null }
+        });
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
+      <link rel="stylesheet" type="text/css" href="{{ "assets/typejax/typejax.css" | relative_url }}">
+      <script type="text/javascript" src="{{ "assets/typejax/inliner.js" | relative_url }}"></script>
+      <script type="text/javascript" src="{{ "assets/typejax/typejax.js" | relative_url }}"></script>
+      <script type="text/javascript" src="{{ "assets/js/latex.js" | relative_url }}"></script>
+    {% endif %}
     <script src="{{ "assets/javascript/anchor-js/anchor.min.js" | relative_url }}"></script>
     <script>anchors.add();</script>
   </body>

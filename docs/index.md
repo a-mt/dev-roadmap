@@ -54,5 +54,5 @@ searchbar: true
   - [x] [Regex](regex.md)
   - [ ] Document formatting
     - [x] [Markdown](gfm.md)
-    - [ ] Latex
-
+    - [x] [Latex](latex.md)
+    - [ ] Textile

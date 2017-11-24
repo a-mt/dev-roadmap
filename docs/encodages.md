@@ -90,7 +90,7 @@ Plus un bit est placé à gauche plus il a un *poids fort*, plus un bit est plac
 
 Le code *ASCII* (American Standard Code for Information Interchange) définit 128 caractères à 7 bits. Il contient les caractères de contrôles (retours à la ligne, etc), les chiffres arabes de 0 à 9, les lettres minuscules et majuscules de A à Z et des symboles mathématiques et de ponctuation.
 
-![Table ASCII](http://ascii-table.com/img/ascii-table.gif)
+![Table ASCII](https://i.imgur.com/DU6fI8q.gif)
 
 ### Jeux étendus ASCII
 

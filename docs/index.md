@@ -49,9 +49,10 @@ searchbar: true
 
 - Other
   - [x] [Sémantique de version](semver.md)
-  - [ ] Git
   - [x] [Raccourcis édition de texte](text-editing.md)
   - [x] [Regex](regex.md)
+  - [x] [Encodages](encodages.md)
+  - [ ] Git
   - [ ] Document formatting
     - [x] [Markdown](gfm.md)
     - [x] [Latex](latex.md)

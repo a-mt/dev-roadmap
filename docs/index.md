@@ -52,6 +52,7 @@ searchbar: true
   - [x] [Raccourcis édition de texte](text-editing.md)
   - [x] [Regex](regex.md)
   - [x] [Encodages](encodages.md)
+  - [x] [Opérations sur les bits](bitwise-operations.md)
   - [ ] Git
   - [ ] Document formatting
     - [x] [Markdown](gfm.md)

@@ -44,7 +44,7 @@ summary: false
     if(!get.q) {
         return;
     }
-    querySearch(get.q.replace(/\+/g, ' '));
+    querySearch(decodeURIComponent(get.q));
 }());
 
 /**

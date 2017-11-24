@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        table { border-collapse:collapse;line-height:1.4;text-align:center }
+        thead th { background-color:#FFCCBB }
+        .label { width:2.5em }
+        .control { border:1px dotted;padding:0 0.3em;color:#AAAAAA;font-size:87% }
+        .empty { border-bottom:none;background:#DDD }
+        .diff { background-color:#FFFF80 }
+    </style>
+</head>
+<body>
+
+<table border="1">
+<tr>
+<td valign="top">
+<!--
+*******************************************************************************
+* ASCII
+*******************************************************************************
+-->
+
+<table class="wikitable">
+<thead>
+    <tr><th colspan="17">ASCII</th></tr>
+</thead>
+<tbody>
+    <!-- COLUMNS -->
+    <tr>
+        <th>&nbsp;</th>
+        <th class="label">x0</th>
+        <th class="label">x1</th>
+        <th class="label">x2</th>
+        <th class="label">x3</th>
+        <th class="label">x4</th>
+        <th class="label">x5</th>
+        <th class="label">x6</th>
+        <th class="label">x7</th>
+        <th class="label">x8</th>
+        <th class="label">x9</th>
+        <th class="label">xA</th>
+        <th class="label">xB</th>
+        <th class="label">xC</th>
+        <th class="label">xD</th>
+        <th class="label">xE</th>
+        <th class="label">xF</th>
+    </tr>
+    <!-- ROW 0-1 -->
+    <tr>
+        <th>0x</th>
+        <td><small class="control">NUL</small></td>
+        <td><small class="control">SOH</small></td>
+        <td><small class="control">STX</small></td>
+        <td><small class="control">ETX</small></td>
+        <td><small class="control">EOT</small></td>
+        <td><small class="control">ENQ</small></td>
+        <td><small class="control">ACK</small></td>
+        <td><small class="control">BEL</small></td>
+        <td><small class="control">BS</small></td>
+        <td><small class="control">HT</small></td>
+        <td><small class="control">LF</small></td>
+        <td><small class="control">VT</small></td>
+        <td><small class="control">FF</small></td>
+        <td><small class="control">CR</small></td>
+        <td><small class="control">SO</small></td>
+        <td><small class="control">SI</small></td>
+    </tr>
+    <tr>
+        <th>1x</th>
+        <td><small class="control">DLE</small></td>
+        <td><small class="control">DC1</small></td>
+        <td><small class="control">DC2</small></td>
+        <td><small class="control">DC3</small></td>
+        <td><small class="control">DC4</small></td>
+        <td><small class="control">NAK</small></td>
+        <td><small class="control">SYN</small></td>
+        <td><small class="control">ETB</small></td>
+        <td><small class="control">CAN</small></td>
+        <td><small class="control">EM</small></td>
+        <td><small class="control">SUB</small></td>
+        <td><small class="control">ESC</small></td>
+        <td><small class="control">FS</small></td>
+        <td><small class="control">GS</small></td>
+        <td><small class="control">RS</small></td>
+        <td><small class="control">US</small></td>
+    </tr>
+
+    <!-- ROW 2 -->
+    <tr>
+        <th>2x</th>
+        <td><small class="control">SP</small></td>
+        <td>&nbsp;!</td>
+        <td>"</td>
+        <td>#</td>
+        <td>$</td>
+        <td>&nbsp;%</td>
+        <td>&amp;</td>
+        <td>'</td>
+        <td>(</td>
+        <td>)</td>
+        <td>*</td>
+        <td>+</td>
+        <td>,</td>
+        <td>-</td>
+        <td>.</td>
+        <td>/</td>
+    </tr>
+
+    <!-- ROW 3 -->
+    <tr>
+        <th>3x</th>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>:</td>
+        <td>;</td>
+        <td>&lt;</td>
+        <td>=</td>
+        <td>&gt;</td>
+        <td>?</td>
+    </tr>
+
+    <!-- ROW 4 -->
+    <tr>
+        <th>4x</th>
+        <td>@</td>
+        <td>A</td>
+        <td>B</td>
+        <td>C</td>
+        <td>D</td>
+        <td>E</td>
+        <td>F</td>
+        <td>G</td>
+        <td>H</td>
+        <td>I</td>
+        <td>J</td>
+        <td>K</td>
+        <td>L</td>
+        <td>M</td>
+        <td>N</td>
+        <td>O</td>
+    </tr>
+
+    <!-- ROW 5 -->
+    <tr>
+        <th>5x</th>
+        <td>P</td>
+        <td>Q</td>
+        <td>R</td>
+        <td>S</td>
+        <td>T</td>
+        <td>U</td>
+        <td>V</td>
+        <td>W</td>
+        <td>X</td>
+        <td>Y</td>
+        <td>Z</td>
+        <td>[</td>
+        <td>\</td>
+        <td>]</td>
+        <td>^</td>
+        <td>_</td>
+    </tr>
+
+    <!-- ROW 6 -->
+    <tr>
+        <th>6x</th>
+        <td>`</td>
+        <td>a</td>
+        <td>b</td>
+        <td>c</td>
+        <td>d</td>
+        <td>e</td>
+        <td>f</td>
+        <td>g</td>
+        <td>h</td>
+        <td>i</td>
+        <td>j</td>
+        <td>k</td>
+        <td>l</td>
+        <td>m</td>
+        <td>n</td>
+        <td>o</td>
+    </tr>
+
+    <!-- ROW 7 -->
+    <tr>
+        <th>7x</th>
+        <td>p</td>
+        <td>q</td>
+        <td>r</td>
+        <td>s</td>
+        <td>t</td>
+        <td>u</td>
+        <td>v</td>
+        <td>w</td>
+        <td>x</td>
+        <td>y</td>
+        <td>z</td>
+        <td>{</td>
+        <td>|</td>
+        <td>}</td>
+        <td>~</td>
+        <td><small class="control">DEL</small></td>
+    </tr>
+</tbody>
+</table>
+
+</td><td>
+<!--
+*******************************************************************************
+* LATIN-1
+*******************************************************************************
+-->
+
+<table class="wikitable">
+<thead>
+    <tr><th colspan="17">ISO 8859-1 (Latin-1)</th></tr>
+</thead>
+<tbody>
+    <!-- COLUMNS -->
+    <tr>
+        <th>&nbsp;</th>
+        <th class="label">x0</th>
+        <th class="label">x1</th>
+        <th class="label">x2</th>
+        <th class="label">x3</th>
+        <th class="label">x4</th>
+        <th class="label">x5</th>
+        <th class="label">x6</th>
+        <th class="label">x7</th>
+        <th class="label">x8</th>
+        <th class="label">x9</th>
+        <th class="label">xA</th>
+        <th class="label">xB</th>
+        <th class="label">xC</th>
+        <th class="label">xD</th>
+        <th class="label">xE</th>
+        <th class="label">xF</th>
+    </tr>
+    <!-- ROW 0-1 -->
+    <tr>
+        <th>0x</th>
+        <td><small class="control">NUL</small></td>
+        <td><small class="control">SOH</small></td>
+        <td><small class="control">STX</small></td>
+        <td><small class="control">ETX</small></td>
+        <td><small class="control">EOT</small></td>
+        <td><small class="control">ENQ</small></td>
+        <td><small class="control">ACK</small></td>
+        <td><small class="control">BEL</small></td>
+        <td><small class="control">BS</small></td>
+        <td><small class="control">HT</small></td>
+        <td><small class="control">LF</small></td>
+        <td><small class="control">VT</small></td>
+        <td><small class="control">FF</small></td>
+        <td><small class="control">CR</small></td>
+        <td><small class="control">SO</small></td>
+        <td><small class="control">SI</small></td>
+    </tr>
+    <tr>
+        <th>1x</th>
+        <td><small class="control">DLE</small></td>
+        <td><small class="control">DC1</small></td>
+        <td><small class="control">DC2</small></td>
+        <td><small class="control">DC3</small></td>
+        <td><small class="control">DC4</small></td>
+        <td><small class="control">NAK</small></td>
+        <td><small class="control">SYN</small></td>
+        <td><small class="control">ETB</small></td>
+        <td><small class="control">CAN</small></td>
+        <td><small class="control">EM</small></td>
+        <td><small class="control">SUB</small></td>
+        <td><small class="control">ESC</small></td>
+        <td><small class="control">FS</small></td>
+        <td><small class="control">GS</small></td>
+        <td><small class="control">RS</small></td>
+        <td><small class="control">US</small></td>
+    </tr>
+
+    <!-- ROW 2 -->
+    <tr>
+        <th>2x</th>
+        <td><small class="control">SP</small></td>
+        <td>&nbsp;!</td>
+        <td>"</td>
+        <td>#</td>
+        <td>$</td>
+        <td>&nbsp;%</td>
+        <td>&amp;</td>
+        <td>'</td>
+        <td>(</td>
+        <td>)</td>
+        <td>*</td>
+        <td>+</td>
+        <td>,</td>
+        <td>-</td>
+        <td>.</td>
+        <td>/</td>
+    </tr>
+
+    <!-- ROW 3 -->
+    <tr>
+        <th>3x</th>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>:</td>
+        <td>;</td>
+        <td>&lt;</td>
+        <td>=</td>
+        <td>&gt;</td>
+        <td>?</td>
+    </tr>
+
+    <!-- ROW 4 -->
+    <tr>
+        <th>4x</th>
+        <td>@</td>
+        <td>A</td>
+        <td>B</td>
+        <td>C</td>
+        <td>D</td>
+        <td>E</td>
+        <td>F</td>
+        <td>G</td>
+        <td>H</td>
+        <td>I</td>
+        <td>J</td>
+        <td>K</td>
+        <td>L</td>
+        <td>M</td>
+        <td>N</td>
+        <td>O</td>
+    </tr>
+
+    <!-- ROW 5 -->
+    <tr>
+        <th>5x</th>
+        <td>P</td>
+        <td>Q</td>
+        <td>R</td>
+        <td>S</td>
+        <td>T</td>
+        <td>U</td>
+        <td>V</td>
+        <td>W</td>
+        <td>X</td>
+        <td>Y</td>
+        <td>Z</td>
+        <td>[</td>
+        <td>\</td>
+        <td>]</td>
+        <td>^</td>
+        <td>_</td>
+    </tr>
+
+    <!-- ROW 6 -->
+    <tr>
+        <th>6x</th>
+        <td>`</td>
+        <td>a</td>
+        <td>b</td>
+        <td>c</td>
+        <td>d</td>
+        <td>e</td>
+        <td>f</td>
+        <td>g</td>
+        <td>h</td>
+        <td>i</td>
+        <td>j</td>
+        <td>k</td>
+        <td>l</td>
+        <td>m</td>
+        <td>n</td>
+        <td>o</td>
+    </tr>
+
+    <!-- ROW 7 -->
+    <tr>
+        <th>7x</th>
+        <td>p</td>
+        <td>q</td>
+        <td>r</td>
+        <td>s</td>
+        <td>t</td>
+        <td>u</td>
+        <td>v</td>
+        <td>w</td>
+        <td>x</td>
+        <td>y</td>
+        <td>z</td>
+        <td>{</td>
+        <td>|</td>
+        <td>}</td>
+        <td>~</td>
+        <td><small class="control">DEL</small></td>
+    </tr>
+
+    <!-- ROW 8-9 -->
+    <tr>
+        <th>8x</th>
+        <td><small class="control">PAD</small></td>
+        <td><small class="control">HOP</small></td>
+        <td><small class="control">BPH</small></td>
+        <td><small class="control">NBH</small></td>
+        <td><small class="control">IND</small></td>
+        <td><small class="control">NEL</small></td>
+        <td><small class="control">SSA</small></td>
+        <td><small class="control">ESA</small></td>
+        <td><small class="control">HTS</small></td>
+        <td><small class="control">HTJ</small></td>
+        <td><small class="control">VTS</small></td>
+        <td><small class="control">PLD</small></td>
+        <td><small class="control">PLU</small></td>
+        <td><small class="control">RI</small></td>
+        <td><small class="control">SS2</small></td>
+        <td><small class="control">SS3</small></td>
+    </tr>
+    <tr>
+        <th>9x</th>
+        <td><small class="control">DCS</small></td>
+        <td><small class="control">PU1</small></td>
+        <td><small class="control">PU2</small></td>
+        <td><small class="control">STS</small></td>
+        <td><small class="control">CCH</small></td>
+        <td><small class="control">MW</small></td>
+        <td><small class="control">SPA</small></td>
+        <td><small class="control">EPA</small></td>
+        <td><small class="control">SOS</small></td>
+        <td><small class="control">SGCI</small></td>
+        <td><small class="control">SCI</small></td>
+        <td><small class="control">CSI</small></td>
+        <td><small class="control">ST</small></td>
+        <td><small class="control">OSC</small></td>
+        <td><small class="control">PM</small></td>
+        <td><small class="control">APC</small></td>
+    </tr>
+
+    <!-- ROW A -->
+    <tr>
+        <th>Ax</th>
+        <td><span class="control">NBSP</span></td>
+        <td>¡</td>
+        <td>¢</td>
+        <td>£</td>
+        <td>¤</td>
+        <td>¥</td>
+        <td>¦</td>
+        <td>§</td>
+        <td>¨</td>
+        <td>&copy;</td>
+        <td>ª</td>
+        <td>«&nbsp;</td>
+        <td>¬</td>
+        <td><span class="control">-</span></td>
+        <td>&reg;</td>
+        <td>¯</td>
+    </tr>
+
+    <!-- ROW B -->
+    <tr>
+        <th>Bx</th>
+        <td>°</td>
+        <td>±</td>
+        <td>²</td>
+        <td>³</td>
+        <td>´</td>
+        <td>µ</td>
+        <td>¶</td>
+        <td>·</td>
+        <td>¸</td>
+        <td>¹</td>
+        <td>º</td>
+        <td>&nbsp;»</td>
+        <td>¼</td>
+        <td>½</td>
+        <td>¾</td>
+        <td>¿</td>
+    </tr>
+
+    <!-- ROW C -->    
+    <tr>
+        <th>Cx</th>
+        <td>À</td>
+        <td>Á</td>
+        <td>Â</td>
+        <td>Ã</td>
+        <td>Ä</td>
+        <td>Å</td>
+        <td>Æ</td>
+        <td>Ç</td>
+        <td>È</td>
+        <td>É</td>
+        <td>Ê</td>
+        <td>Ë</td>
+        <td>Ì</td>
+        <td>Í</td>
+        <td>Î</td>
+        <td>Ï</td>
+    </tr>
+
+    <!-- ROW D -->
+    <tr>
+        <th>Dx</th>
+        <td>Ð</td>
+        <td>Ñ</td>
+        <td>Ò</td>
+        <td>Ó</td>
+        <td>Ô</td>
+        <td>Õ</td>
+        <td>Ö</td>
+        <td>×</td>
+        <td>Ø</td>
+        <td>Ù</td>
+        <td>Ú</td>
+        <td>Û</td>
+        <td>Ü</td>
+        <td>Ý</td>
+        <td>Þ</td>
+        <td>ß</td>
+    </tr>
+
+    <!-- ROW E -->
+    <tr>
+        <th>Ex</th>
+        <td>à</td>
+        <td>á</td>
+        <td>â</td>
+        <td>ã</td>
+        <td>ä</td>
+        <td>å</td>
+        <td>æ</td>
+        <td>ç</td>
+        <td>è</td>
+        <td>é</td>
+        <td>ê</td>
+        <td>ë</td>
+        <td>ì</td>
+        <td>í</td>
+        <td>î</td>
+        <td>ï</td>
+    </tr>
+
+    <!-- ROW F -->
+    <tr>
+        <th>Fx</th>
+        <td>ð</td>
+        <td>ñ</td>
+        <td>ò</td>
+        <td>ó</td>
+        <td>ô</td>
+        <td>õ</td>
+        <td>ö</td>
+        <td>÷</td>
+        <td>ø</td>
+        <td>ù</td>
+        <td>ú</td>
+        <td>û</td>
+        <td>ü</td>
+        <td>ý</td>
+        <td>þ</td>
+        <td>ÿ</td>
+    </tr>
+</tbody>
+</table>
+
+</td><tr><td>
+<!--
+*******************************************************************************
+* CP1252
+*******************************************************************************
+-->
+
+<table class="wikitable">
+<thead>
+    <tr><th colspan="17">CP1252 (ANSI)</th></tr>
+</thead>
+<tbody>
+    <!-- COLUMNS -->
+    <tr>
+        <th>&nbsp;</th>
+        <th class="label">x0</th>
+        <th class="label">x1</th>
+        <th class="label">x2</th>
+        <th class="label">x3</th>
+        <th class="label">x4</th>
+        <th class="label">x5</th>
+        <th class="label">x6</th>
+        <th class="label">x7</th>
+        <th class="label">x8</th>
+        <th class="label">x9</th>
+        <th class="label">xA</th>
+        <th class="label">xB</th>
+        <th class="label">xC</th>
+        <th class="label">xD</th>
+        <th class="label">xE</th>
+        <th class="label">xF</th>
+    </tr>
+    <!-- ROW 0-1 -->
+    <tr>
+        <th>0x</th>
+        <td><small class="control">NUL</small></td>
+        <td><small class="control">SOH</small></td>
+        <td><small class="control">STX</small></td>
+        <td><small class="control">ETX</small></td>
+        <td><small class="control">EOT</small></td>
+        <td><small class="control">ENQ</small></td>
+        <td><small class="control">ACK</small></td>
+        <td><small class="control">BEL</small></td>
+        <td><small class="control">BS</small></td>
+        <td><small class="control">HT</small></td>
+        <td><small class="control">LF</small></td>
+        <td><small class="control">VT</small></td>
+        <td><small class="control">FF</small></td>
+        <td><small class="control">CR</small></td>
+        <td><small class="control">SO</small></td>
+        <td><small class="control">SI</small></td>
+    </tr>
+    <tr>
+        <th>1x</th>
+        <td><small class="control">DLE</small></td>
+        <td><small class="control">DC1</small></td>
+        <td><small class="control">DC2</small></td>
+        <td><small class="control">DC3</small></td>
+        <td><small class="control">DC4</small></td>
+        <td><small class="control">NAK</small></td>
+        <td><small class="control">SYN</small></td>
+        <td><small class="control">ETB</small></td>
+        <td><small class="control">CAN</small></td>
+        <td><small class="control">EM</small></td>
+        <td><small class="control">SUB</small></td>
+        <td><small class="control">ESC</small></td>
+        <td><small class="control">FS</small></td>
+        <td><small class="control">GS</small></td>
+        <td><small class="control">RS</small></td>
+        <td><small class="control">US</small></td>
+    </tr>
+
+    <!-- ROW 2 -->
+    <tr>
+        <th>2x</th>
+        <td><small class="control">SP</small></td>
+        <td>&nbsp;!</td>
+        <td>"</td>
+        <td>#</td>
+        <td>$</td>
+        <td>&nbsp;%</td>
+        <td>&amp;</td>
+        <td>'</td>
+        <td>(</td>
+        <td>)</td>
+        <td>*</td>
+        <td>+</td>
+        <td>,</td>
+        <td>-</td>
+        <td>.</td>
+        <td>/</td>
+    </tr>
+
+    <!-- ROW 3 -->
+    <tr>
+        <th>3x</th>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>:</td>
+        <td>;</td>
+        <td>&lt;</td>
+        <td>=</td>
+        <td>&gt;</td>
+        <td>?</td>
+    </tr>
+
+    <!-- ROW 4 -->
+    <tr>
+        <th>4x</th>
+        <td>@</td>
+        <td>A</td>
+        <td>B</td>
+        <td>C</td>
+        <td>D</td>
+        <td>E</td>
+        <td>F</td>
+        <td>G</td>
+        <td>H</td>
+        <td>I</td>
+        <td>J</td>
+        <td>K</td>
+        <td>L</td>
+        <td>M</td>
+        <td>N</td>
+        <td>O</td>
+    </tr>
+
+    <!-- ROW 5 -->
+    <tr>
+        <th>5x</th>
+        <td>P</td>
+        <td>Q</td>
+        <td>R</td>
+        <td>S</td>
+        <td>T</td>
+        <td>U</td>
+        <td>V</td>
+        <td>W</td>
+        <td>X</td>
+        <td>Y</td>
+        <td>Z</td>
+        <td>[</td>
+        <td>\</td>
+        <td>]</td>
+        <td>^</td>
+        <td>_</td>
+    </tr>
+
+    <!-- ROW 6 -->
+    <tr>
+        <th>6x</th>
+        <td>`</td>
+        <td>a</td>
+        <td>b</td>
+        <td>c</td>
+        <td>d</td>
+        <td>e</td>
+        <td>f</td>
+        <td>g</td>
+        <td>h</td>
+        <td>i</td>
+        <td>j</td>
+        <td>k</td>
+        <td>l</td>
+        <td>m</td>
+        <td>n</td>
+        <td>o</td>
+    </tr>
+
+    <!-- ROW 7 -->
+    <tr>
+        <th>7x</th>
+        <td>p</td>
+        <td>q</td>
+        <td>r</td>
+        <td>s</td>
+        <td>t</td>
+        <td>u</td>
+        <td>v</td>
+        <td>w</td>
+        <td>x</td>
+        <td>y</td>
+        <td>z</td>
+        <td>{</td>
+        <td>|</td>
+        <td>}</td>
+        <td>~</td>
+        <td><small class="control">DEL</small></td>
+    </tr>
+
+    <!-- ROW 8-9 -->
+    <tr>
+        <th>8x</th>
+        <td class="diff">€</td>
+        <td class="empty"></td>
+        <td class="diff">‚</td>
+        <td class="diff"><i>ƒ</i></td>
+        <td class="diff">„</td>
+        <td class="diff">…</td>
+        <td class="diff">†</td>
+        <td class="diff">‡</td>
+        <td class="diff">ˆ</td>
+        <td class="diff">‰</td>
+        <td class="diff">Š</td>
+        <td class="diff">‹</td>
+        <td class="diff">Œ</td>
+        <td class="empty"></td>
+        <td class="diff">Ž</td>
+        <td class="empty"></td>
+    </tr>
+    <tr>
+        <th>9x</th>
+        <td class="empty"></td>
+        <td class="diff">‘</td>
+        <td class="diff">’</td>
+        <td class="diff">“</td>
+        <td class="diff">”</td>
+        <td class="diff">•</td>
+        <td class="diff">&ndash;</td>
+        <td class="diff">&mdash;</td>
+        <td class="diff">˜</td>
+        <td class="diff">&trade;</td>
+        <td class="diff">š</td>
+        <td class="diff">›</td>
+        <td class="diff">œ</td>
+        <td class="empty"></td>
+        <td class="diff">ž</td>
+        <td class="diff">Ÿ</td>
+    </tr>
+
+    <!-- ROW A -->
+    <tr>
+        <th>Ax</th>
+        <td><span class="control">NBSP</span></td>
+        <td>¡</td>
+        <td>¢</td>
+        <td>£</td>
+        <td>¤</td>
+        <td>¥</td>
+        <td>¦</td>
+        <td>§</td>
+        <td>¨</td>
+        <td>&copy;</td>
+        <td>ª</td>
+        <td>«&nbsp;</td>
+        <td>¬</td>
+        <td><span class="control">-</span></td>
+        <td>&reg;</td>
+        <td>¯</td>
+    </tr>
+
+    <!-- ROW B -->
+    <tr>
+        <th>Bx</th>
+        <td>°</td>
+        <td>±</td>
+        <td>²</td>
+        <td>³</td>
+        <td>´</td>
+        <td>µ</td>
+        <td>¶</td>
+        <td>·</td>
+        <td>¸</td>
+        <td>¹</td>
+        <td>º</td>
+        <td>&nbsp;»</td>
+        <td>¼</td>
+        <td>½</td>
+        <td>¾</td>
+        <td>¿</td>
+    </tr>
+
+    <!-- ROW C -->    
+    <tr>
+        <th>Cx</th>
+        <td>À</td>
+        <td>Á</td>
+        <td>Â</td>
+        <td>Ã</td>
+        <td>Ä</td>
+        <td>Å</td>
+        <td>Æ</td>
+        <td>Ç</td>
+        <td>È</td>
+        <td>É</td>
+        <td>Ê</td>
+        <td>Ë</td>
+        <td>Ì</td>
+        <td>Í</td>
+        <td>Î</td>
+        <td>Ï</td>
+    </tr>
+
+    <!-- ROW D -->
+    <tr>
+        <th>Dx</th>
+        <td>Ð</td>
+        <td>Ñ</td>
+        <td>Ò</td>
+        <td>Ó</td>
+        <td>Ô</td>
+        <td>Õ</td>
+        <td>Ö</td>
+        <td>×</td>
+        <td>Ø</td>
+        <td>Ù</td>
+        <td>Ú</td>
+        <td>Û</td>
+        <td>Ü</td>
+        <td>Ý</td>
+        <td>Þ</td>
+        <td>ß</td>
+    </tr>
+
+    <!-- ROW E -->
+    <tr>
+        <th>Ex</th>
+        <td>à</td>
+        <td>á</td>
+        <td>â</td>
+        <td>ã</td>
+        <td>ä</td>
+        <td>å</td>
+        <td>æ</td>
+        <td>ç</td>
+        <td>è</td>
+        <td>é</td>
+        <td>ê</td>
+        <td>ë</td>
+        <td>ì</td>
+        <td>í</td>
+        <td>î</td>
+        <td>ï</td>
+    </tr>
+
+    <!-- ROW F -->
+    <tr>
+        <th>Fx</th>
+        <td>ð</td>
+        <td>ñ</td>
+        <td>ò</td>
+        <td>ó</td>
+        <td>ô</td>
+        <td>õ</td>
+        <td>ö</td>
+        <td>÷</td>
+        <td>ø</td>
+        <td>ù</td>
+        <td>ú</td>
+        <td>û</td>
+        <td>ü</td>
+        <td>ý</td>
+        <td>þ</td>
+        <td>ÿ</td>
+    </tr>
+</tbody>
+</table>
+
+</td><td>
+<!--
+*******************************************************************************
+* ISO-15
+*******************************************************************************
+-->
+
+<table class="wikitable">
+<thead>
+    <tr><th colspan="17">ISO 8859-15 (Latin-9)</th></tr>
+</thead>
+<tbody>
+    <!-- COLUMNS -->
+    <tr>
+        <th>&nbsp;</th>
+        <th class="label">x0</th>
+        <th class="label">x1</th>
+        <th class="label">x2</th>
+        <th class="label">x3</th>
+        <th class="label">x4</th>
+        <th class="label">x5</th>
+        <th class="label">x6</th>
+        <th class="label">x7</th>
+        <th class="label">x8</th>
+        <th class="label">x9</th>
+        <th class="label">xA</th>
+        <th class="label">xB</th>
+        <th class="label">xC</th>
+        <th class="label">xD</th>
+        <th class="label">xE</th>
+        <th class="label">xF</th>
+    </tr>
+    <!-- ROW 0-1 -->
+    <tr>
+        <th>0x</th>
+        <td><small class="control">NUL</small></td>
+        <td><small class="control">SOH</small></td>
+        <td><small class="control">STX</small></td>
+        <td><small class="control">ETX</small></td>
+        <td><small class="control">EOT</small></td>
+        <td><small class="control">ENQ</small></td>
+        <td><small class="control">ACK</small></td>
+        <td><small class="control">BEL</small></td>
+        <td><small class="control">BS</small></td>
+        <td><small class="control">HT</small></td>
+        <td><small class="control">LF</small></td>
+        <td><small class="control">VT</small></td>
+        <td><small class="control">FF</small></td>
+        <td><small class="control">CR</small></td>
+        <td><small class="control">SO</small></td>
+        <td><small class="control">SI</small></td>
+    </tr>
+    <tr>
+        <th>1x</th>
+        <td><small class="control">DLE</small></td>
+        <td><small class="control">DC1</small></td>
+        <td><small class="control">DC2</small></td>
+        <td><small class="control">DC3</small></td>
+        <td><small class="control">DC4</small></td>
+        <td><small class="control">NAK</small></td>
+        <td><small class="control">SYN</small></td>
+        <td><small class="control">ETB</small></td>
+        <td><small class="control">CAN</small></td>
+        <td><small class="control">EM</small></td>
+        <td><small class="control">SUB</small></td>
+        <td><small class="control">ESC</small></td>
+        <td><small class="control">FS</small></td>
+        <td><small class="control">GS</small></td>
+        <td><small class="control">RS</small></td>
+        <td><small class="control">US</small></td>
+    </tr>
+
+    <!-- ROW 2 -->
+    <tr>
+        <th>2x</th>
+        <td><small class="control">SP</small></td>
+        <td>&nbsp;!</td>
+        <td>"</td>
+        <td>#</td>
+        <td>$</td>
+        <td>&nbsp;%</td>
+        <td>&amp;</td>
+        <td>'</td>
+        <td>(</td>
+        <td>)</td>
+        <td>*</td>
+        <td>+</td>
+        <td>,</td>
+        <td>-</td>
+        <td>.</td>
+        <td>/</td>
+    </tr>
+
+    <!-- ROW 3 -->
+    <tr>
+        <th>3x</th>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>:</td>
+        <td>;</td>
+        <td>&lt;</td>
+        <td>=</td>
+        <td>&gt;</td>
+        <td>?</td>
+    </tr>
+
+    <!-- ROW 4 -->
+    <tr>
+        <th>4x</th>
+        <td>@</td>
+        <td>A</td>
+        <td>B</td>
+        <td>C</td>
+        <td>D</td>
+        <td>E</td>
+        <td>F</td>
+        <td>G</td>
+        <td>H</td>
+        <td>I</td>
+        <td>J</td>
+        <td>K</td>
+        <td>L</td>
+        <td>M</td>
+        <td>N</td>
+        <td>O</td>
+    </tr>
+
+    <!-- ROW 5 -->
+    <tr>
+        <th>5x</th>
+        <td>P</td>
+        <td>Q</td>
+        <td>R</td>
+        <td>S</td>
+        <td>T</td>
+        <td>U</td>
+        <td>V</td>
+        <td>W</td>
+        <td>X</td>
+        <td>Y</td>
+        <td>Z</td>
+        <td>[</td>
+        <td>\</td>
+        <td>]</td>
+        <td>^</td>
+        <td>_</td>
+    </tr>
+
+    <!-- ROW 6 -->
+    <tr>
+        <th>6x</th>
+        <td>`</td>
+        <td>a</td>
+        <td>b</td>
+        <td>c</td>
+        <td>d</td>
+        <td>e</td>
+        <td>f</td>
+        <td>g</td>
+        <td>h</td>
+        <td>i</td>
+        <td>j</td>
+        <td>k</td>
+        <td>l</td>
+        <td>m</td>
+        <td>n</td>
+        <td>o</td>
+    </tr>
+
+    <!-- ROW 7 -->
+    <tr>
+        <th>7x</th>
+        <td>p</td>
+        <td>q</td>
+        <td>r</td>
+        <td>s</td>
+        <td>t</td>
+        <td>u</td>
+        <td>v</td>
+        <td>w</td>
+        <td>x</td>
+        <td>y</td>
+        <td>z</td>
+        <td>{</td>
+        <td>|</td>
+        <td>}</td>
+        <td>~</td>
+        <td><small class="control">DEL</small></td>
+    </tr>
+
+    <!-- ROW 8-9 -->
+    <tr>
+        <th>8x</th>
+        <td><small class="control">PAD</small></td>
+        <td><small class="control">HOP</small></td>
+        <td><small class="control">BPH</small></td>
+        <td><small class="control">NBH</small></td>
+        <td><small class="control">IND</small></td>
+        <td><small class="control">NEL</small></td>
+        <td><small class="control">SSA</small></td>
+        <td><small class="control">ESA</small></td>
+        <td><small class="control">HTS</small></td>
+        <td><small class="control">HTJ</small></td>
+        <td><small class="control">VTS</small></td>
+        <td><small class="control">PLD</small></td>
+        <td><small class="control">PLU</small></td>
+        <td><small class="control">RI</small></td>
+        <td><small class="control">SS2</small></td>
+        <td><small class="control">SS3</small></td>
+    </tr>
+    <tr>
+        <th>9x</th>
+        <td><small class="control">DCS</small></td>
+        <td><small class="control">PU1</small></td>
+        <td><small class="control">PU2</small></td>
+        <td><small class="control">STS</small></td>
+        <td><small class="control">CCH</small></td>
+        <td><small class="control">MW</small></td>
+        <td><small class="control">SPA</small></td>
+        <td><small class="control">EPA</small></td>
+        <td><small class="control">SOS</small></td>
+        <td><small class="control">SGCI</small></td>
+        <td><small class="control">SCI</small></td>
+        <td><small class="control">CSI</small></td>
+        <td><small class="control">ST</small></td>
+        <td><small class="control">OSC</small></td>
+        <td><small class="control">PM</small></td>
+        <td><small class="control">APC</small></td>
+    </tr>
+
+    <!-- ROW A -->
+    <tr>
+        <th>Ax</th>
+        <td><span class="control">NBSP</span></td>
+        <td>¡</td>
+        <td>¢</td>
+        <td>£</td>
+        <td class="diff">€</td>
+        <td>¥</td>
+        <td class="diff">Š</td>
+        <td>§</td>
+        <td class="diff">š</td>
+        <td>&copy;</td>
+        <td>ª</td>
+        <td>«&nbsp;</td>
+        <td>¬</td>
+        <td><span class="control">-</span></td>
+        <td>&reg;</td>
+        <td>¯</td>
+    </tr>
+
+    <!-- ROW B -->
+    <tr>
+        <th>Bx</th>
+        <td>°</td>
+        <td>±</td>
+        <td>²</td>
+        <td>³</td>
+        <td class="diff">Ž</td>
+        <td>µ</td>
+        <td>¶</td>
+        <td>·</td>
+        <td class="diff">ž</td>
+        <td>¹</td>
+        <td>º</td>
+        <td>&nbsp;»</td>
+        <td class="diff">Œ</td>
+        <td class="diff">œ</td>
+        <td class="diff">Ÿ</td>
+        <td>¿</td>
+    </tr>
+
+    <!-- ROW C -->    
+    <tr>
+        <th>Cx</th>
+        <td>À</td>
+        <td>Á</td>
+        <td>Â</td>
+        <td>Ã</td>
+        <td>Ä</td>
+        <td>Å</td>
+        <td>Æ</td>
+        <td>Ç</td>
+        <td>È</td>
+        <td>É</td>
+        <td>Ê</td>
+        <td>Ë</td>
+        <td>Ì</td>
+        <td>Í</td>
+        <td>Î</td>
+        <td>Ï</td>
+    </tr>
+
+    <!-- ROW D -->
+    <tr>
+        <th>Dx</th>
+        <td>Ð</td>
+        <td>Ñ</td>
+        <td>Ò</td>
+        <td>Ó</td>
+        <td>Ô</td>
+        <td>Õ</td>
+        <td>Ö</td>
+        <td>×</td>
+        <td>Ø</td>
+        <td>Ù</td>
+        <td>Ú</td>
+        <td>Û</td>
+        <td>Ü</td>
+        <td>Ý</td>
+        <td>Þ</td>
+        <td>ß</td>
+    </tr>
+
+    <!-- ROW E -->
+    <tr>
+        <th>Ex</th>
+        <td>à</td>
+        <td>á</td>
+        <td>â</td>
+        <td>ã</td>
+        <td>ä</td>
+        <td>å</td>
+        <td>æ</td>
+        <td>ç</td>
+        <td>è</td>
+        <td>é</td>
+        <td>ê</td>
+        <td>ë</td>
+        <td>ì</td>
+        <td>í</td>
+        <td>î</td>
+        <td>ï</td>
+    </tr>
+
+    <!-- ROW F -->
+    <tr>
+        <th>Fx</th>
+        <td>ð</td>
+        <td>ñ</td>
+        <td>ò</td>
+        <td>ó</td>
+        <td>ô</td>
+        <td>õ</td>
+        <td>ö</td>
+        <td>÷</td>
+        <td>ø</td>
+        <td>ù</td>
+        <td>ú</td>
+        <td>û</td>
+        <td>ü</td>
+        <td>ý</td>
+        <td>þ</td>
+        <td>ÿ</td>
+    </tr>
+</tbody>
+</table>
+
+</td></tr></table>

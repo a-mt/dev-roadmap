@@ -7,7 +7,7 @@
       {{ node
             | replace:"<br />":newline
             | strip_html
-            | replace:"&amp;","&"
+            | replace:"&amp;","&" | replace:"&lt;":"<" | replace:"&gt;":">"
             | replace:"‘","'" | replace:"“",'"'
       }}</script>
       {%- assign in = false -%}

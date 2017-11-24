@@ -108,7 +108,7 @@ error_reporting(E_ERROR | E_RECOVERABLE_ERROR);  # Afficher les erreurs ET les e
 
 ---
 
-### XOR
+## XOR
 
 Ou exclusif: Les bits positionnés à 1 dans `a` OU `b` MAIS PAS LES DEUX sont positionnés à 1
 

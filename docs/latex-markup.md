@@ -1735,3 +1735,58 @@ Par défaut, les liens sont entourés d'une bordure cyan. Avec les options du pa
 \url{http://google.com}
 \href{http://google.com}{Google}
 ```
+
+---
+
+## Schémas
+
+Latex permet de créer des schémas.
+
+### Dessin
+
+[LatexDraw](http://latexdraw.sourceforge.net/) permet d'éditer des figures Latex (nécessite Java Runtime 8).  
+Cela permet de placer grossièrement les éléments sur le schéma et de récupérer le code généré pour l'éditer et le personnaliser par la suite avec un éditeur Latex classique.
+
+``` latex
+\documentclass[10pt]{report}
+\pagenumbering{gobble}
+
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage[space]{grffile} % For spaces in paths
+\usepackage{etoolbox} % For spaces in paths
+\makeatletter % For spaces in paths
+\patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
+\makeatother
+
+\begin{document}
+
+\psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+{
+\begin{pspicture}(0,-0.955)(12.37,0.955)
+\psline[linecolor=black, linewidth=0.04, arrowsize=0.05291667cm 5.0,arrowlength=1.4,arrowinset=0.0]{<-}(2.8,0.245)(6.0,0.245)(6.0,0.245)
+\psline[linecolor=black, linewidth=0.04, arrowsize=0.05291667cm 5.0,arrowlength=1.4,arrowinset=0.0]{<-}(6.0,-0.155)(2.8,-0.155)
+\rput[bl](6.8,-0.445){\shortstack[c]{repr\'esentation \\ interne \\ (\`a l'ordinateur)}}
+\rput[bl](0.0,-0.145){\shortstack[c]{repr\'esentation \\ externe}}
+\rput[bl](3.7,0.445){\textit{codage}}
+\rput[bl](3.7,-0.755){\textit{decodage}}
+\end{pspicture}
+}
+
+\end{document}
+```
+
+### Export SVG
+
+Pour récupérer la figure en SVG
+* exporter en PDF
+* [convertir le PDF en SVG](https://image.online-convert.com/fr/convertir-en-svg)
+* retailler la viewbox avec Inkscape :  
+  Fichier > Propriétés du document > onglet Page  
+    Redimensionner la page au contenu > Ajuster la page au dessin
+
+<ins>Résultat</ins> :
+
+![](https://rawgit.com/a-mt/5b072a12c29d4e862b32af32c2e191cf/raw/9355a59f310a339300f1b924acf66912b9201671/tmp.svg)

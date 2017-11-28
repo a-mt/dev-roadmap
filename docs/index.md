@@ -22,6 +22,7 @@ searchbar: true
     - [x] [XML Schema (XSD)](xml-schema.md)
     - [x] [XSL](xml-xsl.md)
     - [x] [XPath](xml-xpath.md)
+    - [ ] XQuery
   - Template
     - [x] [Liquid](liquid.md)
     - [ ] Smarty

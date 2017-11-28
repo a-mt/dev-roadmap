@@ -14,7 +14,7 @@ searchbar: true
   - [ ] PHP
     - [x] [Composer](composer.md)
   - [ ] NodeJS
-  - [x] Data formatting
+  - Data formatting
     - [x] [JSON](json.md)
     - [x] [YAML](yaml.md)
   - [x] [XML](xml.md)
@@ -60,7 +60,7 @@ searchbar: true
   - [x] [Encodages](encodages.md)
   - [x] [Opérations sur les bits](bitwise-operations.md)
   - [ ] Git
-  - [ ] Document formatting
+  - Document formatting
     - [x] [Markdown](gfm.md)
     - [x] [Latex](latex.md)
     - [ ] Textile

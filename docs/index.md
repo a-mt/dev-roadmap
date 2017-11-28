@@ -14,15 +14,15 @@ searchbar: true
   - [ ] PHP
     - [x] [Composer](composer.md)
   - [ ] NodeJS
-  - Data formatting
-    - [x] [JSON](json.md)
-    - [x] [YAML](yaml.md)
   - [x] [XML](xml.md)
     - [x] [DTD](xml-dtd.md)
     - [x] [XML Schema (XSD)](xml-schema.md)
     - [x] [XSL](xml-xsl.md)
     - [x] [XPath](xml-xpath.md)
     - [ ] XQuery
+  - Data formatting
+    - [x] [JSON](json.md)
+    - [x] [YAML](yaml.md)
   - Template
     - [x] [Liquid](liquid.md)
     - [ ] Smarty
@@ -54,13 +54,13 @@ searchbar: true
   - [ ] Bash Script
 
 - Other
+  - Document formatting
+    - [x] [Markdown](gfm.md)
+    - [x] [Latex](latex.md)
+    - [ ] Textile
   - [x] [Sémantique de version](semver.md)
   - [x] [Raccourcis édition de texte](text-editing.md)
   - [x] [Regex](regex.md)
   - [x] [Encodages](encodages.md)
   - [x] [Opérations sur les bits](bitwise-operations.md)
   - [ ] Git
-  - Document formatting
-    - [x] [Markdown](gfm.md)
-    - [x] [Latex](latex.md)
-    - [ ] Textile

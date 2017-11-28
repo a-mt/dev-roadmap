@@ -17,7 +17,11 @@ searchbar: true
   - [x] Data formatting
     - [x] [JSON](json.md)
     - [x] [YAML](yaml.md)
-    - [ ] XML
+  - [x] [XML](xml.md)
+    - [x] [DTD](xml-dtd.md)
+    - [x] [XML Schema (XSD)](xml-schema.md)
+    - [x] [XSL](xml-xsl.md)
+    - [x] [XPath](xml-xpath.md)
   - Template
     - [x] [Liquid](liquid.md)
     - [ ] Smarty

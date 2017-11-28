@@ -531,7 +531,7 @@ Permet de regrouper dans un template des règles de production utilisées fréqu
 
 ## Insérer des éléments
 
-## comment
+### comment
 
 Permet d'insérer un commentaire `<!-- ... -->`
 

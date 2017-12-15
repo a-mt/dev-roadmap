@@ -76,7 +76,7 @@ searchbar: true
   - [x] [Opérations sur les bits](bitwise-operations.md)
   - [ ] Git [1 &#x21F2;](https://education.github.com/git-cheat-sheet-education.pdf)
   - [ ] Licences Open Source [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94)
-  - [ ] Accessibility [1 &#x21F2;](https://medium.com/@matuzo/writing-css-with-accessibility-in-mind-8514a0007939) [2 &#x21F2;](http://jxnblk.com/grays/) [3 &#x21F2;](https://medium.com/dailyjs/angular-and-accessibility-8ae1f601803a) [4 &#x21F2;](https://bitsofco.de/the-accessibility-cheatsheet/) [5 &#x21F2;](https://uxplanet.org/essential-color-tools-for-ux-designers-530036eaf9ae#5926)
+  - [ ] Accessibilité [1 &#x21F2;](http://tech.trivago.com/2017/09/26/accessibility-at-trivago/) [2 &#x21F2;](https://medium.com/@matuzo/writing-css-with-accessibility-in-mind-8514a0007939) [3 &#x21F2;](http://jxnblk.com/grays/) [4 &#x21F2;](https://medium.com/dailyjs/angular-and-accessibility-8ae1f601803a) [5 &#x21F2;](https://bitsofco.de/the-accessibility-cheatsheet/) [6 &#x21F2;](https://uxplanet.org/essential-color-tools-for-ux-designers-530036eaf9ae#5926)
 
 - Algorithms
   - [ ] Machine Learning [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5)
@@ -112,6 +112,7 @@ searchbar: true
 
 - Ressources utiles
   - [ ] Combinaisons de fonts [1 &#x21F2;](https://www.canva.com/font-combinations/?utm_content=buffer2eef7&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+  - [ ] Palettes de couleurs [1 &#x21F2;](https://www.canva.com/colors/combinations/?s=spearmint)
   - [ ] Fonts futuristes [1 &#x21F2;](https://www.canva.com/learn/futuristic-fonts/?utm_content=buffer3050a&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
   - [ ] Fonts contemporaines [1 &#x21F2;](https://www.canva.com/learn/modern-fonts/?utm_source=twitter&utm_medium=social&utm_campaign=DesignSchool)
   - [ ] Images libres et gratuites [1 &#x21F2;](https://medium.com/@danielal007/25-badass-sites-with-free-stock-photos-653f2b16d05b)

@@ -4,15 +4,34 @@ searchbar: true
 
 - Web langages
   - [ ] HTML
-  - [ ] CSS
-  - [ ] JS
+    - [ ] HTML5 [1 &#x21F2;](https://medium.com/level-up-web/the-mega-html5-cheatsheet-e8c479b1c521)
+    - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/)
+  - [ ] [CSS &#x21F2;](https://speckyboy.com/css-cheatsheets-resources-guides/)
+    - [ ] Grid [1 &#x21F2;](https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228)
+    - [ ] CSS4 [1 &#x21F2;](https://webdesign.tutsplus.com/tutorials/intriguing-css-level-4-selectors--cms-29499)
+    - [ ] Custom properties [1 &#x21F2;](https://www.smashingmagazine.com/2017/04/start-using-css-custom-properties/)
+    - [ ] Naming conventions
+      - [ ] BEM [1 &#x21F2;](https://blog.elpassion.com/reasons-to-use-bem-a88738317753) [2 &#x21F2;](https://medium.com/mr-frontend-community/how-to-write-better-css-with-bem-40f492a26192)
+  - [ ] JS [1 &#x21F2;](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711)
     - [ ] AJAX
     - [ ] JSONP
+    - [ ] History of JavaScript [1 &#x21F2;](https://medium.freecodecamp.org/ecmascript-tc39-and-the-history-of-javascript-26067498feb9) [2 &#x21F2;](https://closebrace.com/articles/2017-09-11/a-brief-incomplete-history-of-javascript)
+    - [ ] ES6 [1 &#x21F2;](https://blog.pragmatists.com/top-10-es6-features-by-example-80ac878794bb) [2 &#x21F2;](https://github.com/mbeaudru/modern-js-cheatsheet) [3 &#x21F2;](https://medium.com/@reasoncode/javascript-es6-exploring-the-new-built-in-methods-b62583b0a8e6) [4 &#x21F2;](https://github.com/jedrichards/es6)
+    - [ ] Async/await [1 &#x21F2;](https://medium.freecodecamp.org/oh-yes-async-await-f54e5a079fc1)
+    - [ ] ES7 [1 &#x21F2;](https://medium.freecodecamp.org/ecmascript-2016-es7-features-86903c5cab70)
+    - [ ] ES8 [1 &#x21F2;](https://medium.freecodecamp.org/es8-the-new-features-of-javascript-7506210a1a22) [2 &#x21F2;](https://hackernoon.com/es8-was-released-and-here-are-its-main-new-features-ee9c394adf66)
+    - [ ] Observer pattern [1 &#x21F2;](https://pawelgrzybek.com/the-observer-pattern-in-javascript-explained/)
+    - [ ] Performance tricks [1 &#x21F2;](https://medium.freecodecamp.org/high-performance-apps-multiplexing-debouncing-system-fonts-and-other-tricks-37c6fd3d7b2d)
+    - [ ] Frameworks
+      - [ ] Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/)
+      - [ ] GraphQL [1 &#x21F2;](https://blog.pusher.com/getting-up-and-running-with-graphql/)
   - [x] [BDD](bdd.md)
     - [x] [MySQL](mysql.md)
     - [ ] NoSQL
   - [ ] PHP
     - [x] [Composer](composer.md)
+  - [ ] Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
+  - [ ] R [ &#x21F2;](https://www.datacamp.com/)
   - [ ] NodeJS
   - [x] [XML](xml.md)
     - [x] [DTD](xml-dtd.md)
@@ -29,15 +48,6 @@ searchbar: true
     - [ ] Twig
     - [ ] Pug
 
-- Web development environments
-  - [x] [Github Pages](github-pages.md)
-  - [x] [Jekyll](jekyll.md)
-  - [ ] Codepen
-  - [ ] c9
-  - [ ] Heroku
-  - [ ] WAMP/LAMP
-  - [ ] [Google Business](https://www.gybo.com/lessons)
-
 - Linux shell
   - [x] [Wildcard](wildcard.md)
   - [x] [Regex POSIX](regex-posix.md)
@@ -45,6 +55,7 @@ searchbar: true
   - [x] [Sed](sed.md)
   - [x] [Grep](grep.md)
   - [x] [Vim](vim.md)
+    - [ ] Ressources pour apprendre Vim [1 &#x21F2;](https://medium.freecodecamp.org/vim-isnt-that-scary-here-are-5-free-resources-you-can-use-to-learn-it-ab78f5726f8d)
   - [ ] Nano
   - [ ] Less
   - [ ] Expansions
@@ -53,8 +64,8 @@ searchbar: true
     - [ ] De fichiers
   - [ ] Bash Script
 
-- Other
-  - Document formatting
+- Divers
+  - Document formatting 
     - [x] [Markdown](gfm.md)
     - [x] [Latex](latex.md)
     - [ ] Textile
@@ -63,4 +74,51 @@ searchbar: true
   - [x] [Regex](regex.md)
   - [x] [Encodages](encodages.md)
   - [x] [Opérations sur les bits](bitwise-operations.md)
-  - [ ] Git
+  - [ ] Git [1 &#x21F2;](https://education.github.com/git-cheat-sheet-education.pdf)
+  - [ ] Licences Open Source [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94)
+  - [ ] Accessibility [1 &#x21F2;](https://medium.com/@matuzo/writing-css-with-accessibility-in-mind-8514a0007939) [2 &#x21F2;](http://jxnblk.com/grays/) [3 &#x21F2;](https://medium.com/dailyjs/angular-and-accessibility-8ae1f601803a) [4 &#x21F2;](https://bitsofco.de/the-accessibility-cheatsheet/) [5 &#x21F2;](https://uxplanet.org/essential-color-tools-for-ux-designers-530036eaf9ae#5926)
+
+- Algorithms
+  - [ ] Machine Learning [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5)
+    - Synaptic.js [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-a-neural-network-in-javascript-in-only-30-lines-of-code-343dafc50d49)
+  - [ ] Challenges
+    - [ ] [Project Euler](https://projecteuler.net/archives)
+    - [ ] [Codefights](http://codefights.com/)
+
+- Web development environments
+  - [x] [Github Pages](github-pages.md)
+  - [x] [Jekyll](jekyll.md)
+  - [ ] Codepen
+  - [ ] c9
+  - [ ] Heroku [1 &#x21F2;](https://www.sitepoint.com/how-to-deploy-node-applications-heroku-vs-now-sh/)
+  - [ ] WAMP/LAMP
+  - [ ] Google Business [1 &#x21F2;](https://www.gybo.com/lessons)
+
+- Online Databases
+  - [ ] Mlab [1 &#x21F2;](https://forum.freecodecamp.org/t/guide-for-using-mongodb-and-deploying-to-heroku/19347)
+  - [ ] Google Spreadsheet [1 &#x21F2;](https://medium.freecodecamp.org/get-sheet-done-using-google-spreadsheets-as-your-data-backend-650ba23dc6d9)
+
+- Design [1 &#x21F2;](https://jgthms.com/web-design-in-4-minutes/) [2 &#x21F2;](https://www.canva.com/learn/design-rules/?utm_content=buffer767b4&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [3 &#x21F2;](http://designtaxi.com/news/387370/Infographic-Top-14-Graphic-Design-Terms-Commonly-Misused-By-Novice-Creatives/) [4 &#x21F2;](https://www.matthieu-tranvan.fr/e-commerce/7-principes-fondamentaux-design-web-site-ergonomie.html) [5 &#x21F2;](https://uxplanet.org/ux-designers-here-are-the-50-best-online-courses-to-learn-something-new-d6e65024274f)
+  - [ ] Design inspiration [1 &#x21F2;](https://theblog.adobe.com/30-ux-design-inspiration-resources/) [2 &#x21F2;](https://uxplanet.org/essential-color-tools-for-ux-designers-530036eaf9ae#8c61)
+  - [ ] Golden Ratio [1 &#x21F2;](https://www.canva.com/learn/what-is-the-golden-ratio/?utm_content=bufferb1f30&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+  - [ ] Signification des couleurs [1 &#x21F2;](https://www.canva.com/learn/color-meanings-symbolism/?utm_content=bufferb5b93&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [2 &#x21F2;](http://phil.sourget.free.fr/article-les-couleurs-des-geants-du-web.html)
+  - [ ] Neuroscience des couleurs [1 &#x21F2;](https://www.canva.com/learn/color-science/?utm_content=buffer365c3&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+  - [ ] Palettes [1 &#x21F2;](https://uxplanet.org/essential-color-tools-for-ux-designers-530036eaf9ae#3cf5)
+  - [ ] Outils Wireframes [1 &#x21F2;](https://blog.prototypr.io/the-ideal-design-workflow-2c200b8e337d)
+  - [ ] Polices [1 &#x21F2;](https://www.canva.com/learn/font-design/)
+
+- Marketing
+  - [ ] Motivations [1 &#x21F2;](http://jamesarcher.me/user-motivators)
+
+- Ressources utiles
+  - [ ] Combinaisons de fonts [1 &#x21F2;](https://www.canva.com/font-combinations/?utm_content=buffer2eef7&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+  - [ ] Fonts futuristes [1 &#x21F2;](https://www.canva.com/learn/futuristic-fonts/?utm_content=buffer3050a&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+  - [ ] Fonts contemporaines [1 &#x21F2;](https://www.canva.com/learn/modern-fonts/?utm_source=twitter&utm_medium=social&utm_campaign=DesignSchool)
+  - [ ] Images libres et gratuites [1 &#x21F2;](https://medium.com/@danielal007/25-badass-sites-with-free-stock-photos-653f2b16d05b)
+  - [ ] Icones libres [1 &#x21F2;](https://www.canva.com/learn/free-icons-download/?utm_content=bufferd0915&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+  - [ ] Listes de données (pays, adresses, etc...) [1 &#x21F2;](https://www.lists.design/)
+  - [ ] Fiddles [1 &#x21F2;](https://fiddles.io/)
+    - [ ] SQL: [SQLFiddle](http://sqlfiddle.com/)
+    - [ ] R: [RFiddle](http://www.r-fiddle.org/#/)
+    - [ ] Js: [JsFiddle](https://jsfiddle.net/), [Codepen](http://codepen.io/)
+

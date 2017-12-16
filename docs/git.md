@@ -1033,9 +1033,18 @@ En revanche, le récupérer en local permet de tester et de modifier le pull req
 git fecth              # Récupérer les nouveaux logs
 git branch -a          # Lister toutes les branches
 git checkout mybranch  # Récupérer la branche du pull request en local
+```
 
-git commit             # Accepter le pull request
-git push               # L'envoyer sur le serveur distant
+ou pour récupérer un pull request directement :
+
+``` shell
+git fetch origin pull/57/head:s-styling
+git checkout s-styling
+yarn
+git checkout master
+git merge s-styling
+
+git push origin master
 ```
 
 Plutôt que d'accepter le pull request, vous pouvez

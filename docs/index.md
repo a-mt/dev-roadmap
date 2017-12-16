@@ -74,7 +74,8 @@ searchbar: true
   - [x] [Regex](regex.md)
   - [x] [Encodages](encodages.md)
   - [x] [Opérations sur les bits](bitwise-operations.md)
-  - [ ] Git [1 &#x21F2;](https://education.github.com/git-cheat-sheet-education.pdf)
+  - [x] [Git](git.md)
+  - [ ] [SSH](ssh.md)
   - [ ] Licences Open Source [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94)
   - [ ] Accessibilité [1 &#x21F2;](http://tech.trivago.com/2017/09/26/accessibility-at-trivago/) [2 &#x21F2;](https://medium.com/@matuzo/writing-css-with-accessibility-in-mind-8514a0007939) [3 &#x21F2;](http://jxnblk.com/grays/) [4 &#x21F2;](https://medium.com/dailyjs/angular-and-accessibility-8ae1f601803a) [5 &#x21F2;](https://bitsofco.de/the-accessibility-cheatsheet/) [6 &#x21F2;](https://uxplanet.org/essential-color-tools-for-ux-designers-530036eaf9ae#5926)
 
@@ -86,6 +87,7 @@ searchbar: true
     - [ ] [Codefights](http://codefights.com/)
 
 - Web development environments
+  - [x] [Github](github.md)
   - [x] [Github Pages](github-pages.md)
   - [x] [Jekyll](jekyll.md)
   - [ ] Codepen

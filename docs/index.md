@@ -63,9 +63,9 @@ searchbar: true
   - [ ] Nano
   - [ ] Less
   - [ ] Expansions
-    - [ ] De l'historique
-    - [ ] De variables
-    - [ ] De fichiers
+    - [x] [Variables](variable-shell.md)
+    - [ ] Historique
+    - [ ] Fichiers
   - [ ] Bash Script
 
 - Divers

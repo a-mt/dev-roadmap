@@ -10,8 +10,11 @@ searchbar: true
     - [ ] Grid [1 &#x21F2;](https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228)
     - [ ] CSS4 [1 &#x21F2;](https://webdesign.tutsplus.com/tutorials/intriguing-css-level-4-selectors--cms-29499)
     - [ ] Custom properties [1 &#x21F2;](https://www.smashingmagazine.com/2017/04/start-using-css-custom-properties/)
-    - [ ] Naming conventions
+    - [ ] Conventions de nommage
       - [ ] BEM [1 &#x21F2;](https://blog.elpassion.com/reasons-to-use-bem-a88738317753) [2 &#x21F2;](https://medium.com/mr-frontend-community/how-to-write-better-css-with-bem-40f492a26192)
+    - [ ] Preprocesseurs
+      - [x] [Sass](sass.md)
+      - [ ] Less
   - [ ] JS [1 &#x21F2;](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711)
     - [ ] AJAX
     - [ ] JSONP

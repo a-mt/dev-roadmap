@@ -3,7 +3,7 @@ title: Règles d'échappement dans un shell Linux
 category: Linux
 ---
 
-Les doubles quotes ("), simples quotes (') et backslash (\) permettent d'indiquer au shell d'interpreter littéralement certains caractères. On peut les utiliser dans tous les cas, mais ils ne sont nécessaires que pour échapper les caractères qui ont un sens particulier en shell : `<` `>` `:` `"` `'` `/` `\` `|` `?` `!` `*` et espace
+Les doubles quotes ("), simples quotes (') et backslash (\) permettent d'indiquer au shell d'interpreter littéralement certains caractères. On peut les utiliser dans tous les cas, mais ils ne sont nécessaires que pour échapper les caractères qui ont un sens particulier en shell : `<` `>` `:` `"` `'` `/` `\` `|` `?` `!` `$` `*` et espace
 
 | Méthode d'échappement | Caractères échappés                                                      | Exemple                |
 | ---          | ---                                                                               | ---                    |

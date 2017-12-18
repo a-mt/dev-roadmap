@@ -52,6 +52,7 @@ searchbar: true
     - [ ] Pug
 
 - Linux shell
+  - [x] [Règles d'échappement dans un shell Linux](echap-shell.md)
   - [x] [Wildcard](wildcard.md)
   - [x] [Regex POSIX](regex-posix.md)
   - [x] [Awk](awk.md)

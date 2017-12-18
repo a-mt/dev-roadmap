@@ -349,7 +349,8 @@ echo ${var/% /.} "a b c d"</pre></td>
   <pre lang="shell">var="a b c d "
 echo ${var// /.} # a.b.c.d.</pre>
 
-  <pre lang="shell">for i in ${PATH//:/ }; do echo $i; done # Affiche les chemins ligne par ligne</pre></td>
+  <pre lang="shell">for i in ${PATH//:/ }; do echo $i; done
+# Affiche les chemins ligne par ligne</pre></td>
 </tr>
 </table>
 

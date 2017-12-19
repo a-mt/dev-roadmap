@@ -8,9 +8,10 @@ Il supporte toutes les fonctionnalités de vi et en ajoute de nouvelles, d'où l
 
 La commande <code>vimtutor</code> permet d'apprendre les principales commandes vim.  
 Ne sont décrites ici que les fonctionnalités principales de Vim, pour aller plus loin :
-- http://vimcasts.org/episodes/archive/
-- https://github.com/shinokada/vimnotes/wiki
-- http://vimdoc.sourceforge.net/htmldoc/usr_toc.html
+- [Cours Vim (videos)](http://vimcasts.org/episodes/archive/)
+- [Wiki de shinokada](https://github.com/shinokada/vimnotes/wiki)
+- [Documentation](http://vimdoc.sourceforge.net/htmldoc/usr_toc.html)
+- [Ressources pour apprendre Vim](https://medium.freecodecamp.org/vim-isnt-that-scary-here-are-5-free-resources-you-can-use-to-learn-it-ab78f5726f8d)
 
 ---
 

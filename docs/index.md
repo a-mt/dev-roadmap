@@ -58,7 +58,6 @@ searchbar: true
   - [x] [Sed](sed.md)
   - [x] [Grep](grep.md)
   - [x] [Vim](vim.md)
-    - [ ] Ressources pour apprendre Vim [1 &#x21F2;](https://medium.freecodecamp.org/vim-isnt-that-scary-here-are-5-free-resources-you-can-use-to-learn-it-ab78f5726f8d)
   - [ ] Nano
   - [ ] Less
   - [x] Expansions

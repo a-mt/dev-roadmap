@@ -392,10 +392,17 @@ echo ${var,n}    # abc</pre></td>
 
 ## Tableau
 
-On peut accéder aux valeurs du tableau avec `${array[@]}` ou `${array[*]}`
+On peut accéder à la valeur d'un index avec `${array[i]}`.  
+On peut accéder à toutes les valeurs du tableau avec `${array[@]}` ou `${array[*]}`.
 
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
+<tr>
+  <th align="left">${array[0]}</th>
+  <td>Retourne la première valeur de array
+  <pre lang="shell">array=("a a" b "c c" d)
+echo "${array[0]}" # a a</pre></td>
+</tr>
 <tr>
   <th align="left">${array[*]}</th>
   <td>Retourne l'ensemble des valeurs de array, séparées par le premier caractère de IFS (par défaut espace) : <code>"var1 var2 var3"</code>

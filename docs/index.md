@@ -61,11 +61,12 @@ searchbar: true
     - [ ] Ressources pour apprendre Vim [1 &#x21F2;](https://medium.freecodecamp.org/vim-isnt-that-scary-here-are-5-free-resources-you-can-use-to-learn-it-ab78f5726f8d)
   - [ ] Nano
   - [ ] Less
-  - [ ] Expansions
+  - [x] Expansions
     - [x] [Variables](variable-shell.md)
     - [x] [Historique](historique-shell.md)
     - [x] [Wildcard (fichiers)](wildcard.md)
   - [ ] Bash Script
+    - [x] [Conditions](conditions-shell.md)
 
 - Divers
   - Document formatting 

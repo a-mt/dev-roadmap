@@ -53,7 +53,6 @@ searchbar: true
 
 - Linux shell
   - [x] [Règles d'échappement dans un shell Linux](echap-shell.md)
-  - [x] [Wildcard](wildcard.md)
   - [x] [Regex POSIX](regex-posix.md)
   - [x] [Awk](awk.md)
   - [x] [Sed](sed.md)
@@ -64,8 +63,8 @@ searchbar: true
   - [ ] Less
   - [ ] Expansions
     - [x] [Variables](variable-shell.md)
-    - [ ] Historique
-    - [ ] Fichiers
+    - [x] [Historique](historique-shell.md)
+    - [x] [Wildcard (fichiers)](wildcard.md)
   - [ ] Bash Script
 
 - Divers

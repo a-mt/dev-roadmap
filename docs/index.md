@@ -10,6 +10,7 @@ searchbar: true
     - [ ] Grid [1 &#x21F2;](https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228)
     - [ ] CSS4 [1 &#x21F2;](https://webdesign.tutsplus.com/tutorials/intriguing-css-level-4-selectors--cms-29499)
     - [ ] Custom properties [1 &#x21F2;](https://www.smashingmagazine.com/2017/04/start-using-css-custom-properties/)
+    - [ ] @page [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/CSS/@page)
     - [ ] Conventions de nommage
       - [ ] BEM [1 &#x21F2;](https://blog.elpassion.com/reasons-to-use-bem-a88738317753) [2 &#x21F2;](https://medium.com/mr-frontend-community/how-to-write-better-css-with-bem-40f492a26192)
     - [ ] Preprocesseurs

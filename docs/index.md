@@ -6,6 +6,7 @@ searchbar: true
   - [ ] HTML
     - [ ] HTML5 [1 &#x21F2;](https://medium.com/level-up-web/the-mega-html5-cheatsheet-e8c479b1c521)
     - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/)
+    - [ ] [Accessibilité](accessibilite.md)
   - [ ] [CSS &#x21F2;](https://speckyboy.com/css-cheatsheets-resources-guides/)
     - [ ] Grid [1 &#x21F2;](https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228)
     - [ ] CSS4 [1 &#x21F2;](https://webdesign.tutsplus.com/tutorials/intriguing-css-level-4-selectors--cms-29499)
@@ -82,7 +83,6 @@ searchbar: true
   - [ ] [SSH](ssh.md)
   - [ ] Open Source [1 &#x21F2;](https://opensource.guide/)
     - [ ] Licences Open Source [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94)
-  - [ ] Accessibilité [1 &#x21F2;](http://tech.trivago.com/2017/09/26/accessibility-at-trivago/) [2 &#x21F2;](https://medium.com/@matuzo/writing-css-with-accessibility-in-mind-8514a0007939) [3 &#x21F2;](http://jxnblk.com/grays/) [4 &#x21F2;](https://medium.com/dailyjs/angular-and-accessibility-8ae1f601803a) [5 &#x21F2;](https://bitsofco.de/the-accessibility-cheatsheet/) [6 &#x21F2;](https://uxplanet.org/essential-color-tools-for-ux-designers-530036eaf9ae#5926)
   - [ ] Blockchain [1 &#x21F2;](https://medium.freecodecamp.org/bitcoin-flipping-the-coin-a060df19d20d) [2 &#x21F2;](https://blockchaindemo.io/) [3 &#x21F2;](https://github.com/igorbarinov/awesome-blockchain) [4 &#x21F2;](https://medium.freecodecamp.org/how-does-bitcoin-work-i-built-an-app-to-show-you-f9fcd50bdd0d)
 
 - Algorithms

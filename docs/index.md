@@ -9,6 +9,7 @@ searchbar: true
     - [ ] [Accessibilité](accessibilite.md)
   - [ ] [CSS &#x21F2;](https://speckyboy.com/css-cheatsheets-resources-guides/)
     - [ ] Grid [1 &#x21F2;](https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228)
+    - [ ] transform-origin [1 &#x21F2;](https://twitter.com/twitter/statuses/920675566931542016)
     - [ ] CSS4 [1 &#x21F2;](https://webdesign.tutsplus.com/tutorials/intriguing-css-level-4-selectors--cms-29499)
     - [ ] Custom properties [1 &#x21F2;](https://www.smashingmagazine.com/2017/04/start-using-css-custom-properties/)
     - [ ] @page [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/CSS/@page)
@@ -29,7 +30,8 @@ searchbar: true
     - [ ] Performance tricks [1 &#x21F2;](https://medium.freecodecamp.org/high-performance-apps-multiplexing-debouncing-system-fonts-and-other-tricks-37c6fd3d7b2d)
     - [ ] Frameworks
       - [ ] Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/)
-      - [ ] GraphQL [1 &#x21F2;](https://blog.pusher.com/getting-up-and-running-with-graphql/)
+      - [ ] GraphQL [1 &#x21F2;](https://blog.pusher.com/getting-up-and-running-with-graphql/) [2 &#x21F2;](https://www.howtographql.com/?v1)
+      - [ ] Vue.js [1 &#x21F2;](https://t.co/jwVzx7gywA)
   - [x] [BDD](bdd.md)
     - [x] [MySQL](mysql.md)
     - [ ] NoSQL
@@ -106,12 +108,12 @@ searchbar: true
   - [ ] Mlab [1 &#x21F2;](https://forum.freecodecamp.org/t/guide-for-using-mongodb-and-deploying-to-heroku/19347)
   - [ ] Google Spreadsheet [1 &#x21F2;](https://medium.freecodecamp.org/get-sheet-done-using-google-spreadsheets-as-your-data-backend-650ba23dc6d9)
 
-- Design [1 &#x21F2;](https://jgthms.com/web-design-in-4-minutes/) [2 &#x21F2;](https://www.canva.com/learn/design-rules/?utm_content=buffer767b4&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [3 &#x21F2;](http://designtaxi.com/news/387370/Infographic-Top-14-Graphic-Design-Terms-Commonly-Misused-By-Novice-Creatives/) [4 &#x21F2;](https://www.matthieu-tranvan.fr/e-commerce/7-principes-fondamentaux-design-web-site-ergonomie.html) [5 &#x21F2;](https://uxplanet.org/ux-designers-here-are-the-50-best-online-courses-to-learn-something-new-d6e65024274f)
-  - [ ] Design inspiration [1 &#x21F2;](https://theblog.adobe.com/30-ux-design-inspiration-resources/) [2 &#x21F2;](https://uxplanet.org/essential-color-tools-for-ux-designers-530036eaf9ae#8c61)
+- Design [1 &#x21F2;](https://jgthms.com/web-design-in-4-minutes/) [2 &#x21F2;](https://www.canva.com/learn/design-rules/?utm_content=buffer767b4&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [3 &#x21F2;](http://designtaxi.com/news/387370/Infographic-Top-14-Graphic-Design-Terms-Commonly-Misused-By-Novice-Creatives/) [4 &#x21F2;](https://www.matthieu-tranvan.fr/e-commerce/7-principes-fondamentaux-design-web-site-ergonomie.html) [5 &#x21F2;](https://uxplanet.org/ux-designers-here-are-the-50-best-online-courses-to-learn-something-new-d6e65024274f) [6 &#x21F2;](https://medium.freecodecamp.com/before-you-can-master-design-you-must-first-master-the-fundamentals-1981a2af1fda?source=rss----336d898217ee---4) [7 &#x21F2;](https://www.canva.com/learn/flow-and-rhythm/?utm_content=buffer6b2f7&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [8 &#x21F2;](https://www.canva.com/learn/tints-and-shades/?utm_content=buffer500bf&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [9 &#x21F2;](https://www.canva.com/learn/footer-design/?utm_content=bufferaa400&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+  - [ ] Design inspiration [1 &#x21F2;](https://theblog.adobe.com/30-ux-design-inspiration-resources/) [2 &#x21F2;](https://uxplanet.org/essential-color-tools-for-ux-designers-530036eaf9ae#8c61) [3 &#x21F2;](https://medium.muz.li/20-bold-design-inspiration-f692ec3e2f92)
   - [ ] Golden Ratio [1 &#x21F2;](https://www.canva.com/learn/what-is-the-golden-ratio/?utm_content=bufferb1f30&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
   - [ ] Signification des couleurs [1 &#x21F2;](https://www.canva.com/learn/color-meanings-symbolism/?utm_content=bufferb5b93&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [2 &#x21F2;](http://phil.sourget.free.fr/article-les-couleurs-des-geants-du-web.html)
   - [ ] Neuroscience des couleurs [1 &#x21F2;](https://www.canva.com/learn/color-science/?utm_content=buffer365c3&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
-  - [ ] Palettes [1 &#x21F2;](https://uxplanet.org/essential-color-tools-for-ux-designers-530036eaf9ae#3cf5)
+  - [ ] Palettes [1 &#x21F2;](https://uxplanet.org/essential-color-tools-for-ux-designers-530036eaf9ae#3cf5) [2 &#x21F2;](https://www.canva.com/learn/100-color-combinations/?utm_content=buffer5fa68&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
   - [ ] Outils Wireframes [1 &#x21F2;](https://blog.prototypr.io/the-ideal-design-workflow-2c200b8e337d)
   - [ ] Polices [1 &#x21F2;](https://www.canva.com/learn/font-design/)
 

@@ -31,7 +31,7 @@ searchbar: true
     - [ ] Frameworks
       - [ ] Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/)
       - [ ] GraphQL [1 &#x21F2;](https://blog.pusher.com/getting-up-and-running-with-graphql/) [2 &#x21F2;](https://www.howtographql.com/?v1)
-      - [ ] Vue.js [1 &#x21F2;](https://t.co/jwVzx7gywA)
+      - [ ] Vue.js [1 &#x21F2;](https://t.co/jwVzx7gywA) 
   - [x] [BDD](bdd.md)
     - [x] [MySQL](mysql.md)
     - [ ] NoSQL
@@ -54,6 +54,12 @@ searchbar: true
     - [ ] Smarty
     - [ ] Twig
     - [ ] Pug
+
+- [ ] Task runners & dependency tools
+  - [ ] Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html)
+  - [ ] Grunt
+  - [ ] Gulp
+  - [ ] Webpack
 
 - Linux shell
   - [x] [Règles d'échappement dans un shell Linux](echap-shell.md)

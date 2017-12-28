@@ -7,7 +7,7 @@ searchbar: true
     - [ ] HTML5 [1 &#x21F2;](https://medium.com/level-up-web/the-mega-html5-cheatsheet-e8c479b1c521)
     - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/)
     - [ ] [Accessibilité](accessibilite.md)
-  - [ ] [CSS &#x21F2;](https://speckyboy.com/css-cheatsheets-resources-guides/)
+  - [ ] CSS [1 &#x21F2;](https://speckyboy.com/css-cheatsheets-resources-guides/) [2 &#x21F2;](http://cssreference.io/)
     - [ ] Grid [1 &#x21F2;](https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228)
     - [ ] transform-origin [1 &#x21F2;](https://twitter.com/twitter/statuses/920675566931542016)
     - [ ] CSS4 [1 &#x21F2;](https://webdesign.tutsplus.com/tutorials/intriguing-css-level-4-selectors--cms-29499)

@@ -31,14 +31,17 @@ searchbar: true
     - [ ] Frameworks
       - [ ] Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/)
       - [ ] GraphQL [1 &#x21F2;](https://blog.pusher.com/getting-up-and-running-with-graphql/) [2 &#x21F2;](https://www.howtographql.com/?v1)
-      - [ ] Vue.js [1 &#x21F2;](https://t.co/jwVzx7gywA) 
+      - [ ] Vue.js [1 &#x21F2;](https://t.co/jwVzx7gywA)
+    - [ ] Librairies
+      - [ ] D3.js
+      - [ ] Jquery [1 &#x21F2;](https://remysharp.com/2017/12/15/is-jquery-still-relevant)
   - [x] [BDD](bdd.md)
     - [x] [MySQL](mysql.md)
     - [ ] NoSQL
   - [ ] PHP
     - [x] [Composer](composer.md)
   - [ ] Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
-  - [ ] R [ &#x21F2;](https://www.datacamp.com/)
+  - [ ] R [1 &#x21F2;](https://www.datacamp.com/)
   - [ ] NodeJS
   - [x] [XML](xml.md)
     - [x] [DTD](xml-dtd.md)
@@ -89,13 +92,14 @@ searchbar: true
   - [x] [Opérations sur les bits](bitwise-operations.md)
   - [x] [Git](git.md)
   - [ ] [SSH](ssh.md)
+  - [ ] Agile
   - [ ] Open Source [1 &#x21F2;](https://opensource.guide/)
     - [ ] Licences Open Source [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94)
   - [ ] Blockchain [1 &#x21F2;](https://medium.freecodecamp.org/bitcoin-flipping-the-coin-a060df19d20d) [2 &#x21F2;](https://blockchaindemo.io/) [3 &#x21F2;](https://github.com/igorbarinov/awesome-blockchain) [4 &#x21F2;](https://medium.freecodecamp.org/how-does-bitcoin-work-i-built-an-app-to-show-you-f9fcd50bdd0d)
   - [x] [Design](design.md)
 
 - Algorithms
-  - [ ] Machine Learning [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5)
+  - [ ] Machine Learning [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5) [4 &#x21F2;](https://blog.statsbot.co/deep-learning-achievements-4c563e034257)
     - Synaptic.js [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-a-neural-network-in-javascript-in-only-30-lines-of-code-343dafc50d49)
   - [ ] Challenges
     - [ ] [Project Euler](https://projecteuler.net/archives)

@@ -92,6 +92,7 @@ searchbar: true
   - [ ] Open Source [1 &#x21F2;](https://opensource.guide/)
     - [ ] Licences Open Source [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94)
   - [ ] Blockchain [1 &#x21F2;](https://medium.freecodecamp.org/bitcoin-flipping-the-coin-a060df19d20d) [2 &#x21F2;](https://blockchaindemo.io/) [3 &#x21F2;](https://github.com/igorbarinov/awesome-blockchain) [4 &#x21F2;](https://medium.freecodecamp.org/how-does-bitcoin-work-i-built-an-app-to-show-you-f9fcd50bdd0d)
+  - [x] [Design](design.md)
 
 - Algorithms
   - [ ] Machine Learning [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5)
@@ -113,15 +114,6 @@ searchbar: true
 - Online Databases
   - [ ] Mlab [1 &#x21F2;](https://forum.freecodecamp.org/t/guide-for-using-mongodb-and-deploying-to-heroku/19347)
   - [ ] Google Spreadsheet [1 &#x21F2;](https://medium.freecodecamp.org/get-sheet-done-using-google-spreadsheets-as-your-data-backend-650ba23dc6d9)
-
-- Design [1 &#x21F2;](https://jgthms.com/web-design-in-4-minutes/) [2 &#x21F2;](https://www.canva.com/learn/design-rules/?utm_content=buffer767b4&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [3 &#x21F2;](http://designtaxi.com/news/387370/Infographic-Top-14-Graphic-Design-Terms-Commonly-Misused-By-Novice-Creatives/) [4 &#x21F2;](https://www.matthieu-tranvan.fr/e-commerce/7-principes-fondamentaux-design-web-site-ergonomie.html) [5 &#x21F2;](https://uxplanet.org/ux-designers-here-are-the-50-best-online-courses-to-learn-something-new-d6e65024274f) [6 &#x21F2;](https://medium.freecodecamp.com/before-you-can-master-design-you-must-first-master-the-fundamentals-1981a2af1fda?source=rss----336d898217ee---4) [7 &#x21F2;](https://www.canva.com/learn/flow-and-rhythm/?utm_content=buffer6b2f7&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [8 &#x21F2;](https://www.canva.com/learn/tints-and-shades/?utm_content=buffer500bf&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [9 &#x21F2;](https://www.canva.com/learn/footer-design/?utm_content=bufferaa400&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [10 &#x21F2;](https://www.canva.com/learn/typography-terms/) [11 &#x21F2;](https://www.canva.com/learn/typography-tutorial/) [12 &#x21F2;](https://www.canva.com/learn/graphic-design-terms/)
-  - [ ] Design inspiration [1 &#x21F2;](https://theblog.adobe.com/30-ux-design-inspiration-resources/) [2 &#x21F2;](https://uxplanet.org/essential-color-tools-for-ux-designers-530036eaf9ae#8c61) [3 &#x21F2;](https://medium.muz.li/20-bold-design-inspiration-f692ec3e2f92)
-  - [ ] Golden Ratio [1 &#x21F2;](https://www.canva.com/learn/what-is-the-golden-ratio/?utm_content=bufferb1f30&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
-  - [ ] Signification des couleurs [1 &#x21F2;](https://www.canva.com/learn/color-meanings-symbolism/?utm_content=bufferb5b93&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [2 &#x21F2;](http://phil.sourget.free.fr/article-les-couleurs-des-geants-du-web.html)
-  - [ ] Neuroscience des couleurs [1 &#x21F2;](https://www.canva.com/learn/color-science/?utm_content=buffer365c3&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
-  - [ ] Palettes [1 &#x21F2;](https://uxplanet.org/essential-color-tools-for-ux-designers-530036eaf9ae#3cf5) [2 &#x21F2;](https://www.canva.com/learn/100-color-combinations/?utm_content=buffer5fa68&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
-  - [ ] Outils Wireframes [1 &#x21F2;](https://blog.prototypr.io/the-ideal-design-workflow-2c200b8e337d)
-  - [ ] Polices [1 &#x21F2;](https://www.canva.com/learn/font-design/)
 
 - Marketing
   - [ ] Motivations [1 &#x21F2;](http://jamesarcher.me/user-motivators)

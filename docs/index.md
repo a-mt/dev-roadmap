@@ -7,12 +7,7 @@ searchbar: true
     - [ ] HTML5 [1 &#x21F2;](https://medium.com/level-up-web/the-mega-html5-cheatsheet-e8c479b1c521)
     - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/)
     - [ ] [Accessibilité](accessibilite.md)
-  - [ ] CSS [1 &#x21F2;](https://speckyboy.com/css-cheatsheets-resources-guides/) [2 &#x21F2;](http://cssreference.io/)
-    - [ ] Grid [1 &#x21F2;](https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228)
-    - [ ] transform-origin [1 &#x21F2;](https://twitter.com/twitter/statuses/920675566931542016)
-    - [ ] CSS4 [1 &#x21F2;](https://webdesign.tutsplus.com/tutorials/intriguing-css-level-4-selectors--cms-29499) [2 &#x21F2;](https://blog.groupe-sii.com/les-nouveautes-de-css-level-4/)
-    - [ ] Custom properties [1 &#x21F2;](https://www.smashingmagazine.com/2017/04/start-using-css-custom-properties/)
-    - [ ] @page [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/CSS/@page)
+  - [ ] CSS
     - [ ] Conventions de nommage
       - [ ] BEM [1 &#x21F2;](https://blog.elpassion.com/reasons-to-use-bem-a88738317753) [2 &#x21F2;](https://medium.com/mr-frontend-community/how-to-write-better-css-with-bem-40f492a26192)
     - [ ] Preprocesseurs
@@ -28,7 +23,7 @@ searchbar: true
     - [ ] ES8 [1 &#x21F2;](https://medium.freecodecamp.org/es8-the-new-features-of-javascript-7506210a1a22) [2 &#x21F2;](https://hackernoon.com/es8-was-released-and-here-are-its-main-new-features-ee9c394adf66)
     - [ ] Observer pattern [1 &#x21F2;](https://pawelgrzybek.com/the-observer-pattern-in-javascript-explained/)
     - [ ] Performance tricks [1 &#x21F2;](https://medium.freecodecamp.org/high-performance-apps-multiplexing-debouncing-system-fonts-and-other-tricks-37c6fd3d7b2d)
-    - [ ] Frameworks
+    - [ ] Frameworks [1 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325)
       - [ ] Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/)
       - [ ] GraphQL [1 &#x21F2;](https://blog.pusher.com/getting-up-and-running-with-graphql/) [2 &#x21F2;](https://www.howtographql.com/?v1)
       - [ ] Vue.js [1 &#x21F2;](https://t.co/jwVzx7gywA)
@@ -100,7 +95,7 @@ searchbar: true
   - [x] [Design](design.md)
 
 - Algorithms
-  - [ ] Machine Learning [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5) [4 &#x21F2;](https://blog.statsbot.co/deep-learning-achievements-4c563e034257)
+  - [ ] Machine Learning [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5) [4 &#x21F2;](https://blog.statsbot.co/deep-learning-achievements-4c563e034257) [5 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [6 &#x21F2;](https://medium.freecodecamp.org/build-a-flexible-neural-network-with-backpropagation-in-python-acffeb7846d0)
     - Synaptic.js [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-a-neural-network-in-javascript-in-only-30-lines-of-code-343dafc50d49)
   - [ ] Challenges
     - [ ] [Project Euler](https://projecteuler.net/archives)

@@ -102,6 +102,7 @@ searchbar: true
     - [ ] [Codefights](http://codefights.com/)
 
 - Web development environments
+  - [x] [Où héberger](hosting.md)
   - [x] [Github](github.md)
   - [x] [Github Pages](github-pages.md)
   - [x] [Jekyll](jekyll.md)

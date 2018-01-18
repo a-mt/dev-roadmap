@@ -103,6 +103,7 @@ searchbar: true
 
 - Web development environments
   - [x] [Où héberger](hosting.md)
+  - [x] [Workflow de dev](dev-workflow.md)
   - [x] [Github](github.md)
   - [x] [Github Pages](github-pages.md)
   - [x] [Jekyll](jekyll.md)

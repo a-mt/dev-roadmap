@@ -60,7 +60,8 @@ searchbar: true
   - [ ] Gulp
   - [ ] Webpack
 
-- Linux shell
+- Linux
+  - [x] [Installer](linux-install.md)
   - [x] [Règles d'échappement dans un shell Linux](echap-shell.md)
   - [x] [Regex POSIX](regex-posix.md)
   - [x] [Awk](awk.md)

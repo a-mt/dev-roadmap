@@ -7,7 +7,7 @@ searchbar: true
     - [ ] HTML5 [1 &#x21F2;](https://medium.com/level-up-web/the-mega-html5-cheatsheet-e8c479b1c521)
     - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/)
     - [ ] [Accessibilité](accessibilite.md)
-  - [ ] CSS
+  - [x] [CSS](css.md)
     - [ ] Conventions de nommage
       - [ ] BEM [1 &#x21F2;](https://blog.elpassion.com/reasons-to-use-bem-a88738317753) [2 &#x21F2;](https://medium.com/mr-frontend-community/how-to-write-better-css-with-bem-40f492a26192)
     - [ ] Preprocesseurs

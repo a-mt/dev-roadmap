@@ -101,17 +101,31 @@ La qualité des images dépend de leur nombre de pixels (c'est à dire leur rés
 
 ---
 
-## Réduire la taille d'un fichier image
+## Réduire la taille des fichiers images
+
+### Baisser la qualité
 
 Plus l'image est compressée, plus la taille du fichier est petite. Les images représentent la plus grande partie de la bande passante utilisée sur une page web. En réduisant la taille des images, les pages peuvent être chargées plus rapidement, ce qui améliore la performance du site.
 
 La plupart du temps, les images peuvent être optimisées sans perte de qualité visible. Au moment d'exporter les images, baissez la qualité de l'image pour réduire la taille du fichier en prêtant attention au résultat obtenu. Penser à vsualiser l'image obtenue dans un navigateur, qui lisse les images, ce qui peut rendre un résultat différent.
 
-En plus de la baisse de qualité, les images peuvent généralement être optimisées davantage (en arrondissant les valeurs par exemple). Pour ce faire, des outils en ligne sont disponibles :
+Baisser la résolution de l'image permet également de gagner en taille. Utiliser la résolution appropriée plutôt que de réduire la taille de l'image en CSS.
+
+### Optimiser
+
+En plus de la baisse de qualité, les images peuvent généralement être optimisées davantage (en arrondissant les valeurs ou en utilisant une palette de couleurs indexées par exemple). Pour ce faire, des outils en ligne sont disponibles :
 - [https://imageoptim.com](https://imageoptim.com)
 - [http://jpegmini.com](http://jpegmini.com)
 - [https://tinyjpg.com](https://tinyjpg.com)
 - [http://compressjpeg.com](http://compressjpeg.com)
+
+### Utiliser des sprites
+
+Les sprites sont des images qui contiennent plusieurs images.
+Ces images sont ensuite utilisées comme image de fond dont la position est déplacée afin de modifier la partie visible.
+Particulièrement utilisés lorsqu'on a beaucoup de petites images, comme des icônes, des bordures ou des animations, les sprites permettent de limiter le nombre de requêtes HTTP effectuées.
+
+[Exemple d'animation avec sprites](http://jsfiddle.net/simurai/CGmCe/light/)
 
 ---
 

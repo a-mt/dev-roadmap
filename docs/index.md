@@ -143,4 +143,4 @@ searchbar: true
     - [ ] R: [RFiddle](http://www.r-fiddle.org/#/)
     - [ ] Js: [JsFiddle](https://jsfiddle.net/), [Codepen](http://codepen.io/)
 
-![](https://cdn-images-1.medium.com/max/800/0*zoWP3Q_GnI0k2svz.jpg)
+![](https://i.imgur.com/FzRrYBw.png)

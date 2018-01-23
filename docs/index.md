@@ -8,9 +8,14 @@ searchbar: true
     - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/)
     - [ ] [Accessibilité](accessibilite.md)
   - [x] [CSS](css.md)
-    - [ ] Conventions de nommage
+    - [x] [Inclure du CSS](css-include.md)
+    - [x] [Sélecteurs](css-selecteurs.md)
+    - [x] [Types](css-types.md)
+    - [x] [Propriétés](css-proprietes.md)
+    - [x] [At-rules](css-atrules.md)
+    - Conventions de nommage
       - [ ] BEM [1 &#x21F2;](https://blog.elpassion.com/reasons-to-use-bem-a88738317753) [2 &#x21F2;](https://medium.com/mr-frontend-community/how-to-write-better-css-with-bem-40f492a26192)
-    - [ ] Preprocesseurs
+    - Preprocesseurs
       - [x] [Sass](sass.md)
       - [ ] Less
   - [ ] JS [1 &#x21F2;](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711)
@@ -90,7 +95,9 @@ searchbar: true
   - [x] [Git](git.md)
   - [ ] [SSH](ssh.md)
   - [ ] [Sécurité](securite.md)
-  - [x] [Agile](agile.md)
+  - Méthodologie
+    - [x] [Agile](agile.md)
+    - [ ] 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
   - [ ] Open Source [1 &#x21F2;](https://opensource.guide/)
     - [ ] Licences Open Source [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94)
   - [ ] Blockchain [1 &#x21F2;](https://medium.freecodecamp.org/bitcoin-flipping-the-coin-a060df19d20d) [2 &#x21F2;](https://blockchaindemo.io/) [3 &#x21F2;](https://github.com/igorbarinov/awesome-blockchain) [4 &#x21F2;](https://medium.freecodecamp.org/how-does-bitcoin-work-i-built-an-app-to-show-you-f9fcd50bdd0d)

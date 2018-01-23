@@ -2,7 +2,7 @@
 searchbar: true
 ---
 
-- Web langages
+- Front-End
   - [ ] HTML [1 &#x21F2;](http://pierre-giraud.com/html-css/cours-complet/cours-html-css-presentation.php)
     - [ ] HTML5 [1 &#x21F2;](https://medium.com/level-up-web/the-mega-html5-cheatsheet-e8c479b1c521)
     - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/)
@@ -35,21 +35,25 @@ searchbar: true
     - [ ] Librairies
       - [ ] D3.js
       - [ ] Jquery [1 &#x21F2;](https://remysharp.com/2017/12/15/is-jquery-still-relevant)
-  - [x] [BDD](bdd.md)
-    - [x] [MySQL](mysql.md)
-    - [ ] NoSQL
-    - [ ] [ElasticSearch](elasticsearch.md)
-  - [ ] PHP
-    - [x] [Composer](composer.md)
-  - [ ] Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
-  - [ ] R [1 &#x21F2;](https://www.datacamp.com/)
-  - [ ] NodeJS
+
+- Back-End
+  - Programming langage
+    - [ ] PHP
+      - [x] [Composer](composer.md)
+    - [ ] Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
+    - [ ] R [1 &#x21F2;](https://www.datacamp.com/)
+    - [ ] NodeJS
+      - [ ] NPM
   - [x] [XML](xml.md)
     - [x] [DTD](xml-dtd.md)
     - [x] [XML Schema (XSD)](xml-schema.md)
     - [x] [XSL](xml-xsl.md)
     - [x] [XPath](xml-xpath.md)
     - [ ] XQuery
+  - [x] [BDD](bdd.md)
+    - [x] [MySQL](mysql.md)
+    - [ ] NoSQL
+    - [ ] [ElasticSearch](elasticsearch.md)
   - Data formatting
     - [x] [JSON](json.md)
     - [x] [YAML](yaml.md)
@@ -58,12 +62,11 @@ searchbar: true
     - [ ] Smarty
     - [ ] Twig
     - [ ] Pug
-
-- [ ] Task runners & dependency tools
-  - [ ] Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html)
-  - [ ] Grunt
-  - [ ] Gulp
-  - [ ] Webpack
+  - Task runners & dependency tools
+    - [ ] Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html)
+    - [ ] Grunt
+    - [ ] Gulp
+    - [ ] Webpack
 
 - Linux
   - [x] [Installer](linux-install.md)
@@ -73,8 +76,6 @@ searchbar: true
   - [x] [Sed](sed.md)
   - [x] [Grep](grep.md)
   - [x] [Vim](vim.md)
-  - [ ] Nano
-  - [ ] Less
   - [x] Expansions
     - [x] [Variables](variable-shell.md)
     - [x] [Historique](historique-shell.md)

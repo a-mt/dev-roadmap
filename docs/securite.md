@@ -7,7 +7,7 @@ category: Other
 
 ### Sécurité & sûreté
 
-La **sécurité** (safety) est une mesure contre accidents, ex: gilet de sauvetage.  
+La **sécurité** (safety) est une mesure contre les accidents, ex: gilet de sauvetage.  
 La **sûreté** (security) est une mesure contre les actes délibérés, ex: vérification des sacs.  
 Par abus de langage, on parle généralement de sécurité dans les deux cas.
 

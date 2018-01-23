@@ -86,6 +86,7 @@ searchbar: true
 - Divers
   - Document formatting 
     - [x] [Markdown](gfm.md)
+    - [ ] reStructuredText [1 &#x21F2;](http://docutils.sourceforge.net/docs/user/rst/cheatsheet.txt)
     - [x] [Latex](latex.md)
     - [ ] Textile
   - [x] [Sémantique de version](semver.md)

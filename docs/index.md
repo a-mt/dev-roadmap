@@ -4,7 +4,7 @@ searchbar: true
 
 - Front-End
   - [ ] HTML [1 &#x21F2;](http://pierre-giraud.com/html-css/cours-complet/cours-html-css-presentation.php)
-    - [ ] HTML5 [1 &#x21F2;](https://medium.com/level-up-web/the-mega-html5-cheatsheet-e8c479b1c521)
+    - [ ] HTML5 [1 &#x21F2;](https://medium.com/level-up-web/the-mega-html5-cheatsheet-e8c479b1c521) [autocomplete &#x21F2;](https://davidwalsh.name/datalist)
     - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/)
     - [ ] [Accessibilité](accessibilite.md)
   - [x] [CSS](css.md)

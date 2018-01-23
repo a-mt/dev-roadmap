@@ -280,6 +280,7 @@ Les frameworks sont des feuilles de style prêtes à l'emploi qui permettent de 
 Les frameworks sont plus connus sont
 
 - [Bootstrap twitter](http://getbootstrap.com/)
+- [Materialize](http://materializecss.com/)
 - [Foundation](https://foundation.zurb.com/)
 - [Pure.css](https://purecss.io/)
 - [Base](http://getbase.org/)

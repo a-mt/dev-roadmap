@@ -18,7 +18,7 @@ searchbar: true
     - Preprocesseurs
       - [x] [Sass](sass.md)
       - [ ] Less
-  - [ ] JS [1 &#x21F2;](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711)
+  - [ ] JS [1 &#x21F2;](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711) [2 &#x21F2;](http://www.aliasdmc.fr/coursjavas/)
     - [ ] AJAX
     - [ ] JSONP
     - [ ] History of JavaScript [1 &#x21F2;](https://medium.freecodecamp.org/ecmascript-tc39-and-the-history-of-javascript-26067498feb9) [2 &#x21F2;](https://closebrace.com/articles/2017-09-11/a-brief-incomplete-history-of-javascript)

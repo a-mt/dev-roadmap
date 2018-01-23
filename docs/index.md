@@ -89,6 +89,7 @@ searchbar: true
   - [x] [Opérations sur les bits](bitwise-operations.md)
   - [x] [Git](git.md)
   - [ ] [SSH](ssh.md)
+  - [ ] [Sécurité](securite.md)
   - [x] [Agile](agile.md)
   - [ ] Open Source [1 &#x21F2;](https://opensource.guide/)
     - [ ] Licences Open Source [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94)

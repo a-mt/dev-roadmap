@@ -439,6 +439,111 @@ Pour écrire du texte, utiliser `\mbox{texte}`.
   </tr>
 </table>
 
+## Opérateurs binaires
+
+<table>
+  <tr>
+    <td>$$ \times \; \cdot$$</td>
+    <td>\times \cdot</td>
+    <td>$$ \div \; \setminus $$</td>
+    <td>\div \setminus</td>
+  </tr>
+  <tr>
+    <td>$$ \circ \; \bullet $$</td>
+    <td>\circ \bullet</td>
+    <td>$$ \ast \; \star $$</td>
+    <td>\ast \star</td>
+  </tr>
+  <tr>
+    <td>$$ \bigcirc $$</td>
+    <td>\bigcirc</td>
+    <td>$$ \bigtriangleup \; \bigtriangledown $$</td>
+    <td>\bigtriangleup \bigtriangledown</td>
+  </tr>
+  <tr>
+    <td>$$ \diamond $$</td>
+    <td>\diamond</td>
+    <td>$$ \wr $$</td>
+    <td>\wr</td>
+  </tr>
+  <tr><td colspan="4"></td></tr>
+  <tr>
+    <td>$$ \amalg $$</td>
+    <td>\amalg</td>
+    <td>$$ \dagger \; \ddagger $$</td>
+    <td>\dagger \ddagger</td>
+  </tr>
+  <tr>
+    <td>$$ \cup \; \cap$$</td>
+    <td>\cup \cap</td>
+    <td>$$ \sqcup \; \sqcap$$</td>
+    <td>\sqcup \sqcap</td>
+  </tr>
+  <tr>
+    <td>$$ \pm \; \mp $$</td>
+    <td>\pm \mp</td>
+    <td>$$ \vee \; \wedge $$</td>
+    <td>\vee \wedge</td>
+  </tr>
+  <tr>
+    <td>$$ \oplus \; \ominus$$</td>
+    <td>\oplus \ominus</td>
+    <td>$$ \otimes \; \odot$$</td>
+    <td>\otimes \odot</td>
+  </tr>
+  <tr>
+    <td>$$ \oslash $$</td>
+    <td>\oslash</td>
+    <td>$$ \uplus $$</td>
+    <td>\uplus</td>
+  </tr>
+
+  <tr><td colspan="4"><code>Package: amssymb</code></td></tr>
+  <tr>
+    <td>$$\intercal$$</td>
+    <td>\intercal</td>
+    <td>$$\Cup \; \Cap$$</td>
+    <td>\Cup \Cap</td>
+  </tr>
+  <tr>
+    <td>$$\curlyvee \; \curlywedge$$</td>
+    <td>\curlyvee \curlywedge</td>
+    <td>$$\veebar \; \barwedge \; \doublebarwedge$$</td>
+    <td>\veebar \barwedge \doublebarwedge</td>
+  </tr>
+  <tr>
+    <td>$$\boxplus \; \boxminus$$</td>
+    <td>\boxplus \boxminus</td>
+    <td>$$\boxtimes \; \boxdot$$</td>
+    <td>\boxtimes \boxdot</td>
+  </tr>
+  <tr>
+    <td>$$\circleddash \; \circledast \; \circledcirc$$</td>
+    <td>\circleddash \circledast \circledcirc</td>
+    <td>$$\backepsilon$$</td>
+    <td>\backepsilon</td>
+  </tr>
+  <tr><td colspan="4"></td></tr>
+  <tr>
+    <td>$$\rtimes \; \ltimes$$</td>
+    <td>\rtimes \ltimes</td>
+    <td>$$\leftthreetimes \; \rightthreetimes$$</td>
+    <td>\leftthreetimes \rightthreetimes</td>
+  </tr>
+  <tr>
+    <td>$$\smallsetminus$$</td>
+    <td>\smallsetminus</td>
+    <td>$$\divideontimes$$</td>
+    <td>\divideontimes</td>
+  </tr>
+  <tr>
+    <td>$$\centerdot$$</td>
+    <td>\centerdot</td>
+    <td>$$\dotplus$$</td>
+    <td>\dotplus</td>
+  </tr>
+</table>
+
 ## Divers
 
 <table>
@@ -822,111 +927,6 @@ Pour écrire du texte, utiliser `\mbox{texte}`.
     <td>\nvdash \nvDash</td>
     <td>$$\nVdash \; \nVDash$$</td>
     <td>\nVdash \nVDash</td>
-  </tr>
-</table>
-
-## Opérateurs binaires
-
-<table>
-  <tr>
-    <td>$$ \amalg $$</td>
-    <td>\amalg</td>
-    <td>$$ \dagger \; \ddagger $$</td>
-    <td>\dagger \ddagger</td>
-  </tr>
-  <tr>
-    <td>$$ \cup \; \cap$$</td>
-    <td>\cup \cap</td>
-    <td>$$ \sqcup \; \sqcap$$</td>
-    <td>\sqcup \sqcap</td>
-  </tr>
-  <tr>
-    <td>$$ \pm \; \mp $$</td>
-    <td>\pm \mp</td>
-    <td>$$ \vee \; \wedge $$</td>
-    <td>\vee \wedge</td>
-  </tr>
-  <tr>
-    <td>$$ \oplus \; \ominus$$</td>
-    <td>\oplus \ominus</td>
-    <td>$$ \otimes \; \odot$$</td>
-    <td>\otimes \odot</td>
-  </tr>
-  <tr>
-    <td>$$ \oslash $$</td>
-    <td>\oslash</td>
-    <td>$$ \uplus $$</td>
-    <td>\uplus</td>
-  </tr>
-  <tr><td colspan="4"></td></tr>
-  <tr>
-    <td>$$ \times \; \cdot$$</td>
-    <td>\times \cdot</td>
-    <td>$$ \div \; \setminus $$</td>
-    <td>\div \setminus</td>
-  </tr>
-  <tr>
-    <td>$$ \circ \; \bullet $$</td>
-    <td>\circ \bullet</td>
-    <td>$$ \ast \; \star $$</td>
-    <td>\ast \star</td>
-  </tr>
-  <tr>
-    <td>$$ \bigcirc $$</td>
-    <td>\bigcirc</td>
-    <td>$$ \bigtriangleup \; \bigtriangledown $$</td>
-    <td>\bigtriangleup \bigtriangledown</td>
-  </tr>
-  <tr>
-    <td>$$ \diamond $$</td>
-    <td>\diamond</td>
-    <td>$$ \wr $$</td>
-    <td>\wr</td>
-  </tr>
-
-  <tr><td colspan="4"><code>Package: amssymb</code></td></tr>
-  <tr>
-    <td>$$\intercal$$</td>
-    <td>\intercal</td>
-    <td>$$\Cup \; \Cap$$</td>
-    <td>\Cup \Cap</td>
-  </tr>
-  <tr>
-    <td>$$\curlyvee \; \curlywedge$$</td>
-    <td>\curlyvee \curlywedge</td>
-    <td>$$\veebar \; \barwedge \; \doublebarwedge$$</td>
-    <td>\veebar \barwedge \doublebarwedge</td>
-  </tr>
-  <tr>
-    <td>$$\boxplus \; \boxminus$$</td>
-    <td>\boxplus \boxminus</td>
-    <td>$$\boxtimes \; \boxdot$$</td>
-    <td>\boxtimes \boxdot</td>
-  </tr>
-  <tr>
-    <td>$$\circleddash \; \circledast \; \circledcirc$$</td>
-    <td>\circleddash \circledast \circledcirc</td>
-    <td>$$\backepsilon$$</td>
-    <td>\backepsilon</td>
-  </tr>
-  <tr><td colspan="4"></td></tr>
-  <tr>
-    <td>$$\rtimes \; \ltimes$$</td>
-    <td>\rtimes \ltimes</td>
-    <td>$$\leftthreetimes \; \rightthreetimes$$</td>
-    <td>\leftthreetimes \rightthreetimes</td>
-  </tr>
-  <tr>
-    <td>$$\smallsetminus$$</td>
-    <td>\smallsetminus</td>
-    <td>$$\divideontimes$$</td>
-    <td>\divideontimes</td>
-  </tr>
-  <tr>
-    <td>$$\centerdot$$</td>
-    <td>\centerdot</td>
-    <td>$$\dotplus$$</td>
-    <td>\dotplus</td>
   </tr>
 </table>
 

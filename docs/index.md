@@ -3,6 +3,7 @@ searchbar: true
 ---
 
 - Front-End
+  - [Web](web.md)
   - [ ] HTML [1 &#x21F2;](http://pierre-giraud.com/html-css/cours-complet/cours-html-css-presentation.php)
     - [ ] HTML5 [1 &#x21F2;](https://medium.com/level-up-web/the-mega-html5-cheatsheet-e8c479b1c521) [2 &#x21F2;](https://www.catswhocode.com/blog/html5-code-snippets-to-take-your-website-to-the-next-level) [autocomplete &#x21F2;](https://davidwalsh.name/datalist)
     - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/)

@@ -44,3 +44,8 @@ C'est le cas par exemple si l'on veut récupérer la liste de produits disponibl
 
 Le langage utilisé pour stocker et récupérer des données est SQL.  
 Pour effectuer des traitements côté serveur, de nombreux langages de programmations sont possibles: PHP, Python, NodeJs, etc.
+
+### Front-End, Back-End
+
+On désigne sous le terme de **Front-End** tout ce qui est affiché ou executé du côté client: HTML, CSS, JS, design...  
+On désigne sous le terme de **Back-End** tout ce que le client ne peut pas voir, qui se passe du côté serveur.

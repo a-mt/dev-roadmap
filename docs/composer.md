@@ -3,7 +3,7 @@ title: Composer
 category: Web, PHP
 ---
 
-Composer est un système de gestion de dépendances PHP, qui permet de télécharger des libraires et API de manière automatique.
+Composer est un système de gestion de dépendances PHP, qui permet de télécharger des librairies et API de manière automatique.
 N'importe quel développeur peut créer ses propres packages ou réutiliser les packages d'autres développeur en allant le rechercher sur le site https://packagist.org.
 
 ## Installer

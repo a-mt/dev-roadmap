@@ -516,7 +516,7 @@ Les rapports de contraste vont de 1:1 (même couleur) à 21:1 (noir et blanc).
 
 ### High contrast mode
 
-Sous Windows, on mode activer un mode pour élever le contraste. Les utilisateurs peuvent préfinir leurs propres couleurs à utiliser.
+Sous Windows, on peut activer un mode pour élever le contraste. Les utilisateurs peuvent préfinir leurs propres couleurs à utiliser.
 
 ![](https://i.imgur.com/4LbcpwI.png)
 

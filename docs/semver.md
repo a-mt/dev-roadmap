@@ -19,6 +19,14 @@ Le nom de la version permet de savoir quand
 - les changements apportés sont rétrocompatibles (ajout de fonctionnalités, marquer comme obsolète) : `MINEUR`
 - les changements apportés corrigent des anomalies rétrocompatibles (bug fix) : `PATCH`
 
+<!-- -->
+
+    1.2.3  
+    ^ ^ ^  
+    | | `-- Version Patch. Mis à jour pour tout changement.
+    | `---- Version Mineure. Mis à jour pour des ajouts de fonctionnalités.
+    `------ Version Majeure. Mis à jour pour des changements non rétro-compatibles.
+
 Lorsqu'on incrémente la valeur de `MAJEUR`, `MINEUR` et `PATCH` sont remis à 0.  
 Une version majeure peut ajouter des changements mineurs et des patchs.
 

@@ -44,7 +44,7 @@ searchbar: true
     - [ ] Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
     - [ ] R [1 &#x21F2;](https://www.datacamp.com/)
     - [ ] NodeJS
-      - [ ] NPM
+      - [ ] [NPM](npm.md)
   - [x] [XML](xml.md)
     - [x] [DTD](xml-dtd.md)
     - [x] [XML Schema (XSD)](xml-schema.md)

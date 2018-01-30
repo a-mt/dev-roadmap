@@ -4,8 +4,7 @@ searchbar: true
 
 - Front-End
   - [Web](web.md)
-  - [ ] HTML [1 &#x21F2;](http://pierre-giraud.com/html-css/cours-complet/cours-html-css-presentation.php)
-    - [ ] HTML5 [0 &#x21F2;](https://bitsofco.de/whats-new-in-html-5-2/) [1 &#x21F2;](https://medium.com/level-up-web/the-mega-html5-cheatsheet-e8c479b1c521) [2 &#x21F2;](https://www.catswhocode.com/blog/html5-code-snippets-to-take-your-website-to-the-next-level) [autocomplete &#x21F2;](https://davidwalsh.name/datalist) [srcset &#x21F2;](https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433)
+  - [ ] HTML [1 &#x21F2;](https://bitsofco.de/whats-new-in-html-5-2/) [srcset &#x21F2;](https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433)
     - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/)
     - [ ] [Accessibilité](accessibilite.md)
   - [x] [CSS](css.md)

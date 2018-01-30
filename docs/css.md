@@ -5,9 +5,11 @@ category: Web
 
 CSS (Cascading Style Sheets) est le langage utilisé pour formatter les documents HTML ou XML, il définit la manière dont les éléments doivent être affichés.
 
+Ressources utiles:  
 [A Look Back at the History of CSS](https://css-tricks.com/look-back-history-css/)  
 [A free visual guide to CSS](http://cssreference.io/)  
-[50 Cheatsheets, References and Guides for CSS](https://speckyboy.com/css-cheatsheets-resources-guides/)
+[50 Cheatsheets, References and Guides for CSS](https://speckyboy.com/css-cheatsheets-resources-guides/)  
+[Validateur CSS](http://jigsaw.w3.org/css-validator/)
 
 ---
 

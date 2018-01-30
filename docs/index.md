@@ -109,7 +109,12 @@ searchbar: true
   - [ ] Open Source [1 &#x21F2;](https://opensource.guide/)
     - [ ] Licences [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94) [2 &#x21F2;](https://spdx.org/licenses)
   - [ ] Blockchain [1 &#x21F2;](https://medium.freecodecamp.org/bitcoin-flipping-the-coin-a060df19d20d) [2 &#x21F2;](https://blockchaindemo.io/) [3 &#x21F2;](https://github.com/igorbarinov/awesome-blockchain) [4 &#x21F2;](https://medium.freecodecamp.org/how-does-bitcoin-work-i-built-an-app-to-show-you-f9fcd50bdd0d) [5 &#x21F2;](https://medium.freecodecamp.org/the-authoritative-guide-to-blockchain-development-855ab65b58bc)
-  - [x] [Design](design.md) [1 &#x21F2;](https://www.canva.com/learn/color-meanings/?utm_content=bufferb4577&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+  - [x] [Design](design.md)
+    - [x] [Typographie](design-typographie.md)
+    - [x] [Théorie des couleurs](design-couleur.md)
+    - [x] [Compositions: texte/couleur](design-couleur-2.md)
+    - [x] [Compositions: layout](design-layout.md)
+    - [x] [Images](design-image.md)
 
 - Algorithms
   - [ ] Machine Learning [0 &#x21F2;](https://medium.freecodecamp.org/you-need-these-cheat-sheets-if-youre-tackling-machine-learning-algorithms-45da5743888e) [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5) [4 &#x21F2;](https://blog.statsbot.co/deep-learning-achievements-4c563e034257) [5 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [6 &#x21F2;](https://medium.freecodecamp.org/build-a-flexible-neural-network-with-backpropagation-in-python-acffeb7846d0) [7 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [8 &#x21F2;](https://medium.freecodecamp.org/how-to-deploy-an-object-detection-model-with-tensorflow-serving-d6436e65d1d9) [9 &#x21F2;](https://medium.freecodecamp.org/making-your-own-face-recognition-system-29a8e728107c) [10 &#x21F2;](https://twitter.com/fchollet/status/951828914103402497) [11 &#x21F2;](https://twitter.com/jacswork/status/957924537013764096)

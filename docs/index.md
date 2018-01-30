@@ -5,7 +5,7 @@ searchbar: true
 - Front-End
   - [Web](web.md)
   - [ ] HTML [1 &#x21F2;](http://pierre-giraud.com/html-css/cours-complet/cours-html-css-presentation.php)
-    - [ ] HTML5 [1 &#x21F2;](https://medium.com/level-up-web/the-mega-html5-cheatsheet-e8c479b1c521) [2 &#x21F2;](https://www.catswhocode.com/blog/html5-code-snippets-to-take-your-website-to-the-next-level) [autocomplete &#x21F2;](https://davidwalsh.name/datalist)
+    - [ ] HTML5 [0 &#x21F2;](https://bitsofco.de/whats-new-in-html-5-2/) [1 &#x21F2;](https://medium.com/level-up-web/the-mega-html5-cheatsheet-e8c479b1c521) [2 &#x21F2;](https://www.catswhocode.com/blog/html5-code-snippets-to-take-your-website-to-the-next-level) [autocomplete &#x21F2;](https://davidwalsh.name/datalist) [srcset &#x21F2;](https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433)
     - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/)
     - [ ] [Accessibilité](accessibilite.md)
   - [x] [CSS](css.md)
@@ -14,25 +14,30 @@ searchbar: true
     - [x] [Types](css-types.md)
     - [x] [Propriétés](css-proprietes.md)
     - [x] [At-rules](css-atrules.md)
-    - Conventions de nommage
+    - Conventions de nommage [1 &#x21F2;](https://medium.freecodecamp.org/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849)
       - [ ] BEM [1 &#x21F2;](https://blog.elpassion.com/reasons-to-use-bem-a88738317753) [2 &#x21F2;](https://medium.com/mr-frontend-community/how-to-write-better-css-with-bem-40f492a26192)
     - Preprocesseurs
       - [x] [Sass](sass.md)
       - [ ] Less
-  - [ ] JS [1 &#x21F2;](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711) [2 &#x21F2;](http://www.aliasdmc.fr/coursjavas/)
+  - [ ] JS [1 &#x21F2;](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711) [2 &#x21F2;](http://www.aliasdmc.fr/coursjavas/) [3 &#x21F2;](https://medium.freecodecamp.org/the-definitive-javascript-handbook-for-a-developer-interview-44ffc6aeb54e) [4 &#x21F2;](https://blog.logrocket.com/interesting-ecmascript-2017-proposals-163b787cf27c)
     - [ ] AJAX
     - [ ] JSONP
     - [ ] History of JavaScript [1 &#x21F2;](https://medium.freecodecamp.org/ecmascript-tc39-and-the-history-of-javascript-26067498feb9) [2 &#x21F2;](https://closebrace.com/articles/2017-09-11/a-brief-incomplete-history-of-javascript)
     - [ ] ES6 [1 &#x21F2;](https://blog.pragmatists.com/top-10-es6-features-by-example-80ac878794bb) [2 &#x21F2;](https://github.com/mbeaudru/modern-js-cheatsheet) [3 &#x21F2;](https://medium.com/@reasoncode/javascript-es6-exploring-the-new-built-in-methods-b62583b0a8e6) [4 &#x21F2;](https://github.com/jedrichards/es6)
-    - [ ] Async/await [1 &#x21F2;](https://medium.freecodecamp.org/oh-yes-async-await-f54e5a079fc1)
+    - [ ] Async/await [1 &#x21F2;](https://medium.freecodecamp.org/oh-yes-async-await-f54e5a079fc1) [2 &#x21F2;](https://www.toptal.com/javascript/asynchronous-javascript-async-await-tutorial)
     - [ ] ES7 [1 &#x21F2;](https://medium.freecodecamp.org/ecmascript-2016-es7-features-86903c5cab70)
-    - [ ] ES8 [1 &#x21F2;](https://medium.freecodecamp.org/es8-the-new-features-of-javascript-7506210a1a22) [2 &#x21F2;](https://hackernoon.com/es8-was-released-and-here-are-its-main-new-features-ee9c394adf66)
+    - [ ] ES8 [1 &#x21F2;](https://medium.freecodecamp.org/es8-the-new-features-of-javascript-7506210a1a22) [2 &#x21F2;](https://hackernoon.com/es8-was-released-and-here-are-its-main-new-features-ee9c394adf66) [3 &#x21F2;](https://davidwalsh.name/es7-es8-features)
+    - [ ] Proxy [1 &#x21F2;](https://medium.com/dailyjs/how-to-use-javascript-proxies-for-fun-and-profit-365579d4a9f8)
     - [ ] Observer pattern [1 &#x21F2;](https://pawelgrzybek.com/the-observer-pattern-in-javascript-explained/)
-    - [ ] Performance tricks [1 &#x21F2;](https://medium.freecodecamp.org/high-performance-apps-multiplexing-debouncing-system-fonts-and-other-tricks-37c6fd3d7b2d)
-    - [ ] Frameworks [1 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325)
+    - [ ] Tricks [1 &#x21F2;](https://medium.freecodecamp.org/high-performance-apps-multiplexing-debouncing-system-fonts-and-other-tricks-37c6fd3d7b2d) [2 &#x21F2;](https://air.ghost.io/js-things-i-never-knew-existed/)
+    - [ ] Web Workers [1 &#x21F2;](https://medium.freecodecamp.org/how-web-workers-can-help-with-consistent-asynchronous-tasks-in-javascript-cd6d728fa4ee) 
+    - Preprocesseurs
+      - [ ] Typescript [1 &#x21F2;](https://auth0.com/blog/typescript-practical-introduction/)
+    - [ ] Frameworks [1 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [2 &#x21F2;](https://www.npmjs.com/npm/the-state-of-javascript-frameworks-2017-part-3-back-end-frameworks?utm_content=buffer30d2a&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [3 &#x21F2;](https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/) [4 &#x21F2;](https://javascriptreport.com/the-ultimate-guide-to-javascript-frameworks/)
       - [ ] Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/)
       - [ ] GraphQL [1 &#x21F2;](https://blog.pusher.com/getting-up-and-running-with-graphql/) [2 &#x21F2;](https://www.howtographql.com/?v1)
       - [ ] Vue.js [1 &#x21F2;](https://t.co/jwVzx7gywA)
+      - [ ] React [1 &#x21F2;](https://blog.kentcdodds.com/learn-react-fundamentals-and-advanced-patterns-eac90341c9db)
     - [ ] Librairies
       - [ ] D3.js
       - [ ] Jquery [1 &#x21F2;](https://remysharp.com/2017/12/15/is-jquery-still-relevant)
@@ -44,7 +49,7 @@ searchbar: true
     - [ ] Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
     - [ ] R [1 &#x21F2;](https://www.datacamp.com/)
     - [ ] NodeJS
-      - [ ] [NPM](npm.md)
+      - [ ] [NPM](npm.md) [1 &#x21F2;](http://blog.npmjs.org/post/168978377570/new-package-moniker-rules)
   - [x] [XML](xml.md)
     - [x] [DTD](xml-dtd.md)
     - [x] [XML Schema (XSD)](xml-schema.md)
@@ -97,17 +102,17 @@ searchbar: true
   - [x] [Opérations sur les bits](bitwise-operations.md)
   - [x] [Git](git.md)
   - [ ] [SSH](ssh.md)
-  - [ ] [Sécurité](securite.md)
+  - [ ] [Sécurité](securite.md) [1 &#x21F2;](https://medium.freecodecamp.org/https-explained-with-carrier-pigeons-7029d2193351?utm_content=buffer1f715&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [2 &#x21F2;](https://medium.freecodecamp.org/openssl-command-cheatsheet-b441be1e8c4a) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec)
   - Méthodologie
     - [x] [Agile](agile.md)
     - [ ] 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
   - [ ] Open Source [1 &#x21F2;](https://opensource.guide/)
     - [ ] Licences [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94) [2 &#x21F2;](https://spdx.org/licenses)
-  - [ ] Blockchain [1 &#x21F2;](https://medium.freecodecamp.org/bitcoin-flipping-the-coin-a060df19d20d) [2 &#x21F2;](https://blockchaindemo.io/) [3 &#x21F2;](https://github.com/igorbarinov/awesome-blockchain) [4 &#x21F2;](https://medium.freecodecamp.org/how-does-bitcoin-work-i-built-an-app-to-show-you-f9fcd50bdd0d)
-  - [x] [Design](design.md)
+  - [ ] Blockchain [1 &#x21F2;](https://medium.freecodecamp.org/bitcoin-flipping-the-coin-a060df19d20d) [2 &#x21F2;](https://blockchaindemo.io/) [3 &#x21F2;](https://github.com/igorbarinov/awesome-blockchain) [4 &#x21F2;](https://medium.freecodecamp.org/how-does-bitcoin-work-i-built-an-app-to-show-you-f9fcd50bdd0d) [5 &#x21F2;](https://medium.freecodecamp.org/the-authoritative-guide-to-blockchain-development-855ab65b58bc)
+  - [x] [Design](design.md) [1 &#x21F2;](https://www.canva.com/learn/color-meanings/?utm_content=bufferb4577&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
 
 - Algorithms
-  - [ ] Machine Learning [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5) [4 &#x21F2;](https://blog.statsbot.co/deep-learning-achievements-4c563e034257) [5 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [6 &#x21F2;](https://medium.freecodecamp.org/build-a-flexible-neural-network-with-backpropagation-in-python-acffeb7846d0)
+  - [ ] Machine Learning [0 &#x21F2;](https://medium.freecodecamp.org/you-need-these-cheat-sheets-if-youre-tackling-machine-learning-algorithms-45da5743888e) [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5) [4 &#x21F2;](https://blog.statsbot.co/deep-learning-achievements-4c563e034257) [5 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [6 &#x21F2;](https://medium.freecodecamp.org/build-a-flexible-neural-network-with-backpropagation-in-python-acffeb7846d0) [7 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [8 &#x21F2;](https://medium.freecodecamp.org/how-to-deploy-an-object-detection-model-with-tensorflow-serving-d6436e65d1d9) [9 &#x21F2;](https://medium.freecodecamp.org/making-your-own-face-recognition-system-29a8e728107c) [10 &#x21F2;](https://twitter.com/fchollet/status/951828914103402497) [11 &#x21F2;](https://twitter.com/jacswork/status/957924537013764096)
     - Synaptic.js [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-a-neural-network-in-javascript-in-only-30-lines-of-code-343dafc50d49)
   - [ ] Challenges
     - [ ] [Project Euler](https://projecteuler.net/archives)
@@ -116,6 +121,7 @@ searchbar: true
 - Web development environments
   - [x] [Où héberger](hosting.md)
   - [x] [Workflow de dev](dev-workflow.md)
+  - [ ] Workflow de prod [1 &#x21F2;](https://medium.freecodecamp.org/how-to-make-your-startups-cloud-more-stable-4-practical-devops-tips-823e4202518c)
   - [x] [Github](github.md)
   - [x] [Github Pages](github-pages.md)
   - [x] [Jekyll](jekyll.md)
@@ -123,6 +129,8 @@ searchbar: true
   - [ ] c9
   - [ ] Heroku [1 &#x21F2;](https://www.sitepoint.com/how-to-deploy-node-applications-heroku-vs-now-sh/)
   - [ ] WAMP/LAMP
+  - [ ] Amazon [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-your-first-safe-server-ready-for-production-f1cc60eec69a)
+  - [ ] CaptainDuckDuck [1 &#x21F2;](https://medium.freecodecamp.org/how-i-cut-my-heroku-cost-by-400-5b9d0220ce13)
   - [ ] Google Business [1 &#x21F2;](https://www.gybo.com/lessons)
 
 - Online Databases

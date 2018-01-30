@@ -13,7 +13,7 @@ L'origine d'Internet commence au début des années 60, même si le concept d'In
 
 * Années 70: Arpanet
 
-À la fin des années 60 / début 70 fut conçoit Arpanet, ancêtre d'Internet, qui devait permettre de maintenir les télécommunications au sein de l'armée américaine en cas d'attaque atomique mais qui finalement servi principalement dans la recherche.
+À la fin des années 60 / début 70 fut conçut Arpanet, ancêtre d'Internet, qui devait permettre de maintenir les télécommunications au sein de l'armée américaine en cas d'attaque atomique mais qui finalement servi principalement dans la recherche.
 
 * Années 90: World Wide Web
 

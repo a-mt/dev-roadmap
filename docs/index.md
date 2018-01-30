@@ -24,6 +24,7 @@ searchbar: true
     - [ ] JSONP
     - [ ] History of JavaScript [1 &#x21F2;](https://medium.freecodecamp.org/ecmascript-tc39-and-the-history-of-javascript-26067498feb9) [2 &#x21F2;](https://closebrace.com/articles/2017-09-11/a-brief-incomplete-history-of-javascript)
     - [ ] ES6 [1 &#x21F2;](https://blog.pragmatists.com/top-10-es6-features-by-example-80ac878794bb) [2 &#x21F2;](https://github.com/mbeaudru/modern-js-cheatsheet) [3 &#x21F2;](https://medium.com/@reasoncode/javascript-es6-exploring-the-new-built-in-methods-b62583b0a8e6) [4 &#x21F2;](https://github.com/jedrichards/es6)
+    - [ ] Drag & drop [1 &#x21F2;](https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/)
     - [ ] Async/await [1 &#x21F2;](https://medium.freecodecamp.org/oh-yes-async-await-f54e5a079fc1) [2 &#x21F2;](https://www.toptal.com/javascript/asynchronous-javascript-async-await-tutorial)
     - [ ] ES7 [1 &#x21F2;](https://medium.freecodecamp.org/ecmascript-2016-es7-features-86903c5cab70)
     - [ ] ES8 [1 &#x21F2;](https://medium.freecodecamp.org/es8-the-new-features-of-javascript-7506210a1a22) [2 &#x21F2;](https://hackernoon.com/es8-was-released-and-here-are-its-main-new-features-ee9c394adf66) [3 &#x21F2;](https://davidwalsh.name/es7-es8-features)
@@ -117,7 +118,7 @@ searchbar: true
     - [x] [Images](design-image.md)
 
 - Algorithms
-  - [ ] Machine Learning [0 &#x21F2;](https://medium.freecodecamp.org/you-need-these-cheat-sheets-if-youre-tackling-machine-learning-algorithms-45da5743888e) [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5) [4 &#x21F2;](https://blog.statsbot.co/deep-learning-achievements-4c563e034257) [5 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [6 &#x21F2;](https://medium.freecodecamp.org/build-a-flexible-neural-network-with-backpropagation-in-python-acffeb7846d0) [7 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [8 &#x21F2;](https://medium.freecodecamp.org/how-to-deploy-an-object-detection-model-with-tensorflow-serving-d6436e65d1d9) [9 &#x21F2;](https://medium.freecodecamp.org/making-your-own-face-recognition-system-29a8e728107c) [10 &#x21F2;](https://twitter.com/fchollet/status/951828914103402497) [11 &#x21F2;](https://twitter.com/jacswork/status/957924537013764096)
+  - [ ] Machine Learning [0 &#x21F2;](https://medium.freecodecamp.org/you-need-these-cheat-sheets-if-youre-tackling-machine-learning-algorithms-45da5743888e) [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5) [4 &#x21F2;](https://blog.statsbot.co/deep-learning-achievements-4c563e034257) [5 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [6 &#x21F2;](https://medium.freecodecamp.org/build-a-flexible-neural-network-with-backpropagation-in-python-acffeb7846d0) [7 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [8 &#x21F2;](https://medium.freecodecamp.org/how-to-deploy-an-object-detection-model-with-tensorflow-serving-d6436e65d1d9) [9 &#x21F2;](https://medium.freecodecamp.org/making-your-own-face-recognition-system-29a8e728107c) [10 &#x21F2;](https://twitter.com/fchollet/status/951828914103402497) [11 &#x21F2;](https://twitter.com/jacswork/status/957924537013764096) [12 &#x21F2;](https://twitter.com/EmilWallner/status/956755831059464203) [13 &#x21F2;](https://twitter.com/EmilWallner/status/950246690044481537) [14 &#x21F2;](https://machinelearningmastery.com/crash-course-deep-learning-natural-language-processing/)
     - Synaptic.js [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-a-neural-network-in-javascript-in-only-30-lines-of-code-343dafc50d49)
   - [ ] Challenges
     - [ ] [Project Euler](https://projecteuler.net/archives)
@@ -142,8 +143,7 @@ searchbar: true
   - [ ] Mlab [1 &#x21F2;](https://forum.freecodecamp.org/t/guide-for-using-mongodb-and-deploying-to-heroku/19347)
   - [ ] Google Spreadsheet [1 &#x21F2;](https://medium.freecodecamp.org/get-sheet-done-using-google-spreadsheets-as-your-data-backend-650ba23dc6d9)
 
-- Marketing
-  - [ ] Motivations [1 &#x21F2;](http://jamesarcher.me/user-motivators)
+- Marketing [1 &#x21F2;](http://jamesarcher.me/user-motivators) [2 &#x21F2;](https://www.nngroup.com/articles/zigzag-page-layout/) [3 &#x21F2;](https://www.nngroup.com/articles/multi-tab-page-parking/)
 
 - Ressources utiles
   - [ ] Combinaisons de fonts [1 &#x21F2;](https://www.canva.com/font-combinations/?utm_content=buffer2eef7&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)

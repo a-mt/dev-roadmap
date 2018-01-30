@@ -319,7 +319,8 @@ La couleur de base doit être sélectionnée en gardant en tête que différente
 </table>
 
 [The Meaning of Color](https://www.smashingmagazine.com/2010/01/color-theory-for-designers-part-1-the-meaning-of-color/)  
-[How To Use The Power of Color in Your Branding](https://www.canva.com/learn/color-meanings-symbolism/)
+[How To Use The Power of Color in Your Branding](https://www.canva.com/learn/color-meanings-symbolism/)  
+[The History and Psychology of Colors](https://www.canva.com/learn/color-meanings/)
 
 ![](https://i.imgur.com/AgI31Sy.jpg)
 

@@ -102,12 +102,15 @@ searchbar: true
   - [x] [Encodages](encodages.md)
   - [x] [Opérations sur les bits](bitwise-operations.md)
   - [x] [Git](git.md)
-  - [ ] [SSH](ssh.md)
-  - [ ] [Sécurité](securite.md) [1 &#x21F2;](https://medium.freecodecamp.org/https-explained-with-carrier-pigeons-7029d2193351?utm_content=buffer1f715&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [2 &#x21F2;](https://medium.freecodecamp.org/openssl-command-cheatsheet-b441be1e8c4a) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec)
+  - [ ] [Sécurité](securite.md)
+    - [ ] [SSH](ssh.md)
+    - [ ] HTTPS [1 &#x21F2;](https://medium.freecodecamp.org/https-explained-with-carrier-pigeons-7029d2193351?utm_content=buffer1f715&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec)
+    - [ ] SSL [2 &#x21F2;](https://medium.freecodecamp.org/openssl-command-cheatsheet-b441be1e8c4a)
   - Méthodologie
     - [x] [Agile](agile.md)
     - [ ] 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
-  - [ ] Open Source [1 &#x21F2;](https://opensource.guide/)
+  - Projets Web
+    - [ ] Open Source [1 &#x21F2;](https://opensource.guide/)
     - [ ] Licences [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94) [2 &#x21F2;](https://spdx.org/licenses)
   - [ ] Blockchain [1 &#x21F2;](https://medium.freecodecamp.org/bitcoin-flipping-the-coin-a060df19d20d) [2 &#x21F2;](https://blockchaindemo.io/) [3 &#x21F2;](https://github.com/igorbarinov/awesome-blockchain) [4 &#x21F2;](https://medium.freecodecamp.org/how-does-bitcoin-work-i-built-an-app-to-show-you-f9fcd50bdd0d) [5 &#x21F2;](https://medium.freecodecamp.org/the-authoritative-guide-to-blockchain-development-855ab65b58bc)
   - [x] [Design](design.md)

@@ -4,9 +4,10 @@ category: Other
 ---
 
 Une regex, abbrégé de *Regular Expression* (en français : *expression régulière* ou *expression rationnelle*) est une syntaxe qui permet de tester si le contenu d'une chaîne de caractères contient ou correspond à un pattern (motif).
-Par exemple la regex `/. /` matche un caractère suivit d'un espace 
-- dans `"je suis un exemple"`, il y a 3 matchs : `"e "`, `"s "` et `"n "` (retourne vrai)
-- dans `"helloWorld"`, il y a 0 match (retourne faux)
+
+Cela permet de
+- valider des données: vérifier si le texte correspond au format d'un numéro de téléphone, email, mot de passe, url, ...
+- chercher des données: mots dans une phrase, caractères interdits, extraire des sections, remplacer/formatter du texte
 
 Les regex existent dans la plupart des langages mais la syntaxe et les fonctionnalités supportées varie d'un langage à l'autre.
 La syntaxe décrite ci-dessous est commune à la plupart des langages (PHP, JavaScript, Python, etc).

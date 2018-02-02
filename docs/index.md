@@ -25,6 +25,7 @@ searchbar: true
     - [ ] ES6 [1 &#x21F2;](https://blog.pragmatists.com/top-10-es6-features-by-example-80ac878794bb) [2 &#x21F2;](https://github.com/mbeaudru/modern-js-cheatsheet) [3 &#x21F2;](https://medium.com/@reasoncode/javascript-es6-exploring-the-new-built-in-methods-b62583b0a8e6) [4 &#x21F2;](https://github.com/jedrichards/es6)
     - [ ] Drag & drop [1 &#x21F2;](https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/)
     - [ ] Async/await [1 &#x21F2;](https://medium.freecodecamp.org/oh-yes-async-await-f54e5a079fc1) [2 &#x21F2;](https://www.toptal.com/javascript/asynchronous-javascript-async-await-tutorial)
+    - [ ] SSE [1 &#x21F2;](https://www.w3schools.com/html/html5_serversentevents.asp)
     - [ ] ES7 [1 &#x21F2;](https://medium.freecodecamp.org/ecmascript-2016-es7-features-86903c5cab70)
     - [ ] ES8 [1 &#x21F2;](https://medium.freecodecamp.org/es8-the-new-features-of-javascript-7506210a1a22) [2 &#x21F2;](https://hackernoon.com/es8-was-released-and-here-are-its-main-new-features-ee9c394adf66) [3 &#x21F2;](https://davidwalsh.name/es7-es8-features)
     - [ ] Proxy [1 &#x21F2;](https://medium.com/dailyjs/how-to-use-javascript-proxies-for-fun-and-profit-365579d4a9f8)

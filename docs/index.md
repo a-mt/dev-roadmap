@@ -4,7 +4,8 @@ searchbar: true
 
 - Front-End
   - [Web](web.md)
-  - [ ] HTML [1 &#x21F2;](https://bitsofco.de/whats-new-in-html-5-2/) [srcset &#x21F2;](https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433)
+  - [x] [HTML](html.md)
+    - [x] [Éléments HTML](html-elements.md)
     - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/)
     - [ ] [Accessibilité](accessibilite.md)
   - [x] [CSS](css.md)
@@ -32,6 +33,7 @@ searchbar: true
     - [ ] Observer pattern [1 &#x21F2;](https://pawelgrzybek.com/the-observer-pattern-in-javascript-explained/)
     - [ ] Tricks [1 &#x21F2;](https://medium.freecodecamp.org/high-performance-apps-multiplexing-debouncing-system-fonts-and-other-tricks-37c6fd3d7b2d) [2 &#x21F2;](https://air.ghost.io/js-things-i-never-knew-existed/)
     - [ ] Web Workers [1 &#x21F2;](https://medium.freecodecamp.org/how-web-workers-can-help-with-consistent-asynchronous-tasks-in-javascript-cd6d728fa4ee) 
+    - [ ] Canvas
     - Preprocesseurs
       - [ ] Typescript [1 &#x21F2;](https://auth0.com/blog/typescript-practical-introduction/)
     - [ ] Frameworks [1 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [2 &#x21F2;](https://www.npmjs.com/npm/the-state-of-javascript-frameworks-2017-part-3-back-end-frameworks?utm_content=buffer30d2a&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [3 &#x21F2;](https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/) [4 &#x21F2;](https://javascriptreport.com/the-ultimate-guide-to-javascript-frameworks/)

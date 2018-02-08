@@ -87,3 +87,10 @@ Commiter puis reprendre le processus normal
 ### Setter des variables d'environnement
 
     export MAVAR="valeur"
+
+---
+
+## Google
+
+* [Soumettre une nouvelle URL à Google](https://www.google.com/webmasters/tools/submit-url)
+* [Supprimer une URL qui n'existe plus](https://www.google.com/webmasters/tools/removals?pli=1)

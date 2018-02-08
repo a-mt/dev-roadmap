@@ -8,6 +8,7 @@ searchbar: true
     - [x] [Éléments HTML](html-elements.md)
     - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/)
     - [ ] [Accessibilité](accessibilite.md)
+    - [ ] SEO [1 &#x21F2;](https://support.google.com/webmasters/answer/7451184)
   - [x] [CSS](css.md)
     - [x] [Inclure du CSS](css-include.md)
     - [x] [Sélecteurs](css-selecteurs.md)

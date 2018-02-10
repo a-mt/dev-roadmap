@@ -64,6 +64,15 @@ Négation: les bits qui sont positionnés à 1 dans `a` sont positionnés à 0, 
 En programmation:  
 `~` permet d'inverser.
 
+`~~` est parfois utilisé comme substitut de `Math.floor`
+
+``` js
+~~'-1' = -1
+~~true = 1
+~~false = 0
+~~5.6 = 5
+```
+
 ---
 
 ## AND

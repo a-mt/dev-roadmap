@@ -193,7 +193,7 @@ window.onload = function(){
 ```
 
 Peut également importer des scripts externes, avec l'attribut `src`.  
-Les script peuvent être importés uniquement lorsque la page aura fini de charger en ajoutant l'attribut `defer`.  
+Les script peuvent être importés uniquement lorsque la page aura fini de charger en ajoutant l'attribut `defer="true"`.  
 Ou de manière asynchrone pendant le chargement de la page avec l'attribut `async`.
 
 ``` html
@@ -207,8 +207,9 @@ Ou de manière asynchrone pendant le chargement de la page avec l'attribut `asyn
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- End Google Analytics -->
-
 ```
+
+Placer les scripts en fin de page permet au navigateur de charger la page en premier. Une alternative est d'utiliser `defer`.
 
 ### noscript
 

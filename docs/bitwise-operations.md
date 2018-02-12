@@ -97,6 +97,17 @@ if(error_reporting() & E_NOTICE) {
 }
 ```
 
+`& 1` est parfois utilisé pour vérifier la parité d'un nombre
+
+``` php
+<?php
+if($n & 1) {
+    echo "ODD!";
+} else {
+    echo "EVEN!";
+}
+```
+
 ---
 
 ## OR
@@ -136,6 +147,19 @@ if($hasOption3) {
 } else {
    $opts = ($opts ^ UAG_OPTION3);  # Ajoute UAG_OPTIONS3
 }
+```
+
+`^` est parfois utilisé pour permuter deux variables sans utiliser d'emplacement mémoire supplémentaire
+
+``` php
+<?php
+$a = 11;
+$b = 22;
+
+$a = $a ^ $b;
+$b = $a ^ $b;
+$a = $a ^ $b;
+echo $a . " " . $b; // 22 11
 ```
 
 ---
@@ -196,3 +220,5 @@ listOptions(UAG_OPTION1);                             # 1..
 listOptions(UAG_OPTION1 | UAG_OPTION2);               # 11.
 listOptions(UAG_OPTION1 | UAG_OPTION2 | UAG_OPTION3); # 111
 ```
+
+

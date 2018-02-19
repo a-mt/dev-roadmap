@@ -165,3 +165,6 @@ searchbar: true
     - [ ] Js: [JsFiddle](https://jsfiddle.net/), [Codepen](http://codepen.io/)
 
 ![](https://i.imgur.com/FzRrYBw.png)
+
+![](https://www.x-cart.com/wp-content/uploads/2017/09/front-end-development-1024x749.png)
+![](https://www.x-cart.com/wp-content/uploads/2017/09/back-end-development-1024x749.png)

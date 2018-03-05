@@ -3,6 +3,11 @@
 
 @import "{{ site.theme }}";
 
+.task-list-item-checkbox {
+    position: relative;
+    left: -20px;
+}
+
 ul.breadcrumb {
     list-style: none;
     color: #bbb;

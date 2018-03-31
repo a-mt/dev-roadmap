@@ -228,6 +228,17 @@ NB Pour modifier un commit plus ancien que le dernier, il faut créer un nouveau
 
 ---
 
+### update-index
+
+Permet de modifier l'index du fichier dans git. Les modifications apportés sur l'index ne sont pas commités. Cette commande est particulièrement utile pour "geler" (freeze) le contenu de certains fichiers (que les modifications apportées au fichier soient ignorées par git), par exemple les fichiers de configuration.
+
+<table>
+<tr><th align="left">git update-index --assume-unchanged foo.rb</th><td>Gèle le fichier foo.rb</td></tr>
+<tr><th align="left">git update-index --no-assume-unchanged foo.rb</th><td>Degèle le fichier foo.rb</td></tr>
+</table>
+
+---
+
 ## Maintenir
 
 Quand ils versionnés, il est possible de récupérer les fichiers tels qu'ils étaient lors d'une ancienne version, de voir qui a fait des modifications et pourquoi.

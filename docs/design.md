@@ -106,8 +106,8 @@ Un **prototype** (ou intégration) c'est du code, généralement des fichiers ht
 
 ![](https://i.imgur.com/zcdHImr.png)
 
-[Créer une maquette avec Canva](https://www.canva.com/fr_fr/creer/maquette-wireframe-site-web/
-)  
+[Créer une maquette avec Gravit.io](https://designer.gravit.io/)  
+[Créer une maquette avec Canva](https://www.canva.com/fr_fr/creer/maquette-wireframe-site-web/)  
 [The Ideal Design Workflow](https://blog.prototypr.io/the-ideal-design-workflow-2c200b8e337d)
 
 ---

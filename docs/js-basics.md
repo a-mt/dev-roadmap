@@ -103,12 +103,12 @@ En EcmaScript5, il existe 5 types de données primitifs:
 - null
 - undefined
 
-Et deux types complexes:
+Et un type complexe:
 - Object
   * Array
+  * Function
   * Date
   * RegExp
-- Function
 
 ### typeof
 
@@ -215,20 +215,10 @@ Une variable déclarée mais non assignée a un type de donnée particulier, le 
 ### object
 
 Les objets peuvent être considérés comme des collections de clé/valeur.  
-On nomme *propriété* les variables d'un objet, on utilise un point pour y accéder: `someObject.someProperty`.  
-On nomme *méthode* les fonctions d'un objet, pour y accéder: `someObject.someMethod()`.
 
-Exemple: `{}`, `{key: "value"}`, `{key: "value", fonction: function(){ }}`
+Exemple: `{}`, `{key1: "value"}`, `{key1: "value", key2: function(){ }}`
 
-En JavaScript tout est objet dans une certaine mesure. 
-C'est à dire que tous les types de données disposent de propriétés et de méthodes, même les chaînes de caractères. 
-Ainsi pour récupérer la longueur d'une chaîne de caractère, on récupère la valeur de la propriété `length`:
-
-``` js
-console.log("Hello World".length);
-```
-
-Et il existe des sous-types de `object`: les tableaux, les fonctions, les regexp, les dates.
+Il existe des sous-types de `object`: les tableaux, les fonctions, les regexp, les dates...
 
 ---
 

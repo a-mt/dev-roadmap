@@ -539,6 +539,18 @@ var partialFunction = sum.bind(this, 1, 2);
 console.log(partialFunction(3)); // 6
 ```
 
+### Fonction pure
+
+Une fonction est dite *pure* quand elle suit quelques principes de bases:
+
+* les fonctions sont indépendantes de l'état du programme ou des variables globales.
+  Elles ne dépendent que des paramètres qui leur sont fournis pour effecteur leurs traitements.
+  Elles ne définissent ni ne modifient des variables globales.
+* les mêmes paramètres donnent toujours le même résultat  
+* tous les changements effectués sont minimisés et soigneusement contrôlés: par exemple une fonction pure triant un tableau renverra un nouveau tableau, trié, plutôt que d'effectuer le tri sur le tableau en entrée.
+
+La programmation fonctionnelle est une approche en informatique basée sur l'utilisation de fonctions pures.
+
 ### Callback Queue
 
 JavaScript est un langage single-thread. Cela signifie que le moteur JavaScript ne peut executer qu'un seul morceau de code à la fois. Cela a pour conséquence que lorsque JavaScript rencontre un morceau de code qui prend beaucoup de temps à traiter, le code situé après est bloqué - il ne peut pas être traité tant que le code qui le précède n'est pas fini.
@@ -861,6 +873,48 @@ flyMixin(Airplane.prototype);
 
 var boeing = new Airplane();
 console.log(boeing.fly()); // I'm flying
+```
+
+### Chainage
+
+*Chainer* des méthodes consiste à appeler des méthodes les unes après les autres sur le résultat de la précédente.
+
+<ins>Méthodes non chaînées</ins>:
+
+``` js
+monObjet.setName("Name");
+monObjet.setFirstName("FirstName");
+monObjet.print();
+``` 
+
+<ins>Méthodes chainées</ins>:
+
+``` js
+monObjet.setName("Name")
+        .setFirstName("FirstName")
+        .print();
+```
+
+Pour pouvoir chainer des méthodes de cette manière, chaque méthode doit retourner l'objet:
+
+``` js
+function Person() {
+    var _name      = "",
+        _firstName = "";
+
+    this.setName = function(name) {
+        _name = name;
+        return this;
+    }
+    this.setFirstName = function(firstName) {
+        _firstName = firstName;
+        return this;
+    }
+    this.print = function() {
+        console.log(_firstName + " " + _name);
+        return this;
+    }
+}
 ```
 
 ### toString

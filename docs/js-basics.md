@@ -144,7 +144,7 @@ console.log("" + 1 + 0); // "10"
 console.log("" - 1 + 0); // -1
 ```
 
-### String
+### string
 
 Le type de données `string` est utilisé pour stocker des données textuelles. C'est une suite de caractères sur 16 bits (unicode).  
 Les chaîne de caractère JavaScript sont immuables, c'est à dire qu'on ne peut pas modifier les caractères d'une chaîne de caractère, il est nécessaire d'en créer une nouvelle.
@@ -178,7 +178,7 @@ Une chaîne de caractères peut également être crée à partir du code UTF-16
 console.log(String.fromCharCode(104,101,108,108,111)); //"hello"
 ```
 
-### Number
+### number
 
 En JavaScript, tous les nombres sont stockés come dans flottants 64bits à virgule flottante. Il est donc inutile de se soucier de savoir si c'est un entier, un petit entier, un gros entier, un nombre décimal, etc.
 
@@ -196,23 +196,23 @@ console.log(1e10); // 10000000000
 
 Le type nombre possède trois valeur symboliques: `+Infinity`, `-Infinity` et `NaN` (Not a Number).
 
-### Boolean
+### boolean
 
 Une variable booléenne est une valeur qui ne peut avoir que deux valeurs: vrai ou faux. Un booléen est notamment le type de donnée retourné par une comparaison, il permet de tester des conditions.
 
 Exemple: `true`, `false`
 
-### Null
+### null
 
 Une variable de type null ne peut avoir qu'une seule valeur: `null`. La valeur `null` est utilisée pour indiquer l'absence de donnée - une donnée qui n'est pas renseignée ou qui n'est pas utilisée.
 
 Exemple: `null`
 
-### Undefined
+### undefined
 
 Une variable déclarée mais non assignée a un type de donnée particulier, le type `undefined`. A ne pas confondre avec null, laquelle est une valeur belle et bien définie.
 
-### Object
+### object
 
 Les objets peuvent être considérés comme des collections de clé/valeur.  
 On nomme *propriété* les variables d'un objet, on utilise un point pour y accéder: `someObject.someProperty`.  

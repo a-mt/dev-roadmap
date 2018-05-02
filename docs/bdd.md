@@ -78,8 +78,8 @@ Voir [MySQL](mysql.md) pour la description du langage SQL de MySQL.
 ### NoSQL
 
 NoSQL (Not Only SQL) est un terme assez vague qui désigne un ensemble de SGBD alternatifs qui cherchent à fournir soit
-- des modèles de données différents des modèles de données classiques en tables
-- des performances en extrêmes
+- des modèles de données différents des modèles de données classiques en tables (stocker et requêter des données au format JSON par exemple)
+- des performances extrêmes
 - un passage à l'échelle transparent qui permet de gérer de gigantesques volumes de données (de l'ordre du Tera ou Petaoctet).
 
 Pour permettre ces fonctionnalités, les bases de données NoSQL abandonnent une ou des propriétés des bases de données classiques et ne permettent pas les requêtes complexes des bases de données classiques.

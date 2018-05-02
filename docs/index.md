@@ -22,20 +22,31 @@ searchbar: true
       - [ ] Less
   - [ ] [JS](js.md) [1 &#x21F2;](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711) [2 &#x21F2;](http://www.aliasdmc.fr/coursjavas/) [3 &#x21F2;](https://medium.freecodecamp.org/the-definitive-javascript-handbook-for-a-developer-interview-44ffc6aeb54e) [4 &#x21F2;](https://blog.logrocket.com/interesting-ecmascript-2017-proposals-163b787cf27c)
     - [x] [Bases de JavaScript](js-basics.md)
-    - [x] [Objets, tableaux, fonctions](js-objects.md)
-    - [ ] AJAX
-    - [ ] JSONP
+    - [x] [Objets, tableaux, fonctions, POO](js-objects.md)
+    - [x] [Objets, modules et méthodes globales](js-global-objects.md)
+    - [ ] ES 2015
+      - [x] [Classe](js-class.md)
+      - [x] [Promesse](js-promise.md)
+      - [x] [Générateur](js-generator.md)
+      - [x] [Proxy](js-proxy.md)
+      - [ ] Module
+      - [ ] Nouveaux types d'objets
+    - [x] [ES 2016](js-es7.md)
+    - [x] [ES 2017](js-es8.md)
+    - [x] [ES 2018](js-es9.md)
+    - [x] [BOM](js-bom.md)
+    - [x] [DOM](js-dom.md)
+      - [ ] AJAX
+      - [ ] JSONP
     - [ ] ES6 [1 &#x21F2;](https://blog.pragmatists.com/top-10-es6-features-by-example-80ac878794bb) [2 &#x21F2;](https://github.com/mbeaudru/modern-js-cheatsheet) [3 &#x21F2;](https://medium.com/@reasoncode/javascript-es6-exploring-the-new-built-in-methods-b62583b0a8e6) [4 &#x21F2;](https://github.com/jedrichards/es6)
     - [ ] Drag & drop [1 &#x21F2;](https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/)
-    - [ ] Async/await [1 &#x21F2;](https://medium.freecodecamp.org/oh-yes-async-await-f54e5a079fc1) [2 &#x21F2;](https://www.toptal.com/javascript/asynchronous-javascript-async-await-tutorial)
+    - [ ] Design patterns [1 &#x21F2;](https://www.toptal.com/javascript/comprehensive-guide-javascript-design-patterns)
     - [ ] SSE [1 &#x21F2;](https://www.w3schools.com/html/html5_serversentevents.asp)
-    - [ ] ES7 [1 &#x21F2;](https://medium.freecodecamp.org/ecmascript-2016-es7-features-86903c5cab70)
-    - [ ] ES8 [1 &#x21F2;](https://medium.freecodecamp.org/es8-the-new-features-of-javascript-7506210a1a22) [2 &#x21F2;](https://hackernoon.com/es8-was-released-and-here-are-its-main-new-features-ee9c394adf66) [3 &#x21F2;](https://davidwalsh.name/es7-es8-features)
-    - [ ] Proxy [1 &#x21F2;](https://medium.com/dailyjs/how-to-use-javascript-proxies-for-fun-and-profit-365579d4a9f8)
     - [ ] Observer pattern [1 &#x21F2;](https://pawelgrzybek.com/the-observer-pattern-in-javascript-explained/)
     - [ ] Tricks [1 &#x21F2;](https://medium.freecodecamp.org/high-performance-apps-multiplexing-debouncing-system-fonts-and-other-tricks-37c6fd3d7b2d) [2 &#x21F2;](https://air.ghost.io/js-things-i-never-knew-existed/)
     - [ ] Web Workers [1 &#x21F2;](https://medium.freecodecamp.org/how-web-workers-can-help-with-consistent-asynchronous-tasks-in-javascript-cd6d728fa4ee) 
     - [ ] Canvas
+    - [ ] Testing [1 &#x21F2;](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3)
     - Preprocesseurs
       - [ ] Typescript [1 &#x21F2;](https://auth0.com/blog/typescript-practical-introduction/)
     - [ ] Frameworks [1 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [2 &#x21F2;](https://www.npmjs.com/npm/the-state-of-javascript-frameworks-2017-part-3-back-end-frameworks?utm_content=buffer30d2a&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [3 &#x21F2;](https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/) [4 &#x21F2;](https://javascriptreport.com/the-ultimate-guide-to-javascript-frameworks/)
@@ -48,7 +59,7 @@ searchbar: true
       - [ ] Jquery [1 &#x21F2;](https://remysharp.com/2017/12/15/is-jquery-still-relevant)
 
 - Back-End
-  - Programming langage
+  - Programming langages
     - [ ] PHP
       - [x] [Composer](composer.md)
     - [ ] Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
@@ -65,6 +76,8 @@ searchbar: true
     - [x] [MySQL](mysql.md)
     - [ ] NoSQL
     - [ ] [ElasticSearch](elasticsearch.md)
+
+- Other
   - Data formatting
     - [x] [JSON](json.md)
     - [x] [YAML](yaml.md)
@@ -77,7 +90,12 @@ searchbar: true
     - [ ] Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html)
     - [ ] Grunt
     - [ ] Gulp
-    - [ ] Webpack
+    - [ ] Webpack [1 &#x21F2;](https://blog.vanila.io/webpack-what-is-it-and-is-it-better-than-gulp-375db8011d22)
+  - Document formatting 
+    - [x] [Markdown](gfm.md)
+    - [ ] reStructuredText [1 &#x21F2;](http://docutils.sourceforge.net/docs/user/rst/cheatsheet.txt)
+    - [x] [Latex](latex.md)
+    - [ ] Textile
 
 - Linux
   - [x] [Installer](linux-install.md)
@@ -94,7 +112,7 @@ searchbar: true
   - [ ] Bash Script
     - [x] [Conditions](conditions-shell.md)
 
-- Divers
+- Culture générale
   - [x] [Raccourcis édition de texte](text-editing.md)
   - [x] [Regex](regex.md)
   - Code Versionning
@@ -103,11 +121,6 @@ searchbar: true
     - [x] [Github](github.md) [1 &#x21F2;](https://medium.freecodecamp.org/manage-multiple-github-accounts-the-ssh-way-2dadc30ccaca)
     - [ ] Open Source [1 &#x21F2;](https://opensource.guide/) [2 &#x21F2;](https://github.com/Roshanjossey/first-contributions)
     - [ ] Licences [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94) [2 &#x21F2;](https://spdx.org/licenses)
-  - Document formatting 
-    - [x] [Markdown](gfm.md)
-    - [ ] reStructuredText [1 &#x21F2;](http://docutils.sourceforge.net/docs/user/rst/cheatsheet.txt)
-    - [x] [Latex](latex.md)
-    - [ ] Textile
   - CS [1 &#x21F2;](https://medium.freecodecamp.org/the-quick-guide-to-the-way-computers-work-for-desperate-new-coders-fcdb34cbe8a9)
     - [x] [Encodages](encodages.md)
     - [x] [Opérations sur les bits](bitwise-operations.md)
@@ -119,7 +132,9 @@ searchbar: true
   - Méthodologie
     - [x] [Agile](agile.md)
     - [ ] 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
+  - DevTools [1 &#x21F2;](https://www.smashingmagazine.com/2018/02/javascript-firefox-debugger/)
 
+- Misc
   - [ ] Blockchain [1 &#x21F2;](https://medium.freecodecamp.org/bitcoin-flipping-the-coin-a060df19d20d) [2 &#x21F2;](https://blockchaindemo.io/) [3 &#x21F2;](https://github.com/igorbarinov/awesome-blockchain) [4 &#x21F2;](https://medium.freecodecamp.org/how-does-bitcoin-work-i-built-an-app-to-show-you-f9fcd50bdd0d) [5 &#x21F2;](https://medium.freecodecamp.org/the-authoritative-guide-to-blockchain-development-855ab65b58bc) [6 &#x21F2;](https://medium.freecodecamp.org/why-blockchain-is-here-to-stay-and-bitcoin-might-not-be-e117c4386af7)
 
   - [x] [Design](design.md)
@@ -129,14 +144,13 @@ searchbar: true
     - [x] [Compositions: layout](design-layout.md)
     - [x] [Images](design-image.md)
 
-- Algorithms
+  - Marketing [1 &#x21F2;](http://jamesarcher.me/user-motivators) [2 &#x21F2;](https://www.nngroup.com/articles/zigzag-page-layout/) [3 &#x21F2;](https://www.nngroup.com/articles/multi-tab-page-parking/)
+    - [ ] Google Analytics [1 &#x21F2;](https://medium.freecodecamp.org/how-and-why-to-get-started-with-google-analytics-153dc35b7812)
+
   - [ ] Machine Learning [0 &#x21F2;](https://medium.freecodecamp.org/you-need-these-cheat-sheets-if-youre-tackling-machine-learning-algorithms-45da5743888e) [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5) [4 &#x21F2;](https://blog.statsbot.co/deep-learning-achievements-4c563e034257) [5 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [6 &#x21F2;](https://medium.freecodecamp.org/build-a-flexible-neural-network-with-backpropagation-in-python-acffeb7846d0) [7 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [8 &#x21F2;](https://medium.freecodecamp.org/how-to-deploy-an-object-detection-model-with-tensorflow-serving-d6436e65d1d9) [9 &#x21F2;](https://medium.freecodecamp.org/making-your-own-face-recognition-system-29a8e728107c) [10 &#x21F2;](https://twitter.com/fchollet/status/951828914103402497) [11 &#x21F2;](https://twitter.com/jacswork/status/957924537013764096) [12 &#x21F2;](https://twitter.com/EmilWallner/status/956755831059464203) [13 &#x21F2;](https://twitter.com/EmilWallner/status/950246690044481537) [14 &#x21F2;](https://machinelearningmastery.com/crash-course-deep-learning-natural-language-processing/)
     - Synaptic.js [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-a-neural-network-in-javascript-in-only-30-lines-of-code-343dafc50d49)
-  - [ ] Challenges
-    - [ ] [Project Euler](https://projecteuler.net/archives)
-    - [ ] [Codefights](http://codefights.com/)
 
-- Web development environments
+- Webdev Environments
   - [x] [Où héberger](hosting.md)
   - [x] [Workflow de dev](dev-workflow.md)
   - [ ] Workflow de prod [1 &#x21F2;](https://medium.freecodecamp.org/how-to-make-your-startups-cloud-more-stable-4-practical-devops-tips-823e4202518c)
@@ -145,29 +159,34 @@ searchbar: true
   - [ ] Codepen
   - [ ] c9
   - [ ] Heroku [1 &#x21F2;](https://www.sitepoint.com/how-to-deploy-node-applications-heroku-vs-now-sh/)
+  - [ ] Firebase [1 &#x21F2;](https://medium.freecodecamp.org/how-to-get-started-using-firebase-hosting-439d4bd45cb6)
   - [ ] WAMP/LAMP
+  - [ ] Nginx [1 &#x21F2;](https://medium.freecodecamp.org/an-introduction-to-nginx-for-developers-62179b6a458f)
   - [ ] Amazon [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-your-first-safe-server-ready-for-production-f1cc60eec69a)
   - [ ] CaptainDuckDuck [1 &#x21F2;](https://medium.freecodecamp.org/how-i-cut-my-heroku-cost-by-400-5b9d0220ce13)
   - [ ] Google Business [1 &#x21F2;](https://www.gybo.com/lessons)
 
-- Online Databases
-  - [ ] Mlab [1 &#x21F2;](https://forum.freecodecamp.org/t/guide-for-using-mongodb-and-deploying-to-heroku/19347)
-  - [ ] Google Spreadsheet [1 &#x21F2;](https://medium.freecodecamp.org/get-sheet-done-using-google-spreadsheets-as-your-data-backend-650ba23dc6d9)
+- Useful Websites
+  - Challenges
+    - [Project Euler](https://projecteuler.net/archives)
+    - [Codefights](http://codefights.com/)
+    - [Hackerrank](http://hackerrank.com/)
+  - Databases
+    - Mlab [1 &#x21F2;](https://forum.freecodecamp.org/t/guide-for-using-mongodb-and-deploying-to-heroku/19347)
+    - Google Spreadsheet [1 &#x21F2;](https://medium.freecodecamp.org/get-sheet-done-using-google-spreadsheets-as-your-data-backend-650ba23dc6d9)
+  - Fiddles [1 &#x21F2;](https://fiddles.io/)
+    - SQL: [SQLFiddle](http://sqlfiddle.com/)
+    - R: [RFiddle](http://www.r-fiddle.org/#/)
+    - Js: [JsFiddle](https://jsfiddle.net/), [Codepen](http://codepen.io/)
+  - Wireframing
+    - [Gravit](https://designer.gravit.io/)
 
-- Marketing [1 &#x21F2;](http://jamesarcher.me/user-motivators) [2 &#x21F2;](https://www.nngroup.com/articles/zigzag-page-layout/) [3 &#x21F2;](https://www.nngroup.com/articles/multi-tab-page-parking/)
-
-- Ressources utiles
-  - [ ] Combinaisons de fonts [1 &#x21F2;](https://www.canva.com/font-combinations/?utm_content=buffer2eef7&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
-  - [ ] Palettes de couleurs [1 &#x21F2;](https://www.canva.com/colors/combinations/?s=spearmint)
-  - [ ] Fonts futuristes [1 &#x21F2;](https://www.canva.com/learn/futuristic-fonts/?utm_content=buffer3050a&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
-  - [ ] Fonts contemporaines [1 &#x21F2;](https://www.canva.com/learn/modern-fonts/?utm_source=twitter&utm_medium=social&utm_campaign=DesignSchool)
-  - [ ] Images libres et gratuites [1 &#x21F2;](https://medium.com/@danielal007/25-badass-sites-with-free-stock-photos-653f2b16d05b)
-  - [ ] Icones libres [1 &#x21F2;](https://www.canva.com/learn/free-icons-download/?utm_content=bufferd0915&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
-  - [ ] Listes de données (pays, adresses, etc...) [1 &#x21F2;](https://www.lists.design/)
-  - [ ] Fiddles [1 &#x21F2;](https://fiddles.io/)
-    - [ ] SQL: [SQLFiddle](http://sqlfiddle.com/)
-    - [ ] R: [RFiddle](http://www.r-fiddle.org/#/)
-    - [ ] Js: [JsFiddle](https://jsfiddle.net/), [Codepen](http://codepen.io/)
+- Useful Datas
+  - Combinaisons de fonts [1 &#x21F2;](https://www.canva.com/font-combinations/?utm_content=buffer2eef7&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+  - Palettes de couleurs [1 &#x21F2;](https://www.canva.com/colors/combinations/?s=spearmint)
+  - Images libres et gratuites [1 &#x21F2;](https://medium.com/@danielal007/25-badass-sites-with-free-stock-photos-653f2b16d05b)
+  - Icones libres [1 &#x21F2;](https://www.canva.com/learn/free-icons-download/?utm_content=bufferd0915&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+  - Listes de données (pays, adresses, etc...) [1 &#x21F2;](https://www.lists.design/)
 
 ![](https://i.imgur.com/FzRrYBw.png)
 

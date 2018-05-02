@@ -22,9 +22,9 @@ searchbar: true
       - [ ] Less
   - [ ] [JS](js.md) [1 &#x21F2;](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711) [2 &#x21F2;](http://www.aliasdmc.fr/coursjavas/) [3 &#x21F2;](https://medium.freecodecamp.org/the-definitive-javascript-handbook-for-a-developer-interview-44ffc6aeb54e) [4 &#x21F2;](https://blog.logrocket.com/interesting-ecmascript-2017-proposals-163b787cf27c)
     - [x] [Bases de JavaScript](js-basics.md)
+    - [x] [Objets, tableaux, fonctions](js-objects.md)
     - [ ] AJAX
     - [ ] JSONP
-    - [ ] History of JavaScript [1 &#x21F2;](https://medium.freecodecamp.org/ecmascript-tc39-and-the-history-of-javascript-26067498feb9) [2 &#x21F2;](https://closebrace.com/articles/2017-09-11/a-brief-incomplete-history-of-javascript)
     - [ ] ES6 [1 &#x21F2;](https://blog.pragmatists.com/top-10-es6-features-by-example-80ac878794bb) [2 &#x21F2;](https://github.com/mbeaudru/modern-js-cheatsheet) [3 &#x21F2;](https://medium.com/@reasoncode/javascript-es6-exploring-the-new-built-in-methods-b62583b0a8e6) [4 &#x21F2;](https://github.com/jedrichards/es6)
     - [ ] Drag & drop [1 &#x21F2;](https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/)
     - [ ] Async/await [1 &#x21F2;](https://medium.freecodecamp.org/oh-yes-async-await-f54e5a079fc1) [2 &#x21F2;](https://www.toptal.com/javascript/asynchronous-javascript-async-await-tutorial)

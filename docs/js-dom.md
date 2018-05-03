@@ -87,6 +87,17 @@ for(var i=0; i<elements.length; i++) {
 
 </table>
 
+L'accès au DOM est très lent par rapport aux autres instructions JavaScript.  
+Si vous prévoyez d'accéder à un même élément à de multiples reprises, mieux le sélectionner une seule fois en l'assignant à une variable locale, puis utiliser l'élément en mémoire pour effectuer des modifications.
+
+``` js
+var element = document.getElementById("myid"),
+    url     = element.getAttribute('data-url');
+
+element.setAttribute('src', url);
+element.removeAttribute('data-url');
+```
+
 ---
 
 ## Modifier des éléments
@@ -206,6 +217,8 @@ newParent.appendChild(element);
 ---
 
 ## Utiliser les événements
+
+Les évènements sont des états déclenchés lorsqu'une action est effectuée ou, de manière plus générale, quelque chose se produit: un clic, le passage de la souris sur l'élément, du texte écrit, un élément qui se charge, etc. 
 
 ### Écouter un événement
 

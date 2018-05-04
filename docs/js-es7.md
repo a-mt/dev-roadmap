@@ -7,7 +7,7 @@ ECMAScript 7 ou ECMAScript 2016 a été publié fin Juin 2016 par le TC39.
 
 ## Tableau
 
-### includes
+### includes()
 
 `includes` permet de vérifier si une valeur est à l'intérieur d'un tableau, un peu à la manière de `indexOf` (sauf pour la gestion de NaN).
 

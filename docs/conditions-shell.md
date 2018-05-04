@@ -3,8 +3,7 @@ title: Conditions
 category: Linux > Bash Script
 ---
 
-
-## Syntaxe if
+## Conditions
 
 L'allure générale du `if` est comme suit :
 
@@ -18,7 +17,7 @@ else
 fi
 ```
 
-### Booléen: if condition
+### if condition
 
 `if condition` permet de tester un booléen.
 
@@ -30,7 +29,7 @@ if $b; then
 fi
 ```
 
-### Expression booléenne: if [ condition ]
+### if [ condition ]
 
 `if [ condition ]` permet de tester une expression booléenne.
 
@@ -46,7 +45,7 @@ else
 fi
 ```
 
-### Expression booléenne étendue: if [[ condition ]]
+### if [[ condition ]]
 
 `if [[ condition ]]` est une extension de ksh des expressions booléennes qui ajoute des fonctionnalités, comme le test de Regex.
 Également supportée par bash et zsh.
@@ -59,9 +58,9 @@ if [[ $str =~ ^Hello ]]; then
 fi
 ```
 
-### Expression mathématique: if (( condition ))
+### if (( condition ))
 
-`if (( condition ))` permet de tester une égalité mathématique. 
+`if (( condition ))` permet de tester une expression mathématique. 
 Supporté par ksh, bash et zsh.
 
 ``` shell
@@ -75,9 +74,10 @@ else
 fi
 ```
 
-### Exit code: if ( condition )
+### if ( condition )
 
-`if ( condition )` execute la commande dans un sous-shell et vérifie le code de sortie.
+`if ( condition )` permet de tester le résultat d'une commande.
+Cette instruction execute la commande dans un sous-shell puis vérifie le code de sortie.
 
 ``` shell
 if ( mkdir test 2>/dev/null ); then
@@ -87,7 +87,50 @@ fi
 
 ---
 
-## Combiner des expressions
+## Condition ternaire
+
+Pour une chaîne de caractère:
+
+``` shell
+a=$([ "$b" == 5 ] && echo "$c" || echo "$d")
+```
+
+Pour un nombre:
+
+``` shell
+(( a = b==5 ? c : d ))
+```
+
+ou
+
+``` shell
+a=$(( b==5 ? c : d ))
+```
+
+---
+
+## Switch
+
+``` shell
+case $1 in
+  "Chien" | "Chat" | "Souris")
+    echo "C'est un mammifère"
+    ;;
+  "Moineau" | "Pigeon")
+    echo "C'est un oiseau"
+    ;;
+  "Bob")
+    echo "C'est Bob"
+    ;;
+  *)
+    echo "Je ne sais pas ce que c'est"
+    ;;
+esac
+```
+
+---
+
+## Opérateurs booléens
 
 ### ET
 
@@ -115,7 +158,7 @@ fi
 
 ---
 
-## Expressions booléennes
+## Tests
 
 ### Chaînes de caractère
 
@@ -164,51 +207,3 @@ fi
 <tr><th align="left">[ e1 -o e2 ]</th><td>Ou</td></tr>
 </table>
 
----
-
-## Syntaxe ternaire
-
-### Chaînes de caractères
-
-``` shell
-a=$([ "$b" == 5 ] && echo "$c" || echo "$d")
-```
-
-### Nombres
-
-``` shell
-(( a = b==5 ? c : d ))
-```
-
-ou
-
-``` shell
-a=$(( b==5 ? c : d ))
-```
-
-### Exit code
-
-``` shell
-mkdir tmp 2>/dev/null && echo "Done" || echo "Not Done"
-```
-
----
-
-## Syntaxe case
-
-``` shell
-case $1 in
-  "Chien" | "Chat" | "Souris")
-    echo "C'est un mammifère"
-    ;;
-  "Moineau" | "Pigeon")
-    echo "C'est un oiseau"
-    ;;
-  "Bob")
-    echo "C'est Bob"
-    ;;
-  *)
-    echo "Je ne sais pas ce que c'est"
-    ;;
-esac
-```

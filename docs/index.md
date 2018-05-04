@@ -25,10 +25,10 @@ searchbar: true
     - [x] [Objets, tableaux, fonctions, POO](js-objects.md)
     - [x] [Objets, modules et méthodes globales](js-global-objects.md)
     - [ ] ES 2015
-      - [x] [Classe](js-class.md)
-      - [x] [Promesse](js-promise.md)
-      - [x] [Générateur](js-generator.md)
-      - [x] [Proxy](js-proxy.md)
+      - [x] [Classe](js-es6-class.md)
+      - [x] [Promesse](js-es6-promise.md)
+      - [x] [Générateur](js-es6-generator.md)
+      - [x] [Proxy](js-es6-proxy.md)
       - [ ] Module
       - [ ] Nouveaux types d'objets
     - [x] [ES 2016](js-es7.md)

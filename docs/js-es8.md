@@ -7,7 +7,7 @@ ECMAScript 8 ou ECMAScript 2017 a été publié fin Juin 2017 par le TC39.
 
 ## Objet
 
-### Object.values
+### Object.values()
 
 Retourne un tableau contenant toutes les valeurs du tableau
 
@@ -22,7 +22,7 @@ const countries = {
 Object.values(countries); // ['Brazil', 'Germany', 'Romania', 'United States of America']
 ```
 
-### Object.entries
+### Object.entries()
 
 Retourne un tableau contenant toutes les paires clés/valeurs du tableau
 
@@ -39,9 +39,9 @@ Object.entries(countries);
 // [['BR', 'Brazil'], ['DE', 'Germany'], ['RO', 'Romania'], ['US','United States of America']]
 ```
 
-### Object.getOwnPropertyDescriptors
+### Object.getOwnPropertyDescriptors()
 
-Retourne toutes les propriétés de l'objet et leur attributs. Les attributs possibls sont: `value`, `writable`, `get`, `set`, `configurable` et `enumerable`.
+Retourne toutes les propriétés de l'objet et leur attributs. Les attributs possibles sont: `value`, `writable`, `get`, `set`, `configurable` et `enumerable`.
 
 ``` js
 const obj = {
@@ -81,7 +81,7 @@ objTarget.greet = 'World'; // Hello World
 
 ## Chaîne de caractères
 
-### padStart, padEnd
+### padStart(), padEnd()
 
 Permet d'ajouter un padding au début ou à la fin
 
@@ -244,7 +244,7 @@ Pour executer les promesses en mêmes temps:
 
 ## Promesses
 
-### Promise.all
+### Promise.all()
 
 `Promise.all` permet d'executer plusieurs promesses en parallèle (de manière concurrente) et de n'executer le callback qu'une fois toutes les promesses réalisées.
 

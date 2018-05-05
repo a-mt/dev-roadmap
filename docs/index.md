@@ -29,7 +29,7 @@ searchbar: true
       - [x] [Promesse](js-es6-promise.md)
       - [x] [Générateur](js-es6-generator.md)
       - [x] [Proxy](js-es6-proxy.md)
-      - [ ] Module
+      - [x] [Module](js-es6-module.md)
       - [ ] Nouveaux types d'objets
     - [x] [ES 2016](js-es7.md)
     - [x] [ES 2017](js-es8.md)

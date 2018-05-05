@@ -6,9 +6,8 @@ searchbar: true
   - [Web](web.md)
   - [x] [HTML](html.md)
     - [x] [Éléments HTML](html-elements.md)
-    - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/) [2 &#x21F2;](https://webdesign.tutsplus.com/tutorials/how-to-hand-code-svg--cms-30368)
     - [ ] [Accessibilité](accessibilite.md)
-    - [ ] SEO [1 &#x21F2;](https://support.google.com/webmasters/answer/7451184)
+    - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/) [2 &#x21F2;](https://webdesign.tutsplus.com/tutorials/how-to-hand-code-svg--cms-30368)
   - [x] [CSS](css.md)
     - [x] [Inclure du CSS](css-include.md)
     - [x] [Sélecteurs](css-selecteurs.md)
@@ -154,6 +153,7 @@ searchbar: true
 
   - Marketing [1 &#x21F2;](http://jamesarcher.me/user-motivators) [2 &#x21F2;](https://www.nngroup.com/articles/zigzag-page-layout/) [3 &#x21F2;](https://www.nngroup.com/articles/multi-tab-page-parking/)
     - [ ] Google Analytics [1 &#x21F2;](https://medium.freecodecamp.org/how-and-why-to-get-started-with-google-analytics-153dc35b7812)
+    - [ ] SEO [1 &#x21F2;](https://support.google.com/webmasters/answer/7451184)
 
   - [ ] Machine Learning [0 &#x21F2;](https://medium.freecodecamp.org/you-need-these-cheat-sheets-if-youre-tackling-machine-learning-algorithms-45da5743888e) [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5) [4 &#x21F2;](https://blog.statsbot.co/deep-learning-achievements-4c563e034257) [5 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [6 &#x21F2;](https://medium.freecodecamp.org/build-a-flexible-neural-network-with-backpropagation-in-python-acffeb7846d0) [7 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [8 &#x21F2;](https://medium.freecodecamp.org/how-to-deploy-an-object-detection-model-with-tensorflow-serving-d6436e65d1d9) [9 &#x21F2;](https://medium.freecodecamp.org/making-your-own-face-recognition-system-29a8e728107c) [10 &#x21F2;](https://twitter.com/fchollet/status/951828914103402497) [11 &#x21F2;](https://twitter.com/jacswork/status/957924537013764096) [12 &#x21F2;](https://twitter.com/EmilWallner/status/956755831059464203) [13 &#x21F2;](https://twitter.com/EmilWallner/status/950246690044481537) [14 &#x21F2;](https://machinelearningmastery.com/crash-course-deep-learning-natural-language-processing/)
     - Synaptic.js [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-a-neural-network-in-javascript-in-only-30-lines-of-code-343dafc50d49)

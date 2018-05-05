@@ -27,6 +27,32 @@ const person = {
 };
 ```
 
+## Propriétés
+
+Lorsque des propriétés sont ajoutées à partir de variables et qu'elles ont le même nom que la variable, alors il existe une version abbrégée.
+
+<ins>ES5</ins>:
+
+``` js
+obj = {a: a, b: b};
+```
+
+<ins>ES6</ins>:
+
+``` js
+obj = {a, b};
+```
+
+Exemple complet:
+
+``` js
+var a   = 'foo',
+    b   = 'bar',
+    obj = {a, b};
+
+console.log(obj); // {a: 'foo', b: 'bar'}
+```
+
 ## Nom dynamique
 
 Des noms de propriétés dynamiques peuvent être utilisées lors de la création d'objets.

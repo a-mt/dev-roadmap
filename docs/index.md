@@ -34,6 +34,7 @@ searchbar: true
     - [x] [ES 2016](js-es7.md)
     - [x] [ES 2017](js-es8.md)
     - [x] [ES 2018](js-es9.md)
+      - [x] [Async & await](js-async-await.md)
     - [x] [BOM](js-bom.md)
     - [x] [DOM](js-dom.md)
       - [ ] AJAX

@@ -107,3 +107,21 @@ for(var val of foo()) {
   console.log(val); // a b c d e
 }
 ```
+
+## Itérateur
+
+Un objet peut être rendu itérable s'il implémente une méthode `@@Symbol.iterator`.
+
+``` js
+var iterable = {
+  *[Symbol.iterator]() {
+    yield "a";
+    yield "b";
+    yield "c";
+  }
+}
+
+for(var val of iterable) {
+  console.log(val); // a b c
+}
+```

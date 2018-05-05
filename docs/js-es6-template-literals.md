@@ -59,3 +59,15 @@ function format(parts, ...replacements) {
   return (h < 18 ? "Bonjour! " : "Bonsoir! ") + str;
 }
 ```
+
+## String.raw
+
+La fonction `String.raw` peut être utilisée comme tag pour obtenir le résultat de l'interpolation du template literals sans que les caractères spéciaux soient pris en compte.
+
+``` js
+`Hi\t${2+3}!`; // "Hi	5!"
+
+String.raw`Hi\t${2+3}!`; // "Hi\\t5!"
+```
+
+

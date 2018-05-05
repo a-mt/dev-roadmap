@@ -37,7 +37,7 @@ searchbar: true
       - [x] [Proxy](js-es6-proxy.md)
       - [x] [Module](js-es6-module.md)
       - [x] [Map, Set, WeakMap, WeakSet](js-es6-map-set.md)
-      - [ ] Tableaux typés
+      - [x] [Tableaux typés](js-es6-typedarray.md)
     - [x] [ES 2016](js-es7.md)
     - [x] [ES 2017](js-es8.md)
     - [x] [ES 2018](js-es9.md)

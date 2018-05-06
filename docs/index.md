@@ -23,7 +23,7 @@ searchbar: true
     - [x] [Bases de JavaScript](js-basics.md)
     - [x] [Objets, tableaux, fonctions, POO](js-objects.md)
     - [x] [Objets, modules et méthodes globales](js-global-objects.md)
-    - [ ] ES 2015
+    - [x] [ES 2015](js-es.md)
       - [x] [Nouvelles méthodes](js-es6-methods.md)
       - [x] [Let, const](js-es6-let-const.md)
       - [x] [Rest & Spread (...)](js-es6-rest-spread.md)
@@ -39,6 +39,7 @@ searchbar: true
       - [x] [Module](js-es6-module.md)
       - [x] [Map, Set, WeakMap, WeakSet](js-es6-map-set.md)
       - [x] [Tableaux typés](js-es6-typedarray.md)
+      - [ ] Reflect
     - [x] [ES 2016](js-es7.md)
     - [x] [ES 2017](js-es8.md)
     - [x] [ES 2018](js-es9.md)
@@ -47,7 +48,6 @@ searchbar: true
     - [x] [DOM](js-dom.md)
       - [ ] AJAX
       - [ ] JSONP
-    - [ ] ES6 [1 &#x21F2;](https://blog.pragmatists.com/top-10-es6-features-by-example-80ac878794bb) [2 &#x21F2;](https://github.com/mbeaudru/modern-js-cheatsheet) [3 &#x21F2;](https://medium.com/@reasoncode/javascript-es6-exploring-the-new-built-in-methods-b62583b0a8e6) [4 &#x21F2;](https://github.com/jedrichards/es6)
     - [ ] Drag & drop [1 &#x21F2;](https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/)
     - [ ] Design patterns [1 &#x21F2;](https://www.toptal.com/javascript/comprehensive-guide-javascript-design-patterns)
     - [ ] SSE [1 &#x21F2;](https://www.w3schools.com/html/html5_serversentevents.asp)

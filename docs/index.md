@@ -24,9 +24,10 @@ searchbar: true
     - [x] [Objets, tableaux, fonctions, POO](js-objects.md)
     - [x] [Objets, modules et méthodes globales](js-global-objects.md)
     - [ ] ES 2015
+      - [x] [Nouvelles méthodes](js-es6-methods.md)
       - [x] [Let, const](js-es6-let-const.md)
       - [x] [Rest & Spread (...)](js-es6-rest-spread.md)
-      - [x] [Fonction flèche](js-es6-arrow-function.md)
+      - [x] [Fonction flèche, paramètres par défaut](js-es6-function-syntax.md)
       - [x] [Destructuration](js-es6-destructuration.md)
       - [x] [Template litterals](js-es6-template-literals.md)
       - [x] [Syntaxe concise pour les objets](js-es6-objet-concis.md)

@@ -20,9 +20,12 @@ searchbar: true
       - [x] [Sass](sass.md)
       - [ ] Less
   - [ ] [JS](js.md) [1 &#x21F2;](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711) [2 &#x21F2;](http://www.aliasdmc.fr/coursjavas/) [3 &#x21F2;](https://medium.freecodecamp.org/the-definitive-javascript-handbook-for-a-developer-interview-44ffc6aeb54e) [4 &#x21F2;](https://blog.logrocket.com/interesting-ecmascript-2017-proposals-163b787cf27c)
-    - [x] [Bases de JavaScript](js-basics.md)
-    - [x] [Objets, tableaux, fonctions, POO](js-objects.md)
-    - [x] [Objets, modules et méthodes globales](js-global-objects.md)
+    - [ ] ES < 2015
+      - [x] [Bases de JavaScript](js-basics.md)
+      - [x] [Objets, tableaux, fonctions, POO](js-objects.md)
+      - [x] [Objets, modules et méthodes globales](js-global-objects.md)
+      - [ ] Méthodes natives
+        - [x] [Chaînes de caractères](js-es5-methods-string.md)
     - [x] [ES 2015](js-es.md)
       - [x] [Nouvelles méthodes](js-es6-methods.md)
       - [x] [Let, const](js-es6-let-const.md)

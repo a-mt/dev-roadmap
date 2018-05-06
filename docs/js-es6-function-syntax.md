@@ -1,9 +1,9 @@
 ---
-title: Fonction flèche
+title: Nouvelle syntaxe pour les fonctions
 category: Web, JavaScript, ES6
 ---
 
-## Qu'est-ce que c'est
+## Fonction flèche
 
 En JavaScript, les fonctions anonymes sont fréquemment utilisées. La fonction flèche (arrow function) est
 
@@ -53,7 +53,7 @@ En JavaScript, les fonctions anonymes sont fréquemment utilisées. La fonction 
     var user = new Person('Bob', 20);
     ```
 
-## Omettre return
+### Omettre return
 
 Lorsque la fonction ne fait que retourner une valeur, on peut omettre les accolades et le mot-clé `return`.
 
@@ -76,7 +76,7 @@ Attention pour retourner un objet, afin que les accolades de l'objet ne soit pas
 var someObject = () => ({msg: "hello"});
 ```
 
-## Omettre les parenthèses
+### Omettre les parenthèses
 
 Dans un callback, si un seul paramètre est attendu, alors les parenthèses autour du paramètre peuvent être omises.
 
@@ -92,3 +92,29 @@ Dans un callback, si un seul paramètre est attendu, alors les parenthèses auto
 [1,2,3].map(n => ({value: n})); // {value:1}, {value:2}, {value:3}
 ```
 
+---
+
+## Paramètres par défaut
+
+ES6 introduit les paramètres par défaut. Lorsqu'un paramètre est omis, la valeur par défaut est utilisée.
+
+``` js
+function hello(name = "Anonymous") {
+    return "Hello " + name;
+}
+console.log(hello());       // Hello Anonymous
+console.log(hello("John")); // Hello John
+console.log(hello(null));   // Hello null
+```
+
+La valeur par défaut peut être le résultat d'un appel de fonction
+
+``` js
+function getCallback () {
+  return () => {};
+}
+
+function f(callback=getCallback()) {
+  console.log(callback);
+}
+```

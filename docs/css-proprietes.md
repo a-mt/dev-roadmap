@@ -210,6 +210,8 @@ nav li:not(:first-child)::before {
 }
 ```
 
+---
+
 ### Box model
 
 [Box Model](css-prop-box-model.md)
@@ -246,7 +248,7 @@ nav li:not(:first-child)::before {
 
 ---
 
-## Texte
+### Texte
 
 [Texte](css-prop-texte.md)
 * color
@@ -263,7 +265,7 @@ nav li:not(:first-child)::before {
 
 ---
 
-## Police d'écriture
+### Police d'écriture
 
 [Police d'écriture](css-prop-font.md)
 * font
@@ -275,7 +277,7 @@ nav li:not(:first-child)::before {
 
 ---
 
-## Orientation
+### Orientation
 
 [Orientation](css-prop-orientation.md)
 * writing-mode
@@ -293,7 +295,7 @@ nav li:not(:first-child)::before {
 
 ---
 
-## Table
+### Table
 
 [Table](css-prop-table.md)
 * table-layout
@@ -304,7 +306,7 @@ nav li:not(:first-child)::before {
 
 ---
 
-## Image
+### Image
 
 [Image](css-prop-image.md)
 * object
@@ -312,7 +314,7 @@ nav li:not(:first-child)::before {
 
 ---
 
-## Liste
+### Liste
 
 [Liste](css-prop-liste.md)
 * list
@@ -322,7 +324,7 @@ nav li:not(:first-child)::before {
 
 ---
 
-## Layout
+### Layout
 
 [Layout](css-prop-layout.md)
 * position
@@ -338,7 +340,7 @@ nav li:not(:first-child)::before {
 
 ---
 
-## Transitions
+### Transitions
 
 [Transition](css-prop-transition.md)
 * transition
@@ -347,7 +349,7 @@ nav li:not(:first-child)::before {
 
 ---
 
-## Transformations
+### Transformations
 
 [Transformations](js-prop-transform.md)
 * transform
@@ -356,7 +358,7 @@ nav li:not(:first-child)::before {
 
 ---
 
-## Animations
+### Animations
 
 [Animations](css-prop-animation.md)
 * @keyframes
@@ -365,387 +367,52 @@ nav li:not(:first-child)::before {
 
 ---
 
-## Interractions utilisateur
+### Interractions utilisateur
 
-### pointer-events
-
-Permet de contrôler si un élément peut recevoir des événements de la souris (clic, sélection).  
-Lorsqu'on utilise la valeur `none`, cela indique que l'élément ne peut pas recevoir d'événement de pointeur mais qu'on peut passer "au travers" de l'élément pour atteindre des contrôles qui pourraient être derrière.
-
-``` plain
-pointer-events: auto | none |
-                visiblePainted | visibleFill | visibleStroke | visible |
-                painted | fill | stroke | all
-(SVG)
-Définit si l'élément peut recevoir des événements de la souris
-```
-
-### touch-action
-
-Définit si une région donnée peut être manipulée par l'utilisateur grâce à des interactions tactiles (déplacer, zoomer). `touch-action: none` désactive toutes les interractions tactiles.
-
-``` plain
-touch-action : [  [ pan-x | pan-left | pan-right ]
-                  || [ pan-y | pan-up | pan-down ]
-                  || pinch-zoom
-               ] | manipulation
-(CSS3)
-Définit les interactions tactiles qui peuvent être utilisées
-```
-
-### scroll
-
-``` plain
-scroll-behaviour: auto | smooth
-(CSS3)
-Définit le comportement du défilement (direct ou avec transition)
-```
-
-[Exemple scroll-behaviour](https://jsfiddle.net/amt01/cphLuu59/)
-
-``` plain
-scroll-snap-type: none | mandatory | proximity
-(CSS3)
-Définit si le scroll doit s'arrêter / s'accrocher sur les points d'accroche (enfants du container)
-- mandatory: s'arrêter sur un point d'accroche lorsque le défilement s'arrête
-- proximity: s'arrêter sur un point d'accroche s'il est suffisamment proche
-```
-
-![](https://i.imgur.com/TDTaMU7.png)
-
-[Exemple scroll-snap-type](https://jsfiddle.net/amt01/7ywh1bnu/)
-
-### resize
-
-Définit la direction dans laquelle les éléments redimensionnables (comme les textarea) peuvent être redimensionnés (hauteur/largeur).
-
-``` plain
-resize: none | both | horizontal | vertical
-(CSS3)
-Définit les directions de redimension autorisées
----
-
-## Filtres
-
-### filter
-
-Les filtres permettent d'appliquer des effets à une image, un arrière-plan ou des bordures: flou, saturation, etc.  
-[Exemples filter](https://jsfiddle.net/amt01/f5avs5jq/)
-
-``` plain
-filter: blur( <length> ) ||
-        brightness( <number-percentage> ) ||
-        saturate( <number-percentage> ) ||
-        hue-rotate( <angle> ) ||
-        contrast( <number-percentage> ) ||
-        invert( <number-percentage> ) ||
-        grayscale( <number-percentage ) ||
-        sepia( <number-percentage> ) ||
-        opacity( <number-percentage> ) ||
-        drop-shadow( <offset-x> <offset-y> <blur-radius>? <spread-radius>? <color>? ) ||
-        url( <uri svg> )
-```
-
-| Filtre          | Description
-|---              |---
-| `blur()`        | Flou gaussien
-| `brightness()`  | Modifie la luminosité<br> 0% noir, 100% image d'origine, >100% augmente la luminosité
-| `contrast()`    | Modifie le contraste<br> 0% gris, 100% image d'origine, >100% augmente le contraste
-| `drop-shadow()` | Ombre portée
-| `grayscale()`   | Niveau de gris<br> 100% niveau de gris, 0% image d'origine
-| `sepia()`       | Sepia<br> 100% sepia, 0% image d'origine
-| `hue-rotate()`  | Rotation de teinte<br> 0deg image d'origine
-| `invert()`      | Inverse les couleurs
-| `opacity()`     | Modifie l'opacité<br> 100% image d'origine, 0% transparent
-| `saturate()`    | Modifie la saturation<br> 0% désaturé, 100% image d'origine, >100% saturé
-
-``` css
-{
-  filter: contrast(175%) brightness(103%);
-}
-```
+[Interractions utilisateur](css-prop-interract.md)
+* pointer-events
+* touch-action
+* scroll
+* resize
 
 ---
 
-## Viewport
+### Filtres
 
-Les propriétés suivantes s'appliquent à l'intérieur d'une at-rule `@viewport`.
-
-``` plain
-min-width: <length> | <percent>
-(CSS3)
-Définit la largeur minimale du viewport
-```
-
-``` plain
-max-width: <length> | <percent>
-(CSS3)
-Définit la largeur maximale du viewport
-```
-
-``` plain
-width: [<length> | <percent>]{1,2}
-(CSS3)
-Raccourcis permettant de définir la largeur minimale et maximale du viewport
-Identiques si une seule valeur
-```
-
-``` plain
-min-height: <length> | <percent>
-(CSS3)
-Définit la hauteur minimale du viewport
-```
-
-``` plain
-max-height: <length> | <percent>
-(CSS3)
-Définit la hauteur maximale du viewport
-```
-
-``` plain
-height: [<length> | <percent>]{1,2}
-(CSS3)
-Raccourcis permettant de définir la hauteur minimale et maximale du viewport
-```
-
-``` plain
-zoom: <number> | <percent>
-(CSS3)
-Définit le zoom initiale
-Pour aucun zoom: 1.0 ou 100%
-```
-
-``` plain
-min-zoom: <number> | <percent>
-(CSS3)
-Définit le niveau de zoom minimal
-```
-
-``` plain
-max-zoom: <number> | <percent>
-(CSS3)
-Définit le niveau de zoom maximal
-```
-
-``` plain
-user-zoom: zoom | fixed
-(CSS3)
-Définit si l'utilisateur peut changer le niveau de zoom ou non
-```
-
-``` plain
-orientation: portrait | landscape | auto
-(CSS3)
-Définit l'orientation du document
-```
+[Filtres](css-prop-filter.md)
+* filter
 
 ---
 
-## Page
+### Viewport
 
-Les propriétés suivantes s'appliquent à l'intérieur d'une at-rule `@page`.
-
-### oprhans & widows
-
-``` plain
-orphans: <integer>
-(CSS2)
-Définit nombre minimum de lignes qui doivent rester en bas d'une page, région ou colonne
-2 par défaut
-```
-
-``` plain
-Définit le nombre minimum de lignes qui peuvent être laissées en haut de la page, région ou colonne suivante
-widows: <integer>
-(CSS2)
-2 par défaut
-```
-
-### page
-
-``` plain
-page-break-inside: avoid | auto
-(CSS2)
-Ajuste la façon dont sont appliqués les sauts de page au sein de l'élément courant
-```
-
-``` plain
-page-break-before: auto | always | avoid | left | right
-(CSS2)
-Ajuste la façon dont sont appliqués les sauts de page placés après l'élément courant
-```
-
-``` plain
-page-break-after: auto | always | avoid | left | right
-(CSS2)
-Ajuste la façon dont sont appliqués les sauts de page placés après l'élément courant
-```
-
-| Valeur   | Descirption
-|---       |---
-| `auto`   | Valeur initiale. Les sauts de page sont automatiques
-| `always` | Le saut de page est toujours forcé avant l'élément
-| `avoid`  | Les saut de page sont évités avant l'élément
-| `left`   | Le saut de page est forcé avant l'élément afin que la prochaine page soit mise en forme comme une page gauche.
-| `right`  | Le saut de page est forcé avant l'élément afin que la prochaine page soit mise en forme comme une page droite.
+[Viewport](css-prop-viewport.md)
+* zoom
+* orientation
 
 ---
 
-## Formes
+### Page
 
-Des formes CSS peuvent être créer en utilisant les bordures et du contenu généré (::before, ::after). [Exemple formes CSS](https://codepen.io/a-mt/pen/MvqdqZ)  
-Mais on peut également utiliser des cercles, ellipses et polygones SVG pour créer des formes intéressantes sur tout type d'élément (images, paragraphes, etc)
-
-### clip-path
-
-Permet de rogner un élément et de créer des formes. Les parties non visibles ne reçoivent pas d'événement souris.  
-[Exemple clip-path + shape-outside](https://jsfiddle.net/amt01/6d6c8ucz/)
-
-``` plain
-clip-path: <url> | [<basic-shape> || <geometry-box]
-où
-<basic-shape> : inset() | circle() | ellipse() | polygon()
-<geometry-box>: fill-box | stroke-box | view-box | margin-box | border-box | padding-box | content-box
-(SVG)
-Définit une zone de rognage
-```
-
-| Forme     | Format                                                                                    | Description
-|---        |---                                                                                        |---
-| inset()   | `inset( [<number> | <percent>]{1,4} [round [<number> | <percent>]{1,4}]? )`               | Définit un rectangle incrusté. Les 4 premiers arguments définissent le décalage vers l'intérieur. Les arguments qui suivent `round` donnent des bords arrondis.
-| circle()  | `circle( [<length> | <percentage> | closest-side | farthest-side] [at <position>]? )`     | Définit un cercle
-| ellipse() | `ellipse( [<length> | <percentage> | closest-side | farthest-side]{2} [at <position>]? )` | Définit une ellipse. Axe vertical suivit de l'axe horizontal
-| polygon() | `polygon( [nonezero | evenodd]? [<length> | <percentage>]{2}+ )`                          | Définit un polygone. Liste de sommets séparés par des virgules |
-
-### mask
-
-Les masques permettent d'appliquer des formes complexes et détaillées avec une opacité variable.  
-[Exemples mask](https://jsfiddle.net/amt01/bp6n2q2e/)
-
-``` plain
-mask: <mask-image> || <mask-position> [/ <mask-size>]? || <mask-repeat> ||
-      <mask-origin> || [<mask-clip> | noclip] || <mask-composite> || <mask-mode>
-(CSS3)
-Raccourcis permettant de définir le ou les masque(s) à utiliser
-```
-
-``` plain
-mask-image: <image>
-(CSS3)
-Définit l'image à utliser comme masque
-Plusieurs masques peuvent être utilisés, séparés par des virgules
-```
-
-``` plain
-mask-mode: alpha | luminance | match-source
-(CSS3)
-Définit s'il faut utiliser les valeurs de luminance ou le canal alpha (transparence) comme masque
-```
-
-``` plain
-mask-size: [ <length> | <percent> | auto ]{1,2} | cover | contain
-(CSS3)
-Définit les dimensions du masque
-```
-
-``` plain
-mask-repeat: repeat-x | repeat-y | [ repeat | space | round | no-repeat ]{1,2}
-(CSS3)
-Définit si les masques doivent être répétés
-```
-
-``` plain
-mask-origin: border-box | padding-box | content-box | margin-box | fill-box | stroke-box | view-box
-(CSS3)
-Définit la zone de positionnement du masque
-```
-
-``` plain
-mask-clip: border-box | padding-box | content-box | margin-box | fill-box | stroke-box | view-box
-(CSS3)
-Définit la zone d'affichage du masque
-```
-
-``` plain
-mask-position: [ left | center | right | top | bottom | <length> | <percent> ]{1,2}
-(CSS3)
-Définit la position initiale du masque
-```
-
-``` plain
-mask-composite: add | subtract | intersect | exclude
-(CSS3)
-Définit l'opération de composition à utiliser lorsqu'on utilise plusieurs masques
-add par défaut
-```
-
-### shape
-
-Les règles CSS `shape` définissent la forme du float autour d'un élément.
-
-![](https://i.imgur.com/nh6kjU7.jpg)
-
-Si l'élément a un background, celui-ci ne prendra pas la forme désirée - seuls les éléments autour se comporteront différemment. Utiliser `clip-path` ou `mask-image` pour modifier le background.
-
-![](https://i.imgur.com/2BF3NPt.png)
-
-``` plain
-shape-outside: <shape-box> || [<basic-shape> | <image>]
-où
-<shape-box>  : margin-box | border-box | padding-box | content-box
-<basic-shape>: inset() | circle() | ellipse() | polygon()
-(CSS3)
-Définit la forme de l'élément flottant
-```
-
-[Exemple clip-path + shape-outside](https://jsfiddle.net/amt01/6d6c8ucz/)
-
-``` plain
-shape-margin: <length> | <percent>
-(CSS3)
-Définit la marge autour de shape-outside
-```
-
-```
-shape-image-threshold: <number>
-(CSS3)
-Définit le seuil en terme de canal alpha à utiliser pour extraire la forme d'une image (gradient)
-```
-
-[Exemple shape-image-threshold](https://jsfiddle.net/amt01/hykayq4e/)  
-[Getting Started with CSS Shapes](https://www.html5rocks.com/en/tutorials/shapes/getting-started/)
+[Page](css-prop-page.md)
+* orphans
+* widows
+* page
 
 ---
 
-## Blend modes
+### Formes
 
-``` plain
-mix-blend-mode: normal | multiply | screen | overlay |
-                darken | lighten | color-dodge | color-burn | hard-light | soft-light |
-                difference | exclusion | hue | saturation | color | luminosity
-(CSS3)
-Définit la façon dont le contenu d'un élément doit être fusionné avec son background
-```
+[Formes](css-prop-shapes.md)
+* clip-path
+* mask
+* shape
 
-[Exemple mix-blend-mode](https://css-tricks.com/almanac/properties/m/mix-blend-mode/)
+---
 
-``` plain
-background-blend-mode: normal | multiply | screen | overlay |
-                       darken | lighten | color-dodge | color-burn | hard-light | soft-light |
-                       difference | exclusion | hue | saturation | color | luminosity
-(CSS3)
-Définit la façon dont les images d'arrière-plan doivent être fusionnées
-entre elles et avec la couleur d'arrière-plan
-```
+### Blend modes
 
-[Exemples background-blend-mode](https://developer.mozilla.org/fr/docs/Web/CSS/blend-mode)
-
-
-``` plain
-isolation: isolate | auto
-(CSS3)
-Empêche que certains éléments se mélangent
-Crée un nouveau contexte d'empilement, les éléments se mélangeront uniquement à l'intérieur de ce contexte
-```
-
-[Exemple isolation](https://www.quackit.com/css/css3/properties/css_isolation.cfm)
+[Blend Modes](css-prop-blend.md)
+* mix-blend-mode
+* background-blend-mode
+* isolation

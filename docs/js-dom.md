@@ -129,16 +129,16 @@ Il existe différentes propriétés et méthodes pour accéder et modifier les v
 * Définir la valeur de l'attribut
 
   ``` js
-  element.setAttribute('data-i', 1)
+  element.setAttribute('id', 1)
   ```
 
 * Supprimer l'attribut
 
   ``` js
-  element.removeAttribute('data-i')
+  element.removeAttribute('id')
   ```
 
-### Le style
+#### Le style
 
 La propriété `style` permet de modifier l'attribut style de l'élément.
 
@@ -153,7 +153,7 @@ Par exemple `font-family` devient `fontFamily`.
 element.style.lineHeight = '30px';
 ```
 
-### La classe
+#### La classe
 
 * Récupérer la valeur de l'attribut `class`
 
@@ -175,6 +175,20 @@ element.style.lineHeight = '30px';
   element.classList.remove('oldclass')
   element.classList.replace('oldclass', 'newclass')
   ```
+
+#### Les données
+
+HTML5 permet d'associer des données à un élément HTML à l'aide des attributs data-*.  
+La propriété `dataset` permet de récupérer et modifier ces valeurs
+
+``` js
+element.dataset.prop = "test";
+
+console.log(element.dataset.prop);              // test
+console.log(element.getAttribute("data-prop")); // test
+```
+
+[Exemple dataset](https://jsfiddle.net/amt01/kxsxgpdg/)
 
 ---
 

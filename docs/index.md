@@ -51,7 +51,7 @@ searchbar: true
       - [x] [Async & await](js-async-await.md)
     - [x] [BOM](js-bom.md)
     - [x] [DOM](js-dom.md)
-      - [ ] AJAX
+      - [x] [AJAX](js-ajax.md)
       - [ ] JSONP
     - [ ] Drag & drop [1 &#x21F2;](https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/)
     - [ ] Design patterns [1 &#x21F2;](https://www.toptal.com/javascript/comprehensive-guide-javascript-design-patterns)

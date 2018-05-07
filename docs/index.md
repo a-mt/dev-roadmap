@@ -27,6 +27,7 @@ searchbar: true
       - [ ] Méthodes natives
         - [x] [Chaînes de caractères](js-es5-methods-string.md)
         - [x] [Tableaux](js-es5-methods-array.md)
+        - [x] [Objets](js-es5-methods-object.md)
     - [x] [ES 2015](js-es.md)
       - [x] [Nouvelles méthodes](js-es6-methods.md)
       - [x] [Let, const](js-es6-let-const.md)

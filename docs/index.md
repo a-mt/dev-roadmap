@@ -52,7 +52,7 @@ searchbar: true
     - [x] [BOM](js-bom.md)
     - [x] [DOM](js-dom.md)
       - [x] [AJAX](js-ajax.md)
-      - [ ] JSONP
+      - [x] [JSON, JSONP](js-json.md)
     - [ ] Drag & drop [1 &#x21F2;](https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/)
     - [ ] Design patterns [1 &#x21F2;](https://www.toptal.com/javascript/comprehensive-guide-javascript-design-patterns)
     - [ ] SSE [1 &#x21F2;](https://www.w3schools.com/html/html5_serversentevents.asp)

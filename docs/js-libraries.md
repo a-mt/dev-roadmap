@@ -5,7 +5,7 @@ category: Web, JavaScript
 
 ## Désambiguïsation
 
-* Une **librairie** est un ensemble de fonctions que l'on peut appeler. Une librairie est généralement organisée en un module / classe. Ex: JQuery, underscore.js, React, Vue
+* Une **librairie** est un ensemble de fonctions que l'on peut appeler. Une librairie est généralement organisée en un module / classe. Ex: JQuery, underscore.js, React
 
 * Un **plugin** est un utilitaire que l'on peut ajouter à une librairie pour ajouter des nouvelles fonctions et qui se base sur cette librairie pour fonctionner. Ex: JQuery UI, React Router
 

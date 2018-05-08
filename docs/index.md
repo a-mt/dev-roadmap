@@ -55,23 +55,30 @@ searchbar: true
     - [x] [ES 2018](js-es9.md)
       - [x] [Async & await](js-async-await.md)
     - ESNext [1 &#x21F2;](https://medium.freecodecamp.org/here-are-three-upcoming-changes-to-javascript-that-youll-love-387bce1bfb0b) [2 &#x21F2;](https://pbs.twimg.com/media/DVD5K9IU0AASuys.jpg)
+    - [ ] [Librairie, Plugin, Framework & API](js-libraries.md)
+      - [ ] Web API
+        - [ ] Browser storage (localStorage, sessionStorage, indexedDB)
+        - [ ] Medias (canvas, svg, image, video, audio)
+        - [ ] Fichiers (FileReader, ImageData)
+      - [ ] Frameworks [1 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [2 &#x21F2;](https://www.npmjs.com/npm/the-state-of-javascript-frameworks-2017-part-3-back-end-frameworks?utm_content=buffer30d2a&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [3 &#x21F2;](https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/) [4 &#x21F2;](https://javascriptreport.com/the-ultimate-guide-to-javascript-frameworks/)
+        - [ ] Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/)
+        - [ ] GraphQL [1 &#x21F2;](https://blog.pusher.com/getting-up-and-running-with-graphql/) [2 &#x21F2;](https://www.howtographql.com/?v1)
+        - [ ] Angular
+        - [ ] Vue.js [1 &#x21F2;](https://t.co/jwVzx7gywA)
+      - [ ] Librairies
+        - [ ] D3.js
+        - [ ] Jquery [1 &#x21F2;](https://remysharp.com/2017/12/15/is-jquery-still-relevant)
+        - [ ] React [1 &#x21F2;](https://blog.kentcdodds.com/learn-react-fundamentals-and-advanced-patterns-eac90341c9db)
+        - [ ] MustacheJS
+        - [ ] Lodash
     - [ ] Design patterns [1 &#x21F2;](https://www.toptal.com/javascript/comprehensive-guide-javascript-design-patterns)
     - [ ] SSE [1 &#x21F2;](https://www.w3schools.com/html/html5_serversentevents.asp)
     - [ ] Observer pattern [1 &#x21F2;](https://pawelgrzybek.com/the-observer-pattern-in-javascript-explained/)
     - [ ] Tricks [1 &#x21F2;](https://medium.freecodecamp.org/high-performance-apps-multiplexing-debouncing-system-fonts-and-other-tricks-37c6fd3d7b2d) [2 &#x21F2;](https://air.ghost.io/js-things-i-never-knew-existed/)
     - [ ] Web Workers [1 &#x21F2;](https://medium.freecodecamp.org/how-web-workers-can-help-with-consistent-asynchronous-tasks-in-javascript-cd6d728fa4ee) 
-    - [ ] Canvas
     - [ ] Testing [1 &#x21F2;](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3)
     - Preprocesseurs
       - [ ] Typescript [1 &#x21F2;](https://auth0.com/blog/typescript-practical-introduction/)
-    - [ ] Frameworks [1 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [2 &#x21F2;](https://www.npmjs.com/npm/the-state-of-javascript-frameworks-2017-part-3-back-end-frameworks?utm_content=buffer30d2a&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [3 &#x21F2;](https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/) [4 &#x21F2;](https://javascriptreport.com/the-ultimate-guide-to-javascript-frameworks/)
-      - [ ] Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/)
-      - [ ] GraphQL [1 &#x21F2;](https://blog.pusher.com/getting-up-and-running-with-graphql/) [2 &#x21F2;](https://www.howtographql.com/?v1)
-      - [ ] Vue.js [1 &#x21F2;](https://t.co/jwVzx7gywA)
-      - [ ] React [1 &#x21F2;](https://blog.kentcdodds.com/learn-react-fundamentals-and-advanced-patterns-eac90341c9db)
-    - [ ] Librairies
-      - [ ] D3.js
-      - [ ] Jquery [1 &#x21F2;](https://remysharp.com/2017/12/15/is-jquery-still-relevant)
 
 - Back-End
   - Programming langages

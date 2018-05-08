@@ -20,7 +20,7 @@ searchbar: true
       - [x] [Sass](sass.md)
       - [ ] Less
   - [ ] [JS](js.md) [1 &#x21F2;](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711) [2 &#x21F2;](http://www.aliasdmc.fr/coursjavas/) [3 &#x21F2;](https://medium.freecodecamp.org/the-definitive-javascript-handbook-for-a-developer-interview-44ffc6aeb54e) [4 &#x21F2;](https://blog.logrocket.com/interesting-ecmascript-2017-proposals-163b787cf27c)
-    - [ ] ES < 2015
+    - [x] ES < 2015
       - [x] [Bases de JavaScript](js-basics.md)
       - [x] [Objets, tableaux, fonctions, POO](js-objects.md)
       - [x] [Objets, modules et méthodes globales](js-global-objects.md)
@@ -28,6 +28,11 @@ searchbar: true
         - [x] [Chaînes de caractères](js-es5-methods-string.md)
         - [x] [Tableaux](js-es5-methods-array.md)
         - [x] [Objets](js-es5-methods-object.md)
+    - [x] [BOM](js-bom.md)
+    - [x] [DOM](js-dom.md)
+      - [x] [AJAX](js-ajax.md)
+      - [x] [JSON, JSONP](js-json.md)
+    - [x] [Gestion de la mémoire](js-memory.md)
     - [x] [ES 2015](js-es.md)
       - [x] [Nouvelles méthodes](js-es6-methods.md)
       - [x] [Let, const](js-es6-let-const.md)
@@ -49,10 +54,6 @@ searchbar: true
     - [x] [ES 2017](js-es8.md)
     - [x] [ES 2018](js-es9.md)
       - [x] [Async & await](js-async-await.md)
-    - [x] [BOM](js-bom.md)
-    - [x] [DOM](js-dom.md)
-      - [x] [AJAX](js-ajax.md)
-      - [x] [JSON, JSONP](js-json.md)
     - [ ] Drag & drop [1 &#x21F2;](https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/)
     - [ ] Design patterns [1 &#x21F2;](https://www.toptal.com/javascript/comprehensive-guide-javascript-design-patterns)
     - [ ] SSE [1 &#x21F2;](https://www.w3schools.com/html/html5_serversentevents.asp)

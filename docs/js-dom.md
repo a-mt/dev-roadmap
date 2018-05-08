@@ -244,6 +244,7 @@ element.addEventListener('click', function(){
 })
 ```
 
+[Exemple: Téléchargement via Drag & Drop](https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/)
 
 ### Déclencher un événement
 

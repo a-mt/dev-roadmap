@@ -28,6 +28,7 @@ searchbar: true
         - [x] [Chaînes de caractères](js-es5-methods-string.md)
         - [x] [Tableaux](js-es5-methods-array.md)
         - [x] [Objets](js-es5-methods-object.md)
+        - [x] [Date](js-es5-methods-date.md)
     - [x] [BOM](js-bom.md)
     - [x] [DOM](js-dom.md)
       - [x] [AJAX](js-ajax.md)

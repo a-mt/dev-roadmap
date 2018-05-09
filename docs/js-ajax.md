@@ -33,7 +33,17 @@ request.onreadstatechange = function() {
 request.send();
 ```
 
-Compte tenu des différences d'implémentation entre différents navigateurs, il peut être interéssant d'utiliser une librairie.
+Pour les navigateurs plus récents, il est possible d'utiliser l'API fetch:
+
+``` js
+fetch('data.json')
+.then(response => response.json())
+.then(info => {
+    console.log(info);
+});
+```
+
+Si le support des anciens navigateurs est souhaité, compte tenu des différences d'implémentation entre différents navigateurs, il peut être interéssant d'utiliser une librairie.
 JQuery est la plus connue.
 
-[AJAX pas à pas](https://developer.mozilla.org/fr/docs/Web/Guide/AJAX/Premiers_pas)
+[Requête XMLHttpRequest pas à pas](https://developer.mozilla.org/fr/docs/Web/Guide/AJAX/Premiers_pas)

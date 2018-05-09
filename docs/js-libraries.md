@@ -17,6 +17,8 @@ Ex: Ember.js, Angular.js, Backbone
 
 * Une **API** (Application Programming Interface) est une interface (un ensemble de propriétés et méthodes) qui permet d'interagir avec une application. Dit simplement, une API est la partie exposée (publique) d'une application, que l'on peut appeler. On accède à une librarie ou à un service web via son API.
 
+Lorsqu'aucune librairie ni framework n'est utilisé, que l'on n'utilise que les méthodes JavaScript natives (méthodes supportées par le navigateur sans avoir à inclure des ressources externes), alors on parle de *Vanilla JavaScript*.
+
 ---
 
 ## Web API

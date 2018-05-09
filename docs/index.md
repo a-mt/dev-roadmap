@@ -60,17 +60,17 @@ searchbar: true
         - [ ] Browser storage (localStorage, sessionStorage, indexedDB)
         - [ ] Medias (canvas, svg, image, video, audio)
         - [ ] Fichiers (FileReader, ImageData)
+      - [ ] Librairies
+        - [ ] [Jquery](jquery.md) [1 &#x21F2;](https://remysharp.com/2017/12/15/is-jquery-still-relevant)
+        - [ ] D3.js
+        - [ ] React [1 &#x21F2;](https://blog.kentcdodds.com/learn-react-fundamentals-and-advanced-patterns-eac90341c9db)
+        - [ ] MustacheJS
+        - [ ] Lodash
       - [ ] Frameworks [1 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [2 &#x21F2;](https://www.npmjs.com/npm/the-state-of-javascript-frameworks-2017-part-3-back-end-frameworks?utm_content=buffer30d2a&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [3 &#x21F2;](https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/) [4 &#x21F2;](https://javascriptreport.com/the-ultimate-guide-to-javascript-frameworks/)
         - [ ] Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/)
         - [ ] GraphQL [1 &#x21F2;](https://blog.pusher.com/getting-up-and-running-with-graphql/) [2 &#x21F2;](https://www.howtographql.com/?v1)
         - [ ] Angular
         - [ ] Vue.js [1 &#x21F2;](https://t.co/jwVzx7gywA)
-      - [ ] Librairies
-        - [ ] D3.js
-        - [ ] Jquery [1 &#x21F2;](https://remysharp.com/2017/12/15/is-jquery-still-relevant)
-        - [ ] React [1 &#x21F2;](https://blog.kentcdodds.com/learn-react-fundamentals-and-advanced-patterns-eac90341c9db)
-        - [ ] MustacheJS
-        - [ ] Lodash
     - [ ] Design patterns [1 &#x21F2;](https://www.toptal.com/javascript/comprehensive-guide-javascript-design-patterns)
     - [ ] SSE [1 &#x21F2;](https://www.w3schools.com/html/html5_serversentevents.asp)
     - [ ] Observer pattern [1 &#x21F2;](https://pawelgrzybek.com/the-observer-pattern-in-javascript-explained/)

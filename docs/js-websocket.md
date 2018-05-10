@@ -83,4 +83,7 @@ Pour un support complet, y compris sous Internet Explorer, utiliser la librairie
 
 Le serveur doit de son côté accepter et gérer les connexions WebSockets.
 
+[Exemple Node.js](https://gist.github.com/zlatkov/f80b07e00a28f3428b11aac5f5977872#file-websocket_server-js)  
 [Exemple PHP](https://gist.github.com/a-mt/a555d06a408c262256f2f74501f97719#file-server-index-php)
+
+[WebSocket vs HTTP/2](https://blog.sessionstack.com/how-javascript-works-deep-dive-into-websockets-and-http-2-with-sse-how-to-pick-the-right-path-584e6b8e3bf7)

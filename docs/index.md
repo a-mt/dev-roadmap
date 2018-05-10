@@ -56,12 +56,13 @@ searchbar: true
     - [x] [ES 2018](js-es9.md)
       - [x] [Async & await](js-async-await.md)
     - ESNext [1 &#x21F2;](https://medium.freecodecamp.org/here-are-three-upcoming-changes-to-javascript-that-youll-love-387bce1bfb0b) [2 &#x21F2;](https://pbs.twimg.com/media/DVD5K9IU0AASuys.jpg)
-    - [x] [Workers](js-worker.md)
     - [ ] [Librairie, Plugin, Framework & API](js-libraries.md)
       - [ ] Web API
         - [ ] Browser storage (localStorage, sessionStorage, indexedDB)
         - [ ] Medias (canvas, svg, image, video, audio)
         - [ ] Fichiers (FileReader, ImageData)
+        - [x] [Workers](js-worker.md)
+        - [x] [WebSocket](js-websocket.md)
       - [ ] Librairies
         - [ ] [Jquery](jquery.md) [1 &#x21F2;](https://remysharp.com/2017/12/15/is-jquery-still-relevant)
         - [ ] [MustacheJS](mustachejs.md)

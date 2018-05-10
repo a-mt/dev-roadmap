@@ -58,7 +58,7 @@ searchbar: true
     - ESNext [1 &#x21F2;](https://medium.freecodecamp.org/here-are-three-upcoming-changes-to-javascript-that-youll-love-387bce1bfb0b) [2 &#x21F2;](https://pbs.twimg.com/media/DVD5K9IU0AASuys.jpg)
     - [ ] [Librairie, Plugin, Framework & API](js-libraries.md)
       - [ ] Web API
-        - [ ] Browser storage (localStorage, sessionStorage, indexedDB)
+        - [x] [Storage](js-storage.md)
         - [ ] Medias (canvas, svg, image, video, audio)
         - [ ] Fichiers (FileReader, ImageData)
         - [x] [Workers](js-worker.md)

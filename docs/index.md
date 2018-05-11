@@ -59,6 +59,7 @@ searchbar: true
     - [ ] [Librairie, Plugin, Framework & API](js-libraries.md)
       - [ ] Web API
         - [x] [Storage](js-storage.md)
+        - [x] [IndexedDB](js-indexeddb.md)
         - [ ] Medias (canvas, svg, image, video, audio)
         - [ ] Fichiers (FileReader, ImageData)
         - [x] [Workers](js-worker.md)

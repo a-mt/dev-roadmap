@@ -644,6 +644,9 @@ myCar.color = "red";
 console.log(myCar.color);
 ```
 
+Les objets crée via `{}` sont dits *littéral* (*litteral object*): on a littéralement écrit le contenu de l'objet.  
+Tandis que pour les objets créés à partir d'un constructeur, on parle d'*instance* de classe/de constructeur.
+
 ### Getter, setter
 
 Pour que seul la fonction/l'objet ait accès à une variable en lecture et en écriture, on utilise une variable locale au lieu de `this`. On dit que la propriété est *privée*, par opposition à une variable accessible à l'extérieur, qui est dite *publique*. On préfixe généralement les propriétés privées avec un `_` pour les repérer facilement.
@@ -701,7 +704,7 @@ console.log(myCar.constructor);
 
 ### instanceof
 
-Lorsqu'un objet est crée à partir d'un constructeur, on dit que cet objet est une *instance* de ce constructeur. JavaScript permet de tester si un objet est une instance ou non avec le mot-clé `instanceof`.
+JavaScript permet de tester si un objet est une instance ou non avec le mot-clé `instanceof`.
 
 ``` js
 function Car(brand,color) {

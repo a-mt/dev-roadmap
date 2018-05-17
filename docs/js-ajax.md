@@ -22,7 +22,7 @@ if(window.XMLHttpRequest) {
     request = new ActiveXObject('Microsoft.XMLHHTP');
 }
 request.open('GET', 'data.json');
-request.onreadstatechange = function() {
+request.onreadystatechange = function() {
     if(request.status == 200 && request.readyState == 4) {
 
         // Callback

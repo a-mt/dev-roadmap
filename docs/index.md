@@ -60,10 +60,15 @@ searchbar: true
       - [ ] Web API
         - [x] [Storage](js-storage.md)
         - [x] [IndexedDB](js-indexeddb.md)
-        - [ ] Medias (canvas, svg, image, video, audio)
-        - [ ] Fichiers (FileReader, ImageData)
+        - [ ] Audio & vidéo
+        - [x] [Canvas](js-canvas.md)
+        - [ ] WebGL
+        - [ ] Fichiers (FileReader, Blob)
         - [x] [Workers](js-worker.md)
         - [x] [WebSocket](js-websocket.md)
+        - [ ] WebRTC
+        - [ ] Web Audio
+        - [ ] WebVR
       - [ ] Librairies
         - [ ] [Jquery](jquery.md) [1 &#x21F2;](https://remysharp.com/2017/12/15/is-jquery-still-relevant)
         - [ ] [MustacheJS](mustachejs.md)

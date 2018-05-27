@@ -1,6 +1,6 @@
 ---
 title: MustacheJS
-category: Web, JavaScript
+category: Web, JavaScript, Library
 ---
 
 MustacheJS est une librairie qui permet d'utiliser des templates pouur afficher un objet.

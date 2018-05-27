@@ -1,6 +1,6 @@
 ---
 title: JQuery
-category: Web, JavaScript
+category: Web, JavaScript, Library
 ---
 
 JQuery est une librairie qui permet de manipuler le DOM, d'ajouter des animations dans la page,

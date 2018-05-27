@@ -7,7 +7,9 @@ Tandis qu'il est possible d'utiliser CSS et JavaScript pour animer les images ve
 
 `<canvas>` et l'API Canvas permet de créer des images bitmap scriptées. Ce n'est pas très utile pour créer des images statiques mais plutôt pour créer des images dynamiquement, comme des animations 2D et visualisations de données en temps réel.
 
-Il existe également une implémentation de canvas 3D, WebGL, une API qui permet de créer de véritables graphiques 3D dans le navigateur web. Nous ne l'aborderons pas dans cet article.
+[Exemple animation Canvas 2D](https://mdn.github.io/learning-area/javascript/oojs/bouncing-balls/index-finished.html)
+
+Il existe également une implémentation de canvas 3D, WebGL, une API qui permet de créer de véritables graphiques 3D dans le navigateur web. Nous ne l'aborderons pas dans cet article
 
 ---
 

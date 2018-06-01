@@ -13,4 +13,4 @@ WebGL est une implémentation 3D de Canvas, c'est une API qui permet de créer d
 
 WebGL est basée sur la langage de programmation graphique OpenGL, et permet de communiquer directement avec le GPU de l'ordinateur. En soi, l'écriture WebGL est plus proche des langages de bas niveau tel que C++ que du JavaScript normal.
 
-Parce que le code WebGL est complexe à écrire, la plupart des gens utilisent une bibliothèque plutôt que d'écrire du WebGL brut. Les 3 principales sont Three.js, PlayCanvas et Babylon.js.
+Parce que le code WebGL est complexe à écrire, la plupart des gens utilisent une bibliothèque plutôt que d'écrire du WebGL brut. Les 3 principales sont [Three.js](three.md), PlayCanvas et Babylon.js.

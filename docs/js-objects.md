@@ -551,6 +551,30 @@ Une fonction est dite *pure* quand elle suit quelques principes de bases:
 
 La programmation fonctionnelle est une approche en informatique basée sur l'utilisation de fonctions pures.
 
+### Fonction de première classe
+
+Une opération est dite de *première classe* lorsqu'elle peut être traitée comme n'importe quelle autre variable.  
+En JavaScript, les fonctions sont de première classe.
+
+``` js
+var mafonction = Math.pow;
+console.log(mafonction(2,3)); // 8
+```
+
+L'opération `+` n'est pas une opération de première classe: si on voulait la stocker dans une variable (pour un callback par exemple) alors on devrait l'encapsuler dans une fonction qui est, elle, de première classe - comme toutes les fonctions en JavaScript.
+
+``` js
+// "+" n'est pas de première classe, on doit l'encapsuler
+mafonction(function(a, b){
+  return a + b;
+});
+```
+
+``` js
+// "Math.pow" est de première classe
+mafonction(Math.pow);
+```
+
 ### Callback Queue
 
 JavaScript est un langage single-thread. Cela signifie que le moteur JavaScript ne peut executer qu'un seul morceau de code à la fois. Cela a pour conséquence que lorsque JavaScript rencontre un morceau de code qui prend beaucoup de temps à traiter, le code situé après est bloqué - il ne peut pas être traité tant que le code qui le précède n'est pas fini.

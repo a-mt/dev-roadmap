@@ -47,10 +47,10 @@ searchbar: true
       - [x] [Promesse](js-es6-promise.md)
       - [x] [Générateur, itérateur](js-es6-generator.md)
       - [x] [Proxy](js-es6-proxy.md)
+      - [x] [Reflect](js-reflect.md)
       - [x] [Module](js-es6-module.md)
       - [x] [Map, Set, WeakMap, WeakSet](js-es6-map-set.md)
       - [x] [Tableaux typés](js-es6-typedarray.md)
-      - [ ] Reflect
     - [x] [ES 2016](js-es7.md)
     - [x] [ES 2017](js-es8.md)
     - [x] [ES 2018](js-es9.md)

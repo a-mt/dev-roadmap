@@ -2,8 +2,8 @@
 searchbar: true
 ---
 
+- [Développement Web](web.md)
 - Front-End
-  - [Web](web.md)
   - [x] [HTML](html.md)
     - [x] [Éléments HTML](html-elements.md)
     - [ ] [Accessibilité](accessibilite.md)
@@ -60,7 +60,7 @@ searchbar: true
       - [ ] Web API
         - [x] [Storage](js-storage.md)
         - [x] [IndexedDB](js-indexeddb.md)
-        - [ ] Audio & vidéo
+        - [x] [Audio & vidéo](js-audio-video.md)
         - [x] [Canvas](js-canvas.md)
         - [ ] [WebGL](js-webgl.md) [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/API/WebGL_API/Tutorial)
         - [ ] Fichiers (FileReader, Blob)
@@ -92,6 +92,7 @@ searchbar: true
   - Programming langages
     - [ ] PHP
       - [x] [Composer](composer.md)
+    - [ ] Python
     - [ ] Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
     - [ ] R [1 &#x21F2;](https://www.datacamp.com/)
     - [ ] NodeJS
@@ -102,12 +103,12 @@ searchbar: true
     - [x] [XSL](xml-xsl.md)
     - [x] [XPath](xml-xpath.md)
     - [ ] XQuery
-  - [x] [BDD](bdd.md)
+  - [x] [Bases de données](bdd.md)
     - [x] [MySQL](mysql.md)
     - [ ] NoSQL
     - [ ] [ElasticSearch](elasticsearch.md)
 
-- Other
+- Autres langages
   - Data formatting
     - [x] [JSON](json.md)
     - [x] [YAML](yaml.md)
@@ -116,16 +117,47 @@ searchbar: true
     - [ ] Smarty
     - [ ] Twig
     - [ ] Pug
-  - Task runners & dependency tools
-    - [ ] Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html)
-    - [ ] Grunt
-    - [ ] Gulp
-    - [ ] Webpack [1 &#x21F2;](https://blog.vanila.io/webpack-what-is-it-and-is-it-better-than-gulp-375db8011d22)
   - Document formatting 
     - [x] [Markdown](gfm.md)
     - [ ] reStructuredText [1 &#x21F2;](http://docutils.sourceforge.net/docs/user/rst/cheatsheet.txt)
     - [x] [Latex](latex.md)
     - [ ] Textile
+
+- Workflow
+  - Code Versionning
+    - [x] [Sémantique de version](semver.md)
+    - [x] [Git](git.md)
+    - [x] [Github](github.md) [1 &#x21F2;](https://medium.freecodecamp.org/manage-multiple-github-accounts-the-ssh-way-2dadc30ccaca)
+    - [ ] Open Source [1 &#x21F2;](https://opensource.guide/) [2 &#x21F2;](https://github.com/Roshanjossey/first-contributions)
+    - [ ] Licences [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94) [2 &#x21F2;](https://spdx.org/licenses)
+  - Task runners & dependency tools
+    - [ ] Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html)
+    - [ ] Grunt
+    - [ ] Gulp
+    - [ ] Webpack [1 &#x21F2;](https://blog.vanila.io/webpack-what-is-it-and-is-it-better-than-gulp-375db8011d22)
+
+- Hosting
+  - [ ] Apache
+    - [ ] Virtual hosts
+    - [ ] .htaccess
+  - [ ] Nginx [1 &#x21F2;](https://medium.freecodecamp.org/an-introduction-to-nginx-for-developers-62179b6a458f)
+  - [ ] robots.txt
+
+- Culture générale
+  - [x] [Raccourcis édition de texte](text-editing.md)
+  - [x] [Regex](regex.md)
+  - CS [1 &#x21F2;](https://medium.freecodecamp.org/the-quick-guide-to-the-way-computers-work-for-desperate-new-coders-fcdb34cbe8a9)
+    - [x] [Encodages](encodages.md)
+    - [x] [Opérations sur les bits](bitwise-operations.md)
+  - [ ] [Sécurité](securite.md) [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9)
+    - [ ] CORS [1 &#x21F2;](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b)
+    - [ ] [SSH](ssh.md)
+    - [ ] HTTPS [1 &#x21F2;](https://medium.freecodecamp.org/https-explained-with-carrier-pigeons-7029d2193351?utm_content=buffer1f715&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec)
+    - [ ] SSL [2 &#x21F2;](https://medium.freecodecamp.org/openssl-command-cheatsheet-b441be1e8c4a)
+  - Méthodologie
+    - [x] [Agile](agile.md)
+    - [ ] 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
+  - DevTools [1 &#x21F2;](https://www.smashingmagazine.com/2018/02/javascript-firefox-debugger/)
 
 - Linux
   - [x] [Installer](linux-install.md)
@@ -141,28 +173,6 @@ searchbar: true
     - [x] [Wildcard (fichiers)](wildcard.md)
   - [ ] Bash Script
     - [x] [Conditions](conditions-shell.md)
-
-- Culture générale
-  - [x] [Raccourcis édition de texte](text-editing.md)
-  - [x] [Regex](regex.md)
-  - Code Versionning
-    - [x] [Sémantique de version](semver.md)
-    - [x] [Git](git.md)
-    - [x] [Github](github.md) [1 &#x21F2;](https://medium.freecodecamp.org/manage-multiple-github-accounts-the-ssh-way-2dadc30ccaca)
-    - [ ] Open Source [1 &#x21F2;](https://opensource.guide/) [2 &#x21F2;](https://github.com/Roshanjossey/first-contributions)
-    - [ ] Licences [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94) [2 &#x21F2;](https://spdx.org/licenses)
-  - CS [1 &#x21F2;](https://medium.freecodecamp.org/the-quick-guide-to-the-way-computers-work-for-desperate-new-coders-fcdb34cbe8a9)
-    - [x] [Encodages](encodages.md)
-    - [x] [Opérations sur les bits](bitwise-operations.md)
-  - [ ] [Sécurité](securite.md) [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9)
-    - [ ] CORS [1 &#x21F2;](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b)
-    - [ ] [SSH](ssh.md)
-    - [ ] HTTPS [1 &#x21F2;](https://medium.freecodecamp.org/https-explained-with-carrier-pigeons-7029d2193351?utm_content=buffer1f715&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec)
-    - [ ] SSL [2 &#x21F2;](https://medium.freecodecamp.org/openssl-command-cheatsheet-b441be1e8c4a)
-  - Méthodologie
-    - [x] [Agile](agile.md)
-    - [ ] 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
-  - DevTools [1 &#x21F2;](https://www.smashingmagazine.com/2018/02/javascript-firefox-debugger/)
 
 - Misc
   - [ ] Blockchain [1 &#x21F2;](https://medium.freecodecamp.org/bitcoin-flipping-the-coin-a060df19d20d) [2 &#x21F2;](https://blockchaindemo.io/) [3 &#x21F2;](https://github.com/igorbarinov/awesome-blockchain) [4 &#x21F2;](https://medium.freecodecamp.org/how-does-bitcoin-work-i-built-an-app-to-show-you-f9fcd50bdd0d) [5 &#x21F2;](https://medium.freecodecamp.org/the-authoritative-guide-to-blockchain-development-855ab65b58bc) [6 &#x21F2;](https://medium.freecodecamp.org/why-blockchain-is-here-to-stay-and-bitcoin-might-not-be-e117c4386af7)
@@ -189,10 +199,8 @@ searchbar: true
   - [x] [Jekyll](jekyll.md)
   - [ ] Codepen
   - [ ] c9
-  - [ ] Heroku [1 &#x21F2;](https://www.sitepoint.com/how-to-deploy-node-applications-heroku-vs-now-sh/)
+  - [ ] Heroku [1 &#x21F2;](https://github.com/a-mt/dev-roadmap/blob/master/docs/dev-workflow.md#d%C3%A9ployer-sur-heroku) [2 &#x21F2;](https://www.sitepoint.com/how-to-deploy-node-applications-heroku-vs-now-sh/)
   - [ ] Firebase [1 &#x21F2;](https://medium.freecodecamp.org/how-to-get-started-using-firebase-hosting-439d4bd45cb6)
-  - [ ] WAMP/LAMP
-  - [ ] Nginx [1 &#x21F2;](https://medium.freecodecamp.org/an-introduction-to-nginx-for-developers-62179b6a458f)
   - [ ] Amazon [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-your-first-safe-server-ready-for-production-f1cc60eec69a)
   - [ ] CaptainDuckDuck [1 &#x21F2;](https://medium.freecodecamp.org/how-i-cut-my-heroku-cost-by-400-5b9d0220ce13)
   - [ ] Google Business [1 &#x21F2;](https://www.gybo.com/lessons)

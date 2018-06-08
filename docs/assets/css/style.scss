@@ -8,6 +8,22 @@
     left: -20px;
 }
 
+body.index {
+    ul {
+        position: relative;
+    }
+    ul::before {
+        content: "";
+        position: absolute;
+        height: calc(100% - 15px);
+        width: 1px;
+        top: 15px;
+        left: 20px;
+        z-index: -1;
+        background: #ccc;
+    }
+}
+
 ul.breadcrumb {
     list-style: none;
     color: #bbb;

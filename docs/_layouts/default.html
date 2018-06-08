@@ -11,7 +11,7 @@
       <link href="{{ '/assets/css/latex.css?v=' | append: site.github.build_revision | relative_url }}" rel="stylesheet">
     {% endif %}
   </head>
-  <body>
+  <body class="{{ page.name | replace: '.md', '' }}">
     <div class="container-lg px-3 my-5 markdown-body">
 
       {% if page.title and site.title != page.title %}

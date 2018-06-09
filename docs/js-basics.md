@@ -471,6 +471,21 @@ switch(++a) {
 // Affiche 1 2 3
 ```
 
+`switch` peut également tester des conditions:
+
+``` js
+switch (true) {
+  case (tempInCelsius <= 0): 
+    state = 'Solid';
+    break;
+  case (tempInCelsius > 0 && tempInCelsius < 100): 
+    state = 'Liquid';
+    break;
+  default: 
+    state = 'Gas';
+}
+```
+
 ### ? : (condition ternaire)
 
 Pour retourner une valeur (par exemple pour affecter une variable), il existe une version raccourcie du `if`: la condition ternaire.

@@ -24,7 +24,7 @@ searchbar: true
       - [x] [Bases de JavaScript](js-basics.md)
       - [x] [Objets, tableaux, fonctions, POO](js-objects.md)
       - [x] [Objets, modules et méthodes globales](js-global-objects.md)
-      - [ ] Méthodes natives
+      - [x] [Méthodes natives](js-methods.md)
         - [x] [Chaînes de caractères](js-es5-methods-string.md)
         - [x] [Tableaux](js-es5-methods-array.md)
         - [x] [Objets](js-es5-methods-object.md)

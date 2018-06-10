@@ -1,5 +1,5 @@
 ---
-title: Méthodes: Dates
+title: "Méthodes: Dates"
 category: Web, JavaScript, ES5
 ---
 

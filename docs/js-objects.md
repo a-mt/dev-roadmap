@@ -1,5 +1,5 @@
 ---
-title: Javascript: Objets, tableaux et fonctions
+title: Objets, tableaux et fonctions
 category: Web, JavaScript
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Méthodes: Chaînes de caractères
+title: "Méthodes: Chaînes de caractères"
 category: Web, JavaScript, ES5
 ---
 

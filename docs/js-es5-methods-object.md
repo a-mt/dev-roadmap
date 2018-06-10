@@ -1,5 +1,5 @@
 ---
-title: Méthodes: Objets
+title: "Méthodes: Objets"
 category: Web, JavaScript, ES5
 ---
 

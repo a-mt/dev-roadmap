@@ -22,6 +22,16 @@ body.index {
         z-index: -1;
         background: #ccc;
     }
+    > div > ul > li::before {
+        content: "";
+        display: block;
+        height: 1.5em;
+        background: #ddd;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+    }
 }
 
 ul.breadcrumb {

@@ -3,7 +3,7 @@ title: Three.js
 category: Web, JavaScript, Library
 ---
 
-Three.js est une bibliothèque [WebGL](js-webgl.md). Elle permet de simplifier l'écriture du code WebGL.
+Three.js est une bibliothèque [WebGL](!js/js-webgl.md). Elle permet de simplifier l'écriture du code WebGL.
 
 ---
 

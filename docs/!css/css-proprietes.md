@@ -351,7 +351,7 @@ nav li:not(:first-child)::before {
 
 ### Transformations
 
-[Transformations](js-prop-transform.md)
+[Transformations](css-prop-transform.md)
 * transform
 * perspective
 * backface-visibility

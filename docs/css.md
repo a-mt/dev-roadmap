@@ -15,7 +15,7 @@ Ressources utiles:
 
 ## Inclure du CSS
 
-[Inclure du CSS](css-include.md)
+[Inclure du CSS](!css/css-include.md)
 - ajouter du CSS
 - media queries
 - inclure du CSS pour IE
@@ -129,7 +129,7 @@ Des "Snapshots" (qui listent les modules considérés comme stables, implément�
 
 ## Sélecteurs
 
-[Sélecteurs](css-selecteurs.md)
+[Sélecteurs](!css/css-selecteurs.md)
 - sélecteurs
 - spécificité des sélecteurs
 - pseudo-classes
@@ -139,7 +139,7 @@ Des "Snapshots" (qui listent les modules considérés comme stables, implément�
 
 ## Types CSS
 
-[Formats des différents types CSS](css-types.md)
+[Formats des différents types CSS](!css/css-types.md)
 - chaîne de caractère (&lt;string&gt;)
 - couleur (&lt;color&gt;)
 - angle (&lt;angle&gt;)
@@ -158,7 +158,7 @@ Des "Snapshots" (qui listent les modules considérés comme stables, implément�
 
 ## Propriétés
 
-[Propriétés](css-proprietes.md)
+[Propriétés](!css/css-proprietes.md)
 - raccourcis
 - types CSS
 - propriétés générales (all, content)
@@ -186,7 +186,7 @@ Des "Snapshots" (qui listent les modules considérés comme stables, implément�
 
 ## At-rules
 
-[At-rules](css-atrules.md)
+[At-rules](!css/css-atrules.md)
 - @media
 - @supports
 - @namespace

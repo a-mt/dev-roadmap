@@ -139,7 +139,7 @@ searchbar: true
     - [ ] Gulp
     - [ ] Webpack [1 &#x21F2;](https://blog.vanila.io/webpack-what-is-it-and-is-it-better-than-gulp-375db8011d22) [2 &#x21F2;](https://medium.com/@timurcatakli/an-easy-to-understand-webpack-4-configuration-file-with-comments-6213882e9edf)
   - Containers
-    - [ ] Docker [1 &#x21F2;](https://medium.freecodecamp.org/let-me-guide-you-through-your-first-date-with-docker-f03f35567d95) [2 &#x21F2;](https://blog.patricktriest.com/text-search-docker-elasticsearch/)
+    - [x] [Docker](docker.md)
     - [ ] Kubernetes [1 &#x21F2;](https://godaddy.github.io/2018/05/02/kubernetes-introduction-for-developers/)
 
 - Hosting

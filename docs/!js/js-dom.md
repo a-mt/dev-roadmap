@@ -5,19 +5,33 @@ category: Web, JavaScript
 
 ## Qu'est ce que le DOM
 
-Quand un document structuré est chargé, XML ou HTML, le navigateur crée le DOM (Document Object Model) de la page. Il s'agit d'une représentation orientée objet qui permet d'accéder aux éléments et d'interagir avec, comme lire et modifier le contenu, grâce à des méthodes, des propriétés et des événements.
+Quand un document structuré est chargé, XML ou HTML, le navigateur crée le DOM (Document Object Model), une représentation orientée objet de la page. [Exemple de page HTML](https://mdn.github.io/learning-area/javascript/apis/document-manipulation/dom-example.html):
 
-À l'origine, JavaScript et le DOM étaient fortement liés, mais ils ont fini par évoluer en deux entités distinctes. Le contenu de la page est stocké dans le DOM et on peut y accéder et le manipuler via JavaScript.
-
-Attention, le DOM est crée est fur et à mesure du chargement de la page. Il est conseillé d'y accéder qu'une fois la page complètement chargée, et ce afin que le DOM contienne la page entière.
-
-``` js
-window.onload = function(){
-  // Accéder au DOM une fois la page chargée
-}
+``` html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple DOM example</title>
+  </head>
+  <body>
+      <section>
+        <img src="dinosaur.png" alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+      </section>
+  </body>
+</html>
 ```
 
-On accéde au DOM via l'objet global `document`.  
+Et son DOM associé:
+
+![](https://i.imgur.com/29D9bxY.png)
+
+## API DOM
+
+Le contenu de la page est stocké dans le DOM. On peut y accéder et le manipuler via JavaScript avec l'API DOM, un ensemble de méthodes et propriété qui permettent d'interagir avec, par exemple pour lire ou modifier le contenu de certaines balises.
+
+On accède à l'API DOM via l'objet global `document`.  
 Par exemple, pour changer le contenu de l'élément ayant l'id "paragraph":
 
 ``` js
@@ -30,7 +44,74 @@ ou
 document.getElementById("paragraph").innerHTML = "<strong>Bonjour</strong> tout le monde";
 ```
 
-[Description détaillée de document](https://developer.mozilla.org/fr/docs/Web/API/document)
+Le DOM est crée est fur et à mesure du chargement de la page. Il est conseillé de n'y accéder qu'une fois la page complètement chargée, et ce afin que le DOM soit entier.
+
+``` js
+window.onload = function(){
+  // Accéder au DOM une fois la page chargée
+}
+```
+
+---
+
+## Terminologie
+
+Chaque balises et contenu texte du document est un noeud dans le DOM. Il existe différents termes pour décrire le type de noeud et sa position dans l'arbre du DOM par rapport à un autre. Il est utile de connaitre ces termes, puisqu'ils sont souvent utilisés dans les documentations.
+
+<table>
+    <thead
+        <tr>
+            <th>Terme</th>
+            <th>Terme anglais</th>
+            <th>Rôle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Element</td>
+            <td>Element</td>
+            <td>N'importe quel élément, tel qu'il existe dans le DOM</td>
+        </tr>
+        <tr>
+            <td>Texte</td>
+            <td>Text</td>
+            <td>Noeud constitué par une chaîne de caractère</td>
+        </tr>
+        <tr>
+            <td>Racine</td>
+            <td>Root</td>
+            <td>La racine est le noeud de plus haut niveau dans le DOM. Dans le cas d'un document HTML, la racine est l'élément <code>&lt;html&gt;</code> (d'autres langages de balisage tels que SVG et XML auront es racines différentes).</td>
+        </tr>
+        <tr>
+            <td>Enfant</td>
+            <td>Child</td>
+            <td>Un enfant est un noeud situé à l'intérieur d'un autre noeud, niveau+1.<br> <code>&lt;body&gt;</code> est l'enfant de <code>&lt;html&gt;</code>
+            </td>
+        </tr>
+        <tr>
+            <td>Descendant</td>
+            <td>Descendent</td>
+            <td>Un descendant est noeud situé à l'intérieur d'un autre noeud, niveau+n.<br> <code>&lt;section&gt;</code> est un descendant de <code>&lt;html&gt;</code> mais pas son enfant</td>
+        </tr>
+        <tr>
+            <td>Parent</td>
+            <td>Parent</td>
+            <td>Le parent d'un noeud est le noeud qui le contient, niveau-1.<br> <code>&lt;body&gt;</code> est le parent de <code>&lt;section&gt;</code>
+            </td>
+        </tr>
+        <tr>
+            <td>Ancêtre</td>
+            <td>Ancestor</td>
+            <td>Un ancêtre d'un noeud est le noeud qui le contient, niveau-n.<br> <code>&lt;html&gt;</code> est un ancêtre de <code>&lt;section&gt;</code>
+            </td>
+        </tr>
+        <tr>
+            <td>Frère</td>
+            <td>Sibling</td>
+            <td>Un frère d'un noeud est un noeud qui a le même parent.<br> <code>&lt;img&gt;</code> est le frère de <code>&lt;p&gt;</code>.</td>
+        </tr>
+    </tbody>
+</table>
 
 ---
 
@@ -272,7 +353,7 @@ element.dispatchEvent(event);
 
 ## Anciens navigateurs
 
-Les méthodes du DOM présentées ci-dessous sont les méthodes les plus couramment implémentées. Cependant, tous les navigateurs ne supportent pas tous les mêmes méthodes et notamment les anciens navigateurs.
+Les méthodes de l'API DOM présentées ci-dessous sont les méthodes les plus couramment implémentées. Cependant, tous les navigateurs ne supportent pas tous les mêmes méthodes et notamment les anciens navigateurs.
 
 Pour le support d'anciens navigateurs, on utilise souvent des librairies. De cette manière, on n'a plus besoin de savoir si tel ou tel navigateur implémente telle ou telle méthode, mais uniquement à utiliser les fonctions de la librairie.
 La plus connue est sans aucun doute JQuery.

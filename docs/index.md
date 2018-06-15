@@ -57,19 +57,42 @@ searchbar: true
       - [x] [Async & await](!js/js-async-await.md)
     - ESNext [1 &#x21F2;](https://medium.freecodecamp.org/here-are-three-upcoming-changes-to-javascript-that-youll-love-387bce1bfb0b) [2 &#x21F2;](https://pbs.twimg.com/media/DVD5K9IU0AASuys.jpg)
     - [ ] [Librairie, Plugin, Framework & API](!js/js-libraries.md)
-      - [ ] Web API
-        - [x] [Storage](!js/js-storage.md)
-        - [x] [IndexedDB](!js/js-indexeddb.md)
-        - [x] [Audio & vidéo](!js/js-audio-video.md)
-        - [x] [Canvas](!js/js-canvas.md)
-        - [ ] [WebGL](!js/js-webgl.md) [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/API/WebGL_API/Tutorial)
-        - [ ] Fichiers (FileReader, Blob)
-        - [x] [Workers](!js/js-worker.md)
-        - [x] [WebSocket](!js/js-websocket.md)
-        - [ ] WebRTC
-        - [ ] Web Audio
-        - [ ] WebVR
-        - [ ] MutationObserver [1 &#x21F2;](https://blog.sessionstack.com/how-javascript-works-tracking-changes-in-the-dom-using-mutationobserver-86adc7446401)
+      - Web API
+        - Interraction
+          - [x] [DOM](!js/js-dom.md)
+          - [ ] Clavier, souris [1 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/User_input_methods) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Touch_events) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_Lock_API)
+          - [ ] Formulaire (Formulaire, validity) [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/Guide/HTML/Formulaires/Validation_donnees_formulaire)
+          - [ ] Fichiers (Image, File, FileReader, Blob, URL)
+          - [ ] Drag & drop [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Drag_and_drop) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Dragging_and_Dropping_Multiple_Items) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Drag_operations)
+          - [ ] History
+          - [ ] Notifications [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/notification) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration) [4 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Alarm_API)
+          - [ ] MutationObserver [1 &#x21F2;](https://blog.sessionstack.com/how-javascript-works-tracking-changes-in-the-dom-using-mutationobserver-86adc7446401)
+        - Stockage
+          - [ ] Cookies
+          - [x] [Storage](!js/js-storage.md)
+          - [x] [IndexedDB](!js/js-indexeddb.md)
+        - Media
+          - [x] [Audio & vidéo](!js/js-audio-video.md)
+          - [x] [Canvas](!js/js-canvas.md)
+          - [ ] [WebGL](!js/js-webgl.md) [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/API/WebGL_API/Tutorial)
+          - [ ] Web Audio [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/API/Web_Audio_API)
+          - [ ] WebVR
+        - Communication
+          - [ ] XMLHttpRequest & Fetch [1 &#x21F2;](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest)
+          - [x] [Workers](!js/js-worker.md)
+          - [x] [WebSocket](!js/js-websocket.md)
+          - [ ] WebRTC [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
+          - [ ] Push
+        - Device
+          - [ ] Geolocalisation [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation) [2 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/gather_and_modify_data/Plotting_yourself_on_the_map)
+          - [ ] Ambient Light [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Ambient_Light_Events) [2 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/gather_and_modify_data/Responding_to_light_conditions)
+          - [ ] Camera & Micro [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Taking_still_photos)
+          - [ ] Device / screen orientation [1 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/gather_and_modify_data/responding_to_device_orientation_changes) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Orientation_and_motion_data_explained) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation) [4 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Managing_screen_orientation)
+          - [ ] Bluetooth
+          - [ ] Midi
+          - [ ] Proximity [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/WebAPI/Proximity) [2 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Build/gather_and_modify_data/Near_or_far_responding_to_proximity)
+          - [ ] Network Information [1 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Developing/gather_and_modify_data/Optimizing_for_high_and_low_network_speeds) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API)
+        - [ ] Performance [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Performance)
       - [ ] Librairies
         - [ ] [Jquery](jquery.md) [1 &#x21F2;](https://remysharp.com/2017/12/15/is-jquery-still-relevant)
         - [ ] [MustacheJS](mustachejs.md)

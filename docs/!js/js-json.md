@@ -6,7 +6,7 @@ category: Web, JavaScript
 ## JSON
 
 JSON (JavaScript Object Notation) est un format de représentation de données,
-très proche de la syntaxe des objets JavaScript.
+il très proche de la syntaxe des objets JavaScript.
 [Voir article JSON](json.md)
 
 ``` json
@@ -34,8 +34,9 @@ très proche de la syntaxe des objets JavaScript.
 }
 ```
 
-Le JSON est une chaîne de caractère, qui une fois parsée, est convertie en objet JavaScript.  
-Le module JSON est fournit par le navigateur et permet d'effectuer les convertions JSON.
+Le texte JSON est une chaîne de caractère, qui peut être parsée et convertie dans d'autres languages, et qui peut également être facilement créée à partir d'un autre language. Le format JSON est donc un format qui peut être (et qui est très largement) utilisé pour communiquer des données typées entre différentes applications et différents serveurs qui n'utilisent pas le même language.
+
+Le module JSON est fournit par le navigateur et permet d'effectuer les convertions JSON en objet JavaScript.
 
 ``` js
 var json = '{"name": "Bob", "age": 20}',

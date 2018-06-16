@@ -8,7 +8,7 @@ category: Web, JavaScript
 Le BOM (Browser Object Model) permet à JavaScript d'interagir avec le navigateur. Il n'existe pas de normes officielles pour le BOM mais les navigateurs récents ont implémentés (presque) tous les mêmes mécanismes.
 
 L'objet `window` est un objet global qui représente la fenêtre du navigateur.  
-Pour les navigateurs récents, on peut récupérer la taille de la fenêtre du navigateur (or barre de tâche) avec
+Pour les navigateurs récents, on peut récupérer la taille de la fenêtre du navigateur (hors barre de tâche) avec
 
 ``` js
 var h = window.innerHeight, // hauteur de la fenêtre (en pixels)
@@ -36,10 +36,10 @@ On trouve également des fonctions comme:
 * `alert`
 * `setInterval`
 
-Et évènements:
-* `onload`
-* `onscroll`
-* `onresize`
+Et des évènements:
+* `load`
+* `scroll`
+* `resize`
 
 [Description détaillée de window](https://developer.mozilla.org/fr/docs/Web/API/Window)
 

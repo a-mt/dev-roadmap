@@ -27,31 +27,6 @@ Et son DOM associé:
 
 ![](https://i.imgur.com/29D9bxY.png)
 
-## API DOM
-
-Le contenu de la page est stocké dans le DOM. On peut y accéder et le manipuler via JavaScript avec l'API DOM, un ensemble de méthodes et propriété qui permettent d'interagir avec, par exemple pour lire ou modifier le contenu de certaines balises.
-
-On accède à l'API DOM via l'objet global `document`.  
-Par exemple, pour changer le contenu de l'élément ayant l'id "paragraph":
-
-``` js
-document.getElementById("paragraph").textContent = "Bonjour tout le monde";
-```
-
-ou
-
-``` js
-document.getElementById("paragraph").innerHTML = "<strong>Bonjour</strong> tout le monde";
-```
-
-Le DOM est crée est fur et à mesure du chargement de la page. Il est conseillé de n'y accéder qu'une fois la page complètement chargée, et ce afin que le DOM soit entier.
-
-``` js
-window.onload = function(){
-  // Accéder au DOM une fois la page chargée
-}
-```
-
 ---
 
 ## Terminologie
@@ -115,9 +90,37 @@ Chaque balises et contenu texte du document est un noeud dans le DOM. Il existe 
 
 ---
 
-## Sélectionner des éléments
+## API DOM
 
-Il existe différentes méthodes pour sélectionner un élément.
+Le contenu de la page est stocké dans le DOM et on peut y accéder/le manipuler via JavaScript grâce à une API - l'API DOM. L'API DOM définit un ensemble de méthodes et propriétés sur les éléments du DOM, selon le type de l'élement. Cela peut permettre par exemple de lire ou modifier du contenu.
+
+Le noeud de plus haut niveau de la page, la racine, est contenue dans l'objet global `document`.
+On utilise cet objet pour pouvoir accéder à tout élément dans la page.
+Par exemple, pour changer le contenu de l'élément ayant l'id "paragraph":
+
+``` js
+document.getElementById("paragraph").textContent = "Bonjour tout le monde";
+```
+
+ou
+
+``` js
+document.getElementById("paragraph").innerHTML = "<strong>Bonjour</strong> tout le monde";
+```
+
+Notez que le DOM est crée est fur et à mesure du chargement de la page. Il est conseillé de n'y accéder qu'une fois la page complètement chargée, et ce afin que le DOM soit entier.
+
+``` js
+window.onload = function(){
+  // Accéder au DOM une fois la page chargée
+}
+```
+
+---
+
+### Sélectionner des éléments
+
+Il existe différentes méthodes pour sélectionner un élément:
 
 <table>
 
@@ -134,7 +137,7 @@ Peut être appelé sur `document` ou sur un HTMLElement.<br><br>
 <pre lang="js">var elements = element.getElementsByTagName("p");
 
 for(var i=0; i<elements.length; i++) {
-  console.log(elements[i].textContent);
+    console.log(elements[i].textContent);
 }</pre>
 </td></tr>
 
@@ -145,7 +148,7 @@ Peut être appelé sur `document` ou sur un HTMLElement.<br><br>
 <pre lang="js">var elements = element.getElementsByClassName("myclass");
 
 for(var i=0; i<elements.length; i++) {
-  console.log(elements[i].textContent);
+    console.log(elements[i].textContent);
 }</pre>
 </td></tr>
 
@@ -163,13 +166,13 @@ Peut être appelé sur `document` ou sur un HTMLElement.<br><br>
 <pre lang="js">var elements = element.querySelectorAll("p.myclass");
 
 for(var i=0; i<elements.length; i++) {
-  console.log(elements[i].textContent);
+    console.log(elements[i].textContent);
 }</pre></td></tr>
 
 </table>
 
 L'accès au DOM est très lent par rapport aux autres instructions JavaScript.  
-Si vous prévoyez d'accéder à un même élément à de multiples reprises, mieux le sélectionner une seule fois en l'assignant à une variable locale, puis utiliser l'élément en mémoire pour effectuer des modifications.
+Si vous prévoyez d'accéder à un même élément à de multiples reprises, mieux vaut le sélectionner une seule fois en l'assignant à une variable locale, puis utiliser l'élément en mémoire pour effectuer des modifications.
 
 ``` js
 var element = document.getElementById("myid"),
@@ -181,47 +184,46 @@ element.removeAttribute('data-url');
 
 ---
 
-## Modifier des éléments
+### Modifier des éléments
 
 Il existe différentes propriétés et méthodes pour accéder et modifier les valeurs d'un HTMLElement.
 
-### Le contenu
+#### Le contenu
 
-* Définir le texte (le HTML est échappé)
+On peut définit le texte d'un élément avec la propriété `textContent` (le HTML est échappé)
 
-  ``` js
-  element.textContent = "Mon texte"
-  ```
+``` js
+element.textContent = "Mon texte"
+```
 
-* Définir le HTML
+Ou directement le HTML avec la propriété `innerHTML`.
 
-  ``` js
-  element.innerHTML   = "<strong>Hello</strong> Hello"
-  ```
+``` js
+element.innerHTML   = "Mon <strong>HTML</strong>"
+```
 
-### Les attributs
+#### Les attributs
 
-* Récupérer la valeur de l'attribut
+On peut récupérer la valeur d'un attribut, en définir de nouveaux ou changer leur valeur, ou encore en supprimer.
 
-  ``` js
-  element.getAttribute('id')
-  ```
+``` js
+// Récupérer la valeur
+element.getAttribute('id')
+```
 
-* Définir la valeur de l'attribut
+``` js
+// Définit la valeur
+element.setAttribute('id', 1)
+```
 
-  ``` js
-  element.setAttribute('id', 1)
-  ```
+``` js
+// Supprimer l'attribut
+element.removeAttribute('id')
+```
 
-* Supprimer l'attribut
+##### Le style
 
-  ``` js
-  element.removeAttribute('id')
-  ```
-
-#### Le style
-
-La propriété `style` permet de modifier l'attribut style de l'élément.
+Plutôt que d'utiliser les méthodes `getAttribute`, etc, on peut récupérer/définir les styles d'un élément - individuellement - avec la propriété `style`:
 
 ``` js
 element.style.left = '12px';
@@ -234,58 +236,54 @@ Par exemple `font-family` devient `fontFamily`.
 element.style.lineHeight = '30px';
 ```
 
-#### La classe
+##### La classe
 
-* Récupérer la valeur de l'attribut `class`
+De même, on peut utiliser la propriété `classList` pour récupérer la liste des classes de l'élément (objet DOMTokenList) et ainsi vérifier la présence d'une classe, ajouter, supprimer ou remplacer une classe.
 
-  ``` js
-  element.className
-  ```
+``` js
+element.classList.contains('myclass')
+element.classList.add('newclass')
+element.classList.remove('oldclass')
+element.classList.replace('oldclass', 'newclass')
+```
 
-* Récupérer la liste des classes de l'élément (DOMTokenList)
+La valeur de l'attribut `class` (chaîne de caractères) peut être récupérée avec la propriété `className`. C'est un raccourci pour `getAttribute("class")`.
 
-  ``` js
-  element.classList
-  ```
+``` js
+element.className
+```
 
-`classList` peut être utilisé pour vérifier la présence d'une classe, ajouter, supprimer ou remplacer une classe.
-
-  ``` js
-  element.classList.contains('myclass')
-  element.classList.add('newclass')
-  element.classList.remove('oldclass')
-  element.classList.replace('oldclass', 'newclass')
-  ```
-
-#### Les données
+##### Les metadonnées
 
 HTML5 permet d'associer des données à un élément HTML à l'aide des attributs data-*.  
 La propriété `dataset` permet de récupérer et modifier ces valeurs
 
 ``` js
+// Définir une métadonnée
 element.dataset.prop = "test";
+```
 
-console.log(element.dataset.prop);              // test
-console.log(element.getAttribute("data-prop")); // test
+``` js
+// Récupérer une métadonnée
+console.log(element.dataset.prop);
+```
+
+Ce qui revient à
+
+``` js
+console.log(element.getAttribute("data-prop"));
 ```
 
 [Exemple dataset](https://jsfiddle.net/amt01/kxsxgpdg/)
 
 ---
 
-## Ajouter des éléments
+### Ajouter des éléments
 
-### Créer un élément
+#### Créer un élément
 
-Pour créer un élément:
-
-```
-document.createElement(tagName)
-```
-
-Une fois l'élément créé, modifier ses attributs et son contenu avant de l'ajouter au DOM.  
-Lorsque l'élément est ajouté au DOM, il devient visible à l'écran.  
-Par exemple, pour ajouter un nouveau paragraphe à `<body>`:
+Pour créer un élément, on utilise la méthode `createElement(tagName)`.
+Une fois l'élément créé, on peut modifier ses attributs et son contenu avant de l'ajouter au DOM - moment où il devient visible à l'écran. Par exemple, pour ajouter un nouveau paragraphe à `<body>`:
 
 ``` js
 var element = document.createElement('p');     // crée un paragraphe
@@ -293,13 +291,9 @@ element.textContent = "Bonjour tout le monde"; // change le contenu du paragraph
 document.body.appendChild(element);            // ajoute l'élément nouvellement créé au DOM
 ```
 
-### Changer de parent
+#### Changer de parent
 
-Pour changer le parent d'un élément:
-```
-parentNode.appendChild(element)
-```
-
+Pour changer le parent d'un élément, on urilise la méthode `appendChild(element)` sur le parent désiré.
 Cela permet d'ajouter un élément nouvellement crée au DOM ou bien de déplacer un élément pré-existant dans la page.
 
 ``` js
@@ -311,47 +305,7 @@ newParent.appendChild(element);
 
 ---
 
-## Utiliser les événements
-
-Les évènements sont des états déclenchés lorsqu'une action est effectuée ou, de manière plus générale, quelque chose se produit: un clic, le passage de la souris sur l'élément, du texte écrit, un élément qui se charge, etc. 
-
-### Écouter un événement
-
-`element.addEventListener(eventName, callback)` permet de détecter quand un événement arrive sur un élément (comme un clic, le fait de prendre le focus, de taper du texte, etc), et d'executer une action à ce moment.
-
-``` js
-element.addEventListener('click', function(){
-  alert("You clicked !");
-})
-```
-
-[Exemple: Téléchargement via Drag & Drop](https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/)
-
-### Déclencher un événement
-
-Pour déclencher un clic sur un élément, il existe une méthode:
-
-``` js
-element.click()
-```
-
-Pour déclencher un autre événement, il est nécessaire de créer un événément de toute pièce et de le propager.
-
-``` js
-var event = new Event('submit');
-element.dispatchEvent(event);
-```
-
-Ou pour un événement personnalisé:
-
-``` js
-var event = new CustomEvent('myevent');
-element.dispatchEvent(event);
-```
-
----
-
-## Anciens navigateurs
+### Anciens navigateurs
 
 Les méthodes de l'API DOM présentées ci-dessous sont les méthodes les plus couramment implémentées. Cependant, tous les navigateurs ne supportent pas tous les mêmes méthodes et notamment les anciens navigateurs.
 

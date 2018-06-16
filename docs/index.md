@@ -31,6 +31,7 @@ searchbar: true
         - [x] [Date](!js/js-es5-methods-date.md)
     - [x] [BOM](!js/js-bom.md)
     - [x] [DOM](!js/js-dom.md)
+      - [x] [Événements](!js/js-events.md)
       - [x] [AJAX](!js/js-ajax.md)
       - [x] [JSON, JSONP](!js/js-json.md)
     - [x] [Gestion de la mémoire](!js/js-memory.md)

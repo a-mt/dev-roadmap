@@ -61,10 +61,9 @@ searchbar: true
       - Web API
         - Interraction
           - [x] [DOM](!js/js-dom.md)
-          - [ ] Clavier, souris [1 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/User_input_methods) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Touch_events) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_Lock_API)
+          - [x] [Interactions utilisateur (clavier, souris, etc)](!js/js-user-interaction.md)
           - [ ] Formulaire (Formulaire, validity) [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/Guide/HTML/Formulaires/Validation_donnees_formulaire)
           - [ ] Fichiers (Image, File, FileReader, Blob, URL)
-          - [ ] Drag & drop [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Drag_and_drop) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Dragging_and_Dropping_Multiple_Items) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Drag_operations)
           - [ ] History
           - [ ] Notifications [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/notification) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration) [4 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Alarm_API)
           - [ ] MutationObserver [1 &#x21F2;](https://blog.sessionstack.com/how-javascript-works-tracking-changes-in-the-dom-using-mutationobserver-86adc7446401)
@@ -79,7 +78,7 @@ searchbar: true
           - [ ] Web Audio [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/API/Web_Audio_API)
           - [ ] WebVR
         - Communication
-          - [ ] XMLHttpRequest & Fetch [1 &#x21F2;](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest)
+          - [x] [AJAX](!js/js-ajax.md)
           - [x] [Workers](!js/js-worker.md)
           - [x] [WebSocket](!js/js-websocket.md)
           - [ ] WebRTC [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)

@@ -430,7 +430,39 @@ Cela peut être utile si vous voulez savoir quelles parties d'une vidéo ont ét
 * [WebRTC getUserMedia](https://developer.mozilla.org/fr/docs/NavigatorUserMedia.getUserMedia)  
   Utiliser la webcam et/ou le microphone de l'utilisateur.
 
+  ``` html
+  <video id="webcam" width="480" height="360"></video>
+  ```
+
+  <ins>Version ES6</ins>: `navigator.mediaDevices.getUserMedia` (promesses)
+
   ``` js
+  if(navigator.mediaDevices) {
+    navigator.mediaDevices.getUserMedia({
+      video: true,
+      audio: false
+    })
+
+    // Success
+    .then(function(stream) {
+      var video = document.getElementById('webcam');
+      video.autoplay = true;
+      video.src = window.URL.createObjectURL(stream);
+    })
+
+    // Error
+    .catch(function() {
+      alert('Cannot retrieve the stream - are you running on file:/// or did you disallow access?');
+    });
+  }
+  ```
+
+  <ins>Version legacy</ins>: `navigator.getUserMedia` (callbacks)
+
+  ``` js
+  navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia
+                        || navigator.webkitGetUserMedia || navigator.msGetUserMedia;
+
   if(navigator.getUserMedia) {
     navigator.getUserMedia({
       video: true,
@@ -448,6 +480,8 @@ Cela peut être utile si vous voulez savoir quelles parties d'une vidéo ont ét
     });
   }
   ```
+  
+  [Utiliser des contraintes](https://developer.mozilla.org/en-US/docs/Web/API/Media_Streams_API/Constraints#Applying_constraints)
 
 * [MediaRecording](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API)  
   Enregistrer un flux média, comme la webcam ou le microphone.
@@ -465,6 +499,8 @@ Cela peut être utile si vous voulez savoir quelles parties d'une vidéo ont ét
     }
   });
   ```
+
+  Pour les navigateurs qui ne prennent pas en charge MediaRecorder, on peut utiliser la librairie [RecordRTC](https://github.com/muaz-khan/WebRTC-Experiment/tree/master/RecordRTC)
 
 * [Web Audio](https://developer.mozilla.org/fr/Apps/Build/Audio_and_video_manipulation#Manipulation_Audio)  
   Manipuler l'audio (gain, distortion, etc)

@@ -175,6 +175,7 @@ searchbar: true
   - [ ] CORS [1 &#x21F2;](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b)
 
 - Culture générale
+  - [ ] [Paradigmes informatique](paradigm.md)
   - [x] [Raccourcis édition de texte](text-editing.md)
   - [x] [Regex](regex.md)
   - CS [1 &#x21F2;](https://medium.freecodecamp.org/the-quick-guide-to-the-way-computers-work-for-desperate-new-coders-fcdb34cbe8a9)

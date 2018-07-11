@@ -62,7 +62,7 @@ searchbar: true
         - Interraction
           - [x] [DOM](!js/js-dom.md)
           - [x] [Interactions utilisateur (clavier, souris, etc)](!js/js-user-interaction.md)
-          - [ ] Formulaire (Formulaire, validity) [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/Guide/HTML/Formulaires/Validation_donnees_formulaire)
+          - [x] [Formulaire](!js/js-form.md)
           - [ ] Fichiers (Image, File, FileReader, Blob, URL)
           - [ ] History
           - [ ] Notifications [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/notification) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration) [4 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Alarm_API)

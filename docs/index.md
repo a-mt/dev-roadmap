@@ -118,7 +118,7 @@ searchbar: true
   - Programming langages
     - [ ] PHP
       - [x] [Composer](composer.md)
-    - [ ] Python
+    - [ ] Python [1 &#x21F2;](https://engmrk.com/refresh-your-python-basics/)
     - [ ] Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
     - [ ] R [1 &#x21F2;](https://www.datacamp.com/)
     - [ ] NodeJS

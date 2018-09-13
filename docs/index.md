@@ -119,6 +119,7 @@ searchbar: true
     - [ ] PHP
       - [x] [Composer](composer.md)
     - [ ] Python [1 &#x21F2;](https://engmrk.com/refresh-your-python-basics/)
+      - [ ] Python Debugger [1 &#x21F2;](https://www.youtube.com/watch?time_continue=6270&v=Z0ssNAbe81M)
     - [ ] Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
     - [ ] R [1 &#x21F2;](https://www.datacamp.com/)
     - [ ] NodeJS

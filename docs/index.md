@@ -166,15 +166,6 @@ searchbar: true
     - [x] [Docker](docker.md)
     - [ ] Kubernetes [1 &#x21F2;](https://godaddy.github.io/2018/05/02/kubernetes-introduction-for-developers/)
 
-- Hosting
-  - [ ] Apache
-    - [ ] Virtual hosts
-    - [ ] .htaccess
-  - [ ] Nginx [1 &#x21F2;](https://medium.freecodecamp.org/an-introduction-to-nginx-for-developers-62179b6a458f)
-  - [ ] robots.txt
-  - [ ] DNS & cie [1 &#x21F2;](https://medium.freecodecamp.org/why-cant-a-domain-s-root-be-a-cname-8cbab38e5f5c)
-  - [ ] CORS [1 &#x21F2;](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b)
-
 - Culture générale
   - [ ] [Paradigmes informatique](paradigm.md)
   - [x] [Raccourcis édition de texte](text-editing.md)
@@ -205,6 +196,16 @@ searchbar: true
     - [x] [Wildcard (fichiers)](wildcard.md)
   - [ ] Bash Script
     - [x] [Conditions](conditions-shell.md)
+
+- IT
+  - [ ] Apache
+    - [ ] Virtual hosts
+    - [ ] .htaccess
+  - [ ] Nginx [1 &#x21F2;](https://medium.freecodecamp.org/an-introduction-to-nginx-for-developers-62179b6a458f)
+  - [ ] robots.txt
+  - [ ] DNS & cie [1 &#x21F2;](https://medium.freecodecamp.org/why-cant-a-domain-s-root-be-a-cname-8cbab38e5f5c)
+  - [ ] CORS [1 &#x21F2;](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b)
+  - [x] [Hadoop](hadoop.md)
 
 - Misc
 

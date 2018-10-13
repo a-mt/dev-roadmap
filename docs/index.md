@@ -14,8 +14,9 @@ searchbar: true
     - [x] [Types](!css/css-types.md)
     - [x] [Propriétés](!css/css-proprietes.md)
     - [x] [At-rules](!css/css-atrules.md)
-    - Conventions de nommage [1 &#x21F2;](https://medium.freecodecamp.org/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849)
-      - [ ] BEM [1 &#x21F2;](https://blog.elpassion.com/reasons-to-use-bem-a88738317753) [2 &#x21F2;](https://medium.com/mr-frontend-community/how-to-write-better-css-with-bem-40f492a26192)
+    - Conventions de nommage [1 &#x21F2;](https://medium.freecodecamp.org/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849) [2 &#x21F2;](https://spaceninja.com/2018/09/17/what-is-modular-css/)
+      - [ ] BEM [1 &#x21F2;](https://blog.elpassion.com/reasons-to-use-bem-a88738317753) [2 &#x21F2;](https://medium.com/mr-frontend-community/how-to-write-better-css-with-bem-40f492a26192) [3 &#x21F2;](https://www.smashingmagazine.com/2018/06/bem-for-beginners/)
+      - [ ] SMACSS [1 &#x21F2;](https://www.toptal.com/css/smacss-scalable-modular-architecture-css)
     - Preprocesseurs
       - [x] [Sass](sass.md)
       - [ ] Less
@@ -76,12 +77,12 @@ searchbar: true
           - [x] [Canvas](!js/js-canvas.md)
           - [ ] [WebGL](!js/js-webgl.md) [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/API/WebGL_API/Tutorial)
           - [ ] Web Audio [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/API/Web_Audio_API)
-          - [ ] WebVR
+          - [ ] WebVR [1 &#x21F2;](https://medium.freecodecamp.org/how-to-wish-someone-happy-birthday-using-augmented-reality-3809776cb655) [2 &#x21F2;](https://hacks.mozilla.org/2018/09/converting-a-webgl-application-to-webvr/)
         - Communication
           - [x] [AJAX](!js/js-ajax.md)
           - [x] [Workers](!js/js-worker.md)
           - [x] [WebSocket](!js/js-websocket.md)
-          - [ ] WebRTC [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
+          - [ ] WebRTC [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API) [2 &#x21F2;](https://blog.sessionstack.com/how-javascript-works-webrtc-and-the-mechanics-of-peer-to-peer-connectivity-87cc56c1d0ab)
           - [ ] Push
         - Device
           - [ ] Geolocalisation [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation) [2 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/gather_and_modify_data/Plotting_yourself_on_the_map)
@@ -108,9 +109,9 @@ searchbar: true
     - [ ] Design patterns [1 &#x21F2;](https://www.toptal.com/javascript/comprehensive-guide-javascript-design-patterns)
     - [ ] Observer pattern [1 &#x21F2;](https://pawelgrzybek.com/the-observer-pattern-in-javascript-explained/)
     - [ ] Tricks [1 &#x21F2;](https://medium.freecodecamp.org/high-performance-apps-multiplexing-debouncing-system-fonts-and-other-tricks-37c6fd3d7b2d) [2 &#x21F2;](https://air.ghost.io/js-things-i-never-knew-existed/)
-    - [ ] Testing [1 &#x21F2;](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3)
+    - [ ] Q/A Testing [1 &#x21F2;](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-dockerize-your-end-to-end-acceptance-tests-dbb593acb8e0)
     - Extension langage
-      - [ ] Typescript [1 &#x21F2;](https://auth0.com/blog/typescript-practical-introduction/)
+      - [ ] Typescript [1 &#x21F2;](https://auth0.com/blog/typescript-practical-introduction/) [2 &#x21F2;](https://medium.freecodecamp.org/learn-typescript-in-5-minutes-13eda868daeb)
   - [ ] Progressive web apps [1 &#x21F2;](https://medium.freecodecamp.org/how-you-can-develop-progressive-web-apps-that-feel-native-5110fbbcbf4b) [2 &#x21F2;](https://medium.freecodecamp.org/a-deeply-detailed-but-never-definitive-guide-to-mobile-development-architecture-6b01ce3b1528)
   - [ ] Browser extensions [1 &#x21F2;](https://medium.freecodecamp.org/how-to-make-a-cross-browser-extension-using-javascript-and-browser-apis-355c001cebba)
 
@@ -118,8 +119,9 @@ searchbar: true
   - Programming langages
     - [ ] PHP
       - [x] [Composer](composer.md)
-    - [ ] Python [1 &#x21F2;](https://engmrk.com/refresh-your-python-basics/)
+    - [ ] Python [1 &#x21F2;](https://engmrk.com/refresh-your-python-basics/) [2 &#x21F2;](https://medium.freecodecamp.org/an-a-z-of-useful-python-tricks-b467524ee747)
       - [ ] Python Debugger [1 &#x21F2;](https://www.youtube.com/watch?time_continue=6270&v=Z0ssNAbe81M)
+      - [ ] Flask [1 &#x21F2;](https://medium.freecodecamp.org/how-to-build-a-web-application-using-flask-and-deploy-it-to-the-cloud-3551c985e492)
     - [ ] Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
     - [ ] R [1 &#x21F2;](https://www.datacamp.com/)
     - [ ] NodeJS
@@ -155,32 +157,27 @@ searchbar: true
     - [x] [Sémantique de version](semver.md)
     - [x] [Git](git.md)
     - [x] [Github](github.md) [1 &#x21F2;](https://medium.freecodecamp.org/manage-multiple-github-accounts-the-ssh-way-2dadc30ccaca)
+      - [ ] README [1 &#x21F2;](https://medium.freecodecamp.org/why-im-not-using-your-github-repository-2dff6c7ac7cf) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-up-to-3500-github-stars-in-one-week-339102b62a8f)
     - [ ] Open Source [1 &#x21F2;](https://opensource.guide/) [2 &#x21F2;](https://github.com/Roshanjossey/first-contributions)
     - [ ] Licences [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94) [2 &#x21F2;](https://spdx.org/licenses)
   - Task runners & dependency tools
     - [ ] Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html)
     - [ ] Grunt
-    - [ ] Gulp
-    - [ ] Webpack [1 &#x21F2;](https://blog.vanila.io/webpack-what-is-it-and-is-it-better-than-gulp-375db8011d22) [2 &#x21F2;](https://medium.com/@timurcatakli/an-easy-to-understand-webpack-4-configuration-file-with-comments-6213882e9edf)
+    - [ ] Gulp [1 &#x21F2;](https://medium.freecodecamp.org/super-simple-gulp-tutorial-for-beginners-45141974bfe8)
+    - [ ] Webpack [1 &#x21F2;](https://blog.vanila.io/webpack-what-is-it-and-is-it-better-than-gulp-375db8011d22) [2 &#x21F2;](https://medium.com/@timurcatakli/an-easy-to-understand-webpack-4-configuration-file-with-comments-6213882e9edf) [3 &#x21F2;](https://medium.freecodecamp.org/a-beginners-introduction-to-webpack-2620415e46b3)
   - Containers
     - [x] [Docker](docker.md)
     - [ ] Kubernetes [1 &#x21F2;](https://godaddy.github.io/2018/05/02/kubernetes-introduction-for-developers/)
 
 - Culture générale
-  - [ ] [Paradigmes informatique](paradigm.md)
   - [x] [Raccourcis édition de texte](text-editing.md)
   - [x] [Regex](regex.md)
-  - CS [1 &#x21F2;](https://medium.freecodecamp.org/the-quick-guide-to-the-way-computers-work-for-desperate-new-coders-fcdb34cbe8a9)
-    - [x] [Encodages](encodages.md)
-    - [x] [Opérations sur les bits](bitwise-operations.md)
-  - [ ] [Sécurité](securite.md) [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9)
-    - [ ] [SSH](ssh.md)
-    - [ ] HTTPS [1 &#x21F2;](https://medium.freecodecamp.org/https-explained-with-carrier-pigeons-7029d2193351?utm_content=buffer1f715&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec)
-    - [ ] SSL [2 &#x21F2;](https://medium.freecodecamp.org/openssl-command-cheatsheet-b441be1e8c4a)
+  - [ ] DevTools [1 &#x21F2;](https://www.smashingmagazine.com/2018/02/javascript-firefox-debugger/) [2 &#x21F2;](https://medium.freecodecamp.org/how-you-can-improve-your-workflow-using-the-javascript-console-bdd7823a9472)
+  - [ ] BOM [1 &#x21F2;](https://medium.freecodecamp.org/a-quick-tale-about-feff-the-invisible-character-cd25cd4630e7)
   - Méthodologie
     - [x] [Agile](agile.md)
     - [ ] 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
-  - DevTools [1 &#x21F2;](https://www.smashingmagazine.com/2018/02/javascript-firefox-debugger/)
+  - [ ] [Paradigmes informatique](paradigm.md)
 
 - Linux
   - [x] [Installer](linux-install.md)
@@ -198,20 +195,31 @@ searchbar: true
     - [x] [Conditions](conditions-shell.md)
 
 - IT
+  - [ ] Networks [1 &#x21F2;](https://medium.freecodecamp.org/computer-networks-and-how-to-actually-understand-them-c1401908172d)
+  - [ ] Hosting [1 &#x21F2;](https://medium.freecodecamp.org/how-you-can-host-multiple-domain-names-and-projects-in-one-vps-7aed4f56e7a1)
+  - CS [1 &#x21F2;](https://medium.freecodecamp.org/the-quick-guide-to-the-way-computers-work-for-desperate-new-coders-fcdb34cbe8a9)
+    - [x] [Encodages](encodages.md)
+    - [x] [Opérations sur les bits](bitwise-operations.md)
+  - [ ] [Sécurité](securite.md) [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9)
+    - [ ] [SSH](ssh.md)
+    - [ ] HTTPS [1 &#x21F2;](https://medium.freecodecamp.org/https-explained-with-carrier-pigeons-7029d2193351?utm_content=buffer1f715&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec)
+    - [ ] SSL [2 &#x21F2;](https://medium.freecodecamp.org/openssl-command-cheatsheet-b441be1e8c4a)
   - [ ] Apache
     - [ ] Virtual hosts
     - [ ] .htaccess
   - [ ] Nginx [1 &#x21F2;](https://medium.freecodecamp.org/an-introduction-to-nginx-for-developers-62179b6a458f)
+    - [ ] A/B Testing [1 &#x21F2;](https://medium.freecodecamp.org/a-b-testing-with-nginx-in-40-lines-of-code-d4f94397130a)
   - [ ] robots.txt
   - [ ] DNS & cie [1 &#x21F2;](https://medium.freecodecamp.org/why-cant-a-domain-s-root-be-a-cname-8cbab38e5f5c)
   - [ ] CORS [1 &#x21F2;](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b)
   - [x] [Hadoop](hadoop.md)
+  - [ ] Spark [1 &#x21F2;](https://medium.freecodecamp.org/processing-wikipedia-with-spark-542213bd4365)
 
 - Misc
 
   - [ ] Blockchain [1 &#x21F2;](https://medium.freecodecamp.org/bitcoin-flipping-the-coin-a060df19d20d) [2 &#x21F2;](https://blockchaindemo.io/) [3 &#x21F2;](https://github.com/igorbarinov/awesome-blockchain) [4 &#x21F2;](https://medium.freecodecamp.org/how-does-bitcoin-work-i-built-an-app-to-show-you-f9fcd50bdd0d) [5 &#x21F2;](https://medium.freecodecamp.org/the-authoritative-guide-to-blockchain-development-855ab65b58bc) [6 &#x21F2;](https://medium.freecodecamp.org/why-blockchain-is-here-to-stay-and-bitcoin-might-not-be-e117c4386af7) [7 &#x21F2;](https://medium.freecodecamp.org/misconceptions-about-blockchain-8553262e8ff0)
 
-  - [x] [Design](design.md)
+  - [x] [Design](design.md) [1 &#x21F2;](https://medium.freecodecamp.org/a-web-design-crash-course-from-one-non-designer-to-another-a6f8da0e6aa)
     - [x] [Typographie](design-typographie.md)
     - [x] [Théorie des couleurs](design-couleur.md)
     - [x] [Compositions: texte/couleur](design-couleur-2.md)
@@ -222,9 +230,12 @@ searchbar: true
     - [ ] Google Analytics [1 &#x21F2;](https://medium.freecodecamp.org/how-and-why-to-get-started-with-google-analytics-153dc35b7812)
     - [ ] SEO [1 &#x21F2;](https://support.google.com/webmasters/answer/7451184)
 
-  - [ ] Machine Learning [0 &#x21F2;](https://medium.freecodecamp.org/you-need-these-cheat-sheets-if-youre-tackling-machine-learning-algorithms-45da5743888e) [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5) [4 &#x21F2;](https://blog.statsbot.co/deep-learning-achievements-4c563e034257) [5 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [6 &#x21F2;](https://medium.freecodecamp.org/build-a-flexible-neural-network-with-backpropagation-in-python-acffeb7846d0) [7 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [8 &#x21F2;](https://medium.freecodecamp.org/how-to-deploy-an-object-detection-model-with-tensorflow-serving-d6436e65d1d9) [9 &#x21F2;](https://medium.freecodecamp.org/making-your-own-face-recognition-system-29a8e728107c) [10 &#x21F2;](https://twitter.com/fchollet/status/951828914103402497) [11 &#x21F2;](https://twitter.com/jacswork/status/957924537013764096) [12 &#x21F2;](https://twitter.com/EmilWallner/status/956755831059464203) [13 &#x21F2;](https://twitter.com/EmilWallner/status/950246690044481537) [14 &#x21F2;](https://machinelearningmastery.com/crash-course-deep-learning-natural-language-processing/) [15 &#x21F2;](https://medium.freecodecamp.org/machine-learning-how-to-go-from-zero-to-hero-40e26f8aa6da)
+  - [ ] Machine Learning [0 &#x21F2;](https://medium.freecodecamp.org/this-is-why-anyone-can-learn-machine-learning-a5333ee64dff) [0 &#x21F2;](https://medium.freecodecamp.org/you-need-these-cheat-sheets-if-youre-tackling-machine-learning-algorithms-45da5743888e) [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5) [4 &#x21F2;](https://blog.statsbot.co/deep-learning-achievements-4c563e034257) [5 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [6 &#x21F2;](https://medium.freecodecamp.org/build-a-flexible-neural-network-with-backpropagation-in-python-acffeb7846d0) [7 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [8 &#x21F2;](https://medium.freecodecamp.org/how-to-deploy-an-object-detection-model-with-tensorflow-serving-d6436e65d1d9) [9 &#x21F2;](https://medium.freecodecamp.org/making-your-own-face-recognition-system-29a8e728107c) [10 &#x21F2;](https://twitter.com/fchollet/status/951828914103402497) [11 &#x21F2;](https://twitter.com/jacswork/status/957924537013764096) [12 &#x21F2;](https://twitter.com/EmilWallner/status/956755831059464203) [13 &#x21F2;](https://twitter.com/EmilWallner/status/950246690044481537) [14 &#x21F2;](https://machinelearningmastery.com/crash-course-deep-learning-natural-language-processing/) [15 &#x21F2;](https://medium.freecodecamp.org/machine-learning-how-to-go-from-zero-to-hero-40e26f8aa6da) [16 &#x21F2;](https://blog.floydhub.com/ten-techniques-from-fast-ai/)
+    - Howtos [1 &#x21F2;](https://medium.freecodecamp.org/a-beginners-guide-to-training-and-deploying-machine-learning-models-using-python-48a313502e5a) [2 &#x21F2;](https://medium.freecodecamp.org/sketchify-turn-any-image-into-a-pencil-sketch-with-10-lines-of-code-cf67fa4f68ce) [3 &#x21F2;](https://github.com/floydhub/colornet-template) [[1 &#x21F2;](https://medium.freecodecamp.org/colorize-b-w-photos-with-a-100-line-neural-network-53d9b4449f8d)
+    - Tensorflow.js [1 &#x21F2;](https://medium.freecodecamp.org/get-to-know-tensorflow-js-in-7-minutes-afcd0dfd3d2f) [2 &#x21F2;](https://aralroca.com/2018/08/24/first-steps-with-tensorflow-js/) [3 &#x21F2;](https://dev.to/aralroca/first-steps-with-tensorflowjs-197p)
     - Synaptic.js [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-a-neural-network-in-javascript-in-only-30-lines-of-code-343dafc50d49)
     - IDE for Deep Learning [1 &#x21F2;](https://blog.floydhub.com/workspaces/)
+    - Google Natural Language API [1 &#x21F2;](https://medium.freecodecamp.org/sentiment-analysis-using-laravel-and-the-google-natural-language-api-acb70871698a)
 
 - Webdev Environments
   - [x] [Où héberger](hosting.md)
@@ -232,6 +243,7 @@ searchbar: true
   - [ ] Workflow de prod [1 &#x21F2;](https://medium.freecodecamp.org/how-to-make-your-startups-cloud-more-stable-4-practical-devops-tips-823e4202518c)
   - [x] [Github Pages](github-pages.md)
   - [x] [Jekyll](jekyll.md)
+  - [ ] Formulaires [1 &#x21F2;](https://forestry.io/blog/5-ways-to-handle-forms-on-your-static-site/)
   - [ ] Codepen
   - [ ] c9
   - [ ] Heroku [1 &#x21F2;](https://github.com/a-mt/dev-roadmap/blob/master/docs/dev-workflow.md#d%C3%A9ployer-sur-heroku) [2 &#x21F2;](https://www.sitepoint.com/how-to-deploy-node-applications-heroku-vs-now-sh/)
@@ -239,6 +251,7 @@ searchbar: true
   - [ ] Amazon [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-your-first-safe-server-ready-for-production-f1cc60eec69a)
   - [ ] CaptainDuckDuck [1 &#x21F2;](https://medium.freecodecamp.org/how-i-cut-my-heroku-cost-by-400-5b9d0220ce13)
   - [ ] Google Business [1 &#x21F2;](https://www.gybo.com/lessons)
+  - [ ] Shopify [1 &#x21F2;](https://medium.freecodecamp.org/how-to-build-your-first-shopify-app-bc4edef32974)
 
 - Useful Websites
   - Files hosting

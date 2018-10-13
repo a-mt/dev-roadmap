@@ -2,7 +2,7 @@
 layout: ~
 ---
 [
-  {%- assign pages = site.pages | where_exp:"item","item.title != 'Roadmap'" -%}
+  {%- assign pages = site.pages | where_exp:"item","item.category != None" -%}
   {% for page in pages %}
     {
       "title"    : "{{ page.title | escape }}",

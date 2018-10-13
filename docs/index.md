@@ -109,9 +109,7 @@ searchbar: true
     - [ ] Design patterns [1 &#x21F2;](https://www.toptal.com/javascript/comprehensive-guide-javascript-design-patterns)
     - [ ] Observer pattern [1 &#x21F2;](https://pawelgrzybek.com/the-observer-pattern-in-javascript-explained/)
     - [ ] Tricks [1 &#x21F2;](https://medium.freecodecamp.org/high-performance-apps-multiplexing-debouncing-system-fonts-and-other-tricks-37c6fd3d7b2d) [2 &#x21F2;](https://air.ghost.io/js-things-i-never-knew-existed/)
-    - [ ] Q/A Testing [1 &#x21F2;](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-dockerize-your-end-to-end-acceptance-tests-dbb593acb8e0)
-    - Extension langage
-      - [ ] Typescript [1 &#x21F2;](https://auth0.com/blog/typescript-practical-introduction/) [2 &#x21F2;](https://medium.freecodecamp.org/learn-typescript-in-5-minutes-13eda868daeb)
+    - [ ] Typescript [1 &#x21F2;](https://auth0.com/blog/typescript-practical-introduction/) [2 &#x21F2;](https://medium.freecodecamp.org/learn-typescript-in-5-minutes-13eda868daeb)
   - [ ] Progressive web apps [1 &#x21F2;](https://medium.freecodecamp.org/how-you-can-develop-progressive-web-apps-that-feel-native-5110fbbcbf4b) [2 &#x21F2;](https://medium.freecodecamp.org/a-deeply-detailed-but-never-definitive-guide-to-mobile-development-architecture-6b01ce3b1528)
   - [ ] Browser extensions [1 &#x21F2;](https://medium.freecodecamp.org/how-to-make-a-cross-browser-extension-using-javascript-and-browser-apis-355c001cebba)
 
@@ -168,16 +166,19 @@ searchbar: true
   - Containers
     - [x] [Docker](docker.md)
     - [ ] Kubernetes [1 &#x21F2;](https://godaddy.github.io/2018/05/02/kubernetes-introduction-for-developers/)
+  - [ ] Q/A Testing [1 &#x21F2;](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-dockerize-your-end-to-end-acceptance-tests-dbb593acb8e0)
+  - [ ] Continuous Integration [1 &#x21F2;](https://medium.freecodecamp.org/4-steps-to-build-an-automated-testing-pipeline-with-gitlab-ci-24ccab95535e)
 
 - Culture générale
   - [x] [Raccourcis édition de texte](text-editing.md)
   - [x] [Regex](regex.md)
-  - [ ] DevTools [1 &#x21F2;](https://www.smashingmagazine.com/2018/02/javascript-firefox-debugger/) [2 &#x21F2;](https://medium.freecodecamp.org/how-you-can-improve-your-workflow-using-the-javascript-console-bdd7823a9472)
+  - [ ] DevTools [1 &#x21F2;](https://www.smashingmagazine.com/2018/02/javascript-firefox-debugger/) [2 &#x21F2;](https://medium.freecodecamp.org/how-you-can-improve-your-workflow-using-the-javascript-console-bdd7823a9472) [3 &#x21F2;](https://medium.freecodecamp.org/how-to-surprise-your-apps-users-by-hiding-easter-eggs-in-the-console-3b6e9285e7e7)
   - [ ] BOM [1 &#x21F2;](https://medium.freecodecamp.org/a-quick-tale-about-feff-the-invisible-character-cd25cd4630e7)
   - Méthodologie
     - [x] [Agile](agile.md)
     - [ ] 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
   - [ ] [Paradigmes informatique](paradigm.md)
+  - [ ] Data Structures [1 &#x21F2;](https://medium.freecodecamp.org/data-structures-101-binary-search-tree-398267b6bff0)
 
 - Linux
   - [x] [Installer](linux-install.md)
@@ -203,7 +204,7 @@ searchbar: true
   - [ ] [Sécurité](securite.md) [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9)
     - [ ] [SSH](ssh.md)
     - [ ] HTTPS [1 &#x21F2;](https://medium.freecodecamp.org/https-explained-with-carrier-pigeons-7029d2193351?utm_content=buffer1f715&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec)
-    - [ ] SSL [2 &#x21F2;](https://medium.freecodecamp.org/openssl-command-cheatsheet-b441be1e8c4a)
+    - [ ] SSL [1 &#x21F2;](https://medium.freecodecamp.org/openssl-command-cheatsheet-b441be1e8c4a) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-valid-ssl-certificates-for-local-development-ca228240fad2)
   - [ ] Apache
     - [ ] Virtual hosts
     - [ ] .htaccess

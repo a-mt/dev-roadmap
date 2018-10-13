@@ -6,17 +6,19 @@ category: Web, CSS, Propriétés
 ## position
 
 La propriété `position` permet de déplacer l'élément dans la page.  
-[Comparaison position relative, absolute, fixed](https://jsfiddle.net/amt01/cck6mx93/)
+[Comparaison position relative, absolute, fixed](https://jsfiddle.net/amt01/cck6mx93/)  
+[Exemple sticky](https://jsfiddle.net/amt01/m5u2xkf7/)
 
 | Position | Description |
 |---       |---          |
 | relative | Déplace l'élément par rapport à sa position initiale |
 | absolute | Place l'élément par rappport à un parent en position relative - ou à la page si aucun.<br> L'élément est sorti du flow, les autres éléments agissent comme s'il n'existait pas |
 | fixed    | Place l'élément par rapport au viewport - sa position reste donc toujours la même, même lorsqu'on scrolle.<br> L'élément est sorti du flow, les autres éléments agissent comme s'il n'existait pas |
+| sticky   | Élément fixed relativement au parent |
 | static   | Comportement par défaut |
 
 ``` plain
-position: static | relative | absolute | fixed
+position: static | relative | absolute | fixed | sticky
 (CSS2)
 Définit la façon dont l'élément est positionné dans le document
 ```

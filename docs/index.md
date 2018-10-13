@@ -2,138 +2,140 @@
 searchbar: true
 ---
 
-- [Développement Web](web.md)
-- Front-End
-  - [x] [HTML](html.md)
-    - [x] [Éléments HTML](html-elements.md)
-    - [ ] [Accessibilité](accessibilite.md)
-    - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/) [2 &#x21F2;](https://webdesign.tutsplus.com/tutorials/how-to-hand-code-svg--cms-30368)
-  - [x] [CSS](css.md)
-    - [x] [Inclure du CSS](!css/css-include.md)
-    - [x] [Sélecteurs](!css/css-selecteurs.md)
-    - [x] [Types](!css/css-types.md)
-    - [x] [Propriétés](!css/css-proprietes.md)
-    - [x] [At-rules](!css/css-atrules.md)
-    - Conventions de nommage [1 &#x21F2;](https://medium.freecodecamp.org/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849) [2 &#x21F2;](https://spaceninja.com/2018/09/17/what-is-modular-css/)
-      - [ ] BEM [1 &#x21F2;](https://blog.elpassion.com/reasons-to-use-bem-a88738317753) [2 &#x21F2;](https://medium.com/mr-frontend-community/how-to-write-better-css-with-bem-40f492a26192) [3 &#x21F2;](https://www.smashingmagazine.com/2018/06/bem-for-beginners/)
-      - [ ] SMACSS [1 &#x21F2;](https://www.toptal.com/css/smacss-scalable-modular-architecture-css)
-    - Preprocesseurs
-      - [x] [Sass](sass.md)
-      - [ ] Less
-  - [ ] [JS](js.md) [1 &#x21F2;](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711) [2 &#x21F2;](https://ashleynolan.co.uk/blog/frontend-tooling-survey-2018-results) [3 &#x21F2;](https://blog.logrocket.com/interesting-ecmascript-2017-proposals-163b787cf27c)
-    - [x] ES < 2015
-      - [x] [Bases de JavaScript](!js/js-basics.md)
-      - [x] [Objets, tableaux, fonctions, POO](!js/js-objects.md)
-      - [x] [Objets, modules et méthodes globales](!js/js-global-objects.md)
-      - [x] [Méthodes natives](!js/js-methods.md)
-        - [x] [Chaînes de caractères](!js/js-es5-methods-string.md)
-        - [x] [Tableaux](!js/js-es5-methods-array.md)
-        - [x] [Objets](!js/js-es5-methods-object.md)
-        - [x] [Date](!js/js-es5-methods-date.md)
-    - [x] [BOM](!js/js-bom.md)
-    - [x] [DOM](!js/js-dom.md)
-      - [x] [Événements](!js/js-events.md)
-      - [x] [AJAX](!js/js-ajax.md)
-      - [x] [JSON, JSONP](!js/js-json.md)
-    - [x] [Gestion de la mémoire](!js/js-memory.md)
-    - [x] ES 2015
-      - [x] [Nouvelles méthodes](!js/js-es6-methods.md)
-      - [x] [Let, const](!js/js-es6-let-const.md)
-      - [x] [Rest & Spread (...)](!js/js-es6-rest-spread.md)
-      - [x] [Fonction flèche, paramètres par défaut](!js/js-es6-function-syntax.md)
-      - [x] [Destructuration](!js/js-es6-destructuration.md)
-      - [x] [Template litterals](!js/js-es6-template-literals.md)
-      - [x] [Syntaxe concise pour les objets](!js/js-es6-objet-concise.md)
-      - [x] [Classe](!js/js-es6-class.md)
-      - [x] [Symbole](!js/js-es6-symbol.md)
-      - [x] [Promesse](!js/js-es6-promise.md)
-      - [x] [Générateur, itérateur](!js/js-es6-generator.md)
-      - [x] [Proxy](!js/js-es6-proxy.md) [1 &#x21F2;](https://www.atyantik.com/proxy-javascript-es6-feature/)
-      - [x] [Reflect](!js/js-reflect.md)
-      - [x] [Module](!js/js-es6-module.md)
-      - [x] [Map, Set, WeakMap, WeakSet](!js/js-es6-map-set.md)
-      - [x] [Tableaux typés](!js/js-es6-typedarray.md)
-    - [x] [ES 2016](!js/js-es7.md)
-    - [x] [ES 2017](!js/js-es8.md)
-    - [x] [ES 2018](!js/js-es9.md)
-      - [x] [Async & await](!js/js-async-await.md)
-    - ESNext [1 &#x21F2;](https://medium.freecodecamp.org/here-are-three-upcoming-changes-to-javascript-that-youll-love-387bce1bfb0b) [2 &#x21F2;](https://pbs.twimg.com/media/DVD5K9IU0AASuys.jpg)
-    - [ ] [Librairie, Plugin, Framework & API](!js/js-libraries.md)
-      - Web API
-        - Interraction
-          - [x] [DOM](!js/js-dom.md)
-          - [x] [Interactions utilisateur (clavier, souris, etc)](!js/js-user-interaction.md)
-          - [x] [Formulaire](!js/js-form.md)
-          - [ ] Fichiers (Image, File, FileReader, Blob, URL)
-          - [ ] History
-          - [ ] Notifications [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/notification) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration) [4 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Alarm_API)
-          - [ ] MutationObserver [1 &#x21F2;](https://blog.sessionstack.com/how-javascript-works-tracking-changes-in-the-dom-using-mutationobserver-86adc7446401)
-        - Stockage
-          - [ ] Cookies
-          - [x] [Storage](!js/js-storage.md)
-          - [x] [IndexedDB](!js/js-indexeddb.md)
-        - Media
-          - [x] [Audio & vidéo](!js/js-audio-video.md)
-          - [x] [Canvas](!js/js-canvas.md)
-          - [ ] [WebGL](!js/js-webgl.md) [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/API/WebGL_API/Tutorial)
-          - [ ] Web Audio [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/API/Web_Audio_API)
-          - [ ] WebVR [1 &#x21F2;](https://medium.freecodecamp.org/how-to-wish-someone-happy-birthday-using-augmented-reality-3809776cb655) [2 &#x21F2;](https://hacks.mozilla.org/2018/09/converting-a-webgl-application-to-webvr/)
-        - Communication
-          - [x] [AJAX](!js/js-ajax.md)
-          - [x] [Workers](!js/js-worker.md)
-          - [x] [WebSocket](!js/js-websocket.md)
-          - [ ] WebRTC [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API) [2 &#x21F2;](https://blog.sessionstack.com/how-javascript-works-webrtc-and-the-mechanics-of-peer-to-peer-connectivity-87cc56c1d0ab)
-          - [ ] Push
-        - Device
-          - [ ] Geolocalisation [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation) [2 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/gather_and_modify_data/Plotting_yourself_on_the_map)
-          - [ ] Ambient Light [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Ambient_Light_Events) [2 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/gather_and_modify_data/Responding_to_light_conditions)
-          - [ ] Camera & Micro [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Taking_still_photos)
-          - [ ] Device / screen orientation [1 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/gather_and_modify_data/responding_to_device_orientation_changes) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Orientation_and_motion_data_explained) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation) [4 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Managing_screen_orientation)
-          - [ ] Bluetooth
-          - [ ] Midi
-          - [ ] Proximity [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/WebAPI/Proximity) [2 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Build/gather_and_modify_data/Near_or_far_responding_to_proximity)
-          - [ ] Network Information [1 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Developing/gather_and_modify_data/Optimizing_for_high_and_low_network_speeds) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API)
-        - [ ] Performance [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Performance)
-      - [ ] Librairies
-        - [ ] [Jquery](jquery.md) [1 &#x21F2;](https://remysharp.com/2017/12/15/is-jquery-still-relevant)
-        - [ ] [MustacheJS](mustachejs.md)
-        - [ ] D3.js
-        - [ ] React [1 &#x21F2;](https://blog.kentcdodds.com/learn-react-fundamentals-and-advanced-patterns-eac90341c9db)
-        - [ ] Lodash
-        - [ ] [Three.js](three.md)
-      - [ ] Frameworks [1 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [2 &#x21F2;](https://www.npmjs.com/npm/the-state-of-javascript-frameworks-2017-part-3-back-end-frameworks?utm_content=buffer30d2a&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [3 &#x21F2;](https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/) [4 &#x21F2;](https://javascriptreport.com/the-ultimate-guide-to-javascript-frameworks/)
-        - [ ] Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/)
-        - [ ] GraphQL [1 &#x21F2;](https://blog.pusher.com/getting-up-and-running-with-graphql/) [2 &#x21F2;](https://www.howtographql.com/?v1)
-        - [ ] Angular
-        - [ ] Vue.js [1 &#x21F2;](https://t.co/jwVzx7gywA)
-    - [ ] Design patterns [1 &#x21F2;](https://www.toptal.com/javascript/comprehensive-guide-javascript-design-patterns)
-    - [ ] Observer pattern [1 &#x21F2;](https://pawelgrzybek.com/the-observer-pattern-in-javascript-explained/)
-    - [ ] Tricks [1 &#x21F2;](https://medium.freecodecamp.org/high-performance-apps-multiplexing-debouncing-system-fonts-and-other-tricks-37c6fd3d7b2d) [2 &#x21F2;](https://air.ghost.io/js-things-i-never-knew-existed/)
-    - [ ] Typescript [1 &#x21F2;](https://auth0.com/blog/typescript-practical-introduction/) [2 &#x21F2;](https://medium.freecodecamp.org/learn-typescript-in-5-minutes-13eda868daeb)
-  - [ ] Progressive web apps [1 &#x21F2;](https://medium.freecodecamp.org/how-you-can-develop-progressive-web-apps-that-feel-native-5110fbbcbf4b) [2 &#x21F2;](https://medium.freecodecamp.org/a-deeply-detailed-but-never-definitive-guide-to-mobile-development-architecture-6b01ce3b1528)
-  - [ ] Browser extensions [1 &#x21F2;](https://medium.freecodecamp.org/how-to-make-a-cross-browser-extension-using-javascript-and-browser-apis-355c001cebba)
+## Front-End
 
-- Back-End
-  - Programming langages
-    - [ ] PHP
-      - [x] [Composer](composer.md)
-    - [ ] Python [1 &#x21F2;](https://engmrk.com/refresh-your-python-basics/) [2 &#x21F2;](https://medium.freecodecamp.org/an-a-z-of-useful-python-tricks-b467524ee747)
-      - [ ] Python Debugger [1 &#x21F2;](https://www.youtube.com/watch?time_continue=6270&v=Z0ssNAbe81M)
-      - [ ] Flask [1 &#x21F2;](https://medium.freecodecamp.org/how-to-build-a-web-application-using-flask-and-deploy-it-to-the-cloud-3551c985e492)
-    - [ ] Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
-    - [ ] R [1 &#x21F2;](https://www.datacamp.com/)
-    - [ ] NodeJS
-      - [ ] [NPM](npm.md) [1 &#x21F2;](http://blog.npmjs.org/post/168978377570/new-package-moniker-rules)
-  - [x] [XML](xml.md)
-    - [x] [DTD](xml-dtd.md)
-    - [x] [XML Schema (XSD)](xml-schema.md)
-    - [x] [XSL](xml-xsl.md)
-    - [x] [XPath](xml-xpath.md)
-    - [ ] XQuery
-  - [x] [Bases de données](bdd.md)
-    - [x] [MySQL](mysql.md)
-    - [ ] NoSQL
-    - [ ] [ElasticSearch](elasticsearch.md)
+- [Développement Web](web.md)
+- [x] [HTML](html.md)
+  - [x] [Éléments HTML](html-elements.md)
+  - [ ] [Accessibilité](accessibilite.md)
+  - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/) [2 &#x21F2;](https://webdesign.tutsplus.com/tutorials/how-to-hand-code-svg--cms-30368)
+- [x] [CSS](css.md)
+  - [x] [Inclure du CSS](!css/css-include.md)
+  - [x] [Sélecteurs](!css/css-selecteurs.md)
+  - [x] [Types](!css/css-types.md)
+  - [x] [Propriétés](!css/css-proprietes.md)
+  - [x] [At-rules](!css/css-atrules.md)
+  - Conventions de nommage [1 &#x21F2;](https://medium.freecodecamp.org/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849) [2 &#x21F2;](https://spaceninja.com/2018/09/17/what-is-modular-css/)
+    - [ ] BEM [1 &#x21F2;](https://blog.elpassion.com/reasons-to-use-bem-a88738317753) [2 &#x21F2;](https://medium.com/mr-frontend-community/how-to-write-better-css-with-bem-40f492a26192) [3 &#x21F2;](https://www.smashingmagazine.com/2018/06/bem-for-beginners/)
+    - [ ] SMACSS [1 &#x21F2;](https://www.toptal.com/css/smacss-scalable-modular-architecture-css)
+  - Preprocesseurs
+    - [x] [Sass](sass.md)
+    - [ ] Less
+- [ ] [JS](js.md) [1 &#x21F2;](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711) [2 &#x21F2;](https://ashleynolan.co.uk/blog/frontend-tooling-survey-2018-results) [3 &#x21F2;](https://blog.logrocket.com/interesting-ecmascript-2017-proposals-163b787cf27c)
+  - [x] ES < 2015
+    - [x] [Bases de JavaScript](!js/js-basics.md)
+    - [x] [Objets, tableaux, fonctions, POO](!js/js-objects.md)
+    - [x] [Objets, modules et méthodes globales](!js/js-global-objects.md)
+    - [x] [Méthodes natives](!js/js-methods.md)
+      - [x] [Chaînes de caractères](!js/js-es5-methods-string.md)
+      - [x] [Tableaux](!js/js-es5-methods-array.md)
+      - [x] [Objets](!js/js-es5-methods-object.md)
+      - [x] [Date](!js/js-es5-methods-date.md)
+  - [x] [BOM](!js/js-bom.md)
+  - [x] [DOM](!js/js-dom.md)
+    - [x] [Événements](!js/js-events.md)
+    - [x] [AJAX](!js/js-ajax.md)
+    - [x] [JSON, JSONP](!js/js-json.md)
+  - [x] [Gestion de la mémoire](!js/js-memory.md)
+  - [x] ES 2015
+    - [x] [Nouvelles méthodes](!js/js-es6-methods.md)
+    - [x] [Let, const](!js/js-es6-let-const.md)
+    - [x] [Rest & Spread (...)](!js/js-es6-rest-spread.md)
+    - [x] [Fonction flèche, paramètres par défaut](!js/js-es6-function-syntax.md)
+    - [x] [Destructuration](!js/js-es6-destructuration.md)
+    - [x] [Template litterals](!js/js-es6-template-literals.md)
+    - [x] [Syntaxe concise pour les objets](!js/js-es6-objet-concise.md)
+    - [x] [Classe](!js/js-es6-class.md)
+    - [x] [Symbole](!js/js-es6-symbol.md)
+    - [x] [Promesse](!js/js-es6-promise.md)
+    - [x] [Générateur, itérateur](!js/js-es6-generator.md)
+    - [x] [Proxy](!js/js-es6-proxy.md) [1 &#x21F2;](https://www.atyantik.com/proxy-javascript-es6-feature/)
+    - [x] [Reflect](!js/js-reflect.md)
+    - [x] [Module](!js/js-es6-module.md)
+    - [x] [Map, Set, WeakMap, WeakSet](!js/js-es6-map-set.md)
+    - [x] [Tableaux typés](!js/js-es6-typedarray.md)
+  - [x] [ES 2016](!js/js-es7.md)
+  - [x] [ES 2017](!js/js-es8.md)
+  - [x] [ES 2018](!js/js-es9.md)
+    - [x] [Async & await](!js/js-async-await.md)
+  - ESNext [1 &#x21F2;](https://medium.freecodecamp.org/here-are-three-upcoming-changes-to-javascript-that-youll-love-387bce1bfb0b) [2 &#x21F2;](https://pbs.twimg.com/media/DVD5K9IU0AASuys.jpg)
+  - [ ] [Librairie, Plugin, Framework & API](!js/js-libraries.md)
+    - Web API
+      - Interraction
+        - [x] [DOM](!js/js-dom.md)
+        - [x] [Interactions utilisateur (clavier, souris, etc)](!js/js-user-interaction.md)
+        - [x] [Formulaire](!js/js-form.md)
+        - [ ] Fichiers (Image, File, FileReader, Blob, URL)
+        - [ ] History
+        - [ ] Notifications [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/notification) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration) [4 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Alarm_API)
+        - [ ] MutationObserver [1 &#x21F2;](https://blog.sessionstack.com/how-javascript-works-tracking-changes-in-the-dom-using-mutationobserver-86adc7446401)
+      - Stockage
+        - [ ] Cookies
+        - [x] [Storage](!js/js-storage.md)
+        - [x] [IndexedDB](!js/js-indexeddb.md)
+      - Media
+        - [x] [Audio & vidéo](!js/js-audio-video.md)
+        - [x] [Canvas](!js/js-canvas.md)
+        - [ ] [WebGL](!js/js-webgl.md) [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/API/WebGL_API/Tutorial)
+        - [ ] Web Audio [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/API/Web_Audio_API)
+        - [ ] WebVR [1 &#x21F2;](https://medium.freecodecamp.org/how-to-wish-someone-happy-birthday-using-augmented-reality-3809776cb655) [2 &#x21F2;](https://hacks.mozilla.org/2018/09/converting-a-webgl-application-to-webvr/)
+      - Communication
+        - [x] [AJAX](!js/js-ajax.md)
+        - [x] [Workers](!js/js-worker.md)
+        - [x] [WebSocket](!js/js-websocket.md)
+        - [ ] WebRTC [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API) [2 &#x21F2;](https://blog.sessionstack.com/how-javascript-works-webrtc-and-the-mechanics-of-peer-to-peer-connectivity-87cc56c1d0ab)
+        - [ ] Push
+      - Device
+        - [ ] Geolocalisation [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation) [2 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/gather_and_modify_data/Plotting_yourself_on_the_map)
+        - [ ] Ambient Light [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Ambient_Light_Events) [2 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/gather_and_modify_data/Responding_to_light_conditions)
+        - [ ] Camera & Micro [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Taking_still_photos)
+        - [ ] Device / screen orientation [1 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/gather_and_modify_data/responding_to_device_orientation_changes) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Orientation_and_motion_data_explained) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation) [4 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Managing_screen_orientation)
+        - [ ] Bluetooth
+        - [ ] Midi
+        - [ ] Proximity [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/WebAPI/Proximity) [2 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Build/gather_and_modify_data/Near_or_far_responding_to_proximity)
+        - [ ] Network Information [1 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Developing/gather_and_modify_data/Optimizing_for_high_and_low_network_speeds) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API)
+      - [ ] Performance [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Performance)
+    - [ ] Librairies
+      - [ ] [Jquery](jquery.md) [1 &#x21F2;](https://remysharp.com/2017/12/15/is-jquery-still-relevant)
+      - [ ] [MustacheJS](mustachejs.md)
+      - [ ] D3.js
+      - [ ] React [1 &#x21F2;](https://blog.kentcdodds.com/learn-react-fundamentals-and-advanced-patterns-eac90341c9db)
+      - [ ] Lodash
+      - [ ] [Three.js](three.md)
+    - [ ] Frameworks [1 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [2 &#x21F2;](https://www.npmjs.com/npm/the-state-of-javascript-frameworks-2017-part-3-back-end-frameworks?utm_content=buffer30d2a&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [3 &#x21F2;](https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/) [4 &#x21F2;](https://javascriptreport.com/the-ultimate-guide-to-javascript-frameworks/)
+      - [ ] Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/)
+      - [ ] GraphQL [1 &#x21F2;](https://blog.pusher.com/getting-up-and-running-with-graphql/) [2 &#x21F2;](https://www.howtographql.com/?v1)
+      - [ ] Angular
+      - [ ] Vue.js [1 &#x21F2;](https://t.co/jwVzx7gywA)
+  - [ ] Design patterns [1 &#x21F2;](https://www.toptal.com/javascript/comprehensive-guide-javascript-design-patterns)
+  - [ ] Observer pattern [1 &#x21F2;](https://pawelgrzybek.com/the-observer-pattern-in-javascript-explained/)
+  - [ ] Tricks [1 &#x21F2;](https://medium.freecodecamp.org/high-performance-apps-multiplexing-debouncing-system-fonts-and-other-tricks-37c6fd3d7b2d) [2 &#x21F2;](https://air.ghost.io/js-things-i-never-knew-existed/)
+  - [ ] Typescript [1 &#x21F2;](https://auth0.com/blog/typescript-practical-introduction/) [2 &#x21F2;](https://medium.freecodecamp.org/learn-typescript-in-5-minutes-13eda868daeb)
+- [ ] Progressive web apps [1 &#x21F2;](https://medium.freecodecamp.org/how-you-can-develop-progressive-web-apps-that-feel-native-5110fbbcbf4b) [2 &#x21F2;](https://medium.freecodecamp.org/a-deeply-detailed-but-never-definitive-guide-to-mobile-development-architecture-6b01ce3b1528)
+- [ ] Browser extensions [1 &#x21F2;](https://medium.freecodecamp.org/how-to-make-a-cross-browser-extension-using-javascript-and-browser-apis-355c001cebba)
+
+## Back-End
+
+- Languages de programmation
+  - [ ] PHP
+    - [x] [Composer](composer.md)
+  - [ ] Python [1 &#x21F2;](https://engmrk.com/refresh-your-python-basics/) [2 &#x21F2;](https://medium.freecodecamp.org/an-a-z-of-useful-python-tricks-b467524ee747)
+    - [ ] Python Debugger [1 &#x21F2;](https://www.youtube.com/watch?time_continue=6270&v=Z0ssNAbe81M)
+    - [ ] Flask [1 &#x21F2;](https://medium.freecodecamp.org/how-to-build-a-web-application-using-flask-and-deploy-it-to-the-cloud-3551c985e492)
+  - [ ] Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
+  - [ ] R [1 &#x21F2;](https://www.datacamp.com/)
+  - [ ] NodeJS
+    - [ ] [NPM](npm.md) [1 &#x21F2;](http://blog.npmjs.org/post/168978377570/new-package-moniker-rules)
+- [x] [XML](xml.md)
+  - [x] [DTD](xml-dtd.md)
+  - [x] [XML Schema (XSD)](xml-schema.md)
+  - [x] [XSL](xml-xsl.md)
+  - [x] [XPath](xml-xpath.md)
+  - [ ] XQuery
+- [x] [Bases de données](bdd.md)
+  - [x] [MySQL](mysql.md)
+  - [ ] NoSQL
+  - [ ] [ElasticSearch](elasticsearch.md)
 
 - Autres langages
   - Data formatting
@@ -180,6 +182,8 @@ searchbar: true
   - [ ] [Paradigmes informatique](paradigm.md)
   - [ ] Data Structures [1 &#x21F2;](https://medium.freecodecamp.org/data-structures-101-binary-search-tree-398267b6bff0)
 
+## IT
+
 - Linux
   - [x] [Installer](linux-install.md)
   - [x] [Règles d'échappement dans un shell Linux](echap-shell.md)
@@ -195,12 +199,13 @@ searchbar: true
   - [ ] Bash Script
     - [x] [Conditions](conditions-shell.md)
 
-- IT
+- CS [1 &#x21F2;](https://medium.freecodecamp.org/the-quick-guide-to-the-way-computers-work-for-desperate-new-coders-fcdb34cbe8a9)
+  - [x] [Encodages](encodages.md)
+  - [x] [Opérations sur les bits](bitwise-operations.md)
+
+- Serveurs
   - [ ] Networks [1 &#x21F2;](https://medium.freecodecamp.org/computer-networks-and-how-to-actually-understand-them-c1401908172d)
   - [ ] Hosting [1 &#x21F2;](https://medium.freecodecamp.org/how-you-can-host-multiple-domain-names-and-projects-in-one-vps-7aed4f56e7a1)
-  - CS [1 &#x21F2;](https://medium.freecodecamp.org/the-quick-guide-to-the-way-computers-work-for-desperate-new-coders-fcdb34cbe8a9)
-    - [x] [Encodages](encodages.md)
-    - [x] [Opérations sur les bits](bitwise-operations.md)
   - [ ] [Sécurité](securite.md) [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9)
     - [ ] [SSH](ssh.md)
     - [ ] HTTPS [1 &#x21F2;](https://medium.freecodecamp.org/https-explained-with-carrier-pigeons-7029d2193351?utm_content=buffer1f715&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec)
@@ -213,30 +218,32 @@ searchbar: true
   - [ ] robots.txt
   - [ ] DNS & cie [1 &#x21F2;](https://medium.freecodecamp.org/why-cant-a-domain-s-root-be-a-cname-8cbab38e5f5c)
   - [ ] CORS [1 &#x21F2;](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b)
+
+- Big Data
   - [x] [Hadoop](hadoop.md)
   - [ ] Spark [1 &#x21F2;](https://medium.freecodecamp.org/processing-wikipedia-with-spark-542213bd4365)
 
-- Misc
+## Misc
 
-  - [ ] Blockchain [1 &#x21F2;](https://medium.freecodecamp.org/bitcoin-flipping-the-coin-a060df19d20d) [2 &#x21F2;](https://blockchaindemo.io/) [3 &#x21F2;](https://github.com/igorbarinov/awesome-blockchain) [4 &#x21F2;](https://medium.freecodecamp.org/how-does-bitcoin-work-i-built-an-app-to-show-you-f9fcd50bdd0d) [5 &#x21F2;](https://medium.freecodecamp.org/the-authoritative-guide-to-blockchain-development-855ab65b58bc) [6 &#x21F2;](https://medium.freecodecamp.org/why-blockchain-is-here-to-stay-and-bitcoin-might-not-be-e117c4386af7) [7 &#x21F2;](https://medium.freecodecamp.org/misconceptions-about-blockchain-8553262e8ff0)
+- [ ] Blockchain [1 &#x21F2;](https://medium.freecodecamp.org/bitcoin-flipping-the-coin-a060df19d20d) [2 &#x21F2;](https://blockchaindemo.io/) [3 &#x21F2;](https://github.com/igorbarinov/awesome-blockchain) [4 &#x21F2;](https://medium.freecodecamp.org/how-does-bitcoin-work-i-built-an-app-to-show-you-f9fcd50bdd0d) [5 &#x21F2;](https://medium.freecodecamp.org/the-authoritative-guide-to-blockchain-development-855ab65b58bc) [6 &#x21F2;](https://medium.freecodecamp.org/why-blockchain-is-here-to-stay-and-bitcoin-might-not-be-e117c4386af7) [7 &#x21F2;](https://medium.freecodecamp.org/misconceptions-about-blockchain-8553262e8ff0)
 
-  - [x] [Design](design.md) [1 &#x21F2;](https://medium.freecodecamp.org/a-web-design-crash-course-from-one-non-designer-to-another-a6f8da0e6aa)
-    - [x] [Typographie](design-typographie.md)
-    - [x] [Théorie des couleurs](design-couleur.md)
-    - [x] [Compositions: texte/couleur](design-couleur-2.md)
-    - [x] [Compositions: layout](design-layout.md)
-    - [x] [Images](design-image.md)
+- [x] [Design](design.md) [1 &#x21F2;](https://medium.freecodecamp.org/a-web-design-crash-course-from-one-non-designer-to-another-a6f8da0e6aa)
+  - [x] [Typographie](design-typographie.md)
+  - [x] [Théorie des couleurs](design-couleur.md)
+  - [x] [Compositions: texte/couleur](design-couleur-2.md)
+  - [x] [Compositions: layout](design-layout.md)
+  - [x] [Images](design-image.md)
 
-  - Marketing [1 &#x21F2;](http://jamesarcher.me/user-motivators) [2 &#x21F2;](https://www.nngroup.com/articles/zigzag-page-layout/) [3 &#x21F2;](https://www.nngroup.com/articles/multi-tab-page-parking/)
-    - [ ] Google Analytics [1 &#x21F2;](https://medium.freecodecamp.org/how-and-why-to-get-started-with-google-analytics-153dc35b7812)
-    - [ ] SEO [1 &#x21F2;](https://support.google.com/webmasters/answer/7451184)
+- Marketing [1 &#x21F2;](http://jamesarcher.me/user-motivators) [2 &#x21F2;](https://www.nngroup.com/articles/zigzag-page-layout/) [3 &#x21F2;](https://www.nngroup.com/articles/multi-tab-page-parking/)
+  - [ ] Google Analytics [1 &#x21F2;](https://medium.freecodecamp.org/how-and-why-to-get-started-with-google-analytics-153dc35b7812)
+  - [ ] SEO [1 &#x21F2;](https://support.google.com/webmasters/answer/7451184)
 
-  - [ ] Machine Learning [0 &#x21F2;](https://medium.freecodecamp.org/this-is-why-anyone-can-learn-machine-learning-a5333ee64dff) [0 &#x21F2;](https://medium.freecodecamp.org/you-need-these-cheat-sheets-if-youre-tackling-machine-learning-algorithms-45da5743888e) [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5) [4 &#x21F2;](https://blog.statsbot.co/deep-learning-achievements-4c563e034257) [5 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [6 &#x21F2;](https://medium.freecodecamp.org/build-a-flexible-neural-network-with-backpropagation-in-python-acffeb7846d0) [7 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [8 &#x21F2;](https://medium.freecodecamp.org/how-to-deploy-an-object-detection-model-with-tensorflow-serving-d6436e65d1d9) [9 &#x21F2;](https://medium.freecodecamp.org/making-your-own-face-recognition-system-29a8e728107c) [10 &#x21F2;](https://twitter.com/fchollet/status/951828914103402497) [11 &#x21F2;](https://twitter.com/jacswork/status/957924537013764096) [12 &#x21F2;](https://twitter.com/EmilWallner/status/956755831059464203) [13 &#x21F2;](https://twitter.com/EmilWallner/status/950246690044481537) [14 &#x21F2;](https://machinelearningmastery.com/crash-course-deep-learning-natural-language-processing/) [15 &#x21F2;](https://medium.freecodecamp.org/machine-learning-how-to-go-from-zero-to-hero-40e26f8aa6da) [16 &#x21F2;](https://blog.floydhub.com/ten-techniques-from-fast-ai/)
-    - Howtos [1 &#x21F2;](https://medium.freecodecamp.org/a-beginners-guide-to-training-and-deploying-machine-learning-models-using-python-48a313502e5a) [2 &#x21F2;](https://medium.freecodecamp.org/sketchify-turn-any-image-into-a-pencil-sketch-with-10-lines-of-code-cf67fa4f68ce) [3 &#x21F2;](https://github.com/floydhub/colornet-template) [[1 &#x21F2;](https://medium.freecodecamp.org/colorize-b-w-photos-with-a-100-line-neural-network-53d9b4449f8d)
-    - Tensorflow.js [1 &#x21F2;](https://medium.freecodecamp.org/get-to-know-tensorflow-js-in-7-minutes-afcd0dfd3d2f) [2 &#x21F2;](https://aralroca.com/2018/08/24/first-steps-with-tensorflow-js/) [3 &#x21F2;](https://dev.to/aralroca/first-steps-with-tensorflowjs-197p)
-    - Synaptic.js [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-a-neural-network-in-javascript-in-only-30-lines-of-code-343dafc50d49)
-    - IDE for Deep Learning [1 &#x21F2;](https://blog.floydhub.com/workspaces/)
-    - Google Natural Language API [1 &#x21F2;](https://medium.freecodecamp.org/sentiment-analysis-using-laravel-and-the-google-natural-language-api-acb70871698a)
+- [ ] Machine Learning [0 &#x21F2;](https://medium.freecodecamp.org/this-is-why-anyone-can-learn-machine-learning-a5333ee64dff) [0 &#x21F2;](https://medium.freecodecamp.org/you-need-these-cheat-sheets-if-youre-tackling-machine-learning-algorithms-45da5743888e) [1 &#x21F2;](https://medium.freecodecamp.org/every-single-machine-learning-course-on-the-internet-ranked-by-your-reviews-3c4a7b8026c0) [2 &#x21F2;](https://medium.freecodecamp.org/deep-learning-for-developers-tools-you-can-use-to-code-neural-networks-on-day-1-34c4435ae6b) [3 &#x21F2;](https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5) [4 &#x21F2;](https://blog.statsbot.co/deep-learning-achievements-4c563e034257) [5 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [6 &#x21F2;](https://medium.freecodecamp.org/build-a-flexible-neural-network-with-backpropagation-in-python-acffeb7846d0) [7 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [8 &#x21F2;](https://medium.freecodecamp.org/how-to-deploy-an-object-detection-model-with-tensorflow-serving-d6436e65d1d9) [9 &#x21F2;](https://medium.freecodecamp.org/making-your-own-face-recognition-system-29a8e728107c) [10 &#x21F2;](https://twitter.com/fchollet/status/951828914103402497) [11 &#x21F2;](https://twitter.com/jacswork/status/957924537013764096) [12 &#x21F2;](https://twitter.com/EmilWallner/status/956755831059464203) [13 &#x21F2;](https://twitter.com/EmilWallner/status/950246690044481537) [14 &#x21F2;](https://machinelearningmastery.com/crash-course-deep-learning-natural-language-processing/) [15 &#x21F2;](https://medium.freecodecamp.org/machine-learning-how-to-go-from-zero-to-hero-40e26f8aa6da) [16 &#x21F2;](https://blog.floydhub.com/ten-techniques-from-fast-ai/)
+  - Howtos [1 &#x21F2;](https://medium.freecodecamp.org/a-beginners-guide-to-training-and-deploying-machine-learning-models-using-python-48a313502e5a) [2 &#x21F2;](https://medium.freecodecamp.org/sketchify-turn-any-image-into-a-pencil-sketch-with-10-lines-of-code-cf67fa4f68ce) [3 &#x21F2;](https://github.com/floydhub/colornet-template) [[1 &#x21F2;](https://medium.freecodecamp.org/colorize-b-w-photos-with-a-100-line-neural-network-53d9b4449f8d)
+  - Tensorflow.js [1 &#x21F2;](https://medium.freecodecamp.org/get-to-know-tensorflow-js-in-7-minutes-afcd0dfd3d2f) [2 &#x21F2;](https://aralroca.com/2018/08/24/first-steps-with-tensorflow-js/) [3 &#x21F2;](https://dev.to/aralroca/first-steps-with-tensorflowjs-197p)
+  - Synaptic.js [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-a-neural-network-in-javascript-in-only-30-lines-of-code-343dafc50d49)
+  - IDE for Deep Learning [1 &#x21F2;](https://blog.floydhub.com/workspaces/)
+  - Google Natural Language API [1 &#x21F2;](https://medium.freecodecamp.org/sentiment-analysis-using-laravel-and-the-google-natural-language-api-acb70871698a)
 
 - Webdev Environments
   - [x] [Où héberger](hosting.md)
@@ -253,6 +260,8 @@ searchbar: true
   - [ ] CaptainDuckDuck [1 &#x21F2;](https://medium.freecodecamp.org/how-i-cut-my-heroku-cost-by-400-5b9d0220ce13)
   - [ ] Google Business [1 &#x21F2;](https://www.gybo.com/lessons)
   - [ ] Shopify [1 &#x21F2;](https://medium.freecodecamp.org/how-to-build-your-first-shopify-app-bc4edef32974)
+
+## Ressources
 
 - Useful Websites
   - Files hosting

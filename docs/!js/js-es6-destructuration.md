@@ -28,7 +28,7 @@ console.log("a:", a); // a: 3
 console.log("b:", b); // b: 4
 ```
 
-Si la variable crée a le même nom que la propriété, alors il existe une version abbrégée :
+Si la variable créée a le même nom que la propriété, alors on peut utiliser une version abbrégée:
 
 ``` js
 var coords  = {x: 3, y: 4, z: 5 },
@@ -41,7 +41,7 @@ console.log("z:", z); // z: 5
 
 ### Paramètres
 
-Les fonctions peuvent se servir de la déstructuration pour convertir un objet en une liste de paramètres.
+Les fonctions peuvent se servir de la déstructuration pour convertir un objet en une liste de paramètres:
 
 ``` js
 var stats = {
@@ -51,6 +51,17 @@ var stats = {
 var avg = ({min, max}) => ((max + min) / 2.0);
 
 console.log(avg(stats)); // 28.015
+```
+
+### Rest
+
+ES9 ajoute la possibilité d'utiliser l'opérateur rest avec la destructuration:
+
+``` js
+const values = {a: 1, b: 2, c: 3, d: 4};
+const {a, ...n} = values;
+console.log(a);   // 1
+console.log(n);   // {b: 2, c: 3, d: 4}
 ```
 
 ---
@@ -96,9 +107,21 @@ console.log("a:", a); // a: 3
 console.log("b:", 5); // b: 5
 ```
 
+### Paramètres
+
+On peut se servir de la déstructuration pour convertir un tableau en une liste de paramètres:
+
+``` js
+function area([length, height]) {
+  return (length * height) / 2;
+}
+const triangle = [3, 4];
+area(triangle); // 12/2 = 6
+```
+
 ### Rest
 
-On peut se servir de la déstructuration de tableau en combinaison avec l'opérateur rest.
+On peut se servir de la déstructuration de tableau en combinaison avec l'opérateur rest:
 
 ``` js
 var coords          = [3, 4, 5, 6, 7],
@@ -107,16 +130,6 @@ var coords          = [3, 4, 5, 6, 7],
 console.log("a: ", a); // 3
 console.log("b: ", b); // 4
 console.log("rest: ", rest); // [5,6,7]
-```
-
-Se servir de la déstructuration pour récupérer des paramètres.
-
-``` js
-function area([length, height]) {
-  return (length * height) / 2;
-}
-const triangle = [3, 4];
-area(triangle); // 12/2 = 6
 ```
 
 ---

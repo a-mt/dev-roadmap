@@ -46,3 +46,13 @@ const result = {
     ...data
 };
 ```
+
+On peut également utiliser l'opérateur spread pour construire un objet conditionnellement:
+
+``` js
+{
+    ...(title && {title: subtitle ? `${title} ${subtitle}` : title}),
+    ...(home_page_url && {home_page_url}),
+    ...(home_page_url && {feed_url: `${home_page_url}/feed`})
+}
+```

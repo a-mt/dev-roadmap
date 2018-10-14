@@ -57,31 +57,420 @@ if(!canvas.getContext) {
 var ctx = canvas.getContext('2d');
 ```
 
-Toutes les opérations de dessin impliqueront d'utiliser cet objet.
+Toutes les opérations de dessin impliqueront d'utiliser cet objet.  
+Au début le canvas est complètement vide, il ne s'agit que d'un rectangle transparent.
+
+---
+
+## Dessiner des formes
+
+À l'intérieur de ce contexte, on peut ajouter différentes formes, comme des rectangles, lignes, cercles, etc.  
+Les éléments sont dessinés dans l’ordre dans lequel ils apparaissent dans le code: les premiers se trouvent en dessous des derniers.
+Lorsque qu’une forme est dessinée, il est impossible de la modifier - ce ne sont plus que des pixels sur une image bitmap.
+
+Les éléments sont dessinés par rapport à l'origine du canvas, qui est par défaut le point supérieur gauche du canvas (0,0).  
+La valeur de `x` déplace la forme vers la droite, et la valeur de `y` vers le bas.
+
+Il n'existe pas de méthode à proprement parler pour changer la couleur de fond du canvas. Pour ce faire, on ajoute un rectangle qui recouvre toute la surface du canvas.
+
+<ins>Exemple</ins>:
+
+``` js
+var canvas = document.getElementById('canvas'),
+    ctx    = canvas.getContext('2d');
+
+// Définit la taille du canvas
+canvas.width  = 100;
+canvas.height = 100;
+
+// Ajoute un rectangle noir pour créer le fond
+ctx.fillStyle = 'black';
+ctx.fillRect(0, 0, 100, 100);
+
+// Dessine deux rectangles
+ctx.fillStyle = 'white';
+ctx.fillRect(5, 5, 50, 50);
+
+ctx.fillStyle = 'red';
+ctx.fillRect(10, 10, 50, 50);
+```
+
+<svg width="100" height="100" style="background: black">
+    <rect x="5" y="5" width="50" height="50" fill="white"></rect>
+    <rect x="10" y="10" width="50" height="50" fill="red"></rect>
+</svg>
+
+[JSFiddle](https://jsfiddle.net/amt01/a9be6muz/)
+
+Différentes [propriétés](#les-propri%C3%A9t%C3%A9s-du-contexte) peuvent être définies sur le contexte pour customiser la mise en forme: couleur du fond, couleur de la bordure, épaisseur du trait, etc. Une fois que les propriétés sont définies, on peut appeler les [méthodes](#les-m%C3%A9thodes-du-contexte) du contexte pour tracer la forme.
+
+Pour créer une forme avec des bords arrondis, il n'existe pas de propriété `border-radius`, il est nécessaire de "tricher": on définit la propriété `lineJoin = "round"` et on crée une bordure de la même couleur que le fond. [JsFiddle border-radius](https://jsfiddle.net/amt01/pu7bw4en/).
+
+---
+
+### Rectangle
+
+Comme pour tout élément du canvas, il faut au préalable définir les propriétés du contexte (couleur, épaisser du trait...) avant de tracer la forme.
+
+``` js
+ctx.lineWidth = 5;                      // définit l'épaisseur du contour
+ctx.fillStyle = 'rgb(0, 255, 0)';       // définit la couleur du contour
+ctx.strokeStyle = 'rgb(255, 255, 255)'; // définit la couleur du fond
+```
+
+* Dessiner un rectangle plein  
+  Pour dessiner un rectangle, on peut utiliser la méthode `fillRect(x, y, width, height)` pour tracer le rectangle directement, ou alors le définir dans un premier temps avec `rect(x, y, width, height)` avant de le tracer avec `fill()`.
+
+  ``` js
+  ctx.fillRect(25, 25, 100, 100);
+  ```
+
+  ``` js
+  ctx.rect(25, 25, 100, 100);
+  ctx.fill();
+  ```
+
+* Dessiner les contours d'un rectangle  
+  Même principe que pour un rectangle plein mais en appelant `stroke` plutôt que `fill`.
+
+  ``` js
+  ctx.strokeRect(25, 25, 100, 100);
+  ```
+
+  ``` js
+  ctx.rect(25, 25, 100, 100);
+  ctx.stroke();
+  ```
+
+* Dessiner un rectangle plein avec des contours
+
+  ``` js
+  ctx.strokeRect(25, 25, 100, 100);
+  ctx.fillRect(25, 25, 100, 100);
+  ```
+
+  ``` js
+  ctx.rect(25, 25, 100, 100);
+  ctx.stroke();
+  ctx.fill();
+  ```
+
+---
+
+### Lignes
+
+On peut dessiner des lignes droites et/ou courbes.  
+Pour ce faire, on a plusieurs méthodes qui permettent de spécifier où déplacer le stylo sur le canvas.
+
+Les méthodes utiles pour tracer des lignes droites:
+
+| Méthode        | Description
+|---             |---
+| `beginPath()`  | Commence un nouveau chemin au point où se situe le stylo sur le canvas. Sur un nouveau canvas, le stylo commence au point (0, 0).
+| `moveTo()`     | Déplace le stylo à un point différent sur le canvas, sans tracer de ligne - le stylo "saute" simplement vers une nouvelle position.
+| `lineTo()`     | Ajoute une ligne droite qui part de la position actuelle du stylo et va aux coordonnées spécifiées - le stylo est déplacé vers cette nouvelle position.
+| `closePath()`  | Ajoute une ligne droite qui part de la position actuelle du stylo et va au point de départ du chemin en cours.
+
+Une fois que le chemin est spécifié, alors on peut alors tracer le trait avec `stroke()` et/ou remplir la forme avec `fill()`.
+
+<ins>Exemple</ins>:
+
+``` js
+var canvas = document.getElementById('canvas'),
+    ctx    = canvas.getContext('2d');
+
+// Définit la taille du canvas
+canvas.width  = 100;
+canvas.height = 100;
+
+// Ajoute un fond
+ctx.fillStyle = 'black';
+ctx.fillRect(0, 0, 100, 100);
+
+// Dessine une triangle
+ctx.beginPath();     // ouvre un nouveau chemin
+ctx.moveTo(10,10);   // définit le point de départ du chemin
+ctx.lineTo(100,10);  // ajoute la 1ère ligne droite
+ctx.lineTo(60,60);   // ajoute la 2ème ligne droite
+ctx.closePath();     // ferme le triangle (ajoute la 3ème ligne droite)
+
+ctx.fillStyle = "lightblue";
+ctx.fill();          // remplit la forme
+```
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <rect fill="black" stroke="none" x="0" y="0" width="100" height="100"/>
+    <path fill="lightblue" stroke="none" d="M 10 10 L 100 10 L 60 60 Z"/>
+</svg>
+
+---
+
+### Courbes quadratiques et courbes de Bézier
+
+Pour dessiner des lignes courbes, plutôt que `lineTo()`, on a le choix entre deux méthodes:
+`quadraticCurveTo()`, pour des courbes de Bézier cubiques, ou `bezierCurveTo()`, pour ces courbes de Bézier quadratiques.
+
+* Une courbe de Bézier quadratique a un point de départ, un point d'arrivée et seulement un point de contrôle.
+
+  ``` js
+  ctx.quadraticCurveTo(cp1x, cp1y, x, y)
+  ```
+
+  * Le point de départ est la position actuelle du stylo
+  * le point de contrôle est spécifié par les paramètres `cp1x, cp1y`
+  * le point d'arrivée est spécifié par les paramètre `x, y`
+
+* Une courbe de Bézier cubique a un point de départ, un point d'arrivée et deux points de contrôle.
+
+  ``` js
+  ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)
+  ```
+
+  * Le point de départ est la position actuelle du stylo
+  * le premier point de contrôle est spécifié par les paramètres `cp1x, cp1y`
+  * le deuxième point de contrôle est spécifié par les paramètres `cp2x, cp2y`
+  * le point d'arrivée est spécifié par les paramètre `x, y`
+
+![](https://i.imgur.com/FSbHK7x.png)
+
+<ins>Exemple</ins>:
+
+``` js
+ctx.beginPath();
+ctx.strokeStyle = "white";
+ctx.lineWidth = 3;
+
+var left   = 5,
+    top    = 10,
+    right  = left + 50,
+    bottom = top + 80;
+
+ctx.moveTo(left, top);
+// Origine: (left, top)
+
+ctx.bezierCurveTo(right, top, left, bottom, right, bottom);
+// Point de controle 1 : courbe (right, top)
+// Point de controle 2 : courbe (left, bottom)
+// Destination : (right, bottom)
+
+ctx.stroke();
+ctx.closePath();
+```
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <rect fill="black" stroke="none" x="0" y="0" width="100" height="100"/>
+    <path fill="none" stroke="white" paint-order="fill stroke markers" d=" M 5 10 C 55 10 5 90 55 90" stroke-miterlimit="10" stroke-width="3" stroke-dasharray=""/>
+</svg>
+
+---
+
+### Cercles et arcs de cercle
+
+Pour tracer des cercles ou des arcs de cercle, on utilise la méthode `arc()`. Cette méthode prend 6 paramètres:
+
+    arc(x, y, rayon, angle_debut, angle_fin, sens_antihoraire)
+
+| Paramètres               | Description
+|---                       |---
+| `x, y`                   | Position du centre du cercle
+| `rayon`                  | Rayon du cercle
+| `angle_debut, angle_fin` | Angles de début et de fin, en radians, pour dessiner l'arc (donc des angles de 0 et 360 degrés donnent un cercle fermé)
+| `sens_antihoraire`       | Définit si le cercle doit être dessiné dans le sens des aiguilles d'une montre ou dans le sens inverse (`false` pour le sens horaire)
+
+<ins>Exemple</ins>:
+
+Dessine un cercle complet, de rayon 40 pixels:
+
+``` js
+ctx.beginPath();
+ctx.arc(50, 50, 40, degToRad(0), degToRad(360), false);
+ctx.fillStyle = "lightblue";
+ctx.fill();
+```
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <rect fill="black" stroke="none" x="0" y="0" width="100" height="100"/>
+    <path fill="lightblue" stroke="none" paint-order="stroke fill markers" d=" M 90 50 A 40 40 0 1 1 89.99998000000167 49.96000000666664"/>
+</svg> 
+
+Dessine un Pacman, de rayon 50 pixels, aux coordonnées (200,106):
+
+``` js
+ctx.beginPath();
+ctx.arc(50, 50, 40, degToRad(-45), degToRad(45), true);
+ctx.lineTo(50, 50);
+ctx.fillStyle = 'yellow';
+ctx.fill();
+```
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <rect fill="black" stroke="none" x="0" y="0" width="100" height="100"/>
+    <path fill="yellow" stroke="none" paint-order="stroke fill markers" d=" M 78.2842712474619 21.7157287525381 A 40 40 0 1 0 78.2842712474619 78.2842712474619 L 50 50"/>
+</svg> 
+
+<ins>Fonction degToRad</ins>:
+
+La fonction `degToRead` est utilisée pour convertir une valeur en degrés vers une valeur en radians. Chaque fois que devez fournir une valeur d'angle en JavaScript, ce sera presque toujours en radians - mais les humains pensent généralement en degrés.
+
+``` js
+function degToRad(degrees) {
+  return degrees * Math.PI / 180;
+}
+```
+
+---
+
+### Texte
+
+Il existe deux méthodes pour dessiner du texte: `fillText()` pour dessiner un texte rempli, `strokeText()` pour dessiner un contour de texte. Toutes deux prennent trois paramètres:
+
+    fillText(text, x, y)
+
+Par défaut, les coordonnées (x,y) définissent la position du coin inférieur gauche de la zone de texte. Il est possible de modifier ce comportement grâce aux propriétés `textAlign` (pour l'alignement horizontal) et `textBaseline` (pour l'alignement vertical). La police et la taille du texte peuvent être définies avec la propriété `font` (même format que la propriété CSS `font`).
+
+<ins>Exemple</ins>:
+
+Dessiner le contour du texte:
+
+``` js
+ctx.strokeStyle = 'white';
+ctx.lineWidth = 1;
+ctx.font = '36px arial';
+ctx.strokeText('Canvas text', 50, 50);
+```
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <rect fill="black" stroke="none" x="0" y="0" width="100" height="100"/>
+    <text fill="none" stroke="white" font-family="arial" font-size="36px" font-style="normal" font-weight="normal" text-decoration="normal" x="10" y="36" text-anchor="start" dominant-baseline="alphabetic" stroke-miterlimit="10" stroke-dasharray="">Text</text>
+</svg> 
+
+Dessiner un texte rempli:
+
+``` js
+ctx.fillStyle = 'white';
+ctx.font = '36px georgia';
+ctx.fillText('Text', 10, 36);
+```
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <rect fill="black" stroke="none" x="0" y="0" width="100" height="100"/>
+    <text fill="white" stroke="none" font-family="georgia" font-size="36px" font-style="normal" font-weight="normal" text-decoration="normal" x="10" y="36" text-anchor="start" dominant-baseline="alphabetic">Text</text>
+</svg>
+
+Modifier l'alignement du texte:
+
+``` js
+ctx.fillStyle = 'white';
+ctx.font = '36px sans';
+ctx.textAlign = 'center';
+ctx.textBaseline = 'top';
+ctx.fillText('Text', 50, 10);
+```
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <rect fill="black" stroke="none" x="0" y="0" width="100" height="100"/>
+    <text fill="white" stroke="none" font-family="sans" font-size="36px" font-style="normal" font-weight="normal" text-decoration="normal" x="50" y="10" text-anchor="middle" dominant-baseline="text-before-edge">Text</text>
+</svg> 
+
+---
+
+### Image
+
+Il est possible d'inclure une image externe dans un canvas. Pour ce faire, on doit au préalable récupérer un élément `HTMLImageElement`: soit on sélectionne une image présente dans la page (balise `img`), soit on la charge dynamiquement avec le constructeur `Image()`.
+
+``` js
+var image = new Image();
+image.src = 'firefox.png';
+```
+
+Une fois l'image chargée, elle peut être ajoutée au canvas avec `drawImage()`.  
+Cette méthode peut prendre 3 arguments ou 9.
+
+#### Version courte
+
+Il faut donner au minimum trois paramètres: l'image et les coordonnées (x,y) du coin supérieur gauche de l'image.
+
+    drawImage(resource, x, y)
+
+``` js
+image.onload = function() {
+  ctx.drawImage(image, 50, 50);
+}
+```
+
+#### Version complète
+
+La version complète permet en plus de tronquer et redimensionner l'image. Elle prend 9 paramètres:
+
+    drawImage(resource, sx, sy, sWidth, sHeight, x, y, width, height)
+
+| Paramètres        | Description
+|---                |---
+| `resource`        | L'élément HTMLImageElement
+| `sx, sy`          | Les coordonnées à partir d'où découper l'image, relativement au coin supérieur gauche de l'image d'origine. Tout ce qui est à gauche de `sx` ou au-dessus de `sy` ne sera pas dessiné.
+| `sWidth, sHeight` | La largeur et la hauteur de l'image que l'on veut découper, à partir du coin supérieur gauche de la découpe.
+| `x, y`            | Les coordonnées de l'image sur le canvas, relativement au coin supérieur gauche du canvas.
+| `width, height`   | La largeur et hauteur affichée de l'image. En spécifiant des dimensions différentes de `sx, sy`, l'image est redimensionnée/déformée.
+
+<ins>Exemple</ins>:
+
+```  js
+ctx.drawImage(
+  image,
+  20, 20,      // couper 20 pixels à gauche et 20 pixels en haut
+  185, 175,    // dimensions de la découpe
+  50, 50,      // position sur le canvas
+  185, 175     // dimensions affichée (en l'occurence, identique à l'origine)
+);
+```
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <rect fill="black" stroke="none" x="0" y="0" width="100" height="100"></rect>
+    <image width="30" height="32" preserveAspectRatio="none" transform="translate(50, 50)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAgCAYAAAAFQMh/AAAArElEQVRIie2UwQ2AIAxFf4KzOImb6NlFnMJ9PDiCm9QThCggBZIi4Sc9AC2vKS0AQOs+ZxkAsu/Ra3woG+xLpF2wBYoCioPhCPQ1y9c5WyJgE3heB53XQZsaaFPDq6R6X/tlv7EI2BXIbaakcRIFR4wHK7GoBKoCp34g/wFzS9gOeJlGljkujv9IxMC247NUT1DS2NQINnAf2HfePjhgyRIDBxMoCagO3NVVTDeF5BMYShZMKwAAAABJRU5ErkJggg=="></image>
+</svg>
+
+---
+
+## Path2D
+
+L'objet Path2D permet de garder en mémoire des instructions de dessin, ce qui permet de factoriser le code. Disponible dans les navigateurs récents.
+
+``` js
+var shape = new Path2D();
+shape.rect(10, 10, 50, 50);
+```
+
+Path2D permet également d'utiliser des trajets SVG sur le canvas.
+
+``` js
+var p = new Path2D("M10 10 h 80 v 80 h -80 Z");
+```
+
+<ins>Exemple</ins>:
+
+``` js
+// Définit une forme
+var shape = new Path2D();
+shape.rect(5, 5, 50, 50);
+
+// Dessine la forme en blanc
+ctx.fillStyle = 'white';
+ctx.fill(shape);
+
+// Déplace l'origine du canvas et dessine la forme en rouge
+ctx.translate(5, 5);
+ctx.fillStyle = 'red';
+ctx.fill(shape);
+```
+
+<svg width="100" height="100" style="background: black">
+    <rect x="5" y="5" width="50" height="50" fill="white"></rect>
+    <rect x="10" y="10" width="50" height="50" fill="red"></rect>
+</svg>
 
 ---
 
 ## Les propriétés du contexte
-
-### Coordonnées
-
-Pour la plupart des opérations de dessin, vous allez devoir spécifier les coordonnées de l'élément de vous souhaitez dessiner.
-
-Les éléments sont dessinés par rapport à l'origine du canvas, qui est par défaut le point supérieur gauche du canvas (0,0).  
-L'axe horizontal (x) va de gauche à droite, et l'axe vertical (y) va de haut en bas.
-
-![](https://i.imgur.com/TQmXMqW.png)
-
-Ainsi le point (50,75) est à 50 pixels de la gauche et à 75 pixels du haut du canvas.
-
-### Changer l'arrière-plan
-
-Il n'existe pas de méthode à proprement parler pour changer la couleur de fond du canvas. Pour ce faire, on ajoute un rectangle qui recouvre toute la surface du canvas.
-
-``` js
-ctx.fillStyle = 'black';
-ctx.fillRect(0, 0, width, height);
-```
 
 ### fillStyle: définir la couleur de fond
 
@@ -118,39 +507,49 @@ ctx.lineWidth = 5;
 
 ### lineCap: définir l'extrémité des lignes
 
-La propriété `lineCap` définit comment les extrêmités de chaque ligne sont dessinées. Il y a trois valeurs possibles: 
+La propriété `lineCap` définit comment les extrêmités de chaque ligne sont dessinées.  
+Il y a trois valeurs possibles: 
 
 * `butt` (par défaut): L'extrémité des lignes est droit
 * `round`: L'extrémité des lignes est arrondi
 * `square`: L'extremité des lignes en droit, en ajoutant une extension d'une largeur égale à la ligne et une hauteur égale à la moitié de la largeur de la ligne
 
+``` js
+ctx.lineCap = "round";
+```
+
 ![](https://i.imgur.com/6xvio8d.png)
 
 ### lineJoin: définir les jointures entre deux segments
 
-La propriété `lineJoin` définit comment deux segments (lignes, arcs ou courbes) sont joints ensemble. Il existe trois valeurs possibles:
+La propriété `lineJoin` définit comment deux segments (lignes, arcs ou courbes) sont joints ensemble.   
+`lineJoin` n'a pas d'effet si les deux segments connectés ont la même direction, parce qu'aucune zone de jointure ne sera ajoutée dans ce cas.  
+Il existe trois valeurs possibles:
 
 * `round`: Arrondit les angles. Le rayon de ces angles arrondis est égal à la moitié de la largeur du trait
 * `bevel`: Ajoute un triangle à l'extérmité des segments connectés
 * `miter` (par défaut): Les segments connectés sont reliés en prolongeant leurs bords extérieurs pour se connecter en un seul point, avec pour effet de remplir une zone supplémentaire en forme de losange.
 
+``` js
+ctx.lineJoin = "round";
+```
+
 ![](https://i.imgur.com/qo61pbc.png)
 
-`lineJoin` n'a pas d'effet si les deux segments connectés ont la même direction, parce qu'aucune zone de jointure ne sera ajoutée dans ce cas.
 
 Pour les jointures de type `miter`, il est possible de spécifier la longueur maximale du bord extérieur ajouté avec la propriété `miterLimit`. Plus l'angle est aigu, plus la distance est elevée. La valeur par défaut est 10. Au-delà de cette valeur, une jointure en biseau (`bevel`) sera affichée à la place.
 
 [JsFidlle miterLimit](https://jsfiddle.net/amt01/0gutu4ze/)
 
-### setLineDash: dessiner des pointillés
+### setLineDash(), lineDashOffset: dessiner des pointillés
 
-`setLineDash` accepte une liste de nombres qui spécifie les distances pour dessiner alternativement une ligne et un espace.
+La méthode `setLineDash()` accepte une liste de nombres qui spécifie les distances pour dessiner alternativement une ligne et un espace.
+La propriété `lineDashOffset` définit un décalage pour commencer le motif.
 
 ``` js
 ctx.setLineDash([4, 2]);
+ctx.lineDashOffset = 2;
 ```
-
-`lineDashOffset`  définit un décalage pour commencer le motif
 
 ### shadow: afficher des ombres
 
@@ -161,16 +560,20 @@ Il existe 4 méthodes pour créer une ombre
 * `shadowBlur`: spécifie la taille de l'effet de floutage
 * `shadowColor`: spécifie la couleur de l'ombre
 
+<ins>Exemple</ins>:
+
 ``` js
-ctx.shadowOffsetX = 2;
-ctx.shadowOffsetY = 2;
+ctx.shadowOffsetX = 5;
+ctx.shadowOffsetY = 5;
 ctx.shadowBlur = 2;
 ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
 
-ctx.font = '20px Times New Roman';
-ctx.fillStyle = 'Black';
-ctx.fillText('Sample String', 5, 30);
+ctx.font = '36px sans';
+ctx.fillStyle = 'black';
+ctx.fillText('Text', 10, 36);
 ```
+
+<img src="data:image/png;base64,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">
 
 ### globalCompositeOperation: changer le type de composition
 
@@ -182,263 +585,69 @@ Il est possible de spécifier le type d'opération de composition à appliquer l
 
 ---
 
-## Dessiner des formes
-
-### Rectangle
-
-Pour dessiner un rectangle on peut soit dessiner une forme remplie, soit les contours, soit les deux. On définit les couleurs et l'épaisser de trait voulus avec les propriétés du contexte: `fillStyle`, `strokeStyle` et `lineWidth`, comme vu précédémment. Une fois la couleur spécifiée, on appelle une méthode pour dessiner la forme.
-
-* dessiner un rectangle plein
-
-  ``` js
-  ctx.fillStyle = 'rgb(0, 255, 0)';
-  ctx.fillRect(75, 75, 100, 100);
-  ```
-
-  Les deux premiers paramètres sont les coordonnées(x,y) du coin supérieur gauche du rectangle sur le canvas;  
-  les deux derniers sont la largeur et la hauteur du rectangle.
-
-* dessiner les contours d'un rectangle
-
-  ``` js
-  ctx.lineWidth = 5;
-  ctx.strokeStyle = 'rgb(255, 255, 255)';
-  ctx.strokeRect(25, 25, 175, 200);
-  ```
-
-On peut également définir un rectangle, puis tracer son contour avec `ctx.stroke()` ou le remplir avec `ctx.fill()`.
-
-``` js
-ctx.rect(75, 75, 100, 100); // définit un rectangle
-ctx.stroke();               // trace le contour
-ctx.fill();                 // remplit la forme
-```
-
-### Lignes
-
-Pour dessiner une forme complexe, on doit spécifier où déplacer le stylo sur le canvas.  
-Cela permet de tracer une ou des ligne(s) / courbe(s).  
-Pour ce faire, on a plusieurs méthodes:
-
-* `beginPath()` commence un nouveau chemin au point où se situe le stylo sur le canvas.  
-  Sur un nouveau canvas, le stylo commence au point (0, 0).
-
-* `moveTo()` déplace le stylo à un point différent sur le canvas, sans tracer de ligne, le stylo "saute" simplement à une nouvelle position.
-
-* `lineTo()` ajoute une ligne droite qui part de la position actuelle du stylo et va aux coordonnées spécifiées (le stylo est déplacé à cette nouvelle position).
-
-* `closePath()` ajoute une ligne droite qui part de la position actuelle du stylo et va au point de départ du chemin en cours.
-
-Une fois que le chemin est spécifié, alors on peut alors
-* tracer le trait, avec `ctx.stroke()`
-* et/ou remplir la forme, avec `ctx.fill()`
-
-``` js
-ctx.beginPath();     // ouvre un nouveau chemin
-ctx.moveTo(20,20);   // définit le point de départ du chemin
-ctx.lineTo(200,20);  // ajoute une ligne droite
-ctx.lineTo(120,120); // ajoute une ligne droite
-ctx.closePath();     // ferme le triangle par une ligne droite
-
-ctx.fillStyle = "lightblue";
-ctx.fill();          // remplit la forme
-ctx.stroke();        // trace le chemin
-```
-
-### Cercles et arcs de cercle
-
-La fonction `arc()` permet de créer des cercles et des arcs de cercle. Elle prend 6 paramètres:
-
-* Paramètres 1 et 2: spécifient la position du centre du cercle (x et y respectivement).
-* Paramètre 3: le rayon du cercle.
-* Paramètres 4 et 5: sont les angles de début et de fin, en radians, pour dessiner l'arc (donc des angles de 0 et 360 degrés nous donnent un cercle fermé).
-* Paramètre 6: définit si le cercle doit être dessiné dans le sens des aiguilles d'une montre ou dans le sens inverse (false pour le sens horaire).
-
-Note: La fonction suivante permet de convertir des valeurs en degrés en radians. Chaque fois que devez fournir une valeur d'angle en JavaScript, ce sera presque toujours en radians - mais les humains pensent généralement en degrés.
-
-``` js
-function degToRad(degrees) {
-  return degrees * Math.PI / 180;
-};
-```
-
-Dessine un cercle complet, de rayon 50 pixels, situé aux coordonnées (150,106):
-
-``` js
-ctx.beginPath();
-ctx.arc(150, 106, 50, degToRad(0), degToRad(360), false);
-ctx.fill();
-```
-
-Dessine un Pacman, de rayon 50 pixels, aux coordonnées (200,106):
-
-``` js
-ctx.beginPath();
-ctx.arc(200, 106, 50, degToRad(-45), degToRad(45), true);
-ctx.lineTo(200, 106);
-ctx.fill();
-```
-
-### Texte
-
-On peut dessiner du texte avec deux méthodes:
-
-* `fillText()`: dessine un texte rempli
-* `strokeText()`: dessine un contour de texte
-
-Toutes deux prennent trois paramètres:
-* la chaîne de caractères
-* et les coordonnées (x,y) du coin supérieur gauche de la zone de texte.
-
-On peut définir la police et la taille du texte avec la propriété `ctx.font` (même format que la propriété CSS `font`).
-
-Dessiner le contenu:
-
-``` js
-ctx.strokeStyle = 'white';
-ctx.lineWidth = 1;
-ctx.font = '36px arial';
-ctx.strokeText('Canvas text', 50, 50);
-```
-
-Dessiner du texte rempli:
-
-``` js
-ctx.fillStyle = 'red';
-ctx.font = '48px georgia';
-ctx.fillText('Canvas text', 50, 150);
-```
-
-### Image
-
-Il est possible d'inclure une image externe dans un canvas. Pour ce faire, il faut récupérer un élémént HTMLImageElement, soit en sélectionnant une `<img>` présente dans la page, soit en chargeant avec le constructeur `Image()`.
-
-### Version basique
-
-``` js
-var image = new Image();
-image.src = 'firefox.png';
-```
-
-Une fois qu'elle est chargée, elle peut être ajoutée au canvas avec `drawImage()`. Cette méthode prend au minimum trois paramètres: la ressource image et les coordonnées (x,y) du coin supérieur gauche de l'image.
-
-``` js
-image.onload = function() {
-  ctx.drawImage(image, 50, 50);
-}
-```
-
-### Version complète
-
-La version complète permet en plus de tronquer et redimensionner l'image. Elle prend 9 paramètres:
-* Paramètre 1: la ressource image
-* Paramètres 2 et 3: les coordonnées à partir d'où découper l'image, relativement au coin supérieur gauche de l'image d'origine. Tout ce qui est à gauche de X (paramètre 2) ou au-dessus de Y (paramètre 3) ne sera pas dessiné.
-* Paramètres 4 et 5: la largeur et la hauteur de l'image que nous voulons découper, à partir du coin supérieur gauche de la découpe.
-* Paramètres 6 et 7: les coordonnées de l'image sur le canvas, relativement au coin supérieur gauche de du canvas.
-* Paramètres 8 et 9: la largeur et hauteur affichée de l'image. En spécifiant des dimensions différentes des paramètres 4 et 5, l'image est redimensionnée/déformée.
-
-```  js
-ctx.drawImage(
-  image,
-  20, 20,      // couper 20 pixels à gauche et 20 pixels en haut
-  185, 175,    // dimensions de la découpe
-  50, 50,      // position sur le canvas
-  185, 175     // dimensions affichée (en l'occurence, identique à l'origine)
-);
-```
-
-### Courbes quadratiques et courbes de Bézier
-
-Il est possible de dessiner des courbes de Bézier en deux variantes, cubique et quadratique.
-
-* Une courbe de Bézier quadratique a un point de départ, un point d'arrivée et seulement un point de contrôle.
-
-  ``` js
-  ctx.quadraticCurveTo(cp1x, cp1y, x, y)
-  ```
-
-  * Le point de départ est la position actuelle du stylo,
-  * le point de contrôle est spécifié par les paramètres 1 et 2 (cp1x, cp1y),
-  * le point d'arrivée est spécifié par les paramètre 3 et 4 (x, y)
-
-* Une courbe de Bézier cubique a un point de départ, un point d'arrivée et deux points de contrôle.
-
-  ``` js
-  ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)
-  ```
-
-  * Le point de départ est la position actuelle du stylo,
-  * le premier point de contrôle est spécifié par les paramètres 1 et 2 (cp1x, cp1y),
-  * le deuxième point de contrôle est spécifié par les paramètres 3 et 4 (cp2x, cp2y),
-  * le point d'arrivée est spécifié par les paramètre 5 et 6 (x, y)
-
-![](https://i.imgur.com/FSbHK7x.png)
-
----
-
-## Path2D
-
-Pour simplifier le code, l'objet Path2D, disponible dans les versions récentes des navigateurs, permet de garder en mémoire des instructions de dessin.
-
-``` js
-var shape = new Path2D();
-shape.rect(10, 10, 50, 50);
-
-ctx.stroke(shape);
-```
-
-Path2D permet également d'utiliser des trajets SVG sur le canvas.
-
-``` js
-var p = new Path2D("M10 10 h 80 v 80 h -80 Z");
-```
-
----
-
 ## Les méthodes du contexte
 
 ### fill(): remplir une forme
 
 Remplit le chemin en cours avec le style définit par `ctx.fillStyle`.
 
-* Quand on essaie de remplir un chemin qui n'est pas fermé, la navigateur ajoute une ligne droite entre le début et la fin du chemin et remplit la forme créée (`ctx.stroke()` n'en sera pas affecté).
+* Quand on essaie de remplir un chemin qui n'est pas fermé, la navigateur ajoute une ligne droite entre le début et la fin du chemin et remplit la forme créée (n'affecte pas `ctx.stroke()`).
+
+  <ins>Exemple</ins>:
 
   ``` js
   ctx.beginPath();
-  ctx.moveTo(20,20);
-  ctx.lineTo(200,20);
-  ctx.lineTo(120,120);
+  ctx.moveTo(5,5);
+  ctx.lineTo(90,20);
+  ctx.lineTo(60,60);
 
+  ctx.lineWidth = 5;
+  ctx.strokeStyle = "red";
   ctx.fillStyle = "lightblue";
   ctx.fill();
   ctx.stroke();
   ```
 
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <rect fill="black" stroke="none" x="0" y="0" width="100" height="100"/>
+    <path fill="lightblue" stroke="red" paint-order="fill stroke markers" d=" M 5 5 L 90 20 L 60 60" stroke-miterlimit="10" stroke-width="5" stroke-dasharray=""/>
+  </svg> 
+
 * Il est possible de spécifier l'algorithme à utiliser pour déterminer si un point est à l'intérieur ou à l'extérieur du chemin:
-    * `"nonzero"`: la règle de remplissage extérieur/intérieur non nul - par défaut (à gauche).  
+    * `"nonzero"`: utiliser la règle de remplissage extérieur/intérieur non nul - par défaut (à gauche).  
        Le nombre de croisements d’une ligne correspond au nombre total de fois où une ligne croise une partie du tracé allant de gauche à droite moins le nombre total de fois où une ligne croise une partie du tracé allant de droite à gauche.
        Si une ligne tracée dans une direction quelconque à partir du point possède un nombre de croisements égal à zéro, le point est à l'extérieur, sinon, il est à l'intérieur.
 
-    * `"evenodd"`: la règle de remplissage pair/impair (à droite).  
+    * `"evenodd"`: utiliser la règle de remplissage pair/impair (à droite).  
       Si une ligne tracée depuis un point et dans une direction quelconque croise le tracé selon un nombre impair, le point est à l'intérieur, dans le cas contraire, le point est à l'extérieur.
 
   ![](https://i.imgur.com/39WdSRe.png)
 
-  ``` js
-  ctx.beginPath();
-  ctx.moveTo(96.50,50.00);
-  ctx.bezierCurveTo(96.50,62.84,0.22,99.82,50.74,47.17);
-  ctx.bezierCurveTo(100.18,0.58,62.84,96.50,50.00,96.50);
-  ctx.bezierCurveTo(24.32,96.50,3.50,75.68,3.50,50.00);
-  ctx.bezierCurveTo(3.50,24.32,24.32,3.50,50.00,3.50);
-  ctx.bezierCurveTo(75.68,3.50,96.50,24.32,96.50,50.00);
-  ctx.closePath();
+  <ins>Exemple</ins>:
 
-  ctx.fillStyle = "lightblue";
+  ``` js
+  var shape = new Path2D();
+  shape.moveTo(96.50,50.00);
+  shape.bezierCurveTo(96.50,62.84,0.22,99.82,50.74,47.17);
+  shape.bezierCurveTo(100.18,0.58,62.84,96.50,50.00,96.50);
+  shape.bezierCurveTo(24.32,96.50,3.50,75.68,3.50,50.00);
+  shape.bezierCurveTo(3.50,24.32,24.32,3.50,50.00,3.50);
+  shape.bezierCurveTo(75.68,3.50,96.50,24.32,96.50,50.00);
+
+  // Nonzero en bleu clair
   ctx.lineWidth = 2;
-  ctx.fill("nonzero");
-  ctx.stroke();
+  ctx.fillStyle = "lightblue";
+  ctx.fill(shape, "nonzero");
+  ctx.stroke(shape);
+
+  // Evenodd en rouge clair
+  ctx.translate(100, 0);
+  ctx.fillStyle = "lightcoral";
+  ctx.fill(shape, "evenodd");
+  ctx.stroke(shape);
   ```
+
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAABkCAYAAADDhn8LAAAMVUlEQVR4nO2dv08jSRbHa+4CWubcJlhG3oWZ7ck814NEci3DOfCIkWjJE5jEoAkYW2IkIzmwZGm3mWhM0gkSE+xBtie1NBmIhAiJiAiHJJ7Uycb7H7wLVtXXgLvdP6rrVTUdfILxD1xm3pf3o169IoQQyMnJ8QV9ATk5IoO+gJwckUFfQE6OyKAvIBJaRQfdWAPdWIPG7h60eoN7NHb33Oe1io6+3qyzUi5DTdOgpmmwX62CVa/fY79adZ9fKZfR1xsD9AVMpVBUwdjYhM7BEIbOGZxe38L59z9icXp9C0PnDDoHQzA2NqFQVNG/n2yUFAUalQrYpgmX7Tbc9fvw55cvsbjr9+Gy3QbbNKFRqUBJUdC/XwDoC3DRKjp0DoZwdHEVWwxhObq4gs7BMPcyAayUy2CbJtx0u7HFEJabbhds0xTRy+Au4Icfl6BzMEzkIZJyen0LnYMh/PDjEvZ/BjrLpRLYppnIQyTlrt8H2zRhuVRC/30QrA/WjTXo2cdoovCjZx+D/q817P8U7tQ0DU6aTTRR+HHSbMK/f/756QhEN9Zg6JyhC2EWQ+cMdCP7QqlpGly22+hCmMVluw01TcuuQApFVUiPEcajFIpFdENmjTo3J6THCONR1Lm5bAmksbsHzmiMbuxxcUZjaOzuoRs1K/arVZhYFrqxx2ViWbBfrcovkEJRlSKcCsvQOZPam6hzc1KEU2G5bLd5eJN0frBurEntNYK8iYy5SU3TpPYaQd4k5dyE/Q9t9Qbohpw2rd4A3ejDYtXr6IacNla9LodAZEzE49Kzj9GNfxYyJuJxOWk2xRWIrFUqFiIRMS+RtUrFQiSM8xI24uDRHiIqRxdXQvV3lRSFS3uIqNx0uyxFkouDmUj+ge9J1Lm5Jy2OFESS7Ac8xbDKDxFykqcYVvnBKCfJxZEVkeTiSEUk8d74FEq5ccEoAT+FUm5cEpaAo79JN9bQjVB0eG4m1jQN3QhFJ8FmYrQ3FIpqJnfIWeOMxlzKv+rcXCZ3yFkzsay4SXu0N2Sptypths5Z6gLJUm9V2ly22+kKpLG7h250spFmF/B+tYpudLIRows43Avz0CoeaYVaJUXJQ6sYxAi1wr0wL+nGJ43Sb17SjU/E0u/sF+VVq+SwrGrlVavkRKhqzX5Rnpgnh2XCnifmyYmQsOfegxf/ZDAtJfce7Ag5LSX4BXnuwQ4WuUiee7AjZC7i/+Ti0jK6UWWNJMPpXi4soBtV1ggxnM7/yc7BEN2gePPrf/4L272BC+v8q3MwjC0Q2zTRDYo333Z27g3DZp1/2aYZXyCY40B5cnp9C2+3tmFenf7XRDfWme0BnV7fxhYI5jhQntz1+/BhddV3qDXLARR3/X48gWgVHd1weQhDN9bd71woqlDfakGrN4CefQyt3gAWl5aBEAKvXr9hJpI4A7NXymV0w+UhDG/59W/PngX+PliJZMbA7OlPZDk5d0ZjeP/xk/tdF5eWfb+vMxq7Bs2qxT9OmJXl5PzhILi/BwjDC6sW/xlh1vQnsnqMduicwfOlF67HCGP0NCyaV0tM1nB0cRVZIFk9RnvZbsPLhYWZHmMaJUVhsoabbjeaQApFFd2Q08DrNXRjLVKORb0Iq6Q9yvl1VoYgGizGh7JK2ov+/VmPHzQ2NtGNmSXOaAyvXr9xxR+nOkdPCbIKs4yNzdBG0KhU0I2ZJRPLcuP+ZwkFwirMalQq4QWSpfLu0Dlzq1NaRY8dOtK8ASMPyVJ597LdZnrlGoc85PGDWem98u5cGxubiapQtJeqvtViJlzeYQQ2aUw+/LC6yky4oQWShf0Pb77B4q8+NWhWHiTKfkgW9j/Suq6AlQcJ2A95/CC2cSfBGY3h7da2+11YlatZC+T8+x+hjQDbuJMwsSz4sLqaijhYCuTPL1/CCUTmDcKHyTjLUjXrJP38e7gNQ5k3CL3JuAwC8Vnr/QdkbW9PUxxpCSTMISpZ29t5iIO1QHwOUckvEK84tIqeytl5WpZlWcDIqkB4iYMQtgWMUAKRbWIiD3F4jZmlQMJMPJFtYiJPcbAWiE8hQV6B8BLH+ff/J9Qsf2aYEaUyCYS3OAghTNfvM6JUToHwFAftnWJdwMiSQDDEwbqAkSmB0FJuoaimvm9DNxxZt+CEaTeRRSBplnL9YN2C49NuIp9AvOLg0XVc32oBIWxbcJzROJQRyCAQDHEQwrYFZ2JZfp/zQJWCjxelf8153mxF2+NZfp53MzMI0ceL0vaRpE2HcWB5BCBA5PcfELnM+8tvv7vr5HWgi7aEsDwCEFYchIhd5v22s4PiOQhhewRghgeUQyBHF1duVy7PbmPW+UcUcYgskJtul2lXblRY5R8hwsP7D7x6/QZdDA9xRmM3zGHVTRsWVvmHMxqD8W7mBI1HiNhqMrEs9xQgFknzj4llBZ0B8RcIIeI1K1LDwugTo14rSaXMe8w3DtiCeEhIw0qVJB3O3mO+sQQi0jUH3qSc97poB28SYW4zuK9QpGsO0jjTEZUkXjXGfYWPHxTlwJQ378BYE20FiVPZS+o1vIhyYAo776DEqexF9BrBAhHlyC3dKcfam6EGHkWcp9e3sXKNIEQ5cst7p5zFH4y7fj9pSPj4QRGGNtAz21jnU6KWd53RmEk4NQ0RhjaEGNHJhbDl3YllJb3+2V8g88hjf06vb93QCms+FxVomKpZz/7KLJxKYhRpcdfvCxFaERLuDPpJs8myyjb9CczBcbS0itn2Qg3+l99+RxOGF8zBcVitJNP4trPDSxjBAsHKQ7yhDVY1jXbv+oVXPIVBwcpDQgx35oafJ01JGMECwdowFMF7+FWvMIRBwdowFMl7PKxepSyMYIEQwn/8D+1wxR596s1/nNEYOp8P0YThhff4n4AOVxRuul2YWBbYpslzJ9//Sd5hFt0U5N1O4oU2RD5fehF4ZwgGvMMsETYFKS8XFgLvDEERyPOlF1yNk4ZXQYlx2njvCxEN3lewiRReIRL8Ap73hNDBCLwraEcXV/D+4yehvIUfPO8JiXCXeJYJfoFurHMXCI/POr2+hfcfPwmRW0SBZ/t7LpAQAiGEXx8UFUhaIdahcw7bvYHbwkJZXFoONYJHFHj1ZmEJ5OXCQmqzfFMRCC8vQqd8sPq80+tb6NlfwXhnPgqf6H2EVPws7jDnBS8vwqhVIxQlRYEPq6uu+AUqEIR7IY9cxBmNoVBUgRACxjszcpn50DmHzudDeLu1PTV00io6NHb3pnoo2UItHrnIxLJA9b95KTEr5TLsV6tTd8exD2RFFsi8WuKys310ceWKhJC/vMl2bwCdz4dw6Jy7YRJFN9YfhUyUQlEFY2MTevZxoNii3NUhCiVF4XJO5KbbZSaSkqJAo1KBk2YzcE8n4K4OcQVCCL+JJ85o7JZ8o6Aba9DY3YOefRypEiZyaTcIXhNP4l5hUNM02K9W4aTZjNRLJlhxINobeB9cGjpn0OoNoNUbQGN3z73HvNUbQOdgCEPnLFFZWEbv4YX3YarLdhuseh2seh32q1X4sLrq/ts2TbhstxM1VgrmPaILhFeoxQtZvQeFV6jFC8G8R3SBEMJ3byRt7yTAf0BiRB0NlAHvEU8ghMgxojTr3sOLDCNKJfQe8QVCCN82lNx7zIZnG8oT8R7JBCKzSLLkPbIgEkG9R3KBzHMcIp17j9mUFAX1eG7GvEdygRDyV2VLJpH4bSxmBdlEIso4odQEQkUiQ7hFp5VknZKiSBFuiTJOKHWBUEQWiTMaw7ynjeUpILJIJpYlzDghbgIhhMC2oCXgOO0rWUDUErAkJxbT+cG6sS7Ujjsd5fNUqWmaUDvuN90u+u8EVSCEEJhXVWEGYWe1rBuFkqIIMwhb4LIuP4FQ3n/8hOpNwly3/JTYr1ZRvQnPg1gM4PNB86oKPftrHloJAlaVS6LQisL3A3VjnVvY5YzGsPjTMvYvWGhqmsYt7JpYFrwoiT855gE4H6wb66l7FNb3dGSZmqal7lFEuLotBrgLWPxpGTqfD5mPOY16m2zOX7wolcA2TeZjTiUp6U4DfQEur16/gc7nw8RtK7k42LBSLoNtmonbViQWBxABFjCVebUExjvTHdYQxsM4o3EujpSgAxfosdowHibuWXbBQF9AJF69fgO6sQ66sQ7vP35yp5vk+QYOK+Uy1DTNHdBAz6dLmm9MA30BOTkig76AnByRQV9ATo7IoC8gJ0dY/gfdIBKxxHRmRgAAAABJRU5ErkJggg==">
 
 ### stroke(): tracer un chemin
 
@@ -452,26 +661,58 @@ ctx.strokeStyle = 'rgb(255, 0, 0)';
 ctx.stroke();
 ```
 
-### clip(): détourer le canvas
+### clip(): créer un détourage
 
-La méthode `clip()` ne permet pas de dessiner une forme à proprement parler mais de masquer tout ce qui est en dehors de la forme. Toutes les formes qui seront ajoutées au canvas après avoir définit un détourage seront limitées à cette forme. On utilise `clip()` à la place de `closePath()` pour fermer un chemin et en faire un détourage.
+On peut utiliser la méthode `clip()` à la place de `closePath()`.
+Cela a pour effet de créer, non pas une forme, mais un détourage: toutes les formes qui seront ajoutées par la suite au canvas seront tronquées, limitées à l'intérieur du détourage.
 
-Le détourage fait partie de l'état du canvas (il est donc sauvegardé par `save()`).
+<ins>Exemple</ins>:
 
+``` js
+// Définit un clip: tout ce qui suit est limité à un cercle
+ctx.beginPath();
+ctx.arc(50,50,40, degToRad(0), degToRad(360), false);
+ctx.clip();
 
-[JsFiddle clip()](https://jsfiddle.net/amt01/fg7m8rw0/)
+// Dessine un rectangle rouge
+ctx.fillStyle = "red";
+ctx.fillRect(0,0,100,100);
+
+// Dessine un rectangle blanc
+ctx.fillStyle = "white";
+ctx.fillRect(0,0,50,100);
+```
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <defs><clipPath id="pzLqDyLzUBqE"><path fill="none" stroke="none" d=" M 90 50 A 40 40 0 1 1 89.99998000000167 49.96000000666664"/></clipPath></defs>
+    <rect fill="black" stroke="none" x="0" y="0" width="100" height="100"/>
+    <g clip-path="url(#pzLqDyLzUBqE)">
+      <rect fill="red" stroke="none" x="0" y="0" width="100" height="100"/>
+      <rect fill="white" stroke="none" x="0" y="0" width="50" height="100"/>
+    </g>
+</svg> 
+
+NB Le détourage fait bien partie de l'état du canvas, il est donc sauvegardé par `save()`.
 
 ### createLinearGradient(), createRadialGradient(): créer un gradient
 
-Il faut d'abord créer un gradient
+Il est possible d'utiliser un gradient comme couleur de remplissage.  
+Pour ce faire, il faut
 
-* `createLinearGradient(x1, y1, x2, y2)`  
-  permet de créer un dégradé linéaire entre un point de départ (x1,y1) et un point d'arrivée (x2,y2).
+1. créer un nouveau gradient, linéaire ou radial:
 
-* `createRadialGradient(x1, y1, r1, x2, y2, r2)`  
-  permet de créer un dégradé radial avec les cercles de début et de fin spécifiés. Le premier cercle est de centre (x1,y1) et de rayon r1, le deuxième cercle est de centre (x2,y2) et de rayon r2.
+   * `createLinearGradient(x1, y1, x2, y2)` pour créer un dégradé linéaire.  
+     `x1, y1` est le point de départ du gradient,
+     `x2, y2` est le point d'arrivée
 
-Ensuite, assigner des couleurs avec `gradient.addColorStop(position, color)`. Cela crée un nouvel arrêt de couleur dans le gradient. La position se situe entre 0 (le début du gradient) et 1 (la fin du gradient).
+   * `createRadialGradient(x1, y1, r1, x2, y2, r2)` pour créer un dégradé radial.  
+      `x1,y1,r1` est le premier cercle - de coordonnées (x1,y1) et rayon r1,
+      `x2,y2,r2` est le deuxième cercle
+
+2. assigner des couleurs avec `gradient.addColorStop(position, color)`.  
+  Chaque appel à `addColorStop` ajoute une nouvelle couleur au gradient. On définit la position de la couleur entre 0 (le début du gradient) et 1 (la fin du gradient).
+
+<ins>Exemple</ins>:
 
 Gradient linéaire:
 
@@ -497,7 +738,7 @@ ctx.fillRect(0, 0, 200, 200);
 
 ![](https://i.imgur.com/qUkRdzP.png)
 
-Gradient radial, exemple 2:
+Autre gradient radial:
 
 ``` js
 var gradient = ctx.createRadialGradient(45, 45, 30, 52, 50, 50);
@@ -513,26 +754,23 @@ ctx.fillRect(0, 0, 150, 150);
 
 ### createPattern(): créer un motif
 
-Il est possible d'utiliser une image pour tapisser la surface d'une forme avec `createPattern(image, repeat)`.
+Il est également possible d'utiliser une image comme remplissage.  
+Pour ce faire, créer un motif avec `createPattern(image, repeat)`.
+
+<ins>Exemple</ins>:
 
 ``` js
 var img = new Image();
-img.src = 'https://mdn.mozillademos.org/files/222/Canvas_createpattern.png';
+img.src = 'https://gist.githubusercontent.com/a-mt/372caa0b4114d22ac2fca4c52aeaff4e/raw/ccb6b5562bafd61cbf57f8eed5502ae3cea6f32d/index.png';
 
 img.onload = function() {
   var pattern   = ctx.createPattern(img, 'repeat');
   ctx.fillStyle = pattern;
-  ctx.fillRect(0, 0, 400, 400);
+  ctx.fillRect(0, 0, 200, 100);
 };
 ```
 
-### save(), restore(): sauvegarder les configurations
-
-La méthode `save()` permet de sauvegarder l'état du canvas dans sa globalité. Sont sauvegardés:
-* les transformations (translate, rotate, scale)
-* les configurations (strokeStyle, fillStyle, lineWidth, lineCap, font, etc)
-
-Le méthode `restore()` restore la sauvegarde la plus récente du canvas.
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAABkBAMAAAAxqGI4AAAAIVBMVEX///+g+fCu+fK3+vTo/fvg/frZ/Pn1/v3u/fzE+/XN+/dtBtOcAAACbElEQVRo3uyYMW7bQBBFP0Uqsjv+pcl6CTiRkkoLCAaSSmtdQFJ8ABZJL0gXEOAcIIgvEOSkmeXAWB5gSm1h7H87gKFm8D7xh6T7DTm7wA647wV8saXwR7phne6M9MBs3vNjaUvR4vtQ1cArWXIAiv38CdGWwiHuSwny7ysHGfFVi2BLwRe2UYIkPKWRNgqypWAgwwNSwhW4Fg3Z0JaCP9lFbqCn8kV34A8aU4fDUPI9lW3h5x2CMe2w21ak244pumKoNojG1O/YbIMbMJ7AYxW4KY3pG8nmn95RkZ+DgG+2VF8C3TPlPPZsyMGaQu9cLXrSXc98oAOMKYC7kB5xFoJFX4cOMKYpHdOjvArBuY4eMKaa0iPOKwjy5QBY021KL+PPG6/XO7lZ0yal2QnAZQlgsQbwbE2ZUrGUx+BOQmrBYW9LQT5KkNcLuRQiIxW9LQU/QQKXi0C604UyUrK1pZB7Cu6VclYhjUQ6W4rATkJeCrUKhilFpJeQl0KdJmhLoYKRl4IKhi2FCkZeCioYthSjYMwmSwFpxpomwajyUviV/nywp5WfLIWwAWBNVTDyUlDBsKUqGJOloIJhS1UwDnkpUAXDlKpg9Hkp6IQt1RL0lgXjq1YYU6olaJMFw2mFMaVagqaCoRXGlGoJmgqGVhhbqmUlC4YkQbZUS1CdBeOgFcaUagmqs2BohbGlWoImgqEVxpZqCZoIhlYYW6olaA2U7EbBmGmFMaVagv5mwbjXCmNKb99Wbt9Wbt9W/rdjBwIAAAAAgvytB7kwcituxa24FbfiVtyKW3ErbsWtuBW34lbciltxK27ldSsB1s3EgM+m1cAAAAAASUVORK5CYII=">
 
 ### translate(): déplacer l'origine des coordonnées
 
@@ -553,7 +791,7 @@ ctx.fillRect(20,20,50,50); // rectangle 2, en décalage de (30,30) pixels par ra
 
 ### rotate(): faire pivoter le canvas
 
-La fonction `rotate()` permet de faire pivoter le canvas. Elle prend un angle de rotation horaire, en radians, en paramètre. Utiliser des angles négatifs pour un sens anti-horaire.
+La fonction `rotate()` permet de faire pivoter le canvas. Elle prend un angle de rotation horaire (en radians) en paramètre. Utiliser des angles négatifs pour un sens anti-horaire.
 
 ``` js
 ctx.rotate(45 * Math.PI / 180);
@@ -563,7 +801,7 @@ Le centre de la rotation est l'origine du canvas. Pour changer le centre, il fau
 
 ### scale(): mettre à l'échelle le canvas
 
-`scale(x,y)` permet d'augmenter ou diminuer les unités de la grille du canvas, avec x horizontalement et y verticalement. Les valeurs inférieures à 1.0 réduisent la taille (0.5 = moitié de la taille) et les valeurs supérieures à 1.0 augmentent la taille (2.0 = double de la taille), tandis que la valeur 1.0 laisse à la même taille.
+`scale(x,y)` permet d'augmenter ou diminuer les unités de la grille du canvas. Les valeurs inférieures à 1.0 réduisent la taille (0.5 = moitié de la taille) et les valeurs supérieures à 1.0 augmentent la taille (2.0 = double de la taille), tandis que la valeur 1.0 laisse le canvas à la même taille.
 
 En utilisant des nombres négatifs, on peut réaliser une mise en miroir d'un axe.
 
@@ -583,7 +821,7 @@ ctx.fillText('Hello World', -width, 48);
 
 ![](https://i.imgur.com/KxIOWrJ.png)
 
-### setTransform(): appliquer une transformation
+### setTransform(), resetTransform(): appliquer une transformation
 
 `setTransform()` permet d'appliquer une matrice de transformation au canvas.  
 La matrice de transformation est décrite par
@@ -609,15 +847,39 @@ ctx.fillRect(0,0,100,100);
 ```
 
 `resetTransform()` réinitialise la transformation en cours à la matrice identité.  
-C'est un raccourci pour `setTransform (1, 0, 0, 1, 0, 0)`.
+C'est un raccourci pour `setTransform(1, 0, 0, 1, 0, 0)`.
+
+### save(), restore(): sauvegarder les configurations
+
+La méthode `save()` permet de sauvegarder l'état du canvas dans sa globalité. Sont sauvegardés:
+* les transformations (translate, rotate, scale)
+* les configurations (strokeStyle, fillStyle, lineWidth, lineCap, font, etc)
+
+La méthode `restore()` restore la sauvegarde la plus récente du canvas.
+
+### clearRect(): effacer une zone du canvas
+
+La méthode `ctx.clearRect()` permet d'effacer le canvas. Elle prend quatre paramètres:
+
+    clearRect(x,y,width,height)
+
+| Paramètres     | Description
+|---             |---
+| `x,y`          | Coordonnées du coin supérieur gauche de la zone à effacer
+| `width,height` | Largeur et hauteur de la zone
+
+Cette méthode va effacer la zone spécifiée (tout, y compris l'arrière-plan). Ou on peut utiliser `ctx.fillRect()`.
 
 ---
 
 ## ImageData
 
 L'objet ImageData permet de lire et écrire le canvas pour manipuler les pixels un par un.
+La méthode `getImageData(x,y,width,height)` permet de récupérer un ImageData et `putImageData(imageData,x,y)` d'appliquer un ImageData au canvas.
 
-Par exemple, pour récupérer la couleur du canvas à un endroit donné on peut faire:
+<ins>Exemple</ins>:
+
+Récupérer la couleur du canvas à un endroit donné:
 
 ``` js
 var pixel = ctx.getImageData(x, y, 1, 1),
@@ -630,11 +892,11 @@ var pixel = ctx.getImageData(x, y, 1, 1),
             + ')';
 ```
 
-Pour inverser les couleurs du canvas:
+Inverser les couleurs du canvas:
 
 ``` js
 var imageData = ctx.getImageData(0, 0, width, height),
-     data     = imageData.data;
+    data      = imageData.data;
 
 for (var i = 0; i < data.length; i += 4) {
   data[i]     = 255 - data[i];     // rouge
@@ -648,7 +910,7 @@ Mettre en niveau de gris:
 
 ``` js
 var imageData = ctx.getImageData(0, 0, width, height),
-     data     = imageData.data;
+    data      = imageData.data;
 
 for (var i = 0; i < data.length; i += 4) {
   var moy = (data[i] + data[i + 1] + data[i + 2]) / 3;
@@ -659,12 +921,14 @@ for (var i = 0; i < data.length; i += 4) {
 ctx.putImageData(imageData, 0, 0);
 ```
 
-## toDataURL(): enregistrer sous
+---
 
-La méthode `toDataURL()` prend un type MIME en paramètre et retourne un URI de données contenant une représentation de l'image dans le format spécifié (`image/png` si omis).
+## Enregistrer le canvas
+
+La méthode `toDataURL()` du canvas (et non du contexte) prend un type MIME en paramètre (`image/png` si omis) et retourne l'image dans le format spécifié (URI).
 Pour une image jpeg, il est possible de préciser la qualité de l'image (entre 0 et 1) en deuxième paramètre.
 
-Cette méthode est appelé sur le **canvas** et non le contexte. L'uri retournée peut être utilisée pour créer un élément image dans la page, ou ouvrir l'image dans un nouvel onglet.
+L'uri retournée peut être utilisée pour créer un élément image dans la page, ou ouvrir l'image dans un nouvel onglet.
 
 ``` js
 var uri = canvas.toDataURL(),
@@ -709,7 +973,7 @@ loop();
 
 [Voir exemple Canvas 2D de balles rebondissantes](https://mdn.github.io/learning-area/javascript/oojs/bouncing-balls/index-finished.html)
 
-Notons que lorsque qu'une forme est dessinée, il est impossible de la déplacer - ce n'est plus que des pixels sur une image bitmap. Pour modifier le canvas, il nécessaire d'effacer et de redessiner, soit en effaçant tout, soit en gardant du code pour effacer la zone minimale nécessaire.
+Une fois que le canvas est dessiné, il est impossible modifier les formes existantes. Pour modifier le canvas, il nécessaire d'effacer et de redessiner, soit en effaçant tout, soit en effaçant la zone minimale nécessaire (en gardant du code pour).
 
 Pour des scènes complexes, on peut empiler plusieurs canvas positionnés en absolu et utiliser les canvas comme des calques - un canvas pour le fond, un pour le menu, un pour le jeu à proprement parler...
 
@@ -718,14 +982,6 @@ Pour des scènes complexes, on peut empiler plusieurs canvas positionnés en abs
 ### window.cancelAnimationFrame(): annuler l'appel
 
 La boucle s'arrête lorsque vous vous arrêtez d'appeler `window.requestAnimationFrame()` ou si vous appelez `window.cancelAnimationFrame()` avant que votre fonction de callback n'ait été exécutée. C'est une bonne pratique de le faire, pour s'assurer qu'aucune mise à jour n'attend d'être exécutée.
-
-### clearRect(): effacer une zone du canvas
-
-La méthode `ctx.clearRect()` permet d'effacer le canvas. Elle prend quatre paramètres:
-* Paramètres 1 et 2: coordonnées x et y du coin supérieur gauche de la zone à effacer
-* Paramètres 3 et 4: largeur et hauteur de la zone
-
-Cette méthode va effacer la zone spécifiée (tout, y compris l'arrière-plan). Ou on peut utiliser `ctx.fillRect()`.
 
 ---
 

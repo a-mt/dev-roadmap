@@ -161,6 +161,7 @@ searchbar: true
       - [ ] README [1 &#x21F2;](https://medium.freecodecamp.org/why-im-not-using-your-github-repository-2dff6c7ac7cf) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-up-to-3500-github-stars-in-one-week-339102b62a8f)
     - [ ] Open Source [1 &#x21F2;](https://opensource.guide/) [2 &#x21F2;](https://github.com/Roshanjossey/first-contributions)
     - [ ] Licences [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94) [2 &#x21F2;](https://spdx.org/licenses)
+  - [Testing](testing.md)
   - Task runners & dependency tools
     - [ ] Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html)
     - [ ] Grunt

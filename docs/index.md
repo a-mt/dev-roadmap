@@ -213,7 +213,7 @@ searchbar: true
     - [ ] HTTPS [1 &#x21F2;](https://medium.freecodecamp.org/https-explained-with-carrier-pigeons-7029d2193351?utm_content=buffer1f715&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec)
     - [ ] SSL [1 &#x21F2;](https://medium.freecodecamp.org/openssl-command-cheatsheet-b441be1e8c4a) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-valid-ssl-certificates-for-local-development-ca228240fad2)
   - [ ] Apache
-    - [ ] Virtual hosts
+    - [x] [Virtual hosts](apache-vhost.md)
     - [ ] .htaccess
   - [ ] Nginx [1 &#x21F2;](https://medium.freecodecamp.org/an-introduction-to-nginx-for-developers-62179b6a458f)
     - [ ] A/B Testing [1 &#x21F2;](https://medium.freecodecamp.org/a-b-testing-with-nginx-in-40-lines-of-code-d4f94397130a)
@@ -239,6 +239,7 @@ searchbar: true
 - Marketing [1 &#x21F2;](http://jamesarcher.me/user-motivators) [2 &#x21F2;](https://www.nngroup.com/articles/zigzag-page-layout/) [3 &#x21F2;](https://www.nngroup.com/articles/multi-tab-page-parking/)
   - [ ] Google Analytics [1 &#x21F2;](https://medium.freecodecamp.org/how-and-why-to-get-started-with-google-analytics-153dc35b7812)
   - [ ] SEO [1 &#x21F2;](https://support.google.com/webmasters/answer/7451184)
+    - [ ] Rich snippets
 
 - [ ] Machine Learning [1 &#x21F2;](https://blog.floydhub.com/ten-techniques-from-fast-ai/)
   - Exemples

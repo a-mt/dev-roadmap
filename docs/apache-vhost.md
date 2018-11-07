@@ -89,7 +89,7 @@ Accéder à l’interface web : http://myproject
 
 ---
 
-## Accepter des sous-domines
+## Accepter des sous-domaines
 
 * Ajouter un ServerAlias à la configuration du Vhost
 

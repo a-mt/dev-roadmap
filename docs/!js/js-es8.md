@@ -125,3 +125,20 @@ async function getAB(a, b) {
     return a + b;
 }
 ```
+
+### Promise.race()
+
+`Promise.race` permet d'executer plusieurs promesses en parallèle (de manière concurrente) et d'executer le callback une fois qu'une des promesses est réalisée, avec le résultat de la première promesse résolue.
+
+``` js
+const first = new Promise((resolve, reject) => {
+    setTimeout(resolve, 500, 'first')
+})
+const second = new Promise((resolve, reject) => {
+    setTimeout(resolve, 100, 'second')
+})
+
+Promise.race([first, second]).then((result) => {
+  console.log(result) // second
+});
+```

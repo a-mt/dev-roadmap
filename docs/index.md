@@ -168,7 +168,7 @@ searchbar: true
     - [ ] Gulp [1 &#x21F2;](https://medium.freecodecamp.org/super-simple-gulp-tutorial-for-beginners-45141974bfe8)
     - [ ] Webpack [1 &#x21F2;](https://blog.vanila.io/webpack-what-is-it-and-is-it-better-than-gulp-375db8011d22) [2 &#x21F2;](https://medium.com/@timurcatakli/an-easy-to-understand-webpack-4-configuration-file-with-comments-6213882e9edf) [3 &#x21F2;](https://medium.freecodecamp.org/a-beginners-introduction-to-webpack-2620415e46b3)
   - Containers
-    - [x] [Docker](docker.md)
+    - [x] [Docker](docker.md) [1 &#x21F2;](https://perchrunway.com/blog/2017-01-19-getting-started-with-docker-for-local-development)
     - [ ] Kubernetes [1 &#x21F2;](https://godaddy.github.io/2018/05/02/kubernetes-introduction-for-developers/)
   - [ ] Q/A Testing [1 &#x21F2;](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-dockerize-your-end-to-end-acceptance-tests-dbb593acb8e0)
   - [ ] Continuous Integration [1 &#x21F2;](https://medium.freecodecamp.org/4-steps-to-build-an-automated-testing-pipeline-with-gitlab-ci-24ccab95535e)

@@ -7,15 +7,17 @@ category: Linux
 
 ### Pour une installation en dual-boot avec Windows
 
-* Effecuter une défragmentation
+* Effectuer une défragmentation
 * Réduire la partition Windows via le Disk Manager (<kbd>Super</kbd> + <kbd> r </kbd> > `diskmgmt.msc`)
     * Minimum : 60G
-    * Pour quleques logiciels / serveur : 100/200G
+    * Pour quelques logiciels / serveur : 100/200G
+
+Si votre partition `D:` est vide et que vous souhaitez installer Linux dessus, faire un clic droit sur cette partition dans le Disk Manager et choisir "Supprimer". Cela retirera le formattage NTFS et laissera l'espace libre pour l'installation Linux.
 
 ### Déterminer le BIOS utilisé (Legacy ou UEFI)
 
 * Ouvrir la console en mode admin (Rechercher "cmd" > <kbd>Ctrl</kbd> + <kbd>Maj</kbd> + <kbd>Entrée</kbd>)
-* Taper `bcedit`  
+* Taper `bcdedit`  
   Si le "path" du chargeur de démarrage Windows est "winload.efi" = UEFI, si "winload.exe" = Legacy
 
   ``` diff
@@ -49,14 +51,15 @@ category: Linux
 * Sinon : sur un ordinateur eteint
     * Mettre la clé USB sur l'ordinateur où installer Ubuntu
     * Démarrer
-* Au moment du (re)démarrage : entrer dans le menu du BIOS (F2 au moment du démarrage) et changer l'ordre de boot pour mettre la clé USB en premier
+    * Au moment du (re)démarrage : entrer dans le menu du BIOS (F2, F10, F10 ou Echap au moment du démarrage suivant la marque de l'ordinateur) et changer l'ordre de boot pour mettre la clé USB en premier
 
 ### Installer
 
 * Démarrer une session live avec la clé bootable
 * Vérifier que le matériel est bien détecté (touchpad, souris, son, luminosité, ...)
 * Se connecter à Internet via un cable ethernet
-* Procéder à l'installation
+* Procéder à l'installation.  
+  À l'écran "type d'installation", le plus simple est de choisir d'"installer Linux à côté de Windows". Linux s'installera sur l'espace vide restant sur la même partition que Windows (généralement /dev/sdb). Ou vous pouvez choisir le [partitionnement manuel](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux/37192-partitionner-son-disque). NB Depuis Ubuntu 17.04, la swap n'est plus une partition mais un fichier situé dans /swapfile.
 * Redémarrer
 
 <ins>Si le démarrage s'effectue toujours sur Windows</ins> :

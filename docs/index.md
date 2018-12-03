@@ -9,7 +9,7 @@ searchbar: true
 - [x] [HTML](html.md)
   - [x] [Éléments HTML](html-elements.md)
   - [ ] [Accessibilité](accessibilite.md)
-  - [ ] SVG [1 &#x21F2;](https://www.sarasoueidan.com/blog/css-svg-clipping/) [2 &#x21F2;](https://webdesign.tutsplus.com/tutorials/how-to-hand-code-svg--cms-30368)
+  - [x] [SVG](svg.md)
 - [x] [CSS](css.md)
   - [x] [Inclure du CSS](!css/css-include.md)
   - [x] [Sélecteurs](!css/css-selecteurs.md)

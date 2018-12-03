@@ -39,13 +39,13 @@ Un document SVG se compose de l'élément racine `<svg>`, à l'intérieur de laq
 </svg>
 
 
-Les fichiers SVG complexes peuvent atteindre une taille assez importante. Pour ces cas particuliers, la spécification SVG permet l'utilisation de fichiers compressés avec gzip: `.svgz`. Mais ce format n'est cependant pas toujours bien pris en charge par les navigateurs.
+Les fichiers SVG complexes peuvent atteindre une taille assez importante. Pour ces cas particuliers, la spécification SVG permet l'utilisation de fichiers compressés avec gzip: `.svgz`. Mais ce format n'est pas toujours bien pris en charge par les navigateurs.
 
 ## La balise SVG
 
 Une image SVG est entièrement contenue dans une balise `svg`.  
 Les attributs `width` et `height` de cette balise spécifient à quelle taille afficher le SVG.  
-Si l'unité n'est pas précisé, il s'agit défaut de pixels.
+Si l'unité n'est pas précisé, il s'agit par défaut de pixels.
 
 La déclaration suivante crée un élément SVG d'une taille de 100px par 100px:
 
@@ -60,7 +60,7 @@ Pour l'instant le fichier SVG est complètement vide, il ne s'agit que d'un rect
 L'attribut `viewBox` définit les dimensions du SVG: `min-x min-y width height` (séparé par des espaces ou des virgules).  
 Tous les attributs de largeur et de hauteur à l'intérieur du SVG n'ont pas d'unité: il s'agit de la taille de base de l'image mais celle-ci pourra être zoomée ou dézoomée. De même, les dimensions du viewBox n'ont pas d'unité.
 
-Les attributs `width` et `height` spécifient la taille à laquelle le SVG doit être affiché. En l'occurrence, 200px par 200px. Puisque les dimensions du SVG est 100 par 100, chaque unité du SVG vaut deux pixels. Autrement dit, on double la taille du contenu. Si l'on ne définit pas le viewbox, les dimensions du SVG c'est la taille d'affichage. [JSFiddle viewbox](https://jsfiddle.net/amt01/0ycvsbn6/)
+En l'occurrence, les attributs `width` et `height` spécifient que la taille à laquelle le SVG doit être affiché est 200px par 200px. Puisque les dimensions du SVG est 100 par 100, chaque unité du SVG vaut deux pixels. Autrement dit, on double la taille du contenu. Si l'on ne définit pas le viewbox, les dimensions du SVG est la taille d'affichage. [JSFiddle viewbox](https://jsfiddle.net/amt01/0ycvsbn6/)
 
 ``` html
 <svg width="200" height="200" viewBox="0 0 100 100">

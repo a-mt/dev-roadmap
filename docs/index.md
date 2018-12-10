@@ -8,7 +8,7 @@ searchbar: true
 - [Développement Web](web.md)
 - [x] [HTML](html.md)
   - [x] [Éléments HTML](html-elements.md)
-  - [ ] [Accessibilité](accessibilite.md)
+  - [ ] [Accessibilité](accessibilite.md) [1 &#x21F2;](https://www.invotra.com/blogs/simple-recommendations-writing-text-descriptions-make-big-difference)
   - [x] [SVG](svg.md)
 - [x] [CSS](css.md)
   - [x] [Inclure du CSS](!css/css-include.md)
@@ -16,102 +16,102 @@ searchbar: true
   - [x] [Types](!css/css-types.md)
   - [x] [Propriétés](!css/css-proprietes.md)
   - [x] [At-rules](!css/css-atrules.md)
-  - Conventions de nommage [1 &#x21F2;](https://medium.freecodecamp.org/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849) [2 &#x21F2;](https://spaceninja.com/2018/09/17/what-is-modular-css/)
+  - Conventions de nommage [1 &#x21F2;](https://medium.freecodecamp.org/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849) [2 &#x21F2;](https://spaceninja.com/2018/09/17/what-is-modular-css/) [3 &#x21F2;](https://medium.freecodecamp.org/how-to-better-organize-your-css-architecture-with-oocss-bem-smacss-65e8a5c207c0) [4 &#x21F2;](https://fixate.it/blog/make-your-css-variable-names-suck-less)
     - [ ] BEM [1 &#x21F2;](https://blog.elpassion.com/reasons-to-use-bem-a88738317753) [2 &#x21F2;](https://medium.com/mr-frontend-community/how-to-write-better-css-with-bem-40f492a26192) [3 &#x21F2;](https://www.smashingmagazine.com/2018/06/bem-for-beginners/)
     - [ ] SMACSS [1 &#x21F2;](https://www.toptal.com/css/smacss-scalable-modular-architecture-css)
   - Preprocesseurs
     - [x] [Sass](sass.md)
     - [ ] Less
 - [ ] [JS](js.md) [1 &#x21F2;](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711) [2 &#x21F2;](https://ashleynolan.co.uk/blog/frontend-tooling-survey-2018-results) [3 &#x21F2;](https://blog.logrocket.com/interesting-ecmascript-2017-proposals-163b787cf27c)
-  - [x] ES < 2015
-    - [x] [Bases de JavaScript](!js/js-basics.md)
-    - [x] [Objets, tableaux, fonctions, POO](!js/js-objects.md)
-    - [x] [Objets, modules et méthodes globales](!js/js-global-objects.md)
-    - [x] [Méthodes natives](!js/js-methods.md)
-      - [x] [Chaînes de caractères](!js/js-es5-methods-string.md)
-      - [x] [Tableaux](!js/js-es5-methods-array.md)
-      - [x] [Objets](!js/js-es5-methods-object.md)
-      - [x] [Date](!js/js-es5-methods-date.md)
-  - [x] [BOM](!js/js-bom.md)
-  - [x] [DOM](!js/js-dom.md)
-    - [x] [Événements](!js/js-events.md)
-    - [x] [AJAX](!js/js-ajax.md)
-    - [x] [JSON, JSONP](!js/js-json.md)
-  - [x] [Gestion de la mémoire](!js/js-memory.md)
-  - [x] ES 2015
-    - [x] [Nouvelles méthodes](!js/js-es6-methods.md)
-    - [x] [Let, const](!js/js-es6-let-const.md)
-    - [x] [Rest & Spread (...)](!js/js-es6-rest-spread.md)
-    - [x] [Fonction flèche, paramètres par défaut](!js/js-es6-function-syntax.md)
-    - [x] [Destructuration](!js/js-es6-destructuration.md)
-    - [x] [Template litterals](!js/js-es6-template-literals.md)
-    - [x] [Syntaxe concise pour les objets](!js/js-es6-objet-concise.md)
-    - [x] [Classe](!js/js-es6-class.md)
-    - [x] [Symbole](!js/js-es6-symbol.md)
-    - [x] [Promesse](!js/js-es6-promise.md)
-    - [x] [Générateur, itérateur](!js/js-es6-generator.md)
-    - [x] [Proxy](!js/js-es6-proxy.md) [1 &#x21F2;](https://www.atyantik.com/proxy-javascript-es6-feature/)
-    - [x] [Reflect](!js/js-reflect.md)
-    - [x] [Module](!js/js-es6-module.md)
-    - [x] [Map, Set, WeakMap, WeakSet](!js/js-es6-map-set.md)
-    - [x] [Tableaux typés](!js/js-es6-typedarray.md)
-  - [x] [ES 2016](!js/js-es7.md)
-  - [x] [ES 2017](!js/js-es8.md)
-  - [x] [ES 2018](!js/js-es9.md)
-    - [x] [Async & await](!js/js-async-await.md)
-  - ESNext [1 &#x21F2;](https://medium.freecodecamp.org/here-are-three-upcoming-changes-to-javascript-that-youll-love-387bce1bfb0b) [2 &#x21F2;](https://pbs.twimg.com/media/DVD5K9IU0AASuys.jpg)
-  - [ ] [Librairie, Plugin, Framework & API](!js/js-libraries.md)
-    - Web API
-      - Interraction
-        - [x] [DOM](!js/js-dom.md)
-        - [x] [Interactions utilisateur (clavier, souris, etc)](!js/js-user-interaction.md)
-        - [x] [Formulaire](!js/js-form.md)
-        - [ ] Fichiers (Image, File, FileReader, Blob, URL)
-        - [ ] History
-        - [ ] Notifications [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/notification) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration) [4 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Alarm_API)
-        - [ ] MutationObserver [1 &#x21F2;](https://blog.sessionstack.com/how-javascript-works-tracking-changes-in-the-dom-using-mutationobserver-86adc7446401)
-      - Stockage
-        - [ ] Cookies
-        - [x] [Storage](!js/js-storage.md)
-        - [x] [IndexedDB](!js/js-indexeddb.md)
-      - Media
-        - [x] [Audio & vidéo](!js/js-audio-video.md)
-        - [x] [Canvas](!js/js-canvas.md)
-        - [ ] [WebGL](!js/js-webgl.md) [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/API/WebGL_API/Tutorial)
-        - [ ] Web Audio [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/API/Web_Audio_API)
-        - [ ] WebVR [1 &#x21F2;](https://medium.freecodecamp.org/how-to-wish-someone-happy-birthday-using-augmented-reality-3809776cb655) [2 &#x21F2;](https://hacks.mozilla.org/2018/09/converting-a-webgl-application-to-webvr/)
-      - Communication
-        - [x] [AJAX](!js/js-ajax.md)
-        - [x] [Workers](!js/js-worker.md)
-        - [x] [WebSocket](!js/js-websocket.md)
-        - [ ] WebRTC [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API) [2 &#x21F2;](https://blog.sessionstack.com/how-javascript-works-webrtc-and-the-mechanics-of-peer-to-peer-connectivity-87cc56c1d0ab)
-        - [ ] Push
-      - Device
-        - [ ] Geolocalisation [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation) [2 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/gather_and_modify_data/Plotting_yourself_on_the_map)
-        - [ ] Ambient Light [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Ambient_Light_Events) [2 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/gather_and_modify_data/Responding_to_light_conditions)
-        - [ ] Camera & Micro [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Taking_still_photos)
-        - [ ] Device / screen orientation [1 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/gather_and_modify_data/responding_to_device_orientation_changes) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Orientation_and_motion_data_explained) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation) [4 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Managing_screen_orientation)
-        - [ ] Bluetooth
-        - [ ] Midi
-        - [ ] Proximity [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/WebAPI/Proximity) [2 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Build/gather_and_modify_data/Near_or_far_responding_to_proximity)
-        - [ ] Network Information [1 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Developing/gather_and_modify_data/Optimizing_for_high_and_low_network_speeds) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API)
-      - [ ] Performance [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Performance)
-    - [ ] Librairies
-      - [ ] [Jquery](jquery.md) [1 &#x21F2;](https://remysharp.com/2017/12/15/is-jquery-still-relevant)
-      - [ ] [MustacheJS](mustachejs.md)
-      - [ ] D3.js
-      - [ ] React [1 &#x21F2;](https://blog.kentcdodds.com/learn-react-fundamentals-and-advanced-patterns-eac90341c9db)
-      - [ ] Lodash
-      - [ ] [Three.js](three.md)
-    - [ ] Frameworks [1 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [2 &#x21F2;](https://www.npmjs.com/npm/the-state-of-javascript-frameworks-2017-part-3-back-end-frameworks?utm_content=buffer30d2a&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [3 &#x21F2;](https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/) [4 &#x21F2;](https://javascriptreport.com/the-ultimate-guide-to-javascript-frameworks/)
-      - [ ] Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/)
-      - [ ] GraphQL [1 &#x21F2;](https://blog.pusher.com/getting-up-and-running-with-graphql/) [2 &#x21F2;](https://www.howtographql.com/?v1)
-      - [ ] Angular
-      - [ ] Vue.js [1 &#x21F2;](https://t.co/jwVzx7gywA)
+  - Syntaxe
+    - [x] ES < 2015
+      - [x] [Bases de JavaScript](!js/js-basics.md)
+      - [x] [Objets, tableaux, fonctions, POO](!js/js-objects.md)
+      - [x] [Objets, modules et méthodes globales](!js/js-global-objects.md)
+      - [x] [Méthodes natives](!js/js-methods.md)
+        - [x] [Chaînes de caractères](!js/js-es5-methods-string.md)
+        - [x] [Tableaux](!js/js-es5-methods-array.md)
+        - [x] [Objets](!js/js-es5-methods-object.md)
+        - [x] [Date](!js/js-es5-methods-date.md)
+    - [x] ES 2015
+      - [x] [Nouvelles méthodes](!js/js-es6-methods.md)
+      - [x] [Let, const](!js/js-es6-let-const.md)
+      - [x] [Rest & Spread (...)](!js/js-es6-rest-spread.md)
+      - [x] [Fonction flèche, paramètres par défaut](!js/js-es6-function-syntax.md)
+      - [x] [Destructuration](!js/js-es6-destructuration.md)
+      - [x] [Template litterals](!js/js-es6-template-literals.md)
+      - [x] [Syntaxe concise pour les objets](!js/js-es6-objet-concise.md)
+      - [x] [Classe](!js/js-es6-class.md)
+      - [x] [Symbole](!js/js-es6-symbol.md)
+      - [x] [Promesse](!js/js-es6-promise.md)
+      - [x] [Générateur, itérateur](!js/js-es6-generator.md)
+      - [x] [Proxy](!js/js-es6-proxy.md) [1 &#x21F2;](https://www.atyantik.com/proxy-javascript-es6-feature/)
+      - [x] [Reflect](!js/js-reflect.md)
+      - [x] [Module](!js/js-es6-module.md)
+      - [x] [Map, Set, WeakMap, WeakSet](!js/js-es6-map-set.md)
+      - [x] [Tableaux typés](!js/js-es6-typedarray.md)
+    - [x] [ES 2016](!js/js-es7.md)
+    - [x] [ES 2017](!js/js-es8.md)
+    - [x] [ES 2018](!js/js-es9.md)
+      - [x] [Async & await](!js/js-async-await.md)
+    - ESNext [1 &#x21F2;](https://medium.freecodecamp.org/here-are-three-upcoming-changes-to-javascript-that-youll-love-387bce1bfb0b) [2 &#x21F2;](https://pbs.twimg.com/media/DVD5K9IU0AASuys.jpg)
+  - [Différence entre librairie, Plugin, Framework & API](!js/js-libraries.md)
+  - Web API
+    - [x] [Browser Object Model (BOM)](!js/js-bom.md)
+    - [x] [Document Object Model (DOM)](!js/js-dom.md)
+      - [x] [Événements](!js/js-events.md)
+      - [x] [AJAX](!js/js-ajax.md)
+      - [x] [JSON, JSONP](!js/js-json.md)
+    - [x] [Gestion de la mémoire](!js/js-memory.md)
+    - Interraction
+      - [x] [Entrées utilisateur (clavier, souris, etc)](!js/js-user-interaction.md)
+      - [x] [Formulaire](!js/js-form.md)
+      - [ ] Fichiers (Image, File, FileReader, Blob, URL)
+      - [ ] History
+      - [ ] Notifications [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/notification) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration) [4 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Alarm_API)
+      - [ ] MutationObserver [1 &#x21F2;](https://blog.sessionstack.com/how-javascript-works-tracking-changes-in-the-dom-using-mutationobserver-86adc7446401)
+    - Stockage
+      - [ ] Cookies
+      - [x] [Storage](!js/js-storage.md)
+      - [x] [IndexedDB](!js/js-indexeddb.md)
+    - Media
+      - [x] [Audio & vidéo](!js/js-audio-video.md)
+      - [x] [Canvas](!js/js-canvas.md)
+      - [ ] [WebGL](!js/js-webgl.md) [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/API/WebGL_API/Tutorial)
+      - [ ] Web Audio [1 &#x21F2;](https://developer.mozilla.org/fr/docs/Web/API/Web_Audio_API)
+      - [ ] WebVR [1 &#x21F2;](https://medium.freecodecamp.org/how-to-wish-someone-happy-birthday-using-augmented-reality-3809776cb655) [2 &#x21F2;](https://hacks.mozilla.org/2018/09/converting-a-webgl-application-to-webvr/)
+    - Communication
+      - [x] [Workers](!js/js-worker.md)
+      - [x] [WebSocket](!js/js-websocket.md)
+      - [ ] WebRTC [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API) [2 &#x21F2;](https://blog.sessionstack.com/how-javascript-works-webrtc-and-the-mechanics-of-peer-to-peer-connectivity-87cc56c1d0ab)
+      - [ ] Push
+    - Device
+      - [ ] Geolocalisation [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation) [2 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/gather_and_modify_data/Plotting_yourself_on_the_map)
+      - [ ] Ambient Light [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Ambient_Light_Events) [2 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/gather_and_modify_data/Responding_to_light_conditions)
+      - [ ] Camera & Micro [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Taking_still_photos)
+      - [ ] Device / screen orientation [1 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Fundamentals/gather_and_modify_data/responding_to_device_orientation_changes) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Orientation_and_motion_data_explained) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation) [4 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Managing_screen_orientation)
+      - [ ] Bluetooth
+      - [ ] Midi
+      - [ ] Proximity [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/WebAPI/Proximity) [2 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Build/gather_and_modify_data/Near_or_far_responding_to_proximity)
+      - [ ] Network Information [1 &#x21F2;](https://developer.mozilla.org/en-US/Apps/Developing/gather_and_modify_data/Optimizing_for_high_and_low_network_speeds) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API)
+    - [ ] Performance [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Performance)
+  - Librairies
+    - [ ] [Jquery](jquery.md) [1 &#x21F2;](https://remysharp.com/2017/12/15/is-jquery-still-relevant)
+    - [ ] [MustacheJS](mustachejs.md)
+    - [ ] D3.js
+    - [ ] React [1 &#x21F2;](https://blog.kentcdodds.com/learn-react-fundamentals-and-advanced-patterns-eac90341c9db)
+    - [ ] Lodash
+    - [ ] [Three.js](three.md)
+  - Frameworks [1 &#x21F2;](https://medium.freecodecamp.org/a-path-for-you-to-learn-analytics-and-data-skills-bd48ccde7325) [2 &#x21F2;](https://www.npmjs.com/npm/the-state-of-javascript-frameworks-2017-part-3-back-end-frameworks?utm_content=buffer30d2a&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [3 &#x21F2;](https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/) [4 &#x21F2;](https://javascriptreport.com/the-ultimate-guide-to-javascript-frameworks/)
+    - [ ] Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/)
+    - [ ] GraphQL [1 &#x21F2;](https://blog.pusher.com/getting-up-and-running-with-graphql/) [2 &#x21F2;](https://www.howtographql.com/?v1)
+    - [ ] Angular
+    - [ ] Vue.js [1 &#x21F2;](https://t.co/jwVzx7gywA)
   - [ ] Design patterns [1 &#x21F2;](https://www.toptal.com/javascript/comprehensive-guide-javascript-design-patterns)
   - [ ] Observer pattern [1 &#x21F2;](https://pawelgrzybek.com/the-observer-pattern-in-javascript-explained/)
   - [ ] Tricks [1 &#x21F2;](https://medium.freecodecamp.org/high-performance-apps-multiplexing-debouncing-system-fonts-and-other-tricks-37c6fd3d7b2d) [2 &#x21F2;](https://air.ghost.io/js-things-i-never-knew-existed/)
   - [ ] Typescript [1 &#x21F2;](https://auth0.com/blog/typescript-practical-introduction/) [2 &#x21F2;](https://medium.freecodecamp.org/learn-typescript-in-5-minutes-13eda868daeb)
+- [ ] DevTools [1 &#x21F2;](https://www.smashingmagazine.com/2018/02/javascript-firefox-debugger/) [2 &#x21F2;](https://medium.freecodecamp.org/how-you-can-improve-your-workflow-using-the-javascript-console-bdd7823a9472) [3 &#x21F2;](https://medium.freecodecamp.org/how-to-surprise-your-apps-users-by-hiding-easter-eggs-in-the-console-3b6e9285e7e7) [4 &#x21F2;](https://medium.com/@mattburgess/beyond-console-log-2400fdf4a9d8)
 - [ ] Progressive web apps [1 &#x21F2;](https://medium.freecodecamp.org/how-you-can-develop-progressive-web-apps-that-feel-native-5110fbbcbf4b) [2 &#x21F2;](https://medium.freecodecamp.org/a-deeply-detailed-but-never-definitive-guide-to-mobile-development-architecture-6b01ce3b1528)
 - [ ] Browser extensions [1 &#x21F2;](https://medium.freecodecamp.org/how-to-make-a-cross-browser-extension-using-javascript-and-browser-apis-355c001cebba)
 
@@ -153,7 +153,7 @@ searchbar: true
     - [x] [Latex](latex.md)
     - [ ] Textile
 
-- Workflow [1 &#x21F2;](https://medium.com/containerum/how-to-setup-ci-cd-workflow-for-node-js-apps-with-jenkins-and-kubernetes-360fd0499556) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-set-up-continuous-integration-and-deployment-for-your-react-app-d09ae4525250)
+- Workflow [1 &#x21F2;](https://medium.com/containerum/how-to-setup-ci-cd-workflow-for-node-js-apps-with-jenkins-and-kubernetes-360fd0499556) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-set-up-continuous-integration-and-deployment-for-your-react-app-d09ae4525250) [3 &#x21F2;](https://github.com/elsewhencode/project-guidelines)
   - Code Versionning
     - [x] [Sémantique de version](semver.md)
     - [x] [Git](git.md)
@@ -161,7 +161,7 @@ searchbar: true
       - [ ] README [1 &#x21F2;](https://medium.freecodecamp.org/why-im-not-using-your-github-repository-2dff6c7ac7cf) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-up-to-3500-github-stars-in-one-week-339102b62a8f)
     - [ ] Open Source [1 &#x21F2;](https://opensource.guide/) [2 &#x21F2;](https://github.com/Roshanjossey/first-contributions)
     - [ ] Licences [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94) [2 &#x21F2;](https://spdx.org/licenses)
-  - [Testing](testing.md)
+  - [Testing](testing.md) [1 &#x21F2;](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-dockerize-your-end-to-end-acceptance-tests-dbb593acb8e0) [3 &#x21F2;](https://medium.freecodecamp.org/4-steps-to-build-an-automated-testing-pipeline-with-gitlab-ci-24ccab95535e)
   - Task runners & dependency tools
     - [ ] Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html)
     - [ ] Grunt
@@ -169,20 +169,21 @@ searchbar: true
     - [ ] Webpack [1 &#x21F2;](https://blog.vanila.io/webpack-what-is-it-and-is-it-better-than-gulp-375db8011d22) [2 &#x21F2;](https://medium.com/@timurcatakli/an-easy-to-understand-webpack-4-configuration-file-with-comments-6213882e9edf) [3 &#x21F2;](https://medium.freecodecamp.org/a-beginners-introduction-to-webpack-2620415e46b3)
   - Containers
     - [x] [Docker](docker.md) [1 &#x21F2;](https://perchrunway.com/blog/2017-01-19-getting-started-with-docker-for-local-development)
-    - [ ] Kubernetes [1 &#x21F2;](https://godaddy.github.io/2018/05/02/kubernetes-introduction-for-developers/)
-  - [ ] Q/A Testing [1 &#x21F2;](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-dockerize-your-end-to-end-acceptance-tests-dbb593acb8e0)
-  - [ ] Continuous Integration [1 &#x21F2;](https://medium.freecodecamp.org/4-steps-to-build-an-automated-testing-pipeline-with-gitlab-ci-24ccab95535e)
+    - [ ] Kubernetes [1 &#x21F2;](https://godaddy.github.io/2018/05/02/kubernetes-introduction-for-developers/) [2 &#x21F2;](https://medium.freecodecamp.org/learn-kubernetes-in-under-3-hours-a-detailed-guide-to-orchestrating-containers-114ff420e882) [3 &#x21F2;](https://medium.freecodecamp.org/how-to-leverage-the-power-of-kubernetes-to-optimise-your-hosting-costs-c2e168a232a2)
 
 - Culture générale
   - [x] [Raccourcis édition de texte](text-editing.md)
   - [x] [Regex](regex.md)
-  - [ ] DevTools [1 &#x21F2;](https://www.smashingmagazine.com/2018/02/javascript-firefox-debugger/) [2 &#x21F2;](https://medium.freecodecamp.org/how-you-can-improve-your-workflow-using-the-javascript-console-bdd7823a9472) [3 &#x21F2;](https://medium.freecodecamp.org/how-to-surprise-your-apps-users-by-hiding-easter-eggs-in-the-console-3b6e9285e7e7)
-  - [ ] BOM [1 &#x21F2;](https://medium.freecodecamp.org/a-quick-tale-about-feff-the-invisible-character-cd25cd4630e7)
+  - [x] [Encodages](encodages.md)
+  - [x] [Opérations sur les bits](bitwise-operations.md)
+  - [ ] Caractères BOM [1 &#x21F2;](https://medium.freecodecamp.org/a-quick-tale-about-feff-the-invisible-character-cd25cd4630e7)
   - Méthodologie
     - [x] [Agile](agile.md)
     - [ ] 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
   - [ ] [Paradigmes informatique](paradigm.md)
-  - [ ] Data Structures [1 &#x21F2;](https://medium.freecodecamp.org/data-structures-101-binary-search-tree-398267b6bff0)
+  - [ ] Algorithmie
+    - [ ] Arbres binaires de recherche [1 &#x21F2;](https://medium.freecodecamp.org/data-structures-101-binary-search-tree-398267b6bff0)
+    - [ ] Théorie des graphes [1 &#x21F2;](https://medium.freecodecamp.org/i-dont-understand-graph-theory-1c96572a1401)
 
 ## IT
 
@@ -202,8 +203,6 @@ searchbar: true
     - [x] [Conditions](conditions-shell.md)
 
 - CS [1 &#x21F2;](https://medium.freecodecamp.org/the-quick-guide-to-the-way-computers-work-for-desperate-new-coders-fcdb34cbe8a9)
-  - [x] [Encodages](encodages.md)
-  - [x] [Opérations sur les bits](bitwise-operations.md)
 
 - Serveurs
   - [ ] Networks [1 &#x21F2;](https://medium.freecodecamp.org/computer-networks-and-how-to-actually-understand-them-c1401908172d)
@@ -211,7 +210,7 @@ searchbar: true
   - [ ] [Sécurité](securite.md) [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9)
     - [ ] [SSH](ssh.md)
     - [ ] HTTPS [1 &#x21F2;](https://medium.freecodecamp.org/https-explained-with-carrier-pigeons-7029d2193351?utm_content=buffer1f715&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec)
-    - [ ] SSL [1 &#x21F2;](https://medium.freecodecamp.org/openssl-command-cheatsheet-b441be1e8c4a) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-valid-ssl-certificates-for-local-development-ca228240fad2)
+    - [ ] SSL [1 &#x21F2;](https://medium.freecodecamp.org/openssl-command-cheatsheet-b441be1e8c4a) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-valid-ssl-certificates-for-local-development-ca228240fad2) [3 &#x21F2;](https://medium.freecodecamp.org/free-https-c051ca570324)
   - [ ] Apache
     - [x] [Virtual hosts](apache-vhost.md)
     - [ ] .htaccess
@@ -241,7 +240,7 @@ searchbar: true
   - [ ] SEO [1 &#x21F2;](https://support.google.com/webmasters/answer/7451184)
     - [ ] Rich snippets
 
-- [ ] Machine Learning [1 &#x21F2;](https://blog.floydhub.com/ten-techniques-from-fast-ai/)
+- [ ] Machine Learning [1 &#x21F2;](https://blog.floydhub.com/ten-techniques-from-fast-ai/) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-cut-through-the-ai-hype-to-become-a-machine-learning-engineer-b0d2c5e4ae02)
   - Exemples
     [1 &#x21F2;](https://medium.freecodecamp.org/a-beginners-guide-to-training-and-deploying-machine-learning-models-using-python-48a313502e5a)
     [2 &#x21F2;](https://medium.freecodecamp.org/sketchify-turn-any-image-into-a-pencil-sketch-with-10-lines-of-code-cf67fa4f68ce)

@@ -761,7 +761,7 @@ Il existe de nombreuses options pour orchester des système de containers Docker
 
 Le plus simple est Docker Composer, pour la coordination d'une seule machine. Il est conçu pour le test, le développement et staging et est généralement utilisé pour les projets qui utilisent plus d'un container mais pas pour les grands systèmes et les systèmes mis à l'échelle automatiquement.
 
-Il démarre tous les containers, volumes, networks, etc, en une seule ligne de commande: `docker composer up`.
+Il démarre tous les containers, volumes, networks, etc, en une seule ligne de commande: `docker-compose up`.
 
 Pour commencer: [https:///docs.docker.com/compose](https:///docs.docker.com/compose)
 

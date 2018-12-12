@@ -16,9 +16,7 @@ searchbar: true
   - [x] [Types](!css/css-types.md)
   - [x] [Propriétés](!css/css-proprietes.md)
   - [x] [At-rules](!css/css-atrules.md)
-  - Conventions de nommage [1 &#x21F2;](https://medium.freecodecamp.org/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849) [2 &#x21F2;](https://spaceninja.com/2018/09/17/what-is-modular-css/) [3 &#x21F2;](https://medium.freecodecamp.org/how-to-better-organize-your-css-architecture-with-oocss-bem-smacss-65e8a5c207c0) [4 &#x21F2;](https://fixate.it/blog/make-your-css-variable-names-suck-less)
-    - [ ] BEM [1 &#x21F2;](https://blog.elpassion.com/reasons-to-use-bem-a88738317753) [2 &#x21F2;](https://medium.com/mr-frontend-community/how-to-write-better-css-with-bem-40f492a26192) [3 &#x21F2;](https://www.smashingmagazine.com/2018/06/bem-for-beginners/)
-    - [ ] SMACSS [1 &#x21F2;](https://www.toptal.com/css/smacss-scalable-modular-architecture-css)
+  - [x] [Conventions de nommage](!css/css-nommage.md)
   - Preprocesseurs
     - [x] [Sass](sass.md)
     - [ ] Less

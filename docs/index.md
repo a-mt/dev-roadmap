@@ -143,7 +143,7 @@ searchbar: true
   - Template
     - [x] [Liquid](liquid.md)
     - [ ] Smarty
-    - [ ] Twig
+    - [x] [Twig](twig.md)
     - [ ] Pug
   - Document formatting 
     - [x] [Markdown](gfm.md)

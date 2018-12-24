@@ -173,6 +173,7 @@ searchbar: true
   - [x] [Raccourcis édition de texte](text-editing.md)
   - [x] [Regex](regex.md)
   - [x] [Encodages](encodages.md)
+  - [x] [Comparaison encodages Latin et ASCII](assets/encoding-latin-vs-ansi.html)
   - [x] [Opérations sur les bits](bitwise-operations.md)
   - [ ] Caractères BOM [1 &#x21F2;](https://medium.freecodecamp.org/a-quick-tale-about-feff-the-invisible-character-cd25cd4630e7)
   - Méthodologie

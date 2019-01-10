@@ -168,6 +168,8 @@ searchbar: true
   - Containers
     - [x] [Docker](docker.md) [1 &#x21F2;](https://perchrunway.com/blog/2017-01-19-getting-started-with-docker-for-local-development)
     - [ ] Kubernetes [1 &#x21F2;](https://godaddy.github.io/2018/05/02/kubernetes-introduction-for-developers/) [2 &#x21F2;](https://medium.freecodecamp.org/learn-kubernetes-in-under-3-hours-a-detailed-guide-to-orchestrating-containers-114ff420e882) [3 &#x21F2;](https://medium.freecodecamp.org/how-to-leverage-the-power-of-kubernetes-to-optimise-your-hosting-costs-c2e168a232a2)
+  - Building apps
+    - Electron [1 &#x21F2;](https://electronjs.org/) [2 &#x21F2;](https://github.com/electron-userland/electron-builder)
 
 - Culture générale
   - [x] [Raccourcis édition de texte](text-editing.md)

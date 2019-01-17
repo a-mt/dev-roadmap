@@ -46,15 +46,14 @@ searchbar: true
 
 ## Back-End
 
-- Languages de programmation
-  - [ ] [PHP](php.md)
-  - [ ] Python [1 &#x21F2;](https://engmrk.com/refresh-your-python-basics/) [2 &#x21F2;](https://medium.freecodecamp.org/an-a-z-of-useful-python-tricks-b467524ee747)
-    - [ ] Python Debugger [1 &#x21F2;](https://www.youtube.com/watch?time_continue=6270&v=Z0ssNAbe81M)
-    - [ ] Flask [1 &#x21F2;](https://medium.freecodecamp.org/how-to-build-a-web-application-using-flask-and-deploy-it-to-the-cloud-3551c985e492)
-  - [ ] Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
-  - [ ] R [1 &#x21F2;](https://www.datacamp.com/)
-  - [ ] NodeJS
-    - [ ] [NPM](npm.md) [1 &#x21F2;](http://blog.npmjs.org/post/168978377570/new-package-moniker-rules)
+- [ ] [PHP](php.md)
+- [ ] Python [1 &#x21F2;](https://engmrk.com/refresh-your-python-basics/) [2 &#x21F2;](https://medium.freecodecamp.org/an-a-z-of-useful-python-tricks-b467524ee747)
+  - [ ] Python Debugger [1 &#x21F2;](https://www.youtube.com/watch?time_continue=6270&v=Z0ssNAbe81M)
+  - [ ] Flask [1 &#x21F2;](https://medium.freecodecamp.org/how-to-build-a-web-application-using-flask-and-deploy-it-to-the-cloud-3551c985e492)
+- [ ] Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
+- [ ] R [1 &#x21F2;](https://www.datacamp.com/)
+- [ ] NodeJS
+  - [ ] [NPM](npm.md) [1 &#x21F2;](http://blog.npmjs.org/post/168978377570/new-package-moniker-rules)
 - [x] [XML](xml.md)
   - [x] [DTD](xml-dtd.md)
   - [x] [XML Schema (XSD)](xml-schema.md)
@@ -81,42 +80,46 @@ searchbar: true
     - [x] [Latex](latex.md)
     - [ ] Textile
 
-- Workflow [1 &#x21F2;](https://medium.com/containerum/how-to-setup-ci-cd-workflow-for-node-js-apps-with-jenkins-and-kubernetes-360fd0499556) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-set-up-continuous-integration-and-deployment-for-your-react-app-d09ae4525250) [3 &#x21F2;](https://github.com/elsewhencode/project-guidelines)
-  - Code Versionning
-    - [x] [Sémantique de version](semver.md)
-    - [x] [Git](git.md)
-    - [x] [Github](github.md) [1 &#x21F2;](https://medium.freecodecamp.org/manage-multiple-github-accounts-the-ssh-way-2dadc30ccaca)
-      - [ ] README [1 &#x21F2;](https://medium.freecodecamp.org/why-im-not-using-your-github-repository-2dff6c7ac7cf) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-up-to-3500-github-stars-in-one-week-339102b62a8f)
-    - [ ] Open Source [1 &#x21F2;](https://opensource.guide/) [2 &#x21F2;](https://github.com/Roshanjossey/first-contributions)
-    - [ ] Licences [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94) [2 &#x21F2;](https://spdx.org/licenses)
-  - [Testing](testing.md) [1 &#x21F2;](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-dockerize-your-end-to-end-acceptance-tests-dbb593acb8e0) [3 &#x21F2;](https://medium.freecodecamp.org/4-steps-to-build-an-automated-testing-pipeline-with-gitlab-ci-24ccab95535e)
-  - Task runners & dependency tools
-    - [ ] Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html)
-    - [ ] Grunt
-    - [ ] Gulp [1 &#x21F2;](https://medium.freecodecamp.org/super-simple-gulp-tutorial-for-beginners-45141974bfe8)
-    - [ ] Webpack [1 &#x21F2;](https://blog.vanila.io/webpack-what-is-it-and-is-it-better-than-gulp-375db8011d22) [2 &#x21F2;](https://medium.com/@timurcatakli/an-easy-to-understand-webpack-4-configuration-file-with-comments-6213882e9edf) [3 &#x21F2;](https://medium.freecodecamp.org/a-beginners-introduction-to-webpack-2620415e46b3)
-  - Containers
-    - [x] [Docker](docker.md) [1 &#x21F2;](https://perchrunway.com/blog/2017-01-19-getting-started-with-docker-for-local-development)
-    - [ ] Kubernetes [1 &#x21F2;](https://godaddy.github.io/2018/05/02/kubernetes-introduction-for-developers/) [2 &#x21F2;](https://medium.freecodecamp.org/learn-kubernetes-in-under-3-hours-a-detailed-guide-to-orchestrating-containers-114ff420e882) [3 &#x21F2;](https://medium.freecodecamp.org/how-to-leverage-the-power-of-kubernetes-to-optimise-your-hosting-costs-c2e168a232a2)
-  - Message Queue
-    - RabbitMQ
-  - Building apps
-    - Electron [1 &#x21F2;](https://electronjs.org/) [2 &#x21F2;](https://github.com/electron-userland/electron-builder)
+## Workflow
 
-- Culture générale
-  - [x] [Raccourcis édition de texte](text-editing.md)
-  - [x] [Regex](regex.md)
-  - [x] [Encodages](encodages.md)
-  - [x] [Comparaison encodages Latin et ASCII](assets/encoding-latin-vs-ansi.html)
-  - [x] [Opérations sur les bits](bitwise-operations.md)
-  - [ ] Caractères BOM [1 &#x21F2;](https://medium.freecodecamp.org/a-quick-tale-about-feff-the-invisible-character-cd25cd4630e7)
-  - Méthodologie
-    - [x] [Agile](agile.md)
-    - [ ] 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
-  - [ ] [Paradigmes informatique](paradigm.md)
-  - [ ] Algorithmie
-    - [ ] Arbres binaires de recherche [1 &#x21F2;](https://medium.freecodecamp.org/data-structures-101-binary-search-tree-398267b6bff0)
-    - [ ] Théorie des graphes [1 &#x21F2;](https://medium.freecodecamp.org/i-dont-understand-graph-theory-1c96572a1401)
+[1 &#x21F2;](https://medium.com/containerum/how-to-setup-ci-cd-workflow-for-node-js-apps-with-jenkins-and-kubernetes-360fd0499556) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-set-up-continuous-integration-and-deployment-for-your-react-app-d09ae4525250) [3 &#x21F2;](https://github.com/elsewhencode/project-guidelines)
+
+- Code Versionning
+  - [x] [Sémantique de version](semver.md)
+  - [x] [Git](git.md)
+  - [x] [Github](github.md) [1 &#x21F2;](https://medium.freecodecamp.org/manage-multiple-github-accounts-the-ssh-way-2dadc30ccaca)
+    - [ ] README [1 &#x21F2;](https://medium.freecodecamp.org/why-im-not-using-your-github-repository-2dff6c7ac7cf) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-up-to-3500-github-stars-in-one-week-339102b62a8f)
+  - [ ] Open Source [1 &#x21F2;](https://opensource.guide/) [2 &#x21F2;](https://github.com/Roshanjossey/first-contributions)
+  - [ ] Licences [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94) [2 &#x21F2;](https://spdx.org/licenses)
+- [Testing](testing.md) [1 &#x21F2;](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-dockerize-your-end-to-end-acceptance-tests-dbb593acb8e0) [3 &#x21F2;](https://medium.freecodecamp.org/4-steps-to-build-an-automated-testing-pipeline-with-gitlab-ci-24ccab95535e)
+- Task runners & dependency tools
+  - [ ] Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html)
+  - [ ] Grunt
+  - [ ] Gulp [1 &#x21F2;](https://medium.freecodecamp.org/super-simple-gulp-tutorial-for-beginners-45141974bfe8)
+  - [ ] Webpack [1 &#x21F2;](https://blog.vanila.io/webpack-what-is-it-and-is-it-better-than-gulp-375db8011d22) [2 &#x21F2;](https://medium.com/@timurcatakli/an-easy-to-understand-webpack-4-configuration-file-with-comments-6213882e9edf) [3 &#x21F2;](https://medium.freecodecamp.org/a-beginners-introduction-to-webpack-2620415e46b3)
+- Containers
+  - [x] [Docker](docker.md) [1 &#x21F2;](https://perchrunway.com/blog/2017-01-19-getting-started-with-docker-for-local-development)
+  - [ ] Kubernetes [1 &#x21F2;](https://godaddy.github.io/2018/05/02/kubernetes-introduction-for-developers/) [2 &#x21F2;](https://medium.freecodecamp.org/learn-kubernetes-in-under-3-hours-a-detailed-guide-to-orchestrating-containers-114ff420e882) [3 &#x21F2;](https://medium.freecodecamp.org/how-to-leverage-the-power-of-kubernetes-to-optimise-your-hosting-costs-c2e168a232a2)
+- Message Queue
+  - RabbitMQ
+- Building apps
+  - Electron [1 &#x21F2;](https://electronjs.org/) [2 &#x21F2;](https://github.com/electron-userland/electron-builder)
+
+## Culture générale
+
+- [x] [Raccourcis édition de texte](text-editing.md)
+- [x] [Regex](regex.md)
+- [x] [Encodages](encodages.md)
+- [x] [Comparaison encodages Latin et ASCII](assets/encoding-latin-vs-ansi.html)
+- [x] [Opérations sur les bits](bitwise-operations.md)
+- [ ] Caractères BOM [1 &#x21F2;](https://medium.freecodecamp.org/a-quick-tale-about-feff-the-invisible-character-cd25cd4630e7)
+- Méthodologie
+  - [x] [Agile](agile.md)
+  - [ ] 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
+- [ ] [Paradigmes informatique](paradigm.md)
+- [ ] Algorithmie
+  - [ ] Arbres binaires de recherche [1 &#x21F2;](https://medium.freecodecamp.org/data-structures-101-binary-search-tree-398267b6bff0)
+  - [ ] Théorie des graphes [1 &#x21F2;](https://medium.freecodecamp.org/i-dont-understand-graph-theory-1c96572a1401)
 
 ## IT
 

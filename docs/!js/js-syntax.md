@@ -1,0 +1,36 @@
+---
+title: JavaScript - Syntaxe de base
+category: Web, JS
+---
+
+- [x] ES < 2015
+  - [x] [Bases de JavaScript](js-basics.md)
+  - [x] [Objets, tableaux, fonctions, POO](js-objects.md)
+  - [x] [Objets, modules et méthodes globales](js-global-objects.md)
+  - [x] [Méthodes natives](js-methods.md)
+    - [x] [Chaînes de caractères](js-es5-methods-string.md)
+    - [x] [Tableaux](js-es5-methods-array.md)
+    - [x] [Objets](js-es5-methods-object.md)
+    - [x] [Date](js-es5-methods-date.md)
+- [x] ES 2015
+  - [x] [Nouvelles méthodes](js-es6-methods.md)
+  - [x] [Let, const](js-es6-let-const.md)
+  - [x] [Rest & Spread (...)](js-es6-rest-spread.md)
+  - [x] [Fonction flèche, paramètres par défaut](js-es6-function-syntax.md)
+  - [x] [Destructuration](js-es6-destructuration.md)
+  - [x] [Template litterals](js-es6-template-literals.md)
+  - [x] [Syntaxe concise pour les objets](js-es6-objet-concise.md)
+  - [x] [Classe](js-es6-class.md)
+  - [x] [Symbole](js-es6-symbol.md)
+  - [x] [Promesse](js-es6-promise.md)
+  - [x] [Générateur, itérateur](js-es6-generator.md)
+  - [x] [Proxy](js-es6-proxy.md) [1 &#x21F2;](https://www.atyantik.com/proxy-javascript-es6-feature/)
+  - [x] [Reflect](js-reflect.md)
+  - [x] [Module](js-es6-module.md)
+  - [x] [Map, Set, WeakMap, WeakSet](js-es6-map-set.md)
+  - [x] [Tableaux typés](js-es6-typedarray.md)
+- [x] [ES 2016](js-es7.md)
+- [x] [ES 2017](js-es8.md)
+- [x] [ES 2018](js-es9.md)
+  - [x] [Async & await](js-async-await.md)
+- ESNext [1 &#x21F2;](https://medium.freecodecamp.org/here-are-three-upcoming-changes-to-javascript-that-youll-love-387bce1bfb0b) [2 &#x21F2;](https://pbs.twimg.com/media/DVD5K9IU0AASuys.jpg)

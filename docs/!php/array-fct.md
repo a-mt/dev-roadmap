@@ -616,45 +616,45 @@ Tri les valeurs du tableau en conservant l'association clé/valeur.
 Utilise un pointeur.
 
 <table>
-  <tr>
-    <th></th>
-    <th><code>sort($arr)</code></th>
-    <th><code>asort($arr)</code></th>
-  </tr>
-  <tr>
-    <td><pre>$arr = [
-  "b",
-  "a",
-  "c"
+<tr>
+  <th></th>
+  <th><code>sort($arr)</code></th>
+  <th><code>asort($arr)</code></th>
+</tr>
+<tr>
+  <td><pre>$arr = [
+"b",
+"a",
+"c"
 ];</pre></td>
-    <td><pre>Array (
-  [0] => a
-  [1] => b
-  [2] => c
+  <td><pre>Array (
+[0] => a
+[1] => b
+[2] => c
 )</pre></td>
-    <td><pre>Array (
-  [1] => a
-  [0] => b
-  [2] => c
+  <td><pre>Array (
+[1] => a
+[0] => b
+[2] => c
 )</pre></td>
-  <tr>
-  <tr>
-    <td><pre>$arr = [
-  "a" => 2,
-  "b" => 1,
-  "c" => 3
+</tr>
+<tr>
+  <td><pre>$arr = [
+"a" => 2,
+"b" => 1,
+"c" => 3
 ];</pre></td>
-    <td><pre>Array (
-  [0] => 1
-  [1] => 2
-  [2] => 3
+  <td><pre>Array (
+[0] => 1
+[1] => 2
+[2] => 3
 )</pre></td>
-    <td><pre>Array (
-  [b] => 1
-  [a] => 2
-  [c] => 3
+  <td><pre>Array (
+[b] => 1
+[a] => 2
+[c] => 3
 )</pre></td>
-  <tr>
+</tr>
 </table>
 
 Accepte également les mêmes options de tri que `sort`.  

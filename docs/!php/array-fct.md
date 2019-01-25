@@ -684,7 +684,7 @@ Les valeurs de retour de la fonction sont
 * <code>&nbsp;1</code> : déplacer l'item 1 vers la gauche
 * `-1` : déplacer l'item 2 vers la gauche
 * <code>&nbsp;0</code>  : garder l'ordre actuel
-* 
+
 ``` php
 <?php
 $arr = [

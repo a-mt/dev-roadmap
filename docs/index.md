@@ -117,7 +117,7 @@ searchbar: true
   - [x] [Agile](agile.md)
   - [ ] 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
 - [ ] [Paradigmes informatique](paradigm.md)
-- [ ] Algorithmie
+- [ ] Algorithmie [1 &#x21F2;](https://www.geeksforgeeks.org/fundamentals-of-algorithms/)
   - [ ] Arbres binaires de recherche [1 &#x21F2;](https://medium.freecodecamp.org/data-structures-101-binary-search-tree-398267b6bff0)
   - [ ] Théorie des graphes [1 &#x21F2;](https://medium.freecodecamp.org/i-dont-understand-graph-theory-1c96572a1401)
 

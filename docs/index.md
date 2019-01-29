@@ -173,7 +173,7 @@ searchbar: true
 
 - Marketing [1 &#x21F2;](http://jamesarcher.me/user-motivators) [2 &#x21F2;](https://www.nngroup.com/articles/zigzag-page-layout/) [3 &#x21F2;](https://www.nngroup.com/articles/multi-tab-page-parking/)
   - [ ] Google Analytics [1 &#x21F2;](https://medium.freecodecamp.org/how-and-why-to-get-started-with-google-analytics-153dc35b7812)
-  - [ ] SEO [1 &#x21F2;](https://support.google.com/webmasters/answer/7451184)
+  - [ ] SEO [1 &#x21F2;](https://support.google.com/webmasters/answer/7451184) [2 &#x21F2;](https://www.seomix.fr/webmarketing/)
     - [ ] Rich snippets
 
 - [ ] Machine Learning [1 &#x21F2;](https://blog.floydhub.com/ten-techniques-from-fast-ai/) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-cut-through-the-ai-hype-to-become-a-machine-learning-engineer-b0d2c5e4ae02)

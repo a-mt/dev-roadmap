@@ -856,6 +856,10 @@ On les insère avec la syntaxe Liquid
 
     {% include toc.html html=content class="toc" %}
 
+Les paramètres passés sont accessibles via la variable `include` à l'intérieur du fichier inclus:
+
+    {{ include.html }}
+
 ---
 
 ## Permalinks

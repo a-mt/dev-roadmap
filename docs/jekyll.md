@@ -991,6 +991,14 @@ Pour ajouter des plugins, il faut
    jekyll build
    ```
 
+   À partir de Jekyll 3.5.0, utiliser `plugins` à la place de `gems`:
+
+   ``` diff
+   - gems:
+   + plugins:
+     - jekyll-sitemap
+   ```
+
    Pour utiliser un plugin avec Github Pages, il faut que ce plugin soit dans la [whitelist de Github Pages](https://pages.github.com/versions/).  
 
 Quelques plugins utiles : https://help.github.com/articles/adding-jekyll-plugins-to-a-github-pages-site/

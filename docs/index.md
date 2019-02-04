@@ -86,11 +86,13 @@ searchbar: true
 
 - Code Versionning
   - [x] [Sémantique de version](semver.md)
-  - [x] [Git](git.md)
-  - [x] [Github](github.md) [1 &#x21F2;](https://medium.freecodecamp.org/manage-multiple-github-accounts-the-ssh-way-2dadc30ccaca)
-    - [ ] README [1 &#x21F2;](https://medium.freecodecamp.org/why-im-not-using-your-github-repository-2dff6c7ac7cf) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-up-to-3500-github-stars-in-one-week-339102b62a8f)
-  - [ ] Open Source [1 &#x21F2;](https://opensource.guide/) [2 &#x21F2;](https://github.com/Roshanjossey/first-contributions)
-  - [ ] Licences [1 &#x21F2;](https://medium.freecodecamp.org/how-open-source-licenses-work-and-how-to-add-them-to-your-projects-34310c3cf94) [2 &#x21F2;](https://spdx.org/licenses)
+  - [x] [Commandes Git](git.md)
+  - Open Source / Github
+    - [x] [Contribuer](github-contribute.md)
+    - [x] [Créer un projet Open Source](github-project.md)
+    - [x] [Gérer sa communauté](github-community.md)
+    - [x] [Contrôles d'accès](github-access.md)
+    - [x] [Services, Webhooks, API, Hub](github-dev.md)
 - [Testing](testing.md) [1 &#x21F2;](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-dockerize-your-end-to-end-acceptance-tests-dbb593acb8e0) [3 &#x21F2;](https://medium.freecodecamp.org/4-steps-to-build-an-automated-testing-pipeline-with-gitlab-ci-24ccab95535e)
 - Task runners & dependency tools
   - [ ] Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html)

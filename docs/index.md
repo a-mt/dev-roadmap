@@ -62,7 +62,7 @@ searchbar: true
   - [ ] XQuery
 - [x] [Bases de données](bdd.md)
   - [x] [MySQL](mysql.md)
-  - [ ] NoSQL
+  - [x] [MongoDB](mongodb.md)
   - [ ] [ElasticSearch](elasticsearch.md)
 
 - Autres langages

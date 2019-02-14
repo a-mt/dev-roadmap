@@ -651,8 +651,10 @@ Elle doit être activé via les configs :
 Permet de modifier l'index du fichier dans git. Les modifications apportés sur l'index ne sont pas commités. Cette commande est particulièrement utile pour "geler" (freeze) le contenu de certains fichiers (que les modifications apportées au fichier soient ignorées par git), par exemple les fichiers de configuration.
 
 <table>
-<tr><th align="left">git update-index --assume-unchanged foo.rb</th><td>Gèle le fichier foo.rb</td></tr>
-<tr><th align="left">git update-index --no-assume-unchanged foo.rb</th><td>Degèle le fichier foo.rb</td></tr>
+<tr><th align="left">git update-index --assume-unchanged foo.rb</th><td>Ignore les changements de foo.rb. Le contenu du fichier est écrasé au pull. Utile lorsqu'on part du principe que le développeur ne va pas changer ce fichier (ex: <code>package-lock.json</code>)</td></tr>
+<tr><th align="left">git update-index --no-assume-unchanged foo.rb</th><td>Supprime l'entrée assume-unchanged pour foo.rb</td></tr>
+<tr><th align="left">git update-index --skip-worktree foo.rb</th><td>Ignore les changements de foo.rb. Le contenu du fichier est conservé au pull. Utile lorsqu'on part du principe que le développeur va changer ce fichier mais ne va pas commiter les changements (ex: <code>docker-compose.yml</code>)</td></tr>
+<tr><th align="left">git update-index --no-skip-worktree foo.rb</th><td>Supprime l'entée skip-worktree pour foo.rb</td></tr>
 </table>
 
 ---

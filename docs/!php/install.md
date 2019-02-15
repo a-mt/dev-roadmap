@@ -261,9 +261,8 @@ Les fichiers PHP portent l'extension `.php`.
 
 ### Executer PHP en ligne de commande
 
-Pour executer du PHP en ligne de commande, utiliser la commande `php`
-
-[Voir la  liste des options disponibles](http://php.net/manual/fr/features.commandline.options.php)
+Pour executer du [PHP en ligne de commande](http://php.net/manual/fr/features.commandline.usage.php), utiliser la commande `php`
+([liste des options disponibles](http://php.net/manual/fr/features.commandline.options.php))
 
 * exécuter un fichier PHP
 

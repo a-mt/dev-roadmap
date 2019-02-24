@@ -151,7 +151,7 @@ searchbar: true
     - [ ] SSL [1 &#x21F2;](https://medium.freecodecamp.org/openssl-command-cheatsheet-b441be1e8c4a) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-get-valid-ssl-certificates-for-local-development-ca228240fad2) [3 &#x21F2;](https://medium.freecodecamp.org/free-https-c051ca570324)
   - [ ] Apache
     - [x] [Virtual hosts](apache-vhost.md)
-    - [ ] .htaccess
+    - [ ] .htaccess [1 &#x21F2;](https://perishablepress.com/stupid-htaccess-tricks/)
   - [ ] Nginx [1 &#x21F2;](https://medium.freecodecamp.org/an-introduction-to-nginx-for-developers-62179b6a458f)
     - [ ] A/B Testing [1 &#x21F2;](https://medium.freecodecamp.org/a-b-testing-with-nginx-in-40-lines-of-code-d4f94397130a)
   - [ ] robots.txt

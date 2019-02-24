@@ -114,7 +114,7 @@ L'encryption peut se faire
 
 ![](https://i.imgur.com/IHDJig8.jpg)
 
-Les algorithmes d'encryption symétrique sont généralement très rapides (harwired) mais la gestion des clés et leur partage peut être problématique. Pour N communications, il faut N(N-1)/2 clés.
+Les algorithmes d'encryption symétrique sont généralement très rapides (hardwired) mais la gestion des clés et leur partage peut être problématique. Pour N communications, il faut N(N-1)/2 clés.
 
 [Techniques de cryptographie AES, DES et RSA](https://fr.slideshare.net/houdamoutaoukil/technique-de-crypthographie-aes)
 
@@ -134,7 +134,7 @@ Algorithmes: RSA, Diffie-Hellman, Elliptic curves, ElGamal
 
        p = 17, q = 19
 
-2. on calcule leur somme n
+2. on calcule leur produit n
 
        n = p*q
          = 17*19

@@ -38,9 +38,7 @@ Les modifications sur le dépot original ne sont pas récupérés sur le fork un
 * Mettre à jour le fork à partir du repo d'origine.  
   À chaque fois qu’un Pull Request est accepté, mettre à jour le fork.
 
-      git fetch upstream
-      git merge upstream/master master
-      git push origin master
+      git pull --rebase upstream/master master
 
 ---
 
@@ -77,6 +75,18 @@ Les modifications sur le dépot original ne sont pas récupérés sur le fork un
 Une fois le pull request crée, une discussion est démarrée. Tous les commentaires ajoutés sont notifiés via mail.
 
 Un Pull Request pointe sur une branche et non un commit spécifique, tous les modifications sur la branche faites après le Pull Request seront prises en compte et visibles dans la discussion du Pull Request.
+
+---
+
+## Supprimer une branche
+
+* Supprimer la branche locale
+
+      git branch -D branchname
+
+* Supprimer la branche distante
+
+      git push origin :branchname
 
 ---
 

@@ -38,7 +38,7 @@ Les modifications sur le dépot original ne sont pas récupérés sur le fork un
 * Mettre à jour le fork à partir du repo d'origine.  
   À chaque fois qu’un Pull Request est accepté, mettre à jour le fork.
 
-      git pull --rebase upstream/master master
+      git pull --rebase upstream/master master --autostash
 
 ---
 

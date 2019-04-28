@@ -241,3 +241,119 @@ Modifier le fichier `/etc/systemd/logind.conf`
   Nécessite une reconnection pour être pris en compte
 
       mkdir ~/bin
+
+---
+
+### Désactiver le clic à 3 doigts
+
+1. Identifier l'ID du touchpad
+
+   ```
+   xinput list
+   ```
+
+   Par exemple `SynPs/2 Synaptics TouchPad` (id `15`):
+
+   ```
+   ⎡ Virtual core pointer                      id=2    [master pointer  (3)]
+   ⎜   ↳ Virtual core XTEST pointer                id=4    [slave  pointer  (2)]
+   ⎜   ↳ ELAN Touchscreen                          id=12   [slave  pointer  (2)]
+   ⎜   ↳ SynPS/2 Synaptics TouchPad                id=15   [slave  pointer  (2)]
+   ⎣ Virtual core keyboard                     id=3    [master keyboard (2)]
+       ↳ Virtual core XTEST keyboard               id=5    [slave  keyboard (3)]
+       ↳ Power Button                              id=6    [slave  keyboard (3)]
+       ↳ Video Bus                                 id=7    [slave  keyboard (3)]
+       ↳ Video Bus                                 id=8    [slave  keyboard (3)]
+       ↳ Power Button                              id=9    [slave  keyboard (3)]
+       ↳ Sleep Button                              id=10   [slave  keyboard (3)]
+       ↳ Integrated Webcam: Integrated W           id=11   [slave  keyboard (3)]
+       ↳ Dell WMI hotkeys                          id=13   [slave  keyboard (3)]
+       ↳ AT Translated Set 2 keyboard              id=14   [slave  keyboard (3)]
+    ```
+
+2. Désactiver le clic du milieu  
+   Remplacer `15` par votre propre ID
+
+   ```
+   xinput set-button-map 15 1 0 3
+   ```
+
+[Touch pad usage will randomly copy-paste text from the screen](https://superuser.com/questions/1300966/touch-pad-usage-will-randomly-copy-paste-text-from-the-screen)
+
+---
+
+### Installer les drivers Nvidia
+
+Pour installer le pilote graphique Nvidia (propriétaire) sous Ubuntu 18.04, avec ses dépendances:
+
+```
+sudo ubuntu-drivers autoinstall
+sudo reboot
+```
+
+#### Secure Boot UEFI
+
+Si le Secure Boot UEFI est activé, l'installation demandera de choisir un mot de passe pour le "MOK Management" (MOK: Machine Owner Key).
+Lors du redémarrage, un écran va s'afficher pour confirmer la signature du pilote:
+
+- Choisir "Enroll MOK"
+
+  ![](https://i.imgur.com/oAiwERK.png)
+
+- Vérifier les détails en choisissant "View key 0". Puis "Continue" pour signer.
+
+  ![](https://i.imgur.com/BhEgIEo.png)
+
+- Choisir "Yes" pour confirmer
+
+  ![](https://i.imgur.com/dSabMWs.png)
+
+- Entrer le mot de passe choisit lors de l'installation
+
+  ![](https://i.imgur.com/wxJUd4N.png)
+
+- Redémarrer
+
+  ![](https://i.imgur.com/GCeOKis.png)
+
+#### Mises à jour
+
+Le pilote Nvidia sera également mis à jour automatiquement lorsqu'une mise à jour est disponible.
+
+Il n'est pas nécessaire de désinstaller le pilote graphique open source pré-installé, ils peuvent être installés côte à côte, ce qui permet d'utiliser le pilote graphique open source comme alternative de secours en cas de problème.  
+Pour voir la liste des drivers installés, ouvrir Logiciels & mises à jour > Pilotes additionnels
+
+![](https://i.imgur.com/9tVNc8w.jpg)
+
+---
+
+### Mettre à jour le firmware du BIOS
+
+* Vérifier si votre firmware est pris en charge: [LVFS Device List](https://fwupd.org/lvfs/devicelist).  
+* Démarrer fwupd
+
+  ```
+  sudo service fwupd start
+  ```
+
+* Vérifier la version actuelle de votre firmware
+
+  ```
+  sudo fwupdmgr refresh
+  ```
+
+* Vérifier les mises à jour
+
+  ```
+  sudo fwupdmgr refresh
+  ```
+
+* Mettre à jour
+
+  ```
+  sudo fwupdmgr update
+  ```
+
+Sinon, télécharger l'exe sur le site du constructeur. Ex: [Drivers Dell](https://www.dell.com/support/home/fr/fr/frbsdt1/product-support/product/inspiron-15-7577-laptop/drivers)
+
+[How to Update Firmware on Ubuntu 18.04](https://itsfoss.com/update-firmware-ubuntu/)

@@ -191,6 +191,11 @@ for($i = 0; $i < 10; $i++) {
 }
 ```
 
+```
+while ( @ob_end_flush() );
+flush();
+```
+
 ### set_time_limit
 
 Fixe le temps maximum d'exécution du script.  

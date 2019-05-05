@@ -225,7 +225,7 @@ Un gradient linéaire commence à partir d'un bord de l'élément cible et finit
 background: linear-gradient(to right,red,orange,yellow,green,blue,indigo,violet); 
 ```
 
-![](https://rawgit.com/a-mt/e8516eba3ea182740ef712d960a46ecd/raw/36de75a84ac4933ed3c3d9c40676a47017c29518/linear-gradient.svg)
+![](https://gistcdn.githack.com/a-mt/e8516eba3ea182740ef712d960a46ecd/raw/36de75a84ac4933ed3c3d9c40676a47017c29518/linear-gradient.svg)
 
 <ins>Définition</ins> :
 
@@ -250,7 +250,7 @@ Le gradient linéaire avec répétition se répéte indéfiniment sur la largeur
 background: repeating-linear-gradient(135deg, black, black .25em, white 0, white .75em);
 ```
 
-![](https://rawgit.com/a-mt/ae5ee414ed9ee0ddeb66d71615319575/raw/ad6bd644d364b4635452bad47d95a2dcd8171f45/repeating-linear-gradient.svg)
+![](https://gistcdn.githack.com/a-mt/ae5ee414ed9ee0ddeb66d71615319575/raw/ad6bd644d364b4635452bad47d95a2dcd8171f45/repeating-linear-gradient.svg)
 
 Même définition que linear-gradient
 
@@ -266,7 +266,7 @@ Un gradient radial commence à partir d'un point et s'étend jusqu'aux bords.
 background: radial-gradient(red,orange,yellow,green,blue,indigo,violet); 
 ```
 
-![](https://rawgit.com/a-mt/04ff059e100c4d08155cfa96d1d40110/raw/8b0cf57bf0bd76a2facd627995b5c454bc5955aa/radial-gradient.svg)
+![](https://gistcdn.githack.com/a-mt/04ff059e100c4d08155cfa96d1d40110/raw/8b0cf57bf0bd76a2facd627995b5c454bc5955aa/radial-gradient.svg)
 
 <ins>Définition</ins> :
 
@@ -297,7 +297,7 @@ Un gradial radial avec répétition se répéte infiniment, toujours à partir d
 background: repeating-radial-gradient(black 10px, #009966, purple 50px);
 ```
 
-![](https://rawgit.com/a-mt/e6f8e4b864a74095a95e5865836e46e9/raw/b658fa28fba84a9fbe27b6d966a76cb3bf89e6f8/repeating-radial-gradient.svg)
+![](https://gistcdn.githack.com/a-mt/e6f8e4b864a74095a95e5865836e46e9/raw/b658fa28fba84a9fbe27b6d966a76cb3bf89e6f8/repeating-radial-gradient.svg)
 
 Même définition que radial-gradient
 

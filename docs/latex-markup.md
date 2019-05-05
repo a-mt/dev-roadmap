@@ -1789,4 +1789,4 @@ Pour récupérer la figure en SVG
 
 <ins>Résultat</ins> :
 
-![](https://rawgit.com/a-mt/5b072a12c29d4e862b32af32c2e191cf/raw/9355a59f310a339300f1b924acf66912b9201671/tmp.svg)
+![](https://gistcdn.githack.com/a-mt/5b072a12c29d4e862b32af32c2e191cf/raw/9355a59f310a339300f1b924acf66912b9201671/tmp.svg)

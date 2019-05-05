@@ -13,7 +13,7 @@ tandis que la *représentation interne* est la valeur stockée sur le disque dur
 Pour passer de la représentation externe à la représentation interne, on *code* les données, et
 pour passer de la représentation interne à la représentation externe, on *décode* les données.
 
-![Schéme représentation interne/externe](https://rawgit.com/a-mt/5b072a12c29d4e862b32af32c2e191cf/raw/734846acd05c0441a60b21f49eee80d74c109950/tmp.svg)
+![Schéma représentation interne/externe](https://gistcdn.githack.com/a-mt/5b072a12c29d4e862b32af32c2e191cf/raw/734846acd05c0441a60b21f49eee80d74c109950/tmp.svg)
 
 Pour coder et décoder les données, il est indispensable de connaître la *méthode de codage* utilisée.
 La méthode de codage dépend principalement du type de donnée (texte, entier naturel, entier relatif, nombre réel).
@@ -104,6 +104,9 @@ Dû aux différents encodages entre différents pays et différents systèmes d'
 
 Le code *UNICODE* (Universal Code) associe un code unique à chaque caractère, quels que soient la langue, la plateforme, le logiciel.
 Le codage d'Unicode en UTF-8 permet de coder les caractères en longueur variable, de 1 à 4 octets.
+
+[Caractères Unicode](http://www.fileformat.info/info/unicode/index.htm)  
+[Emojis Unicode](https://emojipedia.org/)
 
 ---
 
@@ -432,7 +435,7 @@ Il faut connaître la précision voulue à l'avance pour choisir la position de 
 
 Tout réel x peut s'écrire sous la forme `<signe> * <mantisse> * <exposant>`. C'est la notation *S.M.E* (Signe Mantisse Exposant).
 
-![SME](https://rawgit.com/a-mt/a3b6a7a40df516768fb8da90c352bdec/raw/12d39969e431148fb5fd593a9ce69dbb9f315985/sme.svg)
+![SME](https://gistcdn.githack.com/a-mt/a3b6a7a40df516768fb8da90c352bdec/raw/12d39969e431148fb5fd593a9ce69dbb9f315985/sme.svg)
 
 Un bit est utilisé pour coder le signe, p bits pour coder la mantisse et q bits pour coder l'exposant.
 

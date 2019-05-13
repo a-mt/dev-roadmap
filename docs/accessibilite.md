@@ -15,7 +15,7 @@ Toute personne devrait être capable d'accéder et d'utiliser le site, même si 
 
 Un site accessible est un site facile à percevoir (à lire), à utiliser, à comprendre et compatible avec les technologies actuelles et futures.
 
-[Comment une personne aveugle utilise le web (vidéo)](https://www.youtube.com/watch?v=ymDf1CNMKzY&t=13m11s)
+[What is an accessible website?](https://www.youtube.com/watch?v=KxhRV18m-d8)
 
 ---
 
@@ -28,8 +28,9 @@ Un site accessible est un site facile à percevoir (à lire), à utiliser, à co
   - [Pa11y Dashboard](https://github.com/pa11y/pa11y-dashboard) (logiciel)
 
 - Tester un lecteur d'écran
-  - [NVDA](https://www.nvaccess.org/) est un lecteur d'écran gratuit sous Windows
+  - [NVDA](https://www.nvaccess.org/) pour Windows
   - [VoiceOver](https://help.apple.com/voiceover/info/guide/10.12/#/) pour Mac
+  - Orca pour Linux
 
 ---
 
@@ -45,19 +46,21 @@ Les 12 principales recommandations sont :
 1. Rendre les contenus adaptables (proposer une version audio des contenus, possibilité de modifier la taille de la police...)
 1. Jouer sur les contrastes pour permettre de bien distinguer les différents contenus (visuels et audios) du site
 1. Laisser le temps à l'internaute de lire ou utiliser le contenu qui lui est présenté
-1. Ne pas utiliser de contenu susceptible de provoquer des crises convulsives
+1. Ne pas utiliser de contenu susceptible de provoquer des crises convulsives (epilepsie)
 1. Aider l'utilisateur à naviguer dans les pages et contenus et à se localiser sur le site (moteur de recherche, menu, fil d'ariane)
 1. Rendre les contenus textuels lisibles et compréhensibles
 1. Faire en sorte que les contenus apparaissent et fonctionnent de manière prévisible
 1. Aider l'internaute à éviter et à corriger les erreurs
 1. Optimiser le site afin qu’il soit compatible avec les technologies actuelles et futures
 
+![](https://i.imgur.com/gZDNCGI.png)
+
 ---
 
 ## WAI-ARIA
 
-Le WAI-ARIA (*Web Accessibility Initiative – Accessible Rich Internet Applications*) est une spécification du W3C qui décrit comment améliorer l'accessibilité du web pour le contenu dynamique (Ajax, JavaScript, HTML) - par exemple: identifier une liste de lien comme menu de navigation et indiquer si son état est plié ou déplié.
-WAI-ARIA définit plusieurs attributs: `tabindex`, `role` et les arias (`aria-...`).
+Le WAI-ARIA (*Web Accessibility Initiative – Accessible Rich Internet Applications*) est une spécification du W3C qui décrit comment améliorer l'accessibilité du web pour le contenu dynamique (Ajax, JavaScript, HTML) — par exemple: identifier une liste de lien comme menu de navigation et indiquer si son état est plié ou déplié.
+WAI-ARIA définit plusieurs attributs: `tabindex`, `role` et les attributs aria (`aria-...`).
 
 ---
 
@@ -118,15 +121,15 @@ Utiliser des éléments `<button>` plutôt que `<a>` lorsqu'il s'agit d'actions 
 <button class="btn" disabled>Button</button>
 ```
 
-Ne pas utiliser de `<div>` pour simuler un bouton, ou lui donner un `tabindex` pour qu'il soit accessible. [CodePen button vs div](https://codepen.io/matuzo/full/xgwxNw/)
-
+Ne pas utiliser de `<div>` pour simuler un bouton, ou lui donner un `tabindex` pour qu'il soit accessible.  
+[CodePen button vs div](https://codepen.io/matuzo/full/xgwxNw/)  
 [Effet de l'élément button (vidéo)](https://www.youtube.com/watch?v=CZGqnp06DnI&index=4&list=PLNYkxOF6rcICWx0C9LVWWVqvHlYJyqw7g)
 
 ### Ancres
 
 Utiliser des éléments `<a>` pour tous les liens plutôt que des événements javascript.
 
-Les utilisateurs de lecterus d'écran ont différentes options. Cela inclut sauter sur des éléments de répère: sauter au contenu principal ou obtenir un résumé de page à partir des en-têtes. Une autre option consiste à entendre uniquement les liens disponibles sur une page.
+Les utilisateurs de leurs d'écran ont différentes options. Cela inclut sauter sur des éléments de répère: sauter au contenu principal ou obtenir un résumé de page à partir des en-têtes. Une autre option consiste à entendre uniquement les liens disponibles sur une page.
 
 Avoir une liste de liens "cliquez ici" ou "lisez plus" n'est pas utile. Au lieu de ça, vous devriez utiliser un texte bref mais description dans les balises `<a>` pour donner du sens.
 
@@ -144,16 +147,16 @@ Visuellement, la page comporte des titres, mis en valeur et reconnaissables grâ
 
 ``` html
 <body>
-    <h1>My website</h1>
-    <h2>Heading</h2>
-        <h3>Subheading</h3>
-    <h2>Heading</h2>
+  <h1>My website</h1>
+  <h2>Heading</h2>
+    <h3>Subheading</h3>
+  <h2>Heading</h2>
 </body>
 ```
 
 ### Landmarks
 
-Remplacer les `<div>` par des éléments plus significatifs, les landmarks HTML5, quand c'est possible: `<main>`, `<footer>`, `<article>`, `<aside>`, `<nav>`, `<section>`
+Remplacer les `<div>` par des landmarks HTML5, quand c'est possible
 * permettent de comprendre le contenu
 * de naviguer
 * l'élément `<main>` done la possibilité à certains lecteurs d'écran d'aller directement au contenu de la page
@@ -181,21 +184,7 @@ Remplacer les `<div>` par des éléments plus significatifs, les landmarks HTML5
 </html>
 ```
 
-<table>
-  <tr><th align="left">main</th><td>Contient le contenu principal du site. Il n'y en a qu'un par page. Il ne contient pas les éléments qui sont répétés sur les différentes pages (navigation, bannière...)</td></tr>
-  <tr><th align="left">article</th><td>Délimite les éléments qui ont du sens par eux-mêmes, que l'on pourrait mettre dans un feed RSS : article d'un blog, posts d'un forum, etc.</td></tr>
-  <tr><th align="left">section</th><td>Groupe les éléments qui ont le même thème.
-<ul>
-<li>si un livre est un <code>article</code>, chaque chapitre est une <code>section</code></li>
-<li>si chaque article d'un blog est un <code>article</code>, la liste des articles est une <code>section</code></li>
-</ul></td></tr>
-  <tr><th align="left">header</th><td>Contient les informations ou la navigation de la page</td></tr>
-  <tr><th align="left">nav</th><td>Contient les liens de navigation de la page.<br>
-Inutile de mettre un élément <code>nav</code> dans le <code>footer</code>, il se suffit par lui-même</td></tr>
-  <tr><th align="left">aside</th><td>Contient des informations indirectement liées au contenu: glossaire, biographie, articles similaires, etc</td></tr>
-  <tr><th align="left">footer</th><td>Contient les informations de copyright, plan du site, et tout autre information et liens que l'on trouve en bas de page</td></tr>
-</table>
-
+[Landmarks HTML](html-elements.md#landmarks)  
 [Effet des landmarks (vidéo)](https://www.youtube.com/watch?v=IhWMou12_Vk&feature=youtu.be)
 
 ### Navigation
@@ -289,7 +278,7 @@ S'assurer que tous les éléments cliquables à la souris (menus, liens, etc) so
 
 ### Attribut role
 
-Les attributs role définissent quel est le type d'élément et à quoi il sert.
+Les attributs role définissent quel est le type de l'élément et à quoi il sert.
 
 ``` html
 <header role="banner">
@@ -328,74 +317,67 @@ Quelques roles définits par WAI-ARIA :
 | navigation    | Liens qui permettent de naviguer dans le document et/ou des documents connexes |
 | search        | Formulaire de recherche du site |
 
+[Attribut role](https://www.w3.org/TR/using-aria/#aria-roles)
+
 ### Attributs aria
 
 Les attributs aria sont préfixés par `aria-`. Ils définissent l'état ou les propriétés d'un élément.
 
-* `aria-checked` sert à montrer l'état d'un élément personnalisé tel qu'une checkbox ou un bouton radio
-* `aria-label` donne un titre a un élément. Utilisé quand le label d'un élément n'est pas visible
-* `aria-labelledby` indique le label de l'élément (ID du label)
 * `aria-hidden` sert à cacher du contenu pour les technologies d'assistence. À utiliser si le contenu ne sert qu'à la présentation.
-* [Liste complète des états et propriétés](https://www.w3.org/TR/wai-aria/states_and_properties#state_prop_def)
 
-![](https://i.imgur.com/gZDNCGI.png)
+  ``` html
+  <span class="icon icon-key" aria-hidden="true"></span>
+  ```
 
-``` html
-<span class="icon icon-key" aria-hidden="true"></span>
-```
+* `aria-checked` sert à montrer l'état d'un élément tel qu'une checkbox ou un bouton radio
 
-``` html
-<span role="checkbox" aria-checked="true" tabindex="0" id="simulatedcheckbox"></span>
-```
+  ``` html
+  <span role="checkbox" aria-checked="true" tabindex="0" id="simulatedcheckbox"></span>
+  ```
 
-``` html
-<div role="navigation" aria-label="Primary">  
-  <ul><li>...a list of links here ...</li></ul> 
-</div>  
-<div role="navigation" aria-label="Secondary">  
-  <ul><li>...a list of links here ...</li> </ul>
-</div>  
-```
+* `aria-label` donne un titre a un élément. Utilisé quand le label d'un élément n'est pas visible
 
-``` html
-<h2 id="limg">Paragliding</h2>
-<p id="dimg">A long description of our paragliding trip ...</p>
-<img src="takeoff.png"
-     alt="Getting ready to take off"
-     aria-labelledby="limg"
-     aria-describedby="dimg">
-```
+  ``` html
+  <div role="navigation" aria-label="Primary">  
+    <ul><li>...a list of links here ...</li></ul> 
+  </div>  
+  <div role="navigation" aria-label="Secondary">  
+    <ul><li>...a list of links here ...</li> </ul>
+  </div>  
+  ```
 
-``` html
-<input type="image"
-       src="thumb.gif"
-       alt="Effectiveness"
-       role="slider"
-       aria-valuemin="0"
-       aria-valuemax="100"
-       aria-valuenow="42"
-       aria-valuetext="42 percent"
-       aria-labelledby="leffective">
-```
+* `aria-labelledby` indique le label de l'élément (ID du label)
 
-``` html
-<form action="">
-  <fieldset>
-    <legend>Login form</legend>
-    <div>
-      <label for="username">Your username</label>
-      <input type="text" id="username" aria-describedby="username-tip" required />
-      <div role="tooltip" id="username-tip">Your username is your email address</div>
-    </div>
-    <div>
-      <label for="password">Your password</label>
-      <input type="text" id="password" aria-describedby="password-tip" required />
-      <div role="tooltip" id="password-tip">Was emailed to you when you signed up</div>
-    </div>
-  </fieldset>
-</form>
-```
+  ``` html
+  <h2 id="limg">Paragliding</h2>
+  <p id="dimg">A long description of our paragliding trip ...</p>
+  <img src="takeoff.png"
+       alt="Getting ready to take off"
+       aria-labelledby="limg"
+       aria-describedby="dimg">
+  ```
 
+* `aria-describedby` est similaire à `aria-labelledby` mais sert à fournir une description additionnelle au label.
+
+  ``` html
+  <form action="">
+    <fieldset>
+      <legend>Login form</legend>
+      <div>
+        <label for="username">Your username</label>
+        <input type="text" id="username" aria-describedby="username-tip" required />
+        <div role="tooltip" id="username-tip">Your username is your email address</div>
+      </div>
+      <div>
+        <label for="password">Your password</label>
+        <input type="text" id="password" aria-describedby="password-tip" required />
+        <div role="tooltip" id="password-tip">Was emailed to you when you signed up</div>
+      </div>
+    </fieldset>
+  </form>
+  ```
+
+[Attributs aria](https://www.w3.org/TR/using-aria/#aria-states-and-properties-aria-attributes)  
 [Plus d'exemples sur les ARIA](http://heydonworks.com/practical_aria_examples/)
 
 ### Audio
@@ -425,11 +407,9 @@ Il doit être possible d'activer et désactiver les sous-titres depuis le lecteu
 </video>
 ```
 
-### Figure et figcaption
+### Figure, figcaption
 
-`figure` et `figcaption` contiennent une représentatio visuelle (une image, un diagramme ou un graphique) avec sa légende.
-
-La légende peut être utilisée pour noter brièvement les tendances ou les conclusions du graphique pour les utilisateurs ayant une déficience visuelle. 
+Une `figure` doit accompagner une représentation visuelle (image, diagramme, graphique) avec sa légende dans un `figcaption`. La légende peut être utilisée pour noter brièvement les tendances ou les conclusions du graphique pour les utilisateurs ayant une déficience visuelle. 
 Ou pour proposer une version table des données du graphique aux utilisateurs de lecteurs d'écran.
 
 ``` html
@@ -574,7 +554,7 @@ Il est possible de masquer visuellement le contenu destiné uniquement aux lecte
 }
 ```
 
-On peut également masquer un élément et ne le rendre visible qu'au focus, ce qui aura pour effet de ne l'afficher que pour les gens qui utilisent la touche tabulation pour naviguer. [Voir CodePen](https://codepen.io/matuzo/pen/RZBNjP#content)
+On peut également masquer un élément et ne le rendre visible qu'au focus, ce qui aura pour effet de ne l'afficher que pour les gens qui utilisent la touche tabulation pour naviguer. [CodePen Skip link in CSS](https://codepen.io/matuzo/pen/RZBNjP#content)
 
 ``` css
 .skip-link:not(:focus) {
@@ -613,7 +593,7 @@ body { filter: blur(4px) !important; }
 
 ### Police
 
-Toutes les polices ne fonctionnent pas correctement lorsqu'elles sont mises à l'échelle, certaines peuvent paraître mal designées lorsqu'elles sont grandes. Les polices système comme Georgia et Arial par exemple, ont été conçues pour être lisibles à 14px.
+Toutes les polices ne fonctionnent pas correctement lorsqu'elles sont mises à l'échelle, certaines peuvent paraître mal dessinées lorsqu'elles sont grandes. Les polices système comme Georgia et Arial par exemple, ont été conçues pour être lisibles à 14px.
 
 Il est important de choisir une police qui peut être agrandie sans problème. Par exemple
 * Pour les polices serif: Equity, Franziska, Leitura News, Merriweather, Miller, PT Serif, Tisa.
@@ -806,23 +786,19 @@ Il est conseillé de s'assurer que le focus reste dans la popup tant qu'elle est
 ### Changement de contenu
 
 Si du contenu est généré dynamiquement et inséré dans le DOM, seuls les utilisateurs qui voient l'écran le sauront.
-En ajoutant un `role` "status" ou "alert" à un élément, les lecteurs d'écran vont lire cet élément dès que le texte qu'il contient change.
+En ajoutant un role `status` ou `alert` à un élément, les lecteurs d'écran liront l'élément lorsque le texte qu'il contient change. Éviter des créer des messages qui disparaissent automatiquement — ils peuvent disparaître trop rapidement pour le lecteur d'écran.
 
 ``` html
 <div class="message" role="status">Changes saved!</div>
 ```
 
-Un "alert" va interrompre le lecteur d'écran s'il est en train de lire autre chose.  
-"status" va attendre que le lecteur d'écran ait finit de lire.
+Un role `alert` va interrompre le lecteur d'écran s'il est en train de lire autre chose, tandis que `status` va attendre que le lecteur d'écran ait finit de lire. [Voir effet role status (vidéo)](https://www.youtube.com/watch?v=YPOpIHUtkPo&feature=youtu.be)  
 
-L'aria `aria-live` a le même effet, `aria-live="polite"` est l'équivalent de `role="status"` et `aria-live="assertive"` de `role="alert"`. On peut utiliser les deux attributs, role et aria-live pour un meilleur support du navigateur.
+`aria-live="polite"` est l'équivalent de `role="status"` et `aria-live="assertive"` de `role="alert"`.  
+On peut utiliser les deux attributs pour un meilleur support du navigateur.
 
 ``` html
 <div role="alert" aria-live="assertive"></div>
 ```
-
-Éviter des créer des messages qui disparaissent automatiquement - ils peuvent disparaître trop rapidement.
-
-[Voir effet role="status" (vidéo)](https://www.youtube.com/watch?v=YPOpIHUtkPo&feature=youtu.be)
 
 [Exemple de composants accessibles](https://inclusive-components.design/) (onglets, slider, tooltips, etc)

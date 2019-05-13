@@ -57,8 +57,6 @@ La DTD (Document Type Definition) est la première instruction de tout fichier H
   </tbody>
 </table>
 
-Élements mis à jour en HTML: DOCTYPE, meta, script, link, i, b
-
 ---
 
 ## html
@@ -80,11 +78,17 @@ La balise `html` est la balise racine d'un document HTML, elle englobe toutes le
 </html>
 ```
 
----
-
-## head
+### head
 
 L'élément `<head>` contient les metadatas de la page
+
+### body
+
+La balise `<body>` contient le contenu à proprement parler de la page.
+
+---
+
+## Metadatas
 
 ### title
 
@@ -105,9 +109,7 @@ La balise `<title>` est unique par page.
 ### meta
 
 Définit les metadatas du document.  
-Ces metadatas sont majoritairement utilisées par les moteurs de recherche ou les réseaux sociaux (Tweeter, Facebook).  
-La meta `viewport` permet de définir le comportement de la page par rapport à la taille de l'écran. [What is the viewport](https://www.w3schools.com/css/css_rwd_viewport.asp)
-
+Ces metadatas sont majoritairement utilisées par les moteurs de recherche ou les réseaux sociaux (Tweeter, Facebook). 
 
 ``` html
 <meta name="description" content="Free Web tutorials">
@@ -116,28 +118,34 @@ La meta `viewport` permet de définir le comportement de la page par rapport à 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
 
-Il est également possible de définir des entêtes HTTP grâce aux meta:
+* La meta `viewport` permet de définir le comportement de la page par rapport à la taille de l'écran.  
+[What is the viewport](https://www.w3schools.com/css/css_rwd_viewport.asp)
 
-``` html
-<!-- Rafraichir la page toutes les 30 secondes -->
-<meta http-equiv="refresh" content="30">
-```
+* Les metas `http-equiv` permettent de définir des entêtes HTTP:
 
-En HTML5, il existe une manière simplifiée de déclarer l'encodage du document:
+  ``` html
+  <!-- Rafraichir la page toutes les 30 secondes -->
+  <meta http-equiv="refresh" content="30">
+  ```
 
-``` html
-<!-- HTML4 -->
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-```
+* L'encodage du document est a priori déclaré par l'entête HTTP `Content-Type`:
 
-``` html
-<!-- HTML5 -->
-<meta charset="UTF-8">
-```
+  ``` html
+  <!-- HTML4 -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  ```
+
+  Mais en HTML5, il existe une manière simplifiée de déclarer l'encodage du document:
+
+  ``` html
+  <!-- HTML5 -->
+  <meta charset="UTF-8">
+  ```
 
 ### base
 
-Définit l'URL de base ainsi que la cible par défaut pour les liens de la page. Si non spécifiée, l'URL de base de la page est l'URL en cours.
+Définit l'URL de base ainsi que la cible par défaut pour les liens de la page.  
+Si non spécifiée, l'URL de base de la page est l'URL en cours.
 
 ``` html
  <head>
@@ -154,14 +162,14 @@ Permet d'ajouter du code CSS dans la page (embedded style).
 
 ``` html
 <style>
-h1 { color:red; }
-p { color:blue; }
+  h1 { color:red; }
+  p { color:blue; }
 </style>
 ```
 
 ### link
 
-Permet d'importer des ressources externes, comme des feuilles de style (CSS situé dans un fichier externe) ou une favicon (icône affichée par le navigateur devant le titre de l'onglet). Différents peuvent être ciblés avec l'attribut `media` (permet notamment d'inclure une feuille de style d'impression). En HTML5, il n'est pas nécessaire de préciser le `type` pour une feuille de style.
+Permet de charger des ressources externes, comme des feuilles de style (CSS situé dans un fichier externe) ou une favicon (icône affichée par le navigateur devant le titre de l'onglet).
 
 ``` html
 <link rel="icon" href="favicon.ico">
@@ -169,52 +177,60 @@ Permet d'importer des ressources externes, comme des feuilles de style (CSS situ
 <link rel="stylesheet" type="text/css" href="print.css" media="print">
 ```
 
-[HTML <link> rel Attribute](https://www.w3schools.com/tags/att_link_rel.asp)
+* Les ressources inclues peuvent être limités à un type de media donné, par exemple `media="print"` cible les imprimantes, ce qui permet notamment d'inclure une feuille de style d'impression.
 
-#### prefetch
+* En HTML5, il n'est pas nécessaire de préciser le `type` pour une feuille de style.
 
-`rel="prefetch"` permet de charger des pages avant que l'utilisateur ne les demande. Il est souvent possible de "deviner" quelle sera la prochaine page demandée: par exemple si l'utilisateur consulte la 2ème page des archives d'articles, il est très probable qu'il demande la 3ème juste après. Cela permet d'améliorer l'expérience utilisateur en affichant les pages plus rapidement. On peut également précharger des images. Bien évidemment, il ne faut pas non surcharger le navigateur en requêtant trop de pages.
+* L'attribut `rel` spécifie le type de ressource à charger.  
+  [Valeurs de l'attribut rel](https://www.w3schools.com/tags/att_link_rel.asp)
 
-``` html
-<link rel="prefetch" href="http://www.example.com/">
-```
+  `rel="prefetch"` permet de charger des pages avant que l'utilisateur ne les demande. Il est souvent possible de "deviner" la prochaine page que l'utilisateur voudra afficher: par exemple si l'utilisateur consulte la 2ème page d'une liste d'articles, il est très probable qu'il veuille afficher la 3ème juste après. On peut également précharger des images.  
+  Pré-charger les ressources permet de les afficher plus rapidement lorsque l'utilisateur les demande. Bien évidemment, il ne faut pas non surcharger le navigateur en requêtant trop de pages, ce qui le ralentirait.
+
+  ``` html
+  <link rel="prefetch" href="http://www.example.com/">
+  ```
 
 ### script
 
-Permet d'ajouter du code script dans la page, comme JavaScript ou WebGL (embedded style).  
-En HTML5, il n'est pas obligatoire de spécifier le `type` pour du JavaScript.
+Permet d'ajouter un script dans la page, comme du code JavaScript ou WebGL (embedded style).  
 
 ``` html
 <script type="text/javascript">
-window.onload = function(){
+  window.onload = function(){
     alert("Hello World");
-};
+  };
 </script>
 ```
 
-Peut également importer des scripts externes, avec l'attribut `src`.  
-Les script peuvent être importés uniquement lorsque la page aura fini de charger en ajoutant l'attribut `defer="true"`.  
-Ou de manière asynchrone pendant le chargement de la page avec l'attribut `async`.
+* En HTML5, le `type` par défaut est JavaScript, il n'est donc pas obligatoire de le spécifier.
 
-``` html
-<script type="text/javascript" src="myscripts.js"></script> 
+* La balise script permet d'importer des scripts externes, en utilisant l'attribut `src`.
 
-<!-- Google Analytics -->
-<script>
-  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'UA-XXXXX-Y', 'auto');
-  ga('send', 'pageview');
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-<!-- End Google Analytics -->
-```
+  ``` html
+  <script type="text/javascript" src="myscripts.js"></script> 
 
-Placer les scripts en fin de page permet au navigateur de charger la page en premier. Une alternative est d'utiliser `defer`.
+  <!-- Google Analytics -->
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  <!-- End Google Analytics -->
+  ```
+
+* L'attribut `defer="true"` dit au navigateur de n'importer le script que lorsque la page aura fini de charger.
+
+* Et `async`, de charger le script de manière asynchrone pendant le chargement de la page.
+
+Le navigateur lit le code HTML de haut en bas: en plaçant les scripts en haut de la page, la page mettra plus de temps à s'afficher, il est donc préférable de placer les scripts à la fin du code HTML ou d'utiliser l'attribut `defer`.
 
 ### noscript
 
-Permet d'ajouter du contenu pour les clients qui ne supportent pas le JavaScript (ou qui l'ont désactivé).  
-À l'intérieur de `<head>`, cette balise ne peut contenir qu'une balise `<link>`, `<style>` ou `<meta>`.
+Permet d'ajouter du contenu pour les clients qui ne prennent pas en charge le JavaScript (ou qui l'ont désactivé).  
+À l'intérieur de la balise `<body>`, noscript peut contenir tout type de contenu.  
+À l'intérieur de la balise `<head>`, noscript ne peut contenir que des balises `<link>`, `<style>` ou `<meta>`.
 
 ``` html
 <noscript>Your browser does not support JavaScript!</noscript> 
@@ -222,7 +238,7 @@ Permet d'ajouter du contenu pour les clients qui ne supportent pas le JavaScript
 
 ### template
 
-Permet de stocker un template utilisé en JavaScript.
+Depuis HTML5, la balise `<template>` permet de définir un template qui ne sera pas affiché dans la page, mais qui peut être récupéré en JavaScript.
 
 ``` html
 <template id="tpl-example">
@@ -233,7 +249,11 @@ Permet de stocker un template utilisé en JavaScript.
 </template>
 ```
 
-Pour utiliser des templates avant HTML5:
+```
+var html = document.getElementById("tpl-example").innerHTML;
+```
+
+Avant HTML5, on utilisait des balises `script`:
 
 ``` html
 <script type="text/template" id="tpl-example">
@@ -241,14 +261,8 @@ Pour utiliser des templates avant HTML5:
 </script>
 ```
 
-[Exemple template](https://jsfiddle.net/amt01/wgtzahh2/).  
-Utiliser [mustacheJS](https://github.com/janl/mustache.js/) pour plus de contrôle avec les templates.
-
----
-
-## body
-
-La balise `<body>` contient le contenu à proprement parler de la page.
+Voir [JSFiddle template](https://jsfiddle.net/amt01/wgtzahh2/).  
+Note: [mustacheJS](https://github.com/janl/mustache.js/) est une libraire JS souvent utilisée pour manipuler les templates (gestion des conditions, boucles, etc).
 
 ---
 
@@ -256,21 +270,21 @@ La balise `<body>` contient le contenu à proprement parler de la page.
 
 ### Headings: h1 à h6
 
-Les balises de `<h1>` à `<h6>` sont des balises titre qui servent à hiérarchiser le contenu. Il n'y a qu'une balise `<h1>` par page (le titre principal), qui peut être suivie de balises `<h2>` (sections), elles mêmes suivies de balises `<h3>` (sous-sections), etc.
-
-Ces balises peuvent être utilisées pour construire automatiquement une table des matières du document.
+Les balises de `<h1>` à `<h6>` sont des balises titre qui servent à hiérarchiser le contenu.  
+Il ne doit y avoir qu'une balise `<h1>` par page (le titre principal), qui peut être suivie de balises `<h2>` (sections), suivies de balises `<h3>` (sous-sections), etc.
+Il est important de respecter l'ordre numérique des titres, de sorte qu'un robot puisque construire une table des matières de la page qui ait du sens.
 
 ``` html
 <body>
-    <h1>My website</h1>
-    <h2>Heading</h2>
-        <p>Paragraph about heading</p>
+  <h1>My website</h1>
+  <h2>Heading</h2>
+    <p>Paragraph about heading</p>
 
-        <h3>Subheading</h3>
-        <p>Paragraph about subheading</p>
+    <h3>Subheading</h3>
+    <p>Paragraph about subheading</p>
 
-    <h2>Heading #2</h2>
-    <p>Paragraph about heading #2</p>
+  <h2>Heading #2</h2>
+  <p>Paragraph about heading #2</p>
 </body>
 ```
 
@@ -290,7 +304,8 @@ non interdum urna. Suspendisse potenti.</p>
 
 ### pre
 
-Les éléments `<p>` délimitent un paragraphe préformatté. Particulièrement utilisés pour les lignes de code.
+Les éléments `<p>` délimitent un paragraphe préformatté.  
+Particulièrement utilisés pour ajouter des lignes de code.
 
 ``` html
 <pre lang="c">
@@ -307,7 +322,8 @@ clone_method_i(st_data_t key, st_data_t value, st_data_t data)
 
 ### div
 
-Les éléments `<div>` délimitent une division. Ils sont utilisés pour grouper des éléments dans un bloc, notamment pour les formatter en CSS.
+Les éléments `<div>` délimitent une division.  
+Ils sont utilisés pour grouper des éléments dans un bloc, ce qui permet notamment de leur donner le même style CSS.
 
 ``` html
 <div class="summary">
@@ -339,7 +355,8 @@ Un `<hr>` (horizontal rule) est un séparateur qui permet de délimiter deux th�
 
 ### blockquote
 
-Une `<blockquote>` délimite une citation. Les `<blockquote>` peuvent être imbriqués, par exemple pour afficher un historique email.
+Une `<blockquote>` délimite une citation.  
+Les `<blockquote>` peuvent être imbriqués, par exemple pour afficher un historique email.
 
 ```  html
 <p>Here is a quote from WWF's website:</p>
@@ -353,13 +370,14 @@ million globally.
 
 ### address
 
-Délimite les informations de contact pour une personne, un groupe ou une organisation: adresse, email, etc. Par exemple pour l'auteur d'un article ou pour une entreprise.
+Délimite les informations de contact pour une personne, un groupe ou une organisation: adresse, email, etc.  
+Par exemple pour l'auteur d'un article ou pour une entreprise.
 
 ``` html
 <address>
   Vous pouvez contacter l'auteur à l'adresse
   <a href="http://www.undomaine.com/contact">www.undomaine.com</a>.<br>
-  Si vous relevez quelques bogues que ce soient, merci de contacter
+  Si vous relevez des bugs, merci de contacter
   <a href="mailto:webmaster@somedomain.com">le webmaster</a>.<br>
   Vous pouvez aussi venir nous voir :<br>
   Mozilla Foundation<br>
@@ -435,7 +453,9 @@ Les éléments `<span>` délimitent des éléments en ligne. Ils permettent d'ap
 
 ### a
 
-Les éléments `<a>` définissent des ancres, des liens qui permettent de rediriger vers un lien (une autre page, l'envoi d'un mail, un id sur la page)
+Les éléments `<a>` définissent des ancres — ce peut être un lien vers une autre page (lien hypertexte), un lien vers un élément dans la page en cours (id), ou même un lien vers une autre application (un protocole autre que http).
+
+#### Cible
 
 * une autre page
 
@@ -493,7 +513,7 @@ Un lien ne contient pas forcemment du texte, on peut y mettre tout élément.
 </a>
 ```
 
-#### Attribut target
+#### Attribut: target
 
 On peut préciser où ouvrir le lien:
 * `target="_self"`: la page en cours (par défaut)
@@ -518,7 +538,7 @@ On peut préciser où ouvrir le lien:
 </HTML>
 ```
 
-#### Attribut rel
+#### Attribut: rel
 
 Définit la relation entre la page courante et le lien. Les moteurs de recherche utilisent cet attribut pour avoir plus d'informations sur le lien et vont l'indexer ou non en conséquence.
 
@@ -540,25 +560,25 @@ Définit la relation entre la page courante et le lien. Les moteurs de recherche
 
 ### i
 
-En HTML4, `<i>` était une balise de formattage: italique.  
-En HTML5, `<b>` représente un texte mis en avant, par exemple des mots clés, le nom d'un produit, un sous-titre...
-
-``` html
-<p><b>The event takes place this upcoming Saturday, and over 3,000 people have already registered</b></p>
-```
-
-### b
-
-En HTML4, `<b>` était une balise de formattage: bold (gras).  
-En HTML5, cette balises a un nouveau sens: `<i>` représente une "voix alternative", par exemple pour mettre en exergue les termes techniques, phrases idiomatiques dans une autre langue, translitération, etc
+En HTML4, `<i>` était une balise de formattage — mettre en italique.  
+En HTML5, cette balises a un nouveau sens: `<i>` représente une "voix alternative" — par exemple pour mettre en exergue les termes techniques, phrases idiomatiques dans une autre langue, translitération, etc
 
 ``` html
 <p><i>I hope this works</i>, he thought.</p>
 ```
 
+### b
+
+En HTML4, `<b>` était une balise de formattage — mettre en gras (bold).  
+En HTML5, `<b>` représente un texte mis en avant — des mots clés, le nom d'un produit, un sous-titre...
+
+``` html
+<p><b>The event takes place this upcoming Saturday, and over 3,000 people have already registered</b></p>
+```
+
 ### em
 
-`<em>` sert à délimiter une emphase.
+Indique une emphase.
 
 ``` html
 <p>Make sure to sign up <em>before</em> the day of the event, September 16, 2013</p>
@@ -566,7 +586,7 @@ En HTML5, cette balises a un nouveau sens: `<i>` représente une "voix alternati
 
 ### strong
 
-`<strong>` sert à délimiter un texte important.
+Indique un texte important.
 
 ``` html
 <p>Make sure to sign up <em>before</em> the day of the event, <strong>September 16, 2013</strong></p>
@@ -574,7 +594,7 @@ En HTML5, cette balises a un nouveau sens: `<i>` représente une "voix alternati
 
 ### small
 
-Délimite un texte de moindre importance.
+Indique un texte de moindre importance.
 
 ```
 <p><small>Copyright 1999-2050 by Refsnes Data</small></p>
@@ -582,7 +602,8 @@ Délimite un texte de moindre importance.
 
 ### u
 
-`<u>` (underline) sert à délimiter un texte différent du texte normal, comme un mot mal orthographié.
+En HTML4, `<u>` était une balise de formattage — souligner (underline).  
+En HTML5, `<u>` indique un texte *différent* du texte normal — comme un mot mal orthographié par exemple.
 
 ``` html
 <p>This paragraph includes a <u class="spelling">wrnogly</u> spelled word.</p>
@@ -590,7 +611,8 @@ Délimite un texte de moindre importance.
 
 ### s
 
-`<s>` (strike) sert à délimiter un texte qui n'est pas ou plus vrai.
+En HTML4, `<s>` était une balise de formattage — barrer (strike).  
+En HTML5, `<s>` indique un texte qui n'est pas ou plus vrai.
 
 ``` html
 <s>Today's Special: Salmon</s> SOLD OUT<br>
@@ -598,7 +620,7 @@ Délimite un texte de moindre importance.
 
 ### del
 
-`<del>` (delete) sert à délimiter un texte supprimé ou remplacé.
+Indique un texte supprimé ou remplacé.
 
 ``` html
 <p><del>This text has been deleted</del>,
@@ -607,7 +629,7 @@ here is the rest of the paragraph.</p>
 
 ### ins
 
-`<ins>` (insert) sert à délimiter un texte inséré. C'est l'inverse de la balise `<del>`.
+Indique un texte inséré. C'est l'inverse de la balise `<del>`.
 
 ``` html
 This text has been <del>deleted</del><ins>inserted</ins>
@@ -615,7 +637,7 @@ This text has been <del>deleted</del><ins>inserted</ins>
 
 ### mark
 
-`<mark>` délimite du texte surligné, par exemple pour un résultat de recherche.
+Indique du texte surligné — par exemple pour un résultat de recherche.
 
 ``` html
 My<mark>SQL</mark> <mark>SQL</mark> (Structure Query La...
@@ -623,7 +645,7 @@ My<mark>SQL</mark> <mark>SQL</mark> (Structure Query La...
 
 ### cite
 
-`<cite>` délimite une référence, comme un nom d'auteur, de livre, de film, de produit, etc.
+Indique une référence — comme un nom d'auteur, de livre, de film, de produit, etc.
 
 ``` html
 <p>More information can be found in <cite>[ISO-0000]</cite>.</p>
@@ -631,7 +653,8 @@ My<mark>SQL</mark> <mark>SQL</mark> (Structure Query La...
 
 ### q
 
-Délimite une citation en ligne à l'intérieur d'une phrase - un `<blockquote>` est un élément bloc.
+Délimite une citation à l'intérieur d'une phrase.  
+Il s'agit d'un élément en ligne, contrairement au `<blockquote>` qui est un élément en bloc.
 
 ``` html
 <p>WWF's goal is to <q>build a future where people live in harmony with nature</q>. We hope they succeed.</p>
@@ -787,7 +810,7 @@ Cet élément est utile lorsqu'on intègre du texte dont on ignore la directivit
 
 Les landmarks sont des éléments introduits en HTML5 qui permettent d'ajouter un sens sémantique à certaines divisions: main, section, article, aside, footer, header, nav. Ainsi `<div class="header"></div>` peut être remplacé par `<header></header>`.
 
-Les landmarks permettent de naviguer plus facilement pour les utilisateurs de lecteur d'écran, et c'est une bonne pratique d'accessibilité de les utiliser. [Cf accessibilite](accessibilite.md#landmarks). On peut utiliser des landmarks HTML5 dans la plupart des navigateurs non-HTML5 - ils n'ont besoin que d'un style CSS :
+Les landmarks permettent de naviguer plus facilement pour les utilisateurs de lecteur d'écran, et c'est une bonne pratique de les utiliser. Pour utiliser des landmarks HTML5 dans un navigateur qui ne supporte pas HTML5, il suffit a priori d'ajouter du CSS:
 
 ``` css
 main, section, article, aside, footer, header, nav {
@@ -823,7 +846,7 @@ Il ne contient pas les éléments qui sont répétés sur les différentes pages
 
 ### header
 
-Situé dans la balise `<body>`, le `<header>` contient les informations et/ou la navigation de la page
+Contient les informations et/ou le menu de navigation de la page
 
 ``` html
 <header>
@@ -968,7 +991,8 @@ La balise `<ul>` permet de créer une liste non ordonnée d'item `<li>` (liste �
 
 ### dl, dt, dd
 
-La balise `<dl>` permet de créer une liste de définitions. Elle contient des balises `<dt>` (definition term) et `<dd>` (definition description).
+La balise `<dl>` permet de créer une liste de définitions.  
+Elle contient des balises `<dt>` (definition term) et `<dd>` (definition description).
 
 ``` html
  <dl>
@@ -1045,7 +1069,8 @@ L'ordre HTML entre `<thead>`, `<tbody>` et `<tfoot>` n'importe pas.
 
 ### caption
 
-Permet d'ajouter un titre à un tableau. La propriété CSS `caption-side` peut définir l'emplacement du titre (au-dessus ou au-dessous).
+Permet d'ajouter un titre à un tableau.  
+La propriété CSS `caption-side` peut définir l'emplacement du titre (au-dessus ou au-dessous).
 
 ``` html
 <table>
@@ -1097,7 +1122,7 @@ L'attribut `alt` définit un texte alternatif au cas où l'image ne peut pas êt
 <img src="image.png" alt="Mon chien dans le parc">
 ```
 
-#### Attributs width, hight
+#### Attribut: width, hight
 
 Les attributs `width` et `height` permettent de définir les dimensions affichées de l'image.
 
@@ -1105,7 +1130,7 @@ Les attributs `width` et `height` permettent de définir les dimensions affiché
 <img ... width="100px" height="auto">
 ```
 
-#### Attribut srcset
+#### Attribut: srcset
 
 L'attribut de base `src` pointe vers une URL mais il est également possible de donner le choix au navigateur entre plusieurs images en fonction de la densité en pixels de l'écran.
 
@@ -1114,7 +1139,7 @@ On peut choisir de servir une image différente, d'une résolution supérieure p
 
 ``` html
 <img srcset="image_1x.jpg 1x,
-   image_2x.jpg 2x"
+             image_2x.jpg 2x"
  src="image_1x.jpg"/>
 ```
 
@@ -1123,20 +1148,20 @@ L'attribut `srcset` accepte également des dimensions `w`, un équivalent du pix
 ``` html
 <img
  srcset="image-sm.jpg 600w,
-   image-md.jpg 900w,
-   image-lg.jpg 1440w"
+         image-md.jpg 900w,
+         image-lg.jpg 1440w"
  src="image_1x.jpg"/>
 ```
 
-#### Attribut sizes
+#### Attribut: sizes
 
-Compte tenu que les images sont chargées avant le CSS, on spécifie avec l'attribut `sizes` la taille du container de l'image - pour que le navigateur puisse choisir l'image qui convient le mieux.
+Compte tenu que les images sont chargées avant le CSS, on spécifie avec l'attribut `sizes` la taille du container de l'image — pour que le navigateur puisse choisir l'image qui convient le mieux.
 
 ``` html
 <img
  srcset="image-sm.jpg 600w,
-   image-md.jpg 900w,
-   image-lg.jpg 1440w"
+         image-md.jpg 900w,
+         image-lg.jpg 1440w"
  sizes="50vw"
  src="image_1x.jpg"/>
 ```
@@ -1146,8 +1171,8 @@ Des media queries peuvent également être utilisées
 ``` html
 <img
  srcset="image-sm.jpg 600w,
-   image-md.jpg 900w,
-   image-lg.jpg 1440w"
+         image-md.jpg 900w,
+         image-lg.jpg 1440w"
  size="(max-width: 600px) 100vw, 50vw"
  src="image_1x.jpg" />
 ```
@@ -1170,10 +1195,10 @@ Cela permet au navigateur de choisir parmis une liste la ressource en fonction d
 
 ``` html
 <picture>
- <source media="(min-width: 900px)" srcset="image-lg.webp" type="image/webp">
- <source media="(min-width: 600px)" srcset="image-md.webp" type="image/webp">
- <source srcset="image-sm.webp" type="image/webp">
- <img src="image-lg.jpg" type="image/jpeg" alt="image description">
+  <source media="(min-width: 900px)" srcset="image-lg.webp" type="image/webp">
+  <source media="(min-width: 600px)" srcset="image-md.webp" type="image/webp">
+  <source srcset="image-sm.webp" type="image/webp">
+  <img src="image-lg.jpg" type="image/jpeg" alt="image description">
 </picture>
 ```
 
@@ -1423,49 +1448,42 @@ Permet d'inclure une page à l'intérieur de la page en cours, par exemple pour 
 </iframe>
 ```
 
-#### Attribut allowfullscreen
+* L'attribut `srcodic` permet de définir le contenu de l'iframe
 
-L'iframe peut être passé en plein écran (avec `Element.requestFullscreen()`)
+  ``` html
+  <iframe srcdoc="<p>Hello world!</p>" src="demo_iframe_srcdoc.htm"></iframe>
+  ```
 
-#### Attribut allowpaymentrequest
+* L'attribut `allowfullscreen` autorise l'iframe à passer en plein écran
+  (en utilisant `requestFullscreen()`)
 
-L'iframe peut appeler l'API Payment Request
+* L'attribut `allowpaymentrequest` autorise l'iframe à appeler l'API Payment Request
 
-#### Attribut srcdoc
+* L'attribut `sandbox` permet d'appliquer des restrictions sur le contenu pouvant appraître dans l'iframe
 
-Définit le contenu de l'iframe
+  | Valeur                   | Description
+  |---                       |---
+  | `allow-forms`            | Autorise les formulaires (faux par défaut)
+  | `allow-modals`           | Peut ouvrir des modales
+  | `allow-orientation-lock` | Peut désactiver le verouillage de l'orientation de l'écran
+  | `allow-pointer-lock`     | Peut utliser l'API Pointer Lock
+  | `allow-popup`            | Peut ouvrir des fenêtes (avec `window.open`, `target="_blank"` ou `showModalDialog`)
+  | `allow-popups-to-escape-sandbox` | Permet d'ouvrir de nouvelles fenêtres en dehors de l'iframe
+  | `allow-presentation`     |  Permet à l'iframede démarrer une présentation
+  | `allow-same-origin`      | Permet au contenu d'être considéré comme étant de la même origine que le contexte parent
+  | `allow-scripts`         | Peut exécuter des scripts
+  | `allow-top-navigation`  | Peut charger du contenu depuis le contexte de navigation de plus haut niveau
+  | `allow-top-navigation-by-user-activation` | Peut charger u contenu depuis le contexte de navigation de plus haut niveau si l'action provient de l'utilisateur
 
-``` html
-<iframe srcdoc="<p>Hello world!</p>" src="demo_iframe_srcdoc.htm"></iframe>
-```
+  ``` html
+  <!-- Appliquer toutes les restrictions -->
+  <iframe src="demo_iframe_sandbox.htm" sandbox></iframe>
+  ```
 
-#### Attribut sandbox
-
-Permet d'appliquer des restrictions sur le contenu qui peut appraître dans l'iframe
-
-| Valeur                   | Description
-|---                       |---
-| `allow-forms`            | Autorise les formulaires (faux par défaut)
-| `allow-modals`           | Peut ouvrir des modales
-| `allow-orientation-lock` | Peut désactiver le verouillage de l'orientation de l'écran
-| `allow-pointer-lock`     | Peut utliser l'API Pointer Lock
-| `allow-popup`            | Peut ouvrir des fenêtes (avec `window.open`, `target="_blank"` ou `showModalDialog`)
-| `allow-popups-to-escape-sandbox` | Permet d'ouvrir de nouvelles fenêtres en dehors de l'iframe
-| `allow-presentation`     |  Permet à l'iframede démarrer une présentation
-| `allow-same-origin`      | Permet au contenu d'être considéré comme étant de la même origine que le contexte parent
-| `allow-scripts`         | Peut exécuter des scripts
-| `allow-top-navigation`  | Peut charger du contenu depuis le contexte de navigation de plus haut niveau
-| `allow-top-navigation-by-user-activation` | Peut charger u contenu depuis le contexte de navigation de plus haut niveau si l'action provient de l'utilisateur
-
-``` html
-<!-- Appliquer toutes les restrictions -->
-<iframe src="demo_iframe_sandbox.htm" sandbox></iframe>
-```
-
-``` html
-<!-- Autoriser les scripts, considérer le contenu de même origine que le parent -->
-<iframe src="demo_iframe_sandbox_origin.htm" sandbox="allow-same-origin allow-scripts"></iframe> 
-```
+  ``` html
+  <!-- Autoriser les scripts, considérer le contenu de même origine que le parent -->
+  <iframe src="demo_iframe_sandbox_origin.htm" sandbox="allow-same-origin allow-scripts"></iframe> 
+  ```
 
 ---
 
@@ -1504,6 +1522,23 @@ L'attribut `autocomplete` spécifie si l'autocomplete est activé pour les champ
 ### input
 
 Un élément `<input>` permet de créer un champs.  
+Les attributs suivants sont acceptés sur tout type d'input:
+* `autocomplete`: accepter l'autocomplete ou non
+* `autofocus`: l'input prend automatiquement le focus une fois la page chargée
+* `disabled`: désactive l'input (le rend inutilisable et non cliquable)
+* `readonly`: lecture seule, la valeur de l'input ne peut pas être modifiée (lue et copiée uniquement)
+* `required`: rend le champs obligatoire (le formulaire ne peut pas être soumis si le champs est vide)
+* `pattern`: spécifie une regexp que la valeur doit valider (le formulaire ne peut pas être soumis si la valeur n'est pas correcte)
+* `maxlength`: définit la longueur maximale de la valeur
+* `size`: définit la taille de l'input (largeur affichée)
+* `placeholder`: valeur affichée (en couleur claire) lorsque l'input est vide
+* `list`: associe un `<datalist>` à l'input
+* `type`: définit le type de l'input
+* `value`: définit la valeur initiale de l'input
+* `name`: définit le nom du paramètre (récupéré par le serveur)
+
+#### Attribut: type
+
 Il existe plusieurs type de champs différents.
 
 <table>
@@ -1631,24 +1666,9 @@ Il existe plusieurs type de champs différents.
 
 ![](https://i.imgur.com/rWAkWJM.png)
 
-Les attributs suivants sont acceptés sur tout type d'input:
-* `autocomplete`: accepter l'autocomplete ou non
-* `autofocus`: l'input prend automatiquement le focus une fois la page chargée
-* `disabled`: désactive l'input (le rend inutilisable et non cliquable)
-* `readonly`: lecture seule, la valeur de l'input ne peut pas être modifiée (copiée uniquement)
-* `required`: rend le champs obligatoire (le formulaire ne peut pas être soumis si le champs est vide)
-* `pattern`: spécifie une regexp que la valeur doit valider (le formulaire ne peut pas être soumis si la valeur n'est pas correcte)
-* `maxlength`: définit la longueur maximale de la valeur
-* `size`: définit la taille de l'input (largeur affichée)
-* `placeholder`: valeur affichée (en couleur claire) lorsque l'input est vide
-* `list`: associe un `<datalist>` à l'input
-* `type`: définit le type de l'input
-* `value`: définit la valeur initiale de l'input
-* `name`: définit le nom du paramètre (récupéré par le serveur)
+[JSFiddle input type](https://jsfiddle.net/amt01/2qLrhhnm/)
 
-[Types d'input](https://jsfiddle.net/amt01/2qLrhhnm/)
-
-#### Attribut pattern
+#### Attribut: pattern
 
 Avant HTML5, JavaScript devait être utilisé pour valider les valeurs d'un formulaire.  
 L'attribut `pattern` rend la validation native pour les navigateurs qui supportent HTML5.

@@ -1,8 +1,24 @@
 ---
-title: "SVG: Les formes de base"
+title: "SVG: Les éléments de base"
 category: Web, HTML, SVG
 ---
 
+## Prologue
+
+Le prologue est la première instruction de tout fichier SVG. Il indique la version XML utilisée.
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="100" height="100">
+  ...
+</svg>
+```
+
+---
+
+## SVG
+
+Une image SVG est entièrement contenue dans une balise `svg`.  
 À l'intérieur de la balise `svg`, on peut placer différentes formes, comme des rectangles, lignes, cercles, etc.  
 
 * Les éléments sont dessinés dans l'ordre dans lequel ils apparaissent dans le code:  
@@ -15,6 +31,87 @@ category: Web, HTML, SVG
   La valeur de `x` pousse la forme vers la droite et la valeur de `y` vers le bas à partir du point d'origine.
 
 * Les formes qui dépassent la zone d'affichage du SVG sont tronquées.
+
+### Attributs: width, height
+
+Les attributs `width` et `height` spécifient la taille d'affichage du SVG.  
+Si l'unité n'est pas précisé, il s'agit par défaut de pixels.
+
+Par exemple, pour créer une image SVG (vide) de 100px par 100px:
+
+``` html
+<svg width="100px" height="100px"></svg>
+```
+
+### Attribut: viewBox
+
+L'attribut `viewBox` définit les dimensions du dessin.  
+Les dimensions du viewbox n'ont pas d'unité, pas plus que les attributs de largeur et de hauteur des éléments à l'intérieur du SVG. La raison est simple: un SVG peut être agrandit ou rétrécit à l'envie — notamment avec `width` et `height`.
+
+Le viewBox définit les valeurs suivantes (séparées par des espaces ou des virgules):
+
+```
+viewBox="min-x min-y width height"
+```
+
+Dans l'exemple suivant, les attributs `width` et `height` spécifient que le SVG doit être affiché sur 200px par 200px. L'attribut `viewBox` spécifie que les dimensions du SVG est 100 par 100, chaque unité du SVG vaut donc deux pixels — on double la taille du contenu.
+
+``` html
+<svg width="200" height="200" viewBox="0 0 100 100">
+```
+
+Si l'on ne définit pas le viewbox, les dimensions du SVG sont considérés être la taille d'affichage.  
+[JSFiddle viewbox](https://jsfiddle.net/amt01/0ycvsbn6/)
+
+### Attribut: preserveAspectRatio
+
+Lorsqu'on redimensionne l'image, par défaut, le ratio des formes est toujours respecté et le contenu du SVG est centré au milieu.
+Ce comportement peut être modifié avec l'attribut `preserveAspectRatio`. [JSFiddle preserveAspectRatio](https://jsfiddle.net/amt01/zu9vcL5h/).
+
+``` html
+<svg width="100" height="50" viewBox="0 0 100 100" preserveAspectRatio="none">
+```
+
+<svg width="215" height="85" xmlns="http://www.w3.org/2000/svg" style="background: black;">
+  <defs>
+     <path id="smiley" d="M50,10 A40,40,1,1,1,50,90 A40,40,1,1,1,50,10 M30,40 Q36,35,42,40 M58,40 Q64,35,70,40 M30,60 Q50,75,70,60 Q50,75,30,60" fill="yellow" stroke="black" stroke-width="8px" stroke-linecap="round" stroke-linejoin="round" />
+  </defs>
+
+  <text x="50" y="20" stroke="none" fill="white" text-anchor="middle">default</text>
+  <rect x="5" y="30" width="100" height="50" fill="white" />
+  <svg viewBox="0 0 100 100" width="100" height="50"
+       x="6" y="30">
+    <use href="#smiley" />
+  </svg>
+
+  <text x="150" y="20" stroke="none" fill="white" text-anchor="middle">none</text>
+  <rect x="110" y="30" width="100" height="50" fill="white" />
+  <svg viewBox="0 0 100 100" width="100" height="50"
+       preserveAspectRatio="none"
+       x="110" y="30">
+    <use href="#smiley" />
+  </svg>
+</svg>
+
+### Inception
+
+Contrairement à HTML, un élément SVG peut inclure d'autres éléments SVG. Il est donc possible d'utiliser différents systèmes de coordonnées, en définissent les attributs `viewBox`, `width` et `height` de ce sous-document.
+
+``` html
+<svg width="100" height="100">
+  <svg width="100" height="100" viewBox="0 0 50 50">
+    <circle cx="25" cy="25" r="25" fill="blue" />
+  </svg>
+  <circle cx="25" cy="25" r="25" fill="red" />
+</svg>
+```
+
+<svg width="100" height="100">
+  <svg width="100" height="100" viewBox="0 0 50 50">
+    <circle cx="25" cy="25" r="25" fill="blue" />
+  </svg>
+  <circle cx="25" cy="25" r="25" fill="red" />
+</svg>
 
 ---
 
@@ -87,7 +184,7 @@ La balise `line` permet de tracer une ligne droite entre le point (`x1`, `y1`) e
 
 ---
 
-### polyline
+## polyline
 
 La balise `polyline` permet de tracer des lignes droites entre plusieurs `points`.  
 Les différents points peuvent être séparés par des virgules ou des espaces.
@@ -102,14 +199,14 @@ Les différents points peuvent être séparés par des virgules ou des espaces.
               stroke="white" stroke-width="5" fill="red" />
 </svg>
 
-### polygon
+## polygon
 
 La balise `polygon` permet de tracer des lignes droites entre plusieurs `points`, de même que `polyline`,
 mais contrairement à cette dernière cela crée une forme fermée.
 
 ``` html
 <polygon points="10 10, 15 20, 20 15, 25 30, 30 25, 35 40, 40 35, 45 50, 50 45, 80 10"
-          stroke="white" stroke-width="5" fill="red" />
+         stroke="white" stroke-width="5" fill="red" />
 ```
 
 <svg width="100" height="100" style="background: black">
@@ -119,7 +216,7 @@ mais contrairement à cette dernière cela crée une forme fermée.
 
 ---
 
-### path
+## path
 
 La balise `path` permet de créer des formes complexes à partir d'une série de lignes droites et courbes définie par `d`.  
 L'attribut `d` définit une liste de commandes a exécuter. Chaque commande est appelée par une lettre spécifique et est suivit de paramètres.
@@ -136,8 +233,8 @@ Deux nombres peuvent être séparés par une virgule ou un espace.
 </svg>
 
 Toutes les commandes peuvent être appelées soit avec
-* une **lettre majuscule**, auquel cas les coordonnées données sont absolues (ex: point aux coordonnées (10,7)).
-* une **lettre minuscule**, auquel cas les coordonnées sont relatives (ex: point à 10px vers le bas et 7px vers la droite de la position actuelle).
+* une **lettre majuscule**, auquel cas les coordonnées données sont absolues. Ex: point aux coordonnées (10,7)
+* une **lettre minuscule**, auquel cas les coordonnées sont relatives. Ex: point à 10px vers le bas et 7px vers la droite par rapport à la position actuelle
 
 Les <ins>différentes commandes</ins> sont:
 
@@ -156,7 +253,7 @@ Les <ins>différentes commandes</ins> sont:
 
 ---
 
-### text
+## text
 
 La balise `text` permet d'ajouter du texte dans le SVG.  
 Par défaut, le point (`x`,`y`) désigne la position du coin inférieur gauche du texte. Il est possible de modifier ce comportement. avec les attributs `text-anchor` et `alignment-baseline`.
@@ -169,9 +266,9 @@ Par défaut, le point (`x`,`y`) désigne la position du coin inférieur gauche d
     <text x="5" y="15" fill="white">Hello World</text>
 </svg>
 
-### tspan
+## tspan
 
-La balise `tspan` est forcemment enfant de `text` ou `tspan`. Elle permet de baliser des sous-parties de texte.
+La balise `tspan` doit être un enfant de `text` ou `tspan`. Elle permet de baliser des sous-parties de texte.
 
 ``` html
 <text x="5" y="15" fill="white">
@@ -204,10 +301,10 @@ Cela permet par exemple d'ajouter des retours à la ligne.
   </text>
 </svg>
 
-### textPath
+## textPath
 
 La balise `textPath` permet de placer du texte sur une ligne définit par un élément `path`.  
-Attention, le texte ne tenant pas sur la ligne est tronqué.
+Attention, si le texte dépasse la ligne, il est tronqué.
 
 ``` html
 <path id="MyPath" fill="none" stroke="red"
@@ -223,4 +320,108 @@ Attention, le texte ne tenant pas sur la ligne est tronqué.
   <text fill="white">
     <textPath href="#MyPath">The quick brown fox jumps over the lazy dog.</textPath>
   </text>
+</svg>
+
+---
+
+## g
+
+La balise `g` (pour groupe) permet de grouper un ensemble de formes, un peu à la manière d'un `div` en HTML. Cette balise peut être utile 1. pour que le code soit plus compréhensible 2. pour appliquer des interractions utilisateur (comme `:hover`) 3. pour appliquer des transformations sur plusieurs formes (`transform`) 4. pour appliquer un même style (fill, stroke, etc) sur plusieurs éléments.
+
+``` html
+<style>
+  g:hover * { fill: green; }
+</style>
+<g>
+  <rect x="5" y="5" width="50" height="50" fill="white" />
+  <rect x="20" y="20" width="50" height="50" fill="red" />
+</g>
+```
+
+<svg width="100" height="100" style="background: black" id="hover-green">
+    <style>
+        #hover-green g:hover * { fill: green; }
+    </style>
+    <g>
+      <rect x="5" y="5" width="50" height="50" fill="white" />
+      <rect x="20" y="20" width="50" height="50" fill="red" />
+    </g>
+</svg>
+
+---
+
+## image
+
+La balise `image` permet d'insérer une image (vectorielle ou bitmap) dans le document SVG.
+
+``` html
+<image width="128" height="146" xlink:href="https://mdn.mozillademos.org/files/6457/mdn_logo_only_color.png" />
+```
+
+<svg width="100" height="100" viewBox="0 0 128 146">
+  <image width="128" height="146" xlink:href="https://mdn.mozillademos.org/files/6457/mdn_logo_only_color.png" />
+</svg>
+
+---
+
+## foreignObject
+
+La balise `foreignObject` permet d'inclure des éléments d'un espace de noms XML différent à l'intérieur du SVG. Dans le contexte d'un navigateur, il s'agit généralement d'inclure du XHTML/HTML. Dans le cas d'un SVG intégré dans du HTML, le namespace XHTML peut être omis, mais il est obligatoire dans le contexte d'un document SVG standalone.
+
+``` html
+<foreignObject x="20" y="20" width="160" height="160">
+  <div xmlns="http://www.w3.org/1999/xhtml" style="font-size: 28px; overflow: auto; height: 100%;">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </div>
+</foreignObject>
+```
+
+<svg width="100" height="100" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="5,5 195,10 185,185 10,195" fill="skyblue" />
+
+  <foreignObject x="20" y="20" width="160" height="160">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font-size: 28px; overflow: auto; height: 100%;">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </div>
+  </foreignObject>
+</svg>
+
+---
+
+## switch
+
+La balise `switch` affiche le premier élément enfant dont les attributs `requiredFeatures`, `requiredExtensions` et `systemLanguage` sont évalués à vrai. Les attributs non spécifiés valent vrai, ainsi un élément sans aucun attribut sera forcemment affiché si aucun élément n'a été affiché avant lui (revient à définir une valeur par défaut).
+
+L'exemple suivant affiche un texte différent suivant les paramètres de langue du navigateur, ou affiche un emoji si la langue de l'utilisateur n'est pas dans la liste:
+
+``` html
+ <switch>
+    <text systemLanguage="ar">مرحبا</text>
+    <text systemLanguage="de,nl">Hallo!</text>
+    <text systemLanguage="en">Hello!</text>
+    <text systemLanguage="en-us">Howdy!</text>
+    <text systemLanguage="en-gb">Wotcha!</text>
+    <text systemLanguage="en-au">G'day!</text>
+    <text systemLanguage="es">Hola!</text>
+    <text systemLanguage="fr">Bonjour!</text>
+    <text systemLanguage="ja">こんにちは</text>
+    <text systemLanguage="ru">Привет!</text>
+    <text>☺</text>
+ </switch>
+ ```
+
+<svg width="100" viewBox="-10 -30 100 100" style="background: lightgrey">
+   <switch>
+      <text systemLanguage="ar">مرحبا</text>
+      <text systemLanguage="de,nl">Hallo!</text>
+      <text systemLanguage="en">Hello!</text>
+      <text systemLanguage="en-us">Howdy!</text>
+      <text systemLanguage="en-gb">Wotcha!</text>
+      <text systemLanguage="en-au">G'day!</text>
+      <text systemLanguage="es">Hola!</text>
+      <text systemLanguage="fr">Bonjour!</text>
+      <text systemLanguage="ja">こんにちは</text>
+      <text systemLanguage="ru">Привет!</text>
+      <text>☺</text>
+   </switch>
 </svg>

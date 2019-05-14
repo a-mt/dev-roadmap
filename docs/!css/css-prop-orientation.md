@@ -3,221 +3,261 @@ title: Orientation
 category: Web, CSS, Propriétés
 ---
 
-## Du texte
+## writing-mode
+
+Définit si les lignes de texte sont écrites horizontalement ou verticalement [CSS3]
 
 ``` plain
 writing-mode: horizontal-tb | vertical-rl | vertical-lr
-(CSS3)
-Définit si les lignes de texte sont écrites horizontalement ou verticalement
 ```
 
-[Exemples writing-mode](https://jsfiddle.net/amt01/k298bgsz/)
+[JSFiddle writing-mode](https://jsfiddle.net/amt01/k298bgsz/)
 
-``` plain
-direction: ltr | rtl
-(CSS2)
-Définit l'ordre de lecture de la page ("left to right" ou "right to left")
-```
+## text-orientation
 
-``` plain
-unicode-bidi: embed | bidi-override | normal
-(CSS2)
-En association avec la propriété direction, définit l'ordre des caractères
-```
-
-``` plain
-text-underline-position: left | right | under | auto
-(CSS3)
-Définit la position du soulignement lorsque text-decoration vaut underline
-- under: la ligne sera située sous la ligne de base, ne coupant aucun jambage
-- left, right: utiles pour les modes d'écritures à la verticale
-```
+Définit l'orientation du texte sur une ligne  
+N'a d'effet qu'en mode vertical [CSS3]
 
 ``` plain
 text-orientation: mixed | upright | sideways
-(CSS3)
-Définit l'orientation du texte sur une ligne
-Elle n'a d'effet qu'en mode vertical
 ```
 
-[Exemple text-orientation](https://jsfiddle.net/amt01/ebhajsjj/)
+[JSFiddle text-orientation](https://jsfiddle.net/amt01/ebhajsjj/)
+
+---
+
+## direction
+
+Définit l'ordre de lecture de la page [CSS2]  
+ltr = left to right, rtl = right to left
 
 ``` plain
-text-combine-upright: all | none
-(CSS3)
-Définit les caractères compresser dans un espace normallement alloué à un seul caractère
+direction: ltr | rtl
 ```
 
-[Exemple text-combine-upright](https://jsfiddle.net/amt01/qk76L964/)
+## unicode-bidi
+
+À utiliser en association avec la propriété `direction`, définit l'ordre des caractères [CSS2]
+
+``` plain
+unicode-bidi: embed | bidi-override | normal
+```
 
 Avec `direction: rtl`,
 le contenu des blocs est aligné à droite,
 les blocs sont alignés à droite,
 l'ordre des blocs est de droite à gauche,
-comme si un float: right était appliqué à tous les éléments
+comme si un float: right était appliqué à tous les éléments.
 
 ``` css
 {
-  direction: rtl;              /* affiche les blocs de droite à gauche */
+  direction: rtl;  /* affiche les blocs de droite à gauche */
   unicode-bidi: bidi-override; /* affiche chaque caractère de droite à gauche */
 }
 ```
 
+---
+
+## text-underline-position
+
+Définit la position du soulignement de `text-decoration: underline` [CSS3]
+- under: la ligne sera située sous la ligne de base, ne coupant aucun jambage
+- left, right: utile pour les modes d'écritures à la verticale
+
+``` plain
+text-underline-position: left | right | under | auto
+```
+
+---
+
+## text-combine-upright
+
+Définit comment intégrer une combinaison de plusieurs caractères dans un espace normalement alloué à un seul caractère. Utile pour les caractères logographiques (comme des caractères chinois ou kanji japonais) [CSS3]
+
+``` plain
+text-combine-upright: all | none | digits | digits <number>
+```
+
+[JSFiddle text-combine-upright](https://jsfiddle.net/amt01/qk76L964/)
+
+---
+
 ## border-block
 
-Les propriétés `border-block` et `border-inline` permettent de définir la bordure d'un élément selon le mode d'écriture, la directionnalité et l'orientation du texte.
-Autrement dit, elles correspondent à l'une des propriétés border-top, border-right, border-bottom ou border-left selon les valeurs utilisées pour writing-mode, direction et text-orientation.  
-[Exemple border-block/border-inline](https://jsfiddle.net/amt01/2q8mpdq6/)
+Permet de définir la bordure gauche/droite/haut/bas de l'élément en respectant l'orientation du texte.  
+Autrement dit, correspond soit à `border-top`, `border-right`, `border-bottom` ou `border-left` selon les valeurs de `writing-mode`, `direction` et `text-orientation`.  
 
-``` plain
-border-block-start: <border-width> <border-style> <border-color>
-(CSS3)
-Raccourcis permettant de définir la bordure d'un élément pour le côté haut
-```
+* `border-block-start`  
+  Permet de définir la bordure en haut du texte [CSS3]  
+  Raccourci pour `border-block-start-width`, `border-block-start-style`, `border-block-start-color`
 
-``` plain
-border-block-end: <border-width> <border-style> <border-color>
-(CSS3)
-Raccourcis permettant de définir la bordure d'un élément pour le côté bas
-```
+  ``` plain
+  border-block-start: <border-width> <border-style> <border-color>
+  ```
 
-``` plain
-border-inline-start: <border-width> <border-style> <border-color>
-(CSS3)
-Raccourcis permettant de définir la bordure d'un élément pour le côté gauche
-```
+* `border-block-end`  
+  Permet de définir la bordure en bas du texte [CSS3]  
+  Raccourci pour `border-block-end-width`, `border-block-end-style`, `border-block-end-color`
 
-``` plain
-border-inline-end: <border-width> <border-style> <border-color>
-(CSS3)
-Raccourcis permettant de définir la bordure d'un élément pour le côté droit
-```
+  ``` plain
+  border-block-end: <border-width> <border-style> <border-color>
+  ```
 
-Également disponibles:
-- `border-block-start-width`, `border-block-start-style`, `border-block-start-color`
-- `border-block-end-width`, `border-block-end-style`, `border-block-end-color`
-- `border-inline-start-width`, `border-inline-start-style`, `border-inline-start-color`
-- `border-inline-end-width`, `border-inline-end-style`, `border-inline-end-color`
+* `border-inline-start`  
+  Permet de définir la bordure à gauche du texte [CSS3]  
+  Raccourci pour `border-inline-start-width`, `border-inline-start-style`, `border-inline-start-color`
+
+  ``` plain
+  border-inline-start: <border-width> <border-style> <border-color>
+  ```
+
+* `border-inline-end`  
+  Permet de définir la bordure à droite du texte [CSS3]  
+  Raccourci pour `border-inline-end-width`, `border-inline-end-style`, `border-inline-end-color`
+
+  ``` plain
+  border-inline-end: <border-width> <border-style> <border-color>
+  ```
+
+[JsFiddle border-block/border-inline](https://jsfiddle.net/amt01/2q8mpdq6/)
+
+---
 
 ## padding-block
 
-Même principe que pour border, `padding-block` et `padding-inline` dépendent de l'orientation du texte.
-Correspond à la propriété padding-top, padding-right, padding-bottom ou padding-left selon les valeurs qui sont utilisées pour writing-mode, direction et text-orientation.  
-[Exemple padding-block/padding-inline](https://jsfiddle.net/amt01/2q8mpdq6/)
+Permet de définir le padding gauche/droite/haut/bas de l'élément en respectant l'orientation du texte.  
+Autrement dit, correspond soit à `padding-top`, `padding-right`, `padding-bottom` ou `padding-left` selon les valeurs de `writing-mode`, `direction` et `text-orientation`.
 
-``` plain
-padding-block-start: (<length> | <percentage>){1,4}
-(CSS3)
-Définit le padding d'un élément pour le côté haut
-```
+* `padding-block-start`  
+  Définit le padding en haut du texte [CSS3]
 
-``` plain
-padding-block-end: (<length> | <percentage>){1,4}
-(CSS3)
-Définit le padding d'un élément pour le côté bas
-```
+  ``` plain
+  padding-block-start: (<length> | <percentage>){1,4}
+  ```
 
-``` plain
-padding-inline-start: (<length> | <percentage>){1,4}
-(CSS3)
-Définit le padding d'un élément pour le côté gauche
-```
+* `padding-block-end`  
+  Définit le padding en bas du texte [CSS3]
 
-``` plain
-padding-inline-end: (<length> | <percentage>){1,4}
-(CSS3)
-Définit le padding d'un élément pour le côté droit
-```
+  ``` plain
+  padding-block-end: (<length> | <percentage>){1,4}
+  ```
+
+* `padding-inline-start`  
+  Définit le padding à gauche du texte [CSS3]
+
+  ``` plain
+  padding-inline-start: (<length> | <percentage>){1,4}
+  ```
+
+* `padding-inline-end`  
+  Définit le padding à droite du texte [CSS3]
+
+  ``` plain
+  padding-inline-end: (<length> | <percentage>){1,4}
+  ```
 
 ## margin-block
 
-`margin-block` et `margin-inline` définit les marges d'un bloc selon l'orientation du texte.
-Correspond à la propriété margin-top, margin-right, margin-bottom ou margin-left selon les valeurs utilisées pour writing-mode, direction, et text-orientation.
+Permet de définir le margin gauche/droite/haut/bas de l'élément en respectant l'orientation du texte.  
+Autrement dit, correspond soit à `margin-top`, `margin-right`, `margin-bottom` ou `margin-left` selon les valeurs de `writing-mode`, `direction` et `text-orientation`.
 
-``` plain
-margin-block-start: <length> | <percentage> | auto
-(CSS3)
-Définit les marges en haut
-```
+* `margin-block-start`  
+  Définit la marge en haut du texte [CSS3]
 
-``` plain
-margin-block-end: <length> | <percentage> | auto
-(CSS3)
-Définit les marges en bas
-```
+  ``` plain
+  margin-block-start: <length> | <percentage> | auto
+  ```
 
-``` plain
-margin-inline-start: <length> | <percentage> | auto
-(CSS3)
-Définit les marges à gauche
-```
+* `margin-block-end`  
+  Définit la marge en bas du texte [CSS3]
 
-``` plain
-margin-inline-end: <length> | <percentage> | auto
-(CSS3)
-Définit les marges à droite
-```
+  ``` plain
+  margin-block-end: <length> | <percentage> | auto
+  ```
+
+* `margin-inline-start`  
+  Définit la marge à gauche du texte [CSS3]
+
+  ``` plain
+  margin-inline-start: <length> | <percentage> | auto
+  ```
+
+* `margin-inline-end`  
+  Définit la marge à droite du texte [CSS3]
+
+  ``` plain
+  margin-inline-end: <length> | <percentage> | auto
+  ```
+
+---
 
 ## offset-block
 
-`offset-block` et `offset-inline` définit le décalage d'un bloc selon l'orientation du texte.
-Correspond à une des propriétés parmi top, right, bottom ou  left selon les valeurs des propriétés writing-mode, direction et text-orientation.
+Permet de définir le décalage gauche/droite/haut/bas de l'élément en respectant l'orientation du texte.  
+Autrement dit, correspond soit à `top`, `right`, `bottom` ou `left` selon les valeurs de `writing-mode`, `direction` et `text-orientation`.
 
-``` plain
-offset-block-start: <length> | <percentage> | auto
-(CSS3)
-Définit le déplacement à partir du haut
-```
+* `offset-block-start`  
+  Décale le texte à partir du haut [CSS3]
 
-``` plain
-offset-block-end: <length> | <percentage> | auto
-(CSS3)
-Définit le déplacement à partir du bas
-```
+  ``` plain
+  offset-block-start: <length> | <percentage> | auto
+  ```
 
-``` plain
-offset-inline-start: <length> | <percentage> | auto
-(CSS3)
-Définit le déplacement à partir de la gauche
-```
+* `offset-block-end`  
+  Décale le texte à partir du bas [CSS3]
 
-``` plain
-offset-inline-end: <length> | <percentage> | auto
-(CSS3)
-Définit le déplacement à partir de la droite
-```
+  ``` plain
+  offset-block-end: <length> | <percentage> | auto
+  ```
 
-## min-block-size
+* `offset-inline-start`  
+  Décale le texte à partir de la gauche [CSS3]
 
-`min-block-size` et `min-inline-size` définit la hauteur ou la largeur minimale selon l'orientation du texte.
-Correspond à la propriété min-width ou min-height selon la valeur utilisée pour writing-mode.  
-[Exemple min-block-size](https://jsfiddle.net/amt01/wL4msq96/)
+  ``` plain
+  offset-inline-start: <length> | <percentage> | auto
+  ```
 
-``` plain
-min-block-size: <length> | <percent>
-(CSS3)
-Définit la hauteur minimale de l'élément en mode vertical ou la largeur minimale en mode horizontal
-```
+* `offset-inline-end`  
+  Décale le texte à partir de la droite [CSS3]
 
-``` plain
-min-inline-size: <length> | <percent>
-(CSS3)
-Définit la largeur minimale de l'élément en mode vertical ou la hauteur minimale en mode horizontal
-```
+  ``` plain
+  offset-inline-end: <length> | <percentage> | auto
+  ```
+
+---
 
 ## block-size
 
-`block-size` et `inline-size` définit la hauteur ou la largeur selon l'orientation du texte.
-Correspond à la propriété width ou height selon la valeur utilisée pour writing-mode.
+Permet de définir la hauteur ou la largeur selon l'orientation du texte.
+Correspond à la propriété `width` ou `height` selon la valeur utilisée pour `writing-mode`.
 
-``` plain
-block-size: <length> | <percent>
-(CSS3)
-Définit la hauteur de l'élément en mode vertical ou la largeur en mode horizontal
-```
+* `block-size` définit la hauteur du texte [CSS3]
 
-``` plain
-inline-size: <length> | <percent>
-(CSS3)
-Définit la largeur de l'élément en mode vertical ou la hauteur en mode horizontal
-```
+  ``` plain
+  block-size: <length> | <percent>
+  ```
+
+* `inline-size` définit la largeur du texte [CSS3]
+
+  ``` plain
+  inline-size: <length> | <percent>
+  ```
+
+## min-block-size
+
+Permet de définir la hauteur ou la largeur minimale selon l'orientation du texte.
+Correspond à la propriété `min-width` ou `min-height` selon la valeur utilisée pour `writing-mode`.  
+
+* `min-block-size` définit la hauteur minimale du texte [CSS3]
+
+  ``` plain
+  min-block-size: <length> | <percent>
+  ```
+
+* `min-inline-size` définit la largeur minimale du texte [CSS3]
+
+  ``` plain
+  min-inline-size: <length> | <percent>
+  ```
+
+[JSFiddle min-block-size](https://jsfiddle.net/amt01/wL4msq96/)

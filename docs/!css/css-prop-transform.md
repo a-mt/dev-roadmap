@@ -3,48 +3,51 @@ title: Transformations
 category: Web, CSS, Propriétés
 ---
 
-Les transformations servent à modifier la forme et la position d'un élément HTML : étirer, faire tourner, etc.
-Les transformations ne changent pas le flow document normal, c'est à dire que les éléments autour ignorent les transformations.  
-On utilise généralement les transformations avec la propriété `transition` afin de créer des animations simples.  
-[Exemples transformations 2D & 3D](https://jsfiddle.net/amt01/6enswd6e/)
+Les transformations servent à modifier la forme et la position d'un élément HTML: étirer, faire tourner, etc.
+Les transformations ne changent pas le flow du document, autrement dit les éléments autour ignorent les transformations.  
+On utilise généralement les transformations avec la propriété `transition` afin de créer des animations fluides (simples).
 
 ## transform
 
+Définit la ou les transformations à appliquer [CSS3]
+
+<ins>Définition</ins>:
+
 ``` plain
 transform: <transform-function>
-(CSS3)
-Définit la ou les transformations à appliquer
 ```
 
-``` plain
-transform-origin: (<length> | <percentage> | left | center | right | top | bottom){1,2}
-(CSS3)
-Définit l'origine du repère pour les opérations de transformation
-Par défaut se situe
-    - au milieu (50% 50%) pour les éléments HTML
-    - en haut à gauche (top left) pour les éléments SVG
+<ins>Exemple</ins>:
+
+``` css
+{
+  transition: transform 3s;
+}
 ```
 
-``` plain
-transform-box: border-box | fill-box | view-box
-(CSS3)
-Définit la boîte de référence utilisée par transform et transform-origin
-Uniquement pour les éléments SVG
-- border-box : bordure incluse
-- fill-box   : contenu uniquement
-- view-box   : utilise la viewBox la plus proche
+``` scss
+{
+  transition: all 2s ease;
+  &:hover {
+    transform: rotateY(360deg);
+  }
+}
 ```
 
-[Exemples transform-origin](https://developer.mozilla.org/fr/docs/Web/CSS/transform-origin#Exemples)  
-[Animation transform-origin](https://codepen.io/sdras/full/dVwaZG/)
+[JSFiddle transformations 2D & 3D](https://jsfiddle.net/amt01/6enswd6e/)
 
-``` plain
-transform-style: flat | preserve-3d
-(CSS3)
-Définit si les enfants de l'élément doivent être considérés comme étant en 3d ou non
+<ins>Multiples transformations</ins>:
+
+Pour appliquer plusieurs transformations, les lister séparées par un espace.  
+L'ordre des transformations est important, chaque transformation est calculée par dessus la somme des transformations précédentes. [JSfiddle ordre transformations](https://jsfiddle.net/amt01/23nm563L/)
+
+``` css
+{
+  transform: scale(2,1) rotate(60deg);
+}
 ```
 
-<ins>transform-function 2D</ins> :
+<ins>transform-function 2D</ins>:
 
 <table>
   <thead>
@@ -60,7 +63,8 @@ Définit si les enfants de l'élément doivent être considérés comme étant e
     </tr>
     <tr>
       <td><code>translateX(&lt;length&gt; | &lt;percentage&gt;)</code></td>
-      <td>Déplace l’élément horizontalement</td>
+      <td>Déplace l’élément horizontalement<br>
+Les pourcentages sont calculés relativement à l'objet en courslui-même et non à son parent : <code>translateX(100%)</code> déplace l'élément à côté de l'endroit où il était (= déplacement de 100% de sa largeur)</td>
     </tr>
     <tr>
       <td><code>translateY(&lt;length&gt; | &lt;percentage&gt;)</code></td>
@@ -121,20 +125,9 @@ ou <a href="http://jsfiddle.net/nK2u7/103/">via slider</a><br>
   </tbody>
 </table>
 
-Le pourcentage réfère à l'objet lui-même et non à son parent : `translateX(100%)` déplace l'élément à côté de l'endroit où il était (= déplacement de 100% de sa largeur)
+<ins>transform-function 3D</ins>:
 
-``` scss
-{
-  transition: all 2s ease;
-  &:hover {
-    transform: rotateY(360deg);
-  }
-}
-```
-
-<ins>transform-function 3D</ins> :
-
-Les transformations 3D héritent des transformations 2D et ajoutent un troisième axe : Z, qui permet de déplacer les éléments dans l'espace, comme des cartes postales ou des facettes de cube. 
+Les transformations 3D héritent des transformations 2D et ajoutent un troisième axe: Z, qui permet de déplacer les éléments dans l'espace, comme des cartes postales ou des facettes de cube. 
 [Exemples de transformations 3D](http://css3.bradshawenterprises.com/transforms/)
 
 <table>
@@ -205,38 +198,75 @@ c1,c2,c3,c4, tx,ty,tz,d4)</pre></td>
 }
 ```
 
-<ins>Multiples transformations</ins> :
+---
 
-Pour appliquer plusieurs transformations, les lister séparées par un espace.  
-Les transformations ont un ordre, chaque transformation est calculée par dessus la somme des transformations précédentes. [Exemple ordre transformations](https://jsfiddle.net/amt01/23nm563L/)
+## transform-origin
 
-``` css
-{
-  transform: scale(2,1) rotate(60deg);
-}
+Définit l'origine du repère pour les opérations de transformation [CSS3]
+
+``` plain
+transform-origin: (<length> | <percentage> | left | center | right | top | bottom){1,2}
 ```
+
+Par défaut se situe
+- au milieu (50% 50%) pour les éléments HTML
+- en haut à gauche (top left) pour les éléments SVG
+
+[Exemples transform-origin](https://developer.mozilla.org/fr/docs/Web/CSS/transform-origin#Exemples)  
+[Codepen Animation transform-origin](https://codepen.io/sdras/full/dVwaZG/)
+
+---
+
+## transform-box
+
+``` plain
+transform-box: border-box | fill-box | view-box
+(CSS3)
+Définit la boîte de référence utilisée par transform et transform-origin
+Uniquement pour les éléments SVG
+- border-box : bordure incluse
+- fill-box   : contenu uniquement
+- view-box   : utilise la viewBox la plus proche
+```
+
+---
+
+## transform-style
+
+Définit si les enfants de l'élément doivent être considérés comme étant en 3d ou non [CSS3]
+
+``` plain
+transform-style: flat | preserve-3d
+```
+
+---
 
 ## perspective
 
+Définit la distance de vision par rapport à l'élément (perspective) [CSS3]
+
 ``` plain
 perspective: <length>
-(CSS3)
-Définit la perspective (distance de vision par rapport à l'élément)
 ```
+
+## perspective-origin
+
+Définit la position du point de fuite [CSS3]
 
 ``` plain
 perspective-origin: <length> | <percentage> | left | center | right | top | bottom
-(CSS3)
-Définit la position du point de fuite
-Par défaut se situe au milieu (50% 50%)
 ```
+
+Par défaut se situe au milieu (50% 50%)
+
+---
 
 ## backface-visibility
 
+Définit si la face arrière de l'élément est visible ou non [CSS3]
+
 ``` plain
 backface-visiblity: visible | hidden
-(CSS3)
-Définit si la face arrière de l'élément est visible ou non
 ```
 
 [Exemple backface-visiblity avec cube](http://webkit.org/blog-files/3d-transforms/morphing-cubes.html)

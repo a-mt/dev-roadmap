@@ -5,11 +5,15 @@ category: Web, CSS, Propriétés
 
 ## table-layout
 
+Définit si la taille des cellules dépendent de leur contenu ou non [CSS2].
+
+<ins>Définition</ins>:
+
 ``` plain
 table-layout: auto | fixed
-(CSS2)
-Définit si la taille des cellules dépendent de leur contenu ou non
 ```
+
+<ins>Exemple</ins>:
 
 ``` css
 {
@@ -18,19 +22,19 @@ Définit si la taille des cellules dépendent de leur contenu ou non
 }
 ```
 
-## border
+---
+
+## border-collapse
+
+Définit si les bordures de deux cellules adjacentes sont en commun ou non [CSS2]
+
+<ins>Définition</ins>:
 
 ``` plain
 border-collapse: separate | collapse
-(CSS2)
-Définit si les bordures de deux cellules adjacentes sont en commun ou non
 ```
 
-``` plain
-border-spacing: <length length> | <length>
-(CSS2)
-Définit la distance entre les bordures de deux cellules lorsqu'elles sont séparées
-```
+<ins>Exemple</ins>:
 
 ``` css
 {
@@ -38,13 +42,29 @@ Définit la distance entre les bordures de deux cellules lorsqu'elles sont sépa
 }
 ```
 
-## caption
+---
+
+## border-spacing
+
+Définit la distance entre les bordures de deux cellules lorsqu'elles sont séparées [CSS2]
+
+``` plain
+border-spacing: <length length> | <length>
+```
+
+---
+
+## caption-side
+
+Définit si la légende du tableau est affichée en haut ou en bas [CSS2]
+
+<ins>Définition</ins>:
 
 ``` plain
 caption-side: top | bottom
-(CSS2)
-Définit si la légende du tableau est affichée en haut ou en bas
 ```
+
+<ins>Exemple</ins>:
 
 ``` css
 {
@@ -52,13 +72,19 @@ Définit si la légende du tableau est affichée en haut ou en bas
 }
 ```
 
+---
+
 ## empty-cells
+
+Définit si les bordures et background des cellules vides sont affichés ou non [CSS2]
+
+<ins>Définition</ins>:
 
 ``` plain
 empty-cells: show | hide
-(CSS2)
-Définit si les bordures et background des cellules vides sont affichés ou non
 ```
+
+<ins>Exemple</ins>:
 
 ``` css
 {

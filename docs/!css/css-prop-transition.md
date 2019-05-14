@@ -6,81 +6,44 @@ category: Web, CSS, Propriétés
 Les transitions permettent aux changements de valeur de propriétés de se produire en douceur sur une durée spécifiée.  
 Elles se déclarent sur l'état initial de l'élément,
 et sont appliquées lorsque les valeurs des propriétés changent, par exemple au focus ou même au changement de classe de l'élément.  
-[Exemples transition](https://jsfiddle.net/amt01/5cor0o27/)
-
 Il y a environ [50 propriétés qui peuvent être transitionnées](http://www.w3.org/TR/css3-transitions/#animatable-css)
 
-## transition
+---
 
-``` plain
-transition: <property> <duration> [<timing-function>] [<delay>]
-(CSS3)
-Raccourcis permettant de définir la transition d'un élément
-```
+## transition-property
+
+Définit sur quelle propriété s'applique la transition [CSS3]
 
 ``` plain
 transition-property: all | <property> | none
-(CSS3)
-Définit sur quelle propriété s'applique la transition
 ```
+
+[JSFiddle transition](https://jsfiddle.net/amt01/5cor0o27/)
+
+---
+
+## transition-duration
+
+Définit la durée de la transition [CSS3]
 
 ``` plain
 transition-duration: <time>
-(CSS3)
-Définit la durée de la transition
 ```
+
+---
+
+## transition-timing-function
+
+Définit le comportement de la transition [CSS3]
 
 ``` plain
 transition-timing-function: ease | linear | ease-in | ease-out | ease-in-out |
                             step-start | step-end | steps(<n>[,start|end]) |
                             cubic-bezier(<x1>,<y1>,<x2>,<y2>)
-(CSS3)
-Définit le comportement de la transition (ease par défaut)
 ```
-
-``` plain
-transition-delay: <time>
-(CSS3)
-Définit un délai entre le déclenchement et la transition (0 par défaut)
-```
-
-``` scss
-{
-  background-color: orange;
-  transition: background 1s;
-
-  &:hover {
-    background-color: blue;
-  }
-}
-```
-
-<ins>Multiples transitions</ins> :
-
-Une transition peut porter sur une propriété en particulier ou toutes.  
-Pour appliquer différentes transitions sur différentes propriétés, les définir séparées par une virgule.
-
-``` css
-transition: background 1s, opacity 0.5s 0.5s;
-```
-
-Est équivalent à
-
-``` css
-transition-property: background, opacity;
-transition-duration: 1s, 0.5s;
-transition-delay: 0s, 0.5s;
-```
-
-<ins>transition-delay</ins> :
-
-Le délai peut être utilisé pour démarrer une animation après une autre.  
-[Exemple transition-delay](https://jsfiddle.net/amt01/13p6651L/)
-
-<ins>transition-timing-function</ins> :
 
 Par défaut, les transitions commencent lentement, accélèrent, puis ralentissent un peu avant de terminer - c'est le timing `ease`.
-Il est possible de modifier ce comportement en utilisant une autre fonction, ou en définissant soi-même le comportement de la transition via `cubic-bezier()`.
+Il est possible de modifier ce comportement en utilisant une autre fonction, ou en définissant soi-même le comportement de la transition via [`cubic-bezier()`](css-values.md#cubic-bezier). On peut également créer une animation frame par frame, à la manière d'un GIF, avec [`steps()`](css-values.md#steps)
 
 <table>
   <thead>
@@ -135,35 +98,55 @@ Il est possible de modifier ce comportement en utilisant une autre fonction, ou 
   </tbody>
 </table>
 
-### cubic-bezier()
+---
 
-La fonction cubic-bezier() permet de définir un timing personnalisé.  
-Les mots clés `ease`, `linear`, `ease-in`, `ease-out`, `ease-in-out` sont en fait des [raccourcis pour les courbes bézier](https://developer.mozilla.org/fr/docs/Web/CSS/single-transition-timing-function#Mots-cl%C3%A9s_pour_les_fonctions_de_temporisation_usuelles) usuellement utilisées.
+## transition-delay
 
-``` plain
-cubic-bezier(x1,y1,x2,y2)
-(CSS3)
-Nombres entre 0 et 1, séparés par virgules
-```
-
-Les coordonnées indiquent les positions des poignées Bezier de début et de fin, qui tracent la progression de l'animation entre le début et la fin.
-* plus la courbe est raide, plus l'animation est rapide
-* plus la courbe est plate, plus l'animation est lente
-* si la courbe fait des demi-tours, l'animation effectue des rebonds
-
-[Exemples de courbes béziers](http://easings.net)  
-[Créer une courbe bézier](http://cubic-bezier.com)
-
-### steps()
-
-La fonction steps permet d'afficher une animation par saccades, ce qui peut permettre de simuler une animation GIF par exemple.
+Définit un délai entre le déclenchement et la transition [CSS3]  
+0 par défaut
 
 ``` plain
-steps(<integer>, [start \| end])
-(CSS3)
-Nombres d'étapes et direction
+transition-delay: <time>
+```
+Le délai peut être utilisé pour démarrer une animation après une autre.  
+[JSFiddle transition-delay](https://jsfiddle.net/amt01/13p6651L/)
+
+---
+
+## transition
+
+Est un raccourci pour les propriétés précédentes [CSS3]
+
+``` plain
+transition: <property> <duration> [<timing-function>] [<delay>]
 ```
 
-[Exemples steps](https://jsfiddle.net/amt01/3e3o8y0q/)  
-[Exemples: clock, cars, paws, progress](https://designmodo.com/demo/stepscss/index.html)  
-[Exemple background-image sprite animation](http://jsfiddle.net/simurai/CGmCe/light/)
+<ins>Exemple</ins>:
+
+``` scss
+{
+  background-color: orange;
+  transition: background 1s;
+
+  &:hover {
+    background-color: blue;
+  }
+}
+```
+
+<ins>Multiples transitions</ins> :
+
+Une transition peut porter sur une propriété en particulier ou toutes.  
+Pour appliquer différentes transitions sur différentes propriétés, les définir séparées par une virgule.
+
+``` css
+transition: background 1s, opacity 0.5s 0.5s;
+```
+
+Est équivalent à
+
+``` css
+transition-property: background, opacity;
+transition-duration: 1s, 0.5s;
+transition-delay: 0s, 0.5s;
+```

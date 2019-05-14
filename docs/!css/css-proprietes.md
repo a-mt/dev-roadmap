@@ -14,7 +14,7 @@ border-style: solid;
 ```
 
 Lorsque c'est le cas, on peut généralement les définir via une propriété raccourcie (shorthand).  
-Le plus souvent, les propriétés d'un raccourcis peuvent se définir dans n'importe quel ordre.
+Si les types des valeurs sont différents, alors l'ordre n'a pas d'importance.
 
 ``` css
 border: 1px solid black;
@@ -24,7 +24,7 @@ border: 1px solid black;
 border: solid black 1px;
 ```
 
-Les propriétés raccourcies qui gèrent les bords d'une boîte telles que `border-style`, `margin` ou `padding` peuvent prendre entre 1 et 4 valeurs. Leur ordre importe :
+Les propriétés raccourcies qui gèrent les bords d'une boîte telles que `border-style`, `margin` ou `padding` peuvent prendre entre 1 et 4 valeurs (taille). Leur ordre importe :
 
 <table>
   <thead>
@@ -60,359 +60,338 @@ Les propriétés raccourcies qui gèrent les bords d'une boîte telles que `bord
 
 ---
 
-## Valeurs globales
-
-Les valeurs globales peuvent s'appliquer pour toutes les propriétés CSS : initial, inherit, unset, revert.
-
-### initial
-
-`initial` (CSS2) applique la *valeur initiale* d'une propriété à un élément. La valeur initiale d'une propriété CSS est définie par les spécifications W3C.
-
-``` css
-.exemple {
-  color: red;
-}
-
-.exemple em {
-  color: initial; /* couleur initiale de em (black) */
-}
-```
-
-### inherit
-
-`inherit` (CSS2) est une valeur qui peut être utilisée pour qu'une propriété prenne la valeur calculée de la propriété pour l'élément parent.
-
-``` css
-p {
-  color: green;
-}
-
-p.exemple {
-  color: inherit; /* parent's color (black) */
-}
-```
-
-### unset
-
-`unset` (CSS3) réinitialise la propriété afin que sa valeur soit la valeur héritée depuis l'élément parent ou soit la valeur initiale (s'il n'y a pas d'héritage).
-
-Autrement dit, s'il y a de l'héritage, ce mot-clé se comporte comme `inherit`, sinon, il se comporte comme `initial`.
-
-``` css
-p {
-  color: red;
-}
-
-#sidebar p {
-  color: unset;
-}
-```
-
-### revert
-
-`revert` (CSS4) réinitialise la propriété avec la valeur par défaut définie par la feuille de style de l'agent utilisateur (ou par le style utilisateur s'il y en a un).
-
-Ne pas confondre `revert` avec `initial`: les feuilles de style des agents utilisateurs définissent des valeurs par défaut selon les sélecteurs CSS et qui sont différentes de la valeur initiale définie par les spécifications CSS.
-
-``` css
-.widget {
-  all: revert;
-}
-```
-
----
-
-## Fonctions globales
-
-Les fonctions globales peuvent être utilisée sur n'importe quelle propriété CSS.
-
-### calc()
-
-La fonction calc() permet de réaliser des calculs pour déterminer la valeur d'une propriété.
-Elle peut être utilisée pour toute valeur &lt;length&gt;, &lt;frequency&gt;, &lt;angle&gt;, &lt;time&gt;, &lt;number&gt;, ou &lt;integer&gt;.
-
-``` plain
-calc(<value> <operateur> <value>)
-
-où <value> = <number> | <dimension> | <percentage>
-(CSS3)
-Permet de calculer la valeur d'un attribut
-```
-
-| Opérateur | Opération      |
-|---        |---             |
-| +         | Addition       |
-| -         | Soustraction   |
-| *         | Multiplication |
-| /         | Division       |
-
-Toujours entourer les opérateurs d'espaces. Pour la multiplication et la division, la valeur à droite doit être de type &lt;number&gt;
-
-``` css
-{
-  width: calc(100% - 80px);
-}
-```
-
-### attr()
-
-Uniquement sur la propriété content. Support expérimental sur les autres propriétés.
-
-``` plain
-attr(<attr-name> <unit>)
-
-où <unit> = string | integer | color | url |
-            integer | number | length | angle | time | frequency |
-            em | ex | px | rem | vw | vh | vmin | vmax |
-            mm | q | cm | in | pt | pc |
-            deg | grad | rad | ms | s | Hz | kHz | %
-(CSS2)
-Permet de récupérer la valeur d'un attribut
-```
-
-``` css
-{
-  a:after {
-  content: " (" attr(href) ")";
-}
-```
-
-[Exemple attr()](https://jsfiddle.net/amt01/nd6uxt4e/)
-
----
-
 ## Propriétés
 
-### all
+* <ins>all</ins>:  
+  La propriété `all` permet de réinitialiser toutes les propriétés, à l'exception de unicode-bidi et direction, avec leurs valeurs initiales ou héritées.
 
-La propriété `all` permet de réinitialiser toutes les propriétés, à l'exception de unicode-bidi et direction, avec leurs valeurs initiales ou héritées.
+  ``` plain
+  all: initial | inherit | unset | revert
+  (CSS3)
+  Réinitialise toutes les propriétés
+  ```
+
+* <ins>content</ins>:  
+  La propriété `content` est utilisée avec les pseudo-éléments ::before et ::after afin de générer le contenu d'un élément.
+
+  ``` plain
+  content: <string> | <url> | counter() | attr()
+  (CSS2)
+  Définit le contenu du pseudo-élément ::before ou ::after
+  ```
+
+  ``` css
+  nav li:not(:first-child)::before {
+    content: " / ";
+    color: grey;
+  }
+  ```
+
+<!-- -->
+
+* [Box Model](css-prop-box-model.md):
+  display
+  visibility
+  opacity
+  border
+  margin
+  padding
+  width
+  height
+  box-sizing
+  overflow
+  cursor
+* [Autres bordures](css-prop-ext-border.md):
+  outline
+  border-image
+  border-radius
+  box-shadow
+  box-decoration-break
+* [Background](css-prop-background.md):
+  background-color
+  background-image
+  background-repeat
+  background-attachment
+  background-position
+  background-size
+  background-origin
+  background-clip
+  background
+  background-blend-mode
+  mix-blend-mode
+  isolation
+  clip-path
+  mask-image
+  mask-mode
+  mask-size
+  mask-repeat
+  mask-origin
+  mask-clip
+  mask-position
+  mask-composite
+  mask-composite
+  shape-outside
+  shape-margin
+  shape-image-threshold
+* [Interractions utilisateur](css-prop-interract.md):
+  pointer-events
+  touch-action
+  scroll-behaviour
+  scroll-snap-type
+  resize
+
+<!-- -->
+
+* [Texte](css-prop-texte.md):
+  color
+  text-decoration
+  text-transform
+  text-indent
+  text-align
+  text-justify
+  hyphens
+  text-shadow
+  text-overflow
+  text-rendering
+  text-emphasis
+  letter-spacing
+  word-spacing
+  word-break
+  word-wrap
+  white-space
+  line-break
+  hanging-punctuation
+  line-height
+  vertical-align
+  tab-size
+  quotes
+  caret
+* [Police d'écriture](css-prop-font.md):
+  font-style
+  font-variant
+  font-weight
+  font-size
+  font-family
+  font
+  font-size-adjust
+  font-kerning
+  font-stretch
+  font-synthesis
+  font-language-override
+  font-feature-settings
+  font-variant-alternates
+  font-variant-caps
+  font-variant-east-asian
+  font-variant-ligatures
+  font-variant-numeric
+  font-variant-position
+  ruby-align
+  ruby-position
+  ruby-merge
+* [Orientation](css-prop-orientation.md):
+  writing-mode
+  text-orientation
+  direction
+  unicode-bidi
+  text-underline-position
+  text-combine-upright
+  border-block-*
+  border-inline-*
+  padding-block-*
+  padding-inline-*
+  margin-block-*
+  margin-inline-*
+  offset-block-*
+  offset-inline-*
+  block-size
+  inline-size
+  min-block-size
+  min-inline-size
+
+<!-- -->
+
+* [Table](css-prop-table.md):
+  table-layout
+  border-collapse
+  border-spacing
+  caption-side
+  empty-cells
+* [Image](css-prop-image.md):
+  object-fit
+  object-position
+  image-orientation
+  image-rendering
+  filter
+* [Liste](css-prop-liste.md):
+  list-style-type
+  list-style-position
+  list-style-image
+  list-style
+  counter-increment
+  counter-reset
+
+<!-- -->
+
+* [Layout](css-prop-layout.md):
+  position
+  top
+  bottom
+  left
+  right
+  z-index
+  float
+* [Column](css-prop-column.md)
+  column-count
+  column-width
+  column
+  column-rule-width
+  column-rule-style
+  column-rule-color
+  column-rule
+  column-gap
+  column-fill
+  column-span
+* [Flex](css-prop-flex.md)
+  flex-direction
+  flex-wrap
+  flex-flow
+  justify-content
+  align-items
+  align-content
+  flex-basis
+  flex-grow
+  flex-shrink
+  flex
+  order
+  align-self
+* [Grid](css-prop-grid.md)
+  grid-auto-flow
+  grid-auto-rows
+  grid-auto-columns
+  grid-column-gap
+  grid-row-gap
+  grid-gap
+  align-items
+  justify-items
+  grid-template-columns
+  grid-template-rows
+  grid-template-areas
+  grid-template
+  grid
+  grid-area
+  grid-column-start
+  grid-column-end
+  grid-column
+  grid-row-start
+  grid-row-end
+  grid-row
+  align-self
+  justify-self
+
+<!-- -->
+
+* [Transition](css-prop-transition.md):
+  transition-property
+  transition-duration
+  transition-timing-function
+  transition-delay
+  transition
+* [Transformations](css-prop-transform.md):
+  transform
+  transform-origin
+  transform-box
+  transform-style
+  perspective
+  perspective-origin
+  backface-visibility
+* [Animations](css-prop-animation.md)
+  animation-name
+  animation-duration
+  animation-timing-function
+  animation-delay
+  animation-iteration-count
+  animation-direction
+  animation-fill-mode
+  animation-play-state
+  animation
+  will-change
+
+---
+
+## Propriétés personnalisés
+
+L'un des principaux avantages des préprocesseurs CSS est qu'ils permettent d'utiliser des variables. Cela évite de devoir copier/coller des valeurs et simplifie le développement et le refactoring, ce qui les rends très populaires. Cependant
+
+- on ne peut pas changer les variables dynamiquement
+- elles ne peuvent pas être lues ou modifiés à partir de JavaScript
+- elles ne dépendent pas du DOM
+
+C'est la raison pour laquelle les propriétés personnalisées (CSS custom properties) ont été crées.
 
 ``` plain
-all: initial | inherit | unset | revert
+--<string>: <value>
 (CSS3)
-Réinitialise toutes les propriétés
+Définit une propriété personnalisée
 ```
 
-### content
-
-La propriété `content` est utilisée avec les pseudo-éléments ::before et ::after afin de générer le contenu d'un élément.
-
 ``` plain
-content: <string> | <url> | counter() | attr()
-(CSS2)
-Définit le contenu du pseudo-élément ::before ou ::after
+val(<string>[, <fallback>])
+(CSS3)
+Récupére la valeur d'une propriété personnalisée
 ```
 
 ``` css
-nav li:not(:first-child)::before {
-  content: " / ";
-  color: grey;
+:root{
+  --main-color: #4d4e53;
+  --main-bg: rgb(255, 255, 255);
+  --logo-border-color: rebeccapurple;
+
+  --header-height: 68px;
+  --content-padding: 10px 20px;
+
+  --base-line-height: 1.428571429;
+  --transition-duration: .35s;
+  --external-link: "external link";
+  --margin-top: calc(2vh + 20px);
+
+  /* Valid CSS custom properties can be reused later in, say, JavaScript. */
+  --foo: if(x > 5) this.width = 10;
+}
+.box {
+  color: var(--main-color);
+
+  /* 10px is used because --box-margin is not defined. */
+  margin: var(--box-margin, 10px);
+
+  /* The --content-padding variable is used if --box-padding is not defined. */
+  padding: var(--box-padding, var(--content-padding));
 }
 ```
 
----
+``` js
+function readCssVar(element, varName){
+  const elementStyles = getComputedStyle(element);
+  return elementStyles.getPropertyValue(`--${varName}`).trim();
+}
 
-### Box model
+function writeCssVar(element, varName, value){
+  return element.style.setProperty(`--${varName}`, value);
+}
+```
 
-[Box Model](css-prop-box-model.md)
-* display
-* visibility
-* border
-* margin
-* padding
-* width
-* height
-* box-sizing
-* overflow
+<ins>Tester la prise en charge des propriétés personnalisées</ins> :
 
----
+``` css
+@supports (--a: 0) {
+  body {
+    color: --nomVar;
+  }
+}
+```
 
-### Autres bordures
+``` js
+const isSupported = window.CSS &&
+    window.CSS.supports && window.CSS.supports('--a', 0);
+```
 
-[Autres bordures](css-prop-ext-border.md)
-* outline
-* border-image
-* border-radius
-* box-shadow
-* box-decoration-break
-
----
-
-### Bloc
-
-[Bloc](css-prop-bloc.md)
-* opacity
-* background
-* cursor
-* caret
-
----
-
-### Texte
-
-[Texte](css-prop-texte.md)
-* color
-* text
-* word
-* line-break
-* hanging-punctuation
-* white-space
-* letter-spacing
-* vertical-align
-* tabsize
-* hyphens
-* quotes
-
----
-
-### Police d'écriture
-
-[Police d'écriture](css-prop-font.md)
-* font
-* @font-face
-* font-feature-settings
-* @font-feature-values
-* font-variant
-* ruby
-
----
-
-### Orientation
-
-[Orientation](css-prop-orientation.md)
-* writing-mode
-* direction
-* unicode-bidi
-* text-underline-position
-* text-orientation
-* text-combine-upright
-* border-block
-* padding-block
-* margin-block
-* offset-block
-* min-block-size
-* block-size
-
----
-
-### Table
-
-[Table](css-prop-table.md)
-* table-layout
-* border-collapse
-* border-spacing
-* caption-side
-* empty-cells
-
----
-
-### Image
-
-[Image](css-prop-image.md)
-* object
-* image
-
----
-
-### Liste
-
-[Liste](css-prop-liste.md)
-* list
-* counter
-* @counter-style
-* system()
-
----
-
-### Layout
-
-[Layout](css-prop-layout.md)
-* position
-* z-index
-* float
-* column
-* flex
-* align
-* grid
-* justify
-* minmax()
-* repeat()
-
----
-
-### Transitions
-
-[Transition](css-prop-transition.md)
-* transition
-* cubic-bezier()
-* steps()
-
----
-
-### Transformations
-
-[Transformations](css-prop-transform.md)
-* transform
-* perspective
-* backface-visibility
-
----
-
-### Animations
-
-[Animations](css-prop-animation.md)
-* @keyframes
-* animation
-* will-change
-
----
-
-### Interractions utilisateur
-
-[Interractions utilisateur](css-prop-interract.md)
-* pointer-events
-* touch-action
-* scroll
-* resize
-
----
-
-### Filtres
-
-[Filtres](css-prop-filter.md)
-* filter
-
----
-
-### Viewport
-
-[Viewport](css-prop-viewport.md)
-* zoom
-* orientation
-
----
-
-### Page
-
-[Page](css-prop-page.md)
-* orphans
-* widows
-* page
-
----
-
-### Formes
-
-[Formes](css-prop-shapes.md)
-* clip-path
-* mask
-* shape
-
----
-
-### Blend modes
-
-[Blend Modes](css-prop-blend.md)
-* mix-blend-mode
-* background-blend-mode
-* isolation
+[It's Time To Start Using CSS Custom Properties](https://www.smashingmagazine.com/2017/04/start-using-css-custom-properties/)

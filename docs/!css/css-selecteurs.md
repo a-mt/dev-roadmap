@@ -3,18 +3,18 @@ title: Sélecteurs CSS
 category: Web > CSS
 ---
 
-## Sélecteurs
+Les sélecteurs CSS permettent de cibler sur quels éléments appliquer les règles CSS.
 
-Les sélecteurs CSS permettent de cibler sur quels éléments appliquer les règles CSS. Pour rappel:
-
-- Les classes et ID HTML doivent décrire le contenu et non le style (ex: `head` et non `bigText`).
-- L'ID est unique, ne contient ni espace ni caractère spécial, est sensible à la casse
+- Les classes et ID doivent décrire le contenu (ex: `header`) et non le style (ex: `bigText`).
+- Chaque ID est unique par page, ne contient ni espace ni caractère spécial, et est sensible à la casse
 
 ``` html
 <p id="myid" class="myclass">Lorem ipsum...</p>
 ```
 
-### Indispensables
+## Les sélecteurs
+
+### De base
 
 <table>
 <tr>
@@ -51,9 +51,10 @@ Les sélecteurs CSS permettent de cibler sur quels éléments appliquer les règ
 </tr>
 </table>
 
-Les sélecteurs peuvent être combinés pour affiner la sélection: `p.myclass` pour les tags `<p>` qui ont la classe "myclass" par exemple.
+Les sélecteurs peuvent être combinés pour affiner la sélection.  
+Par exemple: `p.myclass` pour cibler les tags `<p>` qui ont la classe `myclass`.
 
-### Précédence
+### De précédence
 
 <table>
 <tr>
@@ -83,7 +84,7 @@ Les sélecteurs peuvent être combinés pour affiner la sélection: `p.myclass` 
 </tr>
 </table>
 
-### Avec attributs
+### D'attribut
 
 <table>
 <tr>
@@ -134,7 +135,7 @@ Les sélecteurs peuvent être combinés pour affiner la sélection: `p.myclass` 
 
 ## Spécificité des sélecteurs
 
-Si deux sélecteurs ciblent le même élément, les déclarations sont cumulatives.
+Si deux sélecteurs ciblent le même élément, les déclarations se cumulent.
 
 ``` css
 p {
@@ -145,9 +146,10 @@ p.myclass {
 }
 ```
 
-Dans le cas où une propriété est définie deux fois, le sélecteur le plus spécifique (celui qui a le score le plus élevé) l'emporte.  
-Si les deux sélecteurs ont le même score, la dernière règle déclarée l'emporte.  
-Pour ce qui est du score, un ID vaut 100, une classe 10, un tag 1.
+### Score
+
+Mais si une même propriété est définie deux fois, alors le sélecteur le plus spécifique l'emporte.  
+Un ID a une spécificité de 100, une classe 10, un tag 1 — plus le score est élevé, plus il est spécifique.  
 
 | Sélecteur  | ID    | Classe | Tag   | Score total |
 |---         |---    |---     |---    |---    |
@@ -161,21 +163,29 @@ Pour ce qui est du score, un ID vaut 100, une classe 10, un tag 1.
 p {
   color: black;
 }
-p.myclass {
-  color: gray;
-}
 #myid {
   color: red;  /* l'emporte */
 }
+p.myclass {
+  color: gray;
+}
 ```
 
-Ce comportement peut être modifié propriété par propriété via `!important` : la propriété notée importante est celle qui remplace les autres, quelle que soit la spécificité du sélecteur.
+### Ordre d'inclusion
+
+Si les deux sélecteurs ont le même score, alors la dernière règle déclarée l'emporte.
+
+* 1/ Le style inclut en ligne (inline style) l'emporte sur
+* 2/ Le style de la balise `<style>` (embedded style), qui l'emporte sur
+* 3/ Le style dans un fichier stylesheet (external style). 
+
+### !important
+
+On peut passer outre la spécificité / l'ordre d'inclusion en utilisant la flag `!important`: une propriété notée importante remplace les autres déclarations de cette propriété sur l'élément. Ainsi, on peut écraser un style en ligne dans un fichier externe en utilisant `!important`.
 
 ``` css
 p { color: lightgrey !important; }
 ```
-
-Le style inclut en ligne (inline style) l'emporte sur le style de la balise `<style>` (embedded style), qui l'emporte sur le style dans un fichier stylesheet (external style). On peut écraser un style en ligne dans un fichier externe en utilisant `!important`.
 
 ---
 
@@ -188,7 +198,7 @@ Les pseudo-classes permettent de cibler un élément dans un état particulier. 
 a:hover { color: red; }
 ```
 
-### Liens
+### Sur les liens
 
 <table>
 <tr>
@@ -228,7 +238,7 @@ a:hover { color: red; }
 </tr>
 </table>
 
-### Input
+### Sur les input
 
 <table>
 <tr>
@@ -312,7 +322,7 @@ a:hover { color: red; }
 </tr>
 </table>
 
-### Généraux
+### Sur tout type d'élément
 
 <table>
 <tr>
@@ -352,7 +362,7 @@ a:hover { color: red; }
 </tr>
 </table>
 
-### Position
+### Sur tout type d'élément, selon sa position
 
 <table>
 <tr>
@@ -511,6 +521,9 @@ nav li:not(:first-child)::before {
 ---
 
 ## CSS level 4
+
+Les spécifications stipulent également des sélecteurs niveau 4.  
+En revanche, la plupart sont peu voire pas du tout supportés.
 
 [Intriguing CSS Level 4 Selectors](https://webdesign.tutsplus.com/tutorials/intriguing-css-level-4-selectors--cms-29499)  
 [Les nouveautés de CSS4](https://blog.groupe-sii.com/les-nouveautes-de-css-level-4/)

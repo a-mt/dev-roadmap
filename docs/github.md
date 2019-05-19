@@ -1,6 +1,6 @@
 ---
-title: Layout
-category: Webenv > Github
+title: Open Source (Github)
+category: Webenv
 ---
 
 - [Contribuer](github-contribute.md)

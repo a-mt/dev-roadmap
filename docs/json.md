@@ -38,11 +38,7 @@ JSON (JavaScript Object Notation) est un format de représentation de données.
 
 JSON supporte différents types de données: chaînes de caractères, nombres, booléens, objets, listes et null.
 
-Resources :
-- [Specs JSON](http://json.org/) (contient la liste complètes des langages supportant le JSON)
-- [Visualiser du JSON](jsoneditoronline.org)
-- [Valider du JavaScript](www.jshint.com)
-- [Valider du JSON](jsonlint.com)
+[Specs JSON](http://json.org/) (contient la liste complètes des langages supportant le JSON)
 
 ---
 

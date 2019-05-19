@@ -1,6 +1,6 @@
 ---
 title: "Méthodes: Tableaux"
-category: Web, JavaScript, ES5
+category: Web, JavaScript, Méthodes
 ---
 
 ## Array.isArray()
@@ -293,4 +293,161 @@ var value = 3;
 while(index = array.indexOf(value) !== -1) {
   array.splice(index, 1);
 }
+```
+
+---
+
+## Array.from()
+
+[ES6]
+
+``` js
+var arrayLike = document.querySelectorAll('*'),
+    realArray = Array.from(arrayLike);
+```
+
+## Array.of()
+
+[ES6]
+
+Similaire à `new Array()` mais sans le comportement de créer un tableau de N entrées si un seul argument numérique est passé.
+
+``` js
+var arr = Array.of(1, 2, 3);
+```
+
+## keys()
+
+[ES6]
+
+Retourne un itérateur sur les indices du tableau
+
+``` js
+let myArray = [1, 2, 3, 4];
+for (let i of myArray.keys()) {
+  console.log(i, ":", myArray[i]); //0:1 1:2 2:3 3:4
+}
+```
+
+## values()
+
+[ES6]
+
+Retourne un itérateur sur les valeurs du tableau
+
+``` js
+let myArray = [1, 2, 3, 4];
+for (let val of myArray.values()) {
+  console.log(val); //1 2 3 4
+}
+```
+
+## entries()
+
+[ES6]
+
+Retourne un itérateurs sur les indicdes et valeurs du tableau
+
+``` js
+let myArray = [1, 2, 3, 4];
+for (let [i, val] of myArray.entries()) {
+  console.log(i, ":", val); //0:1 1:2 2:3 3:4
+}
+```
+
+## copyWithin()
+
+[ES6]
+
+Recopie une partie du tableau à un autre endroit du tableau sans en modifier la taille.
+
+``` js
+// Placer à la position 1 les éléments à partir de la position 3
+[1, 2, 3, 4, 5].copyWithin(1, 3)  // [ 1, 4, 5, 4, 5 ]
+
+// Placer à la position 3 les éléments à partir de la position 0
+[1, 2, 3, 4, 5].copyWithin(3, 0) // [1, 2, 3, 1, 2]
+
+// Placer à la position 2, 2 éléments à partir de la position 0
+[1, 2, 3, 4, 5].copyWithin(3, 0, 2) // [1, 2, 1, 2, 5]
+```
+
+## fill()
+
+[ES6]
+
+Remplit les éléments d'un tableau avec une valeur statique.
+
+``` js
+[0,0,0,0,0].fill(1)     // [1,1,1,1,1]
+
+[0,0,0,0,0].fill(1,2)   // [0,0,1,1,1]
+
+[0,0,0,0,0].fill(1,2,4) // [0,0,1,1,0]
+```
+
+## find()
+
+[ES6]
+
+Permet de récupérer la première valeur du tableau qui correspond à un critère donné
+
+``` js
+let people = [
+  { name: "bob" },
+  { name: "john" }
+];
+
+let bob = people.find(function(person) {
+  return person.name === "bob";
+});
+// { name: "bob" }
+```
+
+## findIndex()
+
+[ES6]
+
+Permet de récupérer l'index de la première valeur du tableau qui correspond à un critère donné
+
+``` js
+var array = [
+  { value: 1 },
+  { value: 2 },
+  { value: 3 },
+  { value: 4 },
+  { value: 5 }
+];
+
+array.findIndex(item => item.value === 3); // 2
+```
+
+---
+
+## includes()
+
+[ES7]
+
+`includes` permet de vérifier si une valeur est à l'intérieur d'un tableau, un peu à la manière de `indexOf` (sauf pour la gestion de NaN).
+
+``` js
+console.log('1:1',            [1].includes(1) );            // true
+console.log('+0:-1',          [+0].includes(-0) );          // true
+console.log('NaN:NaN',        [NaN].includes(NaN) );        // true
+console.log('true:"true"',    [true].includes("true") );    // false
+console.log('false:0',        [false].includes(0) );        // false
+console.log('1:"1"',          [1].includes("1") );          // false
+console.log('null:undefined', [null].includes(undefined) ); // false
+console.log('[]:[]',          [[]].includes([]) );          // false
+```
+
+``` js
+console.log('1:1',            [1].indexOf(1) );            // 0
+console.log('+0:-1',          [+0].indexOf(-0) );          // 0
+console.log('NaN:NaN',        [NaN].indexOf(NaN) );        // -1
+console.log('true:"true"',    [true].indexOf("true") );    // -1
+console.log('false:0',        [false].indexOf(0) );        // -1
+console.log('1:"1"',          [1].indexOf("1") );          // -1
+console.log('null:undefined', [null].indexOf(undefined) ); // -1
+console.log('[]:[]',          [[]].indexOf([]) );          // -1
 ```

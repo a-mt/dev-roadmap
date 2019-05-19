@@ -3,18 +3,6 @@ title: Méthodes
 category: Web, JavaScript
 ---
 
-Récapitulatif des méthodes ES5, ES6 et plus:
-* Méthodes ES5
-  * [Chaînes de caractères](js-es5-methods-string.md)
-  * [Tableaux](js-es5-methods-array.md)
-  * [Objets](js-es5-methods-object.md)
-  * [Date](js-es5-methods-date.md)
-* [Méthodes ES6](js-es6-methods.md)
-* [Méthodes ES7](js-es7.md) (2016)
-* [Méthodes ES8](js-es8.md) (2017)
-
-<!-- -->
-
     String
         charAt                            1
         charCodeAt                        1

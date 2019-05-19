@@ -1,11 +1,11 @@
 ---
 title: "Méthodes: Chaînes de caractères"
-category: Web, JavaScript, ES5
+category: Web, JavaScript, Méthodes
 ---
 
 ## localeCompare()
 
-`localeCompare()` permet de comparer deux chaînes de caractère (ordre alphabétique). Elle est particulièrement utile pour trier un tableau.
+Permet de comparer deux chaînes de caractère (ordre alphabétique). Elle est particulièrement utile pour trier un tableau.
 
 ``` js
 var arr = ["bananas", "cranberries", "apples"];
@@ -16,7 +16,7 @@ arr.sort(function(a, b) {
 
 ## charAt()
 
-`charAt()` permet de récupérer un caractère à un index donné. La notation avec des crochets peut également être utilisée.
+Permet de récupérer un caractère à un index donné. La notation avec des crochets peut également être utilisée.
 
 ``` js
 console.log('Hello World'.charAt(4)); // o
@@ -25,7 +25,7 @@ console.log('Hello World'[4]);        // o
 
 ## charCodeAt()
 
-`charCodeAt()` de récupérer le code d'un caractère à un index donné
+Permet de récupérer le code d'un caractère à un index donné
 
 ``` js
 console.log("μ".charCodeAt()); // 181
@@ -35,7 +35,7 @@ console.log('Hello World'.charCodeAt(4)); // 111
 ## String.fromCharCode()
 
 
-`fromCharCode()` permet de récupérer le caractère d'un code UTF-16
+Permet de récupérer le caractère d'un code UTF-16
 
 ``` js
 console.log(String.fromCharCode(181)); // µ
@@ -43,14 +43,18 @@ console.log(String.fromCharCode(181)); // µ
 
 ## trim()
 
-`trim()` permet de supprimer les espaces situés en debut et en fin de chaîne.
+Permet de supprimer les espaces situés en debut et en fin de chaîne.
 
+``` js
 console.log("    this is me    ".trim()); // "this is me"
+```
 
-Beaucoup de navigateurs ont implémenté les méthodes `trimLeft()` et `trimRight()` (non standard).
+Beaucoup de navigateurs ont également implémenté les méthodes `trimLeft()` et `trimRight()` (non standard).
 
+``` js
 console.log("    this is me    ".trimLeft()); // "this is me    "
 console.log("    this is me    ".trimRight()); // "    this is me"
+````
 
 ## toUpperCase(), toLowerCase()
 
@@ -72,7 +76,7 @@ console.log("i".toLocaleUpperCase("tr"))  // İ (i majuscule turc)
 
 ## slice()
 
-`slice()` peut être utilisé pour extraire une sous-chaîne entre deux indices ou à partir d'un indice
+Peut être utilisé pour extraire une sous-chaîne entre deux indices ou à partir d'un indice
 
 ``` js
 var s = "0123456789abcdefg";
@@ -90,7 +94,7 @@ console.log(s.slice(-6, -5)); // "b"
 
 ## substring()
 
-`substring()` fonctionne de la même manière que `slice()`. Excepté que les indices négatifs ne sont pas acceptés.
+Fonctionne à peu près de la même manière que `slice()`, sauf que les indices négatifs ne sont pas acceptés.
 
 ``` js
 var s = "0123456789abcdefg";
@@ -132,7 +136,7 @@ console.log( "Hello World".lastIndexOf("x") ); // -1
 
 ## replace()
 
-`replace()` permet de remplacer une chaîne par une autre chaîne. Les RegExp peuvent être utilisés pour match. Un callback peut être utilisé pour remplacement.
+Permet de remplacer une chaîne par une autre chaîne. Les RegExp peuvent être utilisés pour match. Un callback peut être utilisé pour remplacement.
 
 ``` js
 console.log( "Hello World".replace("Hello", "Bye") ); // Bye World
@@ -170,4 +174,103 @@ Permet de concaténer des chaînes de caractères. Pour une meilleure performanc
 ``` js
 var str = "abc";
 console.log(console.log(str.concat("def", "ghi"))); // abcdefghi
+```
+
+---
+
+## repeat()
+
+[ES6]
+
+Permet de répéter une chaîne de caractère plusieurs fois
+
+``` js
+console.log("foo".repeat(3)) // foofoofoo
+```
+
+## includes()
+
+[ES6]
+
+`includes()` permet de vérifier si une chaîne de caractères contient un morceau de texte donné ou non. Cette méthode vient remplacer `indexOf() != -1`.
+
+``` js
+"hello".indexOf("ello") != -1    // true
+"hello".indexOf("ello", 2) != -1 // false
+```
+
+``` js
+"hello".includes("ello")         // true
+"hello".includes("ello", 2)      // false
+```
+
+## startsWith(), endsWith()
+
+[ES6]
+
+Permet de vérifier si une chaîne de caractères commence ou fini par un morceau de texte donné ou non.
+
+``` js
+"hello".startsWith("hel")        // true
+"hello".startsWith("el", 1)      // true
+```
+
+``` js
+"hello".endsWith("lo")           // true
+"hello".endsWith("ll", 4)        // true
+```
+
+## String.codePointAt()
+
+[ES6]
+
+Pour rappel, `charCodeAt()` permet de récupérer le code d'un caractère à un index donné.
+
+``` js
+console.log("μ".charCodeAt()); // 181
+console.log('Hello World'.charCodeAt(4)); // 111
+```
+
+En JavaScript, les chaînes de caractères sont enregsitrées en UTF-16.  
+Mais le codage Unicode permet de coder des caractères de longueur variable, de 1 à 4 octets.  
+Or certains symboles Unicode nécessitent plus de 2 octets (c'est le cas des caractères dont le code est supérieur à 2^16 - 1 (65535).). Dans ce cas, `charCodeAt()` renvoie une valeur erronée.
+
+`codePointAt()` permet de récupérer le Nième caractère - et non le caractère présent au Nème emplacement.
+
+``` js
+console.log("😀".codePointAt()); // 128512 (0x1F600)
+console.log("😀".charCodeAt());  // 55357
+```
+
+## String.fromCodePoint()
+
+[ES6]
+
+Même principe, `fromCharCode()` permet de récupérer le caractère d'un code UTF-16
+
+``` js
+console.log(String.fromCharCode(181)); // µ
+```
+
+`fromCodePoint()` fonctionne pour les caractères de plus de 16 bits.
+
+```
+console.log(String.fromCodePoint(128512)); // 😀
+console.log(String.fromCharCode(128512));  // 
+```
+
+---
+
+## padStart(), padEnd()
+
+[ES8]
+
+Permet d'ajouter un padding au début ou à la fin
+
+``` js
+'23.10'.padStart(12);        // '      23.10'
+```
+
+``` js
+'loading'.padEnd(10, '.');   // 'loading...'
 ```

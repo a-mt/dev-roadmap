@@ -1,11 +1,13 @@
 ---
-title: "Méthodes: Dates"
-category: Web, JavaScript, ES5
+title: Date
+category: Web, JavaScript
 ---
+
+Les `Date` sont des objets permettant de manipuler des dates (jour et heure).
 
 ## Créer une date
 
-Pour créer une date, plusieurs formats différents sont acceptés en entrées.
+Pour créer une date, plusieurs formats différents sont acceptés:
 
 <table>
   <thead>
@@ -51,9 +53,42 @@ Pour créer une date, plusieurs formats différents sont acceptés en entrées.
 
 Pour les dates crées à partir de chaîne de caractères, les virgules sont ignorées et la casse des mots n'a pas d'importance. Le mois et le jour de la semaine peuvent être écrits au format court (`Sun`) ou long (`Sunday`)
 
+#### Fuseau horaire
+
+Lorsqu'on crée une date sans spécifier le fuseau horaire, JavaScript utilise le fuseau horaire du navigateur.
+
+Attention, `console.log(date)` affiche la date GMT+00.
+Pour afficher la date selon le fuseau horaire en cours (la valeur que l'utilisateur verra), il faut l'afficher au format texte: `console.log(""+date)`.
+
+``` js
+var date = new Date(2018, 1, 11, 13, 59, 18, 425);
+console.log(date.toLocaleString()); // 11/02/2018 à 13:56:18
+console.log(date.getHours());       // 13
+console.log(date.getUTCHours());    // 12
+```
+
+#### Universel Time Zone (UTC)
+
+Pour traiter des dates qui ne dépendent pas d'un fuseau horaire (date de naissance, date historique...), on utilise des dates UTC (Universal Time Zone).
+
+``` js
+var date = new Date(Date.UTC(2018, 1, 11, 13, 56, 18));
+console.log(date.toLocaleString()); // 11/02/2018 à 14:56:18
+console.log(date.getHours());       // 14
+console.log(date.getUTCHours());    // 13
+```
+
 ---
 
-## Afficher une date (jour + heure)
+## Date.now
+
+`Date.now()` retourne la date actuelle au format timestamp (et non un objet `Date`).
+
+---
+
+## Afficher une date
+
+### Heure et jour
 
 ``` js
 var date = new Date(Date.UTC(2018, 1, 11, 13, 56, 18));
@@ -112,7 +147,7 @@ var date = new Date(Date.UTC(2018, 1, 11, 13, 56, 18));
   </tbody>
 </table>
 
-## Afficher le jour
+### Jour
 
 ``` js
 date.toDateString() // "Sun Feb 11 2018"
@@ -122,7 +157,9 @@ date.toDateString() // "Sun Feb 11 2018"
 date.toLocaleDateString() // "11/02/2018"
 ```
 
-## Afficher l'heure
+Ou valeur par valeur (voir jour + heure)
+
+### Heure
 
 ``` js
 date.toTimeString() // "14:56:18 GMT+0100 (CET)"
@@ -132,16 +169,9 @@ date.toTimeString() // "14:56:18 GMT+0100 (CET)"
 date.toLocaleTimeString() // "14:56:18"
 ```
 
----
+Ou valeur par valeur (voir jour + heure)
 
-## Modifier une date
-
-Pour modifier une date, utiliser les setters disponibles (ce sont les mêmes que les getters mais avec `set` au lieu de `get`):
-`setFullYear()`, `setMonth()`, etc.
-
----
-
-## Utiliser une locale
+### Locale
 
 Les méthodes qui permettent de récupérer une date selon une locale peuvent prendre la locale à utiliser en argument, au format BCP 47. Sinon la locale du navigateur est utilisée. Des options peuvent également être passées pour contrôler le format de la date.
 
@@ -166,3 +196,23 @@ console.log(date.toLocaleDateString([], { day: "numeric", month: "short", year: 
 | `minute`        | "numeric", "2-digit"
 | `second`        | "numeric", "2-digit"
 | `timeZoneName`  | "short", "long"
+
+---
+
+## Modifier une date
+
+Pour modifier une date, il existe l'équivalent `set` de toutes les méthodes `get`:
+`setFullYear()`, `setMonth()`, etc.
+
+---
+
+## Tester l'égalité
+
+Pour tester l'égalité ou la différence entre deux dates, on utilise `valueOf()`
+
+``` js
+var date1 = new Date(),
+    date2 = new Date();
+
+console.log(date1.valueOf() == date2.valueOf());
+```

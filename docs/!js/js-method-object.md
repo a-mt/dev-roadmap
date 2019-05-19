@@ -1,6 +1,6 @@
 ---
 title: "Méthodes: Objets"
-category: Web, JavaScript, ES5
+category: Web, JavaScript, Méthodes
 ---
 
 ## hasOwnProperty()
@@ -278,3 +278,159 @@ console.log(Object.isFrozen(obj)); // true
 |`Object.freeze`| ✗ | ✓ | ✗ | ✗ |
 |`Object.seal`| ✗ | ✓ | ✓ | ✗ |
 |`Object.preventExtensions`| ✗ | ✓ | ✓ | ✓ |
+
+---
+
+## Object.assign()
+
+[ES6]
+
+Copie les propriétés et les méthodes des objets les plus à droite dans l'objet le plus à gauche et renvoie le résultat.
+
+```  js
+var o1 = {foo: 'foo'};
+var o2 = {bar: 'bar'};
+var o3 = {baz: 'baz', foo: 'qux'};
+
+Object.assign(o1, o2, o3); // {foo: 'qux', bar: 'bar', baz: 'baz'}
+console.log(o1); // {foo: 'qux', bar: 'bar', baz: 'baz'}
+```
+
+Cette méthode peut être utilisée pour copier un objet (et non une référence). Attention cependant, la copie n'est pas récursive: la valeur des sous-objets est une référence aux sous-objets d'origine.
+
+``` js
+var person  = {name: "Alice"};
+    person2 = Object.assign({}, person);
+
+person2.name = "Bob";
+console.log(person);  // {name: Alice}
+console.log(person2); // {name: Bob}
+```
+
+``` js
+var person  = { id: 1, name: {firstName: "Alice"} },
+    person2 = Object.assign({}, person);
+
+person2.id = 2;
+person2.name.firstName = "Bob";
+
+console.log(person);  // {id: 1, name: {firstName: "Bob"}}
+console.log(person2); // {id: 2, name: {firstName: "Bob"}}
+```
+
+## Object.is()
+
+[ES6]
+
+Permet de comparer deux objets strictement.  Cette méthode se comporte de la même façon que `===` sauf pour `NaN` et `+0/-0`.
+
+``` js
+console.log(+0 === -0);                         // true
+console.log(Object.is(+0, -0));                 // false
+
+console.log(NaN === NaN);                       // false
+console.log(Object.is(NaN, NaN));               // true
+
+console.log(Number.NaN === Number.NaN);         // false
+console.log(Object.is(Number.NaN, Number.NaN)); // true
+
+console.log(NaN === Number.NaN);                // false
+console.log(Object.is(NaN, Number.NaN));        // true
+```
+
+## Object.getOwnPropertySymbols()
+
+[ES6]
+
+Permet de récupérer les propriétés d'un objet qui sont un symbole.  
+Ne retourne que les symboles définis sur l'objet et non sur le prototype (!= classe).
+
+``` js
+const PRIVATE_VALUE = Symbol('privateValue');
+
+var obj = {
+  [PRIVATE_VALUE]: "foo",
+  publicValue: "bar"
+};
+
+console.log(Object.getOwnPropertyNames(obj));   // [ "publicValue" ]
+console.log(Object.getOwnPropertySymbols(obj)); // Array [ Symbol(privateValue) ]
+```
+
+---
+
+## Object.values()
+
+[ES8]
+
+Retourne un tableau contenant toutes les valeurs du tableau
+
+``` js
+const countries = {
+    BR: 'Brazil',
+    DE: 'Germany',
+    RO: 'Romania',
+    US: 'United States of America'
+};
+
+Object.values(countries); // ['Brazil', 'Germany', 'Romania', 'United States of America']
+```
+
+## Object.entries()
+
+[ES8]
+
+Retourne un tableau contenant toutes les paires clés/valeurs du tableau
+
+``` js
+const countries = {
+    BR: 'Brazil',
+    DE: 'Germany',
+    RO: 'Romania',
+    US: 'United States of America'
+};
+
+Object.entries(countries); 
+
+// [['BR', 'Brazil'], ['DE', 'Germany'], ['RO', 'Romania'], ['US','United States of America']]
+```
+
+## Object.getOwnPropertyDescriptors()
+
+[ES8]
+
+Retourne toutes les propriétés de l'objet et leur attributs. Les attributs possibles sont: `value`, `writable`, `get`, `set`, `configurable` et `enumerable`.
+
+``` js
+const obj = {
+    name: 'Pablo',
+    get foo() { return 42; }
+};
+
+Object.getOwnPropertyDescriptors(obj);
+/*
+  foo:
+      configurable: true
+      enumerable: true
+      get: function get foo()
+      set: undefined
+  name:
+      configurable: true
+      enumerable: true
+      value: "Pablo"
+      writable: true
+*/
+```
+
+Cela permet notamment de recopier intégralement un objet, avec getter et setter, et non plus uniquement les propriétés.
+
+``` js
+const objSource = {
+    set greet(who) { console.log('Hello ' + who); }
+};
+
+const objTarget = {};
+Object.defineProperties(objTarget, Object.getOwnPropertyDescriptors(objSource));
+
+objTarget.greet = 'World'; // Hello World
+```

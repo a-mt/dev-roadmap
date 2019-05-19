@@ -78,9 +78,11 @@ Voir [MySQL](mysql.md) pour la description du langage SQL de MySQL.
 ### NoSQL
 
 NoSQL (Not Only SQL) est un terme assez vague qui désigne un ensemble de SGBD alternatifs qui cherchent à fournir soit
-- des modèles de données différents des modèles de données classiques en tables (stocker et requêter des données au format JSON par exemple)
+- des modèles de données différents des modèles de données classiques en tables  
+  Stocker et requêter des données au format JSON par exemple
 - des performances extrêmes
-- un passage à l'échelle transparent qui permet de gérer de gigantesques volumes de données (de l'ordre du Tera ou Petaoctet).
+- un passage à l'échelle transparent qui permet de gérer de gigantesques volumes de données  
+  De l'ordre du Tera ou Petaoctet
 
 Pour permettre ces fonctionnalités, les bases de données NoSQL abandonnent une ou des propriétés des bases de données classiques et ne permettent pas les requêtes complexes des bases de données classiques.
 
@@ -117,62 +119,67 @@ Pour permettre ces fonctionnalités, les bases de données NoSQL abandonnent une
 
 Un modèle de donnée offre un ensemble d'opérateurs pour effectuer des recherches et des modifications sur la base de données.
 
-| Opération              | Notation algébrique | Description |
-|---                     |---                  |---          |
-| Sélection              | R1 / C              | Un sous-ensemble de lignes de  R1 vérifiant la condition C |
-| Projection             | R1[VA,...]          | Un sous-ensemble de colonnes (VA, ...) de R1 |
-| Produit cartésien      | R1 X R2             | Combinaison de R1 et R2 |
-| Jointure               | R1 * (VA = VB) R2   | Combinaison de R1 et R2 dont la valeur d'un attribut est la même |
-| Différence ensembliste | R1 - R2             | Ensemble des n-uplets de R1 qui ne sont pas dans R2 |
-| Union                  | R1 ∪ R2 | Ensemble des n-uplets de R1 ou de R2 |
-| Intersection | R1 ∩ R2 | Ensemble des n-uplets de R1 qui sont aussi dans R2 |
-| Division | R1 ÷ R2 | Ensemble des n-uplets dont la concaténation avec tous les n-uplets de R2 appartient à R1 |
-
 ### Sélection
 
-pomme / (couleur == jaune)
+<ins>Notation algébrique</ins>: R1 / C  
+<ins>Définition</ins>: Un sous-ensemble de lignes de R1 vérifiant la condition C  
+<ins>Exemple</ins>: `pomme / (couleur == jaune)`
 
 ![Sélection](https://i.imgur.com/5G0Kh54.png)
 
 ### Projection
 
-pomme[identifiant,nom_variété]
+<ins>Notation algébrique</ins>: R1[VA,...]  
+<ins>Définition</ins>: Un sous-ensemble de colonnes de R1 (VA, ...)  
+<ins>Exemple</ins>: `pomme[identifiant,nom_variété]`
 
 ![Projection](https://i.imgur.com/5viyTWg.png)
 
 ### Produit cartésien
 
-goûteur x variété = dégustation
+<ins>Notation algébrique</ins>: R1 X R2  
+<ins>Définition</ins>: Combinaison de R1 et R2  
+<ins>Exemple</ins>: `goûteur x variété = dégustation`
 
 ![Produit cartésien](https://i.imgur.com/9hqx9KI.png)
 
 ### Jointure
 
-pomme * (nom_variété = libellé) variété
+<ins>Notation algébrique</ins>: R1 * (VA = VB) R2  
+<ins>Définition</ins>: Combinaison de R1 et R2 dont la valeur d'un attribut est la même  
+<ins>Exemple</ins>: `pomme * (nom_variété = libellé) variété`
 
 ![Jointure](https://i.imgur.com/7Nfp5ek.png)
 
 ### Différence ensembliste
 
-pomme - pomme
+<ins>Notation algébrique</ins>: R1 - R2  
+<ins>Définition</ins>: Ensemble des n-uplets de R1 qui ne sont pas dans R2  
+<ins>Exemple</ins>: `pomme1 - pomme2`
 
 ![Différence](https://i.imgur.com/7HhJ3Hs.png)
 
 ### Union
 
-pomme + pomme
+<ins>Notation algébrique</ins>: R1 ∪ R2  
+<ins>Définition</ins>: Ensemble des n-uplets de R1 ou de R2  
+<ins>Exemple</ins>: `pomme1 + pomme2`
 
 ![Union](https://i.imgur.com/0m4T27l.png)
 
 ### Intersection
 
-pomme ∩ pomme
+<ins>Notation algébrique</ins>: R1 ∩ R2  
+<ins>Définition</ins>: Ensemble des n-uplets de R1 qui sont aussi dans R2  
+<ins>Exemple</ins>: `pomme ∩ pomme`
 
 ![Intersection](https://i.imgur.com/k4YTd46.png)
 
 ### Division
 
-dégustation ÷ variété = goûteur
+<ins>Notation algébrique</ins>: R1 ÷ R2  
+<ins>Définition</ins>: Ensemble des n-uplets dont la concaténation avec tous les n-uplets de R2 appartient à R1  
+<ins>Exemple</ins>: `dégustation ÷ variété = goûteur`
 
 ![Division](https://i.imgur.com/43KD5mg.png)
 
@@ -180,6 +187,6 @@ dégustation ÷ variété = goûteur
 
 L'agrégation n'est pas une opération faisant partie de l'algèbre relationnelle mais n'en reste pas moins très utile.
 On utilise une agrégation pour calculer le résultat d'un ensemble de lignes (on dit qu'on forme des agrégats).  
-Par exemple: calculer la masse moyenne des pommes par groupes des pommes jaunes, rouges et vertes abîmées ou non.
+<ins>Exemple</ins>: calculer la masse moyenne des pommes par groupes de pommes jaunes, rouges et vertes abîmées ou non.
 
 ![Agrégation](https://i.imgur.com/WezbjsO.png)

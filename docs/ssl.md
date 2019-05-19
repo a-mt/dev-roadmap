@@ -3,6 +3,8 @@ title: SSL
 category: other
 ---
 
+[HTTPS explained with carrier pigeons](https://medium.freecodecamp.org/https-explained-with-carrier-pigeons-7029d2193351)
+
 ## SSL/TLS
 
 TLS (Transport Layer Security) et son prédécesseur SSL (Secure Sockets Layer) sont des protocoles sécurisés qui ont été crées pour encapsuler pour placer une connexion non protégée, non encryptée.
@@ -105,6 +107,8 @@ Le serveur choisira le chiffrement le plus fort que lui et le client supporte.
 Si la connexion échoue, il réessaiera automatiquement avec un protocole inférieur, tel que TLS 1.0 ou SSL 3.0, jusqu'à ce que le handshake réussisse.
 
 Toutes les suites de chiffrement ne sont pas fortes. Certaines peuvent être craquées en quelques minutes. Une manière d'éviter cette faille de sécurité est de désactiver SSL 3.0 côté serveur ou côté client.
+
+[Tester vos configurations SSL](https://www.ssllabs.com/ssltest/)
 
 ---
 
@@ -262,8 +266,10 @@ Cloudflare a son sa PKI open-source: [CFSSL](https://github.com/cloudflare/cfssl
 
 ## SSL Handshake
 
+Le handshake SSL a 3 rôles: négocier la suite de chiffrement, authentifier le serveur (voire le client) et échanger la clé symétrique.
 
-Le handshake SSL a 3 rôles: négocier la suite de chiffrement, authentifier le serveur (voire le client) et échanger la clé symétrique.  
+![](https://i.imgur.com/pczfBx6.png)
+
 Le processus est comme suit:
 
 1. Client Hello    

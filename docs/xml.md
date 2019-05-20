@@ -3,172 +3,13 @@ title: XML
 category: Web
 ---
 
-Le XML (eXtensible Markup Language) est un langage de balisage générique. Les données sont encapsulées dans des balises, qui permettent de structurer de manière logique le contenu. Les balises ne véhiculent a priori pas d'information de présentation mais de sémentique.
+## Document XML
 
-Il est utilisé avec d'autres langages
-- dédiés à la présentation: CSS, XSL
-- dédiés aux traitements: XSLT, Xquery, APIs
-
-Le XML est extensible (on dit que c'est un *méta-langage*). Il permet de définir différents espaces de noms (c'est à dire des environnements qui apportent leur propre structure), parmis les plus connus: XHTML, XSLT, RSS et SVG.
-
-<ins>Format d'un document XML</ins> :
-
-``` xml
-<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
-<note>
-  <to>Tove</to>
-  <from>Jani</from>
-  <heading>Reminder</heading>
-  <body>Don't forget me this weekend!</body>
-</note>
-```
+* [Les bases de XML](xml-intro.md)
 
 ---
 
-## En-tête
-
-### Prologue
-
-Un document XML commence par un prologue qui indique
-- la version XML
-- l'encodage (ISO-8859-1, UTF-8 (par défaut) ou UTF-16)
-- s'il fail appel à des ressources externes ou non (standalone)
-
-``` xml
-<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
-```
-
-### Doctype
-
-Le prologue est éventuellement suivit d'un doctype
-
-```
-<!DOCTYPE carnet PUBLIC "-//xxx/Yyy/en" "http://www..." [ .... ]>
-```
-
-### Feuille de style
-
-Le document peut éventuellement inclure un feuille de style CSS ou XSL.
-
-``` xml
-<?xml-stylesheet type="text/xsl" href="style.xsl"?>
-    <!-- ou -->
-<?xml-stylesheet type="text/css" href="style.css"?>
-```
-
----
-
-## Commentaires
-
-Des commentaires peuvent être ajoutée entre `<!--` et `-->`.  
-Un commentaire peut s'étendre sur plusieurs lignes.  
-Il ne doivent pas contenir la séquence `--`
-
-    <!-- Commentaire -->
-
----
-
-## Éléments
-
-Un document XML est un hiérarchie d'éléments délimités par des balises ouvrantes et fermantes. Chaque élément peut contenir des éléments fils et/ou du contenu texte ou rien (vides).
-
-``` xml
-<chapitre>...</chapitre>
-```
-
-L'imbrication et l'ordre des éléments reflètent la structure logique
-
-``` xml
-<ol xml:lang="fr">
-  <li>Des balises décrivent la structure</li>
-  <li>Structure arborescente</li>
-</ol>
-```
-
-Un élément vide peut être écrit soit avec des balises vides, soit avec une balise auto-fermante
-
-``` xml
-<interligne></interligne>
-```
-
-``` xml
-<interligne/>
-```
-
-#### Attributs
-
-Les éléments peuvent avoir des attributes (zéro, un ou plusieurs), qui ajoutent des précisions à la sémantique des éléments. Exemples: language, statut, identifiant, etc.
-
-``` xml
-<chapitre version="provisoire" date="16/06/03">...</chapitre>
-```
-
-Les balises <ins>ouvrantes</ins> portent les attributs.  
-Un élément ne peut pas porter plusieurs attributs de même nom.  
-Les attributs d'un même élément n'ont pas d'ordre.
-
-#### Noms XML
-
-Les noms des balises et des attributs sont sensibles à la casse.  
-Ils ne contiennent que des caractères alphanumériques ou `.` `-` `_` `:` et peuvent pas commencer par un nombre ou un signe de ponctuation.
-
-Une bonne pratique est d'éviter les caractères accentués et les opérateurs, virgules, point-virgules, mais ce n'est pas obligatoire.
-
-- Valides: `gras`, `énorme`, `_note`, `:couleur`, `Titre1`, `m.gras-2`, `большой`, `きなカラ`
-- Invalides: `2gras`, `.chapitre`, `texte gras`
-
-#### Racine
-
-Tout document XML a un élément racine, c'est à dire un élément qui contient l'intégralité du document.
-
-``` xml
-<note>
-  <to>Tove</to>
-  <from>Jani</from>
-  <heading>Reminder</heading>
-  <body>Don't forget me this weekend!</body>
-</note>
-```
-
----
-
-## Caractères
-
-À l'intérieur des balises certains caractères peuvent être ambigus: `<` `>` `"` `'` `&`.
-
-### Entités caractères
-
-Pour cette raison, XML 1.0 définit des *entités* de caractères utilisables dans le document qui ne nécessitent aucune déclaration: `&lt;` `&gt;` `&quot;` `&apos;` `&amp;` (respectivement).
-
-### Références caractères
-
-On peut également utiliser des *références* de caractères, en utilisant le code décimal ou hexadécimal du caractère: `&#945;` `&#x3b1;`.
-
-### CDATA
-
-Des blocs de texte entiers peuvent être échappés dans un section *CDATA*.  
-Exemple: `<![CDATA[<greeting>Hello!</greeting>]]>`. `<greeting>` et `</greeting>` sont considérées comme du contenu, pas comme des balises.
-
----
-
-## Instructions de traitements (PI)
-
-Les intructions de traitements sont des instructions additionnelles à la structure physique du XML :
-- code de traitement embarqué
-
-    ``` xml
-    <?php  for(i=...) { faire_traitement(); } ?>
-    ```
-
-- emplacement de la sélection courante
-
-    ``` xml
-    <?FM select start ?>
-    ```
-
----
-
-## Documents bien formés
+## Valider un document
 
 Un document XML est bien formé si
 - il respecte les règles syntaxiques XML (éléments, attributs, commentaires, PI, entités)
@@ -182,18 +23,16 @@ Mais des contrôles supplémentaires peuvent être ajoutés sur la *validité* d
 - quels sont les sous-éléments possibles dans un élément donné
 
 Pour effectuer des contrôles de validité, il est nécessaire de définir la structure du XML. Parmi les syntaxes possibles pour définir des structures XML les plus connues sont
-- [DTD](xml-dtd.md), l'historique
-- [XML Schema](xml-schema.md), le plus répandu (plus souple, syntaxe en XML)
+- [DTD](xml-dtd.md), syntaxe historique, aujourd'hui on utilise plutôt XSD
+- [XML Schema (XSD)](xml-schema.md), le plus répandu (plus souple, syntaxe en XML)
 
 ---
 
-## Feuille de style
-
-### CSS
+## CSS
 
 CSS (*Cascading Style Sheet*) est un langage de style qui permet de mettre en forme les documents (X)HTML et XML.
 
-La feuille de style est insérée au début du document
+Le CSS doit être inséré au début du document:
 
 ``` xml
 <?xml-stylesheet type="text/css" href="monStyle.css"?>
@@ -210,11 +49,13 @@ ISBN { display: block;text-indent: 2em; font-weight: bold }
 Date, Publisher { display: none }
 ```
 
-### XSL
+---
 
-XSL (*eXtensible Stylesheet Language*) est un langage de style complet pour réordonner, dupliquer, changer la structure des éléments et construite des pages complexes (colonnes, tables des matières, etc). Il permet une présentation des données xml en (x)html ou en pdf (via xslfo).
+## XSL
 
-La feuille de style est insérée au début du document
+XSL (*eXtensible Stylesheet Language*) est un langage de style complet pour réordonner, dupliquer, changer la structure des éléments. Cela permet de construire des pages complexes (colonnes, tables des matières, etc) ou même de convertir un document xml en (x)html ou en pdf (via xslfo).
+
+Le XSL doit être inséré au début du document:
 
 ``` xml
 <?xml-stylesheet type="text/xsl" href="monStyle.xsl"?>
@@ -222,8 +63,37 @@ La feuille de style est insérée au début du document
 
 Exemple règles css contenus dans <ins>monStyle.xsl</ins> :
 
-``` xsl
-TODO
+``` xml
+<xsl:stylesheet version='1.0'
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <!-- règle de production pour <book> -->
+  <xsl:template match="book">
+    <p>a book</p>
+  </xsl:template>
+  <!-- règle de production pour <book lang="en"> -->
+  <xsl:template match="book[lang='en']">
+    <p>a book in english </p>
+  </xsl:template>
+  <!-- règle de production pour pour <title> -->
+  <xsl:template match="title">
+    <p>a title</p>
+  </xsl:template>
+</xsl:stylesheet>
 ```
 
 [Syntaxe XSL](xml-xsl.md)
+
+---
+
+## XPath
+
+XPath est un langage de localisation. Il permet d’écrire des “chemin d’accès” pour se déplacer dans la structure d’un document XML (des sélecteurs). Il propose un ensemble de fonctions prédéfinies pour gérer les expressions booléennes, les nombres et les chaînes de caractères.
+
+On utilise XPath avec XSL mais pas que: les requêtes XPath peuvent souvent être implémentées par les langages de programmation qui permettent de manipuler du XML. Par exemple en PHP:
+
+``` php
+$xml  = simplexml_load_file('test.xml');
+$node = $xml->xpath('child::*[@type="B"]');
+```
+
+[Syntaxe XPath](xml-xpath)

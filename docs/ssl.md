@@ -7,10 +7,20 @@ category: other
 
 ## SSL/TLS
 
-TLS (Transport Layer Security) et son prédécesseur SSL (Secure Sockets Layer) sont des protocoles sécurisés qui ont été crées pour encapsuler pour placer une connexion non protégée, non encryptée.
+TLS (Transport Layer Security) et son prédecesseur SSL (Secure Socket Layer) sont des protocoles de sécurisation des échanges. SSL/TLS est ajouté par dessus les packets TCP/IP.
 
-Le protocole SSL a été déprécié en faveur de TLS 1.2 en raison de la vulnérabilité [POODLE (Padding Oracle On Downgraded Legacy Encryption)](https://en.wikipedia.org/wiki/POODLE).  
-SSL reste le terme le plus connu et le plus couramment utilisé. La plupart du temps, quand les gens disent SSL, ils parlent de TLS. Je dirais "SSL" en signifiant "TLS".
+![](https://i.imgur.com/omuf6sd.png)
+
+Les packets TCP/IP n'ayant pas besoin d'être modifiés, il est très facile d'ajouter TLS/SSL sur d'autres protocoles — encapsuler une connexion non protégée, non encryptée avec SSL ou TLS.
+
+![](https://i.imgur.com/uR94tTX.png)
+
+Différentes versions de ces protocoles sont utilisés pour tout type d'applications: navigation web, email, fax, messagerie instannée, voice-over-IP (VoIP).
+Ils assurent l'authentification, l'intégrité et la confidentialité des échanges.
+
+## SSL ou TLS
+
+Le protocole SSL a été déprécié en faveur de TLS 1.2 en raison de la vulnérabilité [POODLE (Padding Oracle On Downgraded Legacy Encryption)](https://en.wikipedia.org/wiki/POODLE). SSL reste le terme le plus connu et le plus couramment utilisé. La plupart du temps, quand les gens disent SSL, ils parlent de TLS. C'est ce que je vais faire.
 
 La [RFC 2246](https://www.ietf.org/rfc/rfc2246.txt) contient la documentation complète de TLS.
 
@@ -114,8 +124,7 @@ Toutes les suites de chiffrement ne sont pas fortes. Certaines peuvent être cra
 
 ## Man in the middle
 
-Un point faible des algorithmes à clés asymétriques est la propagation des clés publiques: et si, dès le début de la connexion, quelqu'un interceptait la réponse du serveur et renvoyait sa propre clé publique à la place.  
-Il intercepterait toutes les requêtes suivantes du client — se faisant passer pour le serveur — les décrypterait puis les enverrait au véritable serveur — se faisant passer pour le client. Même chose dans l'autre sens.
+Un point faible des algorithmes à clés asymétriques est la propagation des clés publiques: si, au début de la connexion, quelqu'un intercepte la réponse du serveur et renvoit sa propre clé publique à la place, il peut alors intercepter toutes les requêtes suivantes du client — se faisant passer pour le serveur — les décrypter puis les envoyer au véritable serveur — se faisant passer pour le client. Même chose dans l'autre sens.
 
 C'est ce qu'on appelle une attaque *man in the middle* (MITM). Cette technique est plus sophistiquée que simplement lire les communications qui passent sur le réseau, mais cela compromet tout de même la confidentialité des communications.
 
@@ -422,3 +431,5 @@ Le processus est comme suit:
 
 16. Le serveur et le client peuvent maintenant échanger des données d'application (par exemple des requêtes HTTP) encryptées avec la clé symétrique.  
     Le protocole utilisé est alors le Record Protocol.
+
+[Processus de négociation SSL](https://www.synetis.com/2015/11/27/ssl-tls-explication/)

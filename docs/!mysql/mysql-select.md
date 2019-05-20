@@ -1,89 +1,9 @@
 ---
-title: Données MySQL
-category: Web, BDD, MySQL
+title: Sélectionner
+category: BDD, MySQL, Données
 ---
 
-## Insérer
-
-    INSERT INTO nom_table [(attributs)] VALUES (valeurs)
-
-<!-- -->
-
-    INSERT INTO nom_table [(attributs)] SELECT ...
-
-<ins>Par exemple</ins> :
-
-``` sql
-INSERT INTO LANG (CODE, LIBELLE) VALUES
-('en_US', 'English'),
-('fr_FR', 'Français');
-```
-
-### Clé dupliquée
-
-Si on essaie d'insérer une clé primaire qui existe déjà une erreur est levée. On peut modifier ce comportement avec `INSERT IGNORE` ou en ajoutant une clause `DUPLICATE KEY UPDATE ...` :
-
-``` sql
--- Ingore l'insertion si la clé existe déjà
-INSERT IGNORE INTO etudiant (id, nom, prenom) VALUES (1, "Dupont", "Manon");
-```
-
-``` sql
--- Met à jour la ligne existante avec le nouveau prenom
-INSERT INTO etudiant (id, nom, prenom) VALUES (1, "Dupont", "Manon")
-ON DUPLICATE KEY UPDATE prenom = VALUES(prenom);
-```
-
-[SQLFiddle](http://sqlfiddle.com/#!9/55d5c5/1)
-
----
-
-## Mettre à jour
-
-    UPDATE nom_table SET attribut = valeur
-      [WHERE condition]
-      [ORDER BY attributs]
-      [LIMIT count]
-
-<ins>Exemples</ins> :
-
-``` sql
-UPDATE Customers
-SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
-WHERE CustomerID = 1;
-```
-
-``` sql
-UPDATE reservedNicknames
-SET id = CONCAT('rename - ', id),
-    nickname = CONCAT('rename - ', nickname)
-WHERE LENGTH(nickname) <> 8;
-```
-
----
-
-## Supprimer
-
-    DELETE FROM nom_table
-      [WHERE condition]
-      [ORDER BY attributs]
-      [LIMIT count]
-
-<ins>Exemples</ins> :
-
-``` sql
-DELETE FROM Customers
-WHERE CustomerName = 'Alfreds Futterkiste';
-```
-
-``` sql
-DELETE FROM currencies
-WHERE LENGTH(code) != 3;
-```
-
----
-
-## Récupérer
+## Structure
 
     SELECT attributs
     FROM   relations
@@ -158,9 +78,9 @@ GROUP BY a.id;</pre></td>
 
 ---
 
-## SELECT
+## Select
 
-Le `SELECT` permet de choisir les colonnes retournées
+Permet d'effectuer une projection, c'est à dire choisir les colonnes retournées.
 
 <table>
   <thead>
@@ -203,16 +123,6 @@ INNER JOIN tuteur
   </tbody>
 </table>
 
-### Backticks
-
-Les backticks <code>``</code> échappent les noms de colonnes et tables.
-Elles sont indispensables lorsque le nom ne contient pas que des chiffres, lettres et underscores.
-
-``` sql
-SELECT `nom-table`.`id`, `my name`, `another.field`, `field,with,comma`
-FROM `nom-table`
-```
-
 ### Distinct
 
 Le mot-clé `DISTINCT` évite de retourner plusieurs fois la même valeur.
@@ -227,22 +137,27 @@ SELECT COUNT(DISTINCT groupe)
 FROM   etudiant;
 ```
 
-### Alias
+### Fonctions
 
-On peut donner un nom aux colonnes retournées différent de leur nom en BDD avec `att1 AS nouveaunom`.  
-Cet alias n'est pas accessible dans le `where` (mais dans le `group by`, `having` et `limit` oui).  
+Il existe différentes fonctions, que l'on peut utiliser dans le `SELECT` — `COUNT()` par exemple.  
+Voir [fonctions SQL](mysql-native-function.md) pour la liste complète.
+
+### As
+
+On peut donner un nom aux colonnes retournées différent de leur nom en BDD en utilisant `AS`: `att1 AS nouveaunom`.  
+Cet alias n'existe pas dans le `WHERE` mais dans les requêtes d'aggrégation oui — `GROUP BY`, `HAVING` et `LIMIT`.  
 Les alias sont particulièrement utiles lorsques les colonnes sont calculées (concaténations, calculs numériques, conditions, sous-requêtes, etc).
 
 ``` sql
 -- Montant de la bourse de chaque étudiant par mois
-SELECT id, scholarship / 12 as scholarship
+SELECT id, scholarship / 12 AS scholarship
 FROM scholarships
 ORDER BY id;
 ```
 
 ``` sql
 -- Vérifier si les réponses données sont justes ou non
-SELECT id, IF(given_answer is null, "no answer",
+SELECT id, IF(given_answer IS NULL, "no answer",
               IF(correct_answer = given_answer, "correct", "incorrect")
            ) AS checks
 FROM answers
@@ -254,32 +169,34 @@ ORDER BY id;
 SELECT
     YEAR(date) AS year,
     QUARTER(date) AS quarter,
-    (sum(profit) - sum(loss)) AS net_profit
+    (SUM(profit) - SUM(loss)) AS net_profit
 FROM accounting
 GROUP BY year, quarter
 ORDER BY year, quarter;
 ```
 
+### Sous-requêtes
+
+Il est possible d'effectuer des sous-requêtes dans le `SELECT`:
+
 ``` sql
 -- Calculer le nombre de paquets dont on a besoin (différentes tailles)
 SELECT (SELECT package_type
-    FROM packages as p
+    FROM packages AS p
     WHERE g.length <= p.length AND g.width <= p.width AND g.height <= p.height
     ORDER BY p.length * p.width * p.height
     LIMIT 1
-) as package_type, count(id) as number
-FROM gifts as g
+) AS package_type, count(id) AS number
+FROM gifts AS g
 GROUP BY package_type;
 ```
 
-Voir [fonctions SQL](mysql-fonctions.md)
-
 ---
 
-## FROM
+## From
 
-Le `FROM` permet de choisir la ou les tables sources pour récupérer les données.
-Si plusieurs tables sont listées dans le `FROM` et qu'aucune instruction de jointure n'est ajoutée, alors c'est un produit cartésien.
+Permet de choisir la ou les tables sources pour récupérer les données.  
+Si plusieurs tables sont listées dans le `FROM` et qu'aucune instruction de jointure n'est ajoutée, alors un produit cartésien est effectué.
 
 ``` sql
 SELECT *
@@ -294,9 +211,9 @@ FROM   NOTE, COURS
 WHERE  NOTE.Code_cours = COURS.Code_cours;
 ```
 
-### Alias
+### As
 
-Comme pour les colonnes, il est possible de donner un alias à une table pour le temps d'une requête. C'est également le cas pour le `INNER JOIN` et `LEFT JOIN`.
+Comme pour les colonnes, il est possible de donner un alias à une table pour le temps d'une requête — c'est également le cas pour le `INNER JOIN` et `LEFT JOIN`.
 
 ``` sql
 SELECT o.OrderID, o.OrderDate, c.CustomerName
@@ -304,14 +221,68 @@ FROM Customers AS c, Orders AS o
 WHERE c.CustomerID = o.CustomerID;
 ```
 
-## INNER JOIN
+### Sous-requête
 
-Le `INNER JOIN` permet d'effectuer une jointure entre une table A et une table B : on ajoute les champs de B au champs de A, multiplié par le nombre de fois qu'il y a correspondance (de 0 à n). Les lignes sans correspondance sont exclues.
+Le `FROM`, `INNER JOIN` et `LEFT JOIN`, peuvent provenir du résultat d'une sous-requête.  
+Il est obligatoire de nommer ce résultat (avec un `AS`).
 
 ``` sql
 SELECT *
-FROM etudiant as e
-INNER JOIN etudiant_club as ec ON e.id = ec.id_etudiant
+FROM (
+    SELECT ...
+    FROM ...
+) as nom_temp
+```
+
+<ins>Exemples</ins>:
+
+``` sql
+-- Moyenne des 5 meilleurs élèves
+SELECT ROUND(AVG(grade),2) AS average_grade
+FROM (
+    SELECT grade
+    FROM students
+    ORDER BY grade DESC
+    LIMIT 5
+) AS tmp;
+```
+
+``` sql
+-- Différence entre budget (semaine entre left_bound et right_bound) et dépenses prévues
+SELECT a.id, GREATEST(SUM(plan.value) - a.value,0) AS loss
+FROM allowable_expenditure AS a
+LEFT JOIN (
+    SELECT 0+DATE_FORMAT(monday_date, "%U") AS week, expenditure_sum AS value
+    FROM expenditure_plan
+) AS plan ON plan.week BETWEEN a.left_bound AND a.right_bound
+GROUP BY a.id;
+```
+
+``` sql
+-- Nombre de sièges vides par vol
+SELECT flights.flight_id, IFNULL(number_of_seats - purchased_seats, number_of_seats) AS free_seats
+FROM flights
+INNER JOIN planes ON flights.plane_id = planes.plane_id
+LEFT JOIN (
+    SELECT flight_id, count(seat_no) AS purchased_seats
+    FROM purchases
+    GROUP BY flight_id
+) AS purchases ON purchases.flight_id = flights.flight_id
+ORDER BY flights.flight_id;
+```
+
+---
+
+## Join
+
+### Inner join
+
+Permet d'effectuer une jointure entre une table A et une table B: on ajoute les champs de B au champs de A, multiplié par le nombre de fois qu'il y a des correspondances (de 0 à n). Les lignes sans correspondance sont exclues. On utilise `ON` de la même manière qu'un `WHERE`.
+
+``` sql
+SELECT *
+FROM etudiant AS e
+INNER JOIN etudiant_club AS ec ON e.id = ec.id_etudiant
 
 +----+--------+---------+-------------+---------+
 | id | nom    | prenom  | id_etudiant | id_club |
@@ -324,19 +295,19 @@ INNER JOIN etudiant_club as ec ON e.id = ec.id_etudiant
 ```
 
 ``` sql
-SELECT holiday_date as ski_date
-FROM holidays as h
-INNER JOIN weather as w ON w.sunny_date = h.holiday_date;
+SELECT holiday_date AS ski_date
+FROM holidays AS h
+INNER JOIN weather AS w ON w.sunny_date = h.holiday_date;
 ```
 
-## LEFT JOIN
+### Left join
 
-Avec le `LEFT JOIN`, on multiple aussi A par B, à la différence près que si B ne correspond jamais, alors on garde A une fois (et les champs de B sont `NULL`) : les lignes sans correspondance ne sont pas exclues. Le `LEFT JOIN` est souvent utilisé avec la clause `GROUP_BY`.
+Avec le `LEFT JOIN`, on multiple aussi A par B, à la différence près que si B ne correspond jamais, alors on garde A une fois (et les champs de B sont `NULL`) — les lignes sans correspondance ne sont pas exclues. Le `LEFT JOIN` est souvent utilisé avec la clause `GROUP_BY`.
 
 ``` sql
 SELECT *
-FROM etudiant as e
-LEFT JOIN etudiant_club as ec ON e.id = ec.id_etudiant
+FROM etudiant AS e
+LEFT JOIN etudiant_club AS ec ON e.id = ec.id_etudiant
 
 +----+--------+---------+-------------+---------+
 | id | nom    | prenom  | id_etudiant | id_club |
@@ -349,15 +320,20 @@ LEFT JOIN etudiant_club as ec ON e.id = ec.id_etudiant
 +----+--------+---------+-------------+---------+
 ```
 
-### LEFT + INNER JOIN
+### Right join
 
-Pour appliquer un `INNER JOIN` sur le `LEFT JOIN`, celui-ci doit être placé devant le `ON` (sinon, il s'applique sur le `FROM`).
+Le `RIGHT JOIN` est l'inverse du `LEFT JOIN`: on multiple B par A, en gardant B au moins une fois.  
+Il est rarement utilisé.
+
+### Left + inner join
+
+Pour appliquer un `INNER JOIN` sur le `LEFT JOIN`, celui-ci doit être placé devant le `ON`:
 
 ``` sql
 SELECT *
-FROM etudiant as e
-LEFT JOIN etudiant_club as ec
-  INNER JOIN club as c ON ec.id_club = c.id
+FROM etudiant AS e
+LEFT JOIN etudiant_club AS ec
+  INNER JOIN club AS c ON ec.id_club = c.id
 ON e.id = ec.id_etudiant
 
 +----+--------+---------+-------------+---------+--------+-------------+
@@ -371,91 +347,56 @@ ON e.id = ec.id_etudiant
 +----+--------+---------+-------------+---------+--------+-------------+
 ```
 
-[Tester avec SQLFiddle](http://sqlfiddle.com/#!9/9cbc63/3)
-
-### Inverse JOIN
-
-Pour ne garder que les lignes qui n'ont pas de jointure, on peut utiliser `IS NULL` (si cette valeur ne peut pas être nulle dans la table cible) :
-
-``` sql
-SELECT candidate_id AS student_id
-FROM candidates AS c
-LEFT JOIN detentions AS d ON d.student_id = c.candidate_id
-WHERE d.detention_date IS NULL
-ORDER  BY c.candidate_id;
-```
-
-ou `HAVING` (dans tous les cas) :
-
-``` sql
-SELECT candidate_id AS student_id
-FROM candidates AS c
-LEFT JOIN detentions AS d ON d.student_id = c.candidate_id
-ORDER  BY c.candidate_id
-GROUP BY c.candidate_id
-having COUNT(d.detention_date) = 0;
-```
-
-## RIGHT JOIN
-
-Le `RIGHT JOIN` est l'inverse du `LEFT JOIN`: on multiple B par A, en gardant B au moins une fois.  
-Il est rarement utilisé.
-
-## Sous-requête
-
-Le `FROM`, `INNER JOIN` et `LEFT JOIN`, peuvent provenir du résultat d'une sous-requête.  
-Il est obligatoire de nommer ce résultat (avec un `AS`).
+Sinon, le `INNER JOIN` s'applique sur le `FROM`:
 
 ``` sql
 SELECT *
-FROM (
-    SELECT ...
-    FROM ...
-) as nom_temp
+FROM etudiant AS e
+LEFT JOIN etudiant_club AS ec ON e.id = ec.id_etudiant
+INNER JOIN club AS c ON ec.id_club = c.id
+
++----+--------+---------+-------------+---------+--------+-------------+
+| id | nom    | prenom  | id_etudiant | id_club | id     | nom         |
++----+--------+---------+-------------+---------+--------+-------------+
+| 1  | Dupont | Margaux | 1           | 2       | 2      | Musique     |
+| 1  | Dupont | Margaux | 1           | 3       | 3      | Littérature |
+| 1  | Dupont | Margaux | 1           | 1       | 1      | Sport       |
+| 2  | Dujean | Simon   | 2           | 2       | 2      | Musique     |
++----+--------+---------+-------------+---------+--------+-------------+
 ```
 
-<ins>Exemples</ins> :
+[SQLFiddle Left + inner join](http://sqlfiddle.com/#!9/9cbc63/3)
 
-``` sql
--- Moyenne des 5 meilleurs élèves
-SELECT ROUND(AVG(grade),2) as average_grade
-FROM (
-    SELECT grade
-    FROM students
-    ORDER BY grade DESC
-    LIMIT 5
-) as tmp;
-```
+### Inverse de Inner join
 
-``` sql
--- Différence entre budget (semaine entre left_bound et right_bound) et dépenses prévues
-SELECT a.id, GREATEST(SUM(plan.value) - a.value,0) as loss
-FROM allowable_expenditure as a
-LEFT JOIN (
-    SELECT 0+DATE_FORMAT(monday_date, "%U") as week, expenditure_sum as value
-    FROM expenditure_plan
-) as plan ON plan.week BETWEEN a.left_bound AND a.right_bound
-GROUP BY a.id;
-```
+Pour ne garder que les lignes qui n'ont pas de jointure:
 
-``` sql
--- Nombre de sièges vides par vol
-SELECT flights.flight_id, IFNULL(number_of_seats - purchased_seats, number_of_seats) as free_seats
-FROM flights
-INNER JOIN planes ON flights.plane_id = planes.plane_id
-LEFT JOIN (
-    SELECT flight_id, count(seat_no) as purchased_seats
-    FROM purchases
-    GROUP BY flight_id
-) as purchases ON purchases.flight_id = flights.flight_id
-ORDER BY flights.flight_id;
-```
+* Si cette valeur ne peut pas être nulle dans la table cible, on peut utiliser `IS NULL`:
+
+  ``` sql
+  SELECT candidate_id AS student_id
+  FROM candidates AS c
+  LEFT JOIN detentions AS d ON d.student_id = c.candidate_id
+  WHERE d.detention_date IS NULL
+  ORDER  BY c.candidate_id;
+  ```
+
+* Ou dans tous les cas, on peut utiliser `HAVING`:
+
+  ``` sql
+  SELECT candidate_id AS student_id
+  FROM candidates AS c
+  LEFT JOIN detentions AS d ON d.student_id = c.candidate_id
+  ORDER  BY c.candidate_id
+  GROUP BY c.candidate_id
+  HAVING COUNT(d.detention_date) = 0;
+  ```
 
 ---
 
-## WHERE
+## Where
 
-Le `WHERE` prend une ou des expressions en paramètre, et filtre les lignes à retourner avec.  
+Permet de filtrer les lignes, en vérifiant une ou des conditions.   
 L'expression la plus couramment utilisée est la comparaison d'un attribut et d'une valeur :
 
 ``` sql
@@ -465,9 +406,9 @@ WHERE continent = "Africa"
 ORDER BY name;
 ```
 
-### Calculs
+### Opérateurs et fonctions
 
-On peut également tester le résultat d'un calcul, d'une fonction et/ou d'une sous-requête, et utiliser un opérateur différent de l'égalité. [Voir fonctions et opérateurs](mysql-fonctions.md#booléens)
+On peut également tester le résultat d'un calcul, d'une fonction et/ou d'une sous-requête, et utiliser un opérateur différent de l'égalité. [Voir fonctions et opérateurs](mysql-native-function.md#booléens)
 
 ``` sql
 SELECT email
@@ -487,45 +428,45 @@ WHERE c = (CASE operation
       END);
 ```
 
-### Plusieurs expressions
+### Combiner les expressions
 
 Plusieurs expressions peuvent être combinées avec `AND`, `OR`, `NOT` et les parenthèses.
 
 ``` sql
-SELECT count(*) as number_of_nulls
+SELECT count(*) AS number_of_nulls
 FROM departments
 WHERE description IS NULL
   OR TRIM(description) IN ("NULL", "NIL", "-");
 ```
 
-### Casse
+### Respecter la casse
 
 Par défaut, les comparaisons de chaînes sont insensibles à la casse.  
 Pour une comparaison sensible à la casse, il faut comparer les chaînes binairement - grace au mot-clé `BINARY`.
 
 ``` sql
 SELECT *
-FROM etudiant as e
+FROM etudiant AS e
 WHERE BINARY nom = "Dupont"
 ```
 
 ---
 
-## GROUP BY
+## Group by
 
-Le `GROUP BY` permet de grouper plusieurs résultats pour effectuer une agrégation de données, comme calculer une somme ou la moyenne de toutes les lignes regroupées.
+Permet de grouper plusieurs résultats pour effectuer une agrégation de données, comme calculer une somme ou la moyenne de toutes les lignes regroupées.
 
 ``` sql
 -- Moyenne de chaque étudiant
-SELECT nom, prenom, ROUND(AVG(note),1) as moyenne
-FROM etudiant as e
-LEFT JOIN etudiant_note as n ON n.id_etudiant = e.id
+SELECT nom, prenom, ROUND(AVG(note),1) AS moyenne
+FROM etudiant AS e
+LEFT JOIN etudiant_note AS n ON n.id_etudiant = e.id
 GROUP BY e.id;
 ```
 
 ``` sql
 -- Nombre d'utilisateur par pays
-SELECT continent, sum(users) as users
+SELECT continent, sum(users) AS users
 FROM countries
 GROUP BY continent
 ORDER BY users DESC;
@@ -533,12 +474,16 @@ ORDER BY users DESC;
 
 À noter que si une fonction d'agrégation est utilisée dans le `SELECT`alors qu'aucun `GROUP BY` n'est présent, une agrégation de toutes les lignes est effectuée.
 
+### Fonctions d'aggrégation
+
+Voir [fonctions d'agrégation](mysql-native-function#agrégats)
+
 ``` sql
 -- Concaténation des valeurs d'un groupe
 SELECT GROUP_CONCAT(
             CONCAT(first_name, " ", surname, " #", player_number) -- Concaténation au sein d'une ligne
             ORDER BY player_number                                -- Ordre des lignes du groupe (optionnel)
-            SEPARATOR '; ') as players                            -- Concaténer le tout avec ";" ("," si omis)
+            SEPARATOR '; ') AS players                            -- Concaténer le tout avec ";" ("," si omis)
 FROM soccer_team;
 
 -- Alexis Sanchez #7; Oliver Giroud #12; Theo Walcott #14; Santi Cazorla #19; Hector Bellerin #24; Petr Cech #33
@@ -546,19 +491,18 @@ FROM soccer_team;
 
 ``` sql
 -- Total de la commande
-SELECT id_commande, SUM(prix_unite * quantite) as total
+SELECT id_commande, SUM(prix_unite * quantite) AS total
 FROM commande_detail
 WHERE id_commande = 1;
 ```
 
-Voir [fonctions d'agrégation](mysql-fonctions#agrégats)
+### With rollup
 
-### WITH ROLLUP
-
-On peut ajouter un `WITH ROLLUP` au `GROUP BY`, qui a pour effet d'ajouter un agrégat des différents groupes en plus (= un total) :
+On peut ajouter un `WITH ROLLUP` au `GROUP BY`.  
+Il a pour effet d'effectuer un aggrégat de tous les groupes obtenus (= un total):
 
 ``` sql
-SELECT IFNULL(year, "Total: ") as year, SUM(profit) AS profit
+SELECT IFNULL(year, "Total: ") AS year, SUM(profit) AS profit
 FROM sales
 GROUP BY year ASC WITH ROLLUP;
 
@@ -573,15 +517,15 @@ GROUP BY year ASC WITH ROLLUP;
 
 ---
 
-## HAVING
+## Having
 
-Le `HAVING` permet de filtrer le résultat du `GROUP BY`.
+Permet de filtrer le résultat du `GROUP BY`
 
 ``` sql
 -- Tous les étudiants qui n'ont pas la moyenne
-SELECT nom, prenom, ROUND(AVG(note),1) as moyenne
-FROM etudiant as e
-LEFT JOIN etudiant_note as n ON n.id_etudiant = e.id
+SELECT nom, prenom, ROUND(AVG(note),1) AS moyenne
+FROM etudiant AS e
+LEFT JOIN etudiant_note AS n ON n.id_etudiant = e.id
 GROUP BY e.id
 HAVING moyenne < 10;
 ```
@@ -597,9 +541,10 @@ HAVING sum(oscars) > 2;
 
 ---
 
-## ORDER BY
+## Orber dy
 
-`ORDER BY` permet d'ordonner le résultat. On peut ordonner de manière croissante avec `ASC` (ordre par défaut si omis) ou de manière décroissante avec `DESC`.
+Permet d'ordonner le résultat.  
+On peut ordonner de manière croissante avec `ASC` (ordre par défaut si non précisé) ou de manière décroissante avec `DESC`.
 
 ``` sql
 SELECT nom, prenom
@@ -613,7 +558,7 @@ FROM etudiant
 ORDER BY nom DESC, prenom; -- nom décroissant + prenom croissant
 ```
 
-On peut également utiliser des fonctions :
+On peut ordonner sur le résultat d'une fonction:
 
 ``` sql
 SELECT *
@@ -639,9 +584,9 @@ ORDER BY id, FIELD(column_name,'name','date_of_birth','salary')
 
 ---
 
-## LIMIT
+## Limit
 
-Le `LIMIT` limite le nombre de résultats retournés.
+Limite le nombre de résultats retournés.
 
 ``` sql
 -- Les 10 employés les mieux payés
@@ -671,7 +616,7 @@ LIMIT 60,30;
 
 ---
 
-## UNION
+## Union
 
 Le résultat de deux `SELECT` peut être mis bout à bout avec la commande `UNION`.
 
@@ -718,9 +663,9 @@ ORDER BY id, n;
 )
 ```
 
-[Voir SQLFiddle](http://sqlfiddle.com/#!9/88366/12)
+[SQLFiddle Union](http://sqlfiddle.com/#!9/88366/12)
 
-### UNION ALL
+### Union all
 
 Le `UNION` ne conserve pas les doublons, `UNION ALL` oui
 
@@ -736,85 +681,12 @@ SELECT name as names FROM
 ORDER BY name;
 ```
 
-### INNER JOIN
+### Inner join
 
-On peut se servir du `UNION` dans un `INNER JOIN` pour dupliquer des lignes. [Voir SQLfiddle](http://sqlfiddle.com/#!9/1ff2b7/3).
+On peut se servir du `UNION` dans un `INNER JOIN` pour dupliquer des lignes.
 
 ``` sql
 INNER JOIN (SELECT 0 as i UNION SELECT 1) as n ON 1 = 1;
 ```
 
----
-
-## Variables utilisateur
-
-Les variables utilisateurs permettent de stocker des valeurs pour le temps d'une execution.  
-
-* Elles sont initialisées en dehors des requêtes avec le mot-clé `SET`
-
-      SET @var_name = valeur;
-
-* Elles sont accessibles à l'intérieur d'une requête par leur nom :
-
-      WHERE att = @var_name
-
-* On peut les assigner/modifier à l'intérieur d'une requête avec `:=` (l'affectation retourne la valeur settée) :
-
-      WHERE att = (@var_name := valeur)
-
-* On peut assigner le résultat d'une requête avec `SELECT ... INTO` ou `SET = (SELECT ...)`
-
-      SELECT att INTO @var_name
-
-  <!-- -->
-
-      SET @var_name = (SELECT att)
-
-<ins>Exemples</ins> :
-
-Effectuer des calculs sur une ligne :
-
-``` sql
--- Afficher la taille du mail en Kilo ou Mega
-SELECT id, email_title,
-    IF((@s := size / 1024) >= 1024,
-       CONCAT(FLOOR(@s / 1024), " Mb"),
-       CONCAT(FLOOR(@s), " Kb")
-    ) as short_size
-FROM emails
-ORDER BY size DESC;
-```
-
-Effectuer des calculs sur plusieurs lignes :
-
-``` sql
--- Modifier l'id de chaque ligne (incrémente de 1)
-SET @i = 0;
-SELECT id as oldId, (@i := @i + 1) as newId
-FROM itemIds;
-```
-
-``` sql
--- Calculer le nombre de combinaisons
-SET @c = 1;
-SELECT @c := @c * LENGTH(characters) as combinations
-FROM discs
-ORDER BY combinations DESC
-LIMIT 1;
-```
-
-Réutiliser une variable entre deux requêtes :
-
-``` sql
--- Evenements des 7 derniers jours
-SET @today = (SELECT event_date FROM Events ORDER BY event_date DESC LIMIT 1);
-
-SELECT name, event_date
-FROM Events
-WHERE event_date != @today AND DATE_ADD(event_date, INTERVAL 7 DAY) >= @today
-ORDER BY event_date DESC;
-```
-
-``` sql
-SELECT SUM(price) INTO @n FROM orders
-```
+[SQLfiddle Innner join + union](http://sqlfiddle.com/#!9/1ff2b7/3)

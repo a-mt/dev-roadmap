@@ -1,6 +1,6 @@
 ---
 title: Fonctions et opérateurs MySQL (prédéfinis)
-category: Web, BDD, MySQL
+category: BDD, MySQL
 ---
 
 ## Booléens
@@ -1637,47 +1637,46 @@ https://dev.mysql.com/doc/refman/5.7/en/spatial-analysis-functions.html
 
 <ins>Exemples</ins> :
 
-[Calculer la surface d'un ensemble de points](https://codefights.com/arcade/db/specialties/qeMwFWTCDJeReCeZM) :
+* ``` sql
+  SELECT Area(ConvexHull(GeomFromText(points))) as area
+    FROM (
+        SELECT CONCAT('MULTIPOINT(', GROUP_CONCAT(CONCAT(x, " ", y) SEPARATOR ","), ')') as points
+        FROM `places`
+    ) as tmp;
+  ```
 
-``` sql
-SELECT Area(ConvexHull(GeomFromText(points))) as area
+  [Codefights Calculer la surface d'un ensemble de points](https://codefights.com/arcade/db/specialties/qeMwFWTCDJeReCeZM)
+
+* ``` sql
+  SELECT a.name AS place1, b.name AS place2
+  FROM sights AS a, sights AS b
+  WHERE a.name < b.name
+  AND DISTANCE(POINT(a.x, a.y), POINT(b.x, b.y)) < 5
+  ORDER BY place1, place2;
+  ```
+
+  [Codefights Places of interests](https://codefights.com/arcade/db/join-us-at-the-table/5KqR57uSz9u27KnzP)
+
+* ``` sql
+  SELECT ROUND(SUM(
+          DISTANCE(POINT(a.x,a.y), POINT(b.x,b.y))
+  ),9) as total
+  FROM cities AS a
+  INNER JOIN cities AS b ON b.id = (a.id + 1);
+  ```
+
+  [Codefights Route length](https://codefights.com/arcade/db/join-us-at-the-table/hYeHdGQAtPEXYxXaf)
+
+* ``` sql
+  SELECT id1,
+      SUBSTRING_INDEX(GROUP_CONCAT(id2 ORDER BY distance, id2), ',', 1) as id2
   FROM (
-      SELECT CONCAT('MULTIPOINT(', GROUP_CONCAT(CONCAT(x, " ", y) SEPARATOR ","), ')') as points
-      FROM `places`
-  ) as tmp;
-```
+      SELECT a.id AS id1, b.id AS id2, ROUND(DISTANCE(POINT(a.x,a.y), POINT(b.x,b.y))) as distance
+      FROM positions as a, positions as b
+      WHERE a.id != b.id
+      ORDER BY id1, distance, id2
+  ) as tmp
+  GROUP BY id1;
+  ```
 
-[Places of interests](https://codefights.com/arcade/db/join-us-at-the-table/5KqR57uSz9u27KnzP) :
-
-``` sql
-SELECT a.name AS place1, b.name AS place2
-FROM sights AS a, sights AS b
-WHERE a.name < b.name
-AND DISTANCE(POINT(a.x, a.y), POINT(b.x, b.y)) < 5
-ORDER BY place1, place2;
-```
-
-[Route length](https://codefights.com/arcade/db/join-us-at-the-table/hYeHdGQAtPEXYxXaf) :
-
-``` sql
-SELECT ROUND(SUM(
-        DISTANCE(POINT(a.x,a.y), POINT(b.x,b.y))
-),9) as total
-FROM cities AS a
-INNER JOIN cities AS b ON b.id = (a.id + 1);
-```
-
-[Closest cells](https://codefights.com/arcade/db/selecting-what-to-select/MPozuFjnvYoFPh6KW) :
-
-``` sql
-SELECT id1,
-    SUBSTRING_INDEX(GROUP_CONCAT(id2 ORDER BY distance, id2), ',', 1) as id2
-FROM (
-    SELECT a.id AS id1, b.id AS id2, ROUND(DISTANCE(POINT(a.x,a.y), POINT(b.x,b.y))) as distance
-    FROM positions as a, positions as b
-    WHERE a.id != b.id
-    ORDER BY id1, distance, id2
-) as tmp
-GROUP BY id1;
-```
-
+  [Codefights Closest cells](https://codefights.com/arcade/db/selecting-what-to-select/MPozuFjnvYoFPh6KW)

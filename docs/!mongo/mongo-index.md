@@ -6,7 +6,7 @@ category: Web, BDD, MongoDB
 Sans index, pour trouver un document dans une collection, il faudrait scanner chaque document un par un. Un index est une liste ordonnée qui pour chaque valeur d'index a une référence vers un enregistrement physique. Les propriétés de cette liste vont rendre les requêtes beaucoup plus rapide (MongoDB utilise un B-tree).
 
 L'indexation n'est pas gratuite, chaque fois qu'une mise à jour affectant l'index est effectuée, il va falloir mettre à jour cette liste. L'écriture est donc plus lente, mais la lecture est plus rapide.  
-Une des stratégie couramment utilisée lors de l'insertion d'une grand nombre de données en base de données est d'enlever les index sur la collection, d'insérer les données puis (ré)ajouter les index.
+Une des stratégie couramment utilisée lors de l'insertion d'un grand nombre de données en base de données est d'enlever les index sur la collection, d'insérer les données, puis remettre les index — et ce, afin de ne lancer l'indexation qu'une seule fois.
 
 ---
 
@@ -28,7 +28,7 @@ db.students.createIndex({ student_id : 1, class_id : -1 }) # student ASC, class 
 
 Si l'index contient plusieurs clés, utilisez la politique *leftmost*: si un index `name, hair_color` est définit, vous pouvez l'utiliser  pour les recherches sur `name` ou `name, hair_color` mais pas `hair_color`.
 
-De plus, un index ne peut pas être composé de deux tableaux:
+Un index peut être composé d'un tableau mais pas deux:
 
 ``` js
 // OK
@@ -58,7 +58,7 @@ db.stuff.createIndex({ thing: 1 }, { unique: true, sparse: true })
 
 #### Arrière-plan
 
-Par défaut, la création d'index est faite en avant-plan. C'est relativement vite, mais bloque les lectures et écritures en base de données.
+Par défaut, la création d'index est faite en avant-plan. C'est relativement rapide, mais bloque les lectures et écritures en base de données.
 
 On peut créer les index en arrière-plan (non pas un arrière-plan de processus mais en arrière-plan du moteur de stockage). C'est plus lent, mais ne bloque ni les lectures ni les écritures pendant ce temps.
 
@@ -70,7 +70,7 @@ Une autre manière d'indexer est de créer un index sur un serveur différent de
 
 ### getIndexes
 
-Liste des index qui existent sur une collection donnée.
+Retourne la liste des index qui existent sur une collection donnée.
 
 ``` js
 db.students.getIndexes()
@@ -227,9 +227,9 @@ Pour choisir l'index à utiliser, MongoDB examine la requête: sur quels champs 
 * vérifie laquelle est la plus rapide
 * met en cache le *query plan* correspondant.
 
-Ainsi, les requêtes suivantes utiliseront l'index qui retourne le résultat le plus rapidement.  
-Évidemment une collection change au fil du temps, le *query plan* ne reste pas en cache indéfiniment.  
-Il sera vidé du cache
+Ainsi, les prochaines requêtes utiliseront l'index le plus rapide.  
+Évidemment une collection change au fil du temps, le *query plan* ne reste donc pas en cache indéfiniment.  
+Il est vidé du cache
 1. au bout d'un nombre d'écritures définit
 2. si on modifie l'index
 3. si on ajoute ou supprime un index de la collection

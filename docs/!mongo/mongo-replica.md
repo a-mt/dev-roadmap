@@ -7,7 +7,7 @@ category: Web, BDD, MongoDB
 
 Afin d'assurer la disponibilité et la tolérance aux pannes, on peut mettre en place un *replica set*, c'est à dire un ensemble de noeuds Mongo qui communiquent entre eux et essaient de garder une copie de l'ensemble de données la plus à jour possible.
 
-Il y a un noeud primaire, puis des noeuds secondaires. Les données sont écrites dans le noeud primaire puis sont répliquées de manière asynchrone dans les noeuds secondaires. L'application et les drivers restent connectés au noeud et écrivent dans ce noeud.
+Il y a un noeud primaire, puis des noeuds secondaires. Les données sont écrites dans le noeud primaire puis sont répliquées de manière asynchrone dans les noeuds secondaires. L'application et les drivers sont connectés au noeud primaire et écrivent dans ce noeud.
 
 La réplication prend en charge les moteurs de stockage en mode mixte, on peut l'utiliser avec MMAP et WiredTiger.
 
@@ -17,7 +17,7 @@ Si le noeud primaire tombe en panne, une élection sera effectuée pour choisir 
 
 Un *replica set* doit au avoir minimum 3 noeuds car avec moins de 3 noeuds, il n'y aurait aucun moyen d'élire un nouveau noeud primaire.
 
-On peut décider du nombre de vote chacun des noeuds. On suppose que chaque noeud possède une voix, parce qu'en réalité il n'est pas très pratique d'accorder plus d'une voix à un noeud. Typiquement, chaque noeud a une voix.
+On peut décider du nombre de voix de chaque noeuds mais on suppose généralement que chaque noeud possède une voix — parce qu'en réalité il n'est pas très pratique d'accorder plus d'une voix à un noeud.
 
 ## Rollback
 
@@ -47,8 +47,8 @@ Il existe différents types de noeuds:
     mongod --replSet rs1 --logpath "1.log" --dbpath /data/rs1 --port 27017 --fork
     ```
 
-2. Créer un fichier pour initier le replica set.  
-   `rs` est une variable globale à l'intérieur du shell mongo, faisant référence au replica set en cours.  
+2. Créer un fichier pour lancer le replica set.  
+   `rs` est une variable globale à l'intérieur du shell mongo, qui fait référence au replica set en cours.  
    Il n'est pas indispensable de créer un fichier, mais cela permet d'automatiser le processus.  
 
     ``` js
@@ -65,7 +65,7 @@ Il existe différents types de noeuds:
     rs.status()
     ```
 
-3. À partir d'une des instances du replica set, initier le replica set.
+3. À partir d'une des instances du replica set, lancer le replica set.
 
    ```
    mongo --port 27018 < init_replica.js
@@ -134,15 +134,15 @@ MongoClient.connect("mongodb://"
 });
 ```
 
-Il n'est pas nécessaire de lister tous les noeuds, le serveur découvrira les noeuds du replica set pourvu qu'il ait accès à au moins un noeud valide.
+Il n'est pas nécessaire de lister tous les noeuds, le serveur découvrira les noeuds du replica set pourvu qu'il ait accès a au moins un noeud valide.
 
 Le driver se connecte au serveur, détermine quel est le noeud primaire, quels sont les noeuds secondaires, obtient leur état, et en déduit où il doit lire et écrire. Tout est fait de manière transparente pour l'application.
 
-Les lectures et écritures envoyées par le driver sont mises en mémoire tampon dans le driver. En cas de panne d'un noeud, le driver conserve la requête jusqu'à ce que la nouvelle élection ait lieu, puis envoie les informations au noeud primaire.
+Les lectures et écritures envoyées par le driver sont mises en mémoire tampon dans le driver. En cas de panne d'un noeud, le driver conserve la requête jusqu'à ce que la nouvelle élection ait lieu, puis envoie les informations au nouveau noeud primaire.
 
 ## Synchronisation
 
-Chaque noeud en cours d'exécution possède un oplog. Lorsqu'on écrit sur un noeud primaire, les requêtes sont écrites dans l'oplog puis, à intervalles réguliers, les noeuds secondaires viennent consulter ce qu'il y a de nouveau dans l'oplog depuis leur dernière mise à jour pour appliquer ces mêmes requêtes.
+Chaque noeud en cours d'exécution possède un journal *oplog*. Lorsqu'on écrit sur un noeud primaire, les requêtes sont écrites dans l'oplog puis, à intervalles réguliers, les noeuds secondaires viennent consulter ce qu'il y a de nouveau depuis leur dernière mise à jour pour appliquer ces mêmes requêtes.
 
 Pour afficher ce qu'il y a dans l'oplog:
 
@@ -150,9 +150,9 @@ Pour afficher ce qu'il y a dans l'oplog:
 db.oplog.rs.find().pretty()
 ```
 
-L'oplog est une collection plafonnée (*capped collection*), ce qui signifie que la quantité d'information qu'elle retient est limitée. Il faut s'assurer d'avoir un oplog assez grand pour faire face aux périodes où le noeud secondaire ne peut entrer en contact avec le noeud primaire. La taille choisie devra prendre en compte le réseau et la quantité de données écrites.
+L'oplog est une *cap collection*, ce qui signifie que la quantité d'information qu'elle retient est limitée. Il faut s'assurer d'avoir un oplog assez grand pour faire face aux périodes où le noeud secondaire ne peut entrer en contact avec le noeud primaire. La taille choisie devra prendre en compte le réseau et la quantité de données écrites.
 
-Dans le cas où l'oplog est trop court, il est toujours possible de synchroniser le noeud secondaire avec le noeud primaire mais il doit lire l'intégralité de la base de données, ce qui est BEAUCOUP plus lent.
+Dans le cas où l'oplog est trop court, il est toujours possible de synchroniser le noeud secondaire avec le noeud primaire en lisant l'intégralité de la base de données, ce qui est BEAUCOUP plus lent.
 
 ## Journalisation
 
@@ -190,7 +190,7 @@ const client = new MongoClient(url, { w: "majority", j: 0 });
 ## Lecture & écriture
 
 Par défaut, les lectures et écritures sont faites sur le noeud primaire. Par conséquent, on lit toujours ce qu'on a écrit.
-Il est possible de changer les configurations pour lire les données à partir des noeuds secondaires. En faisant cela, il est possible de lire temporairement des données périmées car la réplication est asynchrone. Si cet inconvénient est acceptable, cela permettra de repartir la charge de requêtes sur différentes machines.
+Mais il est possible de changer les configurations pour lire les données à partir des noeuds secondaires. En faisant cela, il est possible de lire temporairement des données périmées car la réplication est asynchrone. Si cet inconvénient est acceptable, cela permettra de repartir la charge de requêtes sur différentes machines.
 
 Les différentes préférences disponibles sont:
 

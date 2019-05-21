@@ -5,10 +5,10 @@ category: Web, BDD, MongoDB
 
 ## Explain
 
-La commande `explain` est utilisée pour savoir ce que la base de données fait d'une requête donnée: comment elle l'exécute, quels index elle utilise, combien de documents elle inspecte, etc.
+La commande `explain` est utilisée pour savoir ce que fati la base de données d'une requête donnée: comment elle l'exécute, quels index sont utilisées, combien de documents sont inspectés, etc.
 
 On ne peut pas l'utiliser sur l'instruction `insert`.  
-Pour lister les méthodes qu'`explain` prend en charge chaîner la commande `help`:
+Pour lister les méthodes qu'`explain` prend en charge, utiliser la commande `help`:
 
 ``` js
 db.students.explain().help()
@@ -37,7 +37,7 @@ La commande `explain` a différents modes, permettant d'afficher différentes st
   ```
 
 * <ins>allPlansExecution</ins>  
-  Périodiquement, l'optimiseur de requête exécute tous les index possibles qui pourraient être utilisés sur une requête, et garde en mémoire l'index le plus rapide pour exécuter les requêtes suivantes. Le mode *allPlansExecution* donne les stats résultantes.
+  Périodiquement, l'optimiseur de requête exécute tous les index possibles qui pourraient être utilisés sur une requête, et garde en mémoire l'index le plus rapide pour exécuter les requêtes suivantes. Le mode *allPlansExecution* retourne les stats obtenues.
 
   ``` js
   db.students.explain('allPlansExecution').find({ teachers: {$all:[0,1]} })
@@ -47,7 +47,7 @@ La commande `explain` a différents modes, permettant d'afficher différentes st
 
 ## Moteur de stockage
 
-Le moteur de stockage est l'interface entre le stockage (disque) et la base de données (MongoDB). Le driver requête le serveur MongoDB, qui le relaie ensuite sur le disque via un moteur de stockage pour créer, lire, mettre à jour et supprimer des données.
+Le moteur de stockage est l'interface entre le stockage (disque) et la base de données (MongoDB): le driver requête le serveur MongoDB, qui le relaie ensuite sur le disque via un moteur de stockage pour créer, lire, mettre à jour et supprimer des données.
 
 Le moteur de stockage peut être modifié et selon celui qu'on utilise, les performances ne sont pas les mêmes pour différentes opérations. Les deux principaux moteurs de stockage sont MMAP (par défaut) et WiredTiger.
 Le moteur de stockage n'affecte pas la communication entre les différents serveurs MongoDB ni l'API de la base de données.
@@ -56,7 +56,7 @@ Le moteur de stockage n'affecte pas la communication entre les différents serve
 
 MongoDB MMAP permet
 * de verrouiller les collections: si on a deux opérations en écriture en même temps, et qu'elles sont dans la même collection, l'une va devoir attendre que l'autre soit finie.
-* d'effectuer les mises en jour directement en mémoire, sur place, ce qui rend les modifications plus rapides. Elles sont ensuite répercutée sur le disque pour rendre le changement persistant.
+* d'effectuer les mises en jour directement en mémoire, sur place, ce qui rend les modifications plus rapides. Elles sont ensuite répercutées sur le disque pour rendre le changement persistant.
 
 ### WiredTiger
 
@@ -78,7 +78,7 @@ mongod -dbpath data -storageEngine wiredTiger
 
 ## Slow queries
 
-Par défaut, MongoDB log les requêtes lentes de plus de 100ms dans la sortie console.
+Par défaut, MongoDB logge les requêtes lentes de plus de 100ms dans la sortie console.
 
 Pour démarrer MongoDB avec une durée autre, passer le paramètre `--slowms <integer>`
 
@@ -92,8 +92,8 @@ Il est possible d'écrire les requêtes effectuées vers `system.profile`. Il s'
 
 Pour logger les requêtes, il faut activer le profiler. Trois modes sont possibles:
 * `0` (par défaut), désactivé
-* `1` log les requêtes lentes
-* `2` log toutes les requêtes
+* `1` logger les requêtes lentes
+* `2` logger toutes les requêtes
 
 <!-- -->
 

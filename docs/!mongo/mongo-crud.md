@@ -29,7 +29,7 @@ db.movies.insertMany([
 ])
 ```
 
-Par défaut, MongoDB effectue une insertion ordonnée, ce qui signifie que dès qu'il rencontre une erreur sur l'un des documents (un `_id` qui existe déjà par exemple), il arrête l'insertion des documents. En passant l'option `"ordered": false`, MongoDB exécutera une insertion non ordonnée, et continuera toujours d'insérer le reste des documents en cas d'erreur.
+Par défaut, MongoDB effectue une insertion ordonnée, ce qui signifie que s'il rencontre une erreur sur l'un des documents (un `_id` qui existe déjà par exemple), alors  l'insertion du reste des documents est arrêtée. En passant l'option `"ordered": false`, MongoDB exécutera une insertion non ordonnée et, en cas d'erreur, continuera d'insérer le reste des documents.
 
 ``` js
 // Continue d'insérer le reste des documents en cas d'erreur
@@ -99,7 +99,8 @@ twitterClient.stream('statuses/filter', { track: 'Marvel' }, function(stream){
 ### find
 
 La commande `find` permet de récupérer les documents d'une collection donnée.  
-Il est possible de sélectionner les champs à récupérer et filtrer les documents à retourner. Par défaut, `find` retourne tous les documents.
+Il est possible de sélectionner les champs à récupérer et filtrer les documents à retourner (plus d'infos ci-dessous).  
+Par défaut, `find` retourne tous les documents.
 
 ``` js
 // Listes des documents de la collection movies
@@ -108,7 +109,7 @@ db.movies.find()
 
 ### pretty
 
-Pour récupérer le JSON espacé, indenté, etc, on peut chaîner la commande `pretty`.
+Pour récupérer le JSON espacé, indenté, etc, on peut utiliser la commande `pretty`.
 
 ``` js
 db.movies.find().pretty()
@@ -229,7 +230,7 @@ Il y a différentes manières de récupérer le résultat:
 
 #### Égalité
 
-Si on veut filtrer les documents selon la valeur d'un ou des champs, on peut simplement utiliser la notation JSON:
+Si on veut filtrer les documents selon la valeur d'un ou plusieurs champs, on peut simplement utiliser la notation JSON:
 
 ``` js
 // Films dont le titre est "Jaws"
@@ -375,10 +376,10 @@ Il existe également des opérateurs permettant de combiner les filtres.
 
 | Opérateur | Description
 |---        |---
-| `$or`     | &verbar;&verbar;
-| `$and`    | &&
-| `$not`    | !
-| `$nor`    | !&verbar;&verbar;
+| `$or`     | `||`
+| `$and`    | `&&`
+| `$not`    | `!`
+| `$nor`    | `!||`
 
 ``` js
 // Documents dont le champ tomato.meter est supérieur à 95
@@ -451,7 +452,7 @@ db.movieDetails.updateOne(
 
 #### Upsert
 
-Les commandes de mise à jour (*update*) peuvent également insérer des documents (*insert*), ces opérations sont dites des opérations *upsert*. Lorsque l'option upsert est activée, une insertion sera effectuée lorsqu'il n'existe pas de documents correspondants au sélecteur utilisé.
+Les commandes de mise à jour (*update*) peuvent également insérer des documents (*insert*), ces opérations sont dites des opérations *upsert*. Lorsque l'option upsert est activée, une insertion sera effectuée s'il n'existe pas de documents correspondants au sélecteur utilisé.
 
 ``` js
 // Met à jour les champs du document

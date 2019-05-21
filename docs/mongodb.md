@@ -3,7 +3,7 @@ title: MongoDB
 category: Web, BDD
 ---
 
-* [Introduction](!mongo/mongo-intro.md)
+* [Les bases de MongoDB](!mongo/mongo-intro.md)
 * [Opérations CRUD](!mongo/mongo-crud.md)
 * [Index](!mongo/mongo-index.md)
 * [Aggrégats](!mongo/mongo-aggregate.md)

@@ -1,29 +1,32 @@
 ---
-title: Introduction
+title: Les bases de MongoDB
 category: Web, BDD, MongoDB
 ---
 
 MongoDB est une base de données NoSQL.  
-MongoDB supporte nativement la mise à échelle grâce aux fonctionnalité de *sharding*, et le fait de manière abstraite, en dehors de la logique de l'application.
+MongoDB supporte nativement la mise à échelle (fonctionnalité de *sharding*), de manière abstraite, en dehors de la logique de l'application.
 
 ## Structure
 
 * **document**:  
-  Au lieu de stocker les données dans base de données relationnelle, on stocke les données qui sont associées dans un *document* unique. Cela rend la distribution et répartition des données  sur plusieurs serveurs beaucoup plus facile. Les documents sont de 16MB max.
+  Au lieu de stocker les données dans une base de données relationnelle, on stocke toutes les données associées dans un *document* unique. Cela rend la distribution et répartition des données  sur plusieurs serveurs beaucoup plus facile. Les documents sont de 16MB maximum.
 
 * **collection**  
   Les documents sont stockés dans des *collections* (l'équivalent d'une table).
 
 * **database**  
   Les collections sont elles-mêmes organisées en *databases* (base de données).   
-  La collection et la database qui la contient forment un espace de nom: `video.movie` spécie la collection *movie* dans la database *video*.
+  La collection et la database forment un espace de nom, utilisé pour désigner l'emplacement des données.  
+  Par exempe, `video.movie` spécie la collection *movie* de la database *video*.
 
 Il n'existe pas de schéma pour les documents. Différents documents peuvent avoir différents champs au sein de la même collection.
 
+---
+
 ## Format
 
-Les données sont stockées dans un document sous forme BSON, ou JSON binaire.  
-BSON étend les types de valeurs JSON pour différencier les entiers, les doubles, les dates et les données binaires (pour stocker des images par exemple).
+Les données sont stockées au format BSON (JSON binaire).  
+BSON étend les types de valeurs JSON et permet de différencier les entiers, les doubles, les dates et les données binaires (pour stocker des images par exemple).
 
 ``` js
 {
@@ -32,13 +35,13 @@ BSON étend les types de valeurs JSON pour différencier les entiers, les double
 ```
 
 On utilise la notation JSON pour effectuer des requêtes.  
-La conversion entre le langage qu'on utilise (PHP, Node.js, etc) et BSON est assurée par le driver.
+La conversion entre le langage qu'on utilise (comme PHP ou Node.js) et BSON est assurée par le driver.
 
 ### BSON
 
-* BSON a été conçu pour être **léger**: l'espace requit pour représenter les données est réduit au minimum.
+* BSON a été conçu pour être **léger**: l'espace requit pour représenter les données est réduit au strict minimum.
 * BSON est également **traversable**: supporte la variété d'opérations nécessaires à l'écriture, la lecture et l'indexation des documents MongoDB.
-* Enfin, BSON est **efficient**: le codage des données vers BSON et le décodage des données de BSON, commes les drivers doivent le faire, peuvent être effectués très rapidement.
+* Enfin, BSON est **efficient**: le codage des données vers BSON et le décodage des données de BSON, comme les drivers doivent le faire, peuvent être effectués très rapidement.
 
 BSON stocke la longueur du document, le type de la valeur de chaque champ, sa longueur et sa valeur, et utilise NUL comme délimiteur.
 
@@ -60,6 +63,8 @@ Il s'agit d'une chaîne hexadécimale de 12 octets structurée de cette façon:
 
     DATE_UNIX (4 octets) | MAC ADDR (3 octets) | PID (2 octets) | COUNTER (3 octets)
 
+---
+
 ## Accéder à MongoDB
 
 Même principe que Mysql, après avoir installé MongoDB, on peut accéder au SGDB par la ligne de commande.  
@@ -73,11 +78,10 @@ Pour se connecter
 
        mongod
 
-2. Démarrer un shell Mongo (démarre sur localhost 27017 par défaut).
+2. Démarrer un shell Mongo (démarre sur localhost 27017 par défaut).  
+   Le shell Mongo est un interpréteur JavaScript entièrement fonctionnel.
 
        mongo
-
-   Le shell Mongo est un interpréteur JavaScript entièrement fonctionnel.
 
 3. Afficher les commandes disponibles
 
@@ -91,13 +95,13 @@ Pour se connecter
    ```
 
 5. Effectuer des requêtes.  
-   Lorsqu'on effectue des opérations CRUD (Create, Read, Update, Delete), on travaille toujours avec une variable globale appelée `db`. Cette variable contient une référence à la base de données actuellement utilisée.
+   Lorsqu'on effectue des opérations CRUD (Create, Read, Update, Delete), on travaille toujours avec une variable globale appelée `db`. Cette variable est une référence à la base de données actuellement utilisée.
 
    ``` js
    db.movies.insertOne({'title': 'Jaws', 'year', 1975})
    ```
 
-   La commande ci-dessous insère un document dans la collection `movies` de la database `video` précédemment sélectionnée.
+   La commande ci-dessus insère un document dans la collection `movies` de la database `video` précédemment sélectionnée.
 
 ### Node.js
 
@@ -120,6 +124,7 @@ MongoClient.connect('mongodb://localhost:27017/video', function(err, db){
     // Response on homepage
     app.get('/', function(req, res){
 
+        // Get all documents in the mvoies collection
         db.collection('movies').find({}).toArray(function(err, docs){
             res.render('movies', {'movies': docs});
         });
@@ -145,8 +150,7 @@ import sys
 connection = pymongo.Connection('mongodb://localhost', safe=True)
 db  = connection.school
 
-foo = db.students
-doc = foo.find_one({ student_id: 50000 })
+doc = db.students.find_one({ student_id: 50000 })
 if (doc is not None):
     print "first score for student ", doc['student_id'], " is ", doc['scores'][0]['score']
 ```

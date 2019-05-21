@@ -13,7 +13,7 @@ La pipeline d'agrégation est un tableau contenant des étapes, chaque étape ut
 
 ## $match
 
-Pour récupérer tous les documents qui matchent une requête (même principe que find, même syntaxe), on utilise `$match`:
+Pour récupérer tous les documents qui matchent une requête, on utilise `$match` (même principe que find, même syntaxe)
 
 ``` js
 db.companies.aggregate([{ $match: { founded_year: 2004 } })
@@ -23,7 +23,7 @@ db.companies.aggregate([{ $match: { founded_year: 2004 } })
 
 ## $project
 
-De même que pour une recherche, on peut effectuer une projection, c'est à dire sélectionner les champs à récupérer, avec `$project`.
+Pour effectuer une projection (sélectionner les champs à récupérer), on utilise `$project`
 
 ``` js
 db.companies.aggregate([
@@ -67,7 +67,7 @@ db.companies.aggregate([
 
 ### $filter
 
-Permet de sélectionner un sous-ensemble des éléments d'un tableau en fonction d'un certain nombre de critères de filtrage. Utiliser `$$` dans la condition pour désigner la variable définie dans l'expression.
+Permet de sélectionner un sous-ensemble des éléments d'un tableau en fonction d'un certain nombre de critères de filtrage. Utiliser `$$` dans la condition pour désigner la variable définie dans l'expression `as`.
 
 ``` js
 db.companies.aggregate([
@@ -117,7 +117,7 @@ db.companies.aggregate([
 
 ### $size
 
-Retourne le nombre d'élément d'un tableau.
+Retourne le nombre d'éléments d'un tableau.
 
 ``` js
 db.companies.aggregate([
@@ -131,7 +131,7 @@ db.companies.aggregate([
 
 ### $sum
 
-Retourne la somme.
+Permet de calculer une somme.
 
 ``` js
 db.companies.aggregate([
@@ -214,7 +214,7 @@ $sort: { "funding_rounds.founded_year": 1 }
 ## $unwind
 
 Permet d'éclater un document en plusieurs documents, en se basant sur les valeurs d'un tableau.  
-Par exemple pour remplacer
+C'est à dire remplacer
 
 ``` json
 { "name": "a", "key": ["elem1", "elem2", "elem3"] }
@@ -227,6 +227,8 @@ par
 { "name": "a", "key": "elem2" }
 { "name": "a", "key": "elem3" }
 ```
+
+Exemple:
 
 ``` js
 db.companies.aggregate([

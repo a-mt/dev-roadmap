@@ -9,19 +9,19 @@ Pour obtenir un certificat wildcard de la part de Let's Encrypt, vous devez avoi
 
 * Aller à la page [Networking](https://cloud.digitalocean.com/networking) et ajouter votre nom de domaine.
 
-  ![](https://i.imgur.com/fvAMJ2P.png)
+  ![](https://i.imgur.com/fvAMJ2Pl.png)
 
 * Ajouter vos enregistrements DNS.
 
-  ![](https://i.imgur.com/YpH3PUo.png)
+  ![](https://i.imgur.com/YpH3PUol.png)
   
-  ![](https://i.imgur.com/TnaCShq.png)
+  ![](https://i.imgur.com/TnaCShql.png)
   
-  ![](https://i.imgur.com/jney4nA.png)
+  ![](https://i.imgur.com/jney4nAl.png)
 
   Résultat final:
   
-  ![](https://i.imgur.com/nLs95CG.png)
+  ![](https://i.imgur.com/nLs95CGl.png)
 
 * Attendre 5 minutes que les changements se propagent sur les nameservers de DigitalOcean.
 
@@ -37,15 +37,15 @@ Avec Namesilo, le processus est comme suit:
 
 * Dans le bloc NameServers, cliquer sur "Change"
 
-  ![](https://i.imgur.com/HiNG8iE.png)
+  ![](https://i.imgur.com/HiNG8iEl.png)
 
 * Ajouter les nameservers de DigitalOcean dans la liste. Une fois que c'est fait, cliquer sur "Submit"
 
-  ![](https://i.imgur.com/2L8kWzv.png)
+  ![](https://i.imgur.com/2L8kWzvl.png)
 
 * Attendre 5 minutes que les changements se propagent sur le registrar. Rafraichir la page Domain Manager et vérifier que le status est "Active".
 
-  ![](https://i.imgur.com/pAdBa68.png)
+  ![](https://i.imgur.com/pAdBa68l.png)
 
 * Maintenant, il faut attendre que les modifications sur les nameservers root soient propagés jusqu'à votre FAI. Prévoir 30 minutes.
 
@@ -57,15 +57,15 @@ Il faut récupérer un token de DigitalOcean pour que Certbox (le logiicel qui g
 
 * Aller sur la page [Applications & API Tokens](https://cloud.digitalocean.com/settings/api/tokens) et cliquer "Generate Token"
   
-  ![](https://i.imgur.com/sptM6De.png)
+  ![](https://i.imgur.com/sptM6Del.png)
 
 * Lui donner un nom pour pouvoir l'identifier facilement puis cliquer sur "Generate Token"
 
-  ![](https://i.imgur.com/9IKF5A9.png)
+  ![](https://i.imgur.com/9IKF5A9l.png)
 
 * Copier le token
 
-  ![](https://i.imgur.com/GEliGxr.png)
+  ![](https://i.imgur.com/GEliGxrl.png)
 
 * Créer un fichier INI sur votre serveur pour stocker votre token
 

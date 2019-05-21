@@ -73,7 +73,8 @@ Une fois que c'est fait, il faut configurer votre serveur pour utiliser votre ce
   </VirtualHost>
   ```
 
-  [Plus d'options pour configurer SSL](http://httpd.apache.org/docs/2.4/en/ssl/ssl_howto.html)
+  [Plus d'options pour configurer SSL](http://httpd.apache.org/docs/2.4/en/ssl/ssl_howto.html)  
+  [Tester configurations SSL serveur en ligne](https://www.ssllabs.com/ssltest/)
 
 - Vérifier si le fichier de configuration est valide:
 

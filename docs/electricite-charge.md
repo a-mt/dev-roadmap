@@ -1,5 +1,5 @@
 ---
-title: Rappels de physique/chimie: Charges électriques
+title: "Rappels de physique/chimie: Charges électriques"
 category: Other, Éléctricité
 ---
 

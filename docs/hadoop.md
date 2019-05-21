@@ -5,9 +5,10 @@ category: IT
 
 ## Qu'est-ce qu'Hadoop
 
-"Hadoop" était le nom de la peluche appartenant au fils de l'un des développeurs, et la peluche d'éléphant est également le logo d'Hadoop. Mais plus sérieusement, qu'est-ce qu'Hadoop?
-
 Hadoop n'est pas une seule chose, mais un ensemble d'applications logicielles utilisées pour travailler avec des Big Data. C'est un framework, une plateforme composée de plusieurs modules différents.
+
+Le nom "Hadoop" était le nom d'une peluche du fils d'un des développeurs.  
+La peluche d'éléphant est d'ailleurs le logo d'Hadoop.
 
 ## Principaux modules
 

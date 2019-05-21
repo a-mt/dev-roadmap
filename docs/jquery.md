@@ -54,3 +54,5 @@ $.ajax({
   }
 });
 ```
+
+[Is jQuery still relevant?](https://remysharp.com/2017/12/15/is-jquery-still-relevant)

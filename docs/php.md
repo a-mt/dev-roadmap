@@ -55,8 +55,3 @@ category: Web
     * Socket
     * FTP
     * LDAP
-* Autres
-  * [Composer](composer.md)
-  * Templating engines
-    * [Twig](twig.md)
-    * Smarty

@@ -34,7 +34,7 @@ category: Web
 <tr>
   <td>Modifier une entrée</td>
   <td>POST</td>
-  <td><code>/customer/external/1/_update?pretty -d { "doc": { age": "20" } }</td>
+  <td><code>/customer/external/1/_update?pretty -d { "doc": { age": "20" } }</code></td>
 </tr>
 <tr>
   <td colspan="2"></td>
@@ -44,7 +44,7 @@ category: Web
   <td colspan="2"></td>
   <td>Mettre à jour le libellé de la catégorie 371<br><pre lang="json">... {
   "script":
-    "for (int i = 0; i < ctx._source.categories.size(); i++){
+    "for (int i = 0; i &lt; ctx._source.categories.size(); i++){
       if(ctx._source.categories[i]._id == _id) {
         ctx._source.categories[i].libelle = \"macategory\";
       }
@@ -56,7 +56,7 @@ category: Web
   <td colspan="2"></td>
   <td>Supprimer la catégorie 371<br><pre lang="json">... {
   "script":
-    "for (int i = 0; i < ctx._source.categories.size(); i++){
+    "for (int i = 0; i &lt; ctx._source.categories.size(); i++){
       if(ctx._source.categories[i]._id == _id) {
         ctx._source.categories.remove(i); i--;
       }
@@ -100,7 +100,7 @@ category: Web
        "match": { "categories._id": "371" }
     }
   }}
-};</pre>
+};</pre></td>
 </tr>
 <tr>
   <td>Chercher DES entrées</td>

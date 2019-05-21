@@ -4,7 +4,7 @@ category: Webenv
 ---
 
 Github permet d'héberger un site web statique (donc HTML, CSS, JS).
-Par exemple : https://github.com/w3c/w3c.github.io.  
+Par exemple : [w3c.github.io](https://github.com/w3c/w3c.github.io).  
 Le site est mis à jour à chaque commit au bout de quelques minutes.
 
 - Les pages peuvent être crées directement sur Github.  

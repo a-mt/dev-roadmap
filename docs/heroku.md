@@ -57,6 +57,12 @@ category: Other
   heroku config:get MAVAR
   ```
 
+* Pour lister toutes les variables d'environnement sur Heroku:
+
+  ```
+  heroku config
+  ```
+
 * Pour supprimer une variable d'environnement:
 
   ```
@@ -71,13 +77,26 @@ On peut aussi passer par l'interface web:
 
 ## Déployer sur Heroku
 
-```
-git push heroku master
-heroku ps:scale web=1
-heroku open
-```
-    
-En cas d'erreur "heroku no default language could be detected for this app.", il est nécessaire de spécifier un buildpack
+* Envoyer le code sur Heroku
+
+  ```
+  git push heroku master
+  ```
+
+* Lancer une instance de l'application si elle ne tourne pas déjà  
+  Il n'est pas possible de lancer plus d'une instance de la même application gratuitement.
+
+  ```
+  heroku ps:scale web=1
+  ```
+
+  En cas d'erreur "heroku no default language could be detected for this app.", il est nécessaire de spécifier un buildpack
+
+* Ouvrir l'URL de l'application
+
+  ```
+  heroku open
+  ```
 
 ## Spécifier un buildpack
 
@@ -137,3 +156,41 @@ Commiter puis reprendre le deploiement normal
     heroku repo:purge_cache -a <appname>
     heroku repo:reset -a <appname>
     git push heroku master
+
+---
+
+## Logs
+
+Pour afficher les logs générés par Heroku:
+
+```
+heroku logs --tail
+```
+
+Pour n'afficher que les logs de l'application (`console.log`):
+
+```
+heroku logs --source app-name
+```
+
+---
+
+## Apps
+
+* Lister toutes les applications Heroku:
+
+  ```
+  heroku apps
+  ```
+
+* Supprimer une application:
+
+  ```
+  heroku apps:destroy --app app-name
+  ```
+
+* Lancer l'application localement (sur http://localhost:5000)
+
+  ```
+  heroku local web
+  ```

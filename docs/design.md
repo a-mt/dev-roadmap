@@ -1,151 +1,32 @@
 ---
-title: Fondamentaux du design
+title: Design
 category: Other
 ---
 
-Le but de la conception est d'améliorer la présentation du contenu auquel elle est appliquée.
-
-[Web design in 4 minutes](https://jgthms.com/web-design-in-4-minutes/)
-
-## Le contenu est roi
-
-En toute logique, le principe premier du design est que **le contenu est roi**.  
-La tâche essentielle du designer est d'interpréter et de communiquer le contenu, ce qui signifie que le design doit **refléter l'état d'esprit du contenu**. Par exemple, un énoncé de mission destiné à des chefs d'entreprise pourrait utiliser un design élégant et sobre tandis qu'un festival de films d'horreur utiliserait un design festif avec des multiples tailles de fonts.
-
-![](https://i.imgur.com/lpJByLL.png)
-![](https://i.imgur.com/IxA4di2.png)
-![](https://i.imgur.com/nJIGvdV.png)
-
-Les trois principaux attributs qui influencent le design est
-- le public cible: âge, race, sexe, niche culturelle
-- le ton: décontracté, formel, amical, sarcastique
-- le but: informatif, conversations
-
----
-
-## Typographie
-
-[Typographie](design-typographie.md)
-- classification des polices
-- combinaisons de polices
-- taille de police
-- terminologie
-- leading
-- gras, italique
-- taille d'une ligne
-- alignement
-- orphelins et veuves
-- majuscules
-
-## Théorie des couleurs
-
-[Théorie des couleurs](design-couleur.md)
-- physique des couleurs
-- couleurs additives et soustractives
-- systèmes de codage des couleurs
-- terminologie
-- couleurs principales
-- températures
-- relativité des couleurs
-- signification
-- schémas
-- utiliser une image
-
-## Intégrer le texte et la couleur
-
-[Texte et couleur](design-couleur-2.md)
-- guide de style
-- couleur dominante et couleur tonique
-- couleur de texte et couleur d'arrière plan
-- hiérarchie visuelle
-- texte sur image
-- lorem ipsum
-- gradients
-- opacité
-- contraste
-- formes et motifs
-
-## Layout
-
-[Layout](design-layout.md)
-- layout de base
-- repères directionnels
-- grille
-- espace négatif
-- règle des tiers
-- disposition en diagonale
-- équilibre
-- nombre d'or
-- loi de fitts
-- loi de hick
-- théorie de gestalt
-
-## Image
-
-[Image](design-image.md)
-- logo
-- formats des fichiers image
-- réduire la taille d'une image
-- améliorer une image
-
----
-
-## Wireframe & maquette
-
-Un **wireframe** (ou zoning) est un schéma, généralement réalisé avec un crayon et du papier, où l'on définit les zones et composants d'une page. Il s'agit de l'étape de reflexion, on cherche à définir la structure des pages.
-
-Une **maquette graphique** est une image, généralement un fichier PSD, on cherche à visualiser ce à quoi le produit fini va ressembler.
-
-![](https://i.imgur.com/VYTt5oA.jpg)
-
-Un **mockup** est une maquette représentée dans un décor, sur un produit. Les clients sont généralement plus attirés par les mockup que par les maquettes présentées de but en blanc.
-
-![](https://i.imgur.com/bk3hbhs.jpg)
-
-Un **prototype** (ou intégration) c'est du code, généralement des fichiers html/css/js, une page fictive dont les fonctionnalités n'ont pas encore été implémentées.
-
-![](https://i.imgur.com/zcdHImr.png)
-
-[Créer une maquette avec Gravit.io](https://designer.gravit.io/)  
-[How to layout and design a website](https://medium.freecodecamp.org/how-to-layout-and-design-a-website-without-any-design-skills-86d94e40b55a)
-
-[Créer une maquette avec Canva](https://www.canva.com/fr_fr/creer/maquette-wireframe-site-web/)  
-[The Ideal Design Workflow](https://blog.prototypr.io/the-ideal-design-workflow-2c200b8e337d)
+* [Les bases du design](!design/design-intro.md)
+* [Le texte](!design/design-typographie.md)
+* Les couleurs
+  * [Système de codage des couleurs](!design/design-couleur-modele.md)
+  * [Vocabulaires des couleurs](!design/design-couleur-vocab.md)
+  * [Théorie des couleurs](!design/design-couleur-theorie.md)
+  * [Construire une palette](!design/design-couleur-palette.md)
+* Le layout
+  * [Placer les éléments](!design/design-layout-component.md)
+  * [Ergonomie](!design/design-layout-ergonomie.md)
+  * [Les images](!design/design-image.md)
+* [Designer un site web](!design/design-website.md)
 
 ---
 
 ## Pour aller plus loin
 
 - [hackdesign.org](https://hackdesign.org/)
-- [smashingmagazine.com](https://www.smashingmagazine.com/)
 - [99designs.fr](https://99designs.fr/blog/)
 - [UX Designers: 56 Best Websites To Learn Something New](https://uxplanet.org/ux-designers-here-are-the-50-best-online-courses-to-learn-something-new-d6e65024274f)
-- [30 UX Design Inspiration Resources](https://theblog.adobe.com/30-ux-design-inspiration-resources/)
+
+---
 
 ## Ressources
-
-- [Curated Collection For Designers](https://www.canva.com/learn/design-resources/)
-  - Color Inspiration
-  - Image Inspiration
-  - Icons
-  - Textures & patterns
-  - Backgrounds
-  - Vectors & illustrations
-  - Fonts
-  - Design podcasts
-  - Youtube Design tutorials
-  - Design education
-  - Design communities
-  - Project Management Tools
-  - Image Formatting
-
-- [The Stocks](http://thestocks.im)
-  - Photos
-  - Colors
-  - Icons
-  - Videos
-  - Mockups
-  - Fonts
 
 - Mockups
   - [Magic Mockups](http://magicmockups.com/)

@@ -10,20 +10,26 @@ Les images et les icônes peuvent être utilisées pour décorer ou pour apporte
 
 ## Logo
 
+### Logotype
+
 Une police décorative peut être utilisée pour créer le **logotype** d'une entreprise (nom de l'entreprise stylisé).  
 Exemple d'entreprises qui utilisent des logotypes: Google, Ikea, Disney.
 
-![](https://i.imgur.com/QFw5Z5L.png)
+![](https://i.imgur.com/QFw5Z5Ll.png)
+
+### Brandmark
 
 Le **brandmark** est un symbole utilisée à la place du nom de l'entreprise, il peut ou non être accompagné d'un logotype.  
 Exemple: Apple, WWF, Pepsi.
 
-![](https://i.imgur.com/I2Q8Qyl.jpg)
+![](https://i.imgur.com/I2Q8Qyll.jpg)
+
+### Lettermark
 
 Un **lettermark** est une abbréviation ou des initiales qui sont utilisées à la place du nom de l'entreprise.  
 Exemple: Cable News Network, British Broadcasting Corporation, Volkswagen.
 
-![](https://i.imgur.com/Z3ZCaGY.png)
+![](https://i.imgur.com/Z3ZCaGYl.png)
 
 ---
 

@@ -3,6 +3,8 @@
 
 @import "{{ site.theme }}";
 
+/* LAYOUT */
+
 .task-list-item-checkbox {
     position: relative;
     left: -20px;
@@ -224,6 +226,8 @@ ul.breadcrumb {
   }
 }
 
+/* CODE HIGHLIGHT */
+
 td > .highlighter-rouge {
     margin-bottom: -1em;
 }
@@ -245,4 +249,47 @@ td > .MathJax_Display {
 }
 td > .MathJax_Text:not(.document) {
     text-align: center;
+}
+
+/* THEME */
+
+body {
+    background: #eee;
+}
+.container-lg {
+    background: #fff;
+    padding: 16px 0;
+}
+
+.markdown-body .highlight pre, .markdown-body pre {
+    background: #eee;
+    padding: 1.6em;
+}
+.markdown-body code {
+    background: transparent;
+    font-size: 0.9375rem;
+}
+.markdown-body tt {
+    background: #eee; 
+}
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+    margin-bottom: 5px;
+}
+a {
+    color: hsl(32, 52%, 60%); /* #c69c6d, hsl(32, 44%, 60%) */
+}
+ul.breadcrumb {
+    color: #989898;
+}
+.btn.btn-primary,
+.btn.btn-primary:hover {
+    color: #fff;
+    background-color: #333;
+    border-color: #333;
+}
+.form-control:focus {
+    border-color: #999;
 }

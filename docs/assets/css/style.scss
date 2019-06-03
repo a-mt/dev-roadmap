@@ -266,7 +266,7 @@ body {
     padding: 1.6em;
 }
 .markdown-body code {
-    background: transparent;
+    background: #eee;
     font-size: 0.9375rem;
 }
 .markdown-body tt {
@@ -277,9 +277,6 @@ body {
 .markdown-body ol ol,
 .markdown-body ol ul {
     margin-bottom: 5px;
-}
-a {
-    color: hsl(32, 52%, 60%); /* #c69c6d, hsl(32, 44%, 60%) */
 }
 ul.breadcrumb {
     color: #989898;

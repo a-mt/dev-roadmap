@@ -4,7 +4,7 @@ category: Other
 ---
 
 Agile est un ensemble de valeurs et de principes utilisées pour prendre des décisions sur la façon de développer un produit.
-Différentes méthodes et outils peuvent être adoptés pour aider une équipe à suivre les principes Agile, mais ils ne sont pas Agile en eux-mêmes.
+Différentes méthodes et outils peuvent être adoptés pour aider une équipe à suivre les principes Agile, mais ils ne sont pas "Agile" en eux-mêmes.
 
 ---
 
@@ -22,7 +22,7 @@ Il dit simplement que nous pouvons améliorer le processus de développent en va
 
 ## 12 principes Agile
 
-En plus du manifeste, [12 principes](http://agilemanifesto.org/iso/fr/principles.html) sont définits pour soutenir les valeurs Agile.
+En plus du manifeste, [12 principes](http://agilemanifesto.org/iso/fr/principles.html) sont définis pour soutenir les valeurs Agile.
 
 1. La priorité est de satisfaire le client grâce à une <ins>livraison rapide</ins> et continue de produits de valeur.
 

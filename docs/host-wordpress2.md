@@ -181,7 +181,8 @@ Installer le plugin "Code Prettify" pour ajouter la coloration syntaxique des bl
   #sidebars .widget h3,
   #sidebars .widget h3 a,
   #respond h3,
-  .comment-respond h4 {
+  .comment-respond h4,
+  h1, h2, h3, h4, h5, h6 {
     color: #c9c9c3;
   }
   span.entry-meta,
@@ -192,5 +193,9 @@ Installer le plugin "Code Prettify" pour ajouter la coloration syntaxique des bl
   #sidebars .widget,
   #sidebars .widget a {
     color: #929292;
+  }
+
+  .article ul ul {
+    list-style-type: circle;
   }
   ```

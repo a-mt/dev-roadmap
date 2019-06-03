@@ -70,3 +70,5 @@ Un [Droplet](https://www.digitalocean.com/products/droplets/) est une machine vi
 
 * Le droplet est maintenant fonctionnel.
   Vous pouvez retourner sur la page [Droplets](https://cloud.digitalocean.com/droplets), vous verrez votre droplet dans la liste et obtenir des informations additionnelles (tel que l'utilisation en mémoire et CPU) en cliquant dessus.
+
+[How to Create a Droplet from the DigitalOcean Control Panel](https://www.digitalocean.com/docs/droplets/how-to/create/)

@@ -92,8 +92,8 @@ Quand des fichiers ont été modifiés dans un répertoire versionné (= qui con
 <table>
 <tr><th align="left">git add file.txt    </th><td>Ajoute file.txt au staging area</td></tr>
 
-<tr><th align="left">git add .           </th><td>Tous les fichiers modifiés (mais pas les nouveaux)</td></tr>
-<tr><th align="left">git add --all       </th><td>Tous les fichiers ajoutés, modifiés et supprimés</td></tr>
+<tr><th align="left">git add -u          </th><td>Tous les fichiers modifiés et supprimés (mais pas les nouveaux)</td></tr>
+<tr><th align="left">git add .<br>git add --all </th><td>Tous les fichiers ajoutés, modifiés et supprimés</td></tr>
 <tr><th align="left">git add mydir/      </th><td>Tous les fichiers dans le répertoire mydir</td></tr>
 
 <tr><th align="left">git add *.txt       </th><td>Tous les fichiers .txt dans le répertoire courant (avec l'expansion du shell)</td></tr>

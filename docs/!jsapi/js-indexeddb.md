@@ -127,7 +127,8 @@ openReq.onsuccess = function(event) {
 
 ## 2. Créer le schéma
 
-Le schéma de la base de données doit être crée au moment de son installation (`onupgradeneeded`).
+Les tables de la base de données doivent être crées lorsque cette dernière est installée (`onupgradeneeded`).  
+Au moment de créer une table (un *objectStore*), on choisit le champ à utiliser comme clé primaire et on peut ajouter des index pour effectuer des recherches/tris de la table. Pour le reste, les colonnes n'ont pas à être définies, on peut ajouter les champs qu'on veut au moment de l'insertion.
 
 * Supprimer les anciennes tables avec `deleteObjectStore`
 
@@ -143,26 +144,33 @@ Le schéma de la base de données doit être crée au moment de son installation
   var store = db.createObjectStore("myTableName");
   ```
 
-  Il est possible de spécifier le nom de la clé primaire et d'utiliser un autoIncrement comme suit:
+  On peut utiliser une clé primaire avec autoIncrement:
 
   ``` js
   var store = db.createObjectStore("myTableName", {keyPath:"id", autoIncrement:true});
   ```
+  
+  Ou définir l'index à utiliser comme clé primaire:
 
-* Ajouter des attributs à la table
+  ``` js
+  var store = db.createObjectStore("myTableName", {keyPath:"id"});
+  store.createIndex("id", "id", { unique: true });
+  ```
+
+* Ajouter des index à la table
 
   ``` js
   store.createIndex("title", "title");
   ```
 
-  Cet attribut peut être unique.  
-  Si l'on essaie de créer deux entrées avec la même valeur d'attribut, une erreur `ConstraintError` est levée.
+  On peut ajouter une contrainte d'unicité.  
+  Quand le c'est le cas, une erreur `ConstraintError` est levée si on essaie de créer deux entrées avec la même valeur.
 
   ``` js
   store.createIndex("isbn", "isbn", { unique: true });
   ```
 
-  Il est également de préciser la locale à utiliser pour le tri (anglais par défaut).
+  On peut également préciser la locale à utiliser pour le tri (anglais par défaut).
 
   ``` js
   store.createIndex("title", "title", { locale: "fr" });

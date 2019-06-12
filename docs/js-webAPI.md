@@ -9,6 +9,7 @@ category: Web, JavaScript
   - [x] [AJAX](!jsapi/js-ajax.md)
   - [x] [JSON, JSONP](!jsapi/js-json.md)
 - [x] [Gestion de la mémoire](!jsapi/js-memory.md)
+- [x] [Console](!jsapi/js-console.md)
 - Interraction
   - [x] [Entrées utilisateur (clavier, souris, etc)](!jsapi/js-user-interaction.md)
   - [x] [Formulaire](!jsapi/js-form.md)

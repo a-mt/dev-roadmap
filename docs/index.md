@@ -249,6 +249,7 @@ searchbar: true
   - [Caractères Unicode](http://www.fileformat.info/info/unicode/index.htm)  
   - [Emojis Unicode](https://emojipedia.org/)
   - [Encrypt mailto links](https://robspangler.com/blog/encrypt-mailto-links-to-stop-email-spam/)
+  - [Ransom note generator](http://www.ransomizer.com/)
 
 - Hosting  
   - Images: [Imgur](https://imgur.com/), [Lensdump](https://lensdump.com/)

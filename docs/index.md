@@ -47,6 +47,7 @@ searchbar: true
 [mongodb]: mongodb.md
 [mustachejs]: mustachejs.md
 [mysql]: mysql.md
+[ntp]: ntp.md
 [opensource]: github.md
 [paradigm]: paradigm.md
 [php]: php.md
@@ -182,7 +183,7 @@ searchbar: true
 ## Exploitation
 
 - Réseau  
-  [IP][host-ip], [Nom de domaine][host-domain], [HTTPS][ssl-howto], HSTS [1 &#x21F2;](https://freshman.tech/securing-your-website/#http-strict-transport-security-hsts), [SSH][ssh]
+  [IP][host-ip], [Nom de domaine][host-domain], [HTTPS][ssl-howto], HSTS [1 &#x21F2;](https://freshman.tech/securing-your-website/#http-strict-transport-security-hsts), [SSH][ssh], [NTP][ntp]
 
 - Serveurs web  
   Apache ([Vhost][apache-vhost], .htaccess [1 &#x21F2;](https://perishablepress.com/stupid-htaccess-tricks/)), Nginx [1 &#x21F2;](https://www.freecodecamp.org/news/an-introduction-to-nginx-for-developers-62179b6a458f/)

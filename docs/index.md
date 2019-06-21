@@ -29,6 +29,7 @@ searchbar: true
 [host-ip]: host-ip.md
 [html]: html.md
 [ipsec]: ipsec.md
+[iptables]: iptables.md
 [jekyll]: jekyll.md
 [jquery]: jquery.md
 [js-webapi]: js-webAPI.md
@@ -187,7 +188,7 @@ searchbar: true
   Apache ([Vhost][apache-vhost], .htaccess [1 &#x21F2;](https://perishablepress.com/stupid-htaccess-tricks/)), Nginx [1 &#x21F2;](https://www.freecodecamp.org/news/an-introduction-to-nginx-for-developers-62179b6a458f/)
 
 - Pare-feu  
-  Iptables, Windows Defender
+  [Iptables][iptables], UFW [1 &#x21F2;](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-9), Windows Defender
 
 - Outils Linux  
   [Awk][awk], [Sed][sed], [Grep][grep], Cut

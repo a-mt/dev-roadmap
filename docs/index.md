@@ -52,6 +52,7 @@ searchbar: true
 [paradigm]: paradigm.md
 [php]: php.md
 [posix]: regex-posix.md
+[puppet]: puppet.md
 [regex]: regex.md
 [sass]: sass.md
 [securite]: securite.md
@@ -218,7 +219,7 @@ searchbar: true
 ## DevOps
 
 - Automatisation du Provisionnement  
-  Chef, Puppet, [Ansible][ansible]
+  Chef, [Puppet][puppet], [Ansible][ansible]
 
 - Outils d'intégration continue  
   Jenkins

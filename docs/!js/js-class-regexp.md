@@ -44,6 +44,15 @@ console.log(match.groups); // {year: "2015", month: "01", day: "02"}
 
 ---
 
+## search
+
+Permet de récupérer l'index du match
+
+```
+"Hello World".search(/\s/) # 5
+"Hello World".search(/\t/) # -1
+```
+
 ## match
 
 Permet de récupérer tous les match d'un RegExp

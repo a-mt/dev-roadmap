@@ -36,12 +36,7 @@ searchbar: true
 [js]: js.md
 [json]: json.md
 [latex]: latex.md
-[linux-conditions]: conditions-shell.md
-[linux-echap]: echap-shell.md
-[linux-history]: historique-shell.md
 [linux-install]: linux-install.md
-[linux-var]: variable-shell.md
-[linux-wildcard]: wildcard.md
 [liquid]: liquid.md
 [markdown]: gfm.md
 [mongodb]: mongodb.md
@@ -58,6 +53,7 @@ searchbar: true
 [securite]: securite.md
 [sed]: sed.md
 [semver]: semver.md
+[shell]: shell.md
 [ssh]: ssh.md
 [ssl-howto]: ssl-howto.md
 [ssl]: ssl.md
@@ -189,18 +185,6 @@ searchbar: true
 - Serveurs web  
   Apache ([Vhost][apache-vhost], .htaccess [1 &#x21F2;](https://perishablepress.com/stupid-htaccess-tricks/)), Nginx [1 &#x21F2;](https://www.freecodecamp.org/news/an-introduction-to-nginx-for-developers-62179b6a458f/)
 
-- Pare-feu  
-  [Iptables][iptables], UFW [1 &#x21F2;](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-9), Windows Defender
-
-- Outils Linux  
-  [Awk][awk], [Sed][sed], [Grep][grep], Cut
-
-- Scripts  
-  Bash, Batch, Powershell
-
-- Planification de tâches  
-  [crontab][crontab], [Windows Task Scheduler][windows-task-scheduler]
-
 - Hébergement  
   AWS [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-your-first-safe-server-ready-for-production-f1cc60eec69a) [2 &#x21F2;](https://github.com/open-guides/og-aws), Microsoft Azure [1 &#x21F2;](https://blogs.msdn.microsoft.com/mihansen/2018/07/03/open-emr-in-azure-paas-commercial-and-government/), [Digital Ocean][digitalocean], Firebase [1 &#x21F2;](https://medium.freecodecamp.org/how-to-get-started-using-firebase-hosting-439d4bd45cb6), [Heroku](heroku.md), Now [1 &#x21F2;](https://www.sitepoint.com/how-to-deploy-node-applications-heroku-vs-now-sh/), [Google Drive][google-drive], [Github Pages][github-pages]
 
@@ -208,13 +192,17 @@ searchbar: true
   [Dev](workflow-dev.md), [Prod](workflow-prod.md)
 
 - Linux  
-  [Installer][linux-install],
-  [Règles d'échappement du shell][linux-echap],
-  [Variables][linux-var],
-  [Historique][linux-history],
-  [Wildcard (fichiers)][linux-wildcard],
-  [Conditions][linux-conditions],
-  APT [1 &#x21F2;](https://itsfoss.com/apt-vs-apt-get-difference/)
+  * [Installer][linux-install]
+  * APT [1 &#x21F2;](https://itsfoss.com/apt-vs-apt-get-difference/)
+  * Tools: [Awk][awk], [Sed][sed], [Grep][grep], Cut, Tr
+  * Script: [Shell][shell]
+  * Firewall: [Iptables][iptables], UFW [1 &#x21F2;](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-9)
+  * Planification tâches: [crontab][crontab]
+
+- Windows  
+  * Script: Batch, Powershell
+  * Firewall: Windows Defender
+  * Planification tâches: [Windows Task Scheduler][windows-task-scheduler]
 
 ## DevOps
 

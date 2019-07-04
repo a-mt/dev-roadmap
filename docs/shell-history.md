@@ -5,7 +5,8 @@ category: Linux
 
 ## Lister l'historique
 
-La commande `history` permet de voir l'historique
+La commande `history` permet de voir l'historique.  
+On peut également utiliser les flèches haut/bas pour naviguer dans l'historique.
 
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>

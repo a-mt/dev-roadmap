@@ -3,16 +3,171 @@ title: Variables Shell
 category: Linux
 ---
 
-<ins>Convention</ins>: le caractère &#xAC; désigne le retour chariot
+<ins>Convention dans cet article</ins>: le caractère &#xAC; en utilisé en placeholder du retour chariot
 
-## Affecter
+## Créer une variable
+
+Les variables ne sont pas déclarées, une simple affectation suffit, et leur valeur est interprétée selon le contexte (opération arithmétique, affichage texte, etc).
+
+Il existe différents types de variables
+
+* les variables d'environnement  
+  Sont communes à tous les processus et accessibles partout.  
+  Par convention, leur nom est en majuscule.  
+
+  * Pour créer une variable d'environnement:
+
+    ```
+    export NOM_VARIABLE=valeur
+    ```
+
+  * Pour lister les variables d'environnement définies:
+
+    ```
+    env
+    ```
+
+    [Variables d'environnement du Shell](https://wiki.bash-hackers.org/syntax/shellvars)
+
+* les variables locales  
+  Sont définies uniquement pour le shell courant, les processus enfants n'en héritent pas.  
+  Par convention, leur nom est en minuscule
+
+  * Pour créer une variable locale:
+
+    ```
+    nom_variable=valeur
+    ```
+
+* les variables spéciales  
+  Sont crées automatiquement par le shell
+
+  | Variable    | Description
+  |---          |---
+  | 0,1,2,3,... | Paramètres utilisés pour lancer le script en cours.<br> 0 contient le nom de la commande, 1 et plus contiennent le reste des paramètre
+  | #           | Nombre de paramètres passés au script
+  | @           | Liste des paramètres passés au script (à partir de 1)
+  | ?           | Statut de la dernière commande (code numérique).<br> 0 si OK, différent de 0 en cas d'erreur
+  | $           | PID du shell exécutant le script
+
+---
+
+## Afficher la valeur
+
+Pour afficher la valeur d'une variable, on précède son nom par `$`.
+
+* Créer un fichier `exemple`:
+
+  ``` bash
+  # Variable d'environnement
+  echo Shell: $SHELL
+
+  # Variable locale
+  mavariable=test
+  echo Variable: $mavariable
+
+  # Variables spéciales
+  echo PID: $$
+  echo Nombre de paramètres: $#
+  echo 0: $0
+  echo 1: $1
+  echo 2: $2
+  echo 3: $3
+
+  for i in $@; do
+    echo - $i
+  done
+  ```
+
+* Exécuter:
+
+  ```
+  bash exemple -H hello world !
+  ```
+
+  Résultat:
+
+  ```
+  Shell: /bin/bash
+  Variable: test
+  PID: 15206
+  Nombre de paramètres: 4
+  0: exemple
+  1: -H
+  2: hello
+  3: world
+  - -H
+  - hello
+  - world
+  - !
+  ```
+
+Il existe quelques nuances de syntaxe pour afficher une variable, notamment suivant la manière dont on veut afficher les caractères spéciaux:
+
+<table>
+<tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
+<tr>
+  <th align="left">echo $var</th>
+  <td>Écrit la valeur de la variable <code>var</code>.<br>Le dollar s'applique au mot qui le suit (un mot est une suite de lettres, chiffres ou underscore)
+  <pre lang="shell">var=test
+echo $var     # test</pre>
+  </td>
+</tr>
+<tr>
+  <th align="left">echo "$var"</th>
+  <td>Écrit la valeur de la variable <code>var</code> en empêchant l'interprétation des caractères spéciaux par le shell. Cela permet d'afficher les caractères spéciaux, qui ne seraient pas visibles autrement puisque interceptés par le shell.
+  <pre lang="shell">var=$'1\n2'
+echo $var   # 1 2
+echo "$var" # 1¬2</pre>
+  </td>
+</tr>
+<tr>
+  <th align="left">print "%q\n" "$var"</th>
+  <td>Écrit la valeur de la variable <code>var</code> en ANSI C Quoting = remplace les caractères spéciaux par les séquences de caractères qui correspondent.
+  <pre lang="shell">var=$'1\n2'
+echo "$var"          # 1¬2
+printf "%q\n" "$var" # $'1\n2'</pre></td>
+</tr>
+<tr>
+  <th align="left">echo -e $var</th>
+  <td>Écrit la valeur de la variable <code>var</code> en remplaçant les séquences de caractère spécial par le caractère désigné
+  <pre lang="shell">var='1\t2'
+echo $var     # 1\t2
+echo -e $var  # 1    2</pre></td>
+</tr>
+<tr>
+  <th align="left">echo ${var}</th>
+  <td>Écrit la valeur de la variable <code>var</code>.<br>La syntaxe ${} permet de délimiter la variable ainsi que de lui appliquer des filtres.
+  <pre lang="shell">var=test
+echo $varok   # (rien)
+echo $var"ok" # testok
+echo $var\ok  # testok
+echo $var ok  # testok
+echo "$var"ok # testok
+echo ${var}ok # testok</pre>
+  </td>
+</tr>
+</table>
+
+---
+
+## Affectations
+
+Il y a différentes manières d'affecter la valeur d'une variable.  
+Dans tous les cas, attention à ne jamais mettre d'espaces autour du égal — ils sont invalides à cet endroit
 
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
 <tr>
   <th align="left">var=test</th>
-  <td>Affecte la valeur "test" à la variable var. <br><a href="echap-shell.md">Voir règles d'échappement du shell</a><br>
-  Attention, pas d'espaces autour du égal</td>
+  <td>Affecte la valeur "test" à la variable var. <br>
+    Si la valeur contient des caractères spéciaux, comme "$", alors il faut les échapper. <a href="shell-echap.md">Voir règles d'échappement du shell</a></td>
+</tr>
+<tr>
+  <th align="left">var="hello world"</th>
+  <td>Affecte la valeur "hello world" à la variable var. <br>
+    Si la valeur contient des espaces, alors il est nécessaire d'utiliser des quotes.<br>
+    Les caractères spéciaux, comme "$", doivent être échappés.</td>
 </tr>
 <tr>
   <th align="left">var=`pwd`</th>
@@ -29,6 +184,23 @@ echo "Dossier: $dir"</pre>
 <pre lang="shell">echo "Hello World"
 var=$(!!)
 echo $var # Hello World</pre></td>
+</tr>
+<tr>
+  <th align="left">var=$(cat &lt;&lt;HEREDOC<br>
+Hello $name,<br>
+Tu as $n nouveaux messages!<br>
+HEREDOC<br>
+)</th>
+  <td>Affecte une valeur sur plusieurs lignes à la variable var. <br>
+    Les caractères spéciaux, comme "$", doivent être échappés.</td>
+</tr>
+<tr>
+  <th align="left">var=$(cat &lt;&lt;'NOWDOC'<br>
+Get the full ebook for only 9.99$<br>
+NOWDOC<br>
+)</th>
+  <td>Affecte une valeur sur plusieurs lignes à la variable var. <br>
+    Les caractères spéciaux ne sont pas interprétés.</td>
 </tr>
 <tr>
   <th align="left">var=$'1\n2'</th>
@@ -91,56 +263,9 @@ for i in "${array[@]}"; do echo - $i; done # a a¬b¬c c¬d</pre>
 
 ---
 
-## Afficher
+## Interpolation de variables
 
-<table>
-<tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
-<tr>
-  <th align="left">echo $var</th>
-  <td>Écrit la valeur de la variable var.<br>Le dollar s'applique au mot qui le suit (un mot est une suite de lettres, chiffres ou underscore)
-  <pre lang="shell">var=test
-echo $var     # test</pre>
-  </td>
-</tr>
-<tr>
-  <th align="left">echo "$var"</th>
-  <td>Écrit la valeur de la variable var en empêchant l'interprétation des caractères spéciaux par le shell. Cela permet d'afficher les caractères spéciaux, qui ne seraient pas visibles autrement puisque interceptés par le shell.
-  <pre lang="shell">var=$'1\n2'
-echo $var   # 1 2
-echo "$var" # 1¬2</pre>
-  </td>
-</tr>
-<tr>
-  <th align="left">print "%q\n" "$var"</th>
-  <td>Écrit la valeur de la variable var en ANSI C Quoting = remplace les caractères spéciaux par les séquences de caractères qui correspondent.
-  <pre lang="shell">var=$'1\n2'
-echo "$var"          # 1¬2
-printf "%q\n" "$var" # $'1\n2'</pre></td>
-</tr>
-<tr>
-  <th align="left">echo -e $var</th>
-  <td>Écrit la valeur de la variable var en remplaçant les séquences de caractère spécial par le caractère désigné
-  <pre lang="shell">var='1\t2'
-echo $var     # 1\t2
-echo -e $var  # 1    2</pre></td>
-</tr>
-<tr>
-  <th align="left">echo ${var}</th>
-  <td>Écrit la valeur de la variable var.<br>La syntaxe ${} permet de délimiter la variable ainsi que de lui appliquer des filtres.
-  <pre lang="shell">var=test
-echo $varok   # (rien)
-echo $var"ok" # testok
-echo $var\ok  # testok
-echo $var ok  # testok
-echo "$var"ok # testok
-echo ${var}ok # testok</pre>
-  </td>
-</tr>
-</table>
-
----
-
-## Divers
+Le shell peut interpoler les variables:
 
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
@@ -170,7 +295,7 @@ echo ${!var@} # var1 var2</pre>
 
 ---
 
-## Isset
+### Isset
 
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
@@ -213,7 +338,7 @@ echo $var         # (rien)</pre>
 
 ---
 
-## Truncate
+### Truncate
 
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
@@ -267,7 +392,7 @@ echo ${var: -3:-4} # erreur</pre></td>
 
 ---
 
-## Trim
+### Trim
 
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
@@ -315,7 +440,7 @@ echo ${var##*.}  # c</pre></td>
 
 ---
 
-## Replace
+### Replace
 
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
@@ -356,7 +481,7 @@ echo ${var// /.} # a.b.c.d.</pre>
 
 ---
 
-## Case modification
+### Case modification
 
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
@@ -390,7 +515,7 @@ echo ${var,n}    # abc</pre></td>
 
 ---
 
-## Tableau
+### Tableau
 
 On peut accéder à la valeur d'un index avec `${array[i]}`.  
 On peut accéder à toutes les valeurs du tableau avec `${array[@]}` ou `${array[*]}`.
@@ -458,8 +583,8 @@ echo ${array[@]^^} # A A B C C D</pre></td>
 
 ## Matrice
 
-Avec le shell **Bash**.  
-Les matrices permettent de simuler un tableau multi-dimensionnel ou un tableau associatif.  
+Le shell bash permet également de déclarer des matrices.  
+Elles permettent de créer un tableau multi-dimensionnel ou associatif.  
 
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
@@ -510,25 +635,3 @@ done
 # 00:11:23: Track 3
 # 00:15:30: Track 4
 </pre>
-
----
-
-## Variables spéciales
-
-<table>
-<tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
-<tr>
-  <th align="left">$?</th>
-  <td>Exit status du dernier processus</td>
-</tr>
-<tr>
-  <th align="left">$!</th>
-  <td>PID du dernier processus mis en background</td>
-</tr>
-<tr>
-  <th align="left">$$</th>
-  <td>PID du shell</td>
-</tr>
-</table>
-
-[Variables d'environnement](http://wiki.bash-hackers.org/syntax/shellvars)

@@ -11,3 +11,5 @@ Les doubles quotes ("), simples quotes (') et backslash (\) permettent d'indique
 | double-quote | Espaces                                                                           | `echo "s/-/ - /"`      |
 | quote        | Tout sauf `'`. <br>Pas possible d'échapper une quote entre quotes, même avec un backslash | `echo 's/!$//'`   |
 | backslash    | Le caractère spécial qui suit                                                     | `echo "s/\$var/$var/"` |
+
+[Les caractères spéciaux](https://abs.traduc.org/abs-fr/ch03.html)

@@ -31,6 +31,7 @@ searchbar: true
 [ipsec]: ipsec.md
 [iptables]: iptables.md
 [jekyll]: jekyll.md
+[jenkins]: jenkins.md
 [jquery]: jquery.md
 [js-webapi]: js-webAPI.md
 [js]: js.md
@@ -210,7 +211,7 @@ searchbar: true
   Chef, [Puppet][puppet], [Ansible][ansible]
 
 - Outils d'intégration continue  
-  Jenkins
+  [Jenkins][jenkins]
 
 - Container / Orchestration  
   [Docker][docker], Kubernetes [1 &#x21F2;](https://godaddy.github.io/2018/05/02/kubernetes-introduction-for-developers/) [2 &#x21F2;](https://medium.freecodecamp.org/learn-kubernetes-in-under-3-hours-a-detailed-guide-to-orchestrating-containers-114ff420e882) [3 &#x21F2;](https://medium.freecodecamp.org/how-to-leverage-the-power-of-kubernetes-to-optimise-your-hosting-costs-c2e168a232a2), [Hadoop](hadoop.md)

@@ -80,16 +80,37 @@ La console permet d'exécuter du JavaScript et de vérifier les valeurs retourn�
   <pre><img src="https://i.imgur.com/CoxskHD.png"></pre>
 
   On peut interpoler des variables  
-  `%o` pour un objet, `%s` pour une chaîne de caractères, `%d` pour un entier
+  * `%o` pour afficher un objet
+  * `%s` pour afficher une chaîne de caractères
+  * `%d` ou `%i` pour afficher un entier
+  * `%f` pour afficher un réel (float)
+  * `%c` pour appliquer du CSS
 
   <pre><img src="https://i.imgur.com/vOrtMjN.png"></pre>
-
-  Ou même personnaliser le style du message
 
   <pre>
     <img src="https://i.imgur.com/LsseEaM.png">
     <img src="https://i.imgur.com/nyw82hd.png">
   </pre>
+  
+  ``` js
+  const success = [
+   'background: green',
+   'color: white',
+   'display: block',
+   'text-align: center'
+  ].join(';');
+
+  const failure = [
+   'background: red',
+   'color: white',
+   'display: block',
+   'text-align: center'
+  ].join(';');
+
+  console.info('%c /dancing/bears was Successful!', success);
+  console.error('%c /dancing/bats failed!', failure);
+  ```
 
 ### console.warn
 

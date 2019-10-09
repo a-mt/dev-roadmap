@@ -42,7 +42,7 @@ Un document XML commence par un prologue qui indique
 
 Le prologue est éventuellement suivit d'un doctype
 
-```
+``` xml
 <!DOCTYPE carnet PUBLIC "-//xxx/Yyy/en" "http://www..." [ .... ]>
 ```
 
@@ -66,7 +66,9 @@ Des commentaires peuvent être ajoutée entre `<!--` et `-->`.
 Un commentaire peut s'étendre sur plusieurs lignes.  
 Il ne doivent pas contenir la séquence `--`
 
-    <!-- Commentaire -->
+``` xml
+<!-- Commentaire -->
+```
 
 ---
 

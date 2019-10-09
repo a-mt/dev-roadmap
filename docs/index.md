@@ -65,6 +65,7 @@ searchbar: true
 [twig]: twig.md
 [vim]: vim.md
 [webdev]: web.md
+[webpack]: webpack.md
 [windows-task-scheduler]: windows-task-scheduler.md
 [xml]: xml.md
 [yaml]: yaml.md
@@ -155,7 +156,7 @@ searchbar: true
   [Git][git]
 
 - Task Runners & Module Bundlers  
-  Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html), Grunt, Gulp [1 &#x21F2;](https://medium.freecodecamp.org/super-simple-gulp-tutorial-for-beginners-45141974bfe8), Webpack [1 &#x21F2;](https://blog.vanila.io/webpack-what-is-it-and-is-it-better-than-gulp-375db8011d22) [2 &#x21F2;](https://medium.com/@timurcatakli/an-easy-to-understand-webpack-4-configuration-file-with-comments-6213882e9edf) [3 &#x21F2;](https://medium.freecodecamp.org/a-beginners-introduction-to-webpack-2620415e46b3), Make
+  Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html), Grunt, Gulp [1 &#x21F2;](https://medium.freecodecamp.org/super-simple-gulp-tutorial-for-beginners-45141974bfe8), [Webpack][webpack], Make
 
 - Raccourcis d'édition de texte  
   [OS][text-shortcut], [Vim][vim], Sublime Text

@@ -13,3 +13,7 @@ defaults:
     values:
       layout: "default"
       summary: true
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-github-metadata

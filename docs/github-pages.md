@@ -35,9 +35,9 @@ Placer les fichiers statiques
 - soit à la racine de la branche `master`
 - soit dans un répertoire `docs` à la racine de la branche `master`
 
-<!-- -->
+### Dans tous les cas
 
-Puis activer Github Pages dans les configurations du projet
+Activer Github Pages dans les configurations du projet
 :
 - onglet `Settings`  
   ![Onglet settings](https://help.github.com/assets/images/help/repository/repo-actions-settings.png)
@@ -50,6 +50,8 @@ Puis activer Github Pages dans les configurations du projet
 
 - accéder au site web.  
   En cas d'erreur 404, attendre 10-15 minute que la publication se propage
+
+- optionnel: [configurer Travis](https://help.github.com/en/articles/about-jekyll-build-errors-for-github-pages-sites#viewing-jekyll-build-error-messages)
 
 ---
 

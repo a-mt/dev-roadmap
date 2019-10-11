@@ -36,6 +36,7 @@ searchbar: true
 [js-webapi]: js-webAPI.md
 [js]: js.md
 [json]: json.md
+[jsx]: jsx.md
 [latex]: latex.md
 [linux-install]: linux-install.md
 [liquid]: liquid.md
@@ -94,7 +95,7 @@ searchbar: true
 ### Front-End
 
 - Langages de programmation  
-  [HTML][html], [CSS][css], [JS][js], [Accessiblité][accessibilite], [SVG][svg]
+  [HTML][html], [CSS][css], [JS][js], [Accessiblité][accessibilite], [SVG][svg], [JSX][jsx]
 
 - Librairies JS  
   [Wep API][js-webapi], [Jquery][jquery], [MustacheJS][mustachejs], D3.js, Lodash, [Three.js][threejs]

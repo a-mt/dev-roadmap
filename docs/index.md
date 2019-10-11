@@ -170,7 +170,7 @@ searchbar: true
 - [Design][design]
 
 - Marketing  
-  Psychologie [1 &#x21F2;](http://jamesarcher.me/user-motivators) [2 &#x21F2;](https://www.nngroup.com/articles/zigzag-page-layout/) [3 &#x21F2;](https://www.nngroup.com/articles/multi-tab-page-parking/), Outils [2 &#x21F2;](https://www.seomix.fr/webmarketing/), Google Analytics [1 &#x21F2;](https://medium.freecodecamp.org/how-and-why-to-get-started-with-google-analytics-153dc35b7812), SEO [1 &#x21F2;](https://support.google.com/webmasters/answer/7451184)  [2 &#x21F2;](https://moz.com/learn/seo/on-site-seo), Rich snippets, robots.txt
+  Psychologie [1 &#x21F2;](http://jamesarcher.me/user-motivators) [2 &#x21F2;](https://www.nngroup.com/articles/zigzag-page-layout/) [3 &#x21F2;](https://www.nngroup.com/articles/multi-tab-page-parking/), Outils [2 &#x21F2;](https://www.seomix.fr/webmarketing/), Google Analytics [1 &#x21F2;](https://medium.freecodecamp.org/how-and-why-to-get-started-with-google-analytics-153dc35b7812), SEO [1 &#x21F2;](https://support.google.com/webmasters/answer/7451184)  [2 &#x21F2;](https://moz.com/learn/seo/on-site-seo), Rich snippets, robots.txt, Mailchimp [1 &#x21F2;](https://business.tutsplus.com/articles/how-to-create-an-email-newsletter-with-mailchimp-for-free--fsw-39066)
 
 ## Logiciel
 

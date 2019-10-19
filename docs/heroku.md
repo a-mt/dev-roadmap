@@ -98,6 +98,8 @@ On peut aussi passer par l'interface web:
   heroku open
   ```
 
+---
+
 ## Spécifier un buildpack
 
 * <ins>Python</ins>:
@@ -157,6 +159,20 @@ Commiter puis reprendre le deploiement normal
     heroku repo:reset -a <appname>
     git push heroku master
 
+ou
+
+    git commit --allow-empty -m "Upgrading to heroku-18"
+    git push heroku master
+
+---
+
+## Changer de stack
+
+    heroku stack:set heroku-18 -a <app name>
+
+La stack sera changée au prochain déploiement.  
+Autres alternatives: [Upgrading to the Latest Stack](https://devcenter.heroku.com/articles/upgrading-to-the-latest-stack)
+
 ---
 
 ## Logs
@@ -171,6 +187,25 @@ Pour n'afficher que les logs de l'application (`console.log`):
 
 ```
 heroku logs --source app-name
+```
+
+---
+
+## Releases
+
+Afficher les deploiements:
+
+``` shell
+$ heroku releases
+=== production-app Releases
+v13  Deploy 973c3f7                  joe@example.com   2014/07/09 10:55:16
+v12  Deploy ddb317d                  jill@example.com  2014/07/07 10:46:26
+```
+
+Rollback vers une version antérieure:
+
+```
+heroku rollback v12
 ```
 
 ---

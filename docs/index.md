@@ -263,7 +263,7 @@ searchbar: true
   - [Curated Collection For Designers](https://www.canva.com/learn/design-resources/)
   - [Free images, Videos](http://thestocks.im)
   - [Name That Color](http://chir.ag/projects/name-that-color/#6195ED)
-  - [Find colors that go well together](https://coolors.co/app)
+  - [Find colors that go well together](https://coolors.co/app) or [alternative](https://mycolor.space/)
   - [Color Format Converter](https://www.w3schools.com/colors/colors_converter.asp)
 
 - Fiddles

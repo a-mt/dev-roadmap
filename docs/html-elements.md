@@ -80,7 +80,8 @@ La balise `html` est la balise racine d'un document HTML, elle englobe toutes le
 
 ### head
 
-L'élément `<head>` contient les metadatas de la page
+L'élément `<head>` contient les metadatas de la page  
+[A free guide to HTML5 <head> elements](https://htmlhead.dev/)
 
 ### body
 

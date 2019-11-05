@@ -296,3 +296,4 @@ searchbar: true
   - [Convertir YAML](http://yaml-online-parser.appspot.com/)
   - [Tester configurations SSL](https://www.ssllabs.com/ssltest/)
   - [Emails jetables](http://www.yopmail.com/)
+  - [Screen size map](https://www.screensizemap.com/)

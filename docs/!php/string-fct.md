@@ -695,7 +695,7 @@ printf("Le total vaut %d/%d soit %.2f", 20, 3, 20/3);
 </tr>
 
 <tr>
-<th><code>sprintf</code>
+  <th><code>sprintf</code></th>
 <td>Retourne une chaîne formatée<br>
 (to string print format)
 

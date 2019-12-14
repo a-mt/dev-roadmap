@@ -90,7 +90,7 @@ La charge est une propriété fondamentale de la matière — au même titre que
 
 Le fait que ce soit le proton qui soit positif et l'électron négatif est une convention, fixée de manière arbitraire. Ce qui importe c'est la manière dont ils interagissent.
 
-### Charges éléméntaires
+### Charges élémentaires
 
 Les électrons et les protons portent une charge de même intensité, mais de type différent.  
 Un proton sera autant attiré par un électron à une distance donnée qu'un électron par un proton.  
@@ -116,16 +116,12 @@ Alors que les champs gravitationnels attirent deux objets entre eux, les champs 
 
 [What is Electricity?](https://learn.sparkfun.com/tutorials/what-is-electricity/all)
 
-### Intensité du champ
+### Électrons de valence
 
 La force (ou *intensité*) des champs n'est pas uniforme en tout points.  
 Plus on s'éloigne de la source du champ, plus son effet s'atténue.
 
-### Électrons de valence
-
-Les électrons les plus proches du noyau ressentent une attraction beaucoup plus forte vers le centre que ceux qui se trouvent sur des orbites plus éloignées. Les électrons les plus à l'extérieur d'un atome sont appelés *électrons de valence*.
-
-Avec suffisamment de force extérieure (soit en le repoussant avec une autre charge négative, soit en l'attirant avec une charge positive), un électron de valence peut s'échapper de l'orbite de l'atome et devenir un *électron libre*.
+Les électrons les plus proches du noyau ressentent une attraction beaucoup plus forte vers le centre que ceux qui se trouvent sur des orbites plus éloignées. Les électrons les plus à l'extérieur d'un atome sont appelés *électrons de valence* et avec suffisamment de force extérieure (soit en le repoussant avec une autre charge négative, soit en l'attirant avec une charge positive), un électron de valence peut s'échapper de l'orbite de l'atome et devenir un *électron libre*.
 
 ### Sens du champ électrique
 
@@ -135,7 +131,7 @@ Par convention, la direction d'un champ électrique est toujours définie comme 
 
 ### Ion
 
-Un atome a une charge neutre, puisqu'il a autant de protons que d'électrons. En revanche, s'il gagne ou perd un électron (voire plusieurs), l'atome devient chargé électriquement. On ne alors parle plus d'*atome* mais d'*ion*.  
+Un atome a une charge neutre, puisqu'il a autant de protons que d'électrons. En revanche, s'il gagne ou perd un électron (voire plusieurs), l'atome devient chargé électriquement. On ne parle alors plus d'*atome* mais d'*ion*.  
 Un ion est représenté par son symbolique chimique, suivit de sa charge électrique en exposant: Cu<sup>2+</sup>.
 
 Un ion avec une charge négative s'appelle un *anion*.  

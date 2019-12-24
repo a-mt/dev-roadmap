@@ -36,6 +36,15 @@ category: Workflow, Containers, Docker
     "userns-remap": "1000:1000"
   } 
   ```
+  
+  Pour éviter que les logs prennent deviennent trop gros, on peut configurer Docker pour gérer la rotation des fichiers (supprimer les logs les plus anciens quand la limite de taille est dépassée):
+  
+  ```
+  {
+    "log-driver": "json-file",
+    "log-opts": {"max-size": "10m", "max-file": "3"}
+  }
+  ```
 
   Les options définies dans le fichier de configuration ne doivent pas entrer en conflit avec les options définies en ligne de commande: le daemon Docker ne démarre pas si une option est dupliquée (et ce, quelle que soit sa valeur).
 

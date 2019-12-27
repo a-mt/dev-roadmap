@@ -68,6 +68,11 @@ Permet d'utiliser un RegExp pour remplacer des caractères.
 Cette fonction peut utiliser un callback.
 
 ``` js
+'"example"'.replace(/(['"])(.*?)\1/g, '[$2]');
+// [example]
+```
+
+``` js
 "helloWorld".replace(/([a-z])([A-Z])/, "$1 $2");
 // hello World
 ```

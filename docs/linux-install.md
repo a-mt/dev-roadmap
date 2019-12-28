@@ -339,13 +339,14 @@ Pour voir la liste des drivers installés, ouvrir Logiciels & mises à jour > Pi
 * Vérifier la version actuelle de votre firmware
 
   ```
-  sudo fwupdmgr refresh
+  sudo fwupdmgr get-devices
   ```
 
 * Vérifier les mises à jour
 
   ```
   sudo fwupdmgr refresh
+  sudo fwupdmgr get-updates
   ```
 
 * Mettre à jour

@@ -19,7 +19,7 @@ On peut définir un nom d'hôte personnalisé, pour l'ordinateur en cours ou pou
 ```
 
 Pour Windows:
-* Ccercher Notepad dans le menu, clic droit, exécuter en tant qu'admin
+* Chercher Notepad dans le menu, clic droit, exécuter en tant qu'admin
 * Cliquer Fichier > Ouvrir
 * À côté de Nom de fichier, choisir "Tous les fichiers"
 * Ouvrir le fichier `C:\Windows\System32\drivers\etc\hosts`
@@ -28,7 +28,7 @@ Pour Windows:
 
 ## Réseau local
 
-Lorsqu'on ne cherche pas à accéder à l'ordinateur local mais à un ordinateur local, il faut utiliser son adresse IP — quelque chose que 192.167.x.x selon la configuration du routeur.
+Lorsqu'on ne cherche pas à accéder à l'ordinateur local mais à un ordinateur du réseau local, il faut utiliser son adresse IP — quelque chose comme 192.167.x.x selon la configuration du routeur.
 
 ### Trouver son adresse IP locale
 
@@ -38,7 +38,7 @@ Lorsqu'on ne cherche pas à accéder à l'ordinateur local mais à un ordinateur
 * <ins>Linux</ins>:  
   `hostname -I` ou `ifconfig`
 
-<ins>Si ça ne marche pas</ins>, qu'il est possible d'accéder à cette adresse à partir de l'ordinateur en question et non à partir d'un autre ordinateur, il y a des chances que le service n'écoute que sur `127.0.0.1` ou que l'ordinateur a un pare-feu qui bloque la requête.
+<ins>Si ça ne marche pas</ins>, et qu'il est possible d'accéder à cette adresse IP à partir de l'ordinateur testé et non à partir d'un autre, il y a des chances que le service (Apache par exemple) n'écoute que sur `127.0.0.1` ou que l'ordinateur a un pare-feu qui bloque la requête.
 
 ### Vérifier le pare-feu
 
@@ -47,7 +47,7 @@ Lorsqu'on ne cherche pas à accéder à l'ordinateur local mais à un ordinateur
   - Chercher Windows Firewall
   - Cliquer sur Advanced Settings
   - Dans le panneau de gauche, sélectionner Inbound rules
-  - Vérifier les lignes qui ont trait au service utilisé — Apache par exemple (colonnes Enabled et Action).  
+  - Vérifier les lignes associées au service utilisé (colonnes Enabled et Action).  
     Clic droit pour activer ou désactiver. Double-click pour modifier l'action.
 
     ![](https://i.imgur.com/c9GmXHl.png)
@@ -63,7 +63,7 @@ Lorsqu'on ne cherche pas à accéder à l'ordinateur local mais à un ordinateur
 ### Vérifier les restrictions Apache
 
 * S'il n'est pas possible d'accéder à la page: chercher la directive `Listen`.  
-  Elle indique à Apache d'écouter les reuqêtes HTTP entrantes depuis un poirt et/ou une adresse IP particulière.  
+  Elle indique à Apache d'écouter les reuqêtes HTTP entrantes depuis un port et/ou une adresse IP particulière.  
   Dans l'exemple suivant, le serveur accepte les connexions sur le port 80 (http) et 443 (https) de toutes les machines:
 
   ```
@@ -71,7 +71,7 @@ Lorsqu'on ne cherche pas à accéder à l'ordinateur local mais à un ordinateur
   Listen 443
   ```
 
-  Dans l'exemple suivant, le serveur accepte les requêtes qu'à partir de 127.0.0.1 sur le port 80:
+  Dans l'exemple suivant, le serveur accepte les requêtes sur le port 80 pour les requêtes venant de l'IP 127.0.0.1:
 
   ```
   Listen 127.0.0.1:80
@@ -89,7 +89,7 @@ Lorsqu'on ne cherche pas à accéder à l'ordinateur local mais à un ordinateur
   </Directory>
   ```
 
-Penser à redémarrer Apche si vous modifiez un fichier .conf.
+Penser à redémarrer Apache si vous modifiez un fichier .conf.
 
 ---
 
@@ -104,7 +104,8 @@ Pour accéder à un ordinateur en dehors du réseau local, il faut configurer le
 
   ![](https://i.imgur.com/vNI5dUS.png)
 
-* Trouver l'adresse IP de votre routeur, qui vous a été attribuée par votre FAI, en tapant `what's my ip` sur Google.
+* Trouver l'adresse IP (publique) de votre routeur, qui vous a été attribuée par votre FAI, en tapant `what's my ip` sur Google.
+* Vous pouvez désormais accéder à votre ordinateur à partir de l'extérieur, sur les ports configurés, en utilisant l'IP publique du routeur.
 
 ### Adresses IP dynamiques
 

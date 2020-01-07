@@ -1,5 +1,5 @@
 ---
-title: Générer un certificat SSL wildcard avec Let's Encryot
+title: Générer un certificat SSL wildcard avec Let's Encrypt
 category: IT, SSL
 ---
 

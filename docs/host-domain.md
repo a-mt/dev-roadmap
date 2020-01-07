@@ -12,12 +12,12 @@ category: Hosting
   ![](https://i.imgur.com/2tSVXsy.png)
 
 * Sélectionner toutes les extensions de vous voulez acheter.  
-  Cliquer sur "Register checked domains"
+  Puis cliquer sur "Register checked domains"
 
   ![](https://i.imgur.com/wQY4sGc.png)
 
 * Sélectionner les configurations de confidentialité que vous voulez.  
-  Je prend WHOIS Privacy.  
+  Personellement, je prend WHOIS Privacy.  
   Cliquer sur "Continue"
 
   ![](https://i.imgur.com/mJzean9.png)
@@ -30,7 +30,7 @@ category: Hosting
 
   ![](https://i.imgur.com/CayH7p2.png)
 
-* [Confirmer votre adresse email](https://www.namesilo.com/account_contacts_email_verification.php). C'était dans mes spam.
+* [Confirmer votre adresse email](https://www.namesilo.com/account_contacts_email_verification.php). Vérifier vos spams.
 
 ---
 
@@ -71,7 +71,7 @@ category: Hosting
 
 Vous devez maintenant attendre que le serveur de nom propage vos modifications. C'est la partie la plus longue de l'installation, cela peut prendre jusqu'à 24 heures. Il faut généralement 5 minutes pour que les changements atteignent les serveurs racine, mais il se peut que vous ayez à attendre bien plus longtemps pour que les changements se propagnent jusqu'à votre Fournisseur d'Accès à Internet (personnellement, ça a pris 30 minutes).
 
-* Pouvez vérifier les informations publiques de votre serveur:  [who.is](https://who.is/).  
+* Pour vérifier les informations publiques de votre serveur:  [who.is](https://who.is/).  
 * Pour vérifier à quelle adresse IP est résolu votre nom de domaine à différents endroits du globe: [What's My DNS](https://www.whatsmydns.net/).  
 * Pour accéder à votre site depuis un autre pays: [proxy hide Me](https://hide.me/fr/proxy)
 * Pour vérifier si les changements DNS se sont propagés jusqu'à votre ordinateur, utiliser `ping`
@@ -80,7 +80,7 @@ Vous devez maintenant attendre que le serveur de nom propage vos modifications. 
     Ça devrait marcher — indépendemment du DNS
 
     ```
-    ping IPOADDRESS
+    ping IP_ADDRESS
     ```
 
   * Envoyer un ping au nom de domaine de votre serveur.  

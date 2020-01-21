@@ -144,6 +144,162 @@ self.addEventListener('message',  e => {
 ### Exemple 2
 
 ``` js
+
+// URL.createObjectURL
+window.URL = window.URL || window.webkitURL;
+
+// Create Worker from string
+var script = `
+self.onmessage = function(e){
+  postMessage('Worker received: ' + e.data);
+}
+`;
+var blob;
+try {
+    blob = new Blob([script], {type: 'application/javascript'});
+} catch (e) { // Backwards-compatibility
+    window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
+    blob = new BlobBuilder();
+    blob.append(script);
+    blob = blob.getBlob();
+}
+var worker = new Worker(URL.createObjectURL(blob));
+
+// Test Worker
+worker.addEventListener('message', (e) => {
+  console.log('Worker said: ', e.data);
+});
+worker.addEventListener('error', (e) => {
+  console.log('Worker error: ', e);
+});
+worker.postMessage('Test');
+```
+
+---
+
+## Service Worker
+
+Un service worker (`serviceWorker`) fonctionne de la même manière qu'un web worker, à travers des événements `postMessage`, etc... à la différence près que le service worker offre des fonctionnalités supplémentaires:
+
+Le service worker agit comme proxy qui intercepte les événements réseau de la page. Cela permet notamment de mettre en cache les ressources, ou d'envoyer des sauvegardes vers le serveur lorsque l'utilisateur a du réseau. Ainsi un service worker permet l'utilisation d'une application web hors ligne ou avec un débit internet lent.
+
+Avec Firefox, la liste des service workers est accessible via `about:serviceworkers`.
+
+<ins>Points de vigilance</ins>:
+
+Le service worker s'arrête lorsqu'il n'est pas utilisé et redémarre lorsque nécessaire. Il consomme donc moins de ressource mais n'a pas d'état persistent: pour conserver des données, il est nécessaire d'utiliser le local storage.
+
+Les service workers fonctionnent uniquement sur HTTPS, pour des raisons de sécurité.
+
+### 1. Côté parent: Enregistrer le service
+
+``` js
+if ('serviceWorker' in navigator) { // Check browser support first
+  navigator.serviceWorker.register('/serviceworker.js');
+}
+```
+
+Le service worker est téléchargé lorsqu'un utilisateur accède pour la première fois à une page ou à un site contrôlé par un service worker. Après cela, il est téléchargé toutes les 24 heures environ.
+
+### 2. Côté service worker: Installer le service
+
+Lorsque le fichier téléchargé est nouveau ou différent de l'ancien, l'événement `install` est délenché. C'est à ce moment qu'on peut créer le cache qui sera utilisé par le worker, et  placer les ressources nécessaire pour faire fonctionner l'application.
+
+``` js
+self.addEventListener('install', function(event) {
+  console.log("SW installed");
+});
+```
+
+### 3. Activer le service
+
+Si l'installation s'est déroulé avec succès, l'événement `activate` est délenché. C'est le moment auquel on peut nettoyer les vieux caches du service worker précédent.
+
+``` js
+self.addEventListener('activate', function(event) {
+  console.log("SW activated");
+});
+```
+
+### 4. Intercepter les requêtes réseau
+
+Lorsqu'une requête est envoyée, l'événement `fetch` est déclenché. La réponse à la requête peut être forgée avec `fetchEvent.respondWith`.
+
+``` js
+self.addEventListener('fetch', function(event) {
+  console.log("SW fetch");
+  event.respondWith(new Response("Hello world!"));
+});
+```
+
+### Exemple 1
+
+``` js
+// app.js
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/serviceworker.js');
+}
+```
+
+``` js
+// serviceWorker.js
+// Listen for install event
+this.addEventListener('install', event => {
+  event.waitUntil(
+    caches
+      .open('v1') // Open a cache called 'v2'
+      .then(cache => cache.addAll(['/styles.css', '/default.png'])) // Cache files for later retrieval
+  );
+});
+
+// Listen for activation event
+this.addEventListener('activate', function(event) {
+  var cacheWhitelist = ['v2'];
+
+  event.waitUntil(
+    caches.keys().then(function(keyList) {
+
+      // Delete from cache keys that aren't whitelisted
+      return Promise.all(keyList.map(function(key) {
+        if (cacheWhitelist.indexOf(key) === -1) {
+          return caches.delete(key);
+        }
+      }));
+    })
+  );
+});
+
+// Listen for network requests
+this.addEventListener('fetch', event => {
+  event.respondWith(
+
+    // Get the cached content
+    caches.match(event.request).catch(function() {
+
+        // If not cached: retrieve it
+        return fetch(event.request).then(function(response) {
+
+            // Cache it
+            caches.open('v2').then(function(cache) {
+              cache.put(event.request, response);
+            });
+
+            // Return the ressource
+            return response.clone();
+        });
+
+    // The network failed: return a default ressource
+    }).catch(function() {
+      return caches.match('/default.png');
+    });
+
+  );
+});
+```
+
+### Example 2
+
+``` js
 // app.js
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function(reg) {
@@ -232,128 +388,6 @@ this.addEventListener('fetch', function(event) {
             }
         }));
     }
-});
-```
-
----
-
-## Service Worker
-
-Un service worker (`serviceWorker`) fonctionne de la même manière qu'un web worker, à travers des événements `postMessage`, etc... à la différence près que le service worker offre des fonctionnalités supplémentaires:
-
-Le service worker agit comme proxy qui intercepte les événements réseau de la page. Cela permet notamment de mettre en cache les ressources, ou d'envoyer des sauvegardes vers le serveur lorsque l'utilisateur a du réseau. Ainsi un service worker permet l'utilisation d'une application web hors ligne ou avec un débit internet lent.
-
-Avec Firefox, la liste des service workers est accessible via `about:serviceworkers`.
-
-<ins>Points de vigilance</ins>:
-
-Le service worker s'arrête lorsqu'il n'est pas utilisé et redémarre lorsque nécessaire. Il consomme donc moins de ressource mais n'a pas d'état persistent: pour conserver des données, il est nécessaire d'utiliser le local storage.
-
-Les service workers fonctionnent uniquement sur HTTPS, pour des raisons de sécurité.
-
-### 1. Côté parent: Enregistrer le service
-
-``` js
-if ('serviceWorker' in navigator) { // Check browser support first
-  navigator.serviceWorker.register('/serviceworker.js');
-}
-```
-
-Le service worker est téléchargé lorsqu'un utilisateur accède pour la première fois à une page ou à un site contrôlé par un service worker. Après cela, il est téléchargé toutes les 24 heures environ.
-
-### 2. Côté service worker: Installer le service
-
-Lorsque le fichier téléchargé est nouveau ou différent de l'ancien, l'événement `install` est délenché. C'est à ce moment qu'on peut créer le cache qui sera utilisé par le worker, et  placer les ressources nécessaire pour faire fonctionner l'application.
-
-``` js
-self.addEventListener('install', function(event) {
-  console.log("SW installed");
-});
-```
-
-### 3. Activer le service
-
-Si l'installation s'est déroulé avec succès, l'événement `activate` est délenché. C'est le moment auquel on peut nettoyer les vieux caches du service worker précédent.
-
-``` js
-self.addEventListener('activate', function(event) {
-  console.log("SW activated");
-});
-```
-
-### 4. Intercepter les requêtes réseau
-
-Lorsqu'une requête est envoyée, l'événement `fetch` est déclenché. La réponse à la requête peut être forgée avec `fetchEvent.respondWith`.
-
-``` js
-self.addEventListener('fetch', function(event) {
-  console.log("SW fetch");
-  event.respondWith(new Response("Hello world!"));
-});
-```
-
-### Exemple
-
-``` js
-// app.js
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/serviceworker.js');
-}
-```
-
-``` js
-// serviceWorker.js
-// Listen for install event
-this.addEventListener('install', event => {
-  event.waitUntil(
-    caches
-      .open('v1') // Open a cache called 'v2'
-      .then(cache => cache.addAll(['/styles.css', '/default.png'])) // Cache files for later retrieval
-  );
-});
-
-// Listen for activation event
-this.addEventListener('activate', function(event) {
-  var cacheWhitelist = ['v2'];
-
-  event.waitUntil(
-    caches.keys().then(function(keyList) {
-
-      // Delete from cache keys that aren't whitelisted
-      return Promise.all(keyList.map(function(key) {
-        if (cacheWhitelist.indexOf(key) === -1) {
-          return caches.delete(key);
-        }
-      }));
-    })
-  );
-});
-
-// Listen for network requests
-this.addEventListener('fetch', event => {
-  event.respondWith(
-
-    // Get the cached content
-    caches.match(event.request).catch(function() {
-
-        // If not cached: retrieve it
-        return fetch(event.request).then(function(response) {
-
-            // Cache it
-            caches.open('v2').then(function(cache) {
-              cache.put(event.request, response);
-            });
-
-            // Return the ressource
-            return response.clone();
-        });
-
-    // The network failed: return a default ressource
-    }).catch(function() {
-      return caches.match('/default.png');
-    });
-
-  );
 });
 ```
 

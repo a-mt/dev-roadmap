@@ -24,6 +24,7 @@ Pour créer un environnement Python avec une version spécifique, par exemple 2.
   conda install -n py2.7.14 pip
   source activate py2.7.14
   python --version
+  conda info --envs
   ```
 
 * Option 2: [Installer pyenv](https://github.com/pyenv/pyenv)

@@ -74,6 +74,14 @@ import { normalize as normalizeMath } from "math";
 Note: Avec Node.js, on utilisait `require()` pour cet usage.
 `import` permet désormais choisir les parties du module à charger, ce qui permet d'économiser du temps et de la mémoire.
 
+### Script type
+
+Pour utiliser les instructions `import` et `export` côté navigateur, il faut inclure le script comme module:
+
+``` js
+<script type="module" src="filename.js"></script>
+```
+
 ---
 
 ## Export par défaut

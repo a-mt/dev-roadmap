@@ -519,3 +519,21 @@ Syntaxe interprétée à l'intérieur d'un `pre`
 | :&#8203;sparkles: :&#8203;camel: :&#8203;boom: | :sparkles: :camel: :boom: |
 
 Liste complète des emojis : http://www.emoji-cheat-sheet.com/
+
+---
+
+## Bloc Details
+
+```
+<details>
+<summary>Click here to expand.</summary>
+<br>
+The content of the div
+</details>
+```
+
+<details>
+<summary>Click here to expand.</summary>
+<br>
+The content of the div
+</details>

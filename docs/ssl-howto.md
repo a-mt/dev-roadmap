@@ -138,7 +138,21 @@ Let'S Encrypt permet d'activer SSL gratuitement.
 
   Si vous ne voyez aucune erreur, c'est tout bon. Cela ajoute un script à `/etc/cron.d` ou utilise systemd sur les distributions compatibles. Le script s'exécute deux fois par jour et renouvelle automatiquement tout certificat expirant dans moins de 30 jours.
   
-  Si vous utilisez Docker, il faut redémarrer le container pour utiliser le nouveau certificat.
+  * Si le certificat est mis à jour, il faut redémarrer le serveur web pour utiliser le nouveau certificat.  
+    Pour ce faire, on peut configurer un hook dans le fichier `/etc/letsencrypt/cli.ini`
+
+    ```
+    # Global config for letsencrypt runs
+    #
+    # Note that these options apply automatically to all use of Certbot for
+    # obtaining or renewing certificates, so options specific to a single
+    # certificate on a system with several certificates should not be placed
+    # here.
+
+    deploy-hook = service nginx reload
+    ```
+    
+    Pour plus d'infos sur les hooks disponibles: `certbot --help renew`
 
 [An Introduction to Let's Encrypt](https://www.digitalocean.com/community/tutorials/an-introduction-to-let-s-encrypt)
 

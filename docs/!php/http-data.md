@@ -742,7 +742,7 @@ readfile($file);
 
 #### Cache-Control
 
-Définit la mise en page des pages par le navigateur.
+Définit la mise en cache des pages par le navigateur.
 
 Pour HTTP 1.0, le cache est contrôlé par l'entête `Pragma`.
 

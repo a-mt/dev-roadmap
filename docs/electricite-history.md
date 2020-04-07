@@ -71,9 +71,9 @@ Zénobe Gramme invente la dynamo. C'est le point de départ de l'industrie élec
 
 Joseph Swan démontre que l'incandescence d'un fil peut être prolongée en le plaçant sous vide, ce qui permet de créer de la lumière de manière prolongée. La même année, Thomas Edison conçoit et met sur le marché l'ampoule à incandescence.
 
-Dans un procès judiciaire, l'antériorité de Joseph Swan est reconnue mais Ce dernier ne proposant pas de procédé de fabrication industrielle, les deux hommes sont obligés de fabriquer leurs ampoules dans une société commune. Ils diffusent rapidement leur lampe, qui a des avantages évidents sur l'éclairage au gaz.
+Dans un procès judiciaire, l'antériorité de Joseph Swan est reconnue mais ce dernier ne proposant pas de procédé de fabrication industrielle, les deux hommes sont obligés de fabriquer leurs ampoules dans une société commune. Ils diffusent rapidement leur lampe, qui a des avantages évidents sur l'éclairage au gaz.
 
-La première centrale hydroélectrique (de 7 kW) voit le jour à Saint-Moritz, en Suisse — toujours en 1879.
+La première centrale hydroélectrique (de 7 kW) voit le jour à Saint-Moritz, en Suisse.
 
 ## 1883
 

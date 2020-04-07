@@ -70,10 +70,6 @@ Chaque couche a un nombre maximal d'électrons, comme suit:
 
 ![](https://i.imgur.com/65FW93r.jpg)
 
-Il ne peut y avoir des électrons sur la couche *n* que si la couche *n-1* est remplie. Certains atômes ont donc peu d'électrons et qui sont proches du noyau, tandis que d'autres en ont beaucoup et qui sont éloignés du noyau.
-
-On peut savoir le nombre de couches électriques d'un atome en regardant le [tableau périodique](https://upload.wikimedia.org/wikipedia/commons/9/91/Tableau_p%C3%A9riodique_des_%C3%A9l%C3%A9ments.svg?uselang=fr): chaque ligne du tableau (appelée période) correspond au nombre de couches de l'atome. L'hydrogène a 1 couche et l'uranium en a 7.
-
 ---
 
 ## Les charges électriques

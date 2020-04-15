@@ -82,6 +82,21 @@ Plus un bit est placé à gauche plus il a un *poids fort*, plus un bit est plac
 - `1111 0000` vaut 240
 - `0000 1111` vaut 15
 
+### Préfixe binaire
+
+Les préfixes binaires sont utilisés lorsqu'on a affaire à une grande quantité d'octets.
+
+10 ⋅ 10<sup>3</sup> octets = 1 kilooctet (ko)  
+10 ⋅ 10<sup>6</sup> octets = 1 megaoctet (Mo)  
+10 ⋅ 10<sup>9</sup> octets = 1 gigaoctet (Go)  
+10 ⋅ 10<sup>12</sup> octets = 1 teraoctet (To)  
+10 ⋅ 10<sup>15</sup> octets = 1 petaoctet (Po)  
+10 ⋅ 10<sup>18</sup> octets = 1 exaoctet (Eo)  
+10 ⋅ 10<sup>21</sup> octets = 1 zetaoctet (Zo)  
+10 ⋅ 10<sup>24</sup> octets = 1 yottaoctet (Yo)
+
+![](https://i.imgur.com/Sq8x5rA.png)
+
 ---
 
 ## Encodage: Caractères

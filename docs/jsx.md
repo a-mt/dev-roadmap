@@ -58,7 +58,7 @@ La syntaxe JSX est très similaire au HTML, à quelques différences près.
 * JSX respecte la convention de nommage lowerCamelCase.  
   On définit donc `onClick` et non `onclick`, `tabIndex` et non `tabindex`...
 
-* Parce que JSX est plus proche que JavaScript que de HTML, on définit
+* Parce que JSX est plus proche du JavaScript que de HTML, on définit
   les propriétés JavaScript des éléments et non leurs attributs HTML.
   Par exemple: on utilise `className` et non `class` pour définir la classe d'un élément.
   

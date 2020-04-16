@@ -6,7 +6,7 @@ category: Web, JavaScript
 JSX (JavaScript as XML) est une syntaxe de type XML, qui permet d'écrire du code HTML directement
 en JavaScript et aide à garder le code lisible. Cette syntaxe est souvent utilisée avec React (framework JavaScript).
 
-``` html
+``` jsx
 <script type="text/babel">
     const JSX = (<div>
         <h1>This is a block of JSX</h1>

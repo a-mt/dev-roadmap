@@ -461,3 +461,73 @@ $ff-icon:      'My Icon Font';
 ```
 
 Source: [Make Your CSS Variable Names Suck Less](https://fixate.it/blog/make-your-css-variable-names-suck-less)
+
+### Material Design pour Android
+
+* La convention de nommation de Material Design pour Android est comme suit:
+
+    ``` xml
+    <style name="Theme.MyApp" parent="Theme.MaterialComponents.*">
+
+        <!-- Couleur -->
+        <item name="colorPrimary">#6200EE</item>
+        <item name="colorPrimaryVariant">#3700B3</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#03DAC6</item>
+        <item name="colorSecondaryVariant">#018786</item>
+        <item name="colorOnSecondary">#000000</item>
+        <item name="colorError">#B00020</item>
+        <item name="colorOnError">#FFFFFF</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorOnSurface">#000000</item>
+        <item name="colorBackground">#FFFFFF</item>
+        <item name="colorOnBackground">#000000</item>
+
+        <!-- Typographie -->
+        <item name="textAppearanceHeadline1">Light 96sp</item>
+        <item name="textAppearanceHeadline2">Light 60sp</item>
+        <item name="textAppearanceHeadline3">Regular 48sp</item>
+        <item name="textAppearanceHeadline4">Regular 34sp</item>
+        <item name="textAppearanceHeadline5">Regular 24sp</item>
+        <item name="textAppearanceHeadline6">Medium 20sp</item>
+        <item name="textAppearanceSubtitle1">Regular 16sp</item>
+        <item name="textAppearanceSubtitle2">Medium 14sp</item>
+        <item name="textAppearanceBody1">Regular 16sp</item>
+        <item name="textAppearanceBody2">Regular 14sp</item>
+        <item name="textAppearanceCaption">Regular 12sp</item>
+        <item name="textAppearanceButton">Medium all caps 14sp</item>
+        <item name="textAppearanceOverline">Regular all caps 10sp</item>
+
+        <!-- Forme -->
+        <item name="shapeAppearanceSmallComponent">4dp rounded</item>
+        <item name="shapeAppearanceMediumComponent">4dp rounded</item>
+        <item name="shapeAppearanceLargeComponent">0dp rounded</item>
+    </style>
+    ```
+
+* La valeur par défaut des attributs de typographie et de forme a été abbrégé en une ligne.  
+  La structure interne est comme suit:
+
+    ``` xml
+    <style name="TextAppearance.MyApp.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+      <item name="fontFamily">@font/custom_font</item>
+      <item name="textStyle">normal</item>
+      <item name="textAllCaps">false</item>
+      <item name="textSize">64sp</item>
+      <item name="letterSpacing">0</item>
+    </style>
+
+    <style name="ShapeAppearance.MyApp.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+      <item name="cornerFamily">cut</item>
+      <item name="cornerSize">4dp</item>
+    </style>
+    ```
+
+*  Liens utiles:  
+
+   * Plus d'infos sur l'utilisation des différentes variables: [Material Components for Android](https://material.io/develop/android/theming/color/)
+   * Create color schemes with the [color tool](https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=6300ee&secondary.color=03dac4)  
+   * Create shape schemes with the [shape customization tool](https://material.io/design/shape/about-shape.html?utm_source=Medium&utm_campaign=TE-post#shape-customization-tool)  
+   * Create typography with the [type scale generator](https://material.io/design/typography/the-type-system.html?utm_source=Medium&utm_campaign=TE-post#type-scale)  
+   * [Material Design color palettes](https://material.io/design/color/the-color-system.html#tools-for-picking-colors)  
+   * [Specs Components: Buttons](https://material.io/develop/android/components/buttons/) ([.xml](https://github.com/material-components/material-components-android/tree/master/lib/java/com/google/android/material/button/res/values))

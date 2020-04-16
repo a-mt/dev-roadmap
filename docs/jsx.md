@@ -70,7 +70,7 @@ La syntaxe JSX est très similaire au HTML, à quelques différences près.
   
 ## JS et JSX
 
-Parce que JSX est une extension syntaxe de Javascript, on peut écrire du Javascript directement à l'intérieur du JSX.
+Parce que JSX est une extension à la syntaxe Javascript, on peut écrire du Javascript directement à l'intérieur du JSX.
 Il suffit d'inclure le code Javascript entre accolades.
 
 ``` jsx
@@ -84,14 +84,14 @@ Il suffit d'inclure le code Javascript entre accolades.
 ```
 
 On peut utiliser l'opérateur `&&` pour afficher du texte uniquement lorsqu'une condition est remplie
-— de manière plus concicse qu'un `if`.
+— de manière plus concise qu'un `if`.
 
 ``` jsx
 {condition && <p>markup</p>} 
 ```
 
 
-De la même manière, on peut utiliser `filter` et `map` pour afficher les listes à l'intérieur de JSX.
+Et on peut utiliser `filter` et `map` pour afficher les listes à l'intérieur de JSX.
 
 ``` jsx
 <ul>

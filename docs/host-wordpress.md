@@ -54,6 +54,11 @@ Source: [Host multiple websites on one VPS with Docker and Nginx](https://blog.s
       external:
         name: nginx-proxy
   ```
+  
+  NB: le port indiqué doit être disponible.  
+  `sudo netstat -ntpl` pour vérifier les ports occupés sur la machine,  
+  `docker ps` pour vérifier la liste des containers en cours d'execution et les ports exposés.  
+  Il est inutile de renommer le nom du volume pour différentes workspaces, celui-ci sera automatiquement préfixé.
 
 * Démarrer le container
 
@@ -63,6 +68,20 @@ Source: [Host multiple websites on one VPS with Docker and Nginx](https://blog.s
 
 * Vérifier que ça fonctionne: `http://diary.a-mt.xyz`  
   Puisque c'est la première fois que vous accédez au site, vous aller tomber sur la page d'installation
+
+  <ins>Troubleshooting</ins>:  
+
+  * En cas d'erreur `502 Bad Gateway`, attendre quelques secondes que le Proxy Nginx ait le temps de prendre en compte le démarrage du container.
+
+  * En cas d'erreur `Error establishing a database connection`, c'est probablement que vous avez eu une erreur au moment de la création des containers, et la base de données n'a pas donc été initialisée — si vous pouvez vous connecter à mysql avec `docker exec -it diary_db_node_1 mysql -u root` (donc sans avoir à entrer un mot de passe), c'est que c'est le cas. Le plus simple pour régler le problème est de repartir de zéro:
+
+    ```
+    # Arrêter les containers et supprimer les volumes associés
+    docker-compose down -v
+
+    # Démarrer les containers
+    docker-compose up -d
+    ```
 
 * Choisir un language
 

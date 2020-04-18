@@ -105,6 +105,12 @@ Source: [Host multiple websites on one VPS with Docker and Nginx](https://blog.s
     sudo docker cp diary_wordpress_1:/var/www/html/wp-content wp-content
     sudo chown -R www-data: wp-content
     ```
+    
+    Si vous avez besoin de donner accès à un utilisateur supplémentaire — pour pouvoir éditer le code par exemple:
+    
+    ```
+    sudo setfacl -Rm u:username:rwX wp-content/
+    ```
 
   * Ajouter un volume dans `docker-compose.yml` pour partager le répertoire
 

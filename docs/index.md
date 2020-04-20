@@ -269,6 +269,7 @@ searchbar: true
 - Fiddles
   - [JsFiddle](https://jsfiddle.net/)
   - [Codepen](http://codepen.io/)
+  - [CodeSandbox](https://egghead.io/lessons/react-build-and-deploy-a-react-application)
 
 - Random
   - [Passphrase](https://www.useapassphrase.com/)

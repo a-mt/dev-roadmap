@@ -50,6 +50,7 @@ searchbar: true
 [php]: php.md
 [posix]: regex-posix.md
 [puppet]: puppet.md
+[react]: react.md
 [regex]: regex.md
 [sass]: sass.md
 [securite]: securite.md
@@ -101,7 +102,7 @@ searchbar: true
   [Wep API][js-webapi], [Jquery][jquery], [MustacheJS][mustachejs], D3.js, Lodash, [Three.js][threejs]
 
 - Frameworks JS  
-  AngularJS, Backbone.js, ReactJS [1 &#x21F2;](https://blog.kentcdodds.com/learn-react-fundamentals-and-advanced-patterns-eac90341c9db), Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/), Vue.js [1 &#x21F2;](https://t.co/jwVzx7gywA)
+  AngularJS, Backbone.js, [ReactJS][react], Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/), Vue.js [1 &#x21F2;](https://t.co/jwVzx7gywA)
 
 - Préprocesseurs CSS  
   [Sass][sass], Less

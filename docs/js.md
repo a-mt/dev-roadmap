@@ -40,5 +40,5 @@ category: Web
     * [Créer une mémoire tampon: ArrayBuffer, TypedArray, DataView](!js/js-class-arraybuffer.md)
     * [Mémoire partagée](!js/js-sharedmemory.md)
 
-ESNext (stage < 2): [1 &#x21F2;](https://medium.freecodecamp.org/here-are-three-upcoming-changes-to-javascript-that-youll-love-387bce1bfb0b) [2 &#x21F2;](https://pbs.twimg.com/media/DVD5K9IU0AASuys.jpg)  
+ES2020: [1 &#x21F2;](https://www.freecodecamp.org/news/javascript-new-features-es2020/)  
 [Metaprogramming in ES6: Symbols and why they're awesome](https://www.keithcirkel.co.uk/metaprogramming-in-es6-symbols/)

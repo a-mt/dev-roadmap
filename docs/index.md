@@ -247,6 +247,8 @@ searchbar: true
   - [Emojis Unicode](https://emojipedia.org/)
   - [Encrypt mailto links](https://robspangler.com/blog/encrypt-mailto-links-to-stop-email-spam/)
   - [Ransom note generator](http://www.ransomizer.com/)
+  - [Entités HTML](http://www.amp-what.com/)
+  - [Diacritics](https://www.fileformat.info/info/unicode/category/Mn/list.htm)
 
 - Hosting  
   - Images: [Imgur](https://imgur.com/), [Lensdump](https://lensdump.com/)

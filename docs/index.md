@@ -248,7 +248,8 @@ searchbar: true
   - [Encrypt mailto links](https://robspangler.com/blog/encrypt-mailto-links-to-stop-email-spam/)
   - [Ransom note generator](http://www.ransomizer.com/)
   - [Entités HTML](http://www.amp-what.com/)
-  - [Diacritics](https://www.fileformat.info/info/unicode/category/Mn/list.htm)
+  - [Diacritics](https://www.fileformat.info/info/unicode/category/Mn/list.htm) (ex: ᴜ&amp;#x20D7; = ᴜ&#x20D7;)
+  - [Small caps font generator](https://fsymbols.com/generators/smallcaps/)
 
 - Hosting  
   - Images: [Imgur](https://imgur.com/), [Lensdump](https://lensdump.com/)

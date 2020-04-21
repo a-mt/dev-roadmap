@@ -363,4 +363,12 @@ be51b77efb42        8 days ago          /bin/sh -c apt-get update && apt-get ins
 511136ea3c5a        9 months ago                                                        0 B                 Imported from -
 ```
 
+### Usage RAM/CPU
+
+```
+$ docker stats --no-stream
+CONTAINER           CPU %               MEM USAGE / LIMIT   MEM %               NET I/O             BLOCK I/O             PIDS
+6b5c0fcfa7d4        0.13%               2.203 MiB / 4 MiB   55.08%              5.223 kB / 648 B    102.4 kB / 876.5 kB   3
+```
+
 {% endraw %}

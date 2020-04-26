@@ -13,6 +13,7 @@ category: Workflow, Containers
 * [Docker Compose](!docker/docker-compose.md)
 * [Swarm](!docker/docker-swarm.md)
 * [Docker API](!docker/docker-api.md)
+* [NVIDIA Docker](docker-nvidia.md)
 
 [Docker commands](https://docs.docker.com/v17.12/edge/engine/reference/commandline/docker/)
 

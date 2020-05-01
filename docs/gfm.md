@@ -30,7 +30,7 @@ Par exemple, certains parser acceptent les tags HTML, implémentent les tables, 
 
 La syntaxe décrite ci-dessous est la syntaxe supportée par Github, dite *Github Flavored Markdown* (GFM).
 Le parser utilisé par Github est [CommonMark](https://github.com/gjtorikian/commonmarker).
-[Voir les specs](https://github.github.com/gfm/).
+[Voir les specs](https://github.github.com/gfm/). [Voir fichier test](https://gist.github.com/a-mt/543bd5c34923c3f18f67d3af42ec570c)
 
 ---
 
@@ -518,7 +518,7 @@ Syntaxe interprétée à l'intérieur d'un `pre`
 |--- |--- |
 | :&#8203;sparkles: :&#8203;camel: :&#8203;boom: | :sparkles: :camel: :boom: |
 
-Liste complète des emojis : http://www.emoji-cheat-sheet.com/
+Liste complète des emojis : http://www.emoji-cheat-sheet.com/ ([Github](https://github.com/WebpageFX/emoji-cheat-sheet.com/tree/master/public/graphics/emojis))
 
 ---
 

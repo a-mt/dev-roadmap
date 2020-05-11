@@ -27,13 +27,25 @@ Permet de valider une chaîne de caractère
 
 ## exec
 
-Retourne le premier match trouvé.
+Retourne le premier match trouvé (ou null).
 
 ```
 /./.exec("helloWorld"); // [ "h" ]
 ```
 
-Tous les groupes nommées sont définies sous une propriétés séparée: `groups`.
+Le match est suivit de la liste des groupes capturants.
+
+``` js
+/\+(\w+)/.exec("+Hello +World") // [ "+Hello", "Hello" ]
+```
+
+La propriété `index` retourne la position du match dans la chaîne de caractère en entrée.
+
+``` js
+/\+(\w+)/.exec("+Hello +World").index // 0
+```
+
+Tous les groupes nommés sont définies sous une propriété séparée: `groups`.
 
 ``` js
 var re    = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/,
@@ -55,11 +67,31 @@ Permet de récupérer l'index du match
 
 ## match
 
-Permet de récupérer tous les match d'un RegExp
+Permet de récupérer les match d'un RegExp.  
+Si le flag global (g) est utilisé, le résultat est la liste des match trouvés (ou null)
 
 ``` js
-"helloWorld".match(/./);
-// [ "h", "e", "l", "l", "o", "W", "o", "r", "l", "d" ]
+"+Hello +World".match(/\+(\w+)/g)
+
+/*
+ 0: "+Hello"
+ 1: "+World"
+ length: 2
+*/
+```
+
+Sinon, le résultat sera identique à celui d'`exec` — le match suivit des groupes capturants (ou null).
+
+``` js
+"+Hello +World".match(/\+(\w+)/)
+
+/*
+ 0: "+Hello"
+ 1: "Hello"
+ index: 0
+ input: "+Hello +World"
+ length: 2
+*/
 ```
 
 ## replace

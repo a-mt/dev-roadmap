@@ -245,7 +245,7 @@ searchbar: true
   - [Comparaison encodages Latin et ASCII](/assets/encoding-latin-vs-ansi.html)
   - [Caractères Unicode](http://www.fileformat.info/info/unicode/index.htm)  
   - [Emojis Unicode](https://emojipedia.org/)
-  - [Encrypt mailto links](https://robspangler.com/blog/encrypt-mailto-links-to-stop-email-spam/)
+  - [Encrypt mailto links](https://codepen.io/a-mt/pen/vYNaYmG)
   - [Ransom note generator](http://www.ransomizer.com/)
   - [Entités HTML](http://www.amp-what.com/)
   - [Diacritics](https://www.fileformat.info/info/unicode/category/Mn/list.htm) (ex: ᴜ&amp;#x20D7; = ᴜ&#x20D7;)

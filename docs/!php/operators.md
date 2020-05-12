@@ -271,7 +271,7 @@ if($age >= 18 || $hasParentalAuthorization) {
 | Symbole   | Opération | Exemple | Description
 |---        |---        |---      |---
 | `&&`      | et        | `$a && $b` | Si la première condition est fausse, la deuxième ne sera pas évaluée.
-| <code>&verbar;&verbar; | ou | <code>$a &verbar;&verbar; $b</code> | Si la première condition est vraie, la deuxième ne sera pas évaluée.
+| <code>&verbar;&verbar;</code> | ou | <code>$a &verbar;&verbar; $b</code> | Si la première condition est vraie, la deuxième ne sera pas évaluée.
 
 <ins>Non prioritaires sur le égal</ins>:
 

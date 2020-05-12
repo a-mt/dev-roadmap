@@ -220,3 +220,4 @@ Ou de manière plus générale, on peut utiliser la fonction `base_convert` pour
 <?php
 base_convert($var, 8, 10);
 ```
+ 

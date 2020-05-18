@@ -3,6 +3,7 @@ title: MySQL
 category: Web, BDD
 ---
 
+* [Installer](!mysql/mysql-install.md)
 * [Les bases de MySQL](!mysql/mysql-intro.md)
 * [Les types de données](!mysql/mysql-type.md)
 * Le schéma

@@ -57,6 +57,8 @@ Ou on représente parfois les isotopes par leur nom suivi de leur nombre de mass
 La différence de masse entre isotopes affecte l'énergie cinétique des atomes et des molécules. Ainsi, certains isotopes sont radioactifs — les neutrons supplémentaires du noyau rendent l'atome instable, il se peut alors que l'atome se désintègre.
 Lorsqu'un atome se désintègre, il émet un rayonnement électromagnétique à haute fréquence: un rayonnement gamma. C'est ce qu'on appelle une [*fission nucléaire*](https://fr.wikipedia.org/wiki/Fission_nucl%C3%A9aire).
 
+Video: [Comment mesurer l'âge des choses grâce au Carbone-14](https://www.youtube.com/watch?v=n3z9AEqSwFU&t=0s)
+
 ### Électrons
 
 Un atome de cuivre a 29 protons et est entouré d'autant d'électrons, autrement dit 29.  

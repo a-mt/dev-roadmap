@@ -25,7 +25,7 @@ Il est souvent supporté par les systèmes de commentaires, chats et forums.
 
 En général, un fichier Markdown a l'extension `.md` ou `.markdown`.
 
-Il existe différents parser Markdown, chacun apportant quelques nuances et fonctionnalités différentes.
+Il existe différents [parser Markdown](https://github.com/github/markup#markups), chacun apportant quelques nuances et fonctionnalités différentes.
 Par exemple, certains parser acceptent les tags HTML, implémentent les tables, les attributs de bloc (classe, id, etc).
 
 La syntaxe décrite ci-dessous est la syntaxe supportée par Github, dite *Github Flavored Markdown* (GFM).

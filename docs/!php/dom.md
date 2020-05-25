@@ -231,6 +231,45 @@ $doctype = $dom->firstChild;
 $html = $dom->lastChild;
 ```
 
+``` php
+<?php
+function getTags($html) {
+  try {
+    $tags = [];
+
+    $doc = new DomDocument();
+    $doc->loadHTML('<body>'.$html.'</body>', LIBXML_NOWARNING | LIBXML_NOERROR);
+    $body = $doc->documentElement->firstChild;
+    
+    if ($body->hasChildNodes()) {
+      foreach ($body->childNodes as $child) {
+        $tags[] = $doc->saveHtml($child);
+      }
+    }
+    return $tags;
+
+  } catch(Exception $e) {
+    return [$html];
+  }
+}
+$html  = '<div class="test">Lorem <i>sdf</i> <div>ipsum</div></div>';
+$html .= ' dolor';
+$html .= '<p>sit amet</p>';
+
+var_dump(getTags($html));
+/*
+array(3) {
+  [0]=>
+  string(58) "<div class="test">Lorem <i>sdf</i> <div>ipsum</div>
+</div>"
+  [1]=>
+  string(6) " dolor"
+  [2]=>
+  string(15) "<p>sit amet</p>"
+}
+*/
+```
+
 ### parentNode
 
 Propriété contenant l'élément parent

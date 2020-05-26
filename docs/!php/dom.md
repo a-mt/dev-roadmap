@@ -238,7 +238,7 @@ function getTags($html) {
     $tags = [];
 
     $doc = new DomDocument();
-    $doc->loadHTML('<body>'.$html.'</body>', LIBXML_NOWARNING | LIBXML_NOERROR);
+    $doc->loadHTML('<?xml encoding="utf-8" ?><body>'.$html.'</body>', LIBXML_NOWARNING | LIBXML_NOERROR);
     $body = $doc->documentElement->firstChild;
     
     if ($body->hasChildNodes()) {

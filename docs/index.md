@@ -303,3 +303,4 @@ searchbar: true
   - [Emails jetables](http://www.yopmail.com/)
   - [Emails jetables Gmail](https://smailpro.com/)
   - [Screen size map](https://www.screensizemap.com/)
+  - [Générateur mentions légales](https://fr.orson.io/1371/generateur-mentions-legales)

@@ -9,7 +9,8 @@ Cela permet de créer des layouts plus complexes, comme par exemple une mosaïqu
 
 ![](https://i.imgur.com/apQV5Wx.png)
 
-[JSFiddle grid](https://jsfiddle.net/amt01/Lutfdkgg/)
+[JSFiddle grid](https://jsfiddle.net/amt01/Lutfdkgg/)  
+[JSFiddle grid:hover](https://jsfiddle.net/amt01/0yepzqah/)
 
 ## grid-auto (container)
 

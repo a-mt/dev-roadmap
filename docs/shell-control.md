@@ -115,6 +115,11 @@ done
 Boucle sur une liste.
 
 ``` bash
+files=(lib/*)
+for file in "${files[@]}"; do echo "-"$file; done
+```
+
+``` bash
 for item in ("a b c")
    do echo "$item"
 done

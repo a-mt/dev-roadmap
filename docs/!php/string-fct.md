@@ -1307,6 +1307,11 @@ Détecte l'encodage de la chaîne de caractère
 
 ``` php
 <?php
+var_dump(mb_detect_encoding($str, "UTF-8,ISO-8859-1,ASCII", true));
+```
+
+``` php
+<?php
 if(mb_detect_encoding($str, "UTF-8,ASCII", true) === 'UTF-8') {
     $str = utf8_decode($str);
 }

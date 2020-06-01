@@ -161,7 +161,7 @@ searchbar: true
   Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html), Grunt, Gulp [1 &#x21F2;](https://medium.freecodecamp.org/super-simple-gulp-tutorial-for-beginners-45141974bfe8), [Webpack][webpack], Make
 
 - Raccourcis d'édition de texte  
-  [OS][text-shortcut], [Vim][vim], Sublime Text
+  [OS][text-shortcut], [Vim][vim], Sublime Text [1 &#x21F2;](https://gist.github.com/mrliptontea/4c793ebdf72ed145bcbf)
 
 - [Open Source (github)][opensource]
 

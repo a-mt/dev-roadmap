@@ -38,34 +38,51 @@ Ces clés sont utilisées lors du Handshake SSL pour négocier une clé partagé
 
 ---
 
-## Négociation de la clé privée
-
-* Lorsqu'un client initie une connexion vers le serveur, celui-ci envoie son certificat.  
-  Le certificat du serveur contient sa clé publique, son nom d'hôte et un certain nombre d'information complémentaires sur le serveur.  
-  Le serveur envoie également une valeur aléatoire de 32 octets.
-
-* Le client génère une valeur aléatoire (le secret *premaster*), la crypte avec la clé publique qu'il a reçue du serveur et envoie cette valeur.  
-  Le client envoie également une valeur aléatoire de 32 octets.
-
-* Le seul moyen de déchiffrer le secret premaster est d'avoir la clé privée.  
-  Seul le serveur l'a — et il est crucial que la clé privée reste privée pour assurer la confidentialité des communications.
-
-* Une fois que le serveur a décrypté le message, le serveur et le client connaissent tout deux cette même valeur ainsi que deux valeurs aléatoires de 32 octets.  
-  Chacun de leur côté, ils calculent le secret *master* à partir de ces valeurs.
-
-  ```
-  master_secret = PRF(pre_master_secret, "master secret",
-                        ClientHello.random + ServerHello.random)
-  ```
-  ```
-  PRF(secret, label, seed) = P_MD5(S1, label + seed) XOR
-                             P_SHA-1(S2, label + seed);
-  ```
-
-* Le client et le serveur ont désormais un secret partagé (la clé master), qui sera utilisée pour crypter/décrypter toutes les futures communications — dans les deux sens.
+## Négociation de la clé partagée
 
 Un texte encrypté est un *cipher text*.  
 Un texte lisible sans étape supplémentaire est un *plain text*.
+
+* Lorsqu'un client initie une connexion vers le serveur, celui-ci envoie son certificat.  
+  Le certificat du serveur contient sa clé publique, son nom d'hôte et un certain nombre d'information complémentaires sur le serveur.
+  
+  ![](https://i.imgur.com/eTc37gi.png)
+  
+  En plus du certificat, le serveur envoie également une valeur aléatoire de 32 octets.
+  
+  ```
+  Serveur:
+  envoie Certificat + NonceServer
+  ```
+
+* Le client génère à son tour une valeur aléatoire (le secret *premaster*), la crypte avec la clé publique qu'il a reçue du serveur et envoie cette valeur avec un autre valeur aléatoire de 32 octets.
+
+  ```
+  Client:
+  CipherPremaster = Clé_publique(Premaster)
+  envoie CipherPremaster + NonceClient
+  ```
+
+* Le seul moyen de déchiffrer le secret premaster est d'avoir la clé privée.  
+  Seul le serveur l'a — et il est crucial que la clé privée reste privée pour assurer la confidentialité des communications.
+  
+  ```
+  Serveur:
+  Premaster = Clé_privée(CipherPremaster)
+  ```
+
+* Une fois que le serveur a décrypté le secret premaster, le serveur et le client connaissent tout deux cette même valeur ainsi que deux valeurs aléatoires de 32 octets.  
+  Chacun de leur côté, ils calculent le secret *master* à partir de ces valeurs.
+
+  ```
+  def PRF(secret, label, seed):
+    return P_MD5(secret, label + seed) XOR
+           P_SHA-1(secret, label + seed);
+
+  Master = PRF(Premaster, "master secret", NonceClient + NonceServer)
+  ```
+
+* Le client et le serveur ont désormais un secret partagé (la clé master), qui sera utilisée pour crypter/décrypter toutes les futures communications — dans les deux sens.
 
 ---
 
@@ -78,12 +95,12 @@ Les signatures numériques sont utilisées de la manière suivante:
 * L'expéditeur calcule le *message digest*.  
   Un message digest est une représentation numérique (de taille fixe) d'un message, calculée par une fonction de hashage.  
   Un digest crée à l'aide d'une clé symétrique est connu sous le nom de *Message Authentication Code* (MAC).
-  
+
   Le digest est ensuite crypté à l'aide de la clé privée.  
   Le résultat est un *signature numérique*. Elle est envoyée avec le message.
 
   ```
-  Digest    = Hash(Cipher)
+  Digest    = Hash(Message)
   Signature = Clé_privée(Digest)
   ```
 
@@ -91,8 +108,8 @@ Les signatures numériques sont utilisées de la manière suivante:
   Si les deux digests sont identiques, l'intégrité et l'authenticité du message sont vérifiées — autrement dit, on est sûr que le message n'a pas été modifié durant la transmission et qu'il a été envoyé par le serveur (puisqu'il est le seul à avoir la clé privée).
 
   ```
-  Digest_a  = Clé_publique(Signature)
-  Digest_b  = Hash(Cipher)
+  Digest  = Hash(Message)
+  Valide  = (Clé_publique(Signature) == Digest)
   ```
 
 ---

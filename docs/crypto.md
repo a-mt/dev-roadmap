@@ -54,17 +54,17 @@ Les algorithmes d'encryption asymétrique sont relativement lents par rapport au
 
 ### Algorithme RSA
 
-1. on choisit deux nombres premiers p et q
+1. on choisit deux nombres premiers *p* et *q*
 
        p = 17, q = 19
 
-2. on calcule leur produit n
+2. on calcule leur produit *n*
 
        n = p*q
          = 17*19
          = 323
 
-3. on choisit un nombre e premier avec (p-1)(q-1).  
+3. on choisit un nombre *e* premier avec *(p-1)(q-1)*.  
    Deux nombres sont premiers entre eux s'ils n'ont pas d'autre facteur commun que 1.
 
        (p-1)(q-1) = 16*18
@@ -72,7 +72,7 @@ Les algorithmes d'encryption asymétrique sont relativement lents par rapport au
                   = 2 * 2 * 2 * 2 * 2 * 9
        e = 5
 
-4. on choisit un nombre d tel que ed-1 soit un multiple de (p-1)(q-1)
+4. on choisit un nombre *d* tel que *ed-1* soit un multiple de *(p-1)(q-1)*
 
        ed-1 = (p-1)(q-1)x
        5d-1 = 288x
@@ -87,7 +87,7 @@ Les algorithmes d'encryption asymétrique sont relativement lents par rapport au
 
        (n, d) = (323, 173)
 
-7. on chiffre le message M tel que cipher = M^e mod n
+7. on chiffre le message *M* avec `cipher = M^e mod n`
 
        M =  B   O   N   J   O   U   R
          =  2  15  14  10  15  21  18
@@ -96,18 +96,19 @@ Les algorithmes d'encryption asymétrique sont relativement lents par rapport au
          = M^5 mod 323
          = 32   2  29 193   2  89  18
 
-8. on déchiffre le cipher C tel que message = C^d mod n
+       (Ex: (2**5)%323 = 32)
+
+8. on déchiffre le cipher *C* avec `message = C^d mod n`
 
        C = 32   2  29 193   2  89  18
 
        M = C^d mod n
          = C^173 mod 323
-
-         = 32*32 mod 323 = 55
-         = 55*32 mod 323
          =  2  15  14  10  15  21  18
 
-Le chiffrement asymétrique repose donc sur la difficulté de factoriser n.  
+       (Ex: (32**173)%323 = 2)
+
+Le chiffrement asymétrique repose donc sur la difficulté de factoriser *n*.  
 [Exemple calculs en php encryption/decryption](https://gist.github.com/a-mt/ff8653cdadda419f9066e1ab46ccb469)
 
 ---
@@ -169,7 +170,8 @@ Une signature digitale est
 
         Cle_publique(Signature) = Hash(Document)
 
-La signature RSA est la méthode de clé digitale la plus utilisée.
+La signature RSA est la méthode de clé digitale la plus utilisée.  
+Elle est notamment utilisée par le protocole [SSL](ssl.md)
 
 ---
 
@@ -238,8 +240,6 @@ Certificate:
       8f:0e:fc:ba:1f:34:e9:96:6e:6c:cf:f2:ef:9b:bf:de:b5:22:
       68:9f
 ```
-
-Pour plus d'infos sur les certificats, voir [SSL](ssl.md)
 
 ---
 

@@ -12,6 +12,7 @@ searchbar: true
 [composer]: composer.md
 [crontab]: crontab.md
 [crypto]: crypto.md
+[crypto-ec]: crypto-ec.md
 [css]: css.md
 [design]: design.md
 [digitalocean]: digitalocean.md
@@ -81,7 +82,7 @@ searchbar: true
   [Paradigmes de programmation][paradigm], [Ansible][ansible], 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
 
 - Sécurité  
-  [Fondamentaux][securite], Vulnérabilités [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9), [Cryptographie][crypto], [SSL][ssl], [IPSec][ipsec]
+  [Fondamentaux][securite], Vulnérabilités [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9), [Cryptographie][crypto], [SSL][ssl], [IPSec][ipsec], [Courbes elliptiques][crypto-ec]
 
 - Réseau  
   DNS [1 &#x21F2;](https://medium.freecodecamp.org/why-cant-a-domain-s-root-be-a-cname-8cbab38e5f5c), CORS [1 &#x21F2;](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b)

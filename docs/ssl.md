@@ -26,7 +26,7 @@ La [RFC 2246](https://www.ietf.org/rfc/rfc2246.txt) contient la documentation co
 
 ---
 
-## Clé publique et clé privée
+## Clé publique et clé privée (RSA)
 
 SSL repose sur une paire de clés: une clé publique et une clé privée (clés asymétriques).  
 La clé publique peut être obtenu par n'importe qui, tandis que la clé privée reste privée.
@@ -38,7 +38,7 @@ Ces clés sont utilisées lors du Handshake SSL pour négocier une clé partagé
 
 ---
 
-## Négociation de la clé partagée
+## Négociation de la clé partagée (Diffie Hellman)
 
 Un texte encrypté est un *cipher text*.  
 Un texte lisible sans étape supplémentaire est un *plain text*.
@@ -86,7 +86,7 @@ Un texte lisible sans étape supplémentaire est un *plain text*.
 
 ---
 
-## Signatures numériques
+## Signatures numériques (RSA)
 
 Une signature numérique permet de garantir qu'un message n'a pas été modifié entre le moment où il a été envoyé et le moment où il a été reçu. Il permet également de garantir que le message a été envoyé par l'expéditeur désiré.
 

@@ -405,6 +405,7 @@ Il est possible de récupérer la clé publique à partir de la signature:
 * [wikipedia ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm)
 * [johannes-bauer.com](https://www.johannes-bauer.com/compsci/ecc/)
 * [paxos.com](https://eng.paxos.com/blockchain-101-elliptic-curve-cryptography)
+* [wizardforcel.gitbooks.io](https://wizardforcel.gitbooks.io/practical-cryptography-for-developers-book/digital-signatures/ecdsa-sign-verify-messages.html)
 
 Pour aller plus loin:  
 [Weak Curves in ECC](http://web.archive.org/web/20120713221339/http://modular.math.washington.edu/edu/2010/414/projects/novotney.pdf)  

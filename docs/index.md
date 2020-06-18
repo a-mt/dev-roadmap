@@ -178,7 +178,7 @@ searchbar: true
 
 - Electron [1 &#x21F2;](https://electronjs.org/) [2 &#x21F2;](https://github.com/electron-userland/electron-builder)
 
-- Extensions navigateur [1 &#x21F2;](https://medium.freecodecamp.org/how-to-make-a-cross-browser-extension-using-javascript-and-browser-apis-355c001cebba)
+- Extensions navigateur [1 &#x21F2;](https://github.com/faisal3389/template-browser-extension) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-make-a-cross-browser-extension-using-javascript-and-browser-apis-355c001cebba)
 
 - Mobile [2 &#x21F2;](https://medium.freecodecamp.org/a-deeply-detailed-but-never-definitive-guide-to-mobile-development-architecture-6b01ce3b1528)
 

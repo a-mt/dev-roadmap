@@ -4,6 +4,7 @@ searchbar: true
 ---
 
 [accessibilite]: accessibilite.md
+[agile]: agile.md
 [ansible]: ansible.md
 [apache-vhost]: apache-vhost.md
 [awk]: awk.md
@@ -79,7 +80,7 @@ searchbar: true
   [Développement web][webdev], [Versionnement sémantique][semver], [Encodages][encoding], Caractères BOM [1 &#x21F2;](https://medium.freecodecamp.org/a-quick-tale-about-feff-the-invisible-character-cd25cd4630e7), [Base de données][bdd], [Testing][testing]
 
 - Méthodologie  
-  [Paradigmes de programmation][paradigm], [Ansible][ansible], 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
+  [Paradigmes de programmation][paradigm], [Agile][agile], 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
 
 - Sécurité  
   [Fondamentaux][securite], Vulnérabilités [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9), [Cryptographie][crypto], [SSL][ssl], [IPSec][ipsec], [Courbes elliptiques][crypto-ec]

@@ -9,6 +9,7 @@ searchbar: true
 [apache-vhost]: apache-vhost.md
 [awk]: awk.md
 [bdd]: bdd.md
+[bitcoin]: bitcoin.md
 [bitwise]: bitwise-operations.md
 [composer]: composer.md
 [crontab]: crontab.md
@@ -92,6 +93,8 @@ searchbar: true
 
 - Algorithmie  
   Fondamentaux [1 &#x21F2;](https://www.geeksforgeeks.org/fundamentals-of-algorithms/), Arbres binaires de recherche [1 &#x21F2;](https://medium.freecodecamp.org/data-structures-101-binary-search-tree-398267b6bff0), Théorie des graphes [1 &#x21F2;](https://medium.freecodecamp.org/i-dont-understand-graph-theory-1c96572a1401)
+
+- [Bitcoin][bitcoin]
 
 ## Développement
 
@@ -219,7 +222,7 @@ searchbar: true
   [Jenkins][jenkins]
 
 - Container / Orchestration  
-  [Docker][docker], Kubernetes [1 &#x21F2;](https://godaddy.github.io/2018/05/02/kubernetes-introduction-for-developers/) [2 &#x21F2;](https://medium.freecodecamp.org/learn-kubernetes-in-under-3-hours-a-detailed-guide-to-orchestrating-containers-114ff420e882) [3 &#x21F2;](https://medium.freecodecamp.org/how-to-leverage-the-power-of-kubernetes-to-optimise-your-hosting-costs-c2e168a232a2) [4 &#x21F2;](https://learnk8s.io/academy), [Hadoop](hadoop.md)
+  [Docker][docker], Kubernetes [1 &#x21F2;](https://godaddy.github.io/2018/05/02/kubernetes-introduction-for-developers/) [2 &#x21F2;](https://medium.freecodecamp.org/learn-kubernetes-in-under-3-hours-a-detailed-guide-to-orchestrating-containers-114ff420e882) [3 &#x21F2;](https://medium.freecodecamp.org/how-to-leverage-the-power-of-kubernetes-to-optimise-your-hosting-costs-c2e168a232a2), [Hadoop](hadoop.md)
 
 - Gestionnaire de fichiers binaires (.jar, .zip)  
   Nexus Repository Manager, JFrog Artifactory

@@ -53,6 +53,7 @@ searchbar: true
 [php]: php.md
 [posix]: regex-posix.md
 [puppet]: puppet.md
+[python]: python.md
 [react]: react.md
 [regex]: regex.md
 [sass]: sass.md
@@ -120,7 +121,7 @@ searchbar: true
 - Langages de programmation  
   [PHP][php],
   Node.js,
-  Python [1 &#x21F2;](https://engmrk.com/refresh-your-python-basics/) [2 &#x21F2;](https://medium.freecodecamp.org/an-a-z-of-useful-python-tricks-b467524ee747) [3 &#x21F2;](https://www.youtube.com/watch?time_continue=6270&v=Z0ssNAbe81M),
+  [Python][python],
   Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d),
   R [1 &#x21F2;](https://www.datacamp.com/)
 

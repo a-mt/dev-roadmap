@@ -32,6 +32,7 @@ Pour créer un environnement Python avec une version spécifique, par exemple 2.
   ```
   pyenv install --list
   pyenv install 2.7.14
+  eval "$(pyenv init -)"
   pyenv local 2.7.14
   python --version
   ```

@@ -33,6 +33,12 @@ Commencer une ligne par `!` dans Jupyter permet de lancer une commande UNIX (dan
 !pip install pandas
 ```
 
+On peut également utiliser des variables Python, en les préfixant d'un dollar:
+
+```
+!stat "$filename"
+```
+
 ---
 
 ## Indentation

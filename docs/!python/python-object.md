@@ -27,6 +27,7 @@ category: Web, Python
 
   obj = Test()
   obj.hello("Bob") # Hello Bob
+  getattr(obj, "hello")("Bob") # Hello Bob
   ```
 
 ## Constructeur, attributs

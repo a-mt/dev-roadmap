@@ -50,7 +50,7 @@ category: Web, Python
   ```
 
 * Python encode les entiers en complément à 2.  
-  Pour un encodage différent, on utilise un bytes — une liste d'octets.
+  Pour un encodage différent, utiliser un bytes — une liste d'octets.
 
   ``` python
   # Returns byte representation of 1024 in big endian.
@@ -58,6 +58,15 @@ category: Web, Python
 
   # Returns integer value of '\x00\x10' in big endian.
   print(int.from_bytes(b'\x00\x10', byteorder ='big')) # 16
+  ```
+  
+  Pour des opérations décimales nécessitant une précision maximale (on ne veut pas arrondir les valeurs), utiliser le module `decimal`:
+
+  ``` python
+  from decimal import Decimal
+
+  print(0.1 * 3)             # 0.30000000000000004
+  print(Decimal('0.1') * 3)  # 0.3
   ```
 
 ## Réels

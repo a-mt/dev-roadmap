@@ -6,7 +6,7 @@ category: Web
 * [Installer / exécuter](!python/python-install.md)
 * [Introduction](!python/python-overview.md)
 * [Types de données & variables](!python/python-types.md)
-* [Opérateurs](python-operators.md)
+* [Opérateurs](!python/python-operators.md)
 * [Structures de contrôle / boucles](!python/python-if.md)
 * Types
   * [Nombres](!python/python-number.md)

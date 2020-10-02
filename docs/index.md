@@ -97,6 +97,15 @@ searchbar: true
 
 - [Bitcoin][bitcoin]
 
+* Stats & proba
+  * [Introduction aux Statistiques](!mat/mat-stats.md)
+  * [Statistiques descriptives - univariables](!mat/mat-stats-desc.md)
+  * [Statistiques descriptives - bivariables](!mat/mat-stats-desc-2.md)
+  * [Visualisations](!mat/mat-visual.md)
+  * [Probabilités](!mat/mat-proba.md)
+  * [Distributions de probabilité](!mat/mat-proba-distribution.md)
+  * [Statistiques inférentielles](!mat/mat-stats-inf.md)
+
 ## Développement
 
 ### Front-End

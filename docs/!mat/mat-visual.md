@@ -1,7 +1,7 @@
 ---
 title: Visualisations
 category: Maths
---
+---
 
 ![](https://i.imgur.com/mKx8fYb.jpg)
 

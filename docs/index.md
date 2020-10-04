@@ -44,11 +44,14 @@ searchbar: true
 [linux-install]: linux-install.md
 [liquid]: liquid.md
 [markdown]: gfm.md
+[matplotlib]: matplotlib.md
 [mongodb]: mongodb.md
 [mustachejs]: mustachejs.md
 [mysql]: mysql.md
 [ntp]: ntp.md
+[numpy]: numpy.md
 [opensource]: github.md
+[pandas]: pandas.md
 [paradigm]: paradigm.md
 [php]: php.md
 [posix]: regex-posix.md
@@ -145,6 +148,9 @@ searchbar: true
 
 - Frameworks PHP  
   Laravel, Symfony
+
+- Libraries Python  
+  [Numpy][numpy], [Pandas][pandas], [Matplotlib][matplotlib]
 
 - Frameworks Python  
   Django, Flask [1 &#x21F2;](https://medium.freecodecamp.org/how-to-build-a-web-application-using-flask-and-deploy-it-to-the-cloud-3551c985e492)

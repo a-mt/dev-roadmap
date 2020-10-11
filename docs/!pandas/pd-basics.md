@@ -1,5 +1,5 @@
 ---
-title: Fonctions usuelles
+title: Explorer les données
 category: Python, Library, Pandas
 ---
 
@@ -328,3 +328,51 @@ category: Python, Library, Pandas
   print(df.sort_index(ascending=False))
   ```
 
+## qcut
+
+* Regroupe les données en quantiles
+
+  ``` python
+  df = pd.DataFrame({'Age': np.random.randint(20, 60, size=50)})
+
+  df['Ages_quantiles'] = pd.qcut(
+      df.Age, 4,
+      labels=['Young','Mid','Senior','Old']
+  )
+  df.groupby(['Ages_quantiles']) \
+    [['Age']].agg(['min','mean','max','count'])
+
+  '''
+                 Age                     
+                 min       mean max count
+  Ages_quantiles                         
+  Young           20  23.538462  27    13
+  Mid             31  36.230769  43    13
+  Senior          44  47.000000  51    13
+  Old             53  55.272727  58    11
+  '''
+  ```
+
+## cut
+
+* Regroupe les données selon des bornes arbitraires
+
+  ``` python
+  df['Ages_bin']= pd.cut(
+      df.Age, [0,30,40,50,60],
+      include_lowest=True,
+      labels=['Young','Mid','Senior','Old']
+  )
+  df.groupby(['Ages_bin']) \
+    [['Age']].agg(['min','mean','max','count'])
+
+  '''
+             Age                     
+           min       mean max count
+  Ages_bin                         
+  Young     20  23.538462  27    13
+  Mid       31  35.000000  39    11
+  Senior    43  45.333333  50    12
+  Old       51  54.357143  58    14
+  '''
+  ```

@@ -200,6 +200,64 @@ category: Python, Library, Pandas
   Name: Name, dtype: int64
   '''
   ```
+  
+* Par défaut, Pandas tronque le nombre de valeurs affichées à 10 (affiche les 5 premiers et les 5 derniers). On peut modifier ce comportment en modifiant les options de Pandas
+
+  ``` python
+  pd.options.display.max_rows = 100
+  ```
+  
+## explode
+
+* `explode` transforme chaque élément d'une liste en ligne.
+
+  ``` python
+  df_title['genres'][:5]
+  '''
+  0           Documentary,Short
+  1             Animation,Short
+  2    Animation,Comedy,Romance
+  3             Animation,Short
+  4                Comedy,Short
+  Name: genres, dtype: object
+  '''
+
+  df_title['genres'][:5].str.split(',')
+  '''
+  0            [Documentary, Short]
+  1              [Animation, Short]
+  2    [Animation, Comedy, Romance]
+  3              [Animation, Short]
+  4                 [Comedy, Short]
+  Name: genres, dtype: object
+  '''
+
+  df_title['genres'][:5].str.split(',').explode()
+  '''
+  0    Documentary
+  0          Short
+  1      Animation
+  1          Short
+  2      Animation
+  2         Comedy
+  2        Romance
+  3      Animation
+  3          Short
+  4         Comedy
+  4          Short
+  Name: genres, dtype: object
+  '''
+
+  df_title['genres'][:5].str.split(',').explode().value_counts()
+  '''
+  Short          4
+  Animation      3
+  Comedy         2
+  Romance        1
+  Documentary    1
+  Name: genres, dtype: int64
+  '''
+  ```
 
 ## unique
 

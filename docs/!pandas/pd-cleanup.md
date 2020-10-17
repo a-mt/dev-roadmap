@@ -24,6 +24,20 @@ category: Python, Library, Pandas
   df = df.dropna(axis=1)
   ```
 
+## replace
+
+* `replace` permet de remplacer une valeur par une autre:
+
+  ``` python
+  df['Username'] = df['Username'].replace("@kerinokeefe", "@kerino")
+  ```
+
+  On peut l'appliquer sur le dataset entier:
+
+  ``` python
+  df.replace('?', np.NaN, inplace=True)
+  ```
+
 ## fillna
 
 * `fillna` remplit les valeurs nulles avec une valeur donnée
@@ -190,12 +204,4 @@ print(df.drop_duplicates(keep=False))
   2  Carole     1995-08-06   25  6cc26d9601cd29ad46663bc1e0724ea7
   3   Alice     1980-04-15   40  310d308e72a6d991b8bb48a23c8b7b4c
   '''
-  ```
-
-## replace
-
-* `replace` permet de remplacer une valeur par une autre:
-
-  ``` python
-  df['Username'] = df['Username'].replace("@kerinokeefe", "@kerino")
   ```

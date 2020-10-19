@@ -24,6 +24,12 @@ category: Python, Library, Pandas
 
   C'est juste un raccourci pour `df[:nb]`
 
+* Par défaut, le nombre de colonnes affichées est tronqué. Pour afficher toutes les colonnes, changer les options de Pandas:
+  
+  ```
+  pd.set_option('max_columns', None)
+  ```
+
 ## tail
 
 * La fonction `tail` retourne les 5 dernières lignes ou le nombre passé en paramètre

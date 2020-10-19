@@ -176,3 +176,14 @@ b = fractions.Fraction(1,2)
 
 print(a, b) # 2/3 1/2
 ```
+
+## Arrondis
+
+``` python
+from math import ceil, floor
+
+print(ceil(123.456))      # 124
+print(floor(123.456))     # 123
+print(round(123.456, 2))  # 123.46
+print(round(123.456, -2)) # 100.0
+```

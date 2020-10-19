@@ -13,6 +13,24 @@ category: Web, Python
   print(dict(a=1, b=2, c=3))   # {'a': 1, 'b': 2, 'c': 3}
   ```
 
+* On peut également créer des dictionnaires sur le même principe que les comprehension de liste:
+
+  ``` python
+  planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+  planet_to_initial = {planet: planet[0] for planet in planets}
+  planet_to_initial
+  '''
+  {'Mercury': 'M',
+   'Venus': 'V',
+   'Earth': 'E',
+   'Mars': 'M',
+   'Jupiter': 'J',
+   'Saturn': 'S',
+   'Uranus': 'U',
+   'Neptune': 'N'}
+  '''
+  ```
+
 ## Opérateurs
 
 * <ins>Get ([x])</ins>  

@@ -200,4 +200,33 @@ category: Python, Library, Pandas
   '''
   ```
 
+## fuzzy matching
+
+Un "fuzzy matching" consiste à trouver automatiquement des chaînes de texte très similaires à une chaîne donnée. Moins il y a de caractères à changer, plus la chaîne sera considérée comme similaire.
+
+``` python
+import fuzzywuzzy
+
+matches = fuzzywuzzy.process.extract(
+            "south korea",
+            df['Country'],
+            limit=5,
+            scorer=fuzzywuzzy.fuzz.token_sort_ratio)
+matches
+'''
+[('south korea', 100),
+ ('southkorea', 48),
+ ('saudi arabia', 43),
+ ('norway', 35),
+ ('austria', 33)]
+'''
+
+# replace close matches with the input text
+close_matches = [matches[0] for matches in matches
+                            if matches[1] >= 47]
+
+rows = df['Country'].isin(close_matches)
+df.loc[rows, 'Country'] = "south korea"
+```
+
 La plupart des fonctions sur les chaînes de caractères sont disponibles: [Working with text data](https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html#method-summary)

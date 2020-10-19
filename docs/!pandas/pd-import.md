@@ -183,6 +183,24 @@ category: Python, Library, Pandas
   encoding='UTF-8'
   encoding='iso-8859-1'
   ```
+  
+  Si l'encodage n'est pas bon, une erreur est levée: `UnicodeDecodeError: 'utf-8' codec can't decode byte 0x99 in position 11: invalid start byte`.
+  
+  Le package `chardet` permet d'estimer l'encodage d'un fichier.
+  
+  ``` python
+  import chardet
+  
+  # look at the first ten thousand bytes to guess the character encoding
+  with open("../input/kickstarter-projects/ks-projects-201801.csv", 'rb') as rawdata:
+      result = chardet.detect(rawdata.read(10000))
+
+  # check what the character encoding might be
+  print(result)
+  '''
+  {'encoding': 'Windows-1252', 'confidence': 0.73, 'language': ''}
+  '''
+  ```
 
 * <ins>skip_blank_lines</ins>  
   Spécifie si les lignes vides doivent être ignorées ou non (vrai par défaut). Si faux, les lignes vides sont chargées avec des valeurs `NaN`  dans toutes les colonnes

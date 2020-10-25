@@ -558,7 +558,7 @@ print(df[df['Product A'] % 3 == 0])
 
 ## Itérations
 
-On peut itérer sur les lignes du DataFrame avec `iterrows`:
+On peut itérer sur les lignes d'un DataFrame avec `iterrows`:
 
 ``` python
 n = df.shape[0]
@@ -566,6 +566,13 @@ n = df.shape[0]
 for index, row in df.iterrows():
     print('{0:d}/{1:d}'.format(index+1, n))
     download_content(row)
+```
+
+On peut itérer sur les valeurs d'un Series avec `iteritems`:
+
+``` python
+for index, val in df.iteritems():
+    print(index, val)
 ```
 
 ---

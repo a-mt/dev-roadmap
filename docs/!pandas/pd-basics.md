@@ -264,6 +264,34 @@ category: Python, Library, Pandas
   Name: genres, dtype: int64
   '''
   ```
+  
+## apply(pd.Series)
+
+* On peut utiliser `apply(pd.Series)` dans transformer une colonne contenant un dictionnaire en colonnes individuelles:
+
+  ``` python
+  print(df_tracks['external_urls'])
+  '''
+  0    {'spotify': 'https://open.spotify.com/track/15...
+  1    {'spotify': 'https://open.spotify.com/track/51...
+  2    {'spotify': 'https://open.spotify.com/track/66...
+  3    {'spotify': 'https://open.spotify.com/track/7w...
+  4    {'spotify': 'https://open.spotify.com/track/3v...
+  Name: external_urls, dtype: object
+  '''
+
+  print(df_tracks['external_urls'].apply(pd.Series))
+  '''
+                                               spotify
+  0  https://open.spotify.com/track/15tCpEsBIIZqkWs...
+  1  https://open.spotify.com/track/51TG9W3y9qyO8BY...
+  2  https://open.spotify.com/track/66f5dM5SeIs4meV...
+  3  https://open.spotify.com/track/7w6PJe5KBPyvuRY...
+  4  https://open.spotify.com/track/3vjfFKMqFclw9KJ...
+  '''
+  
+  df_tracks.join(df_tracks['external_urls'].apply(pd.Series))
+  ```
 
 ## unique
 

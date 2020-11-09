@@ -150,7 +150,7 @@ searchbar: true
   Laravel, Symfony
 
 - Libraries Python  
-  [Numpy][numpy], [Pandas][pandas], [Matplotlib][matplotlib]
+  [Numpy][numpy], [Pandas][pandas], [Matplotlib][matplotlib], BeautifulSoup [1 &#x21F2;](https://gist.github.com/yoki/b7f2fcef64c893e307c4c59303ead19a)
 
 - Frameworks Python  
   Django, Flask [1 &#x21F2;](https://medium.freecodecamp.org/how-to-build-a-web-application-using-flask-and-deploy-it-to-the-cloud-3551c985e492)

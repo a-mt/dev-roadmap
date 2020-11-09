@@ -568,6 +568,12 @@ for index, row in df.iterrows():
     download_content(row)
 ```
 
+Pour mettre à jour une valeur du dataframe à l'intérieur de la boucle:
+
+``` python
+df.at[idx,'column'] = value
+```
+
 On peut itérer sur les valeurs d'un Series avec `iteritems`:
 
 ``` python

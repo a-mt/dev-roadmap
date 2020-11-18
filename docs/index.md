@@ -45,6 +45,7 @@ searchbar: true
 [liquid]: liquid.md
 [markdown]: gfm.md
 [matplotlib]: matplotlib.md
+[ml]: machine-learning.md
 [mongodb]: mongodb.md
 [mustachejs]: mustachejs.md
 [mysql]: mysql.md
@@ -78,36 +79,6 @@ searchbar: true
 [windows-task-scheduler]: windows-task-scheduler.md
 [xml]: xml.md
 [yaml]: yaml.md
-
-## Théorie
-
-- Programmation  
-  [Développement web][webdev], [Versionnement sémantique][semver], [Encodages][encoding], Caractères BOM [1 &#x21F2;](https://medium.freecodecamp.org/a-quick-tale-about-feff-the-invisible-character-cd25cd4630e7), [Base de données][bdd], [Testing][testing]
-
-- Méthodologie  
-  [Paradigmes de programmation][paradigm], [Agile][agile], 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
-
-- Sécurité  
-  [Fondamentaux][securite], Vulnérabilités [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9), [Cryptographie][crypto], [SSL][ssl], [IPSec][ipsec], [Courbes elliptiques][crypto-ec]
-
-- Réseau  
-  DNS [1 &#x21F2;](https://medium.freecodecamp.org/why-cant-a-domain-s-root-be-a-cname-8cbab38e5f5c), CORS [1 &#x21F2;](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b)
-
-- [Électricité][electricite]
-
-- Algorithmie  
-  Fondamentaux [1 &#x21F2;](https://www.geeksforgeeks.org/fundamentals-of-algorithms/), Arbres binaires de recherche [1 &#x21F2;](https://medium.freecodecamp.org/data-structures-101-binary-search-tree-398267b6bff0), Théorie des graphes [1 &#x21F2;](https://medium.freecodecamp.org/i-dont-understand-graph-theory-1c96572a1401)
-
-- [Bitcoin][bitcoin]
-
-* Stats & proba
-  * [Introduction aux Statistiques](!mat/mat-stats.md)
-  * [Statistiques descriptives - univariables](!mat/mat-stats-desc.md)
-  * [Statistiques descriptives - bivariables](!mat/mat-stats-desc-2.md)
-  * [Visualisations](!mat/mat-visual.md)
-  * [Probabilités](!mat/mat-proba.md)
-  * [Distributions de probabilité](!mat/mat-proba-distribution.md)
-  * [Statistiques inférentielles](!mat/mat-stats-inf.md)
 
 ## Développement
 
@@ -189,10 +160,42 @@ searchbar: true
 - Outils   
   [Gettext][gettext], [Jekyll][jekyll]
 
+## Théorie
+
+- Programmation  
+  [Développement web][webdev], [Versionnement sémantique][semver], [Encodages][encoding], Caractères BOM [1 &#x21F2;](https://medium.freecodecamp.org/a-quick-tale-about-feff-the-invisible-character-cd25cd4630e7), [Base de données][bdd], [Testing][testing]
+
+- Méthodologie  
+  [Paradigmes de programmation][paradigm], [Agile][agile], 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
+
+- Sécurité  
+  [Fondamentaux][securite], Vulnérabilités [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9), [Cryptographie][crypto], [SSL][ssl], [IPSec][ipsec], [Courbes elliptiques][crypto-ec]
+
+- Réseau  
+  DNS [1 &#x21F2;](https://medium.freecodecamp.org/why-cant-a-domain-s-root-be-a-cname-8cbab38e5f5c), CORS [1 &#x21F2;](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b)
+
+- [Électricité][electricite]
+
+- Algorithmie  
+  Fondamentaux [1 &#x21F2;](https://www.geeksforgeeks.org/fundamentals-of-algorithms/), Arbres binaires de recherche [1 &#x21F2;](https://medium.freecodecamp.org/data-structures-101-binary-search-tree-398267b6bff0), Théorie des graphes [1 &#x21F2;](https://medium.freecodecamp.org/i-dont-understand-graph-theory-1c96572a1401)
+
 - [Design][design]
 
 - Marketing  
   Psychologie [1 &#x21F2;](http://jamesarcher.me/user-motivators) [2 &#x21F2;](https://www.nngroup.com/articles/zigzag-page-layout/) [3 &#x21F2;](https://www.nngroup.com/articles/multi-tab-page-parking/), Outils [2 &#x21F2;](https://www.seomix.fr/webmarketing/), Google Analytics [1 &#x21F2;](https://medium.freecodecamp.org/how-and-why-to-get-started-with-google-analytics-153dc35b7812), SEO [1 &#x21F2;](https://support.google.com/webmasters/answer/7451184)  [2 &#x21F2;](https://moz.com/learn/seo/on-site-seo), Rich snippets, robots.txt, Mailchimp [1 &#x21F2;](https://business.tutsplus.com/articles/how-to-create-an-email-newsletter-with-mailchimp-for-free--fsw-39066)
+
+- [Bitcoin][bitcoin]
+
+* Stats & proba
+  * [Introduction aux Statistiques](!mat/mat-stats.md)
+  * [Statistiques descriptives - univariables](!mat/mat-stats-desc.md)
+  * [Statistiques descriptives - bivariables](!mat/mat-stats-desc-2.md)
+  * [Visualisations](!mat/mat-visual.md)
+  * [Probabilités](!mat/mat-proba.md)
+  * [Distributions de probabilité](!mat/mat-proba-distribution.md)
+  * [Statistiques inférentielles](!mat/mat-stats-inf.md)
+
+* [Machine Learning][ml]
 
 ## Logiciel
 

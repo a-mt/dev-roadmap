@@ -479,3 +479,15 @@ from scipy.io import loadmat
 mat = loadmat('cardio.mat')
 df  = pd.DataFrame(np.hstack((mat['X'], mat['y'])))
 ```
+
+---
+
+## Pickle
+
+``` python
+df.to_pickle('corpus.pkl')
+```
+
+``` python
+df = pd.read_pickle('corpus.pkl')
+```

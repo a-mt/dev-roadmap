@@ -27,3 +27,9 @@ category: Other, Machine Learning
   * [Perceptrons, Artificial Neural Networks (ANN)](ann.md)
   * [Convolutional Neural Networks (CNN)](cnn.md)
   * [Recurrrent Neural Networks (RNN), LSTM, GRU](rnn.md)
+
+* Natural Language Processing
+  * [Bag of Words](nlp-bow.md)
+  * [TF-IDF](nlp-tf-idf.md)
+  * [One hot encoding](nlp-one-hot.md)
+  * [Word embeddings](nlp-word-embeddings.md)

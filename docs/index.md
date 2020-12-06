@@ -278,7 +278,7 @@ searchbar: true
 - Hosting  
   - Images: [Imgur](https://imgur.com/), [Lensdump](https://lensdump.com/)
   - Files<2M: [Gist](https://gist.github.com/) + [Rawgit](http://raw.githack.com/)
-  - Databases: [MongoDB](https://mlab.com/), [Google Spreadsheet](https://www.freecodecamp.org/news/get-sheet-done-using-google-spreadsheets-as-your-data-backend-650ba23dc6d9/)
+  - Databases: [MongoDB](https://mlab.com/), [Google Spreadsheet](https://www.freecodecamp.org/news/get-sheet-done-using-google-spreadsheets-as-your-data-backend-650ba23dc6d9/) [&#x21F2; 1](https://egghead.io/lessons/node-js-use-google-sheets-with-node-and-express-in-fun-side-projects)
   - [Binary files](http://drive.google.com/)
   - [Fichiers temporaires](https://send.firefox.com/)
   - [Site statique](https://github.com/)
@@ -288,7 +288,6 @@ searchbar: true
   - [Miniminer des Images](https://tinypng.com/)
   - [Wireframing](https://designer.gravit.io/)
   - [Identifier une Police](https://www.myfonts.com/WhatTheFont/)
-  - [Curated Collection For Designers](https://www.canva.com/learn/design-resources/)
   - [Free images, Videos](http://thestocks.im)
   - [Name That Color](http://chir.ag/projects/name-that-color/#6195ED)
   - [Find colors that go well together](https://coolors.co/app) or [alternative](https://mycolor.space/)

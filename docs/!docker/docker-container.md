@@ -265,6 +265,10 @@ Notez que vous pouvez démarrer un container qui sera automatiquement supprimé 
 * Pour supprimer toutes les images ni taggées ni référencées par un container (*dangling images*):
 
       docker image prune
+      
+  Pour les lister:
+
+        docker images -f dangling=true
 
   Pour supprimer toutes les images qui n'ont aucun container associé (*unused images*):
 

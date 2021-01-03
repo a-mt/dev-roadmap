@@ -30,6 +30,7 @@ category: Other, Machine Learning
 
 * Natural Language Processing
   * [Bag of Words](nlp-bow.md)
+  * [N-gramme](nlp-ngram.md) 
   * [TF-IDF](nlp-tf-idf.md)
   * [One hot encoding](nlp-one-hot.md)
   * [Word embeddings](nlp-word-embeddings.md)

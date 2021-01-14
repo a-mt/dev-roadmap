@@ -484,6 +484,14 @@ var Checkbox = React.createClass({
     }
   }
   ```
+  
+  Parce que les mises à jour de l'état sont asynchrones, `this.state` peut ne pas être à jour avec le dernier appel à `setState`. Pour garantir qu'on accède bien à la dernière valeur de l'état:
+  
+  ``` js
+  this.setState((state, props) => ({
+    counter: state.counter + props.increment
+  }));
+  ```
 
 * Lorsque l'état d'un composant change, React appelle alors `render()` puis met à jour le DOM si nécessaire. Une bonne pratique est de chercher à modulariser les composants au maximum, afin de limiter la gestion de l'état à un domaine spécifique de l'application.
 

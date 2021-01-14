@@ -630,6 +630,22 @@ $authors: nick aimee dan drew;
 }
 ```
 
+``` scss
+@each $color in blue, red, green {
+  .#{$color}-text {color: $color;}
+}
+```
+
+## Boucler sur un dictionnaire: @each
+
+``` scss
+$colors: (color1: blue, color2: red, color3: green);
+
+@each $key, $color in $colors {
+  .#{$key}-text {color: $color;}
+}
+```
+
 ## Boucler sur une plage d'index: @for
 
 `@for` permet d'effectuer un boucle de i à n (inclus).

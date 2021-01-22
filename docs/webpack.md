@@ -125,8 +125,32 @@ qui prend en entrée la source, la transforme et renvoit une nouvelle version de
   Par exemple, `babel-loader` pour transformer un fichier ES6 en ES5:
 
   ```
-  npm install babel-loader babel-core babel-preset-env webpack --save-dev
+  npm install babel-loader@7 babel-core babel-preset-env webpack@4 --save-dev
   ```
+
+  webpack.config.js:
+
+  ``` js
+  const path = require('path');
+
+   module.exports = {
+      mode: 'development',
+      entry: path.resolve(__dirname, "./static/js6/app.js"),
+      output: {
+        filename: "app.js",
+        path: path.resolve(__dirname, "./static/js/")
+      },
+      module: {
+        rules: [
+           {
+             test: /\.js$/,
+             exclude: /node_modules/,
+             use: ['babel-loader']
+           }
+        ]
+      }
+   };
+   ```
 
 * Si vous créez vos propres loaders, penser à les installer comme module node.
 

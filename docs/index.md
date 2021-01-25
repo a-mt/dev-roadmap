@@ -287,6 +287,7 @@ searchbar: true
 - Design
   - [Miniminer des Images](https://tinypng.com/)
   - [Wireframing](https://designer.gravit.io/)
+  - [Créer des Logos/images](https://www.canva.com/)
   - [Identifier une Police](https://www.myfonts.com/WhatTheFont/)
   - [Free images, Videos](http://thestocks.im)
   - [Name That Color](http://chir.ag/projects/name-that-color/#6195ED)
@@ -318,6 +319,15 @@ searchbar: true
   - [Codefights](http://codefights.com/)
   - [Hackerrank](http://hackerrank.com/)
 
+- Business
+  - [Générateur mentions légales](https://fr.orson.io/1371/generateur-mentions-legales)
+  - [Rapport de Performance](https://gtmetrix.com/)
+  - [UTM tags](https://ga-dev-tools.appspot.com/campaign-url-builder/)
+  - [Google Trends](https://trends.google.com/trends), [AnswerThePublic](https://answerthepublic.com/), [BuzzSumo](https://buzzsumo.com/), [Quora](quora.com/)
+  - [Google Search Console](https://search.google.com/search-console/)
+  - [Google My Business](https://www.google.co.uk/business/)
+  - [Structured Data Markup Helper](https://www.google.com/webmasters/markup-helper/u/0/?hl=fr), [Rich Snippet doc](https://developers.google.com/search/docs/guides/search-gallery), [SEOquake](https://www.seoquake.com/)
+
 - Autres
   - [ES6 Compat table](https://kangax.github.io/compat-table/es6/)
   - [Éditeur JSON](http://jsoneditoronline.org/)
@@ -326,4 +336,3 @@ searchbar: true
   - [Emails jetables](http://www.yopmail.com/)
   - [Emails jetables Gmail](https://smailpro.com/)
   - [Screen size map](https://www.screensizemap.com/)
-  - [Générateur mentions légales](https://fr.orson.io/1371/generateur-mentions-legales)

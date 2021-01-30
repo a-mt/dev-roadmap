@@ -302,6 +302,8 @@ searchbar: true
 - Random
   - [Passphrase](https://www.useapassphrase.com/)
   - [Secret Key](https://api.wordpress.org/secret-key/1.1/salt/)
+  - [JSON Placeholder](http://jsonplaceholder.typicode.com/)
+  - [Image Placeholder](http://placehold.it/350x150)
 
 - Codes  
   - Norme BCP 47 (ex: en_GB)

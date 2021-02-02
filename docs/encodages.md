@@ -120,6 +120,15 @@ Dû aux différents encodages entre différents pays et différents systèmes d'
 Le code *UNICODE* (Universal Code) associe un code unique à chaque caractère, quels que soient la langue, la plateforme, le logiciel.
 Le codage d'Unicode en UTF-8 permet de coder les caractères en longueur variable, de 1 à 4 octets.
 
+Certains caractères Unicode ont deux représentations possibles: texte ou emoji.
+On peut choisir une variante ou l'autre avec un sélecteur de variation: U+FE0E pour texte (VS-15) ou U+FE0F pour emoji (VS-16).
+
+<pre>
+&amp;#x1f600;&amp;#xFE0E; = &#x1f600;&#xFE0E;
+
+&amp;#x1f600;&amp;#xFE0F; = &#x1f600;&#xFE0F;
+</pre>
+
 [Caractères Unicode](http://www.fileformat.info/info/unicode/index.htm)  
 [Emojis Unicode](https://emojipedia.org/)
 

@@ -291,7 +291,8 @@ searchbar: true
   - [Identifier une Police](https://www.myfonts.com/WhatTheFont/)
   - [Free images, Videos](http://thestocks.im)
   - [Name That Color](http://chir.ag/projects/name-that-color/#6195ED)
-  - [Find colors that go well together](https://coolors.co/app) or [alternative](https://mycolor.space/)
+  - Colors that go well together: [coolor.co](https://coolors.co/app) or [mycolor.space](https://mycolor.space/)
+  - Color palettes: [colorpalettes.net](https://colorpalettes.net/)
   - [Color Format Converter](https://www.w3schools.com/colors/colors_converter.asp)
 
 - Fiddles
@@ -329,6 +330,7 @@ searchbar: true
   - [Google Search Console](https://search.google.com/search-console/)
   - [Google My Business](https://www.google.co.uk/business/)
   - [Structured Data Markup Helper](https://www.google.com/webmasters/markup-helper/u/0/?hl=fr), [Rich Snippet doc](https://developers.google.com/search/docs/guides/search-gallery), [SEOquake](https://www.seoquake.com/)
+  - Web templates: [BootstrapMade](https://bootstrapmade.com/), [WrapBootstrap](https://wrapbootstrap.com/), [StartBootstrap](https://startbootstrap.com/)
 
 - Autres
   - [ES6 Compat table](https://kangax.github.io/compat-table/es6/)

@@ -305,6 +305,7 @@ searchbar: true
   - [Secret Key](https://api.wordpress.org/secret-key/1.1/salt/)
   - [JSON Placeholder](http://jsonplaceholder.typicode.com/)
   - [Image Placeholder](http://placehold.it/350x150)
+  - [CSV Placeholder](https://mockaroo.com/)
 
 - Codes  
   - Norme BCP 47 (ex: en_GB)
@@ -330,7 +331,7 @@ searchbar: true
   - [Google Search Console](https://search.google.com/search-console/)
   - [Google My Business](https://www.google.co.uk/business/)
   - [Structured Data Markup Helper](https://www.google.com/webmasters/markup-helper/u/0/?hl=fr), [Rich Snippet doc](https://developers.google.com/search/docs/guides/search-gallery), [SEOquake](https://www.seoquake.com/)
-  - Web templates: [BootstrapMade](https://bootstrapmade.com/), [WrapBootstrap](https://wrapbootstrap.com/), [StartBootstrap](https://startbootstrap.com/)
+  - Web templates: [BootstrapMade](https://bootstrapmade.com/), [WrapBootstrap](https://wrapbootstrap.com/), [StartBootstrap](https://startbootstrap.com/), [carrd.co](carrd.co)
 
 - Autres
   - [ES6 Compat table](https://kangax.github.io/compat-table/es6/)

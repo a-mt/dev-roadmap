@@ -45,6 +45,7 @@ searchbar: true
 [liquid]: liquid.md
 [markdown]: gfm.md
 [matplotlib]: matplotlib.md
+[maths]: maths.md
 [ml]: machine-learning.md
 [mongodb]: mongodb.md
 [mustachejs]: mustachejs.md
@@ -186,15 +187,7 @@ searchbar: true
 
 - [Bitcoin][bitcoin]
 
-* Stats & proba
-  * [Introduction aux Statistiques](!mat/mat-stats.md)
-  * [Statistiques descriptives - univariables](!mat/mat-stats-desc.md)
-  * [Statistiques descriptives - bivariables](!mat/mat-stats-desc-2.md)
-  * [Visualisations](!mat/mat-visual.md)
-  * [Probabilités](!mat/mat-proba.md)
-  * [Distributions de probabilité](!mat/mat-proba-distribution.md)
-  * [Statistiques inférentielles](!mat/mat-stats-inf.md)
-
+* [Maths][maths]
 * [Machine Learning][ml]
 
 ## Logiciel

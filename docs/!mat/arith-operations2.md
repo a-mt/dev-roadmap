@@ -162,5 +162,5 @@ Pour trouver la valeur d'un logarithme d'une base différente, on se sert de l'�
 
   ![](https://i.imgur.com/1IuVT9U.png)
 
-* La valeur absolue d'un nombre *x* est notée |x|.  
-  Ex: |-2 × 45| = |-90| = 90
+* La valeur absolue d'un nombre *x* est notée \|x\|.  
+  Ex: \|-2 × 45\| = \|-90\| = 90

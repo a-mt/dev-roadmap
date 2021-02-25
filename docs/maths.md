@@ -11,7 +11,7 @@ title: Maths
   * [Opérations 1 (+ - * /)](!mat/arith-operations.md)
   * [Nombres premiers](!mat/arith-premiers.md)
   * [Fractions, rapports & pourcentages](!mat/arith-fractions.md)
-  * [Opérations 2 (^ √ log || !)](!mat/arith-operations2.md)
+  * [Opérations 2 (^ √ log \|\| !)](!mat/arith-operations2.md)
   * [Nombres complexes](!mat/arith-complex.md)
 
 <!-- -->

@@ -34,7 +34,7 @@ category: Maths
   Est la plus ancienne et la plus élémentaires des mathématiques. Elle traite des nombres et des opérations de base — addition, soustraction multiplication et division.
 
 * <ins>Algèbre</ins>:  
-  Est un type d'arithmétique où on utliise des quantités inconnues — réprésentées par des lettres de l'alphabet latin telles que *x*, *y* *a*, *b* etc, ou des symboles. L'utilisation de lettres permet de généraliser les formules et éventuellement de trouver les valeurs inconnues manquantes dans les expressions et équations albégriques.
+  Est un type d'arithmétique où on utliise des quantités inconnues — réprésentées par des lettres de l'alphabet latin telles que *x*, *y* *a*, *b* etc, ou des symboles. L'utilisation de lettres permet de généraliser les formules et éventuellement de trouver les valeurs inconnues manquantes dans les expressions et équations algébriques.
 
 * <ins>Géométrie</ins>:  
   Vient du grec *geo* "terre" et *metron* "mesure".

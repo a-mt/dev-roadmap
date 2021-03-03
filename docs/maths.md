@@ -16,6 +16,24 @@ title: Maths
 
 <!-- -->
 
+* Algèbre élémentaire
+  * [Lexique algébrique](!mat/alg-intro.md)
+  * [Éléments de notation](!mat/mat-ensemble.md)
+  * Équations
+    * [Développer, factoriser](!mat/alg-equations.md)
+    * [Résoudre](!mat/alg-equations2.md)
+    * [Systèmes d'équations](!mat/alg-eq-system.md)
+  * Fonctions
+    * [Notions de base](!mat/alg-fonction.md)
+    * [Fonctions affines](!mat/alg-fct-affine.md)
+    * [Fonctions quadratiques](!mat/alg-fct-quad.md)
+    * [Fonctions polynômiales](!mat/alg-fct-poly.md)
+    * [Fonctions par morceaux](!mat/alg-fct-morceau.md)
+    * [Fonctions avec valeur absolue](!mat/alg-fct-abs.md)
+    * [Fonctions composées](!mat/alg-fct-composee.md)
+
+<!-- -->
+
 * Stats & proba
   * [Introduction aux Statistiques](!mat/mat-stats.md)
   * [Statistiques descriptives - univariables](!mat/mat-stats-desc.md)

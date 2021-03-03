@@ -1,186 +1,172 @@
 ---
-title: Ensembles
+title: Notation
 category: Maths
 latex: true
 ---
 
-## Notation d'un ensemble
+Concepts: intervalles, ensembles, sous-ensembles, quantificateurs, connecteurs
 
-* L'ensemble E dont les éléments sont 1,2,3,4 est noté E = {1,2,3,4}
+## Énoncé
 
-* L'ensemble E dont les éléments sont des entiers naturels est noté E = {x &in; ℕ}. La notation des ensembles les plus courants est:
+* Un *énoncé* est un texte exposant les données qu'on connaît et/ou qu'on doit résoudre / démontrer. Les informations de l'énoncé peuvent être écrites
 
-  | Notation    | Ensemble
-  |---          |---
-  | &naturals;  | Entiers naturels (ex 1)
-  | &integers;  | Entiers relatifs (ex -1)
-  | &rationals; | Rationnels (ex 1/3)
-  | &reals;     | Réels (ex &radic;2) <br>&reals;<sup>\*</sup> réels non nuls <br>&reals;<sub>+</sub> réels positifs <br>&reals;<sub>+</sub><sup>\*</sup> réeels strictement positifs
-  | &complexes; | Complexes (ex 1 + 1i)
-  | &empty;     | Ensemble vide
+  * en langage courant  
+    Ex: Le carré de tout réel est un réel positif
 
-* L'ensemble E dont les éléments sont entre -1 et 1 inclus est noté E = [-1, 1].  
-  Si les bornes sont exclues, alors on note E = ]-1, 1[
+  * ou en symboles mathématiques.  
+    Ex: ∀x ∈ ℝ, x² ≥ 0 (pour tout x appartenant à l'ensemble des réels, le carré de x est supérieur ou égal à 0)
 
-* La notation [n] est souvent utilisée pour signifier {1,2,...,n}
+## Intervalles
 
-* On peut également ajouter un pas: tous les éléments pairs de 1 à 99 se note E = {x &in; [99] : 2|x}
+* Un *intervalle* est un ensemble de valeurs comprises entre deux bornes.  
+  Un intervalle peut être
 
-## Sous-ensemble
+  * *ouvert*: les bornes ne font pas partie de l'intervalle.  
+    Ex: ]-1, 4[ désigne les valeurs de -1 à 4, -1 et 4 exclus.
 
-* **Sous-ensemble**: tous les éléments de A sont dans B
+  * *fermé*: les bornes font partie de l'intervalle (elles sont inclues)  
+    Ex: [-2, 3] désigne les valeurs de -2 à 3, -2 et 3 inclus.
 
-  ![](https://i.imgur.com/Dn9Pnrz.png)
+  * ou *semi-ouvert*: une seule des deux bornes fait partie de l'intervalle.  
+    Ex: ]-1, 3] désigne les valeurs de -1 à 3, -1 inclus et 3 exclus.
 
-  $$
-  A \subset B
-  $$
+  <ins>Exemples</ins>:
 
-  ou (si A peut avoir autant l'élément que B):
+  ![](https://i.imgur.com/WH7ceAhl.png)
 
-  $$
-  A \subseteq B
-  $$
+## Ensembles
 
-  <ins>Assertion</ins>:
+* Un *ensemble* représente une collection d'objets.
 
-  $$
-  \begin{aligned}
-  &  \{x \in E\} \\
-  \equiv \ & \{x\} \subset E \\
-  \equiv \ & \{x\} \in P(E)
-  \end{aligned}
-  $$
+* Les nombres sont classés en différents ensembles en fonction de leurs caractéristiques:
 
-## Intersection
+  | Notation     | Ensemble
+  |---           |---
+  | &naturals;   | Naturels (0,1,2,...): servent à dénombrer 
+  | &integers;   | Entiers ou relatifs (-2,1,0,...): nombres naturels et leurs opposés
+  | &reals;      | Réels (&radic;2, 1.68, &pi;): nombres admettant des chiffres après la virgule<br>&reals;<sup>\*</sup> réels non nuls <br>&reals;<sub>+</sub> réels positifs <br>&reals;<sub>+</sub><sup>\*</sup> réeels strictement positifs
+  | &rationals;  | Rationnels (1/3,0.2,...): nombres réels pouvant s'exprimer en fraction
+  | &rationals;' | Irrationnels (&radic;11,e;,...): nombres réels ne pouvant pas s'exprimer en fraction
+  | ⅅ            | Décimaux (3.12,4/7,...): nombres rationnels ayant un nombre fini de chiffres
+  | &complexes;  | Complexes (ex 1 + 1i): nombres composés d'une partie réelle et imaginaire
+  | &empty; ou {}| Ensemble vide
 
-* **Intersection**: désigne les éléments qui sont à la fois dans A et B
+  ![](https://i.imgur.com/veWrt7q.png)
 
-  ![](https://i.imgur.com/Mfbmlsr.png)
+* Pour définir un ensemble personnalisé, on peut
 
-  $$
-  A \cap B
-  $$
+  * définir la liste des valeurs possibles: E = {1,2,3,4}  
+    Les points de suspension peuvent être utilisés pour des ensembles ayant beaucoup d'éléments: {1,2,…,1000}
 
-  <ins>Assertion</ins>:
+  * ou définir les bornes de l'ensemble avec un intervalle: E = [0; +∞[
 
-  $$
-  \{x | x \subset A \text{ et } x \subset B\}
-  $$
-
-  $$
-  \text{Généralisation pour } A_1 \cup A_2 \cup \ldots \cup A_n: \\
-
-  \{x | \exists i \in \{1,2,\ldots,n\}, x \in A_i \}
-  $$
-
-## Union
-
-* **Union**: désigne les élément dans A ou B (ou les deux)
-
-  ![](https://i.imgur.com/nqfM5uL.png)
-
-  $$
-  A \cup B
-  $$
-
-  <ins>Assertion</ins>:
-
-  $$
-  \{x | x \subset A \text{ ou } x \subset B\}
-  $$
-
-  $$
-  \text{Généralisation pour } A_1 \cap A_2 \cap \ldots \cap A_n: \\
-
-  \{x | \forall i \in \{1,2,\ldots,n\}, x \in A_i \}
-  $$
-
-## Complémentaire
-
-* **Complémentaire**: les éléments du sous-ensemble B qui ne sont pas dans A
-
-  ![](https://i.imgur.com/eF5W9bP.png)
-
-  $$
-  C_B A
-  $$
-
-  Si B est sans ambiguité, on peut simplement écrire A<sup>C</sup>
-
-  <ins>Assertion</ins>:
-
-  $$
-  \{x \in B; x \notin A\}
-  $$
-
-## Différence
-
-* **Différence**: les éléments de A qui ne sont pas dans B
-
-  ![](https://i.imgur.com/UwL0MQ9.png)
-
-  $$
-  A \setminus B
-  $$
-
-  <ins>Assertion</ins>:
-
-  $$
-  \{x \in B; x \notin A\}
-  $$
-
-## Exclusion
-
-* **Exclusion**: les éléments dans A ou B mais pas les deux
-
-  ![](https://i.imgur.com/6XeQ3Vm.png)
-
-  $$
-  A \bigtriangleup B \\
-  \equiv (A \cup B) \setminus (A \cap B)
-  $$
+    La notation [n] est souvent utilisée pour signifier {1,2,…,n}.  
+    On peut ajouter un pas: {x &in; [99]: 2|x} signifie tous les éléments pairs de 1 à 99
 
 ## Quantificateurs
 
-Les assertions contiennent parfois des quantificateurs. Il en existe deux:
+* Parmis les symboles mathématiques souvent utilisés on trouve les quantificateurs:
 
-| Notation | Nom | Signification
-|---       |--- |---
-| &forall; | quantificateur universel | quel que soit (= tous)
-| &exist;  | quantificateur existentiel | il existe (= un)
+  * ∀   : pour tout
+  * ∃   : il existe (au moins un)
+  * ∃!  : il existe un unique
 
-<ins>Exemples</ins>:
+  <ins>Exemples</ins>:
 
-Pour tout *x*, il existe un *y*  
-(permet un *y* différent pour chaque *x*):
+  * ∀x ∈ ℝ<sup>\*</sup> ∃!y ∈ ℝ<sup>\*</sup> xy = 1  
 
-$$
-\forall x \ \exists y \ Q(x,y)
-$$
+    Pour tout x réel non nul, il existe un unique réel y non nul tel que le produit xy soit égal à 1.
 
-Il existe un *y* pour tout *x*  
-(un même *y* doit marcher avec tous les *x*):
+  * ∀x ∃y (x < y)
 
-$$
-\exists y \ \forall x \ Q(x,y)
-$$
+    Pour tout x, il existe un y, tel que x est inférieur à y (permet un y différent pour chaque x)
 
-## Produit
+  * ∃y ∀x (x < y)
 
-Si E = F = &reals;, le produit des deux est noté &reals;²:
+    Il existe un y, tel que pour tout x, x est inférieur à y (un même y doit marcher avec tous les x)
 
-  $$
-  \forall(a,b) \in \mathbb{R}^2 \\
-  \exists(x,y,z) \in \mathbb{R}^3
-  $$
+  * f(x) ≥ f(b) ∀ x ∈ [a,b]  
 
-## Résumé
+    f(x) est supérieur ou égal à f(b) pour tout x dans l'intervalle a..b (bornes inclues).
 
-* &sub; &in;: dans
-* &cap; :et
-* &cup;: ou (inclusif)
-* &bigtriangleup;: ou exclusif
-* &bsol;: sauf
+## Connecteurs
+
+* Les connecteurs sont également souvent utilisés:
+
+  * ¬   : négation
+  * ∧   : et (conjonction)
+  * ∨   : ou (disjonction)
+  * ⊻   : ou exclusif
+  * |   : sachant que
+  * /   : tel que
+  * \   : sauf
+  * ⇔ ou ≡ : est équivalent à
+  * ⇒   : implique que
+  * {}  : l'ensemble des conditions listées doivent être réunies (et)
+
+  <ins>Exemples</ins>:
+
+  * x < 3 ∧ x > 1
+
+    x est compris entre 1 et 3 (1 < x < 3)  
+    On pourrait aussi écrire x ∈ ]1; 3[
+
+  * {2n + 1 | n ∈ ℤ}
+
+    n est un entier impair
+
+  * {y² | y &in; &naturals; et y &geq; 1}
+
+    y est un carré parfait non nul
+
+  * { x &in; &reals; / x &in; ]-1; 4[ }
+
+    x est un nombre réel entre -1 et 4 (bornes exclues).
+
+## Sous-ensembles
+
+* Les symboles des sous-ensembles:
+
+  * ⊂ : sous-ensemble
+  * ∩ : intersection
+  * ∪ : union
+
+* A ⊂ B  
+  A est un *sous-ensemble* de B  
+  Tous les éléments de A appartiennent à B.  
+  Si A peut être égal à B, on utilise ⊆
+
+  ![](https://i.imgur.com/Dn9Pnrz.png)
+
+* A ∩ B  
+  L'*intersection* de A et B  
+  Tous les éléments qui sont à la fois dans A et B  
+  ∧ est lié à l'intersection: x ∈ A ∧ x ∈ B signifie x ∈ A ∩ B
+
+  ![](https://i.imgur.com/Mfbmlsr.png)
+
+* A ∪ B  
+  L'*union* de A et B  
+  Tous les éléments qui sont dans A, dans B, ou les deux  
+  ∨ est lié à l'union: x ∈ A ∨ x ∈ B signifie x ∈ A ∪ B
+
+  ![](https://i.imgur.com/nqfM5uL.png)
+
+* A ∖ B  
+  La *différence* entre A et B  
+  Tous les éléments de A qui ne sont pas dans B
+
+  ![](https://i.imgur.com/UwL0MQ9.png)
+
+  La *complémentaire* de B dans A.  
+  Si B est un sous-ensemble de A, on peut utiliser A ∖ B ou ∁<sub>A</sub>B. Si A est sans ambiguité, on peut simplement écrire ∁B ou B&#x0305;.
+
+  ![](https://i.imgur.com/4YKDjKo.png)
+
+* A △ B  
+  La *différence symétrique* entre A et B  
+  Tous les éléments qui sont dans A ou B, mais pas les deux
+
+  ![](https://i.imgur.com/6XeQ3Vm.png)
 
 [Ensembles et sous-ensembles](https://perso.univ-rennes1.fr/laurent.moret-bailly/docpedag/polys/MA2.pdf)

@@ -42,14 +42,14 @@ Concepts: intervalles, ensembles, sous-ensembles, quantificateurs, connecteurs
 
   | Notation     | Ensemble
   |---           |---
-  | &naturals;   | Naturels (0,1,2,...): servent à dénombrer 
-  | &integers;   | Entiers ou relatifs (-2,1,0,...): nombres naturels et leurs opposés
-  | &reals;      | Réels (&radic;2, 1.68, &pi;): nombres admettant des chiffres après la virgule<br>&reals;<sup>\*</sup> réels non nuls <br>&reals;<sub>+</sub> réels positifs <br>&reals;<sub>+</sub><sup>\*</sup> réeels strictement positifs
-  | &rationals;  | Rationnels (1/3,0.2,...): nombres réels pouvant s'exprimer en fraction
-  | &rationals;' | Irrationnels (&radic;11,e;,...): nombres réels ne pouvant pas s'exprimer en fraction
+  | ℕ            | Naturels (0,1,2,...): servent à dénombrer 
+  | ℤ            | Entiers ou relatifs (-2,1,0,...): nombres naturels et leurs opposés
+  | ℝ            | Réels (√2, 1.68, π): nombres admettant des chiffres après la virgule<br>ℝ<sup>\*</sup> réels non nuls <br>ℝ<sub>+</sub> réels positifs <br>ℝ<sub>+</sub><sup>\*</sup> réeels strictement positifs
+  | ℚ            | Rationnels (1/3,0.2,...): nombres réels pouvant s'exprimer en fraction
+  | ℚ'           | Irrationnels (√11,e;,...): nombres réels ne pouvant pas s'exprimer en fraction
   | ⅅ            | Décimaux (3.12,4/7,...): nombres rationnels ayant un nombre fini de chiffres
-  | &complexes;  | Complexes (ex 1 + 1i): nombres composés d'une partie réelle et imaginaire
-  | &empty; ou {}| Ensemble vide
+  | ℂ            | Complexes (ex 1 + 1i): nombres composés d'une partie réelle et imaginaire
+  | ∅ ou {}      | Ensemble vide
 
   ![](https://i.imgur.com/veWrt7q.png)
 
@@ -61,7 +61,7 @@ Concepts: intervalles, ensembles, sous-ensembles, quantificateurs, connecteurs
   * ou définir les bornes de l'ensemble avec un intervalle: E = [0; +∞[
 
     La notation [n] est souvent utilisée pour signifier {1,2,…,n}.  
-    On peut ajouter un pas: {x &in; [99]: 2|x} signifie tous les éléments pairs de 1 à 99
+    On peut ajouter un pas: {x ∈ [99]: 2|x} signifie tous les éléments pairs de 1 à 99
 
 ## Quantificateurs
 
@@ -97,7 +97,7 @@ Concepts: intervalles, ensembles, sous-ensembles, quantificateurs, connecteurs
   * ∧   : et (conjonction)
   * ∨   : ou (disjonction)
   * ⊻   : ou exclusif
-  * |   : sachant que
+  * \|  : sachant que
   * /   : tel que
   * \   : sauf
   * ⇔ ou ≡ : est équivalent à
@@ -111,15 +111,15 @@ Concepts: intervalles, ensembles, sous-ensembles, quantificateurs, connecteurs
     x est compris entre 1 et 3 (1 < x < 3)  
     On pourrait aussi écrire x ∈ ]1; 3[
 
-  * {2n + 1 | n ∈ ℤ}
+  * {2n + 1 \| n ∈ ℤ}
 
     n est un entier impair
 
-  * {y² | y &in; &naturals; et y &geq; 1}
+  * {y² \| y ∈ ℕ et y ≥ 1}
 
     y est un carré parfait non nul
 
-  * { x &in; &reals; / x &in; ]-1; 4[ }
+  * { x ∈ ℝ / x ∈ ]-1; 4[ }
 
     x est un nombre réel entre -1 et 4 (bornes exclues).
 

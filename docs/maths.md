@@ -34,6 +34,22 @@ title: Maths
 
 <!-- -->
 
+* Géométrie classique
+  * [Introduction](!mat/geo-intro.md)
+  * [Éléments de base](!mat/geo-basics.md)
+  * [Transformations](!mat/geo-transform.md)
+  * [Géométrie analytique](!mat/geo-analyse.md)
+  * [Formes 2D](!mat/geo-2d.md)
+  * [Formes 3D](!mat/geo-3d.md)
+  * [Angles](!mat/geo-angles.md)
+  * [Triangles](!mat/geo-triangle.md)
+  * [Cercles](!mat/geo-cercle.md)
+  * [Trigonométrie euclidienne](!mat/geo-trigo.md)
+  * [Trigonométrie sphérique](!mat/geo-trigo2.md)
+  * [Résoudre un triangle quelconque](!mat/geo-triangle2.md)
+
+<!-- -->
+
 * Stats & proba
   * [Introduction aux Statistiques](!mat/mat-stats.md)
   * [Statistiques descriptives - univariables](!mat/mat-stats-desc.md)

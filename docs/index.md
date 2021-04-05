@@ -73,6 +73,7 @@ searchbar: true
 [testing]: testing.md
 [text-shortcut]: text-editing.md
 [threejs]: three.md
+[ts]: typescript.md
 [twig]: twig.md
 [vim]: vim.md
 [webdev]: web.md
@@ -86,7 +87,7 @@ searchbar: true
 ### Front-End
 
 - Langages de programmation  
-  [HTML][html], [CSS][css], [JS][js], [Accessiblité][accessibilite], [SVG][svg], [JSX][jsx]
+  [HTML][html], [CSS][css], [JS][js], [Accessiblité][accessibilite], [SVG][svg], [JSX][jsx], [TypeScript][ts]
 
 - Librairies JS  
   [Wep API][js-webapi], [Jquery][jquery], [MustacheJS][mustachejs], D3.js, Lodash, [Three.js][threejs]

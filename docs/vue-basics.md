@@ -3,6 +3,7 @@ title: Fondamentaux
 category: Web, JavaScript, Library, Vue
 ---
 
+{% raw %}
 ## Définir des données
 
 * Chaque composant peut définir ses propres données, qui doivent être retournées par la fonction `data`. Ces données sont directement disponibles dans le bloc template, qu'on peut interpoler par des accolades.
@@ -672,3 +673,5 @@ category: Web, JavaScript, Library, Vue
   ``` html
   <input @keyup.enter="submitForm" type="text" v-model="name" />
   ```
+
+{% endraw %}

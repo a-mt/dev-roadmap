@@ -3,6 +3,7 @@ title: Composants enfants
 category: Web, JavaScript, Library, Vue
 ---
 
+{% raw %}
 ## Passer des propriétés
 
 * Des propriétés statiques (texte) peuvent être passées à un composant en attribut.
@@ -538,3 +539,5 @@ category: Web, JavaScript, Library, Vue
     </teleport>
   </template>
   ```
+
+{% endraw %}

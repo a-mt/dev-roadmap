@@ -3,6 +3,7 @@ title: Plus sur les composants
 category: Web, JavaScript, Library, Vue
 ---
 
+{% raw %}
 ## Style
 
 * Le style d'un composant peut être 
@@ -229,3 +230,5 @@ category: Web, JavaScript, Library, Vue
     ```
 
 * Une mixin peut contenir des données, des données calculées, des watchers ou même des lifecycle hooks. Lorsque des options sont définies à la fois dans une mixin et un composant, alors le composant a la priorité.
+
+{% endraw %}

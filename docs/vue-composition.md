@@ -3,6 +3,7 @@ title: API composition
 category: Web, JavaScript, Library, Vue
 ---
 
+{% raw %}
 ## Qu'est-ce que c'est
 
 * Jusqu'à présent, on a utilisé l'API options: les données, méthodes, etc, sont des options spécifiées dans le composant via les propriétés d'un objet exporté dans le bloc script. La logique du composant est éparpillée entre différents blocs (données, données calculées, méthodes, etc) et non par fonctionnalité, ce qui peut rendre difficile la lecture d'un composant complexe — il faut souvent scroller d'un endroit à l'autre pour comprendre ce que le composant fait.
@@ -491,3 +492,5 @@ category: Web, JavaScript, Library, Vue
     <button @click="incrementCount">Clicked {{ count }} times</button>
   </template>
   ```
+
+{% endraw %}

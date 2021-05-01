@@ -5,6 +5,7 @@ searchbar: true
 
 [accessibilite]: accessibilite.md
 [agile]: agile.md
+[angular]: angular.md
 [ansible]: ansible.md
 [apache-vhost]: apache-vhost.md
 [awk]: awk.md
@@ -26,6 +27,7 @@ searchbar: true
 [git]: git.md
 [github-pages]: github-pages.md
 [google-drive]: google-drive.md
+[graphql]: graphql.md
 [grep]: grep.md
 [heroku]: heroku.md
 [host-domain]: host-domain.md
@@ -94,7 +96,7 @@ searchbar: true
   [Wep API][js-webapi], [Jquery][jquery], [MustacheJS][mustachejs], D3.js, Lodash, [Three.js][threejs]
 
 - Frameworks JS  
-  AngularJS, Backbone.js, [React][react], [Vue][vue], Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/)
+  [React][react], [Vue][vue], [Angular][angular], Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/), Backbone.js
 
 - Préprocesseurs CSS  
   [Sass][sass], Less
@@ -115,7 +117,7 @@ searchbar: true
   [Composer][composer], NPM [1 &#x21F2;](http://blog.npmjs.org/post/168978377570/new-package-moniker-rules)
 
 - Base données  
-  [MySQL][mysql], [MongoDB][mongodb], [ElasticSearch][elasticsearch], GraphQL [1 &#x21F2;](https://blog.pusher.com/getting-up-and-running-with-graphql/) [2 &#x21F2;](https://www.howtographql.com/?v1)
+  [MySQL][mysql], [MongoDB][mongodb], [ElasticSearch][elasticsearch]
 
 - Frameworks JS  
   Express
@@ -132,16 +134,16 @@ searchbar: true
 - Frameworks Ruby  
   Ruby on Rails
 
-- Communication entre serveurs  
-  REST, RabbitMQ
+- Templates  
+  [Liquid][liquid], [Twig][twig], Smarty, Pug
 
 ## Autres
 
 - Données formattées  
   [XML][xml], [JSON][json], [YAML][yaml], HOCON [1 &#x21F2;](https://github.com/lightbend/config/blob/master/HOCON.md)
 
-- Templates  
-  [Liquid][liquid], [Twig][twig], Smarty, Pug
+- Communication entre machines  
+  REST, RabbitMQ, [GraphQL][graphql]
 
 - Logique  
   [Regex POSIX][posix], [Regex][regex], [Opérateurs sur les bits][bitwise]

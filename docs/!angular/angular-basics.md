@@ -9,7 +9,7 @@ category: Web, JavaScript, Library, Angular
 * Angular est un framework open-source développé par Google, qui permet de construire des applications front-end single page — le contenu de la page est rafraichit par manière asynchrone, sans avoir à recharger la page entière.
 
 * La première version d'Angular, sortie en 2010, est écrite en JavaScript. On l'appelle couramment "AngularJs".  
-  La deuxième version d'Angular, sortie en 2016, est écrite en TypeScript — qui est un superset de JavaScript ajoutant le typage des données. On appelle couramment la version 2 et les versions qui suivent "Angular" tout court.
+  La deuxième version d'Angular, sortie en 2016, est écrite en TypeScript — qui est un superset de JavaScript ajoutant le typage des données. On appelle couramment la version 2 (et les versions qui suivent) "Angular" tout court.
 
 * L'équipe de Google met à jour Angular deux fois par an. Mais les concepts d'Angular ne changent pas à chaque changement de version — c'est souvent des optimisations ou de nouvelles fonctionnalités.
 

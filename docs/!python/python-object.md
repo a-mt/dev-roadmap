@@ -359,6 +359,52 @@ help(Point)
   # Person.printname a appelé la méthode Person._Person__format
   ```
 
+## Getter et setter
+
+* On peut contrôler l'accès à une propriété en définissant un getter et setter. Pour ce faire, on a deux possibilités:
+
+  * utiliser la fonction `property`
+
+    ``` python
+    class P:
+        def __init__(self, x):
+            self.__set_x(x)
+
+        def __get_x(self):
+            return self.__x
+
+        def __set_x(self, x):
+            if x < 0:
+                self.__x = 0
+            elif x > 1000:
+                self.__x = 1000
+            else:
+                self.__x = x
+
+        x = property(__get_x, __set_x)
+    ```
+
+  * utiliser un décorateur (recommandé):
+
+    ``` python
+    class P:
+        def __init__(self, x):
+            self.x = x
+
+        @property
+        def x(self):
+            return self.__x
+
+        @x.setter
+        def x(self, val):
+            if x < 0:
+                self.__x = 0
+            elif x > 1000:
+                self.__x = 1000
+            else:
+                self.__x = x
+    ```
+
 ## Vérifier une instance de classe
 
 ``` python

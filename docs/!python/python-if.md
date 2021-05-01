@@ -189,29 +189,3 @@ for i in range(5):
     print(i)
 # 0 1 2 4
 ```
-
-## Compréhension de liste
-
-Les compréhensions de liste (*list comprehensions*) fournissent un moyen rapide de créer une liste. Syntaxe:
-
-```
-new_list = [expression(i) for i in old_list if filter(i)]
-```
-
-Exemples:
-
-``` python
-l1 = [10,20,30,40]
-l2 = [x * 2 for x in l1]
-
-print(l2) # [20, 40, 60, 80]
-```
-
-``` python
-l1 = [10,15,20,25,30]
-l2 = [x/2 for x in l1 if x%2==0]
-
-print(l2) # [5.0, 10.0, 15.0]
-```
-
-[PEP289](https://www.python.org/dev/peps/pep-0289/)

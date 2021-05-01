@@ -457,6 +457,36 @@ print("Your value is:", text)
   # revient à chatty(limit(2)(greet))
   ```
 
+### functools.wrap
+
+* Le décorateur `wrap` du module functools permet de recopier le nom de la fonction et sa description sur une autre fonction — ce qui permet notamment de préserver la documentation d'une fonction sur laquelle on applique un wrapper.
+
+  ```
+  from functools import wraps
+
+  def my_decorator(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        f(*args, **kwargs)
+    return wrapper
+
+  @my_decorator
+  def hello(name):
+    print("Hello " + name)
+
+  # La documentation est bien préservée
+  print(hello.__name__) # hello
+  print(hello.__doc__)  # This function...
+
+  help(hello)
+  '''
+  hello(name)
+      This function says hello
+      :param string name
+  '''
+  ```
+
+
 ## Type hinting
 
 Depuis Python 3.5, il est possible d'indiquer le type de données attendu et retourné par une fonction. Notons que ces indications n'ont aucune incidances sur l'exécution du code — l'interpréteur ne va pas lever d'erreur si le type de donnée d'une valeur ne correspond pas à celui attendu par la fonction. Elles ne sont là que pour rendre le code plus facile à comprendre.

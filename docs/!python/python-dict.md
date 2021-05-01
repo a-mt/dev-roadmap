@@ -88,6 +88,28 @@ category: Web, Python
 
 * `+` et `*` ne sont pas supportés.
 
+## Compréhension de dictionnaire
+
+* Même principe qu'une compréhension de liste mais avec un dictionnaire
+
+  ``` py
+  l = [
+      {"id": "1", "name": "Alice"},
+      {"id": "2", "name": "Bob"}
+  ]
+  d = {
+      x['id']: x
+      for x in l
+  }
+  print(d)
+  """
+  {
+    '1': {'id': '1', 'name': 'Alice'},
+    '2': {'id': '2', 'name': 'Bob'}
+  }
+  """
+  ```
+
 ## Fonctions
 
 * Récupérer les valeurs

@@ -44,6 +44,7 @@ searchbar: true
 [jsx]: jsx.md
 [latex]: latex.md
 [linux-install]: linux-install.md
+[linux-transfert]: linux-transfert.md
 [liquid]: liquid.md
 [markdown]: gfm.md
 [matplotlib]: matplotlib.md
@@ -143,7 +144,7 @@ searchbar: true
   [XML][xml], [JSON][json], [YAML][yaml], HOCON [1 &#x21F2;](https://github.com/lightbend/config/blob/master/HOCON.md)
 
 - Communication entre machines  
-  REST, RabbitMQ, [GraphQL][graphql]
+  REST, [GraphQL][graphql], RabbitMQ
 
 - Logique  
   [Regex POSIX][posix], [Regex][regex], [Opérateurs sur les bits][bitwise]
@@ -216,7 +217,7 @@ searchbar: true
   [Dev](workflow-dev.md), [Prod](workflow-prod.md)
 
 - Linux  
-  * [Installer][linux-install]
+  * [Installer][linux-install], [Transférer des données][linux-transfert]
   * APT [1 &#x21F2;](https://itsfoss.com/apt-vs-apt-get-difference/)
   * Tools: [Awk][awk], [Sed][sed], [Grep][grep], Cut, Tr
   * Script: [Shell][shell]

@@ -3,6 +3,7 @@ title: Services
 category: Web, JavaScript, Library, Ember
 ---
 
+{% raw %}
 ## Créer un service
 
 * Un service est un objet instancié pour toute la durée de l'application. Il peut être injecté dans différentes parties de l'application (composants, routes, controlleurs, etc) et être utilisé pour partager des données par exemplz.
@@ -63,3 +64,5 @@ category: Web, JavaScript, Library, Ember
       <h4>{{item.name}}</h4>
     {{/each}}
     ```
+
+{% endraw %}

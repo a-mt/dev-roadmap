@@ -3,6 +3,7 @@ title: Tests
 category: Web, JavaScript, Library, Ember
 ---
 
+{% raw %}
 * Pour lancer les tests:
 
   ```
@@ -140,3 +141,4 @@ module('Acceptance | shopping', function(hooks){
 
 [Automated Testing](https://guides.emberjs.com/release/tutorial/part-1/automated-testing/)
 
+{% endraw %}

@@ -1,7 +1,9 @@
 ---
-title: React: Fonctionnalités avancées
+title: Fonctionnalités avancées
 category: Web, JavaScript, Library, React
 ---
+
+{% raw %}
 
 ## Contexte
 
@@ -488,3 +490,5 @@ Cette approche ne fonctionne que pour les composants en classe, et il ne peut y 
     }
   }
   ```
+
+{% endraw %}

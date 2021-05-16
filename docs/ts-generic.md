@@ -1,7 +1,9 @@
 ---
-title: Typescript: Types génériques
+title: Types génériques
 category: Web, JavaScript, Library, Typescript
 ---
+
+{% raw %}
 
 ## Génériques
 
@@ -466,3 +468,5 @@ function showType(args: NonNullable<NonNullableType>) {
   console.log(args)
 }
 ```
+
+{% endraw %}

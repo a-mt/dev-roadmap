@@ -1,5 +1,5 @@
 ---
-title: React: Fonctionnalités de base
+title: Fonctionnalités de base
 category: Web, JavaScript, Library, React
 ---
 

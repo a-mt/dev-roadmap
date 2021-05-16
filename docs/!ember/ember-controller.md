@@ -3,6 +3,7 @@ title: Controllers & templates
 category: Web, JavaScript, Library, Ember
 ---
 
+{% raw %}
 ## Créer un controlleur
 
 * Les templates sont placés dans le répertoire <ins>app/templates</ins>.  
@@ -405,3 +406,5 @@ category: Web, JavaScript, Library, Ember
     ```
     {{percent 0.98946 precision=0}}
     ```
+
+{% endraw %}

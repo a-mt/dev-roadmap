@@ -3,6 +3,7 @@ title: Routing
 category: Web, JavaScript, Library, Ember
 ---
 
+{% raw %}
 ## Définir des routes
 
 ### Router
@@ -503,4 +504,4 @@ category: Web, JavaScript, Library, Ember
 
   Pour la route `articles.overview`, Ember cherchera dans cet ordre: `articles.overview-error`, `articles-error`, `application-error`.
 
-
+{% endraw %}

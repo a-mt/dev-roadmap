@@ -3,6 +3,7 @@ title: Les bases
 category: Web, JavaScript, Library, Ember
 ---
 
+{% raw %}
 ## Qu'est-ce que c'est
 
 * Ember est un framework JavaScript qui permet de construire des applications front-end single page.
@@ -189,3 +190,5 @@ ember -v
     ]
   }
   ```
+
+{% endraw %}

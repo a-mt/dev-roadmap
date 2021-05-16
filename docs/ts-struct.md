@@ -1,7 +1,9 @@
 ---
-title: Typescript: Les structures
+title: Les structures
 category: Web, JavaScript, Library, Typescript
 ---
+
+{% raw %}
 
 ## Tableaux
 
@@ -352,3 +354,5 @@ category: Web, JavaScript, Library, Typescript
 
   const good: FromIndex = {b:1, c:2}
   ```
+
+{% endraw %}

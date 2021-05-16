@@ -3,6 +3,7 @@ title: Composant
 category: Web, JavaScript, Library, Ember
 ---
 
+{% raw %}
 ## Créer un composant
 
 Un composant est une unité réutilisable. Il peut être inclus dans un template sous la forme d'un tag personnalisé (`<MonComposant />`) pour s'occuper de la logique et contenu d'un bloc.
@@ -223,3 +224,5 @@ Un composant a, a minima, un template.
   ```
 
 [Built-in Components](https://guides.emberjs.com/release/components/built-in-components/)
+
+{% endraw %}

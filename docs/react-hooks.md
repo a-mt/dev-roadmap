@@ -1,7 +1,9 @@
 ---
-title: React: Hooks
+title: Hooks
 category: Web, JavaScript, Library, React
 ---
+
+{% raw %}
 
 ## Qu'est-ce que React Hooks
 
@@ -550,3 +552,5 @@ const App = () => {
     </div>;
   }
   ```
+
+{% endraw %}

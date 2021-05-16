@@ -1,7 +1,9 @@
 ---
-title: Typescript: Les fonctions
+title: Les fonctions
 category: Web, JavaScript, Library, Typescript
 ---
+
+{% raw %}
 
 ## Fonctions
 
@@ -369,3 +371,5 @@ Pour déclarer la signature d'une variable de type fonction, on a deux possibilt
     }
   }
   ```
+
+{% endraw %}

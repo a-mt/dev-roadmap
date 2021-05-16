@@ -1,7 +1,9 @@
 ---
-title: Typescript: Les bases
+title: Les bases
 category: Web, JavaScript, Library, Typescript
 ---
+
+{% raw %}
 
 ## Qu'est-ce que Typescript
 
@@ -268,3 +270,5 @@ category: Web, JavaScript, Library, Typescript
   ``` js
   console.log(x!.toFixed());
   ```
+
+{% endraw %}

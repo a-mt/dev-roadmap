@@ -1,7 +1,9 @@
 ---
-title: Typescript: Fichiers de définition
+title: Fichiers de définition
 category: Web, JavaScript, Library, Typescript
 ---
+
+{% raw %}
 
 ## Declare
 
@@ -87,4 +89,4 @@ category: Web, JavaScript, Library, Typescript
 Pour aller plus loin:  
 [Declaration Reference](https://www.typescriptlang.org/docs/handbook/declaration-files/by-example.html)
 
-
+{% endraw %}

@@ -3,6 +3,8 @@ title: Modèles de données
 category: Web, JavaScript, Library, Ember
 ---
 
+{% raw %}
+
 Ember-data est une librairie permettant d'agir comme intermédiaire entre l'API d'un serveur et l'application Ember, qui va s'occuper d'effectuer les requêtes, sérialiser et désérialiser les données en objets, et mettre en cache les données — autrement dit, c'est un ORM. Elle est installée par défaut dans les applications générées par Ember CLI.
 
 ## 1. Définir un modèle
@@ -494,3 +496,5 @@ Ember-data est une librairie permettant d'agir comme intermédiaire entre l'API 
       }
     );
     ```
+
+{% endraw %}

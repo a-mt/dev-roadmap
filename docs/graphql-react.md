@@ -3,6 +3,8 @@ title: Client GraphQL avec React.js + Apollo
 category: Web, GraphQL
 ---
 
+{% raw %}
+
 ## Installation
 
 * Créer une application front-end React  
@@ -365,3 +367,5 @@ category: Web, GraphQL
   ```
 
 * Aller sur localhost:3000
+
+{% endraw %}

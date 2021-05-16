@@ -22,6 +22,7 @@ searchbar: true
 [docker]: docker.md
 [elasticsearch]: elasticsearch.md
 [electricite]: electricite.md
+[ember]: ember.md
 [encoding]: encodages.md
 [gettext]: gettext.md
 [git]: git.md
@@ -97,7 +98,7 @@ searchbar: true
   [Wep API][js-webapi], [Jquery][jquery], [MustacheJS][mustachejs], D3.js, Lodash, [Three.js][threejs]
 
 - Frameworks JS  
-  [React][react], [Vue][vue], [Angular][angular], Ember.js [1 &#x21F2;](https://www.sitepoint.com/ember-js-perfect-framework-web-applications/), Backbone.js
+  [React][react], [Vue][vue], [Angular][angular], [Ember.js][ember], Backbone.js
 
 - Préprocesseurs CSS  
   [Sass][sass], Less

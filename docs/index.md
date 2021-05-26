@@ -304,6 +304,7 @@ searchbar: true
   - [JSON Placeholder](http://jsonplaceholder.typicode.com/)
   - [Image Placeholder](http://placehold.it/350x150)
   - [CSV Placeholder](https://mockaroo.com/)
+  - [GAN Generated profile photo](https://thispersondoesnotexist.com/)
 
 - Codes  
   - Norme BCP 47 (ex: en_GB)

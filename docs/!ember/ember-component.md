@@ -78,6 +78,14 @@ Un composant a, a minima, un template.
     <p>Hello {{username}}</p>
     ```
 
+* La propriété `layout` peut être utilisée pour spécifier un template différent du template par défaut.
+
+    ```
+    export default class HelloWorld extends Component {
+      layoutName = 'components/my-temp';
+    }
+    ```
+
 ---
 
 ## Slots
@@ -193,6 +201,25 @@ Un composant a, a minima, un template.
     <h1>Hello {{@username}}</h1>
     ```
 
+   Dans le cas d'un composant sans instance de classe (il y a uniquement un template, pas de fichier .js) alors `this` sera null: il faut nécessairement utiliser @.
+
+* Toutes les variables définies par le parent sont automatiquement suivies.
+
+    ```
+    import Component from '@glimmer/component';
+
+    export default class ImageComponent extends Component {
+      get aspectRatio() {
+        return this.args.width / this.args.height;
+      }
+    }
+    ```
+
+## Lifecycle
+
+* Les composants ont deux lifecycle hooks: `constructor` et `willDestroy`.  
+  Pour manipuler le DOM, on peut utiliser les modifier `did-insert` et `will-destroy` du package [ember-render-modifiers](https://github.com/emberjs/ember-render-modifiers)
+
 ---
 
 ## Composants natifs
@@ -225,4 +252,113 @@ Un composant a, a minima, un template.
 
 [Built-in Components](https://guides.emberjs.com/release/components/built-in-components/)
 
+---
+
+## Composants Classic
+
+* Les composants présentés ci-dessus sont des composants Glimmer, importés de `@glimmer/component`, qui sont les composants par défaut depuis Ember 3.15.
+
+  Auparavant, les composants par défaut étaient des composants Classic, importés depuis `@ember/component`.
+
+### Lifecycle
+
+* Les composants Classic disposent de lifecycle hooks, permettant d'executer du code à divers moments de la vie d'un composant, avec entre autres `init`, `didReceiveAttrs`, `didRender` et `willDestroyElement`.
+
+  Plus d'infos: [The Component Lifecycle](https://guides.emberjs.com/v3.4.0/components/the-component-lifecycle/)
+
+* Les composants Glimmer n'ont que deux lifecycle hooks: `constructor` et `willDestroy`. Les autres hooks n'ont pas équivalents, il est nécessaire d'utiliser des variables suivies à la place.
+
+### Root element
+
+* Lorsqu'on insère un composant Classic, celui-ci est automatiquement encapsulé par un élément racine (par défaut, il s'agit d'un `div` ).
+
+    ```
+    <div id="ember180" class="ember-view">
+      <h1>My Component</h1>
+    </div>
+    ```
+
+* Les attributs définis par le parent sont automatiquement appliqués sur cet élément.
+
+    ```
+    <MyComponent id="custom-id" />
+    ```
+
+1. Pour modifier le type de l'élément racine, spécifier la propriété `tagName`  
+    Si tagName est vide (`tagName=''`), Ember utilisera le premier élément du template comme élément racine.
+
+    ```
+    import Component from '@ember/component';
+
+    export default Component.extend({
+      tagName: 'nav'
+    });
+   ```
+
+2. Pour appliquer des classes sur l'élément racine, spécifier la propriété `classNames`
+
+   ```
+   export default Component.extend({
+     classNames: ['primary']
+   });
+   ```
+
+3. Pour appliquer des classes dynamiques, spécifier la propriété `classNameBindings`
+
+    ```
+    import { notEmpty, alias } from '@ember/object/computed';
+
+    export default Component.extend({
+      classNameBindings: [
+        'priority',
+        'hasWarning:has-warning',
+        'hasError:has-error',
+        'isEnabled:enabled:disabled',
+      ],
+
+      priority: 'highestPriority',
+      hasWarning: notEmpty('warnings'),
+      hasError: notEmpty('errors'),
+      isEnabled: false,
+
+      init() {
+        this._super(...arguments);
+        this.setupBindings();
+      },
+      setupBindings() {
+        defineProperty(this, 'errors', alias('model.errors.' + this.model.property));
+        defineProperty(this, 'warnings', alias('model.warnings.' + this.model.property));
+      },
+    });
+    ```
+
+4. Pour appliquer des attributs sur l'élément racine, spécifier la propriété `attributeBindings`
+
+    ```
+    export default Component.extend({
+      attrTitle: 'Ember JS',
+      attributeBindings: ['attrTitle:title'],
+    });
+    ```
+
+### Arguments
+
+* Les arguments définis par le parent sont affectés directement au composant, en écrasant les propriétés du composant — on y accède donc via this et non via this.args ou @.
+
+    1. Le parent:  
+
+        ```
+        <HelloWorld @username={{"Bob"}} />
+        ```
+
+    2. Le composant (Classic):  
+       <ins>app/components/hello-world.hbs</ins>:
+
+        ```
+        <h1>Hello {{username}}</h1>
+        ```
+
+* Les arguments d'un composant Classic sont des références: si le composant modifie la valeur de l'argument, alors la valeur est également modifiée dans le composant parent.
+
 {% endraw %}
+

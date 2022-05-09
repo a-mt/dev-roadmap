@@ -299,6 +299,7 @@ searchbar: true
   - [CodeSandbox](https://egghead.io/lessons/react-build-and-deploy-a-react-application)
 
 - Random
+  - [Password](https://randomkeygen.com/)
   - [Passphrase](https://www.useapassphrase.com/)
   - [Secret Key](https://api.wordpress.org/secret-key/1.1/salt/)
   - [JSON Placeholder](http://jsonplaceholder.typicode.com/)

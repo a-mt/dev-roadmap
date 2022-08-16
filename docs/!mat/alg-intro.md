@@ -51,7 +51,19 @@ Concepts: inconnue, expression littérale, équation, inéquation, solution, for
 
 * Une *fonction* est une règle qui établit la relation entre deux inconnues (ou plus).
 
-  À chaque valeur de *x* est attribué un et un seul *y*. Si plusieurs valeurs *y* sont possibles pour un même *x*, alors ce n'est pas une fonction. Une valeur *y* peut en revanche être associée à différents *x* — dans le graphique précédent par exemple *y* vaut 4 quand *x* vaut 2 ou -2.
+  On parle de fonction si, à chaque valeur de *x*, est attribué un et un seul *y*.  
+  Si plusieurs valeurs *y* sont possibles pour un même *x*, alors ce n'est pas une fonction.  
+  Une valeur *y* peut par contre être associée à différents *x*.
+
+  - Équations qui sont des fonctions:
+
+    ![](https://i.imgur.com/qsSWKNo.png)
+
+  - Équations qui ne sont pas des fonctions:
+
+    ![](https://i.imgur.com/mSsItzv.png)
+
+  
 
 * Une fonction peut être exprimée par une équation:
 

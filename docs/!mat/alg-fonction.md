@@ -28,8 +28,8 @@ Concepts: image, antécédant, ensemble de définition, extremum, ensemble des i
 
 Toute fonction a
 
-* une ou des *variables indépendantes* ou *antécédant*  
-  Ce sont les variables qu'on donne en entrée de la fonction. Traditionnellement, on nomme la variable indépendante *x*. S'il y en a plusieurs, on les nomme généralement x<sub>1</sub>, x<sub>2</sub>, etc.
+* une *variable indépendante* (ou plusieurs), aussi appelée *antécédant*  
+  C'est la variable donnée en entrée à la fonction. Traditionnellement, on nomme la variable indépendante *x*. Et s'il y en a plusieurs, on les nomme généralement x<sub>1</sub>, x<sub>2</sub>, etc.
 
 * une *variable dépendante* ou *image*  
   C'est la variable calculée à partir des variables indépendantes — c'est à dire le résultat de la fonction.  
@@ -73,8 +73,6 @@ Toute fonction a
   Par convention, *x* est en abscisse (horizontal) et *y* en ordonnée (vertical).
 
   <ins>Exemple</ins>:  
-  Sur le graphique suivant, quelle est l'image de 2?
-  Le ou les antécédants de 2?
 
   ![](https://i.imgur.com/pm7iGH5.png)
 

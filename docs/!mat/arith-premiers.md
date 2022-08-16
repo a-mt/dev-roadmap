@@ -19,10 +19,10 @@ Concepts: premier, composé, PPCM, PGCD
 
 ### Plus Petit Commun Multiple (PPCM)
 
-* Le PPCM de 2 nombres ou plus est le plus petit multiple commun à tous ces nombres.  
+* Le PPCM de 2 nombres (ou plus) est le plus petit multiple commun à tous ces nombres.  
   Pour le trouver on peut
 
-  1. Lister les multiples des nombres, garder le premier qui est commun à tous
+  1. Lister les multiples des nombres, et garder le premier qui est commun à tous
 
       ```
       Trouver le PPCM de 15, 6 et 10
@@ -34,7 +34,7 @@ Concepts: premier, composé, PPCM, PGCD
       PPCM(15, 6, 10) = 30
       ```
 
-  2. Décomposer les différents nombres en facteurs de nombres premier, puis multiplier les facteurs communs par les facteurs non communs
+  2. Décomposer les différents nombres en facteurs de nombres premier, puis multiplier les facteurs communs (une fois) par les facteurs non communs (autant que fois qu'ils apparaissent)
 
       ```
       Trouver le PPCM de 15, 6 et 10
@@ -135,7 +135,7 @@ Réponse: 2, 3, 3×3 (9), 3×2 (6), 2×2 (4), 3×3×2 (18), 3×2×2 (12), 2×2×
       PGCD(21, 30) = 3
       ```
 
-  2. Décomposer les différents nombres en facteurs de nombres premiers, puis multiplier tous les facteurs communs entre eux.
+  2. Décomposer les différents nombres en facteurs de nombres premiers, puis multiplier tous les facteurs communs entre eux (une fois).
 
       ```
       Trouver le PGCD de 21 et 30
@@ -158,7 +158,7 @@ Réponse: 2, 3, 3×3 (9), 3×2 (6), 2×2 (4), 3×3×2 (18), 3×2×2 (12), 2×2×
 <ins>Exemple</ins>:
 
 ```
-Alice a 63 plants de tomate et 81 plant de rhubarbe.  
+Alice a 63 plants de tomate et 81 plants de rhubarbe.  
 Elle voudrait mettre ces plants en rangées de sorte que chaque rangée
 ait toujours le même nombre de plants de tomate et de plants de rhubarbe.
 

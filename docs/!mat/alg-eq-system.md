@@ -40,7 +40,7 @@ Concepts: système d'équation, systèmes équivalents, résoudre
   C'est le cas si une équation est un multiple de l'autre.
 
   <ins>Exemple</ins>:  
-  x + 1 = 0 est équivalent à 2x + 2 = 0
+  x + 1 = 0 est équivalente à 2x + 2 = 0
 
 * Deux systèmes d'équations sont dits équivalents s'ils ont les mêmes couples solution.
 

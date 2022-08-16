@@ -7,7 +7,7 @@ Concepts: réduire, décomposer, développer, identités remarquables, factorise
 
 ## Réduire une expression
 
-* *Réduire une expression*, c'est regrouper les termes de même degré (et même inconnue) entre eux.
+* *Réduire une expression*, c'est regrouper les termes de même degré et même inconnue entre eux.
 
   ![](https://i.imgur.com/ce5uPUw.png)
 
@@ -27,22 +27,22 @@ Concepts: réduire, décomposer, développer, identités remarquables, factorise
 
 * *Développer une expression*, c'est appliquer la distributivité.
 
-  <ins>Exemple a</ins>:
+  <ins>Exemple 1)</ins>:
 
   ![](https://i.imgur.com/qiISlXV.png?1)
 
-  <ins>Exemple b</ins>:
+  <ins>Exemple 2)</ins>:
 
   ![](https://i.imgur.com/ytfBzfam.png)
 
-  <ins>Exemple c</ins>:
+  <ins>Exemple 3)</ins>:
 
   ![](https://i.imgur.com/IS9yV4L.png?2)
 
 ## Identiques remarquables
 
 * Les *identiques remarquables* sont des formules (à connaître par coeur)  
-  qui permettent d'accélerer le développement et la factorisation d'une expression:
+  qui permettent d'accélerer le développement (et aussi l'inverse, la factorisation) d'une expression:
 
   ![](https://i.imgur.com/vRoDws0.png)
 

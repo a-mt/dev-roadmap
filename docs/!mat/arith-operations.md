@@ -39,7 +39,7 @@ La soustraction est l'inverse de l'addition — au lieu d'ajouter des éléments
 * La soustraction n'est <ins>pas commutative</ins>: on ne peut pas modifier l'ordre des termes soustraits.  
   Exemple: 4 - 2 != 2 - 4
 
-* La soustraction n'est <ins>pas associative</ins>: on ne pas l'ordre des différences intérmédiaires.  
+* La soustraction n'est <ins>pas associative</ins>: on ne peut pas modifier l'ordre des différences intérmédiaires.  
   Exemple: 4 - (3 - 1) != (4 - 3) - 1
 
 * La soustraction a <ins>un élément neutre</ins>: soustraire 0 à un nombre ne change pas le montant total.  
@@ -62,7 +62,7 @@ Pour soustraire des nombres sur plusieurs chiffres,
 * Un *nombre négatif* est un nombre inférieur à 0. La soustraction peut générer des nombres négatifs — si on enlève plus d'éléments qu'il n'y en a à la base, alors on finit avec un nombre négatif. On peut penser aux chiffres négatifs comme 
 
   * le fait d'être en-dessous du seuil zéro  
-    Ex: si la température est de 8° en-dessous de 0°, on dit qu'il fait -8°
+    Ex: si la température est de 8° en-dessous de 0, on dit qu'il fait -8°
 
   * ou comme une dette  
     Ex: j'ai 0 cookies et j'en doit 4 à Bob, j'ai -4 cookies
@@ -75,13 +75,13 @@ Pour soustraire des nombres sur plusieurs chiffres,
   Ex: -4 + 4 = 0
 
 * Soustraire un nombre, c'est additionner son opposé.  
-  Donc additionner un nombre négatif (+ -) revient à soustraire un nombre positif (-).  
+  Autrement dit, additionner un nombre négatif (+ -) revient à soustraire un nombre positif (-).  
   Ex: 1 + (-3) = 1 - 3
 
   Et soustraire un nombre négatif (- -) revient additionner un nombre positif (+).  
   Ex: 1 - (-3) = 1 + 3
 
-  Intuition:  
+  Par exemple:  
   Vous devez 30€ à la banque, vous avez donc -30€.  
   Vous ajoutez 20€ à votre compte: `-30 + 20 = -10`.  
   Ce qui revient à dire que vous avez enlevé (soustrait) une dette de 20€: `-30 - -20 = -10`.
@@ -93,7 +93,7 @@ Pour soustraire des nombres sur plusieurs chiffres,
 * La multiplication est la répétition d'une addition: au lieu de dire "2 + 2 + 2 + 2 + 2", on peut simplement dire "5 fois 2", ou en termes mathématiques: `5 × 2`.
 
   Le résultat d'une multiplication s'appelle un *produit*.  
-  Les éléments constitutifs d'une multiplication sont appelés des *facteurs* — 5 et 2 sont les facteurs de la multiplication précédente.
+  Les éléments constitutifs d'une multiplication sont appelés des *facteurs* — 5 et 2 sont les facteurs de la multiplication 5 × 2.
 
 * On peut noter une multiplication avec le symbole × (fois) ou ⋅ (point).  
   Le signe peut être omis entre une parenthèse et le reste de l'expression.  
@@ -139,7 +139,7 @@ Pour multiplier des nombres sur plusieurs chiffres
 
 2. multiplier rang par rang les chiffres des deux nombres, de droite à gauche, en commençant par les unités du deuxième nombre fois les unités, dizaines et centaines du premier nombre. Ensuite, les dizaines du deuxième nombre fois les unités, dizaines et centaines du premier nombre. Et ainsi de suite.
 
-   Par exemple pour calculer 36 × 27, on calcule (7×6 + 7×3+10) + 10(2×6 + 2×3×10) = 252 + 720 = 972
+   Par exemple pour calculer 36 × 27, on calcule (7×6 + 10×7×3) + 10(2×6 + 10×2×3) = 252 + 720 = 972
 
    ![](https://i.imgur.com/8ci1GOX.png)
 
@@ -147,13 +147,13 @@ Pour multiplier des nombres sur plusieurs chiffres
 
 3. si c'est un nombre décimal, on multiplie comme s'il n'y avait pas de virgule, puis on replace la virgule en comptant le nombre de chiffres après la virgule.
 
-   Par exemple pour 2,91 × 3,2, on calcule 291 × 32 (= 9312), puis on place la virgule: le résultat aura 3 chiffres après la virgule (= 9,312) puisque 2,91 et 3,2 on au cumul 3 chiffres après la virgule.
+   Par exemple pour 2,91 × 3,2, on calcule 291 × 32 (= 9 312), puis on place la virgule: le résultat aura 3 chiffres après la virgule puisque 2,91 et 3,2 ont au cumul 3 chiffres après la virgule: on obtient 9,312.
 
    ![](https://i.imgur.com/fLQO29y.png)
 
 ### Multiples d'un nombre
 
-* On dit que le produit d'un entier *a* avec un autre entier est un *multiple de a*.  
+* On dit que le produit P d'un entier *a* avec un autre entier *b* est un *multiple de a* (et de *b* aussi).  
   On ne peut pas faire la liste de tous les multiples d'un nombre car elle est infinie.
 
   Les premiers multiples de 3 sont 3, 6, 9 et 12.
@@ -174,9 +174,9 @@ Pour multiplier des nombres sur plusieurs chiffres
 
 ## Division
 
-La division est l'inverse de la multiplication: au lieu de combiner des additions (2+2+2+2+2 = 5×2 = 10), on sépare une valeur en part égales: on a 10 éléments, et on veut créer 5 groupes contenant le même nombre d'éléments, combien d'éléments chaque groupe doit-il contenir? 2. Ou en termes mathématiques: `10/5 = 2`.
+La division est l'inverse de la multiplication: au lieu de combiner des additions (2+2+2+2+2 = 5×2 = 10), on sépare une valeur en part égales: on a 10 éléments, et on veut créer 5 groupes contenant le même nombre d'éléments, combien d'éléments doit-on mettre dans chaque groupe? (= 2). Ou en termes mathématiques: `10/5 = 2`.
 
-Le résultat d'une division s'appelle un *quotient* (2 dans l'exemple précédent).  
+Le résultat d'une division s'appelle un *quotient* (2 est le quotient de 10/5).  
 Le nombre divisé est le *dividende* (10), le nombre qui divise est le *diviseur* (5).
 
 ### Propriétés
@@ -219,9 +219,13 @@ Le nombre divisé est le *dividende* (10), le nombre qui divise est le *diviseur
 
   ![](https://i.imgur.com/yLBnYA1.png)
 
-* On peut facilement vérifier si un nombre est divisible par un autre ou non: un nombre est divisible par ... si ...
+* On peut facilement vérifier si un nombre est divisible par un autre ou non: un nombre est
 
   <table>
+    <tr>
+      <th>divisible par...</th>
+      <td>si...</td>
+    </tr>
     <tr>
       <th>2</th>
       <td>Il finit par un nombre pair (0,2,4,6,8)</td>
@@ -270,13 +274,16 @@ Le nombre divisé est le *dividende* (10), le nombre qui divise est le *diviseur
   - 0.001 = 1/1000 = 1 millième
   - 0.0001 = 1/10 000 = 1 dix-millième
 
-### Diviser des grands nombres
+### Diviser des nombres
 
 Pour diviser des nombres sur plusieurs chiffres,
 
-1. Placer les deux nombres dans un tableau division: le dividende à gauche, le diviseur à droite. Les calculs seront écrits sous le dividende et le quotient sous le diviseur.
+1. Placer les deux nombres dans un tableau de division: le dividende à gauche, le diviseur à droite.  
+   Les calculs seront écrits sous le dividende et le quotient sous le diviseur.
 
-   Si c'est des nombres décimaux, on multiplie le dividende et le diviseur par le même nombre pour avoir des nombres entiers. Ex: 0.72/0.08 = 72/8 = 9
+   ![](https://i.imgur.com/fXHYrsL.png)
+
+   Si la divisionc contient des nombres décimaux, on multiplie le dividende et le diviseur par le même nombre pour obtenir des nombres entiers. Ex: 0.72/0.08 = 72/8 = 9
 
 2. Prendre le chiffre de plus haut rang du dividende. Si ce chiffre est inférieur au diviseur, prendre le second chiffre, ou troisième, etc, jusqu'à ce que le diviseur soit inférieur ou égal au nombre considéré.  
    Exemple: Si on divise 70 par 4, on prend 7.
@@ -299,8 +306,6 @@ Pour diviser des nombres sur plusieurs chiffres,
    Exemple: Dans 30, on aura au maximum 7 fois 4 (4×7 = 28).
 
    On peut soit finir la division quand on a considéré tous les chiffres du dividende (division euclidienne) — on garde donc peut-être un reste. Soit, si on pousse la division après la virgule, finir quand le reste est zéro ou qu'on a atteint la précision qu'on veut.
-
-![](https://i.imgur.com/fXHYrsL.png)
 
 ![](https://i.imgur.com/59B7K0Q.png)
 

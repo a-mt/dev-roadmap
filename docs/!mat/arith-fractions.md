@@ -18,9 +18,7 @@ Concepts: fraction, numérateur, dénominateur, fraction impropre, nombre fracti
 
 ### Fraction impropre
 
-* Typiquement, on se sert des fractions pour représenter un nombre inférieur à 1 — le numérateur est inférieur au dénominateur.
-
-  Si le nombre représenté par la fraction est supérieur ou égal à 1 (le numérateur est supérieur ou égal au dénominateur), la fraction est dite *impropre*. Ex:  
+* Typiquement, on se sert des fractions pour représenter un nombre inférieur à 1 — le numérateur est inférieur au dénominateur. Si le nombre représenté par la fraction est supérieur ou égal à 1 (le numérateur est supérieur ou égal au dénominateur), la fraction est dite *impropre*. Par exemple:  
 
   ![](https://i.imgur.com/085pIHh.png)
 
@@ -36,7 +34,7 @@ Concepts: fraction, numérateur, dénominateur, fraction impropre, nombre fracti
 
 ### Fractions égales
 
-* La valeur d'une fraction ne change pas si on multiplie (ou divise) le numérateur et le dénominateur par un même nombre (≠0).  
+* La valeur d'une fraction ne change pas si on multiplie (ou divise) le numérateur et le dénominateur par un même nombre (différent de 0).  
   Ex: 1/2 = 4/8
 
   ![](https://i.imgur.com/LlelSxk.png)

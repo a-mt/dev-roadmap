@@ -24,7 +24,7 @@ Concepts: intervalles, ensembles, sous-ensembles, quantificateurs, connecteurs
   * *ouvert*: les bornes ne font pas partie de l'intervalle.  
     Ex: ]-1, 4[ désigne les valeurs de -1 à 4, -1 et 4 exclus.
 
-  * *fermé*: les bornes font partie de l'intervalle (elles sont inclues)  
+  * *fermé*: les bornes font partie de l'intervalle  
     Ex: [-2, 3] désigne les valeurs de -2 à 3, -2 et 3 inclus.
 
   * ou *semi-ouvert*: une seule des deux bornes fait partie de l'intervalle.  
@@ -58,10 +58,11 @@ Concepts: intervalles, ensembles, sous-ensembles, quantificateurs, connecteurs
   * définir la liste des valeurs possibles: E = {1,2,3,4}  
     Les points de suspension peuvent être utilisés pour des ensembles ayant beaucoup d'éléments: {1,2,…,1000}
 
-  * ou définir les bornes de l'ensemble avec un intervalle: E = [0; +∞[
-
+  * ou définir les bornes de l'ensemble avec un intervalle: E = [0; +∞[  
     La notation [n] est souvent utilisée pour signifier {1,2,…,n}.  
-    On peut ajouter un pas: {x ∈ [99]: 2|x} signifie tous les éléments pairs de 1 à 99
+
+  * ou encore faire un mix des deux  
+    Par exemple: {x ∈ [99]: 2|x} signifie tous les éléments pairs de 1 à 99
 
 ## Quantificateurs
 
@@ -79,11 +80,11 @@ Concepts: intervalles, ensembles, sous-ensembles, quantificateurs, connecteurs
 
   * ∀x ∃y (x < y)
 
-    Pour tout x, il existe un y, tel que x est inférieur à y (permet un y différent pour chaque x)
+    Pour tout x, il existe au moins un y, tel que x est inférieur à y (admet un y différent pour chaque x)
 
   * ∃y ∀x (x < y)
 
-    Il existe un y, tel que pour tout x, x est inférieur à y (un même y doit marcher avec tous les x)
+    Il existe au moins un y, tel que pour tout x, x est inférieur à y (un même y marche avec tous les x)
 
   * f(x) ≥ f(b) ∀ x ∈ [a,b]  
 
@@ -158,8 +159,8 @@ Concepts: intervalles, ensembles, sous-ensembles, quantificateurs, connecteurs
 
   ![](https://i.imgur.com/UwL0MQ9.png)
 
-  La *complémentaire* de B dans A.  
-  Si B est un sous-ensemble de A, on peut utiliser A ∖ B ou ∁<sub>A</sub>B. Si A est sans ambiguité, on peut simplement écrire ∁B ou B&#x0305;.
+  Ou alors, la *complémentaire* de B dans A — on exlut un sous-ensemble de A.  
+  On peut utiliser A ∖ B ou ∁<sub>A</sub>B. Si A est sans ambiguité, on peut simplement écrire ∁B ou B&#x0305;.
 
   ![](https://i.imgur.com/4YKDjKo.png)
 

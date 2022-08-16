@@ -33,7 +33,7 @@ Concepts: distance entre deux points, coordonnées du milieu, équation de droit
 ## Équations de droites parallèles
 
 * Des droites parallèles sont des équations d'ordonnée à l'origine différente  
-  mais même coefficient directeur, du coup elles ne se croisant jamais.
+  mais même coefficient directeur, du coup elles ne se croisent jamais.
 
   <ins>Exemple</ins>:
 

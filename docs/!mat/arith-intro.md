@@ -9,17 +9,17 @@ Concepts: nombre, chiffre, système numérique, base, rang
 
 * Un *nombre* est une valeur représentant une une quantité. Il peut être écrit avec des lettres (vingt et un) ou avec des chiffres (21).
 
-* Il est communément admis que les mathématiques sont nés du besoin de compter et de garder une trace de nombres — pour énumérer le bétail, marquer le passage de jours, troquer des objets, etc.
+* Il est communément admis que les mathématiques sont nés du besoin de compter et de garder une trace de nombres — pour énumérer le bétail, marquer le passage de jours, échanges des objets, etc.
 
   Les comptes étaient maintenus en faisant des encoches sur des pierres, du bois ou des os. Quand le nombre de marques est devenu trop difficile à visualiser, les peuples primitifs se sont mis à les arranger en groupes facilement reconnaissables. L'organisation en groupe, comme des groupes de 5 pour les 5 doigts de la main, a constitué la première amélioration par rapport au comptage 1 par 1 vers un concept abstrait de valeur "cinq".
 
-  L'évolution du comptage, avec des mots numériques parlés et ses symboles numériques écrits distincts, a été progressive et ne permet pas de déterminer des dates précises pour ses étapes.
+  L'évolution du comptage, avec des mots numériques parlés et ses symboles numériques écrits distincts, a été progressive et on ne dispose pas de date précises pour ses différentes étapes.
 
   ![](https://i.imgur.com/RkbxjiJm.png)
 
 ## Systèmes numériques
 
-* Un *chiffre* est un signe d'écriture utilisé seul ou en combinaison pour représenter des nombres.
+* Un *chiffre* est un signe d'écriture (0,1,2,...,9) utilisé seul ou en combinaison pour représenter des nombres (ex 12).
 
 * Un *système numérique* est un ensemble de règle d'utilisation de chiffres pour écrire des nombres.
 
@@ -59,7 +59,7 @@ Concepts: nombre, chiffre, système numérique, base, rang
   = 4⋅10<sup>3</sup> + 3⋅10<sup>2</sup> + 2⋅10<sup>1</sup> + 7⋅10<sup>0</sup>
   </pre>
 
-* Plutôt que 20, on trouve souvent 10 comme base du système numérique des peuples primitifs — sûrement attribuable aux 10 doigts de la main et à notre habitude de compter dessus.
+* Plutôt que 20, on trouve souvent 10 comme base du système numérique anciens — sûrement attribuable aux 10 doigts de la main et à notre habitude de compter dessus.
 
 ## Rang d'un chiffre
 

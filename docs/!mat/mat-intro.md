@@ -22,9 +22,7 @@ category: Maths
   * Les maths appliquées est l'étude de l'application des maths à des problèmes réels:  
     probabilités, statistiques, optimisation, physique, etc.
 
-* Le tronc principal des mathématiques est l'arithmétique, l'algèbre, la géométrie, la trigonométrie, le calcul différentiel & intégral — maths qu'on apprend de l'école primaire jusqu'à l'université.
-
-  Après, les gens apprennent les parties des mathématiques qui ont été utiles à leur profession dans le passé. Face à un nouveau problème, on fait appel aux mathématiciens.
+* Le tronc principal des mathématiques est constitué des notions les plus courantes des maths pures:  l'arithmétique, l'algèbre, la géométrie, la trigonométrie, le calcul différentiel & intégral — maths qu'on apprend de l'école primaire jusqu'à l'université. Pour le reste, différents cursus se focalisent sur différentes notions de maths suivant l'utilité qu'elles ont eu par le passé pour les professions étudiées. Face à un nouveau problème, on fait appel aux mathématiciens.
 
   Les maths constituent une énorme quantité de savoir, et chaques années, de nouvelles découvertes sont publiées. Pour suivre le rythme de la croissance des maths, il faudrait lire une quizaine d'articles par jour, pour la plupart long et détaillés.
 
@@ -34,7 +32,7 @@ category: Maths
   Est la plus ancienne et la plus élémentaires des mathématiques. Elle traite des nombres et des opérations de base — addition, soustraction multiplication et division.
 
 * <ins>Algèbre</ins>:  
-  Est un type d'arithmétique où on utliise des quantités inconnues — réprésentées par des lettres de l'alphabet latin telles que *x*, *y* *a*, *b* etc, ou des symboles. L'utilisation de lettres permet de généraliser les formules et éventuellement de trouver les valeurs inconnues manquantes dans les expressions et équations algébriques.
+  Est un type d'arithmétique où on utilise des quantités inconnues — réprésentées par des lettres de l'alphabet latin (telles que *x*, *y* *a*, *b* etc) ou des symboles. L'utilisation de lettres permet de généraliser les formules et éventuellement de trouver les valeurs inconnues manquantes dans les expressions et équations algébriques.
 
 * <ins>Géométrie</ins>:  
   Vient du grec *geo* "terre" et *metron* "mesure".

@@ -5,7 +5,7 @@ category: Linux
 
 {% capture content %}{% raw %}
 
-Grep est une commande Unix qui permet de filtrer des données. Elle affiche toutes les lignes qui contiennent un mot ou, de manière générale, qui correspondent à un motif (POSIX BRE ou ERE).
+Grep est une commande Unix qui permet de trouver toutes les lignes qui contiennent un motif (texte ou regex POSIX — BRE ou ERE) dans un ou plusieurs fichiers; l'entrée peut également provenir de stdin. Le nom grep vient de `g/re/p`: global regex print.
 
 ## Données en entrées
 

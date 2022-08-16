@@ -22,13 +22,18 @@ title: Linux
 [permissions-specials]: !linux/file-permissions-specials.md
 [permissions-default]: !linux/file-permissions-default.md
 [text-utils]: !linux/file-text-utils.md
-[list-utils]: !linux/file-list-utils.md
+[file-list]: !linux/file-list-utils.md
 [archive]: !linux/file-archive.md
 
 [script]: !linux/bash-script.md
 [flow-control]: !linux/bash-flow-control.md
 [flow-loop]: !linux/bash-loops.md
 [flow-user]: !linux/bash-user-interraction.md
+
+[process-nice]: !linux/process-nice.md
+[process-signal]: !linux/process-signal.md
+[process-list]: !linux/process-list.md
+[process-jobs]: !linux/process-jobs.md
 
 [regex-posix]: !linux/regex-posix.md
 [linux-install]: !linux/linux-install.md
@@ -39,6 +44,13 @@ title: Linux
 [vim]: !linux/vim.md
 [crontab]: !linux/crontab.md
 [iptables]: !linux/iptables.md
+
+[hardware-overview]: !linux/hardware-overview.md
+[hardware-disc]: !linux/hardware-disc.md
+[hardware-boot]: !linux/hardware-boot.md
+[boot-bootloader]: !linux/boot-bootloader.md
+[boot-init]: !linux/boot-init.md
+[boot-reboot]: !linux/boot-reboot.md
 
 * [Introduction][intro]
 
@@ -66,7 +78,7 @@ title: Linux
   - [Permissions spéciales][permissions-specials]
   - [Permissions par défaut][permissions-default]
   - [Manipuler des fichiers texte][text-utils]
-  - [Lister][list-utils]
+  - [Lister des fichiers][file-list]
   - [Archiver][archive]
 
 * Scripts
@@ -76,8 +88,22 @@ title: Linux
   - [Boucles][flow-loop]
   - [Interraction utilisateur][flow-user]
 
+* Processus
+  - [Avant & arrière plan][process-jobs]
+  - [Signaux][process-signal]
+  - [Priorité][process-nice]
+  - [Lister les processus][process-list]
+
 * Comptes
   - [Utilisateurs & groupes](!linux/accounts.md)
+
+* Boot
+  - [Théorie: matériel][hardware-overview]
+  - [Théorie: disque dur magnétique][hardware-disc]
+  - [Théorie: boot][hardware-boot]
+  - [Bootloaders][boot-bootloader]
+  - [Processus d'initialisation & services][boot-init]
+  - [Arrêter ou redémarrer][boot-reboot]
 
 * Utilitaires
   - [Regex POSIX][regex-posix]

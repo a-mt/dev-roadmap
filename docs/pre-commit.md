@@ -95,7 +95,7 @@ category: Webenv
 
 ### SyntaxError: Unexpected reserved word
 
-* En cas d’erreur “SyntaxError: Unexpected reserved word” sur await
+- En cas d’erreur “SyntaxError: Unexpected reserved word” sur await
 
   ```
   /.cache/pre-commit/repoi385p90x/node_env-system/lib/node_modules/prettier/third-party.js:9863
@@ -105,11 +105,20 @@ category: Webenv
   SyntaxError: Unexpected reserved word
   ```
 
-  Vérifier la version node en cours (doit être au moins égale à 10)
+- Vérifier la version node en cours (doit être au moins égale à 10)
 
   ```
   node --version
   ```
+
+  Pour changer de version:
+
+  ```
+  sudo npm install -g n
+  sudo n stable
+  ```
+
+- Vérifier la version node utilisée par pre-commit
 
   ```
   # path indiqué dans le message d'erreur
@@ -120,7 +129,7 @@ category: Webenv
   ./node --version
   ```
 
-  Remplacer la version node utilisée par pre-commit
+  Pour remplacer la version node utilisée par pre-commit:
 
   ```
   which node

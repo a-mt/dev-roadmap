@@ -61,6 +61,7 @@ searchbar: true
 [paradigm]: paradigm.md
 [php]: php.md
 [posix]: regex-posix.md
+[pre-commit]: pre-commit.md
 [puppet]: puppet.md
 [python]: python.md
 [react]: react.md
@@ -154,7 +155,7 @@ searchbar: true
   [Markdown][markdown], [Latex][latex], reStructuredText [1 &#x21F2;](http://docutils.sourceforge.net/docs/user/rst/cheatsheet.txt), Textile
 
 - Versionnement de Code  
-  [Git][git]
+  [Git][git], [Pre-commit][pre-commit]
 
 - Task Runners & Module Bundlers  
   Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html), Grunt, Gulp [1 &#x21F2;](https://medium.freecodecamp.org/super-simple-gulp-tutorial-for-beginners-45141974bfe8), [Webpack][webpack], Make

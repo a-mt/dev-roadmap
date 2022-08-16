@@ -8,12 +8,10 @@ searchbar: true
 [angular]: angular.md
 [ansible]: ansible.md
 [apache-vhost]: apache-vhost.md
-[awk]: awk.md
 [bdd]: bdd.md
 [bitcoin]: bitcoin.md
 [bitwise]: bitwise-operations.md
 [composer]: composer.md
-[crontab]: crontab.md
 [crypto]: crypto.md
 [crypto-ec]: crypto-ec.md
 [css]: css.md
@@ -29,13 +27,11 @@ searchbar: true
 [github-pages]: github-pages.md
 [google-drive]: google-drive.md
 [graphql]: graphql.md
-[grep]: grep.md
 [heroku]: heroku.md
 [host-domain]: host-domain.md
 [host-ip]: host-ip.md
 [html]: html.md
 [ipsec]: ipsec.md
-[iptables]: iptables.md
 [jekyll]: jekyll.md
 [jenkins]: jenkins.md
 [jquery]: jquery.md
@@ -44,8 +40,7 @@ searchbar: true
 [json]: json.md
 [jsx]: jsx.md
 [latex]: latex.md
-[linux-install]: linux-install.md
-[linux-transfert]: linux-transfert.md
+[linux]: linux.md
 [liquid]: liquid.md
 [markdown]: gfm.md
 [matplotlib]: matplotlib.md
@@ -60,7 +55,7 @@ searchbar: true
 [pandas]: pandas.md
 [paradigm]: paradigm.md
 [php]: php.md
-[posix]: regex-posix.md
+[posix]: !linux/regex-posix.md
 [pre-commit]: pre-commit.md
 [puppet]: puppet.md
 [python]: python.md
@@ -68,9 +63,7 @@ searchbar: true
 [regex]: regex.md
 [sass]: sass.md
 [securite]: securite.md
-[sed]: sed.md
 [semver]: semver.md
-[shell]: shell.md
 [ssh]: ssh.md
 [ssl-howto]: ssl-howto.md
 [ssl]: ssl.md
@@ -80,7 +73,6 @@ searchbar: true
 [threejs]: three.md
 [ts]: typescript.md
 [twig]: twig.md
-[vim]: vim.md
 [webdev]: web.md
 [webpack]: webpack.md
 [windows-task-scheduler]: windows-task-scheduler.md
@@ -160,8 +152,8 @@ searchbar: true
 - Task Runners & Module Bundlers  
   Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html), Grunt, Gulp [1 &#x21F2;](https://medium.freecodecamp.org/super-simple-gulp-tutorial-for-beginners-45141974bfe8), [Webpack][webpack], Make
 
-- Raccourcis d'édition de texte  
-  [OS][text-shortcut], [Vim][vim], Sublime Text [1 &#x21F2;](https://gist.github.com/mrliptontea/4c793ebdf72ed145bcbf)
+- Éditeurs de texte
+  [Raccourcis d'édition de texte  ][text-shortcut], Sublime Text [1 &#x21F2;](https://gist.github.com/mrliptontea/4c793ebdf72ed145bcbf)
 
 - [Open Source (github)][opensource]
 
@@ -218,13 +210,7 @@ searchbar: true
 - Workflow  
   [Dev](workflow-dev.md), [Prod](workflow-prod.md)
 
-- Linux  
-  * [Installer][linux-install], [Transférer des données][linux-transfert]
-  * APT [1 &#x21F2;](https://itsfoss.com/apt-vs-apt-get-difference/)
-  * Tools: [Awk][awk], [Sed][sed], [Grep][grep], Cut, Tr
-  * Script: [Shell][shell]
-  * Firewall: [Iptables][iptables], UFW [1 &#x21F2;](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-9)
-  * Planification tâches: [crontab][crontab]
+- [Linux][linux]
 
 - Windows  
   * Script: Batch, Powershell
@@ -342,4 +328,4 @@ searchbar: true
   - [Emails jetables](http://www.yopmail.com/)
   - [Emails jetables Gmail](https://smailpro.com/)
   - [Screen size map](https://www.screensizemap.com/)
-
+  - [Commandes Windows](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands#command-line-reference-a-z)

@@ -3,7 +3,7 @@ title: Regex POSIX
 category: Linux
 ---
 
-Les commandes du shell Linux, comme grep, sed, ou awk, acceptent des regex POSIX
+Certaines commandes Linux, comme grep, sed, ou awk, acceptent des regex POSIX
 (POSIX est ni plus ni moins que le nom des normes qui s'appliquent aux commandes et logiciels des plateformes UNIX).
 
 Il existe deux familles :
@@ -19,7 +19,7 @@ Il existe deux familles :
 
 ---
 
-Il ne faut pas confondre les regex POSIX et les [wildcards](wildcard.md). Afin d'empêcher que le shell interprète un caractère de regex en wildcard, il est nécessaire entourer les regex de quotes. :  `ls | grep '^file'`.
+Il ne faut pas confondre les regex POSIX et les [wildcards](bash-wildcard.md). Afin d'empêcher que le shell interprète un caractère de regex en wildcard, il est nécessaire entourer les regex de quotes. :  `ls | grep '^file'`.
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Iptables
-category: Firewall
+category: Linux
 ---
 
 `iptables` est la commande qu'on utilise sous Linux pour configurer, maintenir et inspecter les règles de filtrage des paquets IPv4 dans le kernel Linux. `ip6tables` pour les règles IPv6.

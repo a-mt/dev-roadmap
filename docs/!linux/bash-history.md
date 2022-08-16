@@ -1,43 +1,59 @@
 ---
-title: Historique Shell
-category: Linux
+title: Historique
+category: Linux, Shell, Bash
 ---
 
-## Lister l'historique
+## Utiliser l'historique
 
-La commande `history` permet de voir l'historique.  
-On peut également utiliser les flèches haut/bas pour naviguer dans l'historique.
+* Lorsqu'une commande est exécutée dans le terminal, elle est stockée dans l'historique.  
+  Appuyer sur la touche "Flèche vers le haut" pour afficher la commande précédente.
 
-<table>
-<tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
-<tr>
-  <th align="left">history</th>
-  <td>Afficher l'historique des commandes lançées</td>
-</tr>
-<tr>
-  <th align="left">history 10</th>
-  <td>Lister les 10 dernières commandes lançées</td>
-</tr>
-<tr>
-  <th align="left">history -c</th>
-  <td>Effacer l'historique</td>
-</tr>
-<tr>
-  <th align="left">history -d 11</th>
-  <td>Supprimer la commande n°11 de l'historique
-  <pre lang="shell"># Pour supprimer les commandes 10 à 20
-for i in {10..20}; do history -d 10; done
-</pre></td>
-</tr>
-</table>
+  Une autre possibilité est d'utiliser Ctrl + r pour chercher une commande dans l'historique (à partir de la fin).
 
-Pour executer une commande sans l'ajouter à l'historique, ajouter au moins un espace en début de ligne : <code>  cmd</code>
+* Pour afficher l'historique complet, utiliser la commande `history`
+
+  ```
+  $ history
+    1  ls /var/log
+    2  whoami
+    3  pwd
+    4  ls
+    5  uname -r
+    6  uname -v
+    7  bash --version
+    8  exit
+    9  pwd
+   10  ls
+   11  exit
+   12  clear
+   13  history
+  ```
+
+  Ou pour afficher les 10 dernières:
+
+  ```
+  $ history 10
+  ```
+
+* Pour ré-exécuter la commande n°9 dans l'historique, on peut utiliser l'expansion d'historique de bash:  
+  taper `!9` et presser entrée. La commande est affichée puis exécutée.
+
+  ```
+  $ !9
+  pwd
+  /home/christine
+  ```
+
+  Pour ré-exécuter la dernière commande, il y a un raccourci: `!!`.
+
+* Pour executer une commande sans l'ajouter à l'historique,  
+  ajouter au moins un espace en début de ligne : <code>  cmd</code>
 
 ---
 
-## Expansion des commandes
+## Expansion
 
-L'expansion des commandes permet de récupérer rapidement une commande qui est dans l'historique.
+### Des commandes
 
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
@@ -69,7 +85,7 @@ L'expansion des commandes permet de récupérer rapidement une commande qui est 
 </tr>
 </table>
 
-On peut ajouter des "filtres" à ces expansions :
+On peut ajouter des "filtres" à ces expansions:
 
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
@@ -85,7 +101,7 @@ On peut ajouter des "filtres" à ces expansions :
 </tr>
 <tr>
   <th align="left">!11:s/abc/def</th>
-  <td>Executer la commande n°11 et remplacer la PREMIERE occurence de "abc" en "def"<br>Il est possible de cimuler les substitutions
+  <td>Executer la commande n°11 et remplacer la PREMIERE occurence de "abc" en "def"<br>Il est possible de cumuler les substitutions
   <pre lang="shell">!11:s/abc/def:s/ghi/jkl</pre></td>
 </tr>
 <tr>
@@ -94,7 +110,7 @@ On peut ajouter des "filtres" à ces expansions :
 </tr>
 </table>
 
-Raccourcis pour la dernière commande :
+Raccourcis pour la dernière commande:
 
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
@@ -105,9 +121,7 @@ Raccourcis pour la dernière commande :
 </tr>
 </table>
 
----
-
-## Expansions des paramètres
+### Des paramètres
 
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
@@ -181,3 +195,63 @@ echo extonly=!$:e # extonly=.txt</pre></td>
   <td>De l'argument 3 à l'avant-dernier argument (= de 3 à n-1)</td>
 </tr>
 </table>
+
+---
+
+## .bash_history
+
+* L'historique existe uniquement en mémoire et c'est au moment de se déconnecter, qu'il est sauvegardé  
+  dans le fichier `~/.bash_history`
+
+* Il est possible de forcer l'écriture de l'historique en mémoire dans le fichier:
+
+  ```
+  $ history -w
+  ```
+
+## Supprimer l'historique
+
+* On peut supprimer l'historique en mémoire:
+
+  ```
+  $ history -c
+
+  $ history
+     1  history
+  ```
+
+  Notons que le fichier lui n'est pas vidé:
+
+  ```
+  $ cat .bash_history
+  ls /var/log
+  whoami
+  pwd
+  ls
+  uname -r
+  uname -v
+  bash --version
+  exit
+  pwd
+  ls
+  exit
+  clear
+  history
+  pwd
+  clear
+  cat .bash_history
+  history
+  history -w
+  ```
+
+* Pour supprimer la commande n°11 de l'historique:
+
+  ```
+  $ history -d 11
+  ```
+
+   Pour supprimer les commandes 10 à 20:
+
+  ```
+  $ for i in {10..20}; do history -d 10; done
+  ```

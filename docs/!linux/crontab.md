@@ -1,6 +1,6 @@
 ---
 title: Crontab
-category: Cron
+category: Linux
 ---
 
 Pour lancer un script de manière régulière et automatique sous Linux, on utilise les *cron* jobs. Un cron est une tâche qui est planifiée pour être exécutée périodiquement à un temps définit. Les cron jobs sont planifiés via un fichier de configuration apppelé *crontab*.

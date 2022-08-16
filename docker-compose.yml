@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./docs:/srv/www
+      - ./.git:/srv/www/.git
+    command: ["jekyll", "serve", "--host", "0.0.0.0"]
+    ports:
+      - 4000:4000

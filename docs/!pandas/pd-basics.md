@@ -30,6 +30,11 @@ category: Python, Library, Pandas
   pd.set_option('max_columns', None)
   ```
 
+  ```
+  with pd.option_context('display.float_format', '{:0.20f}'.format):
+      df.to_excel(filepath_output)
+  ```
+
 ## tail
 
 * La fonction `tail` retourne les 5 dernières lignes ou le nombre passé en paramètre

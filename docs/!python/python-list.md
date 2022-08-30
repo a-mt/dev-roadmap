@@ -212,6 +212,33 @@ print(l2) # [5.0, 10.0, 15.0]
   # [('charlie', 1), ('alice', 2), ('bob', 2)]
   ```
 
+  ``` python
+  from functools import cmp_to_key
+
+  def sort_records(a, b):
+      # If same source: preserve order
+      if type(a) == type(b):
+          return 0
+
+      # Between different entities: ascending order
+      date_a = a["date"]
+      date_b = b["date"]
+
+      if date_a < date_b:
+          return -1
+      if date_b > date_a:
+          return 1
+      return 0
+
+  sorted(values, key=cmp_to_key(sort_records))
+  ```
+
+  ``` python
+  from operator import attrgetter
+
+  objects.sort(key=attrgetter("email_sort_order"))
+  ```
+
 * Récupérer la valeur maximale/minimale
 
   ``` python

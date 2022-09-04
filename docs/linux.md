@@ -51,6 +51,13 @@ title: Linux
 [boot-bootloader]: !linux/boot-bootloader.md
 [boot-init]: !linux/boot-init.md
 [boot-reboot]: !linux/boot-reboot.md
+[filesystem-overview]: !linux/filesystem-overview.md
+[filesystem-create]: !linux/filesystem-create.md
+[filesystem-mount]: !linux/filesystem-mount.md
+[filesystem-tuning]: !linux/filesystem-tuning.md
+[filesystem-swap]: !linux/filesystem-swap.md
+[filesystem-lvm]: !linux/filesystem-lvm.md
+[system-specs]: !linux/system-specs.md
 
 * [Introduction][intro]
 
@@ -104,6 +111,17 @@ title: Linux
   - [Bootloaders][boot-bootloader]
   - [Processus d'initialisation & services][boot-init]
   - [Arrêter ou redémarrer][boot-reboot]
+
+* Système de fichiers
+  - [Théorie: système de fichiers][filesystem-overview]
+  - [Créer une partition][filesystem-create]
+  - [Monter une partition][filesystem-mount]
+  - [Modifier une partition][filesystem-tuning]
+  - [Swap][filesystem-swap]
+  - [LVM][filesystem-lvm]
+
+* Gestion du système
+  - [Ressources & utilisation][system-specs]
 
 * Utilitaires
   - [Regex POSIX][regex-posix]

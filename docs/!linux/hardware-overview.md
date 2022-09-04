@@ -18,7 +18,12 @@ une partie matérielle (*hardware*) et logicielle (*software*). Pour la partie m
 
 * Le <ins>CPU (*Central Processing Unit*)</ins>, (CPT, *Unité Centrale de Traitement*  ou *processeur* en français) est souvent désigné comme le "cerveau" de l'ordinateur: il prend les différentes instructions qui proviennent des logiciels, les traite et retourne le résultat en sortie.
 
-  On pense souvent à tord que le processeur est très sophistiqué. En réalité, le processeur ne peut réaliser que des instructions très basiques — logiques (> < = et ou non) ou arithmétiques (+ - * /). Sa véritable force est sa rapidité d'exécution: il effectue des tâches très simples mais très rapidement — plusieurs milliards d'instructions par seconde pour un processeur actuel.
+  On pense souvent à tord que le processeur est très sophistiqué. En réalité, le CPU est un circuit électronique qui ne réalise que des instructions très simples:
+  * lire de l’information en mémoire;
+  * écrire de l’information en mémoire ;
+  * effectuer des calculs logiques (> < = et ou non) ou arithmétiques (+ - * /)
+
+  Sa force est dans sa rapidité d'exécution: il effectue des tâches très simples très rapidement — plusieurs milliards d'instructions par seconde pour un processeur actuel.
 
   ![](https://i.imgur.com/Jj3duqT.png)
 

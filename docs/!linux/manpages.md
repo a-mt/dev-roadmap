@@ -90,7 +90,8 @@ category: Linux
   - commandes d'administration du système
   - routines de l'amande
 
-  Si on tape `man ls`, on peut voir sur la première ligne que ls est dans la première section:
+* La section de la page de manuel en cours est indiqué sur la première ligne  
+  Par exemple, si on tape `man ls`, on peut voir que ls est dans la première section:
 
   ```
   LS(1)       User Commands       LS(1)
@@ -102,7 +103,8 @@ category: Linux
   FDISK(8)       System Administration       FDISK(8)
   ```
 
-* Il arrive qu'il arrive des pages de manuel portant le même nom mais dans des sections différentes — par exemple, le fichier passwd et la commande passwd
+* Il arrive qu'il arrive des pages de manuel portant le même nom mais dans des sections différentes 
+  — par exemple, le fichier passwd et la commande passwd
 
   ```
   $ ls /etc/passwd

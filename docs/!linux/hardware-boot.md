@@ -1,6 +1,6 @@
 ---
 title: Boot
-category: Linux
+category: IT
 ---
 
 ## Partition
@@ -101,7 +101,7 @@ category: Linux
 
 * Si l'opération POST s'est bien passée, alors le firmware cherche quel périphérique de stockage charger. Il lit la *séquence d'amorçage*, qui est la liste des périphériques de stockage à tester — une configuration enregistrée dans la CMOS.
 
-* Un par un, le firmware vérifie si le périphérique est disponible et contient un *bootloader* (*chargeur de démarrage* ou *chargeur d'amorçage* en français). Un espace de stockage contenant un bootloader est dit *amorçable*. Le firmware charge le premier périphérique amorçable qu'il trouve.
+* Un par un, le firmware vérifie si le périphérique est disponible et contient un *bootloader* (*chargeur de démarrage* ou *chargeur d'amorçage* en français). Un espace de stockage contenant un bootloader est dit *amorçable* (ou *bootable*). Le firmware charge le premier périphérique amorçable qu'il trouve.
 
 * Typiquement, la seule chose qu'on voit du firmware est le logo du fabricant, affiché au moment du démarrage. Un raccourci clavier (qui dépend du fabricant), à presser au moment où le logo s'affiche, permet de voir et modifier les configurations du firmware — avec notamment la séquence d'amorçage.
 

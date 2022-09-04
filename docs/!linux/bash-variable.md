@@ -160,6 +160,17 @@ $ echo $((1+($RANDOM%100)))  # entre 1 et 100</pre></td>
   </pre>
 </td>
 </tr>
+<tr>
+<th align="left">bc &lt;&lt;&lt; $var/2</th>
+<td>
+  Bash ne supporte que les opérations mathématiques sur les entiers, <code>bc</code> permet d'utiliser des réels
+
+  <pre lang="shell">
+  $ t=23850.96
+  $ echo $(bc <<< $t/3600):$(bc <<< $t%3600/60)
+  6:37
+  </pre>
+</td>
 </tr>
 </table>
 

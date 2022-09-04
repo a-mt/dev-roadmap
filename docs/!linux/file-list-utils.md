@@ -273,6 +273,24 @@ category: Linux, Fichiers
   find . -type f -print0 | xargs -0 grep -n "texteRecherche"
   ```
 
+* -n1 pour répéter la commande pour chaque résultat (plutôt que de passer l'ensemble en paramètre)
+  -I PLACEHOLDER pour utiliser un placeholder (plutôt que d'ajouter la valeur à la fin)
+
+  ```
+  $ ls /proc | grep '^[a-z]' | head -3 | xargs echo -
+  - acpi asound buddyinfo
+  $
+  $ ls /proc | grep '^[a-z]' | head -3 | xargs -n1 echo -
+  - acpi
+  - asound
+  - buddyinfo
+  $
+  $ ls /proc | grep '^[a-z]' | head -3 | xargs -n1 -I {} echo "-{}"
+  -acpi
+  -asound
+  -buddyinfo
+  ```
+
 ### for
 
 * Ou alors une boucle `for`

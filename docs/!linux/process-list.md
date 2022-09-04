@@ -7,7 +7,8 @@ category: Linux, Applications
 
 * Une fonction clé du kernel est de gérer les processus — c'est lui qui s'occupe d'allouer les accès au CPU, la RAM, le disque, les interfaces réseaux ou encore les périphériques.
 
-* Le kernel fournit un accès aux informations sur les processus actifs via un pseudo système de fichiers, dans le répertoire `/proc`. On y trouve notamment la liste des ID processus (PID):
+* Le kernel fournit un accès aux informations sur les processus actifs via le répertoire `/proc`.  
+  On y trouve notamment la liste des ID processus (PID):
 
   ```
   $ ls -l /proc | head
@@ -23,27 +24,9 @@ category: Linux, Applications
   dr-xr-xr-x  9 root root 0 avril 29 07:44 11
   ```
 
-  Ainsi que des informations sur le matériel et la configuration actuelle du kernel:
+* /proc est un *pseudo-système de fichiers*: les fichiers qu'il contient n'existent pas sur le disque, uniquement en RAM — ce qui permet d'accéder à ces données très rapidement. Chaque fois que le système redémarre, ces fichiers doivent être reconstruits.
 
-  ```
-  $ ls -l /proc | tail
-  dr-xr-xr-x  5 root root 0 avril 29 07:44 sysvipc
-  lrwxrwxrwx  1 root root 0 avril 29 09:44 thread-self -> 31663/task/31663
-  -r--------  1 root root 0 avril 29 18:23 timer_list
-  dr-xr-xr-x  6 root root 0 avril 29 18:23 tty
-  -r--r--r--  1 root root 0 avril 29 09:44 uptime
-  -r--r--r--  1 root root 0 avril 29 07:44 version
-  -r--r--r--  1 root root 0 avril 29 18:23 version_signature
-  -r--------  1 root root 0 avril 29 18:23 vmallocinfo
-  -r--r--r--  1 root root 0 avril 29 08:06 vmstat
-  -r--r--r--  1 root root 0 avril 29 18:23 zoneinfo
-  ```
-
-  - `/proc/cmdline`: contient les informations passées au kernel pendant le démarrage
-  - `/proc/meminfo`: contient des informations sur l'utilisation de la mémoire du kernel
-  - `/proc/modules`: contient la liste des modules chargés dans le kernel
-
-* Certaines commandes permettent de visualiser les informations présentes dans /proc de manière plus digestible, notamment `top`, `free`, `mount`.
+* Certaines commandes permettent de visualiser les informations présentes dans /proc de manière plus digestible — notamment `top`, `free`, `mount`.
 
 ## pstree
 

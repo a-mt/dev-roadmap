@@ -15,6 +15,7 @@ category: Web, JavaScript
   - [x] [Formulaire](!jsapi/js-form.md)
   - [ ] Fichiers (Image, File, FileReader, Blob, URL)
   - [ ] History
+  - [ ] Push [1 &#x21F2;](https://web-push-book.gauntface.com/)
   - [ ] Notifications [1 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/notification) [2 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API) [3 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration) [4 &#x21F2;](https://developer.mozilla.org/en-US/docs/Web/API/Alarm_API)
   - [ ] MutationObserver [1 &#x21F2;](https://blog.sessionstack.com/how-javascript-works-tracking-changes-in-the-dom-using-mutationobserver-86adc7446401)
 - Stockage

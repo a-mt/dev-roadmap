@@ -132,6 +132,7 @@ $ echo $RANDOM
 $ echo $((RANDOM%=200))      # entre 0 et 200
 155
 $ echo $((1+($RANDOM%100)))  # entre 1 et 100</pre></td>
+</tr>
 <tr>
   <th align="left">let var=var+1</th>
   <td>
@@ -167,7 +168,7 @@ $ echo $((1+($RANDOM%100)))  # entre 1 et 100</pre></td>
 
   <pre lang="shell">
   $ t=23850.96
-  $ echo $(bc <<< $t/3600):$(bc <<< $t%3600/60)
+  $ echo $(bc &lt;&lt;&lt; $t/3600):$(bc &lt;&lt;&lt; $t%3600/60)
   6:37
   </pre>
 </td>

@@ -29,11 +29,11 @@ title: Linux
 [flow-control]: !linux/bash-flow-control.md
 [flow-loop]: !linux/bash-loops.md
 [flow-user]: !linux/bash-user-interraction.md
-
 [process-nice]: !linux/process-nice.md
 [process-signal]: !linux/process-signal.md
 [process-list]: !linux/process-list.md
 [process-jobs]: !linux/process-jobs.md
+[multiplexer]: !linux/multiplexer.md
 
 [regex-posix]: !linux/regex-posix.md
 [linux-install]: !linux/linux-install.md
@@ -57,7 +57,10 @@ title: Linux
 [filesystem-tuning]: !linux/filesystem-tuning.md
 [filesystem-swap]: !linux/filesystem-swap.md
 [filesystem-lvm]: !linux/filesystem-lvm.md
+
 [system-specs]: !linux/system-specs.md
+[system-packages]: !linux/packages.md
+
 
 * [Introduction][intro]
 
@@ -100,6 +103,7 @@ title: Linux
   - [Signaux][process-signal]
   - [Priorité][process-nice]
   - [Lister les processus][process-list]
+  - [Multiplexeur de terminal][multiplexer]
 
 * Comptes
   - [Utilisateurs & groupes](!linux/accounts.md)
@@ -122,6 +126,7 @@ title: Linux
 
 * Gestion du système
   - [Ressources & utilisation][system-specs]
+  - [Paquets & gestionnaires de paquet][system-packages]
 
 * Utilitaires
   - [Regex POSIX][regex-posix]

@@ -51,6 +51,8 @@ category: Linux
   - <ins>/dev/nvme0n1</ins> est le premier disque (*namespace*) du contrôleur
   - <ins>/dev/nvme0n1p1</ins> est la première partition du disque
 
+* Les fichiers `/dev/hd*` représente les disques durs magnétiques et lecteurs optiques.
+
 ### Les partitions
 
 * `/proc/partitions` contient la liste des disques et partitions
@@ -282,3 +284,35 @@ category: Linux
   ![](https://i.imgur.com/HermTzo.png)
 
 * Une fois partitionné et formatté avec un système de fichier, le périphérique est prêt à être monté et utilisé sous Linux.
+
+---
+
+## Sauvegarder et restaurer la table de partition
+
+* `sfdisk` peut être utilisé pour sauvegarder et restaurer la table de partition d'un disque.  
+  Avant de partitionner un disque, il est bon de sauvegarder les données de la table de partition actuelle. Ainsi, en cas d'erreur lors de l'utilisation des outils d'édition de partitions, la table de partition sauvegardé pourra ainsi être restaurée. Attention cependant, restaurer le mauvais fichier peut entrainer la perte totale des données.
+
+* Pour sauvegarder la table de partitions:
+
+  1. Déterminer le nom du disque.  
+     L'option -s permet de lister les disques et leur taille (nombre de blocs)
+
+      ``` bash
+      # sfdisk -s
+      ```
+
+      ![](https://i.imgur.com/ACmy7vi.png)
+
+  2. Sauvegarder la table de partition du disque avec l'option -d (*dump*)
+
+      ``` bash
+      # sfdisk -d /dev/sdb > sdb.disk
+      ```
+
+  3. Restaurer la table de partition avec l'option -f (*force*)
+
+      ``` bash
+      # sfdisk -f /dev/sdb < sdb.disk
+      ```
+
+      ![](https://i.imgur.com/Wu3AO5X.png)

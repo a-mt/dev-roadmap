@@ -433,6 +433,20 @@ category: Linux, Fichiers
   sync:x:4:65534:sync:/bin:/bin/sync
   ```
 
+  ``` bash
+  $ cat /etc/services | grep -E '^[a-z]' | sort -n -k2 | head
+  rtmp    1/ddp     # Routing Table Maintenance Protocol
+  tcpmux    1/tcp       # TCP port service multiplexer
+  nbp   2/ddp     # Name Binding Protocol
+  echo    4/ddp     # AppleTalk Echo Protocol
+  zip   6/ddp     # Zone Information Protocol
+  echo    7/tcp
+  echo    7/udp
+  discard   9/tcp   sink null
+  discard   9/udp   sink null
+  systat    11/tcp    users
+  ```
+
 ## tac
 
 * `tac` (nom inverse de cat) permet d'inverser l'ordre des lignes

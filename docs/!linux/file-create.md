@@ -108,16 +108,16 @@ category: Linux, Fichiers
 * `rm` (remove) permet de supprimer des fichiers  
   Attention, quand on passe par la ligne de commande, il n'y a pas de corbeille: les fichiers sont définitivement supprimés.
 
-* La suppression de plusieurs fichiers en utilisant des caractères globaux pour causer des problèmes: utiliser l'option -i pour demander confirmation avant de supprimer.
-
-* Par défaut, rm ne permet pas de supprimer un répertoire. Pour supprmier un répertoire et son contenu, utiliser l'option -r (recursive).
-
   ```
   $ rm -v da*
   removed 'data'
   removed 'data.doc'
   removed 'data.txt'
   ```
+
+  La suppression de plusieurs fichiers en utilisant des caractères globaux pour causer des problèmes: utiliser l'option -i pour demander confirmation avant de supprimer.
+
+* Par défaut, rm ne permet pas de supprimer un répertoire. Pour supprimer un répertoire et son contenu, utiliser l'option -r, -R ou --recursive.
 
 ### rmdir
 
@@ -126,4 +126,3 @@ category: Linux, Fichiers
   ```
   $ rmdir data
   ````
-

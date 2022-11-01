@@ -3,19 +3,58 @@ title: Fonctions
 category: Linux, Shell, Bash
 ---
 
-* Définir une fonction:
+## Pourquoi
 
-  ```
-  myfunc() {
-    # content
-  }
-  ```
+* Une fonction est un bloc nommé dans lequel est placé un groupe de commandes. On peut considérer une fonction comme un mini-script — et c'est comme ça que le shell bash traite les fonctions: des petits scripts à l'intérieur de grands scripts, avec leurs propres variables spéciales.
 
-* Appeler une fonction:
+* Les fonctions permettent de rendre le code beaucoup plus lisible.  
+  [Exemple script](https://github.com/docker/cli/blob/086df60bab3dad7ffb5cb7b5169741ddd78e23c8/scripts/test/e2e/run)
+
+* Les fonctions permettent également de gagner du temps lorsqu'on veut mettre à jour le script — au lieu d'avoir à modifier plusieurs endroits, tout est factorisé en un seul endroit.
+
+## Définir une fonction
+
+* On commence par définir une fonction  
+  On peut le faire de deux manières possibles:
+
+  1. Avec le mot-clé `function` suivit du nom de la fonction
+
+      ```
+      function myfunc {
+        # content
+      }
+      ```
+
+  2. Avec le nom de la fonction suivit de parenthèses
+
+      ```
+      myfunc() {
+        # content
+      }
+      ```
+
+* Ensuite, on peut appeler la fonction:  
+  Notons qu'on ne peut pas appeler une fonction avant qu'elle ne soit déclarée (pas de hoisting)
 
   ```
   myfunc
   ```
+
+* Il est possible d'écraser une fonction existante.
+
+  ```
+  fonction() {
+    echo "Première version de func ()."
+  }
+
+  fonction() {
+    echo "Deuxième version de func ()."
+  }
+
+  fonction   # Deuxième version de func ().
+  ```
+
+## Paramètres
 
 * Passer des paramètres
 
@@ -35,6 +74,8 @@ category: Linux, Shell, Bash
   }
   myfunc "Hello You !"
   ```
+
+## Résultat
 
 * Récupérer le résultat
 
@@ -56,19 +97,10 @@ category: Linux, Shell, Bash
   echo "Message: $msg" # Message: Hello Bob!
   ```
 
-Il est possible d'écraser une fonction existante.
+## Supprimer une fonction
 
-```
-fonction() {
-  echo "Première version de func ()."
-}
+* On peut supprimer une fonction avec `unset`
 
-fonction() {
-  echo "Deuxième version de func ()."
-}
-
-fonction   # Deuxième version de func ().
-```
-
-Les fonctions permettent de rendre le code beaucoup plus lisible.  
-[Exemple script](https://github.com/docker/cli/blob/086df60bab3dad7ffb5cb7b5169741ddd78e23c8/scripts/test/e2e/run)
+  ```
+  unset -f myfunc
+  ```

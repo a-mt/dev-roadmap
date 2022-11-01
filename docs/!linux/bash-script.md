@@ -42,6 +42,8 @@ Deux modes d'utilisation du shell sont possibles: interractif ou scripté.
 * Il y a différentes manières d'exécuter un script, certaines lancent un sous-shell, d'autres pas.
   Lancer un sous-shell demande plus de ressources, dans une situation où les ressources sont minimes, privilégier une méthode qui ne crée pas de sous-shell.
 
+### Sous-shell
+
 * Lancer avec la commande `bash`  
   Crée un sous-shell
 
@@ -57,23 +59,6 @@ Deux modes d'utilisation du shell sont possibles: interractif ou scripté.
   ``` bash
   $ bash basicRun.sh
   The shell level is 2
-  ```
-
-* Lancer avec la commande `source`  
-  Exécute dans le shell en cours  
-  Permet d'importer et exécuter les commandes du script donné dans le processus en cours. Permet par exemple d'utiliser un script pour définir des variables d'environnement (ex .bashrc) ou inclure des fichiers de librairie (ex lib.sh)
-
-  ``` bash
-  $ source basicRun.sh 
-  The shell level is 1
-  ```
-
-* Lancer avec `.`
-  Exécute dans le shell en cours
-
-  ``` bash
-  $ . basicRun.sh
-  The shell level is 1
   ```
 
 * Rendre le fichier exécutable et l'exécuter à partir de son path  
@@ -104,6 +89,25 @@ Deux modes d'utilisation du shell sont possibles: interractif ou scripté.
   $ sudo mv basicRun.sh /usr/bin
   $ basicRun.sh
   The shell level is 2
+  ```
+
+### Shell en cours
+
+* Lancer avec la commande `source`  
+  Exécute dans le shell en cours  
+  Permet d'importer et exécuter les commandes du script donné dans le processus en cours. Permet par exemple d'utiliser un script pour définir des variables d'environnement (ex .bashrc) ou inclure des fichiers de librairie (ex lib.sh)
+
+  ``` bash
+  $ source basicRun.sh 
+  The shell level is 1
+  ```
+
+* Lancer avec `.`
+  Exécute dans le shell en cours
+
+  ``` bash
+  $ . basicRun.sh
+  The shell level is 1
   ```
 
 ## Afficher les commandes exécutées

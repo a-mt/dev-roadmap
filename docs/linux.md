@@ -10,6 +10,7 @@ title: Linux
 [escape]: !linux/bash-escape.md
 [history]: !linux/bash-history.md
 [variable]: !linux/bash-variable.md
+[var-array]: !linux/bash-variable-array.md
 [manpages]: !linux/manpages.md
 [redirect]: !linux/cli-redirection.md
 [chaining]: !linux/cli-chaining.md
@@ -28,6 +29,7 @@ title: Linux
 [script]: !linux/bash-script.md
 [flow-control]: !linux/bash-flow-control.md
 [flow-loop]: !linux/bash-loops.md
+[flow-function]: !linux/bash-function.md
 [flow-user]: !linux/bash-user-interraction.md
 [process-nice]: !linux/process-nice.md
 [process-signal]: !linux/process-signal.md
@@ -60,7 +62,8 @@ title: Linux
 
 [system-specs]: !linux/system-specs.md
 [system-packages]: !linux/packages.md
-
+[accounts]: !linux/accounts.md
+[scheduled-jobs]: !linux/scheduled-jobs.md
 
 * [Introduction][intro]
 
@@ -94,8 +97,10 @@ title: Linux
 * Scripts
   - [Exécuter un script][script]
   - [Variables][variable]
+  - [Tableaux][var-array]
   - [if/else][flow-control]
   - [Boucles][flow-loop]
+  - [Fonctions][flow-function]
   - [Interraction utilisateur][flow-user]
 
 * Processus
@@ -106,7 +111,7 @@ title: Linux
   - [Multiplexeur de terminal][multiplexer]
 
 * Comptes
-  - [Utilisateurs & groupes](!linux/accounts.md)
+  - [Utilisateurs & groupes][accounts]
 
 * Boot
   - [Théorie: matériel][hardware-overview]
@@ -128,6 +133,9 @@ title: Linux
   - [Ressources & utilisation][system-specs]
   - [Paquets & gestionnaires de paquet][system-packages]
 
+* Services
+  - [Tâches récurrentes][scheduled-jobs]
+
 * Utilitaires
   - [Regex POSIX][regex-posix]
   - [Awk][awk]
@@ -139,4 +147,3 @@ title: Linux
 
 * APT [1 &#x21F2;](https://itsfoss.com/apt-vs-apt-get-difference/)
 * Firewall: [Iptables][iptables], UFW [1 &#x21F2;](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-9)
-* Planification tâches: [crontab][crontab]

@@ -208,7 +208,7 @@ category: Linux, Packages
 
   3. de tenir à jour les applications avec leur version la plus récente, grâce aux utilitaires permettant de comparer les versions des applications installées aux versions disponibles, et de les mettre à jour à la volée
 
-* apt nécessite d'avoir une connexion à internet (alors que dpkg se charge d'installer des fichiers .dpkg téléchargés)
+* apt nécessite d'avoir une connexion à internet alors que dpkg se charge d'installer des fichiers .dpkg téléchargés
 
   `apt` et `apt-get` sont deux commandes très similaires: apt est une commande plus récente et qui ajoute des fonctionnalités graphiques, comme l'affichage d'une barre de progression. Typiquement, on utilise apt quand on utilise un terminal et apt-get quand on utilise un script (ex Dockerfile).
 

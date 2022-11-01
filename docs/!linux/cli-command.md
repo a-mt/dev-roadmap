@@ -121,7 +121,7 @@ Il existe 3 grands formats d'option, acceptés ou non suivant la commande:
 
 ## Alias
 
-* Un alias peut être utilisé pour mapper une commande à un nom plus court ou ajouter des options par défaut à une commande.
+* Un alias peut être utilisé pour définir une commande personnalisée, soit plus généralement mapper une commande à un nom plus court ou ajouter des options par défaut à une commande.
 
   ``` bash
   $ type ls
@@ -140,7 +140,7 @@ Il existe 3 grands formats d'option, acceptés ou non suivant la commande:
   ```
 
 * `alias` permet de créer un alias  
-  Ne vaut que pour le shell en cours. Pour qu'un alias existe toujours, il faut l'ajouter à un fichier d'initialisation
+  Ne vaut que pour le shell en cours. Pour qu'un alias existe toujours, il faut l'ajouter à un fichier d'environnement
 
   ``` bash
   $ alias ls='ls --color=auto'
@@ -148,7 +148,7 @@ Il existe 3 grands formats d'option, acceptés ou non suivant la commande:
   ls is aliased to `ls --color=auto'
   ```
 
-* Sans arguments, `alias` liste tous les alias qui existent
+* Sans arguments ou avec l'option -p (print), `alias` liste tous les alias qui existent
 
   ``` bash
   $ alias
@@ -163,3 +163,10 @@ Il existe 3 grands formats d'option, acceptés ou non suivant la commande:
   alias ll='ls -alF'
   alias ls='ls --color=auto'
   ```
+
+  Ou on peut afficher la valeur d'un alias:
+
+  ``` bash
+  $ alias l
+  alias l='ls -CF'
+  ````

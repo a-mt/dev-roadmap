@@ -3,6 +3,14 @@ title: Permissions
 category: Linux, Fichiers
 ---
 
+* Note: Le *contrôle d'accès* consiste à définir des règles qui indiquent qui a le droit de faire quoi — par exemple, qui peut modifier un fichier. Il existe deux méthodes de contrôle d'accès sous Linux:
+
+  - le contrôle d'accès discrétionnaire (Discretionary Access Control, DAC)  
+  - et le contrôle d'accès obligatoire (Mandatory Access Control, MAC).  
+    Le contrôle d'accès basé sur des règles (Rule-Based Access Control, RBAC) en est un sous-ensemble.
+
+  Les permissions affichées par `ls -l` sont au centre du contrôle d'accès discrétionnaire (DAC), qui est le seul type auquel on va s'intéresser ici.
+
 ## Comment les permissions sont appliquées
 
 ### Propriétaires du fichier

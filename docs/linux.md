@@ -64,6 +64,8 @@ title: Linux
 [system-packages]: !linux/packages.md
 [accounts]: !linux/accounts.md
 [scheduled-jobs]: !linux/scheduled-jobs.md
+[time]: !linux/time.md
+[ntp]: !linux/ntp.md
 
 * [Introduction][intro]
 
@@ -135,6 +137,8 @@ title: Linux
 
 * Services
   - [Tâches récurrentes][scheduled-jobs]
+  - [Date & temps][time]
+  - [NTP][ntp]
 
 * Utilitaires
   - [Regex POSIX][regex-posix]

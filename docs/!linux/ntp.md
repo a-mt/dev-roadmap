@@ -1,6 +1,6 @@
 ---
-title: Transférer des données
-category: NTP
+title: NTP
+category: Linux
 ---
 
 ## Théorie
@@ -11,20 +11,16 @@ category: NTP
 
 * Chaque niveau de la hiérarchie est appelé une *strate* (*stratum* en anglais) est est numéroté de 0 à 15:
 
-  - strate 0: sont les machines qui mesurent le temps. Seuls les serveurs NTP de la strate 1 sont autorisés à obtenir l'heure de ces machines
+  - Strate 0: sont les machines qui mesurent le temps. Seuls les serveurs NTP de la strate 1 sont autorisés à obtenir l'heure de ces machines
+  - Strate 1: sont les serveurs NTP directement connectés aux machines de la strate 0
+  - Strate 2: sont les serveurs NTP autorisés à obtenir l'heure exacte des serveurs NTP strate 1, etc.
+  - Un "appareil de strate 16" désigne un appareil dont l'heure n'est pas synchronisée ou inexacte.
 
-  - state 1: sont les serveurs NTP directement connectés aux machines de la strate 0
-
-  - strate 2: sont les serveurs NTP autorisés à obtenir l'heure exacte des serveurs NTP strate 1, etc.
-
-  ![](https://i.imgur.com/nEWSKRz.png)
-
-  Un "appareil de strate 16" désigne un appareil dont l'heure n'est pas synchronisée ou inexacte.
+  ![](https://i.imgur.com/nEWSKRzm.png)
 
 * Cette approche a longtemps fonctionné, mais en 2005 un pool NTP a été crée pour pallier à certains abus du niveau de state 1 — qui causait des retards.
 
-  Un pool est groupe relativement important de serveurs bénévoles, qui obtiennent généralement leur temps d'une strate 3 ou 4 et se mettent à disposition pour répondre à des strates supérieures. Les serveurs du pool tournent régulièrement, ainsi aucun serveur n'est submergé et le temps fourni reste relativement précis.
-
+  Un *pool* est un groupe relativement important de serveurs bénévoles, qui obtiennent généralement leur temps d'une strate 3 ou 4 et se mettent à disposition pour répondre à des strates supérieures. Les serveurs du pool tournent régulièrement, ainsi aucun serveur n'est submergé et le temps fourni reste relativement précis.  
   Il existe des pools par continent, par pays, et dans certains cas, par ville. Pour plus d'infos: [ntppool.org](https://www.ntppool.org/en/)
 
 * Sous Linux, il existe plusieurs services NTP possibles: ntpd ou chrony.

@@ -44,7 +44,6 @@ title: Linux
 [sed]: !linux/sed.md
 [grep]: !linux/grep.md
 [vim]: !linux/vim.md
-[crontab]: !linux/crontab.md
 [iptables]: !linux/iptables.md
 
 [hardware-overview]: !linux/hardware-overview.md
@@ -66,6 +65,10 @@ title: Linux
 [scheduled-jobs]: !linux/scheduled-jobs.md
 [time]: !linux/time.md
 [ntp]: !linux/ntp.md
+[locale]: !linux/locale.md
+[email]: !linux/email.md
+[print]: !linux/print.md
+[logging]: !linux/logging.md
 
 * [Introduction][intro]
 
@@ -137,8 +140,11 @@ title: Linux
 
 * Services
   - [Tâches récurrentes][scheduled-jobs]
-  - [Date & temps][time]
-  - [NTP][ntp]
+  - [Date & temps][time], [NTP][ntp]
+  - [Locale][locale]
+  - [Email][email]
+  - [Impression][print]
+  - [Logs][logging]
 
 * Utilitaires
   - [Regex POSIX][regex-posix]

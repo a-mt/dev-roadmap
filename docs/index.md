@@ -321,6 +321,7 @@ searchbar: true
   - Web templates: [BootstrapMade](https://bootstrapmade.com/), [WrapBootstrap](https://wrapbootstrap.com/), [StartBootstrap](https://startbootstrap.com/), [carrd.co](carrd.co)
 
 - Autres
+  - [Gitlab Markdown](https://docs.gitlab.com/ee/user/markdown.html#gitlab-specific-references)
   - [ES6 Compat table](https://kangax.github.io/compat-table/es6/)
   - [Éditeur JSON](http://jsoneditoronline.org/)
   - [Convertir YAML](http://yaml-online-parser.appspot.com/)

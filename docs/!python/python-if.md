@@ -55,6 +55,20 @@ On peut également utiliser un tuple:
 ("is not", "is")[isPalindrome(txt)]
 ```
 
+### Switch
+
+À partir de Python 3.10
+
+``` python
+match animal:
+    case "bird":
+        klass = Bird
+    case "dog":
+        klass = Dog
+    case _:
+        raise NotImplementedError(f"{animal} is not handled")
+```
+
 ## For
 
 * Boucler n fois

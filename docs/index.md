@@ -320,6 +320,10 @@ searchbar: true
   - [Structured Data Markup Helper](https://www.google.com/webmasters/markup-helper/u/0/?hl=fr), [Rich Snippet doc](https://developers.google.com/search/docs/guides/search-gallery), [SEOquake](https://www.seoquake.com/)
   - Web templates: [BootstrapMade](https://bootstrapmade.com/), [WrapBootstrap](https://wrapbootstrap.com/), [StartBootstrap](https://startbootstrap.com/), [carrd.co](carrd.co)
 
+- Diagram
+  - [UML](https://plantuml.com/)
+  - [Flowcharts](https://whimsical.com)
+
 - Autres
   - [Gitlab Markdown](https://docs.gitlab.com/ee/user/markdown.html#gitlab-specific-references)
   - [ES6 Compat table](https://kangax.github.io/compat-table/es6/)

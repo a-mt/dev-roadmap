@@ -134,3 +134,74 @@ Rappel: Le fichier doit également avoir les droits d'execution au même niveau 
   $ ls -l file
   -rwxr-xr-- 1 am am 0 juil. 21 13:40 file
   ```
+
+## Attributs étendus
+
+* Les attributs étendus (*extended attributes*) associent aux fichiers des métadonnées qui ne sont pas interprétées directement par le système de fichier.  
+  Les valeurs sont stockées dans l'inode du fichier et ne peuvent être modifiées que par l'utilisateur root.
+
+* Il existe 4 espaces de nom d'attributs:
+  - <ins>system</ins>  
+    Sont des attributs utilisés par le kernel pour stocker des objets systèmes, tels que les ACL
+
+  - <ins>security</ins>  
+    Sont des attributs utilisés par les modules de sécurité du kernel, tel que SELinux.  
+    Ils sont également utilisé pour implémenter des [capabilities](https://man7.org/linux/man-pages/man7/capabilities.7.html)
+
+  - <ins>trusted</ins>    
+    Sont des attributs visibles et accessibles uniquement par les processus d'administration (processus qui ont la capability CAP_SYS_ADMIN), comme `mount`
+
+  - <ins>user</ins>  
+    Sont des attributs pouvant être attribués aux fichiers et répertoires pour stocker des informations supplémentaires arbitraires, telles que le type MIME ou l'encodage. Ces attributs ne sont autorisés que sur les fichiers normaux et répertoires.
+
+    L'accès aux attributs étendus utilisateur est restreint au propriétaire et aux utilisateurs pour lesquels le sticky bit est activé
+
+* On peut visualiser ces attributs avec `lsattr` 
+
+  ```
+  $ lsattr filenmame
+  ```
+
+  et les définir avec `chattr`.
+
+  ```
+  $ chattr [+|-|=mode] filename
+  ```
+
+* Il existe de nombreux attributs, on peut notamment citer:
+
+  - i: immutable  
+    Un fichier immutable ne peut pas être modifié pas (même par root). Il ne peut ni être supprimé ni renommé, aucun lien dur ne peut être crée vers de fichier et aucune donnée ne peut y êtyre écrit. Seul root peut définir ou supprimer cet attribut
+
+  - a: append-only  
+    Un fichier append-only ne peut être ovuert qu'en mode append pour l'écriture. Seul root peut définir ou effacer cet attribut
+
+  - d: no-dump  
+    Un Fichier no-dump est igoré lors de l'exécution du programme dump. C'est utile pour ne perdre du temps à sauvegarder les fichiers de swap et de cache
+
+  - A: no-atime-update  
+    Un fichier no-atime-update ne modifie pas sa valeur atime (temps d'accès) lorsque le fichier est consulté sans modification. Cela peut améliorer les performances de certains systèmes, en résuidant le nombre d'entrées/sorties sur le disque  
+
+  ``` bash
+  $ echo "Hello World" > file
+  $ lsattr file
+  --------------e----- file
+  $ lsattr -l file
+  file                         Extents
+  $
+  $ sudo chattr +a file
+  $ lsattr -l file
+  file                         Append_Only, Extents
+  $
+  $ echo "Hello Bob" > file
+  bash: file: Operation not permitted
+  $ echo "Hello Bob" >> file
+  $ cat file
+  Hello World
+  Hello Bob
+  $
+  $ sudo chattr -a file
+  $ echo "Hello Bob" > file
+  $ cat file
+  Hello Bob
+  ```

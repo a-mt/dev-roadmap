@@ -80,6 +80,13 @@ Lorsqu'un fichier ou répertoire est créé, le groupe en cours est assigné com
   drwxrwxr-x 2 am adm 4096 juil. 21 15:38 newdir
   ```
 
+  On peut également afficher le masque en mode symbolique:
+
+  ``` bash
+  $ umask -S
+  u=rwx,g=rwx,o=rx
+  ```
+
 * Pour modifier le masque par défaut, passer le nouveau masque en argument à `umask`:
 
   ``` bash
@@ -96,4 +103,12 @@ Lorsqu'un fichier ou répertoire est créé, le groupe en cours est assigné com
   $ mkdir newdir2
   $ ls -ld newdir2
   drwxr-x--x 2 am adm 4096 juil. 21 15:42 newdir2
+  ```
+
+  Et on peut définir le masque en mode symbolique:
+
+  ``` bash
+  $ umask u=r,g=w,o=rw
+  $ umask
+  0351
   ```

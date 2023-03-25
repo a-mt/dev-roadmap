@@ -36,6 +36,20 @@ category: Linux
     /swapfile                               file      2097148 0 -2
     ```
 
+    ``` bash
+    $ swapon
+    NAME      TYPE      SIZE USED PRIO
+    /dev/dm-2 partition 3.8G   0B   -2
+
+    $ swapon -s
+    Filename                Type        Size    Used    Priority
+    /dev/dm-2                               partition   4001276 0   -2
+
+    $ cat /proc/swaps
+    Filename                Type        Size        Used        Priority
+    /dev/dm-2                               partition   4001276     0       -2
+    ```
+
 ## Afficher la swap utilisée
 
 * `free` permet d'afficher la quantité de swap utilisée

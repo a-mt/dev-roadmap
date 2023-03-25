@@ -5,7 +5,7 @@ category: IT
 
 ## Rappels sur les partitions
 
-* Les disques (durs ou électroniques) sont divisés en partitions, différentes sections du disque qui peuvent être utilisées pour cloisonner des fichiers pour différents usages — différents OS, des outils de réparation, etc.
+* Les disques (durs ou électroniques) sont divisés en partitions. Une partition est une section du disque qui peut être utilisée pour cloisonner des fichiers pour différents usages — on peut créer plusieurs partitions pour stocker différents OS, des outils de réparation, etc.
 
   ![](https://i.imgur.com/IU8I1gA.jpg)
 
@@ -28,12 +28,12 @@ category: IT
 * Ce n'est pas tout d'écrire des données sur le disque (dans des partitions), il faut ensuite pouvoir les retrouver. Pour ce faire, les données doivent suivre une organisation connue. Cette organisation est appelée un *système de gestion de fichier*, ou simplement *système de fichier* (*filesystem* en anglais) — ce qui peut porter à confusion puisque suivant le contexte ce terme peut désigner le SGF ou la hiérarchie des répertoires.
 
 * Un SGF permet
-
-  1. de s'abstraire de l'architecture matérielle: plutôt que de demander "les octets entre les secteurs 12802 et 12837", on peut demander "photos/koaloa.jpg"
+  
+  1. de s'abstraire de l'architecture matérielle: plutôt que de demander "les octets entre les secteurs 12802 et 12837", on peut demander "photos/koala.jpg"
   2. de gérer l'allocation des secteurs lors de la création, modification et suppression de fichiers
   3. assurer l'intégrité des données en cas de crash ou panne de courant
   4. mettre en cache les données susceptibles d'être lues dans le futur
-
+  
 * Il existe de nombreux SGF, les plus courants sont:  
 
   - sous <ins>Windows</ins>: fat32, ntfs
@@ -43,7 +43,7 @@ category: IT
 
 - <ins>ext2</ins> (*2nd extended filesystem*)  
   SGF Linux  
-  Pour: fonctionne bien avec les disques dur de petite taille  
+  Pour: fonctionne bien avec les disques durs de petite taille  
   Contre: aucune possibilité de journalisation, ce qui le rend susceptible d'entraîner une perte de données en cas de panne de courant — si le système s'éteint de manière brusque, le système de fichier peut être corrompu et au moment de le rallumer, il faudra utiliser un outil de réparation pour réparer le système de fichiers.
 
 - <ins>ext3</ins> (*3rd extended filesystem*)  
@@ -97,7 +97,9 @@ category: IT
 
   * <ins>superblock</ins>:  
     Le superblock est une zone située au début du système de fichiers (bloc 0) utilisée pour stocker des informations sur le système de fichiers — dont le type de système de fichiers, sa taille et la taille des blocs.  
-    Le superblock est un composant clé du système de fichiers: s'il est corrompu, le système de fichiers est inaccessible, raison pour laquelle une copie du superbloc est ajoutée dans chaque groupe de bloc.
+    Le superblock est un composant clé du système de fichiers: s'il est corrompu, le système de fichiers est inaccessible, raison pour laquelle une copie du superblock est ajoutée dans chaque groupe de bloc.
+
+  ![](https://i.imgur.com/3N89SX3.png)
 
     <details>
     <summary>fsstat</summary>
@@ -135,7 +137,7 @@ category: IT
     </pre>
     </details>
 
-  * <ins>group descriptor table</ins>:  
+  * <ins>group descriptors</ins>:  
     Le système de fichiers est divisé en sections plus petites, des *groupes de bloc*.  
     Une table (*group descriptor table*) située à la suite du superblock (bloc 1) contient la liste de ces groupes.
 
@@ -214,7 +216,7 @@ category: IT
       </ul>      
       </details>
 
-    * <ins>data area</ins>: (*blocs de données*)  
+    * <ins>data blocks</ins>: (*blocs de données*)  
       Les blocs de données contiennent l'ensemble des données du fichier (= le contenu du fichier).  
       Pour un répertoire, le contenu est la liste des fichiers qui se trouvent à l'intérieur (nom et numéro d'inode de chacun des fichiers).
 
@@ -222,13 +224,13 @@ category: IT
 
       Les blocs de données sont formés de blocs logiques de 0.5, 1, 2 ou 4 Ko (par défaut). La même taille de bloc est appliquée pour tout le système de fichiers: si la taille d'un bloc est 4 Ko, tout fichier fera au minimum 4 Ko. S'il y a beaucoup de fichiers de taille inférieurs à 4 Ko (notamment des répertoires ou des liens), utiliser des blocs plus petits peut permettre de gagner de la place sur le disque... mais donne plus de blocs à gérer pour des fichiers plus gros, ce qui peut surcharger le système — donc à utiliser avec précaution.
 
-    * <ins>block bitmap</ins>:  
+    * <ins>data blocks bitmap</ins>:  
       La liste des blocs disponibles peut être retrouvée en passant en revue l'ensemble des inodes occupés mais cette opération prendrait beaucoup de temps: la liste des blocs disponibles est donc stockée sur le disque. Dans le système ext4, chaque groupe de bloc inclut une zone réservée pour stocker le "bitmap" des blocs libres, une structure de données où chaque bit représente si un bloc est disponible ou non. Avec un disque de 4 To et des blocs de 4 Ko, le nombre de bits nécessaires serait 1.073.741.824, soit un bitmap de 128 Mo.
 
     * <ins>inode bitmap</ins>:  
       De même que le groupe contient un bitmap permettant de savoir quels blocs de données sont disponibles, il contient également un bitmap permettant de savoir quels inodes sont inaffectés.
 
-      Effacer un fichier avec la commande `rm` efface simplement l'inode. Les blocs de données sont alors déclarés commes libres et seront éventuellement écrasés lors de la création de nouveaux fichiers. Des logiciels spécifiques permettent de passer en revue l’ensemble des blocs de données libres pour détecter des fichiers effacés qui n’auraient pas encore été écrasés par le contenu de nouveaux fichiers.
+      Effacer un fichier avec la commande `rm` efface simplement l'inode. Les blocs de données sont alors déclarés comme libres et seront éventuellement écrasés lors de la création de nouveaux fichiers. Des logiciels spécifiques permettent de passer en revue l’ensemble des blocs de données libres pour détecter des fichiers effacés qui n’auraient pas encore été écrasés par le contenu de nouveaux fichiers.
 
 ---
 

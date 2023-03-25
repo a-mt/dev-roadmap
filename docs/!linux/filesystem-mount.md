@@ -108,6 +108,12 @@ category: Linux
     $ df -hT
     ```
 
+* Si le système de fichier est monté avec les mauvais arguments, alors on utilise remount. Pour remonter le système de fichier avec les droits en écriture:
+
+    ``` bash
+    $ sudo mount -o remount,rw /
+    ```
+
 ## Démonter une partition
 
 * Pour plus de performances, Linux garde des parties du système de fichiers en mémoire. Si un support amovible, comme une clé USB, est retiré avant que les buffers en mémoire ne soient vidés, certaines données peuvent ne pas être écrites, ce qui peut entraîner une perte de données voire même une corruption du système de fichiers. Démonter le périphérique vide tous les buffer et permet d'être sûr que le périphérique peut être retiré sans soucis.
@@ -250,6 +256,40 @@ category: Linux
   mount /home
   ```
 
+### automount
+
+* Linux permet de monter un système de fichier uniquement si nécessaire. Historiquement, on utilisaut autofs — ce qui nécessite le package autofs et des configuration dans /etc.  
+  Aujourd'hui, les systèmes basés sur systemd disposent de fonctions de montage automatique directement intégrées dans systemd. Pour l'activer, il suffit d'ajouter les options de montage appropriées. Par exemple:
+
+  ``` bash
+  $ grep automount /etc/fstab
+  LABEL=Sam128 /SAM ext4 noauto,x-systemd.automount,x-systemd.device-timeout=10,x-systemd.idle-timeout=30 0 0
+  ```
+
+  - noauto: ne pas monter au démarrage
+  - x-systemd.automount: monter automatiquement lorsqu'on essaie d'accéder au point de montage
+  - x-systemd.automount.device-timeout=10: si le périphérique ne répond pas, échouer au bout de 10 secondes d'attente
+  - x-systemd.automount.idle-timeout=30: si le périphérique n'est pas utilisé pendant 30 secondes, le démonter
+
+  ``` bash
+  $ df -h | grep SAM
+  $ ls /SAM
+  ISO_IMAGES
+  $ df -h | grep SAM
+  /dev/sdb1 ext4 118G 71G 41G 64% /SAM
+  $
+  $ sleep 40
+  $ df -h | grep SAM
+  $
+  ```
+
+* Après avoir modifié le fichier /etc/fstab, redémarrer ou lancer les commandes suivantes:
+
+  ```
+  $ sudo systemctl daemon-reload
+  $ sudo systemctl restart local-fs.target
+  ```
+
 ### Unités de montage
 
 * Une des tâches de systemd est de monter le système de fichiers virtuel lorsque le système démarre, et donc de lire /etc/fstab.  
@@ -290,4 +330,45 @@ category: Linux
     /dev            (day)
     /bin            (brings)
     /lib            (laughs)
+    ```
+
+---
+
+## Loop device
+
+* Un appareil *loop* permet de traiter un fichier du disque dur comme s'il s'agissait d'un appareil de type bloc.  
+  On place un couche de système de fichiers au-dessus d'une autre, ce qui a un effet négatif sur les performances. En revanche, c'est pratique pour jouer avec des partitions
+
+* `losetup` permet de gérer des appareils loop  
+  Par exemple:
+
+    ``` bash
+    # Créer un fichier contenant 1GB de zéros
+    $ dd if=/dev/zero of=imagefile bs=1M count=1024
+
+    # Trouver le prochain appareil loop disponible
+    $ sudo losetup -f
+    /dev/loop1
+
+    # Associer le fichier avec
+    $ sudo losetup /dev/loop1 imagefile
+    ```
+    ``` bash
+    # Jouer avec
+    $ sudo fdisk /dev/loop1
+
+    $ sudo mount /dev/loop1p1 /mnt
+    $ touch /mnt/file1
+    $ sudo mount -o remount,ro /mnt
+    $ touch /mnt/file2
+    ```
+    ``` bash
+    # Démonter
+    $ sudo umount /mnt
+
+    # Supprimer l'association
+    $ sudo losetup -d /dev/loop2
+
+    # Supprimer le fichier
+    $ rm imagefile
     ```

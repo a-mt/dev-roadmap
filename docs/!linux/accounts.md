@@ -33,7 +33,7 @@ La commande principale pour créer un compte utilisateur est useradd, mais il y 
 
 * `useradd` permet de créer un utilisateur
 
-  ```
+  ``` bash
   $ sudo useradd bob --no-create-home --no-user-group --gid 1000
   $
   $ sudo getent passwd bob
@@ -46,9 +46,17 @@ La commande principale pour créer un compte utilisateur est useradd, mais il y 
   uid=1001(bob) gid=1000(am) groups=1000(am)
   ```
 
+  ``` bash
+  sudo useradd -m -c "Eric Dolphy" -s /bin/bash edolphy
+  su passwd edolphy
+
+  grep edolphy /etc/passwd /etc/group
+  sudo userdel -r edolphy
+  ```
+
   L'option -D permet voir les configs par défaut
 
-  ```
+  ``` bash
   $ useradd -D
   GROUP=100
   HOME=/home

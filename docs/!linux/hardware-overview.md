@@ -113,9 +113,9 @@ une partie matérielle (*hardware*) et logicielle (*software*). Pour la partie m
 ## Composants externes
 
 Les composants externes sont également appelés *périphériques*.
-- pour les périphériques d'entrée, on trouve notamment: le clavier, la souris, le stylet optique, le scanner
+- pour les périphériques d'entrée, on trouve notamment: le clavier, la souris, le stylet optique, le scanner, la caméra
 - pour les périphériques de sortie: l'écran, l'imprimante, les enceintes
-- et les périphériques d'entrée/sortie: le disque dur, la clé usb
+- et les périphériques d'entrée/sortie: le disque dur externe, la clé usb
 
 ### Lecteur optique
 
@@ -220,15 +220,48 @@ Les composants externes sont également appelés *périphériques*.
 
 ### Ports & connecteurs
 
-* Un *port* est une interface permettant de connecter un périphérique à l'ordinateur.  
-  On peut dire qu'un ordinateur a une interface ou un port USB.  
-  Les ports sont des prises femelles
-
-  ![](https://i.imgur.com/TZgLRJnm.png)
+* Un *port* est une prise femelle.  
+  C'est une interface permettant de connecter un périphérique à l'ordinateur, on peut dire qu'un ordinateur a une interface ou un port USB.
 
 * Un *connecteur* est une prise mâle, qui permet de connecter un appareil à un port
 
-  ![](https://i.imgur.com/vSoeN8Km.png)
+  ![](https://i.imgur.com/TZgLRJnl.png)
+
+  ![](https://i.imgur.com/vSoeN8Kl.png)
+
+#### Standards
+
+* Il existe tout un tas de connecteurs
+
+  - Le plus courant est le connecteur USB (*Universal Serial Bus*).  
+    Il en existe différentes variantes:
+
+    ![](https://i.imgur.com/6pTEvBw.png)
+
+  - FireWire est un connecteur spécialisé conçu par Apple mais il n'a jamais vraiment décollé.  
+    Aujourd'hui, l'utilisation de FireWire est rare.
+
+    ![](https://i.imgur.com/zrFcicl.png)
+
+  - VGA est un ancien connecteur, qui ne peut prendre en charge que des écrans à faible résolution (640x480). On ne trouve donc pas de connecteurs VGA sur les équipements modernes
+
+    ![](https://i.imgur.com/ZNNrIzM.png)
+
+  - DVI est une norme encore plus ancienne mais qu'on peut encore trouver aujourd'hui. Les connecteurs DVI prennent en charge la vidéo HD — une résolution jusqu'à 1080p
+
+    ![](https://i.imgur.com/J6QI5QJ.png)
+
+  - HDMI est une norme qui a la particularité de transporter de l'audio et vidéo sur le même câble, elle est couramment utilisée pour connecter les ordinateurs et téléviseurs ou moniteurs.
+
+    ![](https://i.imgur.com/bHhHZsO.png)
+
+  - DisplayPort prend en charge la vidéo à très haute résolution, jusqu'à 5K et au-delà.
+
+    ![](https://i.imgur.com/PyTxqvH.png)
+
+  - Les moniteurs modernes peuvent également être connectés à l'aide de connecteurs USB-C. Ils peuvent fonctionner aux résolutions maximales disponibles aujourd'hui et envoyer de l'audio, de la vidéo et de l'alimentation sur le même câble si utilisés avec la norme Thunderbolt.
+
+    Thunderbolt est une norme d'interface matérielle conçue par Intel, qui permet d'envoyer des données et de l'alimentation sur le même câble. Thunderbolt utilise les connecteurs existants: les deux premières versions de Thunderbolt utilisaient des connecteurs mini DisplayPort, et les versions plus récentes (Thunderbolt 3 et 4) utilisent des connecteurs USB-C.
 
   [Guide visuel des ports et connecteurs](https://www.dell.com/support/kbdoc/fr-fr/000132029/a-guide-to-the-external-ports-and-connectors-on-a-dell-computer)
 

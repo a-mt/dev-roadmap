@@ -575,43 +575,75 @@ Il existe tout un tas de méthodes magiques permettant de surcharger le résulta
 
 ### Enter
 
-Les méthodes magiques `__enter__` et `__exit__` permettent d'implémenter des objets qui peuvent être utilisés avec le mot-clé `with`.
+* Les méthodes magiques `__enter__` et `__exit__` permettent d'implémenter des objets qui peuvent être utilisés avec le mot-clé `with`.
 
-* La méthode `__enter__` est invoquée au début du bloc `with`.  
-  Elle peut retourner ou non une valeur, que l'on peut récupérer avec `as`.
+  * La méthode `__enter__` est invoquée au début du bloc `with`.  
+    Elle peut retourner ou non une valeur, que l'on peut récupérer avec `as`.
 
-* La méthode `__exit__` est invoquée à la fin du bloc `with`, qu'une exception ait été levée ou non, et peut "manger" des exceptions.
+  * La méthode `__exit__` est invoquée à la fin du bloc `with`, qu'une exception ait été levée ou non, et peut "manger" des exceptions.
 
-``` python
-class test:
-    def __enter__(self):
-        print("__enter__")
-        return "Tout va bien"
+  ``` python
+  class test:
+      def __enter__(self):
+          print("__enter__")
+          return "Tout va bien"
 
-    def __exit__(self, err_type, err_value, err_traceback):
-        print("__exit__")
+      def __exit__(self, err_type, err_value, err_traceback):
+          print("__exit__")
 
-        # Ignorer les exceptions de type "Exception"
-        return err_type == Exception
+          # Ignorer les exceptions de type "Exception"
+          return err_type == Exception
 
-with test() as val:
-    print(val)
-    raise Exception("whatever")
-    print("Inside, après raise")
+  with test() as val:
+      print(val)
+      raise Exception("whatever")
+      print("Inside, après raise")
 
-print("Outside")
-'''
-__enter__
-Tout va bien
-__exit__
-Outside
-'''
-```
+  print("Outside")
+  '''
+  __enter__
+  Tout va bien
+  __exit__
+  Outside
+  '''
+  ```
 
-Un des exemple les plus connus de cas d'utilisation du bloc `with` est avec `open`, ce qui permet d'ouvrir un fichier en lecture et "manger" les exceptions de type FileNotFoundError.
+* Un des exemple les plus connus de cas d'utilisation du bloc `with` est avec `open`, ce qui permet d'ouvrir un fichier en lecture et "manger" les exceptions de type FileNotFoundError.
 
-``` python
-with open("x.txt") as f:
-    data = f.read()
-    print(data)
-```
+  ``` python
+  with open("x.txt") as f:
+      data = f.read()
+      print(data)
+  ```
+
+* On peut également implémenter un context manager en utilisant contextlib. Les deux exemples suivants sont équivalents:
+
+  ``` python
+  class CustomOpen(object):
+      def __init__(self, filename):
+          self.file = open(filename)
+
+      def __enter__(self):
+          return self.file
+
+      def __exit__(self, ctx_type, ctx_value, ctx_traceback):
+          self.file.close()
+
+  with CustomOpen('file') as f:
+      contents = f.read()
+  ```
+
+  ``` python
+  from contextlib import contextmanager
+
+  @contextmanager
+  def custom_open(filename):
+      f = open(filename)
+      try:
+          yield f
+      finally:
+          f.close()
+
+  with custom_open('file') as f:
+      contents = f.read()
+  ```

@@ -10,9 +10,17 @@ category: Linux, Packages
 * La convention de nommage des fichiers .rpm est comme suit:
 
   ```
+  <name>-<version>-<release>.<distro>.<architecture>.rpm
+  ```
+
+  Par exemple:
+
+  ```
   $ ls -1 *.rpm
   iotop-0.6-4.el7.noarch.rpm
   iptraf-ng-1.1.4-7.el7.x86_64.rpm
+  sed-4.5-2.e18.x86_64.rpm
+  sed-4.5-2.e18.src.rpm
   ```
 
   1. Le nom du package (iotop)
@@ -25,6 +33,17 @@ category: Linux, Packages
 ## rpm
 
 * La commande `rpm` est un utilitaire permettant d'installer, supprimer et fournir des informations sur les packages Red Hat — fichiers .rpm
+
+* La base de données de rpm se situe dans le répertoire /var/lib/rpm. Un autre répertoire peut ête spécifié avec l'option --dbpath. Cela peremt notamment d'examiner une base de données RPM copiée à partir d'un autre système
+
+* Des configs par défaut peuvent être spécifiées. Par défaut, rpm cherche les fichiers suivants:
+
+  1. /usr/lib/rpm/rpmrc
+  2. /etc/rpmrc
+  3. ~/.rpmrc
+
+  Notons que tous les fichiers sont lus, rpm ne s'arrête pas au premier fichier trouvé.  
+  Un autre fichier peut être spécifié avec l'option --rcfile
 
 ### checksig
 
@@ -46,15 +65,35 @@ category: Linux, Packages
 
   ![](https://i.imgur.com/uxhJw7f.png)
 
+* Pour lister tous les fichiers dans un package:
+
+  ```
+  $ rpm -qilp package.rpm
+  ```
+
 ### update
 
-* `U` permet de mettre à jour
+* `U` permet de mettre à jour  
+  Si le package n'est pas déjà installé, alors rpm installe le package sans lever d'erreur
 
   ```
   rpm -Uvh fichier.rpm
   ```
 
   ![](https://i.imgur.com/xiNYz0V.png)
+
+* Pour installer une ancienne version, il faut ajouter l'option --oldpackage
+
+### freshening
+
+* `F` permet de rafraîchir des packages:
+  - si une ancienne version du package est installée, la mise à jour est appliquée
+  - si la version installé est la même que celle du fichier .rpm, rien ne se passe
+  - si aucune version du package n'est installé, alors le package est ignoré
+
+  ```
+  $ sudo rpm -Fvh *.rpm
+  ```
 
 ### erase
 
@@ -76,49 +115,94 @@ category: Linux, Packages
 
   ![](https://i.imgur.com/k9w0ONG.png)
 
-* `l` pour lister les fichiers d'un package
+* Cette option peut être combinée avec d'autres options:
 
-  ```
-  rpm -ql wget
-  ```
+  - `f` pour trouver de quel package un fichier vient
 
-* `i` pour afficher les informations d'un package installé
+    ```
+    rpm -qf /bin/bash
+    ```
 
-  ```
-  rpm -qi wget
-  ```
+  - `l` pour lister les fichiers d'un package donné
 
-  ![](https://i.imgur.com/4w35R98.png)
+    ```
+    rpm -ql wget
+    ```
 
-  Ajouter `p` pour obtenir les informations d'un package non installé — à partir du fichier .rpm
+  - `a` pour afficher tous les packages installés sur le système
 
-  ```
-  rpm -qip fichier.rpm
-  ```
+    ```
+    rpm -qa
+    ```
 
-* `R` pour afficher les dépendances d'un package
+  - `i` pour afficher les informations d'un package installé
 
-  ```
-  rpm -qR iotop
-  ```
+    ```
+    rpm -qi wget
+    ```
 
-  ![](https://i.imgur.com/IKUADEw.png)
+    ![](https://i.imgur.com/4w35R98.png)
 
-* `a` pour lister tous les paquets installés
+  - `p` pour effectuer la requête à partir d'un fichier .rpm au lieu de la base de données
 
-  ```
-  rpm -qa
-  ```
+    ```
+    rpm -qip fichier.rpm
+    ```
 
-* `whatprovides` pour afficher dans quel package se trouve un fichier donné
+  - `R` ou `--requires` pour afficher les dépendances d'un package
 
-  ![](https://i.imgur.com/traRT9b.png)
+    ```
+    rpm -q --requires bash
+    rpm -qp --requires foo-1.0.0-1.noarch.rpm 
+
+    rpm -qR iotop
+    ```
+
+    ![](https://i.imgur.com/IKUADEw.png)
+
+
+  - `--whatprovides` pour afficher dans quel package se trouve un fichier donné
+
+    ```
+    rpm -q --whatprovides libc.so.6
+    ```
+
+    ![](https://i.imgur.com/traRT9b.png)
 
 ### verify
 
 * `V` pour vérifier un package: s'il n'y a pas de message, c'est qu'il n'y a pas de problème
 
   ![](https://i.imgur.com/94KzUPD.png)
+
+* En cas de problème, le résultat peut contenir des
+
+  - "." (points): indique que le test a réussit
+  - "?" (point d'interrogation): indique que le test n'a pas pu être effectué — par exemple, les permissions du fichier empêchent la lecture
+  - des caractères: indique quel test a échoué
+
+    S : la taille des fichiers diffère
+    M : le mode diffère (autorisations et type de fichier)
+    5 : la somme MD5 diffère
+    D : le numéro majeur/mineur du périphérique ne correspond pas
+    L : incompatibilité du chemin d'accès à readLink
+    U : la propriété de l'utilisateur diffère
+    G : la propriété du groupe diffère
+    T : la date de modification diffère 
+
+  Par exemple:
+
+  ```
+  # taille du fichier, checksum et date de modification
+  $ rpm -V logrotate
+  S.5....T. c /etc/logrotate.conf 
+
+  # fichier manquant
+  $ sudo mv /sbin/logrotate /sbin/logrotate_KEEP
+  $ rpm -V logrotate
+  S.5....T. c /etc/logrotate.conf
+  missing    /usr/sbin/logrotate
+  ```
 
 ### extract
 
@@ -142,7 +226,7 @@ category: Linux, Packages
 
 * `yum` (Yellowdog Updater Modifier) est un gestionnaire de paquet. Même principe que apt mais pour Red Hat: il permet d'installer des packages et leurs dépendances à partir de dépôts de package — nécessite une connexion internet. yum est également utilisé sous Fedora
 
-* La liste des dépôts est située dans le dossier `/etc/yum.repos.d/`  
+* La liste des dépôts est dans le dossier `/etc/yum.repos.d/`  
   Contrairement à apt, yum met à jour sa liste de packages automatiquement.
 
   ![](https://i.imgur.com/DBakila.png)

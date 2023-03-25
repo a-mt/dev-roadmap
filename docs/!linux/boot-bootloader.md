@@ -30,8 +30,7 @@ category: Linux, Boot
 On peut trouver les fichiers utilisés lors du boot dans le système de répertoire virtuel:
 
   * Les différents noyaux et initrd sont placés à la racine de `/boot`  
-    Note: les fichiers vmlinux sont les noyaux Linux, et les fichiers vmlinuz sont la version compressée.   
-    C'est ce qu'on appelle le format kernel, Zimage, big zimage ou encore bzimage
+    Note: les fichiers vmlinux sont les noyaux Linux, et les fichiers vmlinuz sont les noyaux compressés. C'est ce qu'on appelle le format kernel, Zimage, big zimage ou encore bzimage
 
   * Si la partition EFI existe, elle sera généralement montée sur `/boot/efi`
 
@@ -169,3 +168,45 @@ On peut trouver les fichiers utilisés lors du boot dans le système de réperto
   | `set root` | Définit le disque et la partition sur laquelle se trouve le kernel.<br><br> `set root='hd0, msdos1'` indique le premier disque et la première partition MBR (DOS)<br> `set root='hd1, gpt1'` indique le second disque et la première partition GPT<br> `set root='hd0,2'` indique le premier disque et la seconde partition
   | `linux`&nbsp;/&nbsp;`linux16`<br>`linuxefi` | Définit le kernel à charger et ses options
   | `initrd`<br>`initrdefi` | Définit l'emplacement d'initrd — qui peut être une image disque ou système de fichier RAM.
+
+## Paramètres de boot
+
+* Tout ce qui se situe après le fichier vmlinuz est une option.   
+  Ces options dépendent de la distribution et de la version Linux.  
+  Quelques exemples:
+
+  ```
+  linux /boot/vmlinuz-4.15.0-58-generic \
+         root=UUID=5cec328b-bcd6-46d2-bcfa-8430257cd7a5 \
+         ro find_preseed=/preseed.cfg auto noprompt \
+         priority=critical locale=en_US quiet crashkernel=512M-:192M
+  ```
+  ```
+  BOOT_IMAGE=/boot/vmlinuz-4.15.0-58-generic \
+       root=UUID=5cec328b-bcd6-46d2-bcfa-8430257cd7a5\
+       ro find_preseed=/preseed.cfg auto noprompt \
+       priority=critical locale=en_US quiet crashkernel=512M-:192M
+  ```
+  ```
+  linux /boot/vmlinuz-5.19.0 root=UUID=7ef4e747-afae-48e3-90b4-9be8be8d0258 ro quiet
+  ```
+  ```
+  linuxefi /boot/vmlinuz-5.2.9 root=UUID=77461ee7-c34a-4c5f-b0bc-29f4feecc743 ro crashkernel=auto rhgb quiet crashkernel=384M-:128M
+  ```
+
+* Pour consulter la documentation des options:
+
+  ```
+  man bootparam
+  ```
+
+* Fedora et Red Hat utilisent le BLSFG (Boot Loader Specification Configuration), qui modifie l'emplacement de la ligne de commande kernel. Ces informations se trouvent dans /boot/grub2/grubenv ou /boot/loader/entries
+
+* La ligne de commande avec laquelle le système a été lancée peut être consultée dans le fichier /proc/cmdline
+
+  ```
+  $ cat /proc/cmdline
+  BOOT_IMAGE=(hd0,msdos2)/boot/vmlinuz-5.19.0 root=UUID=7f7221b8-60d8-41b9-b643-dfcc80527c37 ro rhgb quiet crashkernel=512M
+  ```
+
+  Toute option qui n'est pas comprise par le kernel sera passé à init (pid = 1), le premier processus lancé

@@ -96,6 +96,8 @@ category: Linux, Applications
   | F       | (flags)<br>1 = Forké mais non executé<br>4 = Utilise les droits super-utilisateur<br>0 = Ni l'un ni l'autre<br>5 = Les deux
   | S       | (state) État du processus
   | PPID    | PID du processus parent
+  | UID     | Utilisateur au nom duquel le processus s'execute
+  | GID     | Groupe auquel le processus est associé
   | C       | Utilisation du CPU: cputime/realtime
   | PRI     | Priorité — entre 0 et -100
   | NI      | Nice — entre -20 et 19

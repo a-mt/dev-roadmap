@@ -270,7 +270,9 @@ searchbar: true
   - [Formulaires](https://forestry.io/blog/5-ways-to-handle-forms-on-your-static-site/)
 
 - Design
-  - [Miniminer des Images](https://tinypng.com/)
+  - [Minimiser des Images](https://tinypng.com/)
+  - [Diagrams](https://app.diagrams.net)
+  - [Flowcharts](https://whimsical.com)
   - [Wireframing](https://designer.gravit.io/)
   - [Créer des Logos/images](https://www.canva.com/)
   - [Identifier une Police](https://www.myfonts.com/WhatTheFont/)

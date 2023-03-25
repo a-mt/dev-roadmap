@@ -231,7 +231,7 @@ console.log("μ".charCodeAt()); // 181
 console.log('Hello World'.charCodeAt(4)); // 111
 ```
 
-En JavaScript, les chaînes de caractères sont enregsitrées en UTF-16.  
+En JavaScript, les chaînes de caractères sont enregistrées en UTF-16.  
 Mais le codage Unicode permet de coder des caractères de longueur variable, de 1 à 4 octets.  
 Or certains symboles Unicode nécessitent plus de 2 octets (c'est le cas des caractères dont le code est supérieur à 2^16 - 1 (65535).). Dans ce cas, `charCodeAt()` renvoie une valeur erronée.
 
@@ -254,7 +254,7 @@ console.log(String.fromCharCode(181)); // µ
 
 `fromCodePoint()` fonctionne pour les caractères de plus de 16 bits.
 
-```
+``` js
 console.log(String.fromCodePoint(128512)); // 😀
 console.log(String.fromCharCode(128512));  // 
 ```

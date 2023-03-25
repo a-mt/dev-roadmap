@@ -113,6 +113,19 @@ category: Linux
   nov. 01 12:31:53 am-XPS-13-7390 systemd-timesyncd[654]: Synchronized to time server 185.125.190.56:123 (ntp.ubuntu.com).
   ```
 
+* `timedatectl` prend des options supplémentaires lorsqu'il utilisé avec systemd-timesynd
+
+  ``` bash
+  # timedatectl
+                 Local time: Sun 2023-03-05 16:13:50 UTC
+             Universal time: Sun 2023-03-05 16:13:50 UTC
+                   RTC time: Sun 2023-03-05 16:13:50
+                  Time zone: Etc/UTC (UTC, +0000)
+  System clock synchronized: yes
+                NTP service: active
+            RTC in local TZ: no
+  ```
+
 ## chrony
 
 * Le daemon NTP ou timesyncd est souvent installé par défaut. Ce n'est pas nécessaire le cas pour chrony, un daemon NTP plus récent

@@ -9,6 +9,8 @@ category: Linux
 
   Notons qu'il est toujours préférable de planifier la création du système de fichier: décider des différents paramètres au moment de formatter le système de fichier, plutôt que de le faire plus tard.
 
+### mke2fs
+
 * Pour formatter une partition de la famille *extended* avec des paramètres personnalisés, on peut utiliser `mke2fs`.  
   Cette commande était à la base destinée à ext2 mais on peut également l'utiliser pour du ext4 avec l'option -t
 
@@ -28,6 +30,8 @@ category: Linux
         [-t fs-type] [-T usage-type ] [-U UUID] [-e errors_behavior][-z undo_file]
         [-jnqvDFSV] device [blocks-count]
   ```
+
+### dumpe2fs
 
 * `dumpe2fs` affiche des informations d'un système de fichiers extended (ext2/ext3/ext4).  
   Affiche le superblock et des informations sur les groupes de blocs du système de fichiers présents sur le périphérique   
@@ -157,6 +161,8 @@ category: Linux
   Checksum:                 0x6c3a7231
   ```
 
+### tune2fs
+
 * `tune2fs` permet d'ajuster les paramètres modifiables des systèmes de fichiers Linux (ext2/ext3/ext4).  
   Penser à le démonter au préalable.
 
@@ -175,19 +181,50 @@ category: Linux
   $ sudo tune2fs /dev/sdb1 -e remount-ro
   ```
 
+  Pour modifier le nombre maximum de montages entre les vérifications du système de fichier:
+
+  ``` bash
+  $ sudo tune2fs -c 25 /dev/sda1
+  ```
+
+  Pour modifier l'intervalle de temps entre les contrôles
+
+  ``` bash
+  $ sudo tune2fs -i 10 /dev/sda1
+  ```
+
 * Il existe d'autres utilitaires pour d'autres systèmes de fichiers:
 
   - <ins>xfs</ins>: xfs_fsr, xfs_admin
   - <ins>btrfs</ins>: btrfs-balance, btrfstune
 
+  [Renommer une partition](https://doc.ubuntu-fr.org/uuid_et_label#renommer_une_partition_en_ligne_de_commande)
+
 ---
 
 ## Vérifier et réparer le système de fichier
 
-* `fsck` (*filesystem check*) permet de vérifier et si nécessaire, réparer, un système de fichiers.  
-  Démonter le système de fichier avant d'utiliser cette commande.
-  Note: fsck est un wrapper qui fait appel à d'autres commandes.
+### fsck
 
+* `fsck` (*filesystem check*) permet de vérifier et si nécessaire, réparer, un système de fichiers.  
+  Il s'agit d'un wrapper faisant en réalité appel à d'autres commandes.
+
+  ``` bash
+  $ ls -lhF /sbin/fsck*
+  -rwxr-xr-x 1 root root  55K Feb  7  2022 /sbin/fsck*
+  -rwxr-xr-x 1 root root  39K Feb  7  2022 /sbin/fsck.cramfs*
+  lrwxrwxrwx 1 root root    9 Oct 31  2018 /sbin/fsck.exfat -> exfatfsck*
+  lrwxrwxrwx 1 root root    6 Jun  2  2022 /sbin/fsck.ext2 -> e2fsck*
+  lrwxrwxrwx 1 root root    6 Jun  2  2022 /sbin/fsck.ext3 -> e2fsck*
+  lrwxrwxrwx 1 root root    6 Jun  2  2022 /sbin/fsck.ext4 -> e2fsck*
+  -rwxr-xr-x 1 root root  59K May 13  2018 /sbin/fsck.fat*
+  -rwxr-xr-x 2 root root 415K Dec 11  2018 /sbin/fsck.jfs*
+  -rwxr-xr-x 1 root root 123K Feb  7  2022 /sbin/fsck.minix*
+  lrwxrwxrwx 1 root root    8 May 13  2018 /sbin/fsck.msdos -> fsck.fat*
+  lrwxrwxrwx 1 root root    8 May 13  2018 /sbin/fsck.vfat -> fsck.fat*
+  ```
+
+* Il est nécessaire de démonter le système de fichier avant d'utiliser cette commande.
   -I pour vérifier ce que fsck va faire, sans qu'il le fasse  
   -C pour afficher une barre de progression pendant l'execution
 
@@ -214,7 +251,7 @@ category: Linux
   2. démonter cette partition pour pouvoir l'examiner / réparer
 
       ``` bash
-      $ sudo unmount /dev/partitionname
+      $ sudo umount /dev/partitionname
       ```
 
   3. lancer la vérification:
@@ -233,7 +270,15 @@ category: Linux
       ```
 
       L'interface fsck lance le vérificateur adapté au système de fichiers de la partition ciblée:  
-      si la partition est formatée en ext4, alors fsck lancera automatiquement fsck.ext4
+      si la partition est formatée en ext4, alors fsck lancera automatiquement fsck.ext4. fsck le détecte en examinant les premiers octets de la partition
+
+      Si fsck ne détecte pas le bon système de fichier:
+
+      ``` bash
+      $ sudo fsck -t ext4 /dev/sda10
+
+      $ sudo fsck.ext4 /dev/sda10
+      ```
 
   4. si la partition est corrompue, on peut la réparer automatiquement avec `fsck`  
       -y (*yes*) pour répondre oui à toutes les questions  
@@ -260,7 +305,7 @@ category: Linux
       $ ls -l /mnt
       ```
 
-* fsck est un wrapper de e2fsck pour les partitions ext2/ext3/ext4
+* fsck est le wrapper de e2fsck pour les partitions ext2/ext3/ext4
 
   ``` bash
   $ sudo dumpe2fs /dev/sdb1 | grep superblock
@@ -275,6 +320,15 @@ category: Linux
 
   ![](https://i.imgur.com/AU2nF4l.png)
 
+* fsck est automatiquement lancé après un certain nombre de montages infructueux ou après un arrêt anormal. Pour forcer la vérification de tous les systèmes de fichiers montés au démarrage:
+
+  ``` bash
+  $ sudo touch /forcefsck
+
+  $ sudo reboot
+  ```
+
+  Le fichier /forcefsck sera supprimé après une vérification réussie.
 
 * Pour d'autres systèmes de fichiers:
 

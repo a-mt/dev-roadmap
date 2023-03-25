@@ -10,6 +10,12 @@ category: Linux, Packages
 * La convention de nommage des fichiers .deb est comme suit:
 
   ```
+  <name>_<version>-<revision_number>_<architecture>.deb
+  ```
+
+  Par exemple:
+
+  ```
   $ ls gimp*.deb
   gimp_2.8.22-1_amd64.deb
   ```
@@ -20,15 +26,17 @@ category: Linux, Packages
      Ce sera noarch s'il n'est pas conçu pour une architecture de processeur spécifique
   4. l'extension de fichier (.deb)
 
-  Cette convention n'est pas obligatoirement suivuie par le développeur du package, il est donc possible de trouver un nom de package légèrement différent.
+  Cette convention n'est pas obligatoirement suivie par les développeurs, il est donc possible de trouver un nom de package légèrement différent.
 
 ## dpkg
 
-`dpkg` (*depackage*) est un utilitaire permettant d'installer, supprimer et fournir des informations sur les packages Debian — fichiers .deb
+`dpkg` (lire *depackage*) est un utilitaire permettant d'installer, supprimer et fournir des informations sur les packages Debian — fichiers .deb
+
+La base de données de dpkg se situe dans le répertoire /var/lib/dpkg
 
 ### verify
 
-* L'option `-V` ou `--verify` permet de vérifier l'intégrité d'un package (*substantiate* en anglais) — les données stockées sont comparées au checksum. Si aucun message n'est affiché, cela signifie que tout va bien
+* L'option `-V` ou `--verify` permet de vérifier l'intégrité d'un package (*substantiate* en anglais) — les données stockées sont comparées au checksum. Si aucun message n'est affiché, c'est que tout va bien
 
   ```
   $ sudo dpkg -V gimp
@@ -36,7 +44,7 @@ category: Linux, Packages
 
 ### contents
 
-* L'option `-c` ou `--contents` permet de lister le contenu d'un fichier .deb
+* L'option `-c` ou `--contents` permet de lister les fichiers d'un package .deb
 
   ```
   $ dpkg -c gimp_2.8.22-1_amd64.deb
@@ -46,13 +54,13 @@ category: Linux, Packages
 
 ### info
 
-* L'option `-I` ou `--info` affiche les infos du fichier .deb et notamment ses dépendances
+* L'option `-I` ou `--info` affiche les information d'un package .deb, avec notamment ses dépendances
 
   ![](https://i.imgur.com/c5bykI1.png)
 
 ### install
 
-* L'option `-i` ou `--install` permet d'installer le ou les packages en arguments. Si une dépendance du package n'est pas satisfaite, l'installation ou le lancement de l'application échouera.
+* L'option `-i` ou `--install` permet d'installer le ou les packages en argument. Si une dépendance du package n'est pas satisfaite, alors l'installation ou le lancement de l'application échouera.
 
   ```
   $ sudo dpkg -i virtualbox.deb
@@ -62,13 +70,17 @@ category: Linux, Packages
 
 ### remove
 
-* L'option `-r` ou `--remove` suivit du nom du package permet de supprimer des packages installés — mais pas les fichiers de configuration qui y sont associés.
+* L'option `-r` ou `--remove` suivit du nom du package permet de supprimer des packages installés — mais les fichiers de configuration qui y sont associés sont conservés.
 
   ```
   $ sudo dpkg -r nom_du_paquet
   ```
 
   ![](https://i.imgur.com/FlC20a2.png)
+
+* Une opération qui poserait problème, tel que supprimer un package dont un autre package dépend, ou installer un programme alors que des dépendances ne sont pas installées, sont bloquées
+
+  ![](https://i.imgur.com/dIQiwUd.png)
 
 ### purge
 
@@ -150,9 +162,15 @@ category: Linux, Packages
   libpython3.9-stdlib:amd64: /usr/lib/python3.9/venv/__init__.py
   ```
 
+  Par exemple pour trouver quel package installe le fichier /etc/init/networking.conf file:
+
+  ```
+  $ dpkg -S /etc/init/networking.conf
+  ```
+
 ### listfiles
 
-* L'option `-L` ou `--listfiles` liste tous les fichiers installés par un package.
+* L'option `-L` ou `--listfiles` liste tous les fichiers installés par un package
 
   ```
   $ sudo dpkg -L wget

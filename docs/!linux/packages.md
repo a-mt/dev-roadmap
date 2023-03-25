@@ -7,7 +7,7 @@ category: Linux
 
 * On peut trouver des packages qui contiennent
 
-  - le code binaire: code exécutable. On général, ces packages se présentent sous la forme de fichier Debian (.deb) ou RedHat (.rpm)
+  - le code binaire: code exécutable. En général, ces packages se présentent sous la forme de fichier Debian (.deb) ou RedHat (.rpm)
 
   - ou le code source: code non compilé. Ce type de package est souvent utilisé pour développer ou inspecter le code d'une application, mais on peut également les utiliser pour compiler soi-même le code si nécessaire. Il s'agit généralement d'un tarball
 

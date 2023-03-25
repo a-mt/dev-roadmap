@@ -142,6 +142,9 @@ L'horloge logicielle peut être mise à jour manuellement. Notons que si votre s
     systemd-timesyncd.service active: no
                      RTC in local TZ: no
    ```
+   ```
+   $ sudo systemctl restart systemd-timesyncd
+   ```
 
 ## Afficher le fuseau horaire
 

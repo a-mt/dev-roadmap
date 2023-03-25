@@ -16,6 +16,17 @@ category: Linux, Shell, Bash, Variable
   $ printf "%q\n" "$IFS"
   $' \t\n'
   ```
+  ``` bash
+  OLDIFS="$IFS"
+  IFS=':'
+  desktop=
+  for val in $XDG_CURRENT_DESKTOP; do
+      for d in 'GNOME' 'MATE' 'UKUI' 'Unity'; do
+          [ "$d" = "$val" ] && { desktop="$d"; break 2; }
+      done
+  done
+  IFS="$OLDIFS"
+  ```
 
   <table>
   <tr>

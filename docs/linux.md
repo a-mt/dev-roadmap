@@ -22,6 +22,7 @@ title: Linux
 [permissions]: !linux/file-permissions.md
 [permissions-specials]: !linux/file-permissions-specials.md
 [permissions-default]: !linux/file-permissions-default.md
+[permissions-acl]: !linux/file-permissions-acl.md
 [text-utils]: !linux/file-text-utils.md
 [file-list]: !linux/file-list-utils.md
 [archive]: !linux/file-archive.md
@@ -95,6 +96,7 @@ title: Linux
   - [Permissions][permissions]
   - [Permissions spéciales][permissions-specials]
   - [Permissions par défaut][permissions-default]
+  - [Permissions ACL][permissions-acl]
   - [Manipuler des fichiers texte][text-utils]
   - [Lister des fichiers][file-list]
   - [Archiver][archive]

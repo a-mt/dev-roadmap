@@ -258,32 +258,13 @@ category: Linux
 
   ![](https://i.imgur.com/hHwYZDr.png)
 
----
+  ``` bash
+  $ sudo parted -s /dev/loop1 mklabel msdos
 
-## Formatter la partition
-
-### fdisk
-
-* Par défaut, l'utilitaire fdisk définit les partitions primaires et logiques avec le système de fichiers 83 (Linux).  
-  Pour les partitions étendues, l'ID doit être 5 et ne doit jamais être changé.
-
-* Pour changer le type de système de fichiers, on peut utiliser la sous-commande `t` de fdisk.  
-  Entrer le numéro de partition à modifier suivit de l'ID du système de fichier en hexadécimal — utiliser `L` pour afficher la liste des codes hexadécimaux disponibles.
-
-  ![](https://i.imgur.com/MvD8lo2.png)
-
-## mkfs
-
-* `mkfs` permet également de formatter une partition
-
-  ![](https://i.imgur.com/cLRWqs5.png)
-
-  `mkfs` est un wrapper pour différents systèmes de fichier: on peut obtenir le même résultat avec `mkfs.ext4` (sans le -t ext4)  
-  C'est important à savoir car la commande mkfs fournit des options génériques alors que la commande qu'il appelle peut avoir des options spécifiques au système de fichiers crée — consulter le manuel pour plus d'infos
-
-  ![](https://i.imgur.com/HermTzo.png)
-
-* Une fois partitionné et formatté avec un système de fichier, le périphérique est prêt à être monté et utilisé sous Linux.
+  $ sudo parted -s /dev/loop1 unit MB mkpart primary ext4 0 256
+  $ sudo parted -s /dev/loop1 unit MB mkpart primary ext4 256 512
+  $ sudo parted -s /dev/loop1 unit MB mkpart primary ext4 512 1024
+  ```
 
 ---
 
@@ -316,3 +297,146 @@ category: Linux
       ```
 
       ![](https://i.imgur.com/Wu3AO5X.png)
+
+---
+
+## Formatter une partition
+
+## fdisk
+
+* Par défaut, l'utilitaire fdisk définit les partitions primaires et logiques avec le système de fichiers 83 (Linux).  
+  Pour les partitions étendues, l'ID doit être 5 et ne doit jamais être changé.
+
+* Pour changer le type de système de fichiers, on peut utiliser la sous-commande `t` de fdisk.  
+  Entrer le numéro de partition à modifier suivit de l'ID du système de fichier en hexadécimal — utiliser `L` pour afficher la liste des codes hexadécimaux disponibles.
+
+  ![](https://i.imgur.com/MvD8lo2.png)
+
+* Notons que fdisk ne fait que modifier la table de partition,  
+  après avoir modifié le type déclaré dans la table, il est encore nécessaire de formatter la partition — avec mkfs
+
+## mkfs
+
+* `mkfs` permet de formatter une partition
+
+  ![](https://i.imgur.com/cLRWqs5.png)
+
+  `mkfs` est un wrapper pour différents systèmes de fichier: on peut obtenir le même résultat avec `mkfs.ext4` (sans le -t ext4)  
+  C'est important à savoir car la commande mkfs fournit des options génériques alors que la commande qu'il appelle peut avoir des options spécifiques au système de fichiers crée — consulter le manuel pour plus d'infos
+
+  ![](https://i.imgur.com/HermTzo.png)
+
+  Une fois partitionné et formatté avec un système de fichier, le périphérique est prêt à être monté et utilisé sous Linux.
+
+* Exemple: passer de vfat à ext4
+
+  1. Modifier la table de partition MBR en GPT
+
+    ``` bash
+    $ lsblk -f /dev/sda
+    NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+    sda                 
+    └─sda1 vfat         000E-3592
+
+    $ sudo gdisk /dev/sda
+    GPT fdisk (gdisk) version 1.0.5
+
+    Partition table scan:
+      MBR: MBR only
+      BSD: not present
+      APM: not present
+      GPT: not present
+
+    ***************************************************************
+    Found invalid GPT and valid MBR; converting MBR to GPT format
+    in memory. THIS OPERATION IS POTENTIALLY DESTRUCTIVE! Exit by
+    typing 'q' if you don't want to convert your MBR partitions
+    to GPT format!
+    ***************************************************************
+
+
+    Warning! Secondary partition table overlaps the last partition by
+    33 blocks!
+    You will need to delete this partition or resize it in another utility.
+
+    Command (? for help): p
+    Disk /dev/sda: 7864320 sectors, 3.8 GiB
+    Model: UDisk
+    Sector size (logical/physical): 512/512 bytes
+    Disk identifier (GUID): 3F130DCA-1600-4E8A-A3EE-6C7394BB1866
+    Partition table holds up to 128 entries
+    Main partition table begins at sector 2 and ends at sector 33
+    First usable sector is 34, last usable sector is 7864286
+    Partitions will be aligned on 64-sector boundaries
+    Total free space is 30 sectors (15.0 KiB)
+
+    Number  Start (sector)    End (sector)  Size       Code  Name
+       1              64         7864319   3.7 GiB     0700  Microsoft basic data
+
+    Command (? for help): d 
+    Using 1
+
+    Command (? for help): n
+    Partition number (1-128, default 1): 
+    First sector (34-7864286, default = 64) or {+-}size{KMGTP}: 
+    Last sector (64-7864286, default = 7864286) or {+-}size{KMGTP}: 
+    Current type is 8300 (Linux filesystem)
+    Hex code or GUID (L to show codes, Enter = 8300): 83
+    Exact type match not found for type code 0083; assigning type code for
+    'Linux filesystem'
+    Changed type of partition to 'Linux filesystem'
+
+    Command (? for help): w
+
+    Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+    PARTITIONS!!
+
+    Do you want to proceed? (Y/N): Y
+    OK; writing new GUID partition table (GPT) to /dev/sda.
+    The operation has completed successfully.
+    ```
+
+  2. Formatter la partition vfat en ext4
+
+    ``` bash
+    $ lsblk -f /dev/sda
+    NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+    sda
+    └─sda1 vfat         000E-3592
+
+    $ sudo mkfs.ext4 /dev/sda1
+    mke2fs 1.45.5 (07-Jan-2020)
+    /dev/sda1 contains a vfat file system
+    Proceed anyway? (y,N) y
+    Creating filesystem with 983027 4k blocks and 245760 inodes
+    Filesystem UUID: bff50a42-7652-4f95-bad9-a02762849e2d
+    Superblock backups stored on blocks:
+      32768, 98304, 163840, 229376, 294912, 819200, 884736
+
+    Allocating group tables: done
+    Writing inode tables: done
+    Creating journal (16384 blocks): done
+    Writing superblocks and filesystem accounting information: done
+    ```
+
+  3. Ajouter un label
+
+    ``` bash
+    $ lsblk -f /dev/sda
+    NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+    sda
+    └─sda1 ext4         bff50a42-7652-4f95-bad9-a02762849e2d
+
+    $ sudo tune2fs -L blue /dev/sda1
+    tune2fs 1.45.5 (07-Jan-2020)
+
+    $ lsblk -f /dev/sda
+    NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+    sda
+    └─sda1 ext4   blue  bff50a42-7652-4f95-bad9-a02762849e2d
+
+    $ sudo mount /dev/sda1 /mnt
+    $ ls /mnt
+    lost+found
+    $ sudo umount /mnt
+    ```

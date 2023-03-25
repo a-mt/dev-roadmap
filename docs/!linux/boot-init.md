@@ -7,7 +7,7 @@ category: Linux, Boot
 
 1. Le firmware lance l'opération POST (un contrôle du matériel)
 2. Le firmware cherche et charge le bootloader
-3. Le bootloader charge le kernel — et peut éventuellement laisser l'utilisateur choisir lequel parmi une liste en amont
+3. Le bootloader charge le kernel — et peut éventuellement laisser l'utilisateur choisir lequel parmi une liste
 4. Le kernel lance des modules et crée le système de fichier virtuel
 5. Le kernel lance le premier processus, le *processus d'initialisation* — auquel est attribué le PID 1.
 6. Le processus d'initialisation lance différents processus et leur affecte un PID dans l'ordre séquentiel.

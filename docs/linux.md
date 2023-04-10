@@ -71,6 +71,14 @@ title: Linux
 [print]: !linux/print.md
 [logging]: !linux/logging.md
 
+[network-history]: !linux/network-history.md
+[network-overview]: !linux/network-overview.md
+[network-layer1-physical]: !linux/network-layer1-physical.md
+[network-layer2-mac]: !linux/network-layer2-mac.md
+[network-layer3-ip]: !linux/network-layer3-ip.md
+[network-nic]: !linux/network-nic.md
+[network-hostname]: !linux/network-hostname.md
+
 * [Introduction][intro]
 
 * Hands-on
@@ -149,11 +157,15 @@ title: Linux
   - [Logs][logging]
 
 * Réseau
-  - [Théorie: histoire d'Internet](!linux/network-history.md)
-  - [Théorie: réseaux informatiques](!linux/network-overview.md)
-  - [Théorie: couche 1 — liaison physique](!linux/network-layer1-physical.md)
-  - [Théorie: couche 2 — transfert des données](!linux/network-layer2-mac.md)
-  - [Théorie: couche 3 — routing](!linux/network-layer3-ip.md)
+  - [Théorie: histoire d'Internet][network-history]
+  - [Théorie: réseaux informatiques][network-overview]
+  - [Théorie: couche 1 — liaison physique][network-layer1-physical]
+  - [Théorie: couche 2 — transfert des données][network-layer2-mac]
+  - [Théorie: couche 3 — routing][network-layer3-ip]
+  - [Théorie: couche 4 — connexion](!linux/network-layer4-tcp.md)
+
+  - [Interfaces][network-nic]
+  - [Nom d'hôte][network-hostname]
 
 * Utilitaires
   - [Regex POSIX][regex-posix]

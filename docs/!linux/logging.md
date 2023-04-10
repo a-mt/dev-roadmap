@@ -281,6 +281,7 @@ Pour pouvoir utiliser un système comme serveur de logs centralisé, il faut act
   $ sudo journalctl -e -u NetworkManager
   $ sudo journalctl -e -t guake.desktop
   $ sudo journalctl --no-pager -p crit
+  $ journalctl -t CROND
   ```
 
   De nombreuses options sont disponibles:

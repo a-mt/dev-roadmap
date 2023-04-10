@@ -184,9 +184,9 @@ category: Linux, Fichiers
 * `split` permet de séparer un gros fichier en plusieurs plus petits fichiers.  
   Par défaut le préfixe est "x"
 
-  -d  : utiliser un suffixe numérique (par défaut alphabétique : file_aa, file_ab, etc)
-  -aN : longueur du suffixe (par défaut 2)
-  -lN : nombres de lignes à mettre dans un fichier avant d'en créer un nouveau
+  -d  : utiliser un suffixe numérique (par défaut alphabétique : file_aa, file_ab, etc)  
+  -a N: longueur du suffixe (par défaut 2)  
+  -l N: nombres de lignes à mettre dans un fichier avant d'en créer un nouveau  
 
   ``` bash
   $ wc -l /var/log/kern.log
@@ -348,6 +348,33 @@ category: Linux, Fichiers
   World
   ```
 
+* -f pour ignorer N champs au début de la ligne
+
+  ``` bash
+  $ echo '1 Hello A' > wordk.txt
+  $ echo '2 World A' >> wordk.txt
+  $ echo '3 World B' >> wordk.txt
+  $ echo '4 World B' >> wordk.txt
+  $ echo '5 Hello B' >> wordk.txt
+  $ echo '6 World A' >> wordk.txt
+  $ echo '7 ! A' >> wordk.txt
+  $ cat wordk.txt
+  1 Hello A
+  2 World A
+  3 World B
+  4 World B
+  5 Hello B
+  6 World A
+  7 ! A
+  $ uniq -f 1 wordk.txt
+  1 Hello A
+  2 World A
+  3 World B   <-
+  5 Hello B
+  6 World A
+  7 ! A
+  ```
+
 ## sort
 
 * `sort` permet de trier les lignes
@@ -421,8 +448,13 @@ category: Linux, Fichiers
 
 * sort peut réorganiser la sortie en fonction du contenu d'un ou plusieurs champs, déterminés par un délimiteur.
 
-  -t pour spécifier le séparateur de champs.  
-  -k pour le numéro du champ à utiliser pour trier les lignes
+  * -t pour spécifier le séparateur de champs.
+
+  * -k pour spécifier le numéro du champ à premier duquel trier les lignes.  
+    On peut utiliser une virgule pour s'arrêter avant la fin de la ligne  
+
+    Exemple: -k2 trie à partir de la colonne 2 (et colonne 3, 4 etc...),  
+    tandis que -k2,2 trie uniquement sur la colonne 2
 
   ``` bash
   $ getent passwd | sort -n -t: -k3
@@ -434,17 +466,60 @@ category: Linux, Fichiers
   ```
 
   ``` bash
-  $ cat /etc/services | grep -E '^[a-z]' | sort -n -k2 | head
-  rtmp    1/ddp     # Routing Table Maintenance Protocol
-  tcpmux    1/tcp       # TCP port service multiplexer
-  nbp   2/ddp     # Name Binding Protocol
-  echo    4/ddp     # AppleTalk Echo Protocol
-  zip   6/ddp     # Zone Information Protocol
-  echo    7/tcp
-  echo    7/udp
-  discard   9/tcp   sink null
-  discard   9/udp   sink null
-  systat    11/tcp    users
+  $ cat wordk.txt
+  1 Hello A
+  2 World A
+  3 World B
+  4 World B
+  5 Hello B
+  6 World A
+  $ sort -k2 wordk.txt
+  7 ! A
+  1 Hello A
+  5 Hello B
+  2 World A
+  6 World A
+  3 World B
+  4 World B
+  $ sort -k2,2 wordk.txt
+  7 ! A
+  1 Hello A
+  5 Hello B
+  2 World A
+  3 World B   <-
+  4 World B
+  6 World A   <-
+  ```
+
+* -u pour appliquer uniq sur les champs utilisés dans le tri
+
+  ``` bash
+  $ cat wordk.txt
+  1 Hello A
+  2 World A
+  3 World B
+  4 World B
+  5 Hello B
+  6 World A
+  7 ! A
+  $ sort -k2 wordk.txt
+  7 ! A
+  1 Hello A
+  5 Hello B
+  2 World A
+  6 World A
+  3 World B
+  4 World B
+  $ sort -k2 -u wordk.txt
+  7 ! A
+  1 Hello A
+  5 Hello B
+  2 World A
+  3 World B
+  $ sort -k2,2 -u wordk.txt
+  7 ! A
+  1 Hello A
+  2 World A
   ```
 
 ## tac

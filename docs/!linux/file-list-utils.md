@@ -246,10 +246,7 @@ category: Linux, Fichiers
   ```
 
   ``` bash
-  # Chercher le contenu du répertoire "dirname" et archiver les résultats un à un (tar)
-  find dirname -execdir tar -cf {}.tar {} \;
-
-  # Archiver et compresser les fichiers (tar.gz)
+  # Chercher le contenu du répertoire "dirname" et archiver les résultats un à un (tar.gz)
   find dirname -execdir tar -cxf {}.tar.gz {} \;
   ```
 

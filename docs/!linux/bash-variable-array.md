@@ -65,14 +65,14 @@ On peut accéder à toutes les valeurs du tableau avec `${array[@]}` ou `${array
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
 
 <tr>
-  <th align="left">${#array}</th>
+  <th align="left">${#array[@]}</th>
   <td>Retourne la longueur de array
   <pre lang="shell">$ array=("a a" b "c c" d)
 $ echo "${#array}"
 3</pre></td>
 </tr>
 <tr>
-  <th align="left">${array[0]}</th>
+  <th align="left">${array[0]}<br>$array</th>
   <td>Retourne la première valeur de array
   <pre lang="shell">$ array=("a a" b "c c" d)
 $ echo "${array[0]}"

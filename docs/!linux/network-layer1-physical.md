@@ -10,6 +10,8 @@ category: Linux, Network
 * La modulation du signal binaire sur un support physique est classé dans la couche 1 du modèle OSI.  
   Le PDU (*Protocol Data Unit*) de la première couche est le *bit*
 
+  ![](https://i.imgur.com/zilFrqZ.png)
+
 ## Équipements
 
 ### Carte réseau
@@ -23,7 +25,7 @@ category: Linux, Network
 
 * 3 types de liaisons peuvent être utilisées:
   - des câbles métalliques, faisant passer des courants électriques
-  - des câbles optiques, faisant passer des signaux luminaux
+  - des câbles optiques, faisant passer des signaux lumineux
   - ou l'air, faissant passer des ondes radio
 
   ![](https://i.imgur.com/AMZXjHc.png)
@@ -32,15 +34,15 @@ category: Linux, Network
 
 Différents types de supports ont différentes caractéristiques.
 
-* La *portée*, c'est la distance que le signal transmis peut parcourir sans être trop perturbé, de sorte que le récepteur puisse recevoir un message intègre.
+* La <ins>*portée*</ins>, c'est la distance que le signal transmis peut parcourir sans être trop perturbé, de sorte que le récepteur puisse recevoir un message intègre.
   Des ondes circulant dans l'air auront une portée plus limitée que des signaux envoyés par câble.
 
-* La *vitesse de propagation*, c'est la vitesse à laquelle un signal peut circuler sur le support physique.  
+* La <ins>*vitesse de propagation*</ins>, c'est la vitesse à laquelle un signal peut circuler sur le support physique.  
   Différents supports auront une vitesse de propagation différente.
   Les ondes lumineuses peuvent voyager à la vitesse de la lumière: 300 000 km/s  
   Les signaux électriques, à environ 2/3 de la vitesse de la lumière: 200 000 km/s
 
-* Le *débit*, c'est le nombre de bits pouvant être reçus par seconde.  
+* Le <ins>*débit*</ins>, c'est le nombre de bits pouvant être reçus par seconde.  
   La vitesse de propagation aura moins d'importance sur le débit que la qualité de la transmission: si des signaux sont perdus en chemin, l'expéditeur devra ré-envoyer les paquets perdus et donc le débit diminue.
 
   - Les ondes radios sont soumises à beaucoup plus d'interférences qu'une connexion filaire (murs, objets, autres signaux radios en circulation...), 
@@ -52,7 +54,7 @@ Différents types de supports ont différentes caractéristiques.
   - Les fibres optiques, elles, ne dégagent ni ne sont sensibles aux ondes électromagnétiques autour: 
     les données peuvent être transmises sur une longue distance et à très grand débit.
 
-* La *bande passante*, c'est l'intervalle de fréquences sur lequel le signal est correctement transmis.   
+* La <ins>*bande passante*</ins>, c'est l'intervalle de fréquences sur lequel le signal est correctement transmis.   
   Elle est mesurée en hertz (cycles par seconde).
 
   ![](https://i.imgur.com/hk1jp15.gif)
@@ -79,15 +81,19 @@ Les transmissions peuvent être transmises en mode simplex ou duplex.
 
 * Les réseaux ne stockent pas les données, ils les font circuler: on mesure donc la capacité d'un réseau en fonction de la vitesse à laquelle il peut transférer des données — ce qu'on appelle le débit.
 
-  Le débit est la quantité de données (en bits) qu'un réseau peut déplacer en une unité de temps (en secondes). Ce qui nous donne l'unité utilisée pour mesurer la capacité d'un réseau: les bits par secondes (bps).
+  Le débit est la quantité de données (en bits) qu'un réseau peut déplacer en une unité de temps (en secondes). Ce qui nous donne l'unité utilisée pour mesurer la capacité d'un réseau: les *bits par secondes* (bps).
 
-  Notons qu'un B majuscule représente un byte (octet), soit 8 bits. Pour savoir combien de KB un réseau peut déplacer par seconde, il faut diviser ce nombre par 8.
+* La capacité du réseau (*capacity*),  
+  la vitesse du réseau (*speed*),  
+  le débit (*throughput*)  
+  et la bande passante (*bandwidth*)  
+  désignent tous la même chose et sont tous mesurés en bps.
 
 * Les réseaux modernes sont capables de faire circuler des données très rapidement, de sorte que leur vitesse n'est plus mesurée en bits par secondes, mais avec un multiple K, M ou G:
 
   ![](https://i.imgur.com/Lgoqu1tm.png)
 
-* La capacité du réseau (*capacity*), vitesse du réseau (*speed*), débit (*throughput*) et bande passante (*bandwidth*) désignent tous la même hose et sont tous mesurés en bps.
+* Notons qu'un b minuscule représente un bit, tandis qu'un B majuscule représente un byte (octet), soit 8 bits. Pour savoir combien de KB un réseau peut déplacer par seconde, il faut diviser le Kbps par 8.
 
 ## Liaisons
 
@@ -96,7 +102,7 @@ Les transmissions peuvent être transmises en mode simplex ou duplex.
 * Le *câble Ethernet* est le type de câble le plus utilisé.  
   Ces câbles sont dotés d'un connecteur RJ-45 (*Registered Jack* 45) aux deux extrémités.
 
-  Le connecteur RJ-45 est parfois appelé connecteur à 8 broches (*8-pin connector*), puisqu'il possède 8 broches en cuivre, et le câble Ethernet contient 4 paires de fils torsadés protégés par une gaine protectrice. L’enroulement réduit les conséquences des inductions électromagnétiques parasites sur les paires voisines, et minimise les risques d'erreur de transmission liées aux perturbations électromagnétiques.
+  Le connecteur RJ-45 est parfois appelé connecteur à 8 broches (*8-pin connector*), puisqu'il possède 8 broches en cuivre auxquelles vont être reliés 4 paires de fils torsadés protégés par une gaine protectrice. L’enroulement réduit les conséquences des inductions électromagnétiques parasites sur les paires voisines, et minimise les risques d'erreur de transmission liées aux perturbations électromagnétiques.
 
   ![](https://i.imgur.com/sOZeV6vt.jpg)
   ![](https://i.imgur.com/MBsi79It.png)
@@ -112,7 +118,7 @@ Les transmissions peuvent être transmises en mode simplex ou duplex.
 
   ![](https://i.imgur.com/l52WzkTm.jpg)
 
-* On peut également trouver différents diamètres.  
+* On peut également trouver différents diamètres de câbles.  
   Le câble Ethernet Cat.5 (un petit UTP) est le plus courant et le moins cher:
 
   ![](https://i.imgur.com/SQWvOFn.png)
@@ -161,7 +167,7 @@ Les transmissions peuvent être transmises en mode simplex ou duplex.
   ![](https://i.imgur.com/E7ZfXmrt.png)
 
 * Les routeurs fournissent généralement des prises  
-  RJ-45 pour les ordinateurs et autres périphériques (jaune)  
+  RJ-45 pour les ordinateurs et autres périphériques (généralement en jaune)  
   et RJ-11 pour un téléphone traditionnel (vert).
 
   ![](https://i.imgur.com/FeH4s2dm.png)
@@ -177,8 +183,8 @@ Les transmissions peuvent être transmises en mode simplex ou duplex.
   ![](https://i.imgur.com/mBQNOJJt.jpg)
 
 * Il autorise des débits plus élevés et est peu sensible aux perturbations électromagnétiques extérieures.  
-  Il est utilisé pour les liaisons téléphoniques inter-urbaines, les câbles sous-marins, la télévision par câble et la connexion des radio à leurs antennes.
-  À partir de la fin du XXe siècle, le câble coaxial est progressivement remplacé par la fibre optique pour les utilisations sur de longues distances — supérieures à un kilomètre.
+  Il est utilisé pour les liaisons téléphoniques inter-urbaines, les câbles sous-marins, la télévision par câble et la connexion des radios à leurs antennes.
+  À partir de la fin du XXe siècle, le câble coaxial est progressivement remplacé par la fibre optique pour les utilisations sur de longues distances (distances supérieures à un kilomètre).
 
 * Il existe de multiples variantes de ce type de câble et de connecteurs, suivant l'usage.  
   Le plus connu est le RG-59/U, qui est utilisé pour la télévision.
@@ -193,25 +199,25 @@ Les transmissions peuvent être transmises en mode simplex ou duplex.
 
   - <ins>la fibre *monomode*</ins> utilise des brins de verre très fins et un laser pour générer la lumière: la lumière ne peut prendre qu'un seul chemin en ligne droite. Des techniques de multiplexage (*Wave Division Multiplexing*, WDM) sont utilisées pour augmenter la quantité de données pouvant être envoyées sur un brin.
 
-    Ce type de fibre offre une grosse bande passante et une faible atténuation. Elle peut s'étendre sur 40 km ou plus sans perturbations, et est privilégiée pour les installations à grande échelle. Son câble est presque toujours jaune
+    Ce type de fibre offre une grosse bande passante et une faible atténuation. Elle peut s'étendre sur 40 km ou plus sans perturbations, et est privilégiée pour les installations à grande échelle. La gaîne protectrice de ce type de câble est presque toujours jaune
 
   - <ins>la fibre *multimode*</ins> utilise des brins plus larges et des diodes électroluminescentes (DEL) comme source de lumière: la lumière peut prendre de multiples chemins.
 
-    Par rapport aux fibres monomodes, la fibre multimode offre une largeur de bande plus faible et une atténuation plus élevée. Elle est plus rentable pour les installations moins exigeantes en termes de débit et de distance.
+    Par rapport aux fibres monomodes, la fibre multimode offre une largeur de bande plus faible et une atténuation plus élevée mais est plus rentable pour les installations moins exigeantes en termes de débit et de distance.
 
     ![](https://i.imgur.com/ejyVzHK.png)
 
-* Il y a différents types de connecteurs possibles
+* Différents types de connecteurs sont possibles
 
   ![](https://i.imgur.com/mAmgPyr.png)
 
-  Dans tous les cas, il faudra un convertisseur Ethernet / Fibre optique — les appareils des réseaux utilisateur ne disposent pas d'interfaces pour connecter la fibre optique directement
+  Dans tous les cas, il faudra un convertisseur Ethernet / Fibre optique — les appareils des réseaux utilisateur ne disposant pas d'interfaces pour connecter la fibre optique directement
 
   ![](https://i.imgur.com/lwWHoPJm.png)
 
 ### Air
 
-* Les connexions filaires ont l'avantage d'offrir des connexions à très haut débit, mais ont l'inconvénient de nécessiter des câbles entre les appareils. Pour se déplacer dans un véhicule, à pied ou même chez soi, on ne traîne pas un câble derrière, à la place on a recours aux réseaux sans fil.
+* Les connexions filaires ont l'avantage d'offrir des connexions à très haut débit, mais ont l'inconvénient de nécessiter des câbles entre les appareils. Pour se déplacer dans un véhicule, à pied ou même chez soi, on ne traîne pas un câble derrière: on a recours aux réseaux sans fil.
 
 * Les connexions sans fil utilisent des ondes radio qui circulent dans l'air
 
@@ -221,30 +227,30 @@ Les transmissions peuvent être transmises en mode simplex ou duplex.
 
 ### Classification des réseaux
 
-* On classe généralement les réseaux en fonction de leur portée.
+* On classe généralement les réseaux en fonction de leur portée.  
   Traditionnellement, les réseaux étaient divisés en deux types:
 
   - les réseaux locaux: <ins>*Local Area Network* (LAN)</ins>  
     Permet d'interconnecter toutes les machines d'une entreprise
 
   - et les réseaux étendus: <ins>*Wide Area Network* (WAN)</ins>  
-    Permet d’interconnecter à l’échelle de continents les autres réseaux
+    Permet d’interconnecter des réseaux à l’échelle de continents
 
   Récemment, d'autres termes ont été ajoutés pour mieux classer et décrire la taille du réseau:
 
   - les réseaux personnels: <ins>*Personal Area Network* (PAN)</ins>   
-    Un type de réseau très petit. Est apparut avec le bluetooth pour par exemple interconnecter un téléphone avec une oreillette.
+    Un type de réseau très petit. Il est apparut avec le bluetooth — par exemple inter-connecter un téléphone et une oreillette constitue un PAN.
 
   - les réseaux de campus: <ins>*Campus Area Network* (CAN)</ins>  
-    Réseau reliant quelques bâtiments, tels qu'une université ou un complexe de bureau.
+    Réseau reliant quelques bâtiments. Par exemple une université ou un quartier constitue un CAN.
 
   - les réseaux métropolitains: <ins>*Metropolitan Area Network* (MAN)</ins>  
     Un réseau conçu pour une ville ou une agglomération.
 
   - et enfin le réseau global: <ins>*Global Area Network* (GAN)</ins>  
-    Internet est considéré comme un réseau global
+    Internet est considéré comme un GAN
 
-* Quelques faux-amis, qui ne désignent pas la portée du réseau mais sa fonction:
+* On trouve également quelques faux-amis, qui ne désignent pas la portée du réseau mais sa fonction:
 
   * <ins>Intranet</ins>:  
     Réseau privé appartenant à une organisation, qui n'est accessible qu'aux utilisateurs autorisés.  
@@ -260,19 +266,20 @@ Les transmissions peuvent être transmises en mode simplex ou duplex.
 
   * <ins>Les *réseaux d'accès*</ins> sont les réseaux qui offrent l’accès aux utilisateurs finaux. On y trouve par exemple les réseaux xDSL, la 4G ou encore la fibre. Dans les réseaux téléphoniques, on utilisait auparavant le terme *boucle locale*.
 
-    <ins>Le *backhaul*</ins> est l'ensemble des réseaux qui permettent d'alimenter les réseaux d'accès. Par exemple, le lien satellite qui alimente des relais 4G.
+    <ins>Le *backhaul*</ins> est l'ensemble des réseaux qui permettent d'alimenter les réseaux d'accès.  
+    Par exemple, le lien satellite qui alimente des relais 4G.
 
   * <ins>Les *réseaux coeur*</ins> (*core* ou encore *réseaux d'infrastructure*) sont les réseaux des Fournisseurs d'Accès Internet, ils permettent d'interconnecter les réseaux des utilisateurs entre eux.
 
-    <ins>Le *backbone*</ins> est l'interconnexion des différents coeurs. Par exemple, un câble sous-marin transatlantique.
+    <ins>Le *backbone*</ins> est l'interconnexion des différents coeurs.  
+    Par exemple, un câble sous-marin transatlantique.
 
   ![](https://i.imgur.com/VQEGslH.png)
 
 ### Topologie de réseau
 
 * La *topologie* est l'étude des structures.  
-
-* Il existe différentes topologies physiques possibles pour les LAN filaires:
+  Il existe différentes topologies physiques possibles pour les LAN filaires:
 
   - <ins>Topologie en *bus*</ins>.  
     Le bus s'étend sur toute la longueur du réseau, et les machines viennent s’y attacher. Lorsqu'une machine émet des données, les données circulent sur toute  la longueur du bus et la machine destinataire peut les récupérer. Une seule machine peut émettre à la fois.
@@ -285,12 +292,13 @@ Les transmissions peuvent être transmises en mode simplex ou duplex.
 
     ![](https://i.imgur.com/rH6WQQ5.png)
 
-* Et pour les LAN sans fil:
+  Et pour les LAN sans fil:
 
   - <ins>Topologie en maillage complet (*full mesh*)</ins>:  
     C'est la topologie la plus simple, chaque appareil à une liaison dédiée (dit *point à point*) avec chaque appareils.
 
   - <ins>Topologie en étoile (*hub & spoke*)</ins>:  
-    Un appareil sert de point central, le *hub*. Les différents appareils du réseaux (dits *spoke*) passent par le hub pour communiquer entre eux.
+    Un appareil sert de point central (dit *hub*).  
+    Les différents appareils du réseaux (dits *spoke*) passent par le hub pour communiquer entre eux.
 
     ![](https://i.imgur.com/aIEygKv.png)

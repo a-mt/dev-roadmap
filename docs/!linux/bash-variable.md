@@ -378,6 +378,15 @@ echo ${!var@} # var1 var2</pre>
 </tr>
 </table>
 
+``` bash
+$ var1=A
+$ var2=B
+
+$ for varname in ${!var*}; do echo "${varname}: ${!varname}"; done
+var: A
+var: B
+```
+
 ### Isset
 
 <table>
@@ -476,20 +485,6 @@ echo ${var: -3:-4} # erreur</pre></td>
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
 <tr>
-  <th align="left">${var%%+(.)}</th>
-  <td>Supprime tous les points à la FIN
-  <pre lang="shell">var="a.b.c..."
-echo ${var%%+(.)} # a.b.c</pre></td>
-</tr>
-<tr>
-  <th align="left">${var##+(.)}</th>
-  <td>Supprime tous les points au DÉBUT
-  <pre lang="shell">var="...a.b.c"
-echo ${var##+(.)} # a.b.c</pre></td>
-</tr>
-
-<tr><td colspan="2"></td></tr>
-<tr>
   <th align="left">${var%.*}</th>
   <td>Supprime tout ce qu'il a APRÈS le DERNIER point<br><code>${variable%pattern}</code> = supprimer le match le PLUS COURT à partir de la FIN
   <pre lang="shell">var=a.b.c
@@ -516,6 +511,31 @@ echo ${var#*.}  # b.c</pre></td>
 echo ${var##*.}  # c</pre></td>
 </tr>
 </table>
+
+``` bash
+var="123name"
+
+$ echo ${var#+([[:digit:]])}
+23name
+
+$ echo ${var##+([[:digit:]])}
+name
+
+$ echo ${var%+([[:alpha:]])}
+123nam
+
+$ echo ${var%%+([[:alpha:]])}
+123
+```
+``` bash
+var="...a.b.c..."
+
+$ echo ${var%%+(.)}
+...a.b.c
+
+$ echo ${var##+(.)}
+a.b.c...
+```
 
 ### Replace
 
@@ -555,6 +575,25 @@ echo ${var// /.} # a.b.c.d.</pre>
 # Affiche les chemins ligne par ligne</pre></td>
 </tr>
 </table>
+
+``` bash
+var="12name34"
+
+$ echo ${var/[[:alpha:]]/-}
+12-ame34
+
+$ echo ${var//[[:alpha:]]/-}
+12----34
+
+$ echo ${var//[[:digit:]]/}
+name
+
+$ echo ${var/#+([[:digit:]])/-}
+-name34
+
+$ echo ${var/%+([[:digit:]])/-}
+12name-
+```
 
 ### Case modification
 

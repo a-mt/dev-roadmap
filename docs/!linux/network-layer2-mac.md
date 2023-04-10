@@ -11,6 +11,8 @@ category: Linux, Network
 * Le PDU de la 2ème couche OSI est la trame (*frame* en anglais).  
   Ex: trame Ethernet
 
+  ![](https://i.imgur.com/7lfgJh2.png)
+
 ## Équipements
 
 ### Switchs
@@ -63,13 +65,15 @@ category: Linux, Network
 
 ### Ethernet
 
-* <ins>Ethernet</ins> est le protocole utilisé pour les connexions filaires. Il est définit par le standard IEEE 802.3
+* <ins>Ethernet</ins> est le protocole utilisé pour les connexions filaires.  
+  Il est définit par le standard IEEE 802.3
 
 ### Wi-Fi
 
-* <ins>Wi-Fi</ins> (*Wireless Fidelity*) est le protocole utilisé pour les connexions sans fil. Il est définit par le standard IEEE 802.11.
+* <ins>Wi-Fi</ins> (*Wireless Fidelity*) est le protocole utilisé pour les connexions sans fil.  
+  Il est définit par le standard IEEE 802.11.
 
-* Différentes variantes de ce standard ont été publiées, offrant notamment des modifications en terme de débit ou de sécurité. Parmis les plus notables on trouve:
+* Différentes variantes de ce standard ont été publiées, offrant principalement des modifications en terme de débit ou de sécurité. Parmis les plus notables on trouve:
 
   * 1997: La première version de la norme Wi-Fi, le standard IEEE 802.11 legacy, permettait des communications jusqu'à 2 Mbps en utilisant la gamme de fréquences de 2,4 GHz.
 
@@ -98,24 +102,23 @@ category: Linux, Network
   * <ins>WPA3 (*Wi-Fi Protected Access 3*)</ins>  
     2018: la Wi-Fi Alliance annonce que le WPA3 remplace WPA2, lié à la norme IEEE 802.11i
 
-  Tous les algorithmes présentent des failles de sécurité à l'exception du dernier en date, WPA3
-
+  Tous les algorithmes présentent des failles de sécurité à l'exception du dernier en date, WPA3  
   [IEEE standards 802.11](https://en.wikipedia.org/wiki/IEEE_802.11i-2004#External_links)
 
 * Les connexions Wi-Fi nécessitent un point d'accès, qui est typiquement un routeur du réseau. Pour identifier cet appareil, on lui attribue un nom unique appelé le *Service Set Identifier* (SSID)
 
 ### Bluetooth
 
-* <ins>Bluetooth</ins> est utilisé pour des connexions sans fil de courte portée (environ 10 mètres) et destinées à une seule personne.  
-  Il est normalisé par le standard IEEE 802.15.  
-  Les réseaux Bluetooth sont généralement crées par un ordinateur ou un smartphone, par exemple pour utiliser un casque sans fil ou connecter son téléphone à sa voiture pour un accès mains libres.
+* <ins>Bluetooth</ins> est utilisé pour des connexions sans fil de courte portée (environ 10 mètres) et destinées à une seule personne.
+  Il est normalisé par le standard IEEE 802.15.
 
-* Bluetooth a également été adapté pour des objets avec une basse consommation: <ins>BLE</ins> (*Bluetooth Low Energy*).
+* Les réseaux Bluetooth sont généralement crées par un ordinateur ou un smartphone, par exemple pour utiliser un casque sans fil ou connecter son téléphone à sa voiture pour un accès mains libres.  
+  Bluetooth a également été adapté pour des objets avec une basse consommation: <ins>BLE</ins> (*Bluetooth Low Energy*).
 
 ### NFC
 
 * <ins>NFC</ins> (*Near Field Communication*) est utilisé pour des connexions sans fil de très courte portée, les deux appareils ne doivent pas être éloignés de plus de quelques centimètres l'un de l'autre.  
-  La technologie NFC est souvent utilisée pour les paiements sans contact et les systèmes de contrôle d'accès aux bâtiments (badges).
+  La technologie NFC est souvent utilisée pour les paiements sans contact et les systèmes de contrôle d'accès aux bâtiments — en utilisant des badges.
 
 ---
 
@@ -145,15 +148,14 @@ category: Linux, Network
 
   ![](https://i.imgur.com/c0FbJBKl.png)
 
-  ![](https://i.imgur.com/p13Mfgyl.png)
+  ![](https://i.imgur.com/UV3ZyOn.jpg)
 
   [Liste complète des OUI](https://standards-oui.ieee.org/oui/oui.txt)
 
 ### EUI-64
 
-* L'IEEE gère l'attribution des adresses MAC, connues à l'origine sous le nom de MAC-48 — puisqu'elles font 48 bits.
-
-* L'IEE les désigne désormais sous le nom d'EUI-48 (pour *Extended Unique Identifier*) et estime que ces adresses seront épuisées d'ici 2080, leur usage est par conséquent restreint aux applications Ethernet. Quant aux applications non Ethernet, il est conseillé qu'elles utilisent des adresses EUI-64 — des adresses de 8 nombres de 8 bits.
+* L'IEEE gère l'attribution des adresses MAC, connues à l'origine sous le nom de MAC-48 — puisqu'elles font 48 bits.  
+  L'IEE les désigne désormais sous le nom d'EUI-48 (pour *Extended Unique Identifier*) et estime que ces adresses seront épuisées d'ici 2080. Leur usage est par conséquent restreint aux applications Ethernet et pour les applications non Ethernet, il est conseillé qu'elles utilisent des adresses EUI-64 — des adresses de 8 nombres de 8 bits.
 
 * On peut construire une adresse EUI-64 à partir d'une adresse MAC en insérant FFFE dans les octets 4 et 5.
 
@@ -177,7 +179,7 @@ category: Linux, Network
   - **broadcast**  
     Outre la transmission de trames dirigées vers une seule machine, il est possible d'envoyer des trames à toutes les machines du réseau local en utilisant de l'adresse de diffusion, ou adresse de *broadcast* en anglais.
 
-    Cette adresse ne contient que des 1. Par exemple si host1 cherche à connaître l'adresse MAC d'un ordinateur du réseau local à partir de son adresse IP, il envoit une trame à destination de FF:FF:FF:FF:FF:FF et cette trame sera transmise à tous les hôtes connectés — et seul celui ayant l'adresse IP questionné répondra
+    Cette adresse ne contient que des 1. Par exemple si host1 cherche à connaître l'adresse MAC d'un ordinateur du réseau local à partir de son adresse IP, il envoit une trame à destination de FF:FF:FF:FF:FF:FF et cette trame sera transmise à tous les hôtes connectés — seul celui ayant l'adresse IP questionné répondra
 
     ```
     FF:FF:FF:FF:FF:FF
@@ -186,7 +188,7 @@ category: Linux, Network
   - **multicast**  
     On peut également envoyer des trames à un groupe de stations en utilisant une adresse dite de *multicast*. Une trame multicast est soit transmise à tous si aucune optimisation multicast n'est configurée, soit envoyée uniquement à ceux souhaitant recevoir le trafic pour l'adresse donnée — qui peut désigner une application, protocole ou flux de données. 
 
-    Les adresses dont le bit de poids faible dans le premier octet est égal à 1 (autrement dit, le premier octet est impair) sont traitées comme des adresses multicast. L'adresse de broadcast, qui ne contient que des 1, est une adresse multicast ayant la particularité de n'avoir aucun filtre.
+    Les adresses dont le bit de poids faible dans le premier octet est égal à 1 (autrement dit, lorsque le premier octet est impair) sont traitées comme des adresses multicast. L'adresse de broadcast, qui ne contient que des 1, est une adresse multicast ayant la particularité de n'avoir aucun filtre.
 
     [Addresses de multicast](https://en.wikipedia.org/wiki/Multicast_address#Ethernet)
 
@@ -197,7 +199,7 @@ category: Linux, Network
 
 ## Table MAC
 
-* Un switch est un appareil réseau reliant les dispositifs entre eux en utilisant la commutation de paquets pour recevoir, traiter et acheminer les données vers la bonne destination.  
+* Un switch est un appareil réseau reliant les dispositifs entre eux en utilisant la commutation de paquets pour recevoir, traiter et acheminer les données vers la bonne destination.
   La plupart du temps, les switchs opèrent au niveau de la couche 2 du modèle OSI: ils assurent la commutation en fonction des adresses MAC.
 
 * Chaque switch garde en mémoire une *table d'adresses MAC*, aussi appelée *table d'apprentissage*, qui lui permet de savoir à quel port physique correspond quelle adresse MAC.
@@ -210,29 +212,38 @@ category: Linux, Network
 
       ![](https://i.imgur.com/xR6lX2U.png)
 
-  3. host2 reçoit la requête, voit qu'elle lui est destinée, et répond en unicast à l'émetteur de la requête — c'est à dire host1. Le switch ajoute l'adresse MAC de host2 dans sa table.  
+  3. host2 reçoit la requête, voit qu'elle lui est destinée, et répond en unicast à l'émetteur de la requête — donc host1. Le switch ajoute l'adresse MAC de host2 dans sa table.  
 
       ![](https://i.imgur.com/8Fh85AY.png)
 
-  4. Au fur et à mesure que des machines lui envoient des requêtes, le switch apprend les adresses MAC associées à chaque port — en regardant les adresses sources des trames qui le traversent.
+  4. Au fur et à mesure que des machines lui envoient des requêtes, le switch apprend les adresses MAC associées à chaque port, en regardant les adresses sources des trames qui le traversent.
 
      ![](https://i.imgur.com/NCXT2Nf.png)
 
       Sans base de données, le switch doit envoyer le trafic reçu sur un port donné vers tous les autres ports pour s'assurer qu'il atteint sa destination. Avec la base de données d'adresses MAC, le traffic est filtré en fonction de sa destination.
 
-      Cet apprentissage automatique permet d'ajouter de nouvelles machines au réseau sans avoir à configurer le switch manuellement pour qu'il la reconnaisse, ou la machine pour qu'elle connaisse le switch.
+      Cet apprentissage automatique permet d'ajouter de nouvelles machines au réseau sans avoir à configurer le switch manuellement pour qu'il la reconnaisse, ni d'avoir à configurer la machine pour qu'elle connaisse le switch.
 
-* Les switchs suppriment automatiquement les entrées de leur base de données au bout d'un certain temps — généralement 5 minutes — s'ils ne voient pas de nouvelles trames en provenance de cette machine.
+* Les switchs suppriment automatiquement les entrées de leur base de données au bout d'un certain temps, généralement 5 minutes, s'ils ne voient pas de nouvelles trames en provenance de cette machine.
 
 ## VLAN
 
-* Envoyer des messages (en broadcast ou flooding) à un nombre important de machines peut entraîner un trafic parasite important, et entraîner une latence qui, si elle n'est pas contrôlée, peut provoquer des pannes et des pertes de service.
+* Envoyer des messages (en *broadcast* ou *flooding*) à un nombre important de machines peut entraîner un trafic parasite important, et entraîner une latence qui, si elle n'est pas contrôlée, peut provoquer des pannes et des pertes de service.
 
-* Pour parer ce problème, les switchs permettent de diviser le réseau en plusieurs sous-sections, et de choisir quelle interface appartient à quelle section.
+  Pour parer ce problème, les switchs permettent de diviser le réseau en plusieurs sous-sections, et de choisir quelle machine appartient à quelle section.  
+  Pour ce faire, on crée un réseau local virtuel ou *virtual local area network* (VLAN) en anglais. Un switch peut avoir des milliers de VLAN en cours d'exécution en même temps. Seuls les appareils appartenant à la même VLAN recevrons les message en broadcast.
 
-  Pour ce faire, on crée un réseau local virtuel ou *virtual local area network* (VLAN) en anglais. Un switch peut avoir des milliers de VLAN en cours d'exécution en même temps. Seuls les appareils appartenant à la même VLAN recevrons les broadcast.
+* Inversemment, une VLAN permet également de combiner deux ou plusieurs LAN séparées pour qu'elles apparaissent comme un seul et même réseau local.
 
-* Si un routeur ou switch L-3 n'est pas connecté entre les VLAN (pour transmettre les données en utilisant les adresses IP des trames), alors deux hôtes placés sur des VLAN différentes ne peuvent pas communiquer.
+  Généralement, des configurations sont nécessaires:  
+  - définir la VLAN pour le switch  
+  - configurer le port *trunk* pour la communication switch à switch
+
+  ![](https://i.imgur.com/DmbmGFC.png)
+
+  Certaines configurations epuvent être minimisées ou éliminées grâce à des options et des protocoles plus récents.
+
+* Si un routeur ou switch L-3 n'est pas connecté entre les VLAN (pour transmettre les données en utilisant les adresses IP des trames et non plus les adresses MC), alors deux hôtes placés sur des VLAN différentes ne peuvent pas communiquer.
 
 * Les VLANs ont plusieurs avantages:
 

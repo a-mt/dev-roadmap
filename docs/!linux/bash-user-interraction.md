@@ -349,44 +349,6 @@ echo "Tout va bien"
 echo "Une erreur" >&2
 ```
 
-## Rediriger des flux
-
-* `exec` permet de rediriger les flux.  
-  Cela permet notamment de sauvegarder la valeur d'un flux dans un autre.
-
-  ``` bash
-  # Sauvegarde stdin dans fd6
-  exec 6<&0
-
-  # Remplace stdin par le fichier "datafile"
-  exec < datafile
-
-  # Lit les lignes du fichier "datafile"
-  read a1
-  read a2
-
-  # Restaure stdin à partir de fd6
-  # puis supprime fd6
-  exec 0<&6 6<&-
-  ```
-
-  ``` bash
-  # Sauvegarde stdout dans fd6
-  exec 6>&1
-
-  # Remplace stdout par le fichier "logfile"
-  exec > logfile
-
-  # Écrit les lignes dans le fichier "logfile"
-  date
-  echo "-------------------------------------"
-  ls -al
-
-  # Restaure stdout à partir de fd6
-  # puis supprime fd6
-  exec 1>&6 6>&-
-  ```
-
 ---
 
 ## Code retour

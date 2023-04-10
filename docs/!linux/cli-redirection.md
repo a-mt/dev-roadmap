@@ -118,6 +118,23 @@ La *redirection de flux* est la capacité d'envoyer ou de recevoir du texte non 
   /etc
   ```
 
+### stdin à partir d'un fichier
+
+* En utilisant `<`, l'entrée standard peut être récupérée à partir d'un fichier
+
+  ``` bash
+  $ tr : $'\t' < /etc/passwd
+  root  x 0 0 root  /root /bin/bash
+  daemon  x 1 1 daemon  /usr/sbin /usr/sbin/nologin
+  bin x 2 2 bin /bin  /usr/sbin/nologin
+  sys x 3 3 sys /dev  /usr/sbin/nologin
+  sync  x 4 65534 sync  /bin  /bin/sync
+  ```
+
+### Device nodes
+
+On peut utiliser les flux avec des fichiers textes, mais également des fichiers virtuels (*device nodes*):
+
 * `/dev/null` est un fichier virtuel spécial: rien ne s'écrit dedans.  
   C'est utile lorsqu'on souhaite ne pas afficher une sortie — ni la sauvegarder ailleurs.
 
@@ -134,17 +151,38 @@ La *redirection de flux* est la capacité d'envoyer ou de recevoir du texte non 
   /tmp/config-err-WQWVab
   ```
 
-### stdin à partir d'un fichier
-
-* En utilisant `<`, l'entrée standard peut être récupérée à partir d'un fichier
+* `/dev/fd/N` correspond au flux N (*file descriptor*)  
+  `/dev/stdin` correspond à /dev/fd/0  
+  `/dev/stdout` correspond à /dev/fd/1  
+  `/dev/stderr` correspond à /dev/fd/2
 
   ``` bash
-  $ tr : $'\t' < /etc/passwd
-  root  x 0 0 root  /root /bin/bash
-  daemon  x 1 1 daemon  /usr/sbin /usr/sbin/nologin
-  bin x 2 2 bin /bin  /usr/sbin/nologin
-  sys x 3 3 sys /dev  /usr/sbin/nologin
-  sync  x 4 65534 sync  /bin  /bin/sync
+  $ echo "Err: something went wrong" >/dev/stderr
+  Err: something went wrong
+  ```
+
+* `/dev/tcp/HOST/PORT` et `/dev/udp/HOST/PORT`  
+  permettent d'établir des connections TCP et UDP arbitraires
+
+  ``` bash
+  # Scan de ports
+  for PORT in {1..65535}; do
+      echo >/dev/tcp/127.0.0.1/$port &&
+      echo "port $port is open" ||
+      echo "port $port is closed"
+  done
+  80 open
+  631 open
+  ```
+  ``` bash
+  # Envoyer SHUTDOWN à Tomcat7
+  echo SHUTDOWN > /dev/tcp/127.0.0.1/8005
+  ```
+  ``` bash
+  # Obtenir l'heure de nist.gov
+  $ cat </dev/tcp/time.nist.gov/13
+
+  60039 23-04-05 04:06:44 50 0 0 861.2 UTC(NIST) *
   ```
 
 ### stdout vers stdin
@@ -181,7 +219,7 @@ La *redirection de flux* est la capacité d'envoyer ou de recevoir du texte non 
   which (1)            - locate a command
   ```
 
-  -a pour ajouter à la fin et non écraser le contenu du fichier
+  Utiliser l'option `-a` pour ajouter à la fin et non écraser le contenu du fichier
 
   ```
   $ man -k whereis | grep ^whereis | tee -a studyMe.txt
@@ -191,3 +229,93 @@ La *redirection de flux* est la capacité d'envoyer ou de recevoir du texte non 
   which (1)            - locate a command
   whereis (1)          - locate the binary, source, and manual page files for a command
   ```
+
+### exec
+
+* `exec` permet de rediriger les flux du shell courant
+
+  ``` bash
+  # Met le contenu du fichier "datafile" dans fd6
+  exec 6< datafile
+
+  # Lit les lignes du fichier "datafile"
+  read a1 <&6
+  read a2 <&6
+
+  # Supprime fd6
+  exec 6<&-
+  ```
+
+  ``` bash
+  # Copie stdout (fd1) dans fd6
+  exec 6>&1
+
+  # Remplace stdout par le fichier "logfile"
+  exec > logfile
+
+  # Écrit les lignes dans le fichier "logfile"
+  date
+  echo "-------------------------------------"
+  ls -al
+
+  # Restaure stdout à partir de fd6
+  # puis supprime fd6
+  exec 1>&6 6>&-
+
+  # Vérifie l'état de stdout et du fichier logfile
+  $ echo "ok"
+  ok
+  $ cat logfile
+  Tue  4 Apr 08:35:55 CEST 2023
+  -------------------------------------
+  total 1032484
+  drwxr-xr-x  6 am am      4096 Apr  4 08:35 .
+  drwxr-xr-x 27 am am      4096 Apr  4 08:19 ..
+  -rw-rw-r--  1 am am        68 Apr  4 08:36 logfile
+  ```
+
+  ``` bash
+  # Window1: Démarer l'écoute sur le port 55555
+  $ nc -l 55555
+
+  # Window2: Rediriger la sortie vers le port 55555
+  $ exec 6>&1 $ exec > /dev/tcp/127.0.0.1/55555
+  # ou nc 127.0.0.1 55555
+
+  $ echo "hello world" $ date
+
+  # Window1: A reçu la sortie
+  hello world
+  Wed 5 Apr 06:00:36 CEST 2023
+
+  # Window1: Ctrl+c pour stopper l'écoute
+  # Window2: Restaurer stdout
+  $ exec 1>&6 6>&-
+  ```
+
+  ``` bash
+  $ exec </dev/tcp/127.0.0.1/80
+  # ou nc -z 127.0.0.1 80
+  ```
+
+* Formellement
+
+  - `[n]>&word` duplique un flux en sortie  
+    Si *n* n'est pas spécifié, alors 1 est utilisé  
+    Si *word* vaut `-`, alors le file descriptor *n* est fermé.
+
+  - `[n]<&word` duplique un flux en entrée  
+    Si *n* n'est pas spécifié, alors 0 est utilisé  
+    Si *word* vaut `-`, alors le file descriptor *n* est fermé.
+
+  - `[n]<&digit-` déplace un flux en entrée  
+    Si *n* n'est pas spécifié, alors 0 est utilisé  
+    *digit* est fermé après avoir été dupliqué dans *n*
+
+  - `[n]<&digit-` déplace un flux en entrée  
+    Si *n* n'est pas spécifié, alors 1 est utilisé  
+    *digit* est fermé après avoir été dupliqué dans *n*
+
+  Il est déconseillé d'utiliser un *n* supérieur à 9, car il peut entrer en conflit avec les flux utilisés en interne par le shell.
+
+  [Redirections](https://www.gnu.org/software/bash/manual/html_node/Redirections.html)

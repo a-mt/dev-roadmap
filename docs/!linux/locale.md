@@ -30,7 +30,7 @@ category: Linux
   |---                |---
   | LC_ADDRESS        | Format des adresses (physiques)
   | LC_COLLATE        | Comment ordonner et trier les chaînes de caractères
-  | LC_CTYPE          | Utilisé dans les regex et expansion de nom
+  | LC_CTYPE          | Détermine l'interprétation des caractères et le comportement des classes de caractères utilisées dans les regex et expansion de nom
   | LC_IDENTIFICATION | Metadonnées de la locale
   | LC_MEASUREMENT    | Unités de mesurement
   | LC_MESSAGES       | Language des messages système
@@ -40,6 +40,8 @@ category: Linux
   | LC_NUMERIC        | Format des nombres
   | LC_TELEPHONE      | Format des numéros de téléphne
   | LC_TIME           | Format des dates et temps
+
+  Plus d'infos sur leur utilisation: `man 7 locale`
 
 * Il existe des catégories spéciales:
 
@@ -207,11 +209,40 @@ Avant de pouvoir utiliser une locale, il faut l'activer
 
 * Au niveau utilisateur, on peut définir une variable d'environnement de même nom que la catégorie de locale à écraser
 
-  ```
+  ``` bash
   $ date
   jeudi 3 novembre 2022, 08:32:48 (UTC+0100)
+  $ cal
+       Avril 2023       
+  di lu ma me je ve sa  
+                     1  
+   2  3  4  5  6  7  8  
+   9 10 11 12 13 14 15  
+  16 17 18 19 20 21 22  
+  23 24 25 26 27 28 29  
+  30                    
   $
   $ export LC_TIME=en_GB.UTF-8
   $ date
   Thu  3 Nov 08:33:13 CET 2022
+  $ cal
+       April 2023       
+  Su Mo Tu We Th Fr Sa  
+                     1  
+   2  3  4  5  6  7  8  
+   9 10 11 12 13 14 15  
+  16 17 18 19 20 21 22  
+  23 24 25 26 27 28 29  
+  30                    
+  ```
+  ``` bash
+  $ LC_NUMERIC=C
+  $ printf "%f" 3.1415
+  3.141500
+
+  $ LC_NUMERIC=fr_FR.UTF-8
+  $ printf "%f" 3.1415
+  bash: printf: 3.1415: invalid number
+  $ printf "%f" 3,1415
+  3,141500
   ```

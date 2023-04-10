@@ -32,9 +32,9 @@ On peut trouver les fichiers utilisés lors du boot dans le système de réperto
   * Les différents noyaux et initrd sont placés à la racine de `/boot`  
     Note: les fichiers vmlinux sont les noyaux Linux, et les fichiers vmlinuz sont les noyaux compressés. C'est ce qu'on appelle le format kernel, Zimage, big zimage ou encore bzimage
 
-  * Si la partition EFI existe, elle sera généralement montée sur `/boot/efi`
+  * UEFI utilise un mini-bootloader (gestionnaire de démarrage) pour configurer le programme de démarrage à utiliser. Le programme de démarrage se trouve dans la partition système (Extensible Firmware Interface [EFI] System Partition [ESP]) et est montée dans le répertoire `/boot/efi`.
 
-  * Si le système a été booté par efi, `/sys/firmware/efi` sera présent
+  * Si le système a été booté par EFI, `/sys/firmware/efi` sera présent
 
 ---
 

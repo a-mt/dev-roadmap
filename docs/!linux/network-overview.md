@@ -19,9 +19,9 @@ category: Linux, Network
 
 ## Réseau informatique
 
-* Un *réseau informatique* (*computer network* en anglais) est un ensemble de systèmes informatiques — par exemple des ordinateurs, imprimantes ou appareils médicaux — reliés entre eux pour échanger des ressources, dont notamment:
-  - des données (emails, fichiers, applications)
-  - des services (effectuer une mesure, prendre une photo)
+* Un *réseau informatique* (*computer network* en anglais) est un ensemble de systèmes informatiques, par exemple des ordinateurs, imprimantes ou appareils médicaux, reliés entre eux pour échanger des ressources, dont notamment:
+  - des données — emails, fichiers, applications
+  - des services — effectuer une mesure, prendre une photo
   - de la puissance de calcul
 
 ## Normes internationales
@@ -37,7 +37,7 @@ category: Linux, Network
 
   - l'ISO (*International Standardisation Organisation*)
   - l'ITU (*International Telecommunication Union*)
-  - l'IEEE (*Institute of Electronical and Electronics Engineers*) — à prononcer I-3-E
+  - l'IEEE (*Institute of Electronical and Electronics Engineers*) — prononcer I-3-E
   - l'IETF (*Internet Engineering Task Force*)
 
 * Citons également les agences de réglementation françaises, qui définissant les droits et obligations des systèmes informatiques en France:
@@ -51,7 +51,7 @@ category: Linux, Network
 
 * Il importe peu pour un navigateur web de savoir si les données passent par une connexion filaire ou sans-fil. Pour maximiser l'interopérabilité des systèmes, les protocoles des applications (HTTP, FTP, etc) ne s'occupent pas de la partie transmission mais uniquement de la partie données:
 
-    Le protocole HTTP (*Hypertext Transfer Protocol*) par exemple, définit l'organisation des pages web de manière à être compréhensible par les navigateurs web. Il ne spécifie pas comment le navigateur se connecte au serveur, il passe le relais à un autre protocole, de plus bas niveau
+    Le protocole HTTP (*Hypertext Transfer Protocol*) par exemple, définit l'organisation des pages web de manière à être compréhensible par les navigateurs web. Il ne spécifie pas comment le navigateur se connecte au serveur, à la place il passe le relais à un autre protocole de plus bas niveau
 
     Ainsi HTTP va être encapsulé par un autre protocole: TCP (*Transmission Control Protocol*), qui lui s'occupe la partie transmission. TCP lui-même va être encapsulé par un autre protocole: IP (*Internet Protocol*), qui lui s'occupe de la partie adressage du destinataire et expéditeur.
 
@@ -70,6 +70,12 @@ category: Linux, Network
 ## Le concept: modèle OSI
 
 * Le modèle OSI (*Open Systems Interconnection model*) est un modèle conceptuel qui décrit la manière dont les couches protocolaires sont découpées.
+  Il a été crée pour normaliser le language utilisé pour décrire les protocoles de réseau et définit la manière dont les systèmes communiquent entre eux en utilisant des couches d'abstraction.
+
+  Chaque couche communique avec la couche directement supérieure et inférieure.  
+  Toutes les couches ne sont pas utilisées à tout moment.
+
+* Les couches du modèles OSI sont comme suit:
 
     * **7/ Application**  
       S'occupe de la communication au niveau du programme.
@@ -83,7 +89,7 @@ category: Linux, Network
     * **4/ Transport**  
       Gère la transmission de bout en bout et l'intégrité des données transmises:  
       - Établit une connexion entre les applications puis la ferme à l'issue de la transaction
-       - Découpe les données en *segments* de taille uniforme (afin de fluidifier la transmission) et les numérote
+      - Découpe les données en *segments* de taille uniforme (afin de fluidifier la transmission) et les numérote
       - Vérifie que tous les segments ont bien été reçus et les ré-émet en cas de perte
 
     * **3/ Network**  
@@ -92,7 +98,7 @@ category: Linux, Network
 
     * **2/ Data link**  
       Gère le transfert physique des données d'un système à un autre.  
-      Ajoute sa propre entête, contenant entre autres l'adresse MAC de la machine émettrice et l'adresse MAC de la machine réceptrice sur le réseau local — ou  'adresse MAC du routeur si le paquet doit être envoyé sur Internet.
+      Ajoute sa propre entête, contenant entre autres l'adresse MAC de la machine émettrice et l'adresse MAC de la machine réceptrice sur le réseau local — ou l'adresse MAC du routeur si le paquet doit être envoyé sur Internet.
 
     * **1/ Physical**  
       Gère la transmission et la réception des données sur le support physique.
@@ -103,35 +109,44 @@ category: Linux, Network
 
 ## La pratique: modèle TCP/IP
 
-* Internet a simplifié l'architecture décrite par le modèle OSI: on retrouve moins de couches et les numéros ne sont pas contigus — historiquement on classe les protocoles des applications dans la couche 7, qui en pratique utilisent directement les services de la couche 4, d'où le saut dans la numérotation.
+* Internet a simplifié l'architecture décrite par le modèle OSI: on retrouve moins de couches et les numéros ne sont pas contigus. Puisqu'historiquement on classe les protocoles des applications dans la couche 7, la couche "application" est toujours considérée étant dans la couche 7, mais qui en pratique utilise directement les services de la couche 4, d'où le saut dans la numérotation.
 
     Le modèle qui en résulte est communément appelé le *modèle TCP/IP* puisque les protocoles de base sont TCP et IP, mais ce ne sont pas les seuls protocoles possibles de ce modèle.
 
     ![](https://i.imgur.com/ayNshPG.png)
 
-    * 1/ La couche 1 s'occupe de la modulation du signal binaire sur un support physique particulier (fibre optique, paire de cuivre, onde radio).
+    Le modèle TCP/IP peut être considéré comme un sous-ensemble du modèle OSI.
 
-    * 2/ La couche 2 regroupe les mécanismes qui permettent de structurer cette donnée sous forme de bloc de taille finie (des trames) et de définir les méthodes d’accès — c'est à dire quand l’équipement peut émettre, et les formats des adresses utilisées pour identifier les équipements. Ethernet ou Wi-Fi sont des exemples de protocoles de niveau 2 (qui intègrent leur niveau 1).
+* Les couches du modèle TCP/IP sont comme suit:
+
+    * 1/ Physique  
+      La couche 1 s'occupe de la modulation du signal binaire sur un support physique particulier (fibre optique, paire de cuivre, onde radio).
+
+    * 2/ Data Link  
+      La couche 2 regroupe les mécanismes qui permettent de structurer cette donnée sous forme de bloc de taille finie (des *trames*) et de définir les méthodes d’accès — c'est à dire quand l’équipement peut émettre, et les formats des adresses utilisées pour identifier les équipements. Ethernet ou Wi-Fi sont des exemples de protocoles de niveau 2 (qui intègrent leur niveau 1).
 
         Plusieurs organismes standardisent des protocoles pour ce niveau:
-        * l'IEEE (*Institute of Electrical and Electronics Engineers*) pour les réseaux comme Ethernet pour les réseaux filaires, Wi-Fi ou Bluetooth pour les réseau radio;
-        * le 3GPP (*3rd Generation Partnership Project*) pour les protocoles qu'on retrouve dans les téléphones portables (4G, 5G).
+        * l'IEEE (*Institute of Electrical and Electronics Engineers*)  
+          pour les réseaux comme Ethernet pour les réseaux filaires, Wi-Fi ou Bluetooth pour les réseau radio;
+        * le 3GPP (*3rd Generation Partnership Project*)  
+          pour les protocoles qu'on retrouve dans les téléphones portables (4G, 5G).
 
-    * 3/ Le couche 3 est occupée par le protocole IP, standardisé par l'IETF. Il permet de construire un réseau mondial uniforme en cachent les spécificités des protocoles de niveau 2. IP définit des règles d'adressage et de routage, c'est à dire comment trouver un chemin dans le réseau pour qu'en recopiant l'information de noeud en noeud, on atteigne la destination.
+    * 3/ Network  
+      Le couche 3 est occupée par le protocole IP, standardisé par l'IETF. Il permet de construire un réseau mondial uniforme en cachant les spécificités des protocoles de niveau 2. IP définit des règles d'adressage et de routage, c'est à dire comment trouver un chemin dans le réseau pour qu'en recopiant l'information de noeud en noeud, on atteigne la bonne destination.
 
-        Les concepteurs d'internet insistent sur le fait que le protocole en couche 3, IP (*Internet Protocol*), joue ce rôle central et doit avoir une interaction limitée avec aussi bien les couches basses qu’avec les protocoles de niveau supérieur. Le protocole IP s’adapte simplement à tout moyen de communication.
+        Les concepteurs d'internet insistent sur le fait que le protocole en couche 3, IP (*Internet Protocol*), joue un rôle central et doit avoir une interaction limitée avec aussi bien les couches basses qu’avec les protocoles de niveau supérieur. IP propose simplement une abstraction des moyens de communication aux couches applicatives, s’adaptant à tout moyen de communication et rendant l’accès au réseau et l’adressage universels. Le traitement dans les routeurs (équipements chargés d’aiguiller l’information dans le réseau) doit être le plus rapide possible pour traiter un maximum de paquets par seconde. De plus, IP ne spécialise pas le réseau pour un service ou un autre ; il ne fait que diriger les paquets vers la bonne destination. Le réseau Internet est un réseau mondial construit autour de ce protocole permettant potentiellement d'atteindre tous les équipements qui y sont connectés.
 
-        IP propose ainsi une abstraction des moyens de communication aux couches applicatives, rendant l’accès au réseau et l’adressage universels. Le traitement dans les routeurs (équipements chargés d’aiguiller l’information dans le réseau) doit être le plus rapide possible pour traiter un maximum de paquets par seconde. De plus, IP ne spécialise pas le réseau pour un service ou un autre ; il ne fait que diriger les paquets vers la bonne destination. Le réseau Internet est un réseau mondial construit autour de ce protocole permettant potentiellement d'atteindre tous les équipements qui y sont connectés.
-
-    * 4/ La couche 4 est constituée de deux protocoles, TCP et UDP, qui ont mis en oeuvre dans les équipements d'extrémités: là où l'adresse IP permet de trouver une machine sur le réseau, les protocoles de niveau 4 permettent de trouver une application tournant sur la machine.
+    * 4/ Transport  
+      La couche 4 est constituée de deux protocoles, TCP et UDP, qui ont mis en oeuvre dans les équipements d'extrémités: là où l'adresse IP permet de trouver une machine sur le réseau, les protocoles de niveau 4 permettent de trouver une application tournant sur la machine.
         Les "adresses" de ces applications sont des numéros compris entre 1 et 65535 appelés *ports*. Par exemple, les serveurs Web utilisent typiquement le port numéro 80 ou le numéro 443.
 
         Le protocole TCP (*Transmission Control Protocol*) est complexe et demande beaucoup de mémoire. Il contrôle ce qui se passe sur le réseau: il va surveiller les données transférées et sera capable de retransmettre des données perdues, ou encore ralentir ou accélérer le transfert de données s’il détecte une saturation du réseau.
 
-        Dans les cas simple, UDP (*User Datagram Protocol*) est préféré. Il n'apporte pas de traitement supplémentaire et se contente d'aiguiller les données vers la bonne application sans aucun contrôle. Contrairement à TCP, il ne garantit pas la livraison des données et ne corrige pas l'ordre des paquets s'ils arrivent dans le désordre.  
-        Si vous avez déjà appelé quelqu'un par le biais d'Internet et rencontré des parasites ou des brèves interruptions de son, c'est principalement dû à UDP. On ne recherche pas la perfection ici: il s'agit uniquement d'être rapide.
+        Dans les cas simples, UDP (*User Datagram Protocol*) est préféré. Il n'apporte pas de traitement supplémentaire et se contente d'aiguiller les données vers la bonne application sans aucun contrôle. Contrairement à TCP, il ne garantit pas la livraison des données et ne corrige pas l'ordre des paquets s'ils arrivent dans le désordre.  
+        Si vous avez déjà appelé quelqu'un par le biais d'Internet et rencontré des parasites ou des brèves interruptions de son, c'est principalement dû à UDP. Ici, on ne recherche pas la perfection: il s'agit uniquement d'être rapide.
 
-    * 7/ Enfin la couche 7 est celle des protocoles des applications. Ils sont très nombreux mais le plus répandu est HTTP (*Hypertext Transfer Protocol*), qui sert à transporter des pages web et permet également des communications directes entre ordinateurs. Comme HTTP repose sur TCP, ces deux protocoles sont dominants sur le réseau.
+    * 7/ Application  
+      Enfin la couche 7 est celle des protocoles des applications. Ils sont très nombreux mais le plus répandu est HTTP (*Hypertext Transfer Protocol*), qui sert à transporter des pages web et permet également des communications directes entre ordinateurs. Comme HTTP repose sur TCP, ces deux protocoles sont dominants sur le réseau.
 
     ![](https://i.imgur.com/uvGhhL5.png)
 
@@ -157,11 +172,11 @@ category: Linux, Network
 
   ![](https://i.imgur.com/r6V0gJj.png)
 
-  Ces impulsions électriques sont transmises sur de longues distances par un câble électrique. Une fois arrivé à destination, le signal électrique actionne un levier grâce à un électroaimant, ce qui imprime un point ou un trait sur une feuille de papier le temps que dure l'impulsion électrique. Le récepteur peut ensuite décoder la série de tirets et de points en message compréhensible par l'humain.
+  Ces impulsions électriques sont transmises sur de longues distances par un câble électrique. Une fois arrivé à destination, le signal électrique actionne un levier grâce à un électro-aimant, ce qui imprime sur une feuille de papier le temps que dure l'impulsion électrique — un point ou un trait. Le récepteur peut ensuite décoder la série de tirets et de points en message compréhensible par l'humain.
 
-* Compte tenu qu'on veut d'une part pouvoir envoyer des messages à différents endroits du monde, et que le signal s'atténue sur de longues distances d'autres part, des noeuds intermédiaires sont utilisés.
+* Compte tenu qu'on veut d'une part pouvoir envoyer des messages à différents endroits du monde, et d'autre part que le signal s'atténue sur de longues distances, des noeuds intermédiaires sont utilisés.
 
-  À chaque point de commutation, l'ensemble du message est stocké puis transmis une fois que le chemin de sortie est sélectionné. Cette sélection est entièrement décidée par l'opérateur du centre de commutation, manuellement, en fonction de la destination du message — indiqué par un code ZIP ou PIN.
+  À chaque point de commutation, l'ensemble du message est stocké, le chemin de sortie est sélectionné, puis transmis sur cette ligne. Cette sélection est entièrement décidée par l'opérateur du centre de commutation, manuellement, en fonction de la destination du message — indiqué par un code ZIP ou PIN.
 
   ![](https://i.imgur.com/7482EWY.png)
 
@@ -185,9 +200,9 @@ category: Linux, Network
 
 * Avec l'arrivée du téléphone, les réseaux télégraphiques existants ont été exploités pour désormais transmettre le son sous forme d'électricité.
 
-  Pour établir une liaison téléphonique, il fallait ajouter un câble entre le domicile du particulier (jusqu'à son téléphone) et la companie de téléphone. La companie de téléphone allouait un numéro de téléphone, unique à chaque particulier, et structuré hiérarchiquement — région/commune/etc: en examinant un numéro de téléphone, l'entreprise pouvait savoir où se trouvait le téléphone.
+  Pour établir une liaison téléphonique, il fallait ajouter un câble entre le domicile du particulier (jusqu'à son téléphone) et la companie de téléphone. La companie de téléphone allouait un numéro de téléphone, unique à chaque particulier, et structuré hiérarchiquement (région/commune/etc): en examinant un numéro de téléphone, l'entreprise pouvait savoir où se trouvait le téléphone.
 
-  Pour joindre quelqu'un, il fallait composer son numéro. Les noeuds intermédiaires, appelés *centraux téléphoniques*, établissaient une connexion en fonction de ce numéro. Dans un premier temps, ce processus de connexion était effectué par des opérateurs humains, en branchant manuellement les câbles. Ce processus a ensuite été automatisé, avec des équipements de commutation dans les centraux téléphoniques.
+  Pour joindre quelqu'un, il fallait composer son numéro. Les noeuds intermédiaires, appelés *centraux téléphoniques*, établissaient une connexion en fonction de ce numéro. Dans un premier temps, ce processus de connexion était effectué par des opérateurs humains, en branchant manuellement les câbles. Ce processus a ensuite été automatisé avec des équipements de commutation dans les centraux téléphoniques.
 
   Une fois la connexion établie, la personne A entend la tonalité (*dial tone*) et la personne B entend la sonnerie (*ring tone*). Lorsque B répond au téléphone, ils disposent d'une connexion full duplex en temps réel.
 
@@ -195,45 +210,43 @@ category: Linux, Network
 
 * La commutation de circuit repose ainsi sur une technique de *pre-allocation*: une connexion directe est établie entre les deux points. Peu importe que les interlocuteurs parlent beaucoup ou pas du tout, les companies de téléphone facturent à la durée, et la connexion reste active tant que l'un des deux interlocuteurs n'a pas raccroché.
 
-  Il vous est peut-être arrivé d'entendre ce message quand vous voulez téléphoner: "toutes les lignes sont occupées, veuillez réssayer plus tard". Ce qui arrive parce que la companie téléphonique a établit autant de circuits dédiés qu'elle le pouvait, pour fournir une nouvelle connexion il faut d'abord qu'une ligne existante soit libérée.
+* Il vous est peut-être arrivé d'entendre ce message quand vous voulez téléphoner: "toutes les lignes sont occupées, veuillez réssayer plus tard". C'est ce qui arrive lorsque la companie téléphonique a établit autant de circuits dédiés qu'elle le pouvait: pour fournir une nouvelle connexion il faut d'abord qu'une ligne existante soit libérée.
 
 ### Packet switching
 
 * La *commutation de paquets* (*packet switching*) est utilisé dans les réseaux informatiques.
 
-  Les télégraphes et les systèmes informatiques sont similaires dans leur manière de coder les données: ils utilisent tous deux des états binaires pour représenter l'information. Dans le cas des télégraphes, il s'agit d'impulsions courtes ou longues, représentées par des points et des tirets. Dans le cas de l'informatique, il s'agit de l'absence ou la présence d'un signal (ou dessus d'un certain seul), représentés par des 0 et des 1.
+  Les télégraphes et les systèmes informatiques sont similaires dans leur manière de coder les données: ils utilisent tous deux des états binaires pour représenter l'information. Dans le cas des télégraphes, il s'agit d'impulsions courtes ou longues, représentées par des points et des tirets. Dans le cas de l'informatique, il s'agit de l'absence ou la présence d'un signal (ou signal au-dessus d'un certain seul), représentés par des 0 et des 1.
 
   L'avantage de cette approche, c'est qu'elle peut voyager sous diverses formes: des ondes électriques, optiques ou électromagnétiques (sans-fil). Le type de signal utilisé dépend de l'interface utilisée: si on est connecté par wifi au réseau, l'ordinateur modulera le signal numérique en une onde électromagnétique; si on est connecté par Ethernet, l'ordinateur enverra des signaux électriques.
 
   ![](https://i.imgur.com/CCCFCV1.png)
 
-  Pour encoder les messages entre 0 et 1, le premier standard utilisé était l'ASCII (*American Standard Code for Information Interchange*). Bien que l'ASCII contienne plus de lettres que le Morse, avec notamment des caractères de ponctuation, il reste limité à l'alphabet anglais. Aujourd'hui, on préfère généralement Unicode, un encodage pouvant représenter presque tous les alphabets au monde.
+  Pour encoder les messages en 0 et 1, le premier standard utilisé était l'ASCII (*American Standard Code for Information Interchange*). Bien que l'ASCII contienne plus de lettres que le Morse, avec notamment des caractères de ponctuation, il reste limité à l'alphabet anglais. Aujourd'hui, on préfère généralement Unicode, un encodage pouvant représenter presque tous les alphabets au monde.
 
   ![](https://i.imgur.com/54OaOWt.png)
 
-  Tout comme le télégraphe utilisait des adresses géographiques, et le téléphone des numéros hiérarchiques, l'informatique utilise des adresses IP pour désigner la destination d'un message.
+  Là où le télégraphe utilisait des adresses géographiques, et le téléphone des numéros hiérarchiques, l'informatique utilise des adresses IP pour désigner la destination d'un message.
 
-* Avant d'envoyer un message, Alice ajoute son adresse IP comme source et l'adresse IP de Bob comme destinataire. Le tout constitue un *paquet IP*. Ce paquet est envoyé à un premier noeud réseau, qu'on appelle un *routeur*.
+* Si Alice veut communiquer avec Bob: Alice prépare son message et avant d'envoyer ce message, des entêtes son ajoutés: l'adresse IP de Bob comme destinataire et l'adresse IP d'Alice comme source. Le tout (message + entêtes) constitue un *paquet IP*. Ce paquet est envoyé à un premier noeud intermédiaire du réseau, appelé un *routeur*.
 
   Le routeur lit l'adresse IP de destination et choisit la direction dans laquelle il doit envoyer le message. Le routeur suivant fait la même chose, et ainsi de suite, jusqu'à ce que le message arrive à sa destination.
 
   ![](https://i.imgur.com/ggU2RWg.png)
 
-  Les réseaux informatiques disposent de plusieurs protocoles de routage, qui se chargent de sélectionner un chemin à prendre. Il est également possible de définir ces routes manuellement, dans les configurations du routeur. Par simplicité, on utilise ici le deuxième cas, bien que dans la vraie vie la sélection du chemin est, dans la plupart des cas, dynamique.
+  Note: Les réseaux informatiques disposent de plusieurs protocoles de routage pour sélectionner le chemin à prendre. Il est également possible de définir ces routes manuellement, dans les configurations du routeur. Dans l'exemple précédent on utilise le deuxième cas pour plus de simplicité, bien que dans la vraie vie la sélection du chemin est dans la plupart des cas dynamique.
 
-* Un autre concept important de la commutation de paquet, est la notion de paquets:
+* Un autre concept important de la commutation de paquet, est la segmentation des données:
 
-  Si Alice veut transmettre un fichier de 10MB (environ 83 886 Kbits) sur un réseau de 56 Kbits/s, le transfert prendrait environ 1498 secondes, soit presque 25 minutes. Si le fichier est envoyé en un seul message, alors pendant 25 minutes, la connexion entre Alice et Bob serait occupée et n'accepterait rien d'autre sur cette ligne tant que le transfert n'est pas terminé — et si cette ligne est interrompue, la transmission échoue. C'est exactement le type de problème qu'on rencontre avec la commutation de circuit, et dont on veut se débarrasser avec la commutation de paquets.
+  Si Alice veut transmettre un fichier de 10MB (environ 83 886 Kbits) sur un réseau de 56 Kbits/s, le transfert prendrait environ 1498 secondes, soit presque 25 minutes. Si le fichier est envoyé en un seul message, alors pendant 25 minutes la connexion entre Alice et Bob serait occupée et n'accepterait rien d'autre sur cette ligne tant que le transfert n'est pas terminé — et si cette ligne est interrompue, la transmission échoue. C'est exactement le type de problème qu'on rencontre avec la commutation de circuit, et dont on veut se débarrasser avec la commutation de paquets.
 
-  Pour résoudre ce problème, la taille d'un paquet est limité (c'est le paramètre *maximum segment size*). Si on suppose que la taille d'un paquet est limitée de 150 bits, alors le fichier va être divisé en 6991 paquets, qui seront envoyés les uns après les autres. Pendant ce temps, Alice peut toujours utiliser le réseau pour d'autres applications.
+  Pour résoudre ce problème, la taille d'un paquet est limitée (c'est le paramètre *maximum segment size*). Si on suppose que la taille d'un paquet est limitée de 150 bits, alors le fichier va être divisé en 6991 paquets, qui seront envoyés les uns après les autres. Pendant ce temps, Alice peut toujours utiliser le réseau pour d'autres applications.
 
-*  Pour éviter de surcharger des lignes, toutes les données ne vont pas être envoyées sur la même liaison.
+* Pour éviter de surcharger des lignes, toutes les données ne vont pas être envoyées sur la même liaison.
   Et comme les paquets peuvent prendre différentes routes, ils peuvent atteindre leur destination dans le désordre.
 
   Si les paquets sont mis bout à bout dans le mauvais ordre, alors le fichier construit ne sera pas bon.
-  Pour y remédier, des protocoles orientés connexion ont été conçus, comme TCP: TCP ajoute un numéro (paramètre *sequence number*) dans les entêtes. Les paquets sont stockés dans la mémoire de la carte réseau (*high-speed memory buffers*, aussi appelé *TX and RX buffers* ou tampons de transmission et de réception en français), qui se charge de d'altérer et restaurer les paquets dans le bon ordre.
+  Pour y remédier, des protocoles orientés connexion ont été conçus, comme TCP: TCP ajoute un numéro (paramètre *sequence number*) dans les entêtes. Les paquets sont stockés dans la mémoire de la carte réseau (*high-speed memory buffers*, aussi appelé *TX and RX buffers* ou *tampons de transmission et de réception* en français), qui se charge de d'altérer et restaurer les paquets dans le bon ordre.
 
-* Ainsi la commutation de paquets repose
-  - sur la décomposition des messages en paquets de taille limitée, géré aux extrémités (les ordinateurs source et destination).   
-  - et le *cut and through*: la retransmission à la volée, après décodage de l'adresse de destination (géré par les appareils réseaux)
+* Ainsi la commutation de paquets repose 1. sur la décomposition des messages en paquets de taille limitée, travail géré aux extrémités (c'est à dire les ordinateurs source et destination) et 2. le *cut and through*: la retransmission à la volée, après décodage de l'adresse de destination, travail géré par les appareils réseaux
 

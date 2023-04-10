@@ -146,6 +146,16 @@ category: Linux, Shell, Bash
   fi
   ```
 
+### Grouper des commandes
+
+* Il y a deux manières de grouper des commandes / expressions logiques:
+
+  - `( list )`  
+    Placer une liste de commandes entre parenthèses oblige l'interpréteur de commandes à créer un sous-shell. Les affectations de variables ne restent pas en vigueur après la fin du sous-shell
+
+  - `{ list, }`  
+    Placer une liste de commandes entre accolades permet de grouper des commandes sans créer de sous-shell. Le point-virhule (ou le retour chariot) est obligatoire à la fin de la ligne
+
 ### Doubles crochets
 
 * Dans sa version 2.02, Bash introduit l'expression étendue de test: les doubles crochets — qui est une expression en elle-même et non une commande. Cette syntaxe est supportée par ksh, bash et zsh.
@@ -308,6 +318,25 @@ esac
 </table>
 
 ``` bash
+$ empty=""
+$ var="value"
+
+$ [ -z "$undefined" ] && echo "yes" || echo "no"
+yes
+$ [ -z "$empty" ] && echo "yes" || echo "no"
+yes
+$ [ -z "$var" ] && echo "yes" || echo "no"
+no
+
+$ [ -n "$undefined" ] && echo "yes" || echo "no"
+no
+$ [ -n "$empty" ] && echo "yes" || echo "no"
+no
+$ [ -n "$var" ] && echo "yes" || echo "no"
+yes
+```
+
+``` bash
 if [ -n "$1" ]; then
   if [ ! -r "$1" ]; then
     echo "Could not read file \"$1\"" >&2
@@ -349,6 +378,14 @@ fi
 if [ -e file1.txt ]; then
   echo "File exists"
 fi
+```
+``` bash
+$ touch test1 test2
+$ [ test1 -ef test2 ] && echo "yes" || echo "no"
+no
+$ ln -s test1 test3
+$ [ test1 -ef test3 ] && echo "yes" || echo "no"
+yes
 ```
 
 ### Arithmétique

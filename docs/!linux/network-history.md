@@ -149,13 +149,12 @@ category: Linux, Network
 
 ## La commercialisation
 
-* La bulle Internet (ou *dot-com bubble*) est une bulle boursière survenue à la fin des années 90.
-
+* La bulle Internet (ou *dot-com bubble*) est une bulle boursière survenue à la fin des années 90.  
   Alors que les utilisateurs affluent sur le Web, les possibilités semblent illimitées. Presque tout ce qu'on peut faire avec les réseaux précédents est porté sur le Web, et chaque secteur d'activité, communauté, religion et sous-culture se fait une place en ligne.
 
   Les taux d'intérêts faibles favorisent l'entreprenariat. Et au scepticisme initial cède l'expérimentation, puis une excitation croissante lorsque les gens commencent à penser que les anciennes lois du commerce ne s'appliquent pas à ce nouveau média. Personne ne veut rester à la traîne, ce qui alimente une frénésie de projets commerciaux, dont beaucoup reposent sur des bases fragiles.
 
-* En mars 2000, la bulle finit par éclater: c'est le krash boursier. En un an, le stock market des technologies perd environ 60% de sa valeur. Les start-up spécialisées dans le e-commerce représentent 55% des faillites, les sites de contenus 30%, les 15% restant se partagent entre les différents services internet.
+* En mars 2000, la bulle finit par éclater: c'est le crash boursier. En un an, le stock market des technologies perd environ 60% de sa valeur. Les start-up spécialisées dans le e-commerce représentent 55% des faillites, les sites de contenus 30%, les 15% restant se partagent entre les différents services internet.
 
   Le boom et l'effondrement ont leur plus grand effet dans la région de la baie de San Francisco, où se trouve la Silicon Valley, et où se sont produits de nombreux booms depuis la ruée vers l'or.
 

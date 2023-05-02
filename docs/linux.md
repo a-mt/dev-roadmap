@@ -1,5 +1,6 @@
 ---
 title: Linux
+summary: false
 ---
 
 [intro]: !linux/intro.md

@@ -26,17 +26,25 @@ category: Linux, Fichiers
 * Le standard de hiérarchie des systèmes de fichier (*Filesystem Hierarchy Standard*, FHS) désigne quels répertoires doivent correspondre à quel contenu. Ces répertoires sont:
 
   - /boot - fichiers du bootloader
-  - /etc - fichiers de configuration (système et applications)
   - /home - fichiers utilisateur
   - /root - fichiers du super-utilisateur
+
+  - /bin - exécutables essentiels, ne nécessitant pas les privilèges root (ex cat, ls)
+  - /dev - (device nodes) système de fichier virtuel, permettant aux applications d'interragir avec le matériel
+  - /etc - fichiers de configuration (système et applications)
+  - /lib /lib64 - Packages nécessaires aux executables présents dans /bin et /sbin
+  - /sbin - exécutables essentiels, nécessitant les privilèges root (ex insmod, fdisk)
+
+  - /proc - système de fichier virtuel, permettant de récupérer des informations sur le système et les processus
+  - /sys - système de fichier virtuel, similaire à /proc mais plus jeune et adhère à des standards plus stricts
   - /media - supports amovibles
   - /mnt - supports amovibles (ancien standard)
   - /opt - applications tierces
   - /tmp - fichiers temporaires
   - /usr - données des programmes Linux
-  - /var - données variables (ex fichiers de log)
+  - /var - données volatiles (ex fichiers de log)
 
-  Sont également spécifiés par le FHS, les sous-répertoires suivants:
+  Le répertoire /usr peut être considéré comme une hiérarchie secondaire. Il est utilisé pour les fichiers qui ne sont pas nécessaires au démarrage du système. /usr peut ne pas nécessairement résider dans la même partition que la répertoire racine. Sont spécifiés par le FHS, les sous-répertoires suivants:
 
   - /usr/bin - programmes binaires des utilisateurs
   - /usr/sbin - programmes binaires des admins

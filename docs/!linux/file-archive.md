@@ -335,12 +335,17 @@ category: Linux, Fichiers
 
 ## dd
 
-* Le véritable but de la commande `dd` (duplicate disk) est de copier et convertir un fichier, mais elle est souvent employée dans le domaine de la sécurité informatique puisqu'elle permet de créer un copie exacte d'un dique entier, qui peut souvent être utilisée comme preuve dans des affaires judiciaires.
+* `dd` (duplicate disk) permet de sauvegarder un disque ou une partition entière. Cette command prend toutes les données présentes sur le disque ou la partition et effectue une copie exacte bit par bit. On processus également appelé "imaging" — le processus de créer une image de disque.
+
+  Avant de sauvegarder une image de disque ou de partition, démonter ce disque ou cette partition pour s'assurer qu'aucune donnée n'est modifiée pendant la sauvegarde.
+
+* Le véritable but de la commande `dd` est de copier un fichier, mais elle est souvent employée dans le domaine de la sécurité informatique puisqu'elle permet de créer un copie exacte d'un disque entier, qui peut souvent être utilisée comme preuve dans des affaires judiciaires.
 
 * Pour copier un disque, spécifier:  
   - le fichier en entrée avec `if=inputFilename`  
   - le fichier en sortie avec `of=outputFilename`  
   - `status=progress` permet d'avoir une barre de progression
+  - `bs=1M` (block size de 1M) permet d'accélérer considérablement le processus
 
   ``` bash
   $ sudo lsblk
@@ -352,9 +357,37 @@ category: Linux, Fichiers
     └─centos-swap 253:1    0    2G  0 lvm  [SWAP]
   sr0             11:0    1 1024M  0 rom
 
-  $ sudo dd if=/dev/sda of=/dev/null status=progress
+  $ sudo dd if=/dev/sda of=/dev/null bs=1M status=progress
   21063083520 bytes (21 GB) copied, 106.356134 s, 198 MB/s  
   41943040+0 records in
   41943040+0 records out
   21474836480 bytes (21 GB) copied, 107.157 s, 200MB/s
+  ```
+
+* Pour restaurer ultérieurement un disque ou partition à partir d'une image, il suffit d'inverser les labels if et of.  
+  Attention cette commande écrase toutes les données présentes dans la destination.
+
+## rsync
+
+* Un outil populaire pour sauvegarder des données de `rsync` (remote synchronization), qui permet de garder un répertoire sur le server 1 synchronisé avec un répertoire sur le serveur 2 en copiant les données à travers le réseau, via SSH.
+   Si la commande est exécutée une seconde fois, rsync ne copiera quue les données qui ont été modifiées et ignorera les anciennes données qui sont encore à jour
+
+* Pour copier un répertoire local vers un répertoire distant  
+
+ ``` bash
+ rsync -a Pictures/ aaron@9.9.9.9:/home/aaron/Pictures/
+ ```
+
+  -a (archive) permet à rsync de synchroniser le sous-répertoires, les permissions de fichiers, la date de modification, etc.
+
+* Pour copier un répertoire distant vers un répertoire local:
+
+  ``` bash
+  rsync -a aaron@9.9.9.9:/home/aaron/Pictures/ Pictures/
+  ```
+
+* Notons qu'on peut également synchroniser des répertoires locaux
+
+  ``` bash
+  rsync -a Pictures/ /Backups/Pictures/
   ```

@@ -71,7 +71,7 @@ category: Linux, Network
       localhost.localdomain
       ```
 
-  5. Avec `uname`
+  5. Ou avec `uname`
 
       ```
       $ uname -n
@@ -80,7 +80,7 @@ category: Linux, Network
 
 ### Modifier
 
-* Là encore, plusieurs manières sont possibles:
+* Pour modifier la hostname, là encore, plusieurs manières sont possibles:
 
   1. Modifier le fichier <ins>/etc/hostname</ins>  
      Avec un système sous systemd, il est inutile de redémarrer quoi que soit pour que les modifications soient prises en compte
@@ -98,7 +98,7 @@ category: Linux, Network
       vm-example
       ```
 
-* Notons que dans tous les cas, la variable d'environnement ne change pas: c'est parce que cette variable est définit lorsqu'on se connecte. Se déconnecter et se reconnecter pour voir les modifications d'environnement
+* Notons que dans tous les cas, la variable d'environnement ne change pas: cette variable est définie lorsqu'on se connecte. Il faut se déconnecter et se reconnecter pour voir les modifications d'environnement
 
   ```
   $ echo $HOSTNAME

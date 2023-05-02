@@ -104,3 +104,49 @@ category: Linux, Shell, Bash
   ```
   unset -f myfunc
   ```
+
+## Portée des variables
+
+* Une fonction a un effet durable sur les variables d’environnement, contrairement à un script
+
+  ``` bash
+  $ export X=99
+
+  $ cat cx.sh
+  #!/bin/sh -
+  X=10
+
+  $ ./cx.sh
+  $ echo $X
+  99
+  ```
+  ``` bash
+  $ export X=99
+
+  $ cx() { X=10; }
+
+  $ cx
+  $ echo $X
+  10
+  ```
+
+* Une fonction n'a pas d'effet durable sur l'environnement si la variable est définie comme `local`
+
+  ``` bash
+  $ X=10
+
+  $ foo() { X=999; }
+
+  $ foo
+  $ echo $X
+  999
+  ```
+  ``` bash
+  $ X=10
+
+  $ foo() { local X=999; }
+
+  $ foo
+  $ echo $X
+  10
+  ```

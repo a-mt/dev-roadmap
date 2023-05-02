@@ -54,6 +54,24 @@ category: Linux, Fichiers
        1  Hello
        2  
        3  World
+
+  # suffix
+  $ nl -s ') ' file
+     1) Hello
+        
+     2) World
+
+  # Right Justified, Leading Zeros ( rz )
+  $ nl -n rz file
+  000001  Hello
+         
+  000002  World
+
+  # Left Justified, No Leading Zeros ( ln )
+  $ nl -n ln file
+  1       Hello
+         
+  2       World
   ```
 
 ## head
@@ -522,6 +540,21 @@ category: Linux, Fichiers
   2 World A
   ```
 
+* -f pour ignorer la casse
+
+  ``` bash
+  $ echo '8 World a' >> wordk.txt
+
+  $ sort -k3 -u wordk.txt
+  8 World a
+  1 Hello A
+  3 World B
+
+  $ sort -k3 -uf wordk.txt
+  1 Hello A
+  3 World B
+  ```
+
 ## tac
 
 * `tac` (nom inverse de cat) permet d'inverser l'ordre des lignes
@@ -769,6 +802,15 @@ category: Linux, Fichiers
   sys:x:3:3:sys:/dev:/usr/sbin/nologin:*:18296:0:99999:7:::
   sync:x:4:65534:sync:/bin:/bin/sync:*:18296:0:99999:7:::
   games:x:5:60:games:/usr/games:/usr/sbin/nologin:*:18296:0:99999:7:::
+  ```
+
+  ``` bash
+  $ { getent passwd | nl -s: -n rz; } >6
+
+  $ join -t: <(cut -d: -f1,2 <6) <(cut -d: -f1,7 <6 | grep /home)
+  000023:syslog:/home/syslog
+  000032:cups-pk-helper:/home/cups-pk-helper
+  000045:aurelie:/home/aurelie
   ```
 
 ## od

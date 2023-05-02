@@ -61,10 +61,24 @@ category: Linux, Boot
         Shutdown scheduled for Mon 2022-08-15 19:22:02 CEST, use 'shutdown -c' to cancel.
         ```
 
+      * -r permet de redémarrer le système. Par exemple pour planifier un redémarrer à 02:00 du mat:
+
+        ``` bash
+        $ sudo shutdown -r 02:00
+        ```
+
      * Le second argument permet de spécifier un message (wall) à afficher dans les terminaux de tous les utilisateurs connectés.
 
+        Ça leur permet de savoir à l'avance pourquoi et quand la machine sera indisponible. Ça leur permet également de terminer leur travail avant que ça ne se produire, au lieu d'être brusquement déconnectés sans savoir pourquoi.
+
+        ``` bash
+        sudo shutdown -r +1 'Scheduled restart to do an offline-backup of our database'
         ```
-        $ sudo shutdown now "Goodbye World"
+
+      * Pour annuler un shutdown planifié:
+
+        ``` bash
+        $ sudo shutdown -c
         ```
 
     [Halt vs shutdown](https://unix.stackexchange.com/questions/8690/what-is-the-difference-between-halt-and-shutdown-commands/196471#196471)

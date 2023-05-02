@@ -131,7 +131,7 @@ category: IT
 
 * Un premier point notable, qui diffère de MBR, est qu'un backup des entêtes et table de partition GPT est sauvegardé à la fin du disque, et peut être utilisé en cas de problèmes avec la première copie.
 
-* Le deuxième point notable, est l'utilisation d'une partition spéciale: la *partition système EFI* (*EFI System Partition*, ESP) — une partition de type EF00. Bien qu'elle ne soit pas indispensable pour l'utilisation de GPT, lorsque cette partition existe et contient un fichier exécutable .efi, alors cet exécutable est utilisé à la place du bootloader codé en dur dans le MBR. On obtient ainsi un système beaucoup plus souple.
+* Le deuxième point notable est l'utilisation d'une partition spéciale: la *partition système EFI* (*EFI System Partition*, ESP) — une partition de type EF00. Bien qu'elle ne soit pas indispensable pour l'utilisation de GPT, lorsque cette partition existe et contient un fichier exécutable .efi, alors cet exécutable est utilisé à la place du bootloader codé en dur dans le MBR. On obtient ainsi un système beaucoup plus souple.
 
   ![](https://i.imgur.com/vhfDXmy.png)
 

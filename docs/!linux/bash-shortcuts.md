@@ -16,6 +16,7 @@ category: Linux, Shell, Bash
   | Ctrl + d   | Se déconnecter (= exit si aucune session)
   | Ctrl + l   | Effacer l'écran. Ou utiliser la commande `clear`
   | Ctrl + u   | Couper tout ce qui est avant le curseur
+  | Ctrl + w   | Couper le mot qui est avant le curseur
   | Ctrl + k   | Couper tout ce qui est après le curseur
   | Ctrl + y   | Coller le texte coupé
   | Ctrl + a   | Aller au début de la ligne

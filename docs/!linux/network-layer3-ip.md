@@ -55,7 +55,17 @@ category: Linux, Network
 
 ---
 
-## Protocole
+## Protocoles
+
+* Les protocoles les plus courants du layer 3 sont:
+
+  - IPv4 (*Internet Protocol version 4*)
+  - IPv6 (*Internet Protocol version 6*)
+  - OSPF (*Open Shortest Path First*)
+  - IGRP (*Interior Gateway Routing Protocol*)
+  - ICMP (*Internet Control Message Protocol*)
+
+## Protocole IP
 
 * IP (*Internet Protocol*) était à l'origine *le* protocole permettant d'envoyer des données sur le réseau.  
   En 1973, il aest séparé en deux: TCP (*Transmission Control Protocol*) et IP.  

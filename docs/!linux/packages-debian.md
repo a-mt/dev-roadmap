@@ -84,7 +84,7 @@ La base de données de dpkg se situe dans le répertoire /var/lib/dpkg
 
 ### purge
 
-* L'option `-P` ou `--purge` suivit du nom du package permet de supprimer des packages ainis que les ficheirs de cofngiuration qui y sont associés.
+* L'option `-P` ou `--purge` suivit du nom du package permet de supprimer des packages ainsi que les fichiers de confgiuration qui y sont associés.
 
   ```
   $ sudo dpkg -P nom_du_paquet

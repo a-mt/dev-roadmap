@@ -3,6 +3,22 @@ title: Tâches planifiées
 category: Linux
 ---
 
+## Tâches planifiées
+
+* Les serveurs ont parfois besoin d'exécuter certaines tâches automatiquement. Par exemple, une tâche qui sauvegarde automatiquement la base de données tous les dimanches à 3 heures du matin.
+
+* Sous Linux, il y a 3 principaux moyens d'y parvenir:
+
+  1. l'utilitaire cron. Il est adapté aux tâches répétives qui s'exécutent toutes les quelques minutes ou heures, voire quelques jours. Il permet également aux administrateurs de choisir l'heure exacte à laquelle les tâches autmatiques doivent être exécutées
+
+  2. l'utilitaire anacron. Il est également utilisé pour créer des tâches répétivies, mais la plus petite unité avec laquelle anacron peut travailler est la journée: il permet d'exécuter des tâches de manière répétée tous les jours, tous les quelques jours, semaines, mois, etc — mais pas toutes les quelques minutes ou heures.
+
+      Cet utilitaire a crée parce que cron peut manquer des tâches si l'ordinateur est éteint. Par exemple, si une tâche est définie pour tourner à minuit, et que l'ordinateur est allumé à minuit une, alors la tâche ne sera pas exécutée ce jour-là. À contrario, Anacron vérifiera les tâches du jour et, si elle n'a pas été exécutée, l'exécutera — quelle que soit l'heure à laquelle le système a été mis sous tension
+
+  3. l'utilitaire at. Anacron et cron sont tous deux axés sur les tâches automatisées répétitives, tandis que at est axé sur les tâches qui ne doivent être exécutées qu'une seule fois.
+
+---
+
 ## at
 
 * La commande `at` permet de planifier une tâche à une date ultérieure.  
@@ -36,6 +52,11 @@ La tâche peut être programmée
   | Temps AM / PM | `1:25 PM`
   | Mots-clés | `noon` (12:00 AM), `midnight` (00:00), `teatime` (4:00 PM)
 
+    ``` bash
+    $ at 15:00
+    > /usr/bin/touch file
+    ```
+
 * à une date donnée. Les formats de date acceptés sont:
 
   | Format | Exemple
@@ -46,9 +67,22 @@ La tâche peut être programmée
   | YY-MM-DD | `22-06-19`
   | Mots-clés | `now`, `today`, `tomorrow`
 
+    ``` bash
+    $ at 'August 20 2022'
+    $ at '2:30 August 20 2022'
+    ```
+
 * à un temps relatif: <ins>at [date/time] + [n] [unit]</ins>
   Par exemple `at today + 3 hours`  
   Les unités possibles sont: minutes, hours, days, weeks
+
+    ``` bash
+    $ at 'now + 30 minutes'
+    $ at 'now + 3 hours'
+    $ at 'now + 3 days'
+    $ at 'now + 3 weeks'
+    $ at 'now + 3 months'
+    ```
 
 ### Sortie
 
@@ -197,7 +231,7 @@ La tâche peut être programmée
   15 14 * * * /bin/df > /home/christine/df.out
   ```
 
-  Si vous disposez des privilèges root, vous pouvez afficher la crontab d'un autre utilisateur:
+  Si vous disposez des privilèges root, vous pouvez afficher (et éditer) la crontab d'un autre utilisateur:
 
   ```
   $ crontab -u username -l
@@ -238,13 +272,18 @@ La tâche peut être programmée
   Les 5 premiers champs permettent de configurer quand la tâche devra être lancée, le 6ème est le nom de l'utilisateur, et le dernier champ correspond à la commande à executer.
 
 * La crontab système principale est stockée dans le fichier <ins>/etc/crontab</ins>  
-  Par défaut, elle ressemble à ça
+  Par défaut, elle ressemble à ça:
 
   ![](https://i.imgur.com/USPmuMr.png)
 
   La commande `run-parts` exécutera tous les script dans le répertoire indiqué. L'option --report ajoutera le nom du script à la sortie des scripts.
 
   Ainsi, les répertoires <ins>/etc/cron.\*</ins> contiennent des scripts à exécuter périodiquement — tous les scripts du répertoire /etc/cron.monthly sont exécuté une fois par mois. Aujourd'hui, les scripts de ces répertoires (à l'exception du répertoire hourly) ne sont plus gérés par cron mais par un autre daemon, anacron — s'il est installé.
+
+  ``` bash
+  sudo cp shellscript /etc/cron.hourly/
+  sudo chmod +rx /etc/cron.hourly/shellscript
+  ```
 
 * Le répertoire <ins>/etc/cron.d/</ins> est vérifié par la daemon cron après le fichier /etc/crontab. Les fichiers dans ce répertoires sont traités comme des crontabs individuelles et les cronjobs qui y sont définis peuvent utiliser d'autres variables.
 
@@ -256,7 +295,7 @@ La tâche peut être programmée
 
 * Anacron, contrairement à cron, utilise des horodatages pour s'assurer que chaque tâche planifiée est bel et bien exécutée. En revanche le niveau le plus fin qu'anacron peut gérer est au jour près, donc les tâches planifiées par heure reste gérées par cron.
 
-### Format crontab
+### Format anacrontab
 
 * Les tâches d'anacron sont listées dans son fichier de configuration, <ins>/etc/anacrontab</ins>
 
@@ -275,7 +314,29 @@ La tâche peut être programmée
      Cet identifiant est utilisé des les fichiers de logs et les messages, il est donc utile d'avoir un nom unique ici.
 
   4. Commande  
-     Il s'agit de la commande à exécuter.
+     La commande à exécuter.
+
+* Pour vérifier si la syntaxe est correcte:
+
+  ``` bash
+  anacron -T
+  ```
+
+  En cas d'erreur, un message sera affiché.  
+  Si rien n'est affiché, c'est tout bon
+
+* Pour forcer anacron à exécuter toutes les tâches planifiées pour aujourd'hui:
+
+  ``` bash
+  # n for now
+  anacron -n
+  ```
+
+  Pour lancer toutes les tâches, même si elles ont déjà été exécutées pour la journée aujourd'hui, ajouter -f:
+
+  ``` bash
+  anacron -n -f
+  ```
 
 ---
 

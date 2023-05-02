@@ -141,10 +141,10 @@ Un terminal est l'émulation d'une console dans une interface graphique - une co
 
 ### Gauche, droite, haut, bas
 
-    l                  Un caractère à droite
     h                  Un caractère à gauche
+    j                  Un caractère à droite
+    k                  Une ligne en haut, en conservant la position verticale
     j                  Une ligne en bas, en conservant la position horizontale
-    l                  Une ligne en haut, en conservant la position verticale
 
 <!-- -->
 

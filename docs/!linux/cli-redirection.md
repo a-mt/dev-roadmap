@@ -48,7 +48,7 @@ category: Linux, Shell
 
 La *redirection de flux* est la capacité d'envoyer ou de recevoir du texte non pas à partir des flux standard mais d'un autre endroit — typiquement un fichier.
 
-### stdout vers un fichier
+### 1> file : stdout vers un fichier
 
 * En utilisant `>` ou `1>`, la sortie standard d'une commande peut être redirigée vers un fichier:
 
@@ -75,7 +75,7 @@ La *redirection de flux* est la capacité d'envoyer ou de recevoir du texte non 
   cat file > file
   ```
 
-### stderr vers un fichier
+### 2> file : stderr vers un fichier
 
 * En utilisant `2>`, la sortie erreur standard d'une commande peut être redirigée vers un fichier:
 
@@ -97,7 +97,7 @@ La *redirection de flux* est la capacité d'envoyer ou de recevoir du texte non 
 
 * Utiliser `2>>` pour ajouter à la fin du fichier et non écraser
 
-### sortie vers une autre sortie
+### 2>&1 : sortie vers une autre sortie
 
 * En utilisant `FROM>&TO`, on peut rediriger une sortie vers une autre.  
   Par exemple, pour rediriger stdout vers un fichier et stderr vers le même fichier (attention l'ordre est important):
@@ -118,7 +118,7 @@ La *redirection de flux* est la capacité d'envoyer ou de recevoir du texte non 
   /etc
   ```
 
-### stdin à partir d'un fichier
+### < file : stdin à partir d'un fichier
 
 * En utilisant `<`, l'entrée standard peut être récupérée à partir d'un fichier
 
@@ -131,7 +131,46 @@ La *redirection de flux* est la capacité d'envoyer ou de recevoir du texte non 
   sync  x 4 65534 sync  /bin  /bin/sync
   ```
 
-### Device nodes
+  ``` bash
+  $ diff <(sort foo.txt) <(sort bar.txt)
+  ```
+
+  ``` bash
+  $ while IFS=: read user pass uid autres; do
+  > echo $user: $uid
+  > done < /etc/passwd
+  root: 0
+  bin: 1
+  ...
+  tcpdump: 72
+  tremblay: 1000
+  ```
+
+### <<DELIM : here document
+
+* En l'utilisant `<<`, l'entrée standard peut être récupérée à partir d'une chaîne de caractère.  
+  La première ligne précise le délimiteur, qui indiquera la dernière ligne (on utilise souvent EOF, pour *end of file*)
+
+  ``` bash
+  $ sort <<EOF
+  6
+  3
+  2
+  5
+  1
+  4
+  EOF
+  ```
+
+### <<< : here string
+
+* Une variante similaire, le `<<<`, permet de passer une chaîne de caractère sur seule ligne en entrée. Pas de délimiteur nécessaire ici.
+
+  ``` bash
+  bc <<<1+2+3+4
+  ```
+
+### Fichiers spéciaux
 
 On peut utiliser les flux avec des fichiers textes, mais également des fichiers virtuels (*device nodes*):
 
@@ -185,7 +224,7 @@ On peut utiliser les flux avec des fichiers textes, mais également des fichiers
   60039 23-04-05 04:06:44 50 0 0 861.2 UTC(NIST) *
   ```
 
-### stdout vers stdin
+### | : stdout vers stdin
 
 * Le caractère pipe (`|`) permet d'envoyer la sortie standard d'une commande vers l'entrée standard d'une autre commande.
 
@@ -207,7 +246,7 @@ On peut utiliser les flux avec des fichiers textes, mais également des fichiers
   colord  /usr/sbin/nologin
   ```
 
-### stdout vers un fichier + stdout
+### tee : stdout vers un fichier + stdout
 
 * `tee` permet de sauvegarder stdout dans un fichier en plus de l'afficher dans le terminal.
 

@@ -19,11 +19,11 @@ category: Linux, Network
   
   Plusieurs appareils virtuels pouvaient également être associés à un appareil physique, ce qui permettait de supporter plusieurs adresses IP sur une même carte réseau. Pour l'indiquer, le nom de l'interface était suffixé de deux-point et un numéro: `eth0:0` serait le premier alias sur eth0. Cette méthode est obsolète et n'est pas compatible avec IPv6.
 
-* Le problème avec cette convention de nommage c'est que les noms ne sont pas toujours prédictibles, et souvent, changent après un redémarrage — la recherche de périphériques n'étant pas déterministe pour les systèmes modernes.
+* Le problème de cette convention de nommage c'est que les noms ne sont pas toujours prédictibles, et souvent, changent après un redémarrage — la recherche de périphériques n'étant pas déterministe pour les systèmes modernes.
 
-* De nombreux admins système ont résolu ce problème de manière simple: en codant en dur les associations entre les adresses matérielles (MAC) et les noms de périphériques dans les fichiers de configuration du système et les scripts de démarrage. 
+  De nombreux admins système ont résolu ce problème de manière simple: en codant en dur les associations entre les adresses matérielles (MAC) et les noms de périphériques dans les fichiers de configuration du système et les scripts de démarrage. 
 
-    Bien que cette méthode fonctionne, elle nécessite un réglage manuel. Elle pose également problème quand les adresses MAC ne sont pas fixes, ce qui peut se produire dans les systèmes virtualisés.
+  Bien que cette méthode fonctionne, elle nécessite un réglage manuel. Elle pose également problème quand les adresses MAC ne sont pas fixes, ce qui peut se produire dans les systèmes virtualisés.
 
 ### Nouveau standard
 
@@ -44,13 +44,33 @@ category: Linux, Network
         - pour les PCI Express en hotplug, le numéro d'index fourni par le firmware  
           Ex: ens1
 
-        - l'emplacement physique de la connexion matérielle (port X slot Y)  
+        - et sinon, l'emplacement physique de la connexion matérielle (port X slot Y)  
           Ex: enp2s0
 
-        - l'adresse MAC  
+        - ou éventuellement, l'adresse MAC  
           Ex: enx7837d1ea46da
 
   Par exemple enp0s3 est une connexion Ethernet sur le port 0 slot 3.
+
+  On peut voir que les noms sont bel et bien corrélés avec les emplacements physique du matériel sur un système PCI:
+
+  ``` bash
+  $ ip link show | grep enp
+  2: enp4s2: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast state DOWN mode DEFAULT qlen 1000
+  3: enp2s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT qlen 1000
+
+  $ lspci | grep Ethernet
+  02:00.0 Ethernet controller: Marvell Technology Group Ltd. 88E8056 PCI-E Gigabit Ethernet Controller (rev 12)
+  04:02.0 Ethernet controller: Marvell Technology Group Ltd. 88E8001 Gigabit Ethernet Controller (rev 14)
+  ```
+
+  ``` bash
+  $ ip link show | grep wl
+  3: wlp3s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DORMANT qlen 1000
+
+  $ lspci | grep Centrino
+  03:00.0 Network controller: Intel Corporation Centrino Advanced-N 6205 [Taylor Peak] (rev 34)
+  ```
 
 * `lo` est l'interface de loopback, qui pour rappel est une adresse spéciale utilisée pour envoyer des message à l'interface réseau locale.
 
@@ -60,11 +80,11 @@ category: Linux, Network
 
 ## Lister les interfaces
 
-### ifconfig
+### Legacy: ifconfig
 
-* `ifconfig` est un utilitaire d'administration système qu'on trouve
+* `ifconfig` (du package net-tools) est un utilitaire d'administration système qu'on trouve
   depuis longtemps dans les systèmes d'exploitation UNIX,
-  et permet d'afficher et configurer les paramètres de l'interface réseau.  
+  et permet d'afficher et configurer les paramètres de l'interface réseau.
   Il a été remplacé par `ip` et certains distributions Linux ne l'installent plus par défaut
 
 * `ifconfig`, sans paramètres, affiche les informations de toutes les interfaces reconnues par le système.  
@@ -91,6 +111,7 @@ category: Linux, Network
           RX errors 0  dropped 2195  overruns 0  frame 0
           TX packets 109296  bytes 33750920 (33.7 MB)
           TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+  ...
   ```
 
   On peut filtrer le résultat sur une interface donnée
@@ -102,7 +123,7 @@ category: Linux, Network
 
 ### ip
 
-* `ip` est un utilitaire, plus récent qu'ifconfig, permettant d'afficher et configurer les paramètres d'interfaces réseau, le routage et le tunneling.
+* `ip` (du package iproute2) est un utilitaire, plus récent qu'ifconfig, permettant d'afficher et configurer les paramètres d'interfaces réseau, le routage et le tunneling.
   ip est plus polyvalent qu'ifconfig et plus efficace — car il utilise des sockets netlink plutôt que des appels système ioctl.
 
   La syntaxe générale d'ip est
@@ -129,12 +150,22 @@ category: Linux, Network
   $ ip link show
   1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
       link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-
   2: wlp164s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DORMANT group default qlen 1000
       link/ether c8:cb:9e:b8:7b:cb brd ff:ff:ff:ff:ff:ff
+  3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default 
+      link/ether 02:42:17:c9:b6:7e brd ff:ff:ff:ff:ff:ff
   ```
 
-  On peut filtrer le résultat sur une interface donnée
+  -br permet d'afficher une version brève:
+
+  ``` bash
+  $ ip -br link show
+  lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP> 
+  wlp164s0         UP             c8:cb:9e:b8:7b:cb <BROADCAST,MULTICAST,UP,LOWER_UP> 
+  docker0          DOWN           02:42:17:c9:b6:7e <NO-CARRIER,BROADCAST,MULTICAST,UP>
+  ```
+
+* On peut filtrer le résultat sur une interface donnée
 
   ``` bash
   $ ip link show wlp164s0
@@ -142,25 +173,59 @@ category: Linux, Network
       link/ether c8:cb:9e:b8:7b:cb brd ff:ff:ff:ff:ff:ff
   ```
 
-* On peut voir que les noms sont bel et bien corrélés avec les emplacements physique du matériel sur un système PCI:
+  -s permet d'afficher des statistiques:
 
   ``` bash
-  $ ip link show | grep enp
-  2: enp4s2: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast state DOWN mode DEFAULT qlen 1000
-  3: enp2s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT qlen 1000
-
-  $ lspci | grep Ethernet
-  02:00.0 Ethernet controller: Marvell Technology Group Ltd. 88E8056 PCI-E Gigabit Ethernet Controller (rev 12)
-  04:02.0 Ethernet controller: Marvell Technology Group Ltd. 88E8001 Gigabit Ethernet Controller (rev 14)
+  $ ip -s link show wlp164s0
+  2: wlp164s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DORMANT group default qlen 1000
+      link/ether c8:cb:9e:b8:7b:cb brd ff:ff:ff:ff:ff:ff
+      RX: bytes  packets  errors  dropped overrun mcast   
+      738189855  601367   0       1529    0       0       
+      TX: bytes  packets  errors  dropped carrier collsns 
+      37882695   89389    0       0       0       0 
   ```
+
+### nmcli
+
+* `nmcli device status` permet d'afficher les interfaces connues du network manager
 
   ``` bash
-  $ ip link show | grep wl
-  3: wlp3s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DORMANT qlen 1000
-
-  $ lspci | grep Centrino
-  03:00.0 Network controller: Intel Corporation Centrino Advanced-N 6205 [Taylor Peak] (rev 34)
+  $ nmcli device status
+  DEVICE            TYPE      STATE         CONNECTION    
+  wlp164s0          wifi      connected     Bbox-86B853B2 
+  docker0           bridge    connected     docker0       
+  p2p-dev-wlp164s0  wifi-p2p  disconnected  --            
+  lo                loopback  unmanaged     --
   ```
+
+* `nmcli device show` permet d'afficher les informations de cette interfaces 
+
+  ``` bash
+  $ nmcli device show wlp164s0
+  GENERAL.DEVICE:                         wlp164s0
+  GENERAL.TYPE:                           wifi
+  GENERAL.HWADDR:                         C8:CB:9E:B8:7B:CB
+  GENERAL.MTU:                            1500
+  GENERAL.STATE:                          100 (connected)
+  GENERAL.CONNECTION:                     Bbox-86B853B2
+  GENERAL.CON-PATH:                       /org/freedesktop/NetworkManager/ActiveConnection/1
+  IP4.ADDRESS[1]:                         192.168.1.4/24
+  IP4.GATEWAY:                            192.168.1.254
+  IP4.ROUTE[1]:                           dst = 192.168.1.0/24, nh = 0.0.0.0, mt = 0
+  IP4.ROUTE[2]:                           dst = 0.0.0.0/0, nh = 192.168.1.254, mt = 0
+  IP4.DNS[1]:                             192.168.1.254
+  IP4.DOMAIN[1]:                          lan
+  IP6.ADDRESS[1]:                         2001:861:33c0:5740:539a:87d7:9c17:5ad7/64
+  IP6.ADDRESS[2]:                         2001:861:33c0:5740:f314:e7e8:65f9:8cbc/64
+  IP6.ADDRESS[3]:                         fe80::7e2e:17ed:912c:897b/64
+  IP6.GATEWAY:                            fe80::c23c:4ff:fe8d:832c
+  IP6.ROUTE[1]:                           dst = 2001:861:33c0:5740::/64, nh = ::, mt = 600
+  IP6.ROUTE[2]:                           dst = ::/0, nh = fe80::c23c:4ff:fe8d:832c, mt = 600
+  IP6.ROUTE[3]:                           dst = fe80::/64, nh = ::, mt = 600
+  IP6.DNS[1]:                             2001:861:33c0:5740:c23c:4ff:fe8d:832c
+  ```
+
+---
 
 ## Activer/désactiver une interface
 
@@ -176,6 +241,8 @@ category: Linux, Network
   $ sudo ip link set eth0 up
   ```
 
+* Notons que ces commandes ne servent qu'à dépanner, au reboot tous les changements effectués avec `ip` sont effacés. Pour des modifications permanentes, il faut modifier les configurations du network manager.
+
 ### Legacy: ifconfig
 
 * Mettre une interface hors service:
@@ -183,9 +250,15 @@ category: Linux, Network
   ``` bash
   $ sudo ifconfig eth0 down
   ```
+  ``` bash
+  $ sudo ifdown eth0
+  ```
 
   La remettre en service:
 
   ``` bash
   $ sudo ifconfig eth0 up
+  ```
+  ``` bash
+  $ sudo ifup eth0
   ```

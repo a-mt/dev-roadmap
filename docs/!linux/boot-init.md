@@ -41,7 +41,7 @@ category: Linux, Boot
   lrwxrwxrwx 1 root root 20 déc.  10 10:15 /sbin/init -> /lib/systemd/systemd
   ```
 
-* Utiliser pstree ou ls ne permet pas de distinguer upstart de init. Pour savoir avec certitude quel est le processus d'initialisation utilisé, en peut vérifier les répertoires qui existent:
+* Utiliser pstree ou ls ne permet pas de distinguer upstart de init. Pour savoir avec certitude quel est le processus d'initialisation utilisé, on peut vérifier les répertoires qui existent:
 
   Si le système a un répertoire `/etc/systemd`: c'est  systemd  
   Sinon et s'il y a un répertoire `/etc/init`: c'est  upstart  
@@ -77,7 +77,7 @@ category: Linux, Boot
 ### Services
 
 * Tous les services sont définis dans `/etc/rc.d/init.d` (ou `/etc/init.d` sous certaines distributions)  
-  Les scripts de ce répertoire sont souvent appelés *scripts init*.
+  rc vient de "run commands". Les scripts de ce répertoire sont souvent appelés *scripts init*.
 
   ![](https://i.imgur.com/CJsWLBVl.png)
 
@@ -184,7 +184,9 @@ category: Linux, Boot
 
 * Si le système utilise upstart au lieu du processus init, le niveau d'exécution par défaut est
   - dans `/etc/inittab` pour les distributions RedHat
-  - dans `/etc/init/rc_sysinit.conf` pour Ubuntu — avec la variable d'environnement DEFAULT_RUNLEVEL
+  - dans `/etc/init/rc-sysinit.conf` pour Ubuntu — avec la variable d'environnement DEFAULT_RUNLEVEL
+
+[Documentation](https://help.ubuntu.com/community/UbuntuBootupHowto)
 
 ---
 
@@ -211,6 +213,8 @@ category: Linux, Boot
   | 5             | runlevel5.target, graphical.target
   | 6             | runlevel6.target, reboot.target
   |               | emergency.target
+
+  Pour pouvoir démarrer en mode rescue ou emergency, root doit avoir un mot de passe. Autrement, ce n'est pas possible
 
 * La plupart des cibles reposent sur d'autres cibles: par exemple graphical.target inclut les services de multi-user.target et charge le service display-manager.service en plus
 
@@ -353,4 +357,16 @@ category: Linux, Boot
 
   ```
   # systemctl isolate emergency.target
+  ```
+
+  Ou simplement
+
+  ```
+  # systemctl emergency
+  ```
+
+* Pour changer de cible à la cible par défaut:
+
+  ```
+  # systemctl default
   ```

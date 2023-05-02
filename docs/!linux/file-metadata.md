@@ -20,7 +20,7 @@ category: Linux, Fichiers
 
 ## stat
 
-* `stat` certaines metadata du fichier, dont la date de dernier accès et date de modification
+* `stat` affiche certaines metadata du fichier, dont la date de dernier accès et date de modification
 
   ``` bash
   $ stat hello.txt

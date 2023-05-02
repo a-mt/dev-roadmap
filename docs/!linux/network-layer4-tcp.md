@@ -13,12 +13,23 @@ category: Linux, Network
 
   ![](https://i.imgur.com/NVk3qrT.png)
 
+---
+
+## Protocoles
+
+* Les protocoles les plus courants du layer 4 sont:
+
+    - TCP (*Transmission Control Protocol*)
+    - UDP (*User Datagram Protocol*)
+    - SCTP (*Stream Control Transmission Protocol*)
+
 ## Multiplexage des applications
 
 * Le *multiplexage* désigne une technique permettant de transmettre plusieurs signaux de données sur un même support.
 
-* Le multiplexage des connexions se fait via l'utilisation de ports, un port étant dans ce contexte un numéro désignant l'application cible.  
-  Généralement, les serveurs ont des ports fixes sur lesquels ils écoutent les requêtes entrantes, et les clients utilisent un numéro de port aléatoire sur lequel ils attendent la réponse.
+* Le multiplexage des connexions se fait via l'utilisation de ports, un *port* est (dans ce contexte) un numéro qui désigne l'application cible.  
+
+* Généralement, les serveurs ont des ports fixes sur lesquels ils écoutent les requêtes entrantes, et les clients utilisent un numéro de port aléatoire sur lequel ils attendent la réponse.
 
 ### Classification des ports
 
@@ -79,14 +90,26 @@ category: Linux, Network
 
 ## Fiabilité
 
-* Le protocole TCP assure la fiabilité de la connexion, c'est à dire s'occupe de la gestion des pertes et détecte l'altération des données.
+* Le protocole TCP assure la fiabilité de la connexion:  
+  il s'occupe de la gestion des pertes et détection de l'altération des données.
 
-## Protocoles
+* Pour résumer le processus:
 
-* TCP (*Transmission Control Protocol*) est un protocole qui fonctionne au niveau de la couche transport.  
-  Il s'agit d'un protocole avec connexion (donc avec 3-way handshake) et qui fournit un contrôle d'erreur
+  - Avant d'être transmises, les informations sont divisées en plusieurs petites parties, appelés "paquets"
 
-  Il est utilisé par plusieurs autres protocoles, dont
+  - Chaque paquet est doté de "headers" contenant un numéro d'identification.
+
+  - L'entête contient également l'adresse IP de destination et l'adresse IP source.
+
+  - Les routeurs déterminent le chemin le plus rapide pour acheminer les paquets vers l'adresse IP de destination. Il existe des millions d'itinéraires différents possibles pour les paquets parviennent d'un ordinateur à l'autre. Pour éviter la congestion du réseau, les paquets n'empruntent pas tous les même chemin
+
+   Lorsque les paquets arrivent à destination, ils sont remis dans le bon ordre pour reconstituer le message d'origine
+
+## TCP vs UDP
+
+* TCP (*Transmission Control Protocol*) est un protocole avec connexion (donc avec 3-way handshake) et qui fournit un contrôle d'erreur
+
+  Il est utilisé par plusieurs autres protocoles du niveau application, dont
   - HTTP (*Hypertext Transfer Protocol*)
   - HTTPS (*Hypertext Transfer Protocol over SSL*)
   - SMTP (*Simple Mail Transfer Protocol*)
@@ -94,7 +117,10 @@ category: Linux, Network
 
 * UDP (*User Datagram Protocol*) est un autre protocole au niveau de la couche transport. C'est un protocole sans connexion, qui ne garantit pas la livraison des données. Il ne corrige pas l'ordre des paquets s'ils arrivent dans le désordre.
 
-  Il est utilisé notamment par DNS (*Domain Name System*), les applications de streaming media ou VOIP (*voice-over internet*).
+  Il est utilisé notamment par
+  - DNS (*Domain Name System*),
+  - les applications de streaming media
+  - VOIP (*Voice-Over Internet Protocol*)
 
     | Caractéristiques | TCP | UDP
     |--- |--- |---

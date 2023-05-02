@@ -268,3 +268,5 @@ Les composants externes sont également appelés *périphériques*.
 ### Contrôleur d'interface
 
 * Certaines interfaces peuvent accepter plusieurs modes de fonctionnement. Dans ce cas, elles disposent d'un contrôleur, une puce qui permet de configurer l'interface pour envoyer ou recevoir les packets dans le bon format. Par exemple, toute interface réseau ISDN PRI a un contrôleur qui lui permet de fonctionner soit pour du T-carrier (américain) ou E-carrier (européen). Les interfaces Ethernet ou plain Serial n'ont pas de propriété configurables similaires, et n'ont donc pas de contrôleur.
+
+[Video: Dissection d'un ordinateur (anglais)](https://www.youtube.com/watch?v=d86ws7mQYIg)

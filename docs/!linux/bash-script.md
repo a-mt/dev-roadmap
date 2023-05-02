@@ -110,52 +110,6 @@ Deux modes d'utilisation du shell sont possibles: interractif ou scripté.
   The shell level is 1
   ```
 
-## Afficher les commandes exécutées
-
-Pour afficher les commandes exécutées au fur et à mesure de l'exécution du script, on peut
-
-* utiliser l'option `-x` au moment de déclencher le script
-
-  ``` bash
-  bash -x NOM_SCRIPT
-  ```
-
-* ou utiliser la commande `set` au début du script
-
-  ``` bash
-  #!/bin/bash
-  set -x
-  ```
-
-## Mode restreint
-
-Le fait d'exécuter un script ou une partie de script en mode restreint désactive certaines commandes qui, sans cela, seraient disponibles. Cette mesure de sécurité est prévue pour limiter les droits de l'utilisateur du script et donc minimiser les risques liés à l'exécution du script.
-
- Les commandes et actions ci-dessous sont désactivées :
-* L'usage de `cd` pour changer de répertoire de travail.
-* Le changement de valeur des variables d'environnement suivantes : `$PATH`, `$SHELL`, `$BASH_ENV`, `$ENV`.
-* La lecture ou le remplacement d'options d'environnement de shell `$SHELLOPTS`.
-* La redirection de sortie.
-* L'appel à des commandes contenant un ou plusieurs /.
-* L'appel à `exec` pour substituer un processus différent de celui du shell.
-* Diverses autres commandes qui pourraient permettre de détourner le script de son objectif initial.
-* La sortie du mode restreint à l'intérieur d'un script.
-
-* Pour lancer un script en mode restreint, utiliser l'option `-r` (`--restricted`)
-
-  ``` bash
-  #!/bin/bash -r
-  ```
-
-  ou
-
-  ``` bash
-  #!/bin/bash
-  set -r
-  ```
-
-[Options de Bash](https://abs.traduc.org/abs-fr/ch33.html)
-
 ## Binaire
 
 On peut créer un binaire exécutable à partir d'un script en utilisant [shc](http://www.datsi.fi.upm.es/~frosal/sources/).  

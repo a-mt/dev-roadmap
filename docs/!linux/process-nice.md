@@ -16,6 +16,8 @@ category: Linux, Processus
   Seul root peut définir des valeurs *nice* négatives ou modifier baisser celle d'un processus existant — autrement dit, donner une priorité plus élevé.
   Pour un utilisateur standard, le module PAM pam_limits.so (cf /etc/security/limits.conf) limite la valeur de nice à zéro. Il faut être identifié en tant que root pour définir des valeurs nice négatives.
 
+* Par défaut, un processus hérite de la niceness du processus qui l'a déclenché
+
 * Pour définir la valeur *nice* d'un processus, on lance la commande avec nice:
 
   ```
@@ -102,7 +104,7 @@ category: Linux, Processus
   ```
 
   La valeur nice va de -20 à 19. Ainsi la priorité d'un programme utilisateur ira de 0 à 39.  
-  Si la valeur nice est élevée (19), alors la tâche aura une valeur de priorité élevée (39) et le CPU la traitera dès qu'il en aura l'occasion. 
+  Si la valeur nice est basse (-20), alors la tâche aura une valeur de priorité élevée (0) et le CPU la traitera dès qu'il en aura l'occasion. 
 
 * <ins>Pour les processus en temps réel</ins>:  
   la priorité est calculée à partir de la *priorité en temps réel* (*real time priority*, rt_prior):
@@ -114,8 +116,12 @@ category: Linux, Processus
   Il est important de noter que la valeur *nice* n'est pas utilisée.  
   La valeur *rt prior* va de 1 à 99. Ainsi la priorité d'un processus en temps réel ira de -2 à -100 — et -100 est la priorité la plus élevée.
 
-* Dans l'exemple ci-dessous, on peut voir que pulseaudio, le daemon qui s'occupe du son, est un processus en temps réel — sa priorité est négative.
-  Certains processus ont une priorité "rt", ce qui correspond à la priorité -100.
+* Dans l'exemple ci-dessous, on peut voir que
+
+  - pulseaudio, le daemon qui s'occupe du son, est un processus utilisateur — priorité entre 0 et 39
+  - qu'il a la priorité par rapport à Xorg, le serveur graphique
+  - que les processus en temps réel sont des processus lancés par root — priorité inférieure à 0, niceness non définie  
+    Certains processus ont une priorité "rt", ce qui correspond à la priorité -100.
 
   ```
   top - 09:57:09 up  1:06,  1 user,  load average: 0,90, 0,77, 0,68

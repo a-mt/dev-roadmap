@@ -80,15 +80,15 @@ category: Linux
   Pour organiser toutes ces pages de manuel, elles sont classées par sections.
 
   Par défaut, il y a neuf sections par défaut des pages de manuel:
-  - commandes générales
-  - appels systèmes
-  - appels de bibliothèque
-  - dossiers spéciaux
-  - formats de fichiers et conventions
-  - jeux
-  - divers
-  - commandes d'administration du système
-  - routines de l'amande
+  - 1 commandes générales
+  - 2 appels systèmes
+  - 3 appels de bibliothèque
+  - 4 fichiers spéciaux (généralement dans /dev)
+  - 5 formats de fichiers et conventions
+  - 6 jeux
+  - 7 divers
+  - 8 commandes d'administration du système
+  - 9 routines du kernel
 
 * La section de la page de manuel en cours est indiqué sur la première ligne  
   Par exemple, si on tape `man ls`, on peut voir que ls est dans la première section:
@@ -143,6 +143,29 @@ category: Linux
 
   NAME
          passwd - the password file
+  ```
+
+## apropos
+
+* `apropos` permet de chercher parmis les pages du manuel, même principe que `man -k`
+
+* apropos fonctionne avec une base de données, un programme vient la rafraîchir périodiquement. Sur une nouvelle machine, il est nécessaire de déclencher cette action manuellement avec `mandb`
+
+  ``` bash
+  $ apropos director
+  director: nothing appropriate
+
+  $ sudo mandb
+  ```
+
+* Il est possible de filtrer les résultats sur des sections données avec -s
+
+  ``` bash
+  $ apropos -s 1,8 director
+  addgnupghome (8)     - Create .gnupg home directories
+  basename (1)         - strip directory and suffix from filenames
+  chacl (1)            - change the access control list of a file or directory
+  ...
   ```
 
 ## info

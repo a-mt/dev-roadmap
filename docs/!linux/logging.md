@@ -274,17 +274,103 @@ Pour pouvoir utiliser un système comme serveur de logs centralisé, il faut act
 
   ![](https://i.imgur.com/coyPha9.png)
 
+* Par défaut, le journal n'est conservé qu'en mémoire: après un redémarrage ou une mise hors tension, les logs sont perdus. Pour que le journal soit sauvegardé sur le disque, créer le répertoire suivant:
+
+    ``` bash
+    mkdir /var/log/journal
+    ```
+
 * La commande `journalctl` permet d'afficher les logs.  
-  Il faut soit avoir les privilèges root ou faire partie du groupe de journald (ex: `systemd-journal`)
+  Pour l'utiliser, il faut soit avoir les privilèges root ou faire partie du groupe de journald (ex: `systemd-journal`)
 
-  ```
-  $ sudo journalctl -e -u NetworkManager
-  $ sudo journalctl -e -t guake.desktop
-  $ sudo journalctl --no-pager -p crit
-  $ journalctl -t CROND
+  ``` bash
+  $ sudo journalctl
   ```
 
-  De nombreuses options sont disponibles:
+  Le journal est affiché dans l'ordre ascendant, pour aller à la fin des entrées, presser `>`. Ou pour ouvrir le journal est aller directement à la fin, utiliser -e (*end*):
+
+  ``` bash
+  $ sudo journalctl -e
+  ```
+
+  Pour ouvrir le journal et afficher les nouveaux logs au fur et à mesure qu'ils arrivent, utiliser -f (*follow*):
+
+  ``` bash
+  $ sudo journalctl -f
+  ```
+
+  Pour afficher les entrées dans le sens inverse (du plus récent au plus ancien, au lieu du plus ancien au plus récent par défaut), utiliser -r (*revert*):
+
+  ``` bash
+  $ sudo journalctl -r
+  ```
+
+  Par défaut, les résultats sont paginés avec less. Pour récupérer les résultats sans pager, utiliser --no-pager
+
+  ``` bash
+  $ sudo journalctl -b 0 --no-pager > results.txt
+  ```
+
+* Pour afficher les logs générés par une unité donnée, utiliser -u (*unit*):
+
+  ``` bash
+  journalctl -u sshd.service
+  journalctl -e -u NetworkManager
+  ```
+
+  Pour afficher les logs générés par une commande donnée, passer le path absolu de cette commande.
+
+  ``` bash
+  journalctl /bin/sudo
+  ```
+
+  Pour afficher les logs dont le message par "b", utiliser -g (*grep*):
+
+  ``` bash
+  journalctl -g '^b'
+  ```
+
+  Pour afficher les logs associés à un tag donné, utiliser -r (*tag*):
+
+  ``` bash
+  journalctl -e -t guake.desktop
+  journalctl -t CROND
+  ```
+
+  Pour afficher les logs associés à une priorité donné, utiliser -p (*priority*):
+
+  ``` bash
+  journalctl -p err
+  journalctl --no-pager -p crit
+  ```
+
+* Pour afficher les logs générés après une date ou heure donnée, utiliser -S (*since*):
+
+    ``` bash
+    journalctl -S 02:00
+
+    journalctl -S '2021-11-16 12:04:55'
+    ```
+
+    Pour afficher les logs générés avant une date ou heure donnée, utiliser -U (*until*):
+
+    ``` bash
+    journalctl -S 01:00 -U 02:00
+    ```
+
+* Pour afficher les logs depuis la dernière mise sous tension du système, utiliser -b 0 (*boot*)
+
+    ``` bash
+    journalctl -b 0
+    ```
+
+    Ou pour afficher les logs du boot précédent:
+
+    ``` bash
+    journalctl -b -1
+    ```
+
+* De nombreuses options sont disponibles:
 
   | Option | Description
   |---     |---
@@ -303,6 +389,8 @@ Pour pouvoir utiliser un système comme serveur de logs centralisé, il faut act
   | `-p priorityName` | Filtrer sur une priorité donnée
   | `-t identifier` | Filtrer sur un identifiant
   | `-g regex` | Filtrer sur la description
+
+  La liste des priorités possibles est: alert, crit, debug, emerg, err, info, notice et warning — utiliser `journalctl -p <TAB> <TAB>` pour retrouver cette liste
 
 * Diférents types de messages atterissent dans différents fichiers de log. Sur CentOS les messages d'ordre général sont typiquement stockés dans le fichier /var/log/syslog; tandis que sur Ubuntu il s'agit du fichier messages. Les messages de sécurité dans secure ou auth.log
 
@@ -360,15 +448,26 @@ Pour pouvoir utiliser un système comme serveur de logs centralisé, il faut act
 
 ## Créer des logs
 
-### logger
+### rsyslogd: logger
 
-* Logger est un utilitaire permettant d'envoyer des messages d'erreur ou d'information dans les logs. Ce peut être utile pour garder une trace des actions exécutées manuellement ou via un script.
+* Logger est un utilitaire permettant d'envoyer des messages d'erreur ou d'information dans les logs.   
+  Ça peut être utile pour garder une trace des actions exécutées manuellement ou via un script.
 
-  ![](https://i.imgur.com/pMoAhmZ.png)
+  ``` bash
+  $ logger "Test of logger"
+  $
+  $ sudo tail -1 /var/log/syslog
+  May  2 04:56:39 XPS1393057cc859cd aurelie: Test of logger
+  ```
 
 * L'option `-p facility.priority` permet de spécifier le type d'événement et sa priorité
 
-  ![](https://i.imgur.com/o4EiZaC.png)
+``` bash
+  $ logger -p mail.info "Test of logger to mail log"
+  $
+  $ sudo tail -1 /var/log/mail.log 
+  May  2 04:57:32 XPS1393057cc859cd aurelie: Test of logger to mail log
+  ```
 
   <ins>Quelques options utiles</ins>:
 
@@ -381,7 +480,7 @@ Pour pouvoir utiliser un système comme serveur de logs centralisé, il faut act
   | `-T`          | Utiliser TCP plutôt qu'UDP
   | `-p port`     | Envoyer sur le port donné
 
-### systemd-cat
+### journald: systemd-cat
 
 * systemd-cat est un utilitaire plus récent, permettant également d'ajouter des logs manuellement.  
   On peut l'utiliser
@@ -390,13 +489,29 @@ Pour pouvoir utiliser un système comme serveur de logs centralisé, il faut act
   - en utilisant l'entrée standard de systemd-cat
   - en passant un argument à systemd-cat
 
-  ![](https://i.imgur.com/drmd87e.png)
-  ![](https://i.imgur.com/9kdykQA.png)
+  ``` bash
+  $ systemd-cat
+  Test #1 of systemd-cat
+  $
+  $ echo "Test #2 of systemd-cat" | systemd-cat
+  $
+  $ systemd-cat echo "Test #3 of systemd-cat"
+  $
+  $ journalctl -e -g systemd-cat
+  May 02 04:59:06 XPS1393057cc859cd cat[6557]: Test #1 of systemd-cat
+  May 02 04:59:21 XPS1393057cc859cd cat[6560]: Test #2 of systemd-cat
+  May 02 04:59:32 XPS1393057cc859cd echo[6561]: Test #3 of systemd-cat
+  ```
 
 * L'option `-t facility` permet de spécifier le type d'événement  
   `-p priority` de spécifier son importance
 
-  ![](https://i.imgur.com/fawDGuu.png)
+  ``` bash
+  $ systemd-cat -t mail -p crit echo "Critical mail error"
+  $
+  $ sudo journalctl -t mail
+  May 02 05:02:02 XPS1393057cc859cd mail[6736]: Critical mail error
+  ```
 
 ---
 

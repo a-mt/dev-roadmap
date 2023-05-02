@@ -236,7 +236,7 @@ category: Linux, Network
 * Inversemment, une VLAN permet également de combiner deux ou plusieurs LAN séparées pour qu'elles apparaissent comme un seul et même réseau local.
 
   Généralement, des configurations sont nécessaires:  
-  - définir la VLAN pour le switch  
+  - définir la ou les VLAN(s) dans les configurations du switch  
   - configurer le port *trunk* pour la communication switch à switch
 
   ![](https://i.imgur.com/DmbmGFC.png)

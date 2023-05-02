@@ -304,6 +304,26 @@ case $var in
 esac
 ```
 
+``` bash
+#!/bin/sh -
+option="$1"
+fichier="$2"
+
+case $option in
+  -d) [ -d $fichier ] &&
+    echo "Repertoire: ’$fichier’";;
+  -f) [ -f $fichier ] &&
+    echo "Fichier: ’$fichier’";;
+  -x) [ -x $fichier ] &&
+    echo "Executable: ’$fichier’";;
+  [*])
+    echo "Un *";;
+  *)
+    echo "Option non traitee"
+  exit 1;;
+esac
+```
+
 ## test
 
 ### Chaîne de caractères
@@ -316,6 +336,10 @@ esac
 <tr><th align="left">[ STRING1 < STRING2 ]</th><td>Dans un tri alphabétique, STRING1 vient avant STRING2</td></tr>
 <tr><th align="left">[ STRING1 > STRING2 ]</th><td>Dans un tri alphabétique, STRING1 vient après STRING2</td></tr>
 </table>
+
+Tip:  
+-z retourne vrai si la taille de la chaîne vaut zéro  
+-n retourne vrai si la taille de la chaîne n'est pas zéro
 
 ``` bash
 $ empty=""
@@ -369,10 +393,15 @@ fi
 <tr><th align="left">[ FILE1 -nt FILE2 ]</th><td>1 est plus récent que 2</td></tr>
 <tr><th align="left">[ FILE1 -ot FILE2 ]</th><td>1 est plus ancien que 2</td></tr>
 <tr><th align="left">[ FILE1 -ef FILE2 ]</th><td>Même fichier</td></tr>
-<tr><th align="left">[ -N FILE ]</th><td>Fichier modifié depuis la dernière lecture</td></tr>
+<tr><th align="left">[ -N FILE ]</th><td>A une date d'accès inférieure ou égale à la date de modification</td></tr>
 <tr><th align="left">[ -U FILE ]</th><td>L'utilisateur en cours est propriétaire du fichier</td></tr>
 <tr><th align="left">[ -G FILE ]</th><td>L'utilisateur en cours fait partie du groupe propriétaire du fichier</td></tr>
 </table>
+
+Tip:  
+-nt: newer than  
+-ot: older than  
+-ef: equal file
 
 ``` bash
 if [ -e file1.txt ]; then
@@ -385,6 +414,27 @@ $ [ test1 -ef test2 ] && echo "yes" || echo "no"
 no
 $ ln -s test1 test3
 $ [ test1 -ef test3 ] && echo "yes" || echo "no"
+yes
+```
+``` bash
+$ touch test
+$ [ -N test ] && echo "yes" || echo "no"
+yes
+$
+$ cat test
+$ [ -N test ] && echo "yes" || echo "no"
+yes
+$
+$ echo "Hello World" > test
+$ [ -N test ] && echo "yes" || echo "no"
+yes
+$
+$ touch -a test
+$ [ -N test ] && echo "yes" || echo "no"
+no
+$
+$ touch test
+$ [ -N test ] && echo "yes" || echo "no"
 yes
 ```
 

@@ -88,3 +88,10 @@ Boucler sur une liste.
       do touch fichier"$num"
   done
   ```
+
+  ``` bash
+  for (( i=0; i<=$#; i++ ))
+  do
+  echo " \$$i = ${!i}"
+  done
+  ```

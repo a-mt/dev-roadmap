@@ -73,7 +73,10 @@ category: Linux, Applications
   | PID     | (processus identifier) Le numéro d'identification du processus.<br> Le premier processus lancé (init) aura l'id 1.
   | TTY     | (teletypewriter) Le terminal à partir duquel les programmes sont exécutés.<br> S'il y a un point d'interrogation (?), c'est que le processus n'est associé à un terminal — typiquement il s'agit de services exécutés par le système, comme le network manager.
   | TIME    | La quantité de temps CPU utilisé par le programme depuis son lancement.
-  | CMD     | (command) Le nom du programme en cours d'exécution.
+  | CMD     | (command) Le nom du programme en cours d'exécution. Certains processus sont placés entre crochets: il s'agit de processus noyau, qui s'exécutent dans une zone privilégiée. On n'a généralement pas besoin d'interagir avec eux car le noyau les gère en interne, et on ne s'occupe que des processus qui s'executent en dehors de cette zone privilégiée, appelé l'espace utilisateur
+
+  ps supporte des options style Unix (avec un tiret) ou BSD (sans tiret).  
+  Suivant le style, les effets seront complètement différents: par exemple -a est différent de a.
 
 * `ps -elf` (every long full) permet de voir tous les processus en format long  
 
@@ -139,6 +142,8 @@ category: Linux, Applications
   |---      |---
   | RSS |  (resident set size) Mémoire physique qu'une tâche a utilisé (en kb, et sauf swap)
   | VSZ  | (virtual memory size) Taille de la mémoire virtuelle (en KiB)
+  | CPU | 100% signifie que la capacité totale d'un coeur est utilisé. 150, qu'un coeur entier est utilisé, mais aussi 50% de la capacité d'un second coeur
+  | TIME | Temps d'utilisation du processus. Un processus démarré il y a 6 heures peut n'avoir utilisé que 3 secondes de temps CPU pendant sa durée de vie: le reste du temps il est resté dans un état dormant, utilisant 0% du CPU. Pour obtenir 1 seconde de temps, le processus doit utiliser 100% d'un coeur pendant 1 seconde, s'il utilise 50% pendant 10 secondes, on obtiendra dans cette colonne 5 secondes
 
 * L'option BSD `o` permet de choisir les colonnes à afficher
 
@@ -169,14 +174,19 @@ category: Linux, Applications
 
 * Les différents états possibles sont:
   * <ins>R: (running)</ins> en cours d'execution
+
   * <ins>S: (sleeping)</ins> attente interruptible  
     Typiquement en attente d'un événement, comme une entrée de l'utilisateur
+
+  * <ins>I: (idle)</ins> attente non interruptible  
+    Utilisé par les processus kernel en attente d'événement
 
   * <ins>D: (dormant)</ins> attente non interruptible  
     Typiquement en attente d'entrée/sortie. On ne peut pas arrêter un processus dans un état dormant: il faut attendre qu'il reprenne ou alors redémarrer le système. Il est normal de voir des processus dans cet état quand de nombreuses opérations d'entrée/sortie sont effectuées, par exemple quand on utilise la swap.
 
   * <ins>T: (terminated)</ins> mis en pause par le signal TERMINATE  
     t: mis en pause par le debugger pendant un dump
+
   * <ins>Z: (zombie)</ins> un processus stoppé non acquitté par son parent, il est donc ni mort ni vivant.  
     Lorsqu'un processus se termine, le système désalloue les ressources du processus mais ne détruit pas son bloc de contrôle: il passe son état à la valeur TASK_ZOMBIE et envoie le signal SIGCHLD au processus parent pour l'informer que son enfant a fini de s'executer. Quand le processus parent a récupéré le statut de sortie de son enfant (avec wait ou waitpid), alors le processus est définitivement supprimé de la table des processus.
 
@@ -186,12 +196,39 @@ category: Linux, Applications
 
 * Quand on utilise le format BSD, l'état du processus peut être accompagné de caractères supplémentaires:
 
-  * <ins><: (not nice)</ins> valeur nice supérieure à 0
-  * <ins>N: (nice)</ins> valeur nice inférieure à 0
+  * <ins><: (not nice)</ins> valeur nice inférieure à 0
+  * <ins>N: (nice)</ins> valeur nice supérieure à 0
   * <ins>L: (lock)</ins> a des pages verrouillées en mémoire (temps réel et entrées-sorties personnalisées)
   * <ins>s: (session lead)</ins> est un leader de session
   * l: est multi-threadé (en utilisant CLONE_THREAD, comme le font les threads NPTL)
   * +: est un processus en avant-plan
+
+  ``` bash
+  $ ps o pid,ppid,pgid,sid,stat,ni,pri,comm x
+      PID    PPID    PGID     SID STAT  NI PRI COMMAND
+     2085       1    2085    2085 Ss     0  19 systemd
+     2086    2085    2085    2085 S      0  19 (sd-pam)
+     2092    2085    2092    2092 S<sl -11  30 pulseaudio
+  ```
+
+* Si on connaît déjà le PID du processus, on peut simplement l'utiliser en option pour avoir plus d'infos
+
+  ``` bash
+  $ ps u 1
+  USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+  root           1  0.0  0.0 168428 11744 ?        Ss   06:15   0:00 /sbin/init splash
+  ```
+
+* Pour afficher les processus démarrés par un utilisateur donné, on utilise -u suivit du nom de l'utilisateur
+
+  ``` bash
+  $ ps -u $USER
+      PID TTY          TIME CMD
+     1837 ?        00:00:00 systemd
+     1838 ?        00:00:00 (sd-pam)
+     1844 ?        00:05:09 pulseaudio
+     1847 ?        00:00:00 gnome-keyring-d
+  ```
 
 ## top
 
@@ -221,6 +258,10 @@ category: Linux, Applications
       2 root      20   0       0      0      0 S   0,0  0,0   0:00.05 kthreadd
   ```
 
+  Par défaut, top réordonne constamment les processus pour afficher les plus gourmands en CPU en haut de la liste
+
+* On peut scroller parmi la liste de résultats à l'aide des flèches.
+
 ## pgrep
 
 * `pgrep` permet de chercher un PID en utilisant différents critères  
@@ -236,17 +277,17 @@ category: Linux, Applications
 
   - utilisateur
     ```
-    $ preg -u christine
+    $ pgrep -u christine
     1668
     ```
     ```
-    $ preg -au christine
+    $ pgrep -au christine
     1668 —bash
     ```
 
   - terminal
     ```
-    $ preg -at tty2
+    $ pgrep -at tty2
     1668 —bash
     ```
 
@@ -255,3 +296,143 @@ category: Linux, Applications
     $ pgrep -ag 2250
     2250 sleep 42000
     ```
+
+## lsof
+
+* lsof (*list open file*) permet de lister les fichiers ou répertoires utilisés par un processus
+
+  ```  bash
+  # Fichiers utilisés par le processus PID 8401
+  $ lsof -p 8401
+  ```
+
+* Ou de lister les processus utilisant un fichier
+
+  ``` bash
+  $ sudo lsof /var/log/messages
+  ```
+
+  ![](Screenshot from 2023-05-01 08-11-50.png)
+
+---
+
+## Locate and analyze system log files
+
+* The Linux kernel and most programs that run on it generate status messages, error messages, warnings and so on. And there can be tens of different programs generating all these messages all the time. So we need a way to collect all of these and organize them nicely in the files. 
+
+  This is the job of logging daemons — applications that collect, organize and store logs.
+
+* The most popular one on Linux is rsyslog.  
+  Its name comes from Rcoket Fast System for log processing
+
+  rsyslog stores all logs in the /var/log directory. Most of these files cannot be read by regular users, so before diving into log files, you might want to log in as the root user
+
+* Say you have no idea where ssh logs are stored — to see who logged in through ssh.   
+  You can search through the files for a line that contain SSH. This tells use that ssh logs are stored in the /var/log/secure file
+
+  ``` bash
+  grep -r ssh /var/log
+  ```
+
+  ![](Screenshot from 2023-05-01 08-57-47@2x.png)
+
+* Most of the time, you'll look at logs to see what happened in the past, but sometimes you'll also want to take a look at what is currently happening. You can get a live view of a log file and see log entries as soon as they appear with this command:
+
+  ``` bash
+  $ tail -F /var/log/secure
+  ```
+
+  -F makes tail enter follow mode
+
+* Modern Linux operating systems started using an additional way to keep track of logs: the journal daemon is a bit smarter at how it collects this data and the journalctl command lets us analyze logs more efficiently — for example filter logs generated by a specific command
+
+  To show logs generated by the sudo command:
+
+  ``` bash
+  journalctl /bin/sudo
+  ```
+
+  To show logs generated by the sshd service (-u for unit file):
+
+  ``` bash
+  journalctl -u sshd.service
+  ```
+
+  ![](Screenshot from 2023-05-01 09-19-35@2x.png)
+
+  Show all logs collected by the journal daemon:
+
+  ``` bash
+  journalctl
+  ```
+
+  To go to the end of the output: >
+
+  To open the journal and instantly go to the end of the output (end):
+
+  ``` bash
+  journalctl -e
+  ```
+
+  Journalctl also has a follow mode:
+
+  ``` bash
+  journalctl -f
+  ```
+
+* Most logs are just informative, but some are warnings about other things not going quite well, errors about thing that fails, and others are huge alarm signals about things going critically wrong. These are tagged as info, warning, error and crit.
+
+  We can use the -p (priority)
+
+  ``` bash
+  journalctl -p err
+  ```
+
+  The list of priorities that we can use are: alert, create, debug, emerge, err, info, notice and warning. If you forget this list:
+
+  ``` bash
+  journalctl -p <TAB><TAB>
+  ```
+
+* We can also use grep expressions to filter output with the -g option.
+
+  ``` bash
+  journalctl -p info -g '^b'
+  ```
+
+* Or tell journal to only display logs recorded after a certain time with -S (since)
+
+  ``` bash
+  journalctl -S 02:00
+  journalctl -S '2021-11-16 12:04:55'
+  ```
+
+  Or before a certain time with -U (until)
+
+  ``` bash
+  journalctl -S 01:00 -U 02:00
+  ```
+
+* We usually want to see logs since the system was last powered on, and logs for our current boot
+
+  To see logs for the current boot:
+
+  ``` bash
+  journalctl -b 0
+  ```
+
+  To see logs for the previous boot:
+
+  ``` bash
+  journalctl -b -1
+  ```
+
+* By default, this journal is only kept in memory. It means when you reboot or power off, logs in this journal are lost. To make the journal name and save its journals to disk, you can create this directory:
+
+  ``` bash
+  mkdir /var/log/journal/
+  ```
+
+  It's also worth noting that using the journatctl command requires you to be logged in as root or be in the wheel group
+
+* lastlog this shows you when each user on the system logged in the last time. For remote log ins (ie through SSH) you can see the IP address from which they logged in

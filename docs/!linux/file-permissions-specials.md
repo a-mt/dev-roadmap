@@ -43,6 +43,11 @@ category: Linux, Fichiers
 
 * Si l'utilisateur propriétaire n'a pas les droits d'execution, alors l'élévation des privilèges d'execution en tant qu'utilisateur ne sera pas possible. Si SUID est définit mais que l'utilisateur n'a pas les droits d'execution, un `S` est affiché au lieu de `s`.
 
+* Les permissions SUID sont représentées par:
+
+  - mode symbolique: `u=s`
+  - mode octal `4nnn` (exemple: 4755)
+
 ## SGID
 
 * *SGID* (Set Group ID) est une permissions spéciale, similaire à SUID mais pour les permissions de groupe.  
@@ -63,6 +68,11 @@ category: Linux, Fichiers
   * <ins>sur un répertoire</ins>  
     A pour effet d'assigner les fichiers crées dans ce répertoire au groupe propriétaire du répertoire et non au groupe principal de l'utilisateur qui a crée le fichier. Tous les répertoires crées dans ce répertoire hériterons également des droits SGID.
 
+* Les permissions SGID sont représentées par:
+
+  - mode symbolique: `g=s`
+  - mode octal `2nnn` (exemple: 2755)
+
 ## Sticky Bit
 
 * *Sticky Bit* est une permission spéciale, définie pour les permissions des "autres" utilisateurs (non propriétaires) d'un fichier. 
@@ -78,6 +88,11 @@ category: Linux, Fichiers
   $ ls -ld /tmp
   drwxrwxrwt 15 root root 20480 juil. 21 12:44 /tmp
   ```
+
+* Les permissions sticky bit sont représentées par:
+
+  - mode symbolique: `o=t`
+  - mode octal `1nnn` (exemple: 1755)
 
 ## Assigner des permissions spéciales
 
@@ -134,6 +149,26 @@ Rappel: Le fichier doit également avoir les droits d'execution au même niveau 
   $ ls -l file
   -rwxr-xr-- 1 am am 0 juil. 21 13:40 file
   ```
+
+## Filtrer
+
+* `find` permet de trouver les fichiers qui ont le SUID ou SGID activé avec l'option -perm:
+
+  ``` bash
+  $ find . -perm /4000
+  ./suidfile
+
+  $ find . -perm /2000
+  ./sgidfile
+
+  $ find . -perm /6000
+  ./suidfile
+  ./sgidfile
+  ./both
+  ```
+
+
+---
 
 ## Attributs étendus
 

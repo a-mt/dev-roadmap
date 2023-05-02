@@ -255,3 +255,26 @@ echo extonly=!$:e # extonly=.txt</pre></td>
   ```
   $ for i in {10..20}; do history -d 10; done
   ```
+
+## Variables d'environnement
+
+* HISTFILE: emplacement du fichier history
+
+  ```
+  $ echo $HISTFILE
+  /home/am/.bash_history
+  ```
+
+* HISTFILESIZE: nombre maximum de lignes dans le fichier history
+
+  ```
+  $ echo $HISTFILESIZE
+  2000
+  ```
+
+* HISTSIZE: nombre maximum de lignes dans la session en en cours
+
+  ```
+  $ echo $HISTSIZE
+  1000
+  ```

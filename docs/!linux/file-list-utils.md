@@ -145,7 +145,8 @@ category: Linux, Fichiers
   | -perm *permissions* | Fichiers qui ont les permissions *permissions*
   | -empty | Fichiers vides
   | -size *filesize* | Fichier ayant une taille de *filesize*
-  | -name *filename* | Fichiers nommés *filename*
+  | -name *filename* | Fichiers nommés *filename* (sensible à la casse)
+  | -iname *filename* | Fichiers nommés *filename* (insensible à la casse)
   | -regex *regex* | Fichiers dont le nom matche *regex*
 
   * -maxdepth permet de limiter le nombre de récursion.  
@@ -162,8 +163,8 @@ category: Linux, Fichiers
     find . -type f -not -newermt "$date"
     ```
 
-  * -mtime permet de chercher des fichiers en fonction de leur date de modification  
-    et -ctime en fonction de leur date de création
+  * -mtime permet de chercher des fichiers en fonction de leur date de modification (ex: modification du contenu), par périodes de 24 heures  
+    et -ctime en fonction de leur date de changement de statut (ex: modification des permissions)
 
     n  : il y a n jours  
     +n : il y a plus de n jours  
@@ -192,12 +193,84 @@ category: Linux, Fichiers
     ./file2
     ```
 
+  * -mmin, même principe mais en minutes
+
+    ``` bash
+    find -mmin 5       # modified 5 minutes ago
+    find -mmin -5      # modified less than 5 minutes ago
+    find -mmin +5      # modified more than 5 minutes ago
+    ```
+
+  * -size par taille
+
+    ``` bash
+    find -size 512k
+    find -size +512k   # greater than 512 kb
+    find -size -512k   # less than 512 kb
+    ```
+
+  * -perm permet de filtrer par permission  
+    On peut également utiliser -executable
+
+    ``` bash
+    $ find -perm 664              # exactly 664
+    $ find -perm u=rw,g=rw,o=r    # exactly 664
+
+    $ find -perm -664             # at least 664
+    $ find -perm -u=rw,g=rw,o=r   # at least 664
+
+    $ find -perm /664             # any of these permissions
+    $ find -perm /u=rw,g=rw,o=r   # any of these permissions
+
+    # Les fichiers avec SUID et SGID
+    $ sudo find /usr/*bin -perm /6000 -type f
+    /usr/bin/gpasswd
+    ...
+
+    # Les fichiers executables par l'utilisateur en cours
+    $ sudo find /usr/bin -executable
+    /usr/bin
+    ...
+    ```
+
   * -print -quit pour s'arrêter au premier résultat
 
     ```
     find ... -print -quit
     ```
 
+    -printf pour modifier le format du résultat
+
+    ``` bash
+    $ find /tmp -name '*.txt'
+    /tmp/imap-ports.txt
+    /tmp/index.txt
+
+    $ find /tmp -name '*.txt' -printf '%p: %s\n'
+    /tmp/imap-ports.txt: 8
+    /tmp/index.txt: 325
+
+    $ find /tmp -name '*.txt' -printf '%P\n'
+    imap-ports.txt
+    index.txt
+    ```
+
+    ```
+    %n nombre de liens (hard links) vers le fichier
+    %p nom du fichier
+    %P nom du fichier sans path
+    %s taille du fichier
+    %t date de dernière modification
+    ```
+
+  * find applique une logique ET, pour appliquer une logique OU utiliser -o.  
+    On peut également appliquer un NON avec -not
+
+    ``` bash
+    find -name "f*" -size 512k     # AND Operator
+    find -name "f*" -o -size 512k  # OR Operator
+    find -not -name "f*"           # NOY Operator
+    ```
 
 ### grep
 

@@ -23,6 +23,8 @@ category: Linux, Shell, Bash
     export VAR1 VAR2
     ```
 
+    Notons que les processus enfant peuvent à modifier les variables exportées, mais le changement ne se propage pas au shell parent: les variables exportées ne sont pas partagées mais seulement copiées.
+
   * <u>les variables locales</u>  
     Sont définies uniquement pour le shell courant, les processus enfants n'en héritent pas.  
     Par convention, leur nom est en minuscule

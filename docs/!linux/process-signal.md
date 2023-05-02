@@ -34,7 +34,7 @@ category: Linux, Processus
 
   | Nom&nbsp;symbolique | ID | Description
   |---      |--- |---
-  | SIHUP   | 1  | (hang-up signal) Fin de connexion. Ce signal est envoyé automatiquement lors d'une déconnexion utilisateur. Il demande à tous processus associés au terminal de s'arrêter<br> Trigger: `exit`
+  | SIGHUP  | 1  | (hang-up signal) Fin de connexion. Ce signal est envoyé automatiquement lors d'une déconnexion utilisateur. Il demande à tous processus associés au terminal de s'arrêter<br> Trigger: `exit`
   | SIGTERM | 15 | (termination signal) Graceful stop. Demande à un processus de s'arrêter. Le processus peut écouter ce signal pour supprimer des fichiers temporaires ou sauvegarder des données avant de s'arrêter. Le processus peut choisir d'ignorer ce signal et ne pas s'arrêter.<br> Trigger: `kill PID`, `kill -TERM PID`
   | SIGINT  | 2 | (interractive termination signal) Identique à SIGTERM mais déclenché à partir du terminal.<br> Trigger: Ctrl+c
   | SIGQUIT | 3  | (dump core signal) Génère un fichier core dump avant de demander l'arrêt du processus. Les fichiers core dump contiennent une copie de la mémoire vive et des registres d'un processeur à un instant donné, ce qui permet aux developpeurs de debugger un script posant problème. Ceux-ci étant inutiles pour un utilisateur lambda et relativement lourds, ils sont par défaut désactivés: ainsi SIGQUIT et SIGTERM effectuent par défaut la même action.<br> Trigger : ctrl+\\

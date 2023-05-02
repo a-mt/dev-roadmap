@@ -209,7 +209,7 @@ print(a, c, e) # 1 3 5
 
 ## Prendre un nombre indéfini d'arguments
 
-* Déclarer un paramètre avec un astérisque `*` aura pour effet de récupérer la liste des arguments passés à la fonction sous forme de tuple.
+* Déclarer un paramètre avec un astérisque `*` (splat) aura pour effet de récupérer la liste des arguments passés à la fonction sous forme de tuple.
 
   ``` python
   def sum(*args):
@@ -231,7 +231,7 @@ print(a, c, e) # 1 3 5
   print(sum(*t)) # 6
   ```
 
-* Déclarer un paramètre avec un double-astérisque `**` aura pour effet de récupérer les paramètres nommés sous forme de dictionnaire.
+* Déclarer un paramètre avec un double-astérisque `**` (splatty-splat) aura pour effet de récupérer les paramètres nommés sous forme de dictionnaire.
 
   ``` python
   def exemple(*args, **kwargs):
@@ -253,6 +253,18 @@ print(a, c, e) # 1 3 5
 
   opts = {"c": 1, "b": 2, "a": 3}
   print(f(**opts)) # 321
+  ```
+
+* Autres utilisations de `*`
+
+  ``` python
+  [*[1,2,3], *[4]]                # [1, 2, 3, 4]
+  {*[1,2,3], *[4]}                # {1, 2, 3, 4}
+  (*[1,2,3], *[4])                # (1, 2, 3, 4)
+  {**{'a': 1, 'b': 2}, **{'c': 3}}# {'a': 1, 'b': 2, 'c': 3}
+  ```
+  ``` python
+  head, *body, tail = [1,2,3,4,5]
   ```
 
 ## Documentation

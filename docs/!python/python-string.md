@@ -158,6 +158,12 @@ Il existe différentes [fonctions](https://docs.python.org/2.5/lib/string-method
 
 Il existe différentes manières de formatter une chaîne de caractères:
 
+``` python
+print('Hello there {} and {}'.format(name1, name2))
+print('Hello there %s and %s' %(name1, name2))
+print(f'Hello there {name1} and {name2}')
+```
+
 1. La fonction [format](https://www.w3schools.com/python/ref_string_format.asp)
 
     ``` python

@@ -203,6 +203,16 @@ print(l2) # [5.0, 10.0, 15.0]
   Le paramètre `key` peut prendre une fonction lambda en entrée. Cette fonction doit retourner la ou les valeurs à utiliser pour le tri.
 
   ``` python
+  sorted_by_key = sorted([
+      {'name': 'Bina', 'age': 30},
+      {'name':'Andy', 'age': 18},
+      {'name': 'Zoey', 'age': 55}
+    ],
+    key=lambda el: (el['name'])
+  )
+  ```
+
+  ``` python
   l = [
     ('bob', 2),
     ('alice', 2),
@@ -373,4 +383,14 @@ print(l2) # [5.0, 10.0, 15.0]
   l = [1,2,3]
   print(l.reverse()) # None
   print(l)           # [3, 2, 1]
+  ```
+
+* Zip/unzip
+
+  ``` python
+  list(zip([1,2,3], [4,5,6])) # [(1, 4), (2, 5), (3, 6)]
+
+  z = [(1, 2), (3, 4), (5, 6), (7, 8)] # Some output of zip() function
+  unzip = lambda z: list(zip(*z))
+  unzip(z)
   ```

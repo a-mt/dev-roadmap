@@ -40,10 +40,10 @@ category: Web, Python
   ```
 
   Différents modes d'ouverture sont possibles:
-  * `r` (read): lecture.  
+  * `r` (read): lecture — par défaut.  
     Si le fichier n'existe pas, l'erreur FileNotFoundError est levée
 
-  * `w` (write): écriture.  
+  * `w` (write): écriture (truncate).  
     Si le fichier n'existe pas, il est crée.  
     Si le fichier existe déjà, son contenu est supprimé
 
@@ -54,10 +54,26 @@ category: Web, Python
     Si le fichier n'existe pas, il est crée.  
     Si le fichier existe déjà, le texte écrit sera ajouté à la fin
 
+  * `w+` - Lecture & écriture (truncate).
+  * `r+` - Lecture & écriture du début.
+  * `a+` - Lecture & écriture de la fin.
+  * `t` - Mode texte (par défaut).
+  * `b` - Mode binaire.
+
 * La fonction `close` ferme le fichier (libère la mémoire)
 
   ``` python
   f.close()
+  ```
+
+* On peut également préciser l'encodage à utiliser
+
+  ``` python
+  with open(filename, encoding='utf-8') as file:
+      return file.readlines() # or read()
+
+  with open(filename, 'w', encoding='utf-8') as file:
+        file.write(text)
   ```
 
 ### Attributs
@@ -165,6 +181,14 @@ category: Web, Python
   print(f.readlines()) # ['Line 1\n', 'Line 2\n']
   f.close()
   ```
+
+### Écriture
+
+``` python
+# string ou bytes
+f.write("Hello world")
+f.writelines(["line 1", "line 1"])
+```
 
 ### Manipuler le curseur
 
@@ -282,4 +306,51 @@ open("tmp/t1.txt", 'a').close()
   -rw-r--r-- 1 myself myself    0 juil. 26 06:51 t1.txt
   -rw-r--r-- 1 myself myself    0 juil. 26 06:51 t2.txt
   '''
+  ```
+
+---
+
+## Utilitaires
+
+* CSV
+
+  ``` python
+  import csv
+
+  def read_csv_file(filename) -> iter:
+      with open(filename, encoding='utf-8') as file:
+          return csv.reader(file, delimiter=';')
+
+  def write_to_csv_file(filename, rows):
+      with open(filename, 'w', encoding='utf-8') as file:
+          writer = csv.writer(file, delimiter=';')
+          writer.writerows(rows)
+  ```
+
+* JSON
+
+  ``` python
+  import json
+
+  def read_json_file(filename) -> str:
+      with open(filename, encoding='utf-8') as file:
+          return json.load(file)
+
+  def write_to_json_file(filename, an_object):
+      with open(filename, 'w', encoding='utf-8') as file:
+          json.dump(an_object, file, ensure_ascii=False, indent=2)
+  ```
+
+* Pickle
+
+  ``` python
+  import pickle
+
+  def read_pickle_file(filename) -> bytes:
+      with open(filename, 'rb') as file:
+          return pickle.load(file)
+
+  def write_to_pickle_file(filename, an_object):
+      with open(filename, 'wb') as file:
+          pickle.dump(an_object, file)
   ```

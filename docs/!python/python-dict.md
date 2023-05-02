@@ -31,6 +31,22 @@ category: Web, Python
   '''
   ```
 
+## list -> dict
+
+``` python
+# Creates a dict from collection of key-value pairs.
+new_dict = dict([
+  ['name','Andrei'],
+  ['age',32],
+  ['magic_power',False],
+])
+# Creates a dict from two collections.
+new_dict = dict(zip(
+  ['name','age','magic_power'],
+  ['Andrei',32, False],
+))
+```
+
 ## Opérateurs
 
 * <ins>Get ([x])</ins>  
@@ -160,5 +176,8 @@ category: Web, Python
   ``` python
   d = {"a":1, "b":2, "c":3}
   print(d.update({"c":4, "d": 5})) # None
+  print(d)                         # {'a': 1, 'b': 2, 'c': 4, 'd': 5}
+
+  print({**d, **{"e": 6} })        # {'a': 1, 'b': 2, 'c': 4, 'd': 5, 'e': 6}
   print(d)                         # {'a': 1, 'b': 2, 'c': 4, 'd': 5}
   ```

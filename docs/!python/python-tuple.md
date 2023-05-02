@@ -57,3 +57,18 @@ tuple([1,2,3,4,5])
   print((1,2,2).index(2))   # 1
   print((1,2,2).index("a")) # ValueError: tuple.index(x): x not in tuple
   ```
+
+## Namedtuples
+
+``` python
+from collections import namedtuple
+
+Point = namedtuple('Point', 'x y')
+
+p = Point(1, y=2) # Point(x=1, y=2)
+p[0]             # 1
+p.x              # 1
+getattr(p, 'y')  # 2
+
+p._fields        # Or: Point._fields #('x', 'y')
+```

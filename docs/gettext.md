@@ -7,8 +7,8 @@ category: Other
 ## Extension
 
 Il y a deux types de fichiers:
-* `.po`, sont des fichiers textes
-* `.mo`, sont des fichiers `.po` compilés
+* `.po`, sont des fichiers textes (portable object)  
+* `.mo`, sont des fichiers `.po` compilés (machine object)
 
 Pour compiler un fichier `.po` en `.mo`:
 

@@ -1066,7 +1066,7 @@ Plusieurs caches peuvent être utilisés.
   <tr><td colspan="2"></td></tr>
 
   <tr><th align="left">git stash list</th><td>Liste les caches</td></tr>
-  <tr><th align="left">git stash list --start</th><td>Liste les caches et leurs modifications</td></tr>
+  <tr><th align="left">git stash list --stat</th><td>Liste les caches et leurs modifications</td></tr>
   <tr><th align="left">git stash show</th><td>Liste les modifications du dernier cache</td></tr>
   <tr><th align="left">git stash show stash@{0}</th><td>Idem</td></tr>
 

@@ -14,7 +14,6 @@ category: Linux
 ## Créer un volume logique
 
 1. Pour utiliser le disque entier: s'assurer que le disque est vide, sans table de partition. S'il y a des partitions, les supprimer  
-    Ensuite, ajouter une partition 8e dans la table de partition
 
     ``` bash
     $ lsblk -f /dev/sd*
@@ -31,15 +30,6 @@ category: Linux
 
     $ sudo umount /dev/sda1
     $ sudo gdisk /dev/sda
-    d
-    n
-    Hex code or GUID (L to show codes, Enter = 8300): 8e00
-    w
-    p
-    Number  Start (sector)    End (sector)  Size       Code  Name
-    1            2048         7864286   3.7 GiB     8E00  Linux LVM
-    q
-
     $ sudo gdisk /dev/sdb
     $ sudo gdisk /dev/sdc
 
@@ -143,7 +133,7 @@ category: Linux
 4. <ins>Logical Volume (LV)</ins>  
     Créer un *volume logique*.  
     -L pour spécifier la taille du volume logique  
-    -n pour donner un nom au volume logique
+    -n pour donner un nom au volume logique  
     Le dernier argument (vg) est le nom du groupe volume d'où le volume logique obtient son espace physique
 
     ``` bash
@@ -339,6 +329,8 @@ category: Linux
     ```
 
 * Pour récapituler, on peut désigner une partition comme volume physique et l'ajouter à un groupe de volumes. On crée ensuite un volume logique à partir d'un groupe de volumes. Le volume logique peut être formatté avec un système de fichier et monté comme une partition ordinaire.
+
+  En d'autres termes, on peut considérer qu'un groupe de volumes est une sorte de disque virtuel, et qu'un volume logique est une sorte de partition virtuelle sur ce groupe de volume.
 
   ![](https://i.imgur.com/a1NEEch.png)
 

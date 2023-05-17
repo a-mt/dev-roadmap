@@ -46,6 +46,8 @@ On peut trouver les fichiers utilisés lors du boot dans le système de réperto
 
 * Il s'agit d'une vieille technologie, qu'on croise rarement aujourd'hui.
 
+---
+
 ## GRUB (Grand Unified Bootloader) Legacy
 
 * Il est peu courant de trouver la première version de GRUB (GRUB Legacy) d'installée, mais ça arrive.  
@@ -93,6 +95,8 @@ On peut trouver les fichiers utilisés lors du boot dans le système de réperto
 
   ![](https://i.imgur.com/A30QeUZl.png)
 
+---
+
 ## GRUB2
 
 * Est le bootloader le plus couramment utilisé.
@@ -131,11 +135,16 @@ On peut trouver les fichiers utilisés lors du boot dans le système de réperto
 
 * Le fichier `/etc/default/grub` contient des configurations (appelées *keys*) qui gèrent l'apparence et le comportement du menu de démarrage.
 
+  ``` bash
+  $ sudo vim /etc/default/grub
+  ```
+
   | Key | Description
   |---    |---
   | `GRUB_DEFAULT=0` | Entrée sélectionnée par défaut
   | `GRUB_TIMEOUT=10` | Délai d'attente avant de démarrer sur l'entrée par défaut
   | `GRUB_TIMEOUT_STYLE=hidden` | Masquer le menu GRUB
+  | `GRUB_CMDLINE_LINUX` | Permet de passer des options au kernel
 
 ### /etc/grub.d
 
@@ -210,3 +219,72 @@ On peut trouver les fichiers utilisés lors du boot dans le système de réperto
   ```
 
   Toute option qui n'est pas comprise par le kernel sera passé à init (pid = 1), le premier processus lancé
+
+---
+
+## Rescue
+
+* Admettons que le bootloader soit mal configuré et que le système d'exploitation ne démarre pas du tout.
+
+  1. Démarrer à partir d'une clé USB ou CD amorçable.  
+     Au lieu d'une installation, lancer le Dépannage (Troubleshooting puis Rescue)
+
+     ![](https://i.imgur.com/0V9yd1c.png)
+
+     ![](https://i.imgur.com/955jmvL.png)
+
+  2. Monter le système de fichier.  
+     L'option 1 permet à l'environnement de secours d'essayer de trouver l'installation Linux et de la monter dans un répertoire spécial, qui sera /mnt/sysroot
+
+     ![](https://i.imgur.com/fHGEHzd.png)
+
+  3. Entrer dans le système de fichier monté
+
+      ``` bash
+      # chroot /mnt/sysroot
+      ```
+
+  4. Générer le fichier de configuration Grub
+
+      - Pour un système configuré pour démarrer via BIOS Legacy:  
+        morsqu'un ordinateur démarre en mode BIOS il recherche le bootloader au tout début du disque, il va donc falloir placer grub dans cette zone. En l'occurence, on veut l'installer au début du disque sda
+
+        Sous CentOS:
+
+        ``` bash
+        # lsblk
+        NAME     MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
+        ...
+        sda        8:0    0    20G  0 disk  
+        ├─sda1     8:1    0     1G  0 part  /boot
+        ├─sda2     8:2    0     2G  0 part  [SWAP]
+        └─sda3     8:3    0    17G  0 part  /
+        sr0       11:0    1    10G  0 rom
+
+        # grub2-install /dev/sda
+        Installing for i386-pc platform.
+        Installation finished. No error reported.
+        #
+        ```
+
+      - Pour un système configuré pour démarrer via EFI:  
+        Lorsqu'un ordinateur démarre par EFI, le système ne cherche pas le bootloader sur les premiers secteur du disque, mais il cherche une partition de démarrage spéciale — une partition EFI.
+
+        Pour placer les fichiers du bootloader à l'endroit approprié, sous CentOS:
+
+        ``` bash
+        # dnf reinstall gtub2-efi grub2-efi-modules shim
+        ```
+
+  5. Quitter le répertoire root
+
+      ``` bash
+      exit
+      ```
+
+  6. Quitter l'environnement de recours  
+     (ce qui entrainera un redémarrage)
+
+      ``` bash
+      exit
+      ```

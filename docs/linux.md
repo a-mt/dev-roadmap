@@ -63,7 +63,8 @@ summary: false
 
 [system-specs]: !linux/system-specs.md
 [system-packages]: !linux/packages.md
-[accounts]: !linux/accounts.md
+[accounts-user]: !linux/accounts-user.md
+[accounts-group]: !linux/accounts-group.md
 [scheduled-jobs]: !linux/scheduled-jobs.md
 [time]: !linux/time.md
 [ntp]: !linux/ntp.md
@@ -127,7 +128,12 @@ summary: false
   - [Multiplexeur de terminal][multiplexer]
 
 * Comptes
-  - [Utilisateurs & groupes][accounts]
+  - [Utilisateurs][accounts-user]
+  - [Groupes][accounts-group]
+  - [Environnement](!linux/env.md)
+  - [Limites & quotas](!linux/accounts-limits.md)
+  - [PAM](!linux/accounts-pam.md)
+  - [SELinux](!linux/lsm-selinux.md)
 
 * Boot
   - [Théorie: matériel][hardware-overview]
@@ -164,6 +170,10 @@ summary: false
   - [Théorie: couche 2 — transfert des données][network-layer2-mac]
   - [Théorie: couche 3 — routing][network-layer3-ip]
   - [Théorie: couche 4 — connexion](!linux/network-layer4-tcp.md)
+
+  <!-- -->
+
+  - [Afficher les configurations réseau](!linux/network-quick.md)
 
   - [Interfaces][network-nic]
   - [Nom d'hôte][network-hostname]

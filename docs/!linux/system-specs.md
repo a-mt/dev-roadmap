@@ -729,7 +729,14 @@ category: Linux
   <li>Depuis quand le système est en route</li>
   <li>Nombre actuel d'utilisateurs connectés</li>
   <li>Charge CPU pour les 1, 5 et 15 dernières minutes.<br>  
-     Pour un serveur web, on cherche à garder la moyenne sur 15 minutes inférieure ou égale à 1 — une moyenne supérieure est signe qu'il foit améliorer les performances, ou acquérir un processeur plus puissant</li>
+     Une charge moyenne de 1.0 en premier chiffre signifie qu'un coeur CPU a été utilisé à pleine capacité (autrement dit, à 100%) pendant une entière minute.
+
+     Pour un serveur web, on cherche à garder la moyenne sur 15 minutes inférieure ou égale à 1 — une moyenne supérieure est signe qu'il faut améliorer les performances, ou acquérir un processeur plus puissant.
+
+     Par exemple, si on a un système à 8 core, et qu'on observe cette moyenne: 6.0 0.31 0.18. 6 coeurs ont été utilisés intensément au cours de la dernière minute, mais les 5 et 15 dernières minutes les coeurs ont été à peine utilisé. Certains progrmmes ont travaillé dur pendant un temps très court, mais dans l'ensemble le système ne pousse pas trop le CPU et il n'y a pas d'inquiétude à avoir.
+
+     En revanche si on a: 6.12, 7.12, 7.30. Alors le système utilise les coeurs de manière intensive presque tout le temps. Il est temps de passer à un serveur plus puissant ou d'optimiser l'installation pour qu'elle nécessite moins de CPU.
+   </li>
   </ol>
   </details>
 
@@ -860,20 +867,28 @@ category: Linux
     <code>free</code> permet d'afficher la quantité de RAM et Swap disponible
   </summary>
 
-  -h (<i>human</i>) pour afficher les tailles avec les unités K/M/G
+  -h (<i>human</i>) pour afficher les tailles avec les unités Ki/Mi/Gi  
+  --mega pour afficher les tailles en mega
 
   <pre lang="bash">
   $ free
                 total        used        free      shared  buff/cache   available
-  Mem:       16078664     3000092     6065160      595252     7013412    12155848
-  Swap:       2097148           0     2097148
+  Mem:       16103192     3341228     8210348     1805932     4551616    10622644
+  Swap:       4001276           0     4001276
   </pre>
 
   <pre lang="bash">
   $ free -h
                 total        used        free      shared  buff/cache   available
-  Mem:            15G        2,9G        5,8G        571M        6,7G         11G
-  Swap:          2,0G          0B        2,0G
+  Mem:           15Gi       3.2Gi       7.8Gi       1.7Gi       4.3Gi        10Gi
+  Swap:         3.8Gi          0B       3.8Gi
+  </pre>
+
+  <pre lang="bash">
+  $ free --mega
+                total        used        free      shared  buff/cache   available
+  Mem:          16489        3428        8416        1832        4644       10886
+  Swap:          4097           0        4097
   </pre>
 
   <ins>buffers/cache</ins>: est mémoire physique moins la mémoire utilisée par le noyau

@@ -6,7 +6,7 @@ category: Linux, Network
 ## Hostname
 
 * Le *nom d'hôte* ou *hostname* est le nom associé à un système.  
-  Il est typiquement indiqué dans le prompt, et permet de s'assurer qu'on est connecté à la bonne machine
+  Il est typiquement indiqué dans le prompt, et permet notamment de s'assurer qu'on est connecté à la bonne machine
 
   ```
   myproject-staging #

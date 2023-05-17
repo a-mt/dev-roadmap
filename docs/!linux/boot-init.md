@@ -331,6 +331,25 @@ category: Linux, Boot
   degraded
   ```
 
+* list-dependencies permet de lister les différentes unités représentées sous forme d'arbre.
+
+  - Une pastille blanche indique que le service est actuellement arrêté — ce qui n'est généralement pas un problème, certains services s'exécutent une fois au démarrage et se terminent directement, et d'autres ne sont pas censés démarrer automatiquement.
+
+  - Une pastille verte indique que le service est en cours d'execution — en règle générale, les services importants (actifs en permanence) devraient accompagnés d'une pastille verte.
+
+  ```
+  default.target
+  ● ├─accounts-daemon.service
+  ○ ├─e2scrub_reap.service
+  ● ├─lightdm.service
+  ● ├─switcheroo-control.service
+  ○ ├─systemd-update-utmp-runlevel.service
+  ● ├─udisks2.service
+  ● └─multi-user.target
+  ○   ├─anacron.service
+  ●   ├─avahi-daemon.service
+  ```
+
 ### Cible par défaut
 
 * Pour voir la cible par défaut:

@@ -462,7 +462,7 @@ Pour pouvoir utiliser un système comme serveur de logs centralisé, il faut act
 
 * L'option `-p facility.priority` permet de spécifier le type d'événement et sa priorité
 
-``` bash
+  ``` bash
   $ logger -p mail.info "Test of logger to mail log"
   $
   $ sudo tail -1 /var/log/mail.log 

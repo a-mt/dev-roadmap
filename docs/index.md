@@ -49,7 +49,6 @@ searchbar: true
 [mongodb]: mongodb.md
 [mustachejs]: mustachejs.md
 [mysql]: mysql.md
-[ntp]: ntp.md
 [numpy]: numpy.md
 [opensource]: github.md
 [pandas]: pandas.md
@@ -198,8 +197,10 @@ searchbar: true
 
 ## Exploitation
 
+- [Linux][linux]
+
 - Réseau  
-  [IP][host-ip], [Nom de domaine][host-domain], [HTTPS][ssl-howto], HSTS [1 &#x21F2;](https://freshman.tech/securing-your-website/#http-strict-transport-security-hsts), [SSH][ssh], [NTP][ntp]
+  [IP][host-ip], [Nom de domaine][host-domain], [HTTPS][ssl-howto], HSTS [1 &#x21F2;](https://freshman.tech/securing-your-website/#http-strict-transport-security-hsts), [SSH][ssh]
 
 - Serveurs web  
   Apache ([Vhost][apache-vhost], .htaccess [1 &#x21F2;](https://perishablepress.com/stupid-htaccess-tricks/)), Nginx [1 &#x21F2;](https://www.freecodecamp.org/news/an-introduction-to-nginx-for-developers-62179b6a458f/)
@@ -209,8 +210,6 @@ searchbar: true
 
 - Workflow  
   [Dev](workflow-dev.md), [Prod](workflow-prod.md)
-
-- [Linux][linux]
 
 - Windows  
   * Script: Batch, Powershell

@@ -7,7 +7,7 @@ category: Puppet
 
 Puppet Server agit comme autorité de certification pour les noeuds agent. Le Puppet master doit maintenir une heure système précise afin d'éviter des problèmes potentiels avec la date d'expiration des certifications s'il y a des décalages horaires.
 
-Pour s'assurer que l'heure est synchronisée entre le master et les agents, on peut [installer NTP](ntp.md).
+Pour s'assurer que l'heure est synchronisée entre le master et les agents, on peut [installer NTP](!linux/ntp.md).
 
 ---
 

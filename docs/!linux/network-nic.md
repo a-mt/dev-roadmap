@@ -78,17 +78,98 @@ category: Linux, Network
 
 ---
 
-## Lister les interfaces
+## ifconfig vs ip
 
-### Legacy: ifconfig
+* `ip` (du package iproute2) est un utilitaire permettant d'afficher et configurer les paramètres d'interfaces réseau, le routage et le tunneling.
+  Tous les changements effectués avec `ip` ne servent qu'à dépanner, ils sont effacés après un reboot. Pour des modifications permanentes, il faut modifier les configurations du network manager.
 
-* `ifconfig` (du package net-tools) est un utilitaire d'administration système qu'on trouve
-  depuis longtemps dans les systèmes d'exploitation UNIX,
-  et permet d'afficher et configurer les paramètres de l'interface réseau.
-  Il a été remplacé par `ip` et certains distributions Linux ne l'installent plus par défaut
+* `ifconfig` (du package net-tools) est un utilitaire d'administration système qu'on trouve depuis longtemps dans les systèmes d'exploitation UNIX, et permet d'afficher et configurer les paramètres de l'interface réseau. Il a été remplacé par `ip` et certains distributions Linux ne l'installent plus par défaut: ip est plus polyvalent qu'ifconfig et plus efficace car il utilise des sockets netlink plutôt que des appels système ioctl. Tout comme ip, les changements effectués par ifconfig ne sont pas persistents.
+
+* La syntaxe générale d'ip est
+
+  ```
+  ip [OPTIONS] OBJECT [COMMAND]
+  ```
+
+  où OBJECT peut être
+
+  | OBJECT   | Function
+  |---       |---
+  | address  | Addresse IPv4 ou IPv6
+  | link     | Interface réseau
+  | maddress | Addresse Multicast
+  | monitor  | Surveiller les messages netlink
+  | route    | Entrées de la table de routage
+  | rule     | Règles de routage
+  | tunnel   | Tunnel sur IP
+
+---
+
+## Interface
+
+* Pour trouver le nom de l'interface réseau:
+
+  ``` bash
+  ip link show  # Long version
+  ip l          # Short version
+  ```
+
+  On peut également filtrer le résultat sur une interface donnée
+
+  ``` bash
+  $ ip link show
+  1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+      link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+  2: wlp164s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DORMANT group default qlen 1000
+      link/ether c8:cb:9e:b8:7b:cb brd ff:ff:ff:ff:ff:ff
+  3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default 
+      link/ether 02:42:17:c9:b6:7e brd ff:ff:ff:ff:ff:ff
+
+  $ ip link show wlp164s0
+  2: wlp164s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DORMANT group default qlen 1000
+      link/ether c8:cb:9e:b8:7b:cb brd ff:ff:ff:ff:ff:ff
+  ```
+
+* -br permet d'afficher une version brève:
+
+  ``` bash
+  $ ip -br link show
+  lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP> 
+  wlp164s0         UP             c8:cb:9e:b8:7b:cb <BROADCAST,MULTICAST,UP,LOWER_UP> 
+  docker0          DOWN           02:42:17:c9:b6:7e <NO-CARRIER,BROADCAST,MULTICAST,UP>
+  ```
+
+* -s permet d'afficher des statistiques:
+
+  ``` bash
+  $ ip -s link show wlp164s0
+  2: wlp164s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DORMANT group default qlen 1000
+      link/ether c8:cb:9e:b8:7b:cb brd ff:ff:ff:ff:ff:ff
+      RX: bytes  packets  errors  dropped overrun mcast   
+      738189855  601367   0       1529    0       0       
+      TX: bytes  packets  errors  dropped carrier collsns 
+      37882695   89389    0       0       0       0 
+  ```
+
+## Activer/désactiver une interface
+
+* Mettre une interface hors service:
+
+  ``` bash
+  $ sudo ip link set eth0 down
+  ```
+
+  La remettre en service
+
+  ``` bash
+  $ sudo ip link set eth0 up
+  ```
+
+## Legacy: ifconfig
 
 * `ifconfig`, sans paramètres, affiche les informations de toutes les interfaces reconnues par le système.  
-  On peut notamment y trouver leur adresses IP et MAC
+  On peut notamment y trouver leur adresses IP et MAC.  
+  On peut filtrer le résultat sur une interface donnée
 
   ``` bash
   $ ifconfig
@@ -112,82 +193,79 @@ category: Linux, Network
           TX packets 109296  bytes 33750920 (33.7 MB)
           TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
   ...
-  ```
 
-  On peut filtrer le résultat sur une interface donnée
-
-  ``` bash
   $ ifconfig wlp164s0 | head -1
   wlp164s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
   ```
 
-### ip
-
-* `ip` (du package iproute2) est un utilitaire, plus récent qu'ifconfig, permettant d'afficher et configurer les paramètres d'interfaces réseau, le routage et le tunneling.
-  ip est plus polyvalent qu'ifconfig et plus efficace — car il utilise des sockets netlink plutôt que des appels système ioctl.
-
-  La syntaxe générale d'ip est
-
-  ```
-  ip [OPTIONS] OBJECT [COMMAND]
-  ```
-
-  où OBJECT peut être
-
-  | OBJECT   | Function
-  |---       |---
-  | address  | Addresse IPv4 ou IPv6
-  | link     | Interface réseau
-  | maddress | Addresse Multicast
-  | monitor  | Surveiller les messages netlink
-  | route    | Entrées de la table de routage
-  | rule     | Règles de routage
-  | tunnel   | Tunnel sur IP
-
-* `ip link show` affiche les informations des interfaces réseau
+* Mettre une interface hors service:
 
   ``` bash
-  $ ip link show
-  1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
-      link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-  2: wlp164s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DORMANT group default qlen 1000
-      link/ether c8:cb:9e:b8:7b:cb brd ff:ff:ff:ff:ff:ff
-  3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default 
-      link/ether 02:42:17:c9:b6:7e brd ff:ff:ff:ff:ff:ff
+  $ sudo ifconfig eth0 down
+  ```
+  ``` bash
+  $ sudo ifdown eth0
   ```
 
-  -br permet d'afficher une version brève:
+  La remettre en service:
 
   ``` bash
-  $ ip -br link show
-  lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP> 
-  wlp164s0         UP             c8:cb:9e:b8:7b:cb <BROADCAST,MULTICAST,UP,LOWER_UP> 
-  docker0          DOWN           02:42:17:c9:b6:7e <NO-CARRIER,BROADCAST,MULTICAST,UP>
+  $ sudo ifconfig eth0 up
   ```
-
-* On peut filtrer le résultat sur une interface donnée
-
   ``` bash
-  $ ip link show wlp164s0
-  2: wlp164s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DORMANT group default qlen 1000
-      link/ether c8:cb:9e:b8:7b:cb brd ff:ff:ff:ff:ff:ff
+  $ sudo ifup eth0
   ```
 
-  -s permet d'afficher des statistiques:
+---
 
-  ``` bash
-  $ ip -s link show wlp164s0
-  2: wlp164s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DORMANT group default qlen 1000
-      link/ether c8:cb:9e:b8:7b:cb brd ff:ff:ff:ff:ff:ff
-      RX: bytes  packets  errors  dropped overrun mcast   
-      738189855  601367   0       1529    0       0       
-      TX: bytes  packets  errors  dropped carrier collsns 
-      37882695   89389    0       0       0       0 
-  ```
+## Configurations statique vs dynamique
 
-### nmcli
+* Ici le réseau est entièrement configuré, bien qu'on ne l'ai pas paramètré manuellement: c'est qu'il s'est configuré automatiquement en demandant ces détails à un serveur DHCP ou un mécanisme similaire. En d'autres termes, le réseau est configuré dynamiquement.
 
-* `nmcli device status` permet d'afficher les interfaces connues du network manager
+* Tous les paramètres réseau, adresse IP, routeurs, résolveurs DNS, routes réseaux, etc, peuvent être configurés de manière dynamique ou statique.
+
+  - Dans le cas d'une configuration dynamique, l'appareil reçoit généralement ses paramètres d'un service tel que DHCP, le protocole de configuration dynamique des hôtes (*Dynamic Host Configuration Protocol*)
+
+  - Avec une configuration statique, on ajoute manuellement ces paramètres nous-même.
+
+## Fichiers de configuration
+
+* Historiquement, pour rendre des configurations permanentes on utilisait des fichiers de configuration. Le problème c'est que
+
+  1. Chaque distribution possède son propre ensemble de fichiers/répertoires, qui peuvent également varier suivant la version de la distribution
+
+    - Red Hat
+      /etc/sysconfig/network
+      /etc/sysconfig/network-scripts/ifcfg-ethX
+      /etc/sysconfig/network-scripts/ifcfg-ethX:Y
+      /etc/sysconfig/network-scripts/route-ethX
+
+    - Debian
+      /etc/network/interfaces
+
+    - SUSE
+      /etc/sysconfig/network
+
+  2. Les fichiers de configuration peuvent facilement gérer des situations statiques, alors que les systèmes modernes ont souvent des configurations dynamiques:
+
+    - les réseaux peuvent changer lorsqu'un appareil est déplacé d'un endroit à l'autre
+    - les appareils sans fils peuvent disposer d'un large choix de réseaux auxquels se connecter
+    - les appareils peuvent changer au fur à mesure que des appareils sont allumés ou éteints
+
+* Aujourd'hui on utilise plutôt des utilitaires pour manipuler et mettre à jour les configurations, notamment Network Manager. Bien que Network Manager utilise toujours des fichiers de configuration, il ajoute une couche d'abstraction qui nous permet de facilement passer d'une distribution à l'autre ou d'une interface à l'autre.
+
+---
+
+## nmcli
+
+* La commande `nmcli` permet d'accéder et modifier les configurations du network manager — qui sont elles persistentes.  
+  Le NetworkManager stocke les configuration du réseau sous forme de "connexions".  
+  Une connexion est "active" lorsqu'un appareil utilise la configuration de cette connexion pour créer un réseau ou s'y connecter.  
+  Une seule connexion peut être active sur un appareil à un moment donné, les connexions supplémentaires peuvent être utilisées pour passer rapidement d'un réseau à l'autre et d'une configuration à l'autre.
+
+### Lister les interfaces
+
+* Pour afficher les interfaces connues du network manager:
 
   ``` bash
   $ nmcli device status
@@ -198,7 +276,7 @@ category: Linux, Network
   lo                loopback  unmanaged     --
   ```
 
-* `nmcli device show` permet d'afficher les informations de cette interfaces 
+  Pour afficher les informations d'une interface:
 
   ``` bash
   $ nmcli device show wlp164s0
@@ -225,40 +303,62 @@ category: Linux, Network
   IP6.DNS[1]:                             2001:861:33c0:5740:c23c:4ff:fe8d:832c
   ```
 
----
+### Lister les connexions
 
-## Activer/désactiver une interface
-
-* Mettre une interface hors service:
+* Pour lister les connexion:
 
   ``` bash
-  $ sudo ip link set eth0 down
+  $ nmcli connection show
+  NAME           UUID                                  TYPE    DEVICE   
+  Bbox-86B853B2  aa69aca5-dc2c-4c0b-9074-c451dfd4aea9  wifi    wlp164s0 
+  docker0        58b2f101-8aef-4db9-b803-a16e579e6fd8  bridge  docker0
   ```
 
-  La remettre en service
+  Pour afficher les paramètres de la connexion nommée "Bbox-86B853B2":
 
   ``` bash
-  $ sudo ip link set eth0 up
+  $ nmcli connection show id 'Bbox-86B853B2' | grep -i ipv4
+  ipv4.method:                            auto
+  ipv4.dns:                               --
+  ipv4.dns-search:                        --
+  ipv4.dns-options:                       --
+  ipv4.dns-priority:                      0
+  ipv4.addresses:                         172.16.2.140/24, 192.168.1.4/24
+  ipv4.gateway:                           --
+  ipv4.routes:                            --
+  ipv4.route-metric:                      -1
+  ipv4.route-table:                       0 (unspec)
+  ipv4.routing-rules:                     --
+  ipv4.ignore-auto-routes:                no
+  ipv4.ignore-auto-dns:                   no
+  ipv4.dhcp-client-id:                    --
+  ipv4.dhcp-iaid:                         --
+  ipv4.dhcp-timeout:                      0 (default)
+  ipv4.dhcp-send-hostname:                yes
+  ipv4.dhcp-hostname:                     --
+  ipv4.dhcp-fqdn:                         --
+  ipv4.dhcp-hostname-flags:               0x0 (none)
+  ipv4.never-default:                     no
+  ipv4.may-fail:                          yes
+  ipv4.dad-timeout:                       -1 (default)
   ```
 
-* Notons que ces commandes ne servent qu'à dépanner, au reboot tous les changements effectués avec `ip` sont effacés. Pour des modifications permanentes, il faut modifier les configurations du network manager.
+  On peut voir ici que l'adresse IPv4 est dynamique (ipv4.method: auto)
 
-### Legacy: ifconfig
+### Changer de connexion
 
-* Mettre une interface hors service:
+* On peut enregistrer différents paramètres sous forme de différentes connexions qui s'appliquent toutes deux à la même interface:  
+  ainsi on pourra avoir une connexion configurée via DHCP (appelée default)  
+  et l'autre configurée statiquement (appelée testing).
 
-  ``` bash
-  $ sudo ifconfig eth0 down
-  ```
-  ``` bash
-  $ sudo ifdown eth0
-  ```
+  - pour se connecter au réseau avec les configurations dynamiques — obtenues via DHCP:
 
-  La remettre en service:
+    ``` bash
+    nmcli con up default
+    ```
 
-  ``` bash
-  $ sudo ifconfig eth0 up
-  ```
-  ``` bash
-  $ sudo ifup eth0
-  ```
+  - pour se connecter au réseau avec les configurations statiques:
+
+    ``` bash
+    nmcli con up testing
+    ```

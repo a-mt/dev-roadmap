@@ -154,10 +154,13 @@ summary: false
 * Gestion du système
   - [Ressources & utilisation][system-specs]
   - [Paquets & gestionnaires de paquet][system-packages]
+  - [Librairies partagées](!linux/libraries.md)
+  - [Modules](!linux/kernel-modules.md)
 
 * Services
   - [Tâches récurrentes][scheduled-jobs]
-  - [Date & temps][time], [NTP][ntp]
+  - [Date & temps][time]
+  - [NTP][ntp]
   - [Locale][locale]
   - [Email][email]
   - [Impression][print]

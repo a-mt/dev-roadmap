@@ -84,7 +84,7 @@ category: Linux, Network
 
   1. Un message SYN (*synchronize*) est envoyé à l'ordinateur qu'on cherche à joindre
   2. Cet ordinateur répond par un SYN/ACK (*synchronize acknowledgement*)
-  3. Enfin l'ordinateur d'origine accuse récepte avec un message ACK (*aknowledge*)
+  3. Enfin l'ordinateur d'origine accuse réception avec un message ACK (*aknowledge*)
 
   ![](https://i.imgur.com/JLXZ8gZ.png)
 
@@ -101,9 +101,9 @@ category: Linux, Network
 
   - L'entête contient également l'adresse IP de destination et l'adresse IP source.
 
-  - Les routeurs déterminent le chemin le plus rapide pour acheminer les paquets vers l'adresse IP de destination. Il existe des millions d'itinéraires différents possibles pour les paquets parviennent d'un ordinateur à l'autre. Pour éviter la congestion du réseau, les paquets n'empruntent pas tous les même chemin
+  - Les routeurs déterminent le chemin le plus rapide pour acheminer les paquets vers l'adresse IP de destination. Il existe des millions d'itinéraires différents possibles pour que les paquets parviennent d'un ordinateur à l'autre et pour éviter la congestion du réseau, les paquets n'empruntent pas tous les même chemin. Le temps du trajet n'étant pas constant, il est possible que les paquets arrivent à leur destination dans le désordre.
 
-   Lorsque les paquets arrivent à destination, ils sont remis dans le bon ordre pour reconstituer le message d'origine
+  - Lorsque les paquets arrivent à destination, ils sont remis dans le bon ordre (grâce à leur numéro) pour reconstituer le message d'origine
 
 ## TCP vs UDP
 

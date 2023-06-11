@@ -5,9 +5,9 @@ category: Linux
 
 ## Théorie
 
-* NTP est l'abbréviation de Network Time Protocole (protocole de temps réseau). Il s'agit d'un protocole permettant de maintenir l'exactitude de l'horloge de votre ordinateur grâce à une hiérarchie de serveur de part le monde.
+* NTP est l'abbréviation de *Network Time Protocole* (protocole de temps réseau). Il s'agit d'un protocole réseau permettant de synchroniser l'heure entre différents systèmes informatiques sur des réseaux de données à latence variable.
 
-  Dans le monde entier, il existe de nombreux mécanismes de chronométrage précis, tels que les horloges atomiques et radiales, dont l'heure exacte est transmise à des serveurs connectés. Si tous les utilisateurs se connectaient directement à ces serveurs pour avoir l'heure exacte, ils seraient rapidement dépassés. Le protocole NTP utilise donc une hiérarchie pour assurer la fluidité du service.
+  Il permet de maintenir l'exactitude de l'horloge d'un ordinateur grâce à une hiérarchie de serveur dans le monde. Dans le monde entier, il existe de nombreux mécanismes de chronométrage précis, tels que les horloges atomiques et radiales, dont l'heure exacte est transmise à des serveurs connectés. Si tous les utilisateurs se connectaient directement à ces serveurs pour avoir l'heure exacte, ils seraient rapidement dépassés. Le protocole NTP utilise donc une hiérarchie pour assurer la fluidité du service.
 
 * Chaque niveau de la hiérarchie est appelé une *strate* (*stratum* en anglais) est est numéroté de 0 à 15:
 
@@ -27,12 +27,21 @@ category: Linux
 
 ## ntpd
 
-* Le daemon NTP, ntpd, est un service NTP disponible sous Linux
+* Le daemon NTP, ntpd, est un service NTP disponible sous Linux.
 
   ![](https://i.imgur.com/yC8APpf.png)
 
-1. Vérifier et, si nécessaire, modifier le fichier de configuration du daemon NTP: /etc/ntp.conf.  
-  Les principaux éléments qui nous intéressent dans ce fichier sont les paramètres `server`. Les zones de pool préconfigurées dans le fichier de configuration NTP conviennent généralement; toutefois, choisir une zone plus proche peut permettre une précision légèrement supérieure.
+  Il est souvent installé par défaut, si ce n'est pas le cas l'installer:
+
+  ```
+  sudo apt-get install ntp ntpdate
+  ```
+
+### Configurations
+
+* Vérifier et, si nécessaire, modifier le fichier de configuration du daemon NTP: /etc/ntp.conf.  
+
+* Les principaux éléments qui nous intéressent dans ce fichier sont les paramètres `server`.
 
    ```
    $ ls /etc/ntp.conf
@@ -45,11 +54,21 @@ category: Linux
    server 3.centos.pool.ntp.org iburst
    ```
 
-   On peut définir jusqu'à 4 serveurs ou zones de pool. Si le premier a un problème, NTP tentera d'utiliser le serveur suivant. Notons les différents chiffres: on utilise toujours le même pool, mais en mettant un 0 sur le premier, un 1 sur le deuxième, etc, si le premier serveur du pool a un problème, alors le daemon NTP tentera d'obtenir un autre serveur de ce pool.
+  Les zones de pool préconfigurées dans le fichier de configuration NTP conviennent généralement mais choisir une zone plus proche peut permettre une précision légèrement supérieure.
 
-   Le paramètre iburst, à la fin de chaque server configuré, est utilisé pendant la première partie du processus de synchronisation et permet d'accélérer les corrections initiales de l'heure.
+  Aller sur [NTP Pool Project](http://www.pool.ntp.org/en/) pour trouver une *pool zone* géographiquement proche de votre serveur.
 
-2. Éliminer les incohérences de temps  
+   <pre><img src="https://i.imgur.com/ypXwevK.png"></pre>
+
+* On peut définir jusqu'à 4 serveurs ou zones de pool. Si le premier a un problème, NTP tentera d'utiliser le serveur suivant. Notons les différents chiffres: on utilise toujours le même pool, mais en mettant un 0 sur le premier, un 1 sur le deuxième, etc, si le premier serveur du pool a un problème, alors le daemon NTP tentera d'obtenir un autre serveur de ce pool.
+
+   L'option `iburst` est recommandée: si le serveur est inaccessible pendant la première partie du processus de synchronisation, une salve de huit packets sera envoyée au lieu d'un seul seul, ce qui permet d'accélérer les corrections initiales de l'heure.
+
+   L'utilisation de l'option `burst` dans le NTP Pool Project est considérée comme un abus: elle envoie 8 packets à chaque intervalle, tandis qu'`iburst` envoie les 8 packets uniquement la première fois.
+
+### Insane time
+
+* Éliminer les incohérences de temps  
    Le terme technique est *insane time*.  
    Lorsque l'horloge logicielle de votre système présente un écart de plus de 17 minutes par rapport à l'heure réelle, alors le daemon NTP ne mettra pas à jour l'heure du système.
 
@@ -60,7 +79,9 @@ category: Linux
    8 Sep 11:06:37 ntpdate[2872]: adjust time server 185.94.77.77 offset 0.002214 sec
    ```
 
-3. Démarrer ou redémarrer le daemon NTP
+### Démarrer le service
+
+* Démarrer ou redémarrer le daemon NTP
 
     ```
     systemctl start ntpd
@@ -72,7 +93,7 @@ category: Linux
     sudo systemctl enable ntpd
     ```
 
-4. Finalement, vérifier le statut de la synchronisation — après 5 ou 10 minutes
+* Après 5 ou 10 minutes, vérifier le statut de la synchronisation
 
     ```
     $ timedatectl
@@ -84,11 +105,91 @@ category: Linux
       polling server every 64 s
     ```
 
-    Et le statut des pools.  
-    `offset` indique la différence de temps qui existe entre le serveur et votre système.  
-    `delay` est le nombre de millisecondes nécessaires pour que la requête de temps quitte votre système et revienne avec l'heure correcte
+* Et le statut des pools.
 
-    ![](https://i.imgur.com/LRsrinA.png)
+  ```
+  $ ntpq -p
+     remote           refid      st t when poll reach   delay   offset  jitter
+  ==============================================================================
+   mizbeaver.udel. .INIT.          16 u    -   64    0    0.000    0.000   0.000
+   montpelier.ilan .GPS.            1 u   25   64    7   55.190    2.121 130.492
+  +nist1-lnk.binar .ACTS.           1 u   28   64    7   52.728   23.860   3.247
+  *ntp.okstate.edu .GPS.            1 u   31   64    7   19.708   -8.344   6.853
+  +ntp.colby.edu   .GPS.            1 u   34   64    7   51.518   -5.914   6.669
+  ```
+
+  - `remote` indique le nom d'hôte des serveurs que le daemon NTP utilise
+
+  - `refid` indique la source utilisée par les serveurs.  
+    Pour les serveurs de la Strate 1, le champ doit afficher GPS, PPS, ACTS ou PTB.  
+    Pour les serveurs de la Strate 2 (et supérieur), le champ affiche l'adresse IP du serveur en amont.
+
+  - `st` montre le numéro de strate
+
+  - `delay`, `offset` et `jitter` indiquent la qualité de la source en terme de latence.  
+    Plus le temps est réduit, meilleure est la qualité.
+
+    offset indique la différence de temps entre le système et le serveur NTP.  
+    delay est le nombre de millisecondes nécessaires pour que la requête de temps quitte le système et revienne avec l’heure correcte
+
+
+### Serveur NTP
+
+Pour démarrer un serveur NTP et le rendre accessible à d'autre:
+
+1. Vérifier dans ntd.conf que l'option `noquery` est bien sur les lignes `restrict`
+
+    ```
+    restrict -4 default kod notrap nomodify nopeer noquery limited
+    restrict -6 default kod notrap nomodify nopeer noquery limited
+    ```
+
+    Ça empêchera les requêtes de gestion: si vous ne le faites pas, votre serveur pourrait être utilisé dans des attaques de reflection NTP, ou être vulnérable aux requêtes `ntpq` et `ntpdc` qui tentent de modifier l'état du serveur.
+
+2. Autoriser le trafic UDP sur le port 123 pour autoriser les communications NTP.
+
+    ```
+    $ sudo ufw allow 123/udp
+    ```
+
+3. Effectuer une synchronisation manuelle avec les serveurs NTP sources et le votre avec la commande `ntpdate`:
+
+    ```
+    $ sudo ntpdate pool.ntp.org
+    ```
+
+4. Redémarrer NTP
+
+    ```
+    $ sudo service ntp restart
+    ```
+
+    Après quelques minutes, vérifier l'état du serveur et des pools
+
+    ```
+    $ ntpstat
+    $ ntpq -p
+    ```
+
+5. Activer NTP au démarrage
+
+    ```
+    sudo systemctl enable ntpd
+    ```
+
+6. Une fois installé, le serveur NTP peut être utilisé pour synchroniser le temps d'autres machines:
+
+    ```
+    $ ntpdate -q IP_ADDRESS
+    server IP_ADDRESS, stratum 2, offset 0.001172, delay 0.16428
+     2 Mar 23:06:44 ntpdate[18427]: adjust time server IP_ADDRESS offset 0.001172 sec
+    ```
+
+    Le résultat indique le temps de la synchronisation et la latence.
+
+    [How to Configure NTP for Use in the NTP Pool Project on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-configure-ntp-for-use-in-the-ntp-pool-project-on-ubuntu-16-04)
+
+---
 
 ## timesyncd
 
@@ -126,9 +227,11 @@ category: Linux
             RTC in local TZ: no
   ```
 
+---
+
 ## chrony
 
-* Le daemon NTP ou timesyncd est souvent installé par défaut. Ce n'est pas nécessaire le cas pour chrony, un daemon NTP plus récent
+* Le daemon NTP ou timesyncd est souvent installé par défaut. Ce n'est pas nécessairement le cas pour chrony, un daemon NTP plus récent
 
   ![](https://i.imgur.com/en8KFj2.png)
 

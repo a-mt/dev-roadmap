@@ -401,10 +401,70 @@ category: Web, JavaScript, Library, Ember
     export default helper(percent);
     ```
 
+    <ins>app/helpers.permission.js</ins>
+
+    ``` js
+    import Helper from '@ember/component/helper';
+    import { inject as service } from '@ember/service';
+    import permissions from 'dacapo-front/permissions/index';
+
+    /**
+     * Check permissions on given object.
+     * Usage :
+     *
+     *     {{if (permission "patient.update" this.model) }}
+     *     {{if (permission "studyMedical.create" patient=this.patient) }}
+     *
+     * @return Boolean
+     */
+    export default class PermissionHelper extends Helper {
+      @service permission;
+
+      compute([abilityString, model], properties = {}) {
+        return this.permission.has(abilityString, model, properties);
+      }
+    }
+    ```
+
 2. Appeler le helper dans le template
 
     ```
     {{percent 0.98946 precision=0}}
     ```
+
+* Il est possible d'invoker un helper à partir du js
+
+  ``` js
+  import PermissionHelper from 'dacapo-front/helpers/permission';
+  import { invokeHelper } from '@ember/helper';
+  import { getValue } from '@glimmer/validator';
+
+  export default class MyComponent extends Component {
+
+    // CHECK PERMISSIONS
+    // see https://rfcs.emberjs.com/id/0626-invoke-helper/
+    hasCreatePermission = invokeHelper(this, PermissionHelper, () => {
+      return {
+        positional: ['studyMedical.create', null],
+        named: { patient: this.args.patient },
+      };
+    });
+
+    hasUpdatePermission = invokeHelper(this, PermissionHelper, () => {
+      return {
+        positional: ['studyMedical.update', this.model],
+      };
+    });
+
+    @computed('model.id')
+    get hasPermission() {
+      if (this.model.id) {
+        return getValue(this.hasUpdatePermission);
+      } else {
+        return getValue(this.hasCreatePermission);
+      }
+    }
+  }
+  ```
 
 {% endraw %}

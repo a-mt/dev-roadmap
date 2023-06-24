@@ -1,5 +1,5 @@
 ---
-title: Limites & quota
+title: Limites
 category: Linux
 ---
 

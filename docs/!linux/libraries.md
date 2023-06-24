@@ -90,7 +90,7 @@ category: Linux
       /usr/lib /usr/libexec
       ```
 
-## Cace
+## Cache
 
 * Le cache de bibliothèque est une liste des différents répertoires et librairies qui s'y trouvent.  
   Il est utilisé pour charger rapidemment les programmes, et non pour les installer.

@@ -1,5 +1,5 @@
 ---
-title: Modifier les partitions
+title: Modifier la table de partition
 category: Linux
 ---
 
@@ -37,7 +37,7 @@ category: Linux
 
 ---
 
-## Lister
+## Lister les partitions
 
 ### Les fichiers virtuels
 
@@ -55,18 +55,7 @@ category: Linux
 
 ### Les partitions
 
-* `/proc/partitions` contient la liste des disques et partitions
-
-  ```
-  $ cat /proc/partitions | grep -v loop
-  major minor  #blocks  name
-
-   259        0  500107608 nvme0n1
-   259        1     524288 nvme0n1p1
-   259        2  499581952 nvme0n1p2
-  ```
-
-* On peut également utiliser `lsblk`
+* `lsblk` permet de lister les disques et leurs partitions — qu'elles soient montées ou non
 
   ```
   $ lsblk | grep -v loop
@@ -90,68 +79,15 @@ category: Linux
   sr0               11:0    1  1024M  0 rom
   ```
 
-### Les SGF
-
-* `/proc/filesystems` contient la liste des systèmes de fichiers supportés par le kernel
-  * La première colonne indique si le système de fichier est associé à un périphérique:  
-    on aura *nodev* (pour *no device*) s'il ne l'est pas.
-  * La deuxième colonne contient le nom du système de fichier
+* On peut également retrouver cette liste dans `/proc/partitions`
 
   ```
-  $ cat /proc/filesystems
-  nodev sysfs
-  nodev tmpfs
-  nodev bdev
-  nodev proc
-  nodev cgroup
-  nodev cgroup2
-  nodev cpuset
-  nodev devtmpfs
-  nodev configfs
-  nodev debugfs
-  nodev tracefs
-  nodev securityfs
-  nodev sockfs
-  nodev bpf
-  nodev pipefs
-  nodev ramfs
-  nodev hugetlbfs
-  nodev devpts
-    ext3
-    ext2
-    ext4
-    squashfs
-    vfat
-  nodev ecryptfs
-    fuseblk
-  nodev fuse
-  nodev fusectl
-  nodev efivarfs
-  nodev mqueue
-  nodev pstore
-    btrfs
-  nodev autofs
-  nodev binfmt_misc
-  nodev overlay
-  nodev aufs
-  ```
+  $ cat /proc/partitions | grep -v loop
+  major minor  #blocks  name
 
-* On peut utiliser `lsblk` avec l'option -f (*filesystem*) pour afficher le système de fichier de chaque partition:
-
-  ```
-  $ lsblk -f | grep -v loop
-  NAME        FSTYPE   LABEL UUID                                 MOUNTPOINT
-  nvme0n1
-  ├─nvme0n1p1 vfat           EB79-AAE8                            /boot/efi
-  └─nvme0n1p2 ext4           28a25b21-4cc8-484e-bebe-1d133ce62468 /
-  ```
-
-  On peut également utiliser `blkid`
-
-  ```
-  $ blkid
-  /dev/nvme0n1p1: UUID="EB79-AAE8" TYPE="vfat" PARTLABEL="EFI System Partition" PARTUUID="0b57da2b-7f90-4b10-876d-94c60068e9f8"
-  /dev/nvme0n1p2: UUID="28a25b21-4cc8-484e-bebe-1d133ce62468" TYPE="ext4" PARTUUID="b699d032-eea9-431b-bb02-6fb462db6192"
+   259        0  500107608 nvme0n1
+   259        1     524288 nvme0n1p1
+   259        2  499581952 nvme0n1p2
   ```
 
 ---
@@ -180,157 +116,7 @@ category: Linux
 
   ![](https://i.imgur.com/jNtXEyz.png)
 
-* `gdisk -l` permet également de lister les partitions  
-  (de tous les disques ou d'un disque donné) — non interactif:
-
-  ![](https://i.imgur.com/MuSoIEG.png)
-
-### fdisk
-
-* `fdisk` (*fixed disk*) est un utilitaire plus ancien mais similaire à gdisk  
-  Note: les disques durs étaient auparavant dits fixes parce qu'ils n'étaient pas amovibles.  
-  Initialement, fdisk ne pouvait gérer que les tables de partition MBR mais il peut désormais également gérer GPT.
-
-  1. Lancer fdisk avec le path du disque à modifier en argument
-
-     ![](https://i.imgur.com/FtuIiIC.png)
-
-  2. Utiliser les sous-commandes fdisk pour effectuer des actions:
-
-      - <ins>m (*menu*)</ins> pour afficher l'aide
-      - <ins>p (*print*)</ins> pour afficher la table de partitions du disque en cours
-      - <ins>n (*new*)</ins> pour créer une nouvelle partition
-      - <ins>d (*delete*)</ins> pour supprimer une partition
-      - <ins>w (*write*)</ins> pour sauvegarder les modifications et quitter
-      - <ins>q (*quit*)</ins> pour quitter sans sauvegarder
-
-      <ins>Par exemple, créer la partition 4 (étendue)</ins>:
-
-      ![](https://i.imgur.com/tjq6LDo.png)
-
-      <ins>Créer la partition 5 (logique)</ins>:
-
-      ![](https://i.imgur.com/SxctkdG.png)
-
-      <ins>Enregister</ins>:
-
-      ![](https://i.imgur.com/HaJTB3c.png)
-
-    La sous-commande `n` pose plusieurs questions:
-
-    1. **type de partition**  
-       Les choix disponibles dépendrons des partitions qui existent déjà.  
-       Dans une table de partition MBR, il ne peut y avoir que 4 partitions — donc typiquement, la 4ème partition sera une partition étendue, ce qui permettra d'ajouter autant de partitions logiques qu'on veut.
-
-    2. **numéro de partition**  
-        Si le dernier numéro de partition était 2, alors la partition suivante doit être numérotée 3.  
-        Lors de la création de partitions logiques, l'utilitaire fdisk ne demandera pas de numéro de partition et attribuera un numéro par défaut
-
-    3. **secteur de départ**  
-       L'attribution du secteur de départ est extrêmement simple: fdisk sait quel est le prochain secteur disponible, il suffit d'appuyer sur Entrée pour accepter la valeur proposée (= le prochain secteur disponible). Il est possible de taper manuellement le numéro de secteur, mais ce n'est pas recommandé car on peut créer des plages de secteurs inutilisables.
-
-    4. **taille de la partition**  
-       Il y a 3 moyens d'assigner le dernier secteur:  
-       - "dernier secteur",
-       - "+secteur",
-       - "+taille{K,M,G,T,P}". Par exemple +100MB.  
-         C'est typiquement la technique préférée car aucun calcul n'est nécessaire.  
-       - taper Entrée directement: la partition prendra toute la place disponible restante
-
-* Après avoir modifié la table de partition, la commande `partprobe` ou `kpartx` doit être exécutée. Sinon, le système devra être redémarré avant que les nouvelles partitions puissent être utilisées.
-
-  ```
-  $ sudo partprobe
-  $ sudo fdisk -l
-  ```
-
-* `fdisk -l` permet de lister les partitions (de tous les disques ou d'un disque donné) — non interactif:
-
-  ![](https://i.imgur.com/CzwqNrq.png)
-
-  Pour comparer avec les infos retournées par `gdisk -l`:
-
-  ![](https://i.imgur.com/iu0qHjT.png)
-
-### GNU parted
-
-* GNU parted est un autre utilitaire pour éditer les partitions — moins user-friendly.
-
-  ![](https://i.imgur.com/hHwYZDr.png)
-
-  ``` bash
-  $ sudo parted -s /dev/loop1 mklabel msdos
-
-  $ sudo parted -s /dev/loop1 unit MB mkpart primary ext4 0 256
-  $ sudo parted -s /dev/loop1 unit MB mkpart primary ext4 256 512
-  $ sudo parted -s /dev/loop1 unit MB mkpart primary ext4 512 1024
-  ```
-
----
-
-## Sauvegarder et restaurer la table de partition
-
-* `sfdisk` peut être utilisé pour sauvegarder et restaurer la table de partition d'un disque.  
-  Avant de partitionner un disque, il est bon de sauvegarder les données de la table de partition actuelle. Ainsi, en cas d'erreur lors de l'utilisation des outils d'édition de partitions, la table de partition sauvegardé pourra ainsi être restaurée. Attention cependant, restaurer le mauvais fichier peut entrainer la perte totale des données.
-
-* Pour sauvegarder la table de partitions:
-
-  1. Déterminer le nom du disque.  
-     L'option -s permet de lister les disques et leur taille (nombre de blocs)
-
-      ``` bash
-      # sfdisk -s
-      ```
-
-      ![](https://i.imgur.com/ACmy7vi.png)
-
-  2. Sauvegarder la table de partition du disque avec l'option -d (*dump*)
-
-      ``` bash
-      # sfdisk -d /dev/sdb > sdb.disk
-      ```
-
-  3. Restaurer la table de partition avec l'option -f (*force*)
-
-      ``` bash
-      # sfdisk -f /dev/sdb < sdb.disk
-      ```
-
-      ![](https://i.imgur.com/Wu3AO5X.png)
-
----
-
-## Formatter une partition
-
-## fdisk
-
-* Par défaut, l'utilitaire fdisk définit les partitions primaires et logiques avec le système de fichiers 83 (Linux).  
-  Pour les partitions étendues, l'ID doit être 5 et ne doit jamais être changé.
-
-* Pour changer le type de système de fichiers, on peut utiliser la sous-commande `t` de fdisk.  
-  Entrer le numéro de partition à modifier suivit de l'ID du système de fichier en hexadécimal — utiliser `L` pour afficher la liste des codes hexadécimaux disponibles.
-
-  ![](https://i.imgur.com/MvD8lo2.png)
-
-* Notons que fdisk ne fait que modifier la table de partition,  
-  après avoir modifié le type déclaré dans la table, il est encore nécessaire de formatter la partition — avec mkfs
-
-## mkfs
-
-* `mkfs` permet de formatter une partition
-
-  ![](https://i.imgur.com/cLRWqs5.png)
-
-  `mkfs` est un wrapper pour différents systèmes de fichier: on peut obtenir le même résultat avec `mkfs.ext4` (sans le -t ext4)  
-  C'est important à savoir car la commande mkfs fournit des options génériques alors que la commande qu'il appelle peut avoir des options spécifiques au système de fichiers crée — consulter le manuel pour plus d'infos
-
-  ![](https://i.imgur.com/HermTzo.png)
-
-  Une fois partitionné et formatté avec un système de fichier, le périphérique est prêt à être monté et utilisé sous Linux.
-
-* Exemple: passer de vfat à ext4
-
-  1. Modifier la table de partition MBR en GPT
+* Exemple: modifier une table de partition MBR en GPT
 
     ``` bash
     $ lsblk -f /dev/sda
@@ -396,47 +182,131 @@ category: Linux
     The operation has completed successfully.
     ```
 
-  2. Formatter la partition vfat en ext4
+* `gdisk -l` permet de lister les partitions  
+  (de tous les disques ou d'un disque donné) — non interactif:
 
-    ``` bash
-    $ lsblk -f /dev/sda
-    NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
-    sda
-    └─sda1 vfat         000E-3592
+  ![](https://i.imgur.com/MuSoIEG.png)
 
-    $ sudo mkfs.ext4 /dev/sda1
-    mke2fs 1.45.5 (07-Jan-2020)
-    /dev/sda1 contains a vfat file system
-    Proceed anyway? (y,N) y
-    Creating filesystem with 983027 4k blocks and 245760 inodes
-    Filesystem UUID: bff50a42-7652-4f95-bad9-a02762849e2d
-    Superblock backups stored on blocks:
-      32768, 98304, 163840, 229376, 294912, 819200, 884736
+### fdisk
 
-    Allocating group tables: done
-    Writing inode tables: done
-    Creating journal (16384 blocks): done
-    Writing superblocks and filesystem accounting information: done
-    ```
+* `fdisk` (*fixed disk*) est un utilitaire plus ancien mais similaire à gdisk  
+  Note: les disques durs étaient auparavant dits fixes parce qu'ils n'étaient pas amovibles.  
+  Initialement, fdisk ne pouvait gérer que les tables de partition MBR mais il peut désormais également gérer GPT.
 
-  3. Ajouter un label
+  1. Lancer fdisk avec le path du disque à modifier en argument
 
-    ``` bash
-    $ lsblk -f /dev/sda
-    NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
-    sda
-    └─sda1 ext4         bff50a42-7652-4f95-bad9-a02762849e2d
+     ![](https://i.imgur.com/FtuIiIC.png)
 
-    $ sudo tune2fs -L blue /dev/sda1
-    tune2fs 1.45.5 (07-Jan-2020)
+  2. Utiliser les sous-commandes fdisk pour effectuer des actions:
 
-    $ lsblk -f /dev/sda
-    NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
-    sda
-    └─sda1 ext4   blue  bff50a42-7652-4f95-bad9-a02762849e2d
+      - <ins>m (*menu*)</ins> pour afficher l'aide
+      - <ins>p (*print*)</ins> pour afficher la table de partitions du disque en cours
+      - <ins>n (*new*)</ins> pour créer une nouvelle partition
+      - <ins>d (*delete*)</ins> pour supprimer une partition
+      - <ins>w (*write*)</ins> pour sauvegarder les modifications et quitter
+      - <ins>q (*quit*)</ins> pour quitter sans sauvegarder
 
-    $ sudo mount /dev/sda1 /mnt
-    $ ls /mnt
-    lost+found
-    $ sudo umount /mnt
-    ```
+      <ins>Par exemple, créer la partition 4 (étendue)</ins>:
+
+      ![](https://i.imgur.com/tjq6LDo.png)
+
+      <ins>Créer la partition 5 (logique)</ins>:
+
+      ![](https://i.imgur.com/SxctkdG.png)
+
+      <ins>Enregister</ins>:
+
+      ![](https://i.imgur.com/HaJTB3c.png)
+
+    La sous-commande `n` pose plusieurs questions:
+
+    1. **type de partition**  
+       Les choix disponibles dépendrons des partitions qui existent déjà.  
+       Dans une table de partition MBR, il ne peut y avoir que 4 partitions — donc typiquement, la 4ème partition sera une partition étendue, ce qui permettra d'ajouter autant de partitions logiques qu'on veut.
+
+    2. **numéro de partition**  
+        Si le dernier numéro de partition était 2, alors la partition suivante doit être numérotée 3.  
+        Lors de la création de partitions logiques, l'utilitaire fdisk ne demandera pas de numéro de partition et attribuera un numéro par défaut
+
+    3. **secteur de départ**  
+       L'attribution du secteur de départ est extrêmement simple: fdisk sait quel est le prochain secteur disponible, il suffit d'appuyer sur Entrée pour accepter la valeur proposée (= le prochain secteur disponible). Il est possible de taper manuellement le numéro de secteur, mais ce n'est pas recommandé car on peut créer des plages de secteurs inutilisables.
+
+    4. **taille de la partition**  
+       Il y a 3 moyens d'assigner le dernier secteur:  
+       - "dernier secteur",
+       - "+secteur",
+       - "+taille{K,M,G,T,P}". Par exemple +100MB.  
+         C'est typiquement la technique préférée car aucun calcul n'est nécessaire.  
+       - taper Entrée directement: la partition prendra toute la place disponible restante
+
+* Par défaut, l'utilitaire fdisk définit les partitions primaires et logiques avec le système de fichiers 83 (Linux).  
+  Pour les partitions étendues, l'ID doit être 5 et ne doit jamais être changé.
+
+* Pour changer le type de système de fichiers, on peut utiliser la sous-commande `t` de fdisk.  
+  Entrer le numéro de partition à modifier suivit de l'ID du système de fichier en hexadécimal — utiliser `L` pour afficher la liste des codes hexadécimaux disponibles.
+
+  ![](https://i.imgur.com/MvD8lo2.png)
+
+* Notons que fdisk ne fait que modifier la table de partition,  
+  après avoir modifié le type déclaré dans la table, il est encore nécessaire de formatter la partition — avec mkfs
+
+* Après avoir modifié la table de partition, la commande `partprobe` ou `kpartx` doit être exécutée. Sinon, le système devra être redémarré avant que les nouvelles partitions puissent être utilisées.
+
+  ```
+  $ sudo partprobe
+  $ sudo fdisk -l
+  ```
+
+* `fdisk -l` permet de lister les partitions (de tous les disques ou d'un disque donné) — non interactif:
+
+  ![](https://i.imgur.com/CzwqNrq.png)
+
+  Pour comparer avec les infos retournées par `gdisk -l`:
+
+  ![](https://i.imgur.com/iu0qHjT.png)
+
+### GNU parted
+
+* GNU parted est un autre utilitaire pour éditer les partitions — moins user-friendly.
+
+  ![](https://i.imgur.com/hHwYZDr.png)
+
+  ``` bash
+  $ sudo parted -s /dev/loop1 mklabel msdos
+
+  $ sudo parted -s /dev/loop1 unit MB mkpart primary ext4 0 256
+  $ sudo parted -s /dev/loop1 unit MB mkpart primary ext4 256 512
+  $ sudo parted -s /dev/loop1 unit MB mkpart primary ext4 512 1024
+  ```
+
+---
+
+## Sauvegarder et restaurer la table de partition
+
+* `sfdisk` peut être utilisé pour sauvegarder et restaurer la table de partition d'un disque.  
+  Avant de partitionner un disque, il est bon de sauvegarder les données de la table de partition actuelle. Ainsi, en cas d'erreur lors de l'utilisation des outils d'édition de partitions, la table de partition sauvegardé pourra ainsi être restaurée. Attention cependant, restaurer le mauvais fichier peut entrainer la perte totale des données.
+
+* Pour sauvegarder la table de partitions:
+
+  1. Déterminer le nom du disque.  
+     L'option -s permet de lister les disques et leur taille (nombre de blocs)
+
+      ``` bash
+      # sfdisk -s
+      ```
+
+      ![](https://i.imgur.com/ACmy7vi.png)
+
+  2. Sauvegarder la table de partition du disque avec l'option -d (*dump*)
+
+      ``` bash
+      # sfdisk -d /dev/sdb > sdb.disk
+      ```
+
+  3. Restaurer la table de partition avec l'option -f (*force*)
+
+      ``` bash
+      # sfdisk -f /dev/sdb < sdb.disk
+      ```
+
+      ![](https://i.imgur.com/Wu3AO5X.png)

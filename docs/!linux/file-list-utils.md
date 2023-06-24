@@ -269,7 +269,7 @@ category: Linux, Fichiers
     ``` bash
     find -name "f*" -size 512k     # AND Operator
     find -name "f*" -o -size 512k  # OR Operator
-    find -not -name "f*"           # NOY Operator
+    find -not -name "f*"           # NOT Operator
     ```
 
 ### grep

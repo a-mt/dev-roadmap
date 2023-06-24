@@ -3,6 +3,23 @@ title: Monter des partitions
 category: Linux
 ---
 
+* Pour pouvoir utiliser un système de fichier, il faut le monter. Monter consiste essentiellement à attacher un système de fichier à l'un des répertoires du système de fichier virtuel. Par exemple, si on monte un système de fichier monté sur /mnt, alors on pourra lire & écrire dans le système de fichier via /mnt
+
+  ``` bash
+  # Monter
+  $ sudo mount /dev/sdb1 /mnt
+
+  # Créer un fichier
+  $ sudo touch /mnt/testfile
+  $ ls /mnt
+  test
+
+  # Démonter
+  $ sudo umount /mnt
+  $ ls /mnt
+  $
+  ```
+
 ## Lister les points de montage
 
 * Appelé sans argument, la commande `mount` affiche les partitions actuellement montées.
@@ -139,13 +156,13 @@ category: Linux
 
   Typiquement, ce genre de cas arrive lorsque
 
-  1. il y a un processus (ex vlc) qui utilise un fichier dans ce système de fichiers
+  * 1/ il y a un processus (ex vlc) qui utilise un fichier dans ce système de fichiers
 
       ``` bash
       $ lsof | grep sdb1      # processes using sdb1?
       ```
 
-  2. un utilisateur a son répertoire courant dans le système de fichier
+  * ou 2/ un utilisateur a son répertoire courant dans le système de fichier
 
       ``` bash
       $ pwd
@@ -194,6 +211,10 @@ category: Linux
      On préfère généralement l'UUID puisqu'il ne change jamais,  
      tandis que le fichier virtuel dépend de l'ordre dans lequel il a été détecté par le système.  
      Pour récupérer l'UUID de la partition, on peut utiliser `lsblk` ou `blkid`
+
+     ``` bash
+     $ sudo blkid /dev/vdb1
+     ```
 
   2. <ins>le point de montage</ins>  
      Le répertoire qui servira de point de montage (doit exister)
@@ -337,10 +358,28 @@ category: Linux
 ## Loop device
 
 * Un appareil *loop* permet de traiter un fichier du disque dur comme s'il s'agissait d'un appareil de type bloc.  
-  On place un couche de système de fichiers au-dessus d'une autre, ce qui a un effet négatif sur les performances. En revanche, c'est pratique pour jouer avec des partitions
+  On place une couche de système de fichiers au-dessus d'une autre, ce qui a un effet négatif sur les performances mais permet notamment de jouer avec des partitions
 
-* `losetup` permet de gérer des appareils loop  
-  Par exemple:
+* Pour trouver le prochain appareil loop disponible
+
+  ``` bash
+  $ sudo losetup -f
+  /dev/loop1
+  ```
+
+* Pour créer un nouveau périphérique virtuel (/dev/loop1, qui sera écrit dans filename):
+
+  ``` bash
+  $ sudo losetup /dev/loop1 imagefile
+  ```
+
+* Pour supprimer un périphérique virtuel:
+
+  ``` bash
+  $ sudo losetup -d /dev/loop1
+  ```
+
+* Exemple complet:
 
     ``` bash
     # Créer un fichier contenant 1GB de zéros

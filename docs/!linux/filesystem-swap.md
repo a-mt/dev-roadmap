@@ -65,7 +65,6 @@ category: Linux
 
 ## Créer une partition swap
 
-
 1. Créer une partition de type 82
 
     ```
@@ -125,8 +124,30 @@ category: Linux
     # mkswap /var/extraswap
     ```
 
-3. Utiliser `swapon` pour activer temporairement le fichier comme swap
+3. Modifier les permissions du fichier pour que seul root ait le droit d'y lire lire et écrire.  
+  Un autre utilisateur ne doit pas être autorisé à lire un fichier swap: cela lui donnerait potentiellement accès au contenu en mémoire des programmes que d'autres utilisateurs utilisent.
+
+    ```
+    # chmod 6000 /swap
+    ```
+
+4. Utiliser `swapon` pour activer temporairement le fichier comme swap
 
     ```
     # swapon /var/extraswap
     ```
+
+* Pour ajouter 1GB à la swap:
+
+  ``` bash
+  $ sudo swapoff /swapfile
+  $ sudo dd if=/dev/zero of=/swapfile bs=1M count=1024 oflag=append conv=notrunc
+  $ sudo mkswap /swapfile
+  $ sudo swapon /swapfile
+  ```
+
+---
+
+## Monter automatiquement
+
+* 

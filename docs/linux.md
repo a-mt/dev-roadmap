@@ -42,10 +42,10 @@ summary: false
 [regex-posix]: !linux/regex-posix.md
 [linux-install]: !linux/linux-install.md
 [linux-transfert]: !linux/linux-transfert.md
-[awk]: !linux/awk.md
-[sed]: !linux/sed.md
-[grep]: !linux/grep.md
-[vim]: !linux/vim.md
+[awk]: !linux/utility-awk.md
+[sed]: !linux/utility-sed.md
+[grep]: !linux/utility-grep.md
+[vim]: !linux/utility-vim.md
 [iptables]: !linux/iptables.md
 
 [hardware-overview]: !linux/hardware-overview.md
@@ -56,6 +56,7 @@ summary: false
 [boot-reboot]: !linux/boot-reboot.md
 [filesystem-overview]: !linux/filesystem-overview.md
 [filesystem-create]: !linux/filesystem-create.md
+[filesystem-format]: !linux/filesystem-format.md
 [filesystem-mount]: !linux/filesystem-mount.md
 [filesystem-tuning]: !linux/filesystem-tuning.md
 [filesystem-swap]: !linux/filesystem-swap.md
@@ -65,13 +66,13 @@ summary: false
 [system-packages]: !linux/packages.md
 [accounts-user]: !linux/accounts-user.md
 [accounts-group]: !linux/accounts-group.md
-[scheduled-jobs]: !linux/scheduled-jobs.md
-[time]: !linux/time.md
-[ntp]: !linux/ntp.md
-[locale]: !linux/locale.md
-[email]: !linux/email.md
-[print]: !linux/print.md
-[logging]: !linux/logging.md
+[scheduled-jobs]: !linux/service-scheduled-jobs.md
+[time]: !linux/service-time.md
+[ntp]: !linux/service-ntp.md
+[locale]: !linux/service-locale.md
+[email]: !linux/service-email.md
+[print]: !linux/service-print.md
+[logging]: !linux/service-logging.md
 
 [network-history]: !linux/network-history.md
 [network-overview]: !linux/network-overview.md
@@ -131,7 +132,7 @@ summary: false
   - [Utilisateurs][accounts-user]
   - [Groupes][accounts-group]
   - [Environnement](!linux/env.md)
-  - [Limites & quotas](!linux/accounts-limits.md)
+  - [Limites](!linux/accounts-limits.md)
   - [PAM](!linux/accounts-pam.md)
   - [SELinux](!linux/lsm-selinux.md)
 
@@ -145,7 +146,8 @@ summary: false
 
 * Système de fichiers
   - [Théorie: système de fichiers][filesystem-overview]
-  - [Créer une partition][filesystem-create]
+  - [Déclarer une partition][filesystem-create]
+  - [Formatter une partition][filesystem-format]
   - [Monter une partition][filesystem-mount]
   - [Modifier une partition][filesystem-tuning]
   - [Swap][filesystem-swap]
@@ -156,6 +158,7 @@ summary: false
   - [Paquets & gestionnaires de paquet][system-packages]
   - [Librairies partagées](!linux/libraries.md)
   - [Modules](!linux/kernel-modules.md)
+  - [Paramètres kernel](!linux/kernel-parameters.md)
 
 * Services
   - [Tâches récurrentes][scheduled-jobs]
@@ -177,7 +180,7 @@ summary: false
   <!-- -->
 
   - [Afficher les configurations réseau](!linux/network-quick.md)
-
+  - [Firewall](!linux/network-firewall-cmd.cmd)
   - [Interfaces][network-nic]
   - [Nom d'hôte][network-hostname]
 

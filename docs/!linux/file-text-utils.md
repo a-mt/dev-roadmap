@@ -630,7 +630,7 @@ category: Linux, Fichiers
     /etc/login.defs:207:DEFAULT_HOME  yes
     ```
 
-  [Syntaxe grep](grep.md)
+  [Syntaxe grep](utility-grep.md)
 
 ## sed
 
@@ -651,7 +651,7 @@ category: Linux, Fichiers
   I love strawberry vanilla cake
   ```
 
-  [Syntaxe sed](sed.md)
+  [Syntaxe sed](utiltiy-sed.md)
 
 ## awk
 
@@ -679,7 +679,7 @@ category: Linux, Fichiers
   file:7: END
   ```
 
-  [Syntaxe awk](awk.md)
+  [Syntaxe awk](utility-awk.md)
 
 ## diff
 

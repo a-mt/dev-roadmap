@@ -45,7 +45,7 @@ category: Linux
 
   * <ins>sufficient</ins>: interrompt le processus si le module réussit — c'est donc l'inverse de requisite, qui lui interrompt le processus si le module échoue. Par exemple, ne pas tester les modules suivants si l'utilisateur est root.
 
-**NOM & OPTIONS**  
+- **NOM & OPTIONS**  
   Spécifie le module à utiliser.  
   Pour voir la liste des modules:
 

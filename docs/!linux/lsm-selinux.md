@@ -86,7 +86,7 @@ category: Linux, Linux security modules
 
 * Les *labels* (ou *contexte*) SELinux sont toujours affichés dans cet ordre: utilisateur, rôle, type, niveau
 
-  ![](https://i.imgur.com/vFgTJm6.png)
+  ![](https://i.imgur.com/QjYITfe.png)
 
   Le convention de nommage de SELinux veut que les utilisateurs soient suffixés de `_u`, les rôles de `_r` et les types de `_t`
 
@@ -100,7 +100,7 @@ category: Linux, Linux security modules
 
      Chaque utilisateur a une liste de rôle qu'il peut assumer. Par exemple, on peut imaginer que l'utilisateur developer_u a les rôles develop_r et docker_r, qui lui permet d'exécuter du code, mais pas le rôle sysadmin_r qui lui permettrait de modifier les paramètres du système.
 
-     ![](https://i.imgur.com/OL07S0G.png)
+     ![](https://i.imgur.com/n1vmNcX.png)
 
   3. Vérifier si le rôle assumé peut transitionner au type spécifié.
 

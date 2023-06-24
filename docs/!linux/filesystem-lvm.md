@@ -332,7 +332,7 @@ category: Linux
 
   En d'autres termes, on peut considérer qu'un groupe de volumes est une sorte de disque virtuel, et qu'un volume logique est une sorte de partition virtuelle sur ce groupe de volume.
 
-  ![](https://i.imgur.com/a1NEEch.png)
+  ![](https://i.imgur.com/Md6UCe1.png)
 
   - `pvcreate` pour désigner une partition comme volume physique
   - `vgcreate` pour créer un groupe de volumes à partir de volumes physiques

@@ -166,12 +166,6 @@ category: IT
     Mesuré en bits/s.  
     Les pistes de la zone 0 ont les taux de transfert les plus rapides du disque (puisque nécessitent moins de mouvement de la tête de lecture). et pour cette raison, les spécifications du taux de transfert sont parfois indiquées à l'aide de plages.
 
-* Une autre métrique intéressante est le <ins>temps moyen de défaillance</ins>, *Mean Time Between Failures* (MTBF)  
-  Elle indique la fiabilité attendue des disques durs dans un environnement avec de nombreux lecteurs.
-  Par exemple pour une MTBF de 1.25 millions d'heures, soit environ 135 ans: si vous avez 135 disques, vous pouvez vous attendre à une panne de lecteur une fois par an.
-
-  Dans un environnement de stockage avec un grand nombre de disques, il est donc quasimment certain que des défaillances de disques devront être gérées, et des disques de rechange doivent être préparés à l'avance. Ça souligne également l'importance des techniques de redondance des unités de disque, tel que le RAID (*Redundant Array of Independent Disks*).
-
 Sources:  
 [Data Center Environment](https://www.jbiet.edu.in/coursefiles/cse/HO/cse4/SAN2.pdf)  
 [Getting The Hang Of IOPS v1.3](https://community.broadcom.com/symantecenterprise/viewdocument/getting-the-hang-of-iops-v13)  

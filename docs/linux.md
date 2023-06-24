@@ -61,19 +61,10 @@ summary: false
 [filesystem-tuning]: !linux/filesystem-tuning.md
 [filesystem-swap]: !linux/filesystem-swap.md
 [filesystem-lvm]: !linux/filesystem-lvm.md
+[filesystem-raid]: !linux/filesystem-raid.md
 
 [system-specs]: !linux/system-specs.md
 [system-packages]: !linux/packages.md
-[accounts-user]: !linux/accounts-user.md
-[accounts-group]: !linux/accounts-group.md
-[scheduled-jobs]: !linux/service-scheduled-jobs.md
-[time]: !linux/service-time.md
-[ntp]: !linux/service-ntp.md
-[locale]: !linux/service-locale.md
-[email]: !linux/service-email.md
-[print]: !linux/service-print.md
-[logging]: !linux/service-logging.md
-
 [network-history]: !linux/network-history.md
 [network-overview]: !linux/network-overview.md
 [network-layer1-physical]: !linux/network-layer1-physical.md
@@ -81,6 +72,21 @@ summary: false
 [network-layer3-ip]: !linux/network-layer3-ip.md
 [network-nic]: !linux/network-nic.md
 [network-hostname]: !linux/network-hostname.md
+
+[accounts-user]: !linux/accounts-user.md
+[accounts-group]: !linux/accounts-group.md
+[accounts-limits]: !linux/accounts-limits.md
+[accounts-quota]: !linux/accounts-quota.md
+[accounts-pam]: !linux/accounts-pam.md
+[selinux]: !linux/lsm-selinux.md
+
+[scheduled-jobs]: !linux/service-scheduled-jobs.md
+[time]: !linux/service-time.md
+[ntp]: !linux/service-ntp.md
+[locale]: !linux/service-locale.md
+[email]: !linux/service-email.md
+[print]: !linux/service-print.md
+[logging]: !linux/service-logging.md
 
 * [Introduction][intro]
 
@@ -120,6 +126,7 @@ summary: false
   - [Boucles][flow-loop]
   - [Fonctions][flow-function]
   - [Interraction utilisateur][flow-user]
+  - [Regex POSIX][regex-posix]
 
 * Processus
   - [Avant & arrière plan][process-jobs]
@@ -132,9 +139,10 @@ summary: false
   - [Utilisateurs][accounts-user]
   - [Groupes][accounts-group]
   - [Environnement](!linux/env.md)
-  - [Limites](!linux/accounts-limits.md)
-  - [PAM](!linux/accounts-pam.md)
-  - [SELinux](!linux/lsm-selinux.md)
+  - [Limites][accounts-limits]
+  - [Quotas][accounts-quota]
+  - [PAM][accounts-pam]
+  - [SELinux][selinux]
 
 * Boot
   - [Théorie: matériel][hardware-overview]
@@ -152,6 +160,7 @@ summary: false
   - [Modifier une partition][filesystem-tuning]
   - [Swap][filesystem-swap]
   - [LVM][filesystem-lvm]
+  - [RAID][filesystem-raid]
 
 * Gestion du système
   - [Ressources & utilisation][system-specs]
@@ -183,15 +192,12 @@ summary: false
   - [Firewall](!linux/network-firewall-cmd.cmd)
   - [Interfaces][network-nic]
   - [Nom d'hôte][network-hostname]
+  - [Firewall](!linux/network-firewall-cmd.md), [Iptables][iptables], UFW [1 &#x21F2;](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-9)
 
 * Utilitaires
-  - [Regex POSIX][regex-posix]
   - [Awk][awk]
   - [Sed][sed]
   - [Grep][grep]
 
 * Éditeurs
   - [Vim][vim]
-
-* APT [1 &#x21F2;](https://itsfoss.com/apt-vs-apt-get-difference/)
-* Firewall: [Iptables][iptables], UFW [1 &#x21F2;](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-9)

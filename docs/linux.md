@@ -185,6 +185,7 @@ summary: false
   - [Théorie: couche 2 — transfert des données][network-layer2-mac]
   - [Théorie: couche 3 — routing][network-layer3-ip]
   - [Théorie: couche 4 — connexion](!linux/network-layer4-tcp.md)
+  - [Theorie: DNS](!linux/dns.md)
 
   <!-- -->
 

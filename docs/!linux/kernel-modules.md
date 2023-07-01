@@ -19,10 +19,12 @@ category: Linux
 * Le kernel Linux est compilé avec plusieurs drivers de périphériques pré-installés.
   Mais avoir les drivers de chaque périphérique possible stocké directement dans le kernel ne serait pas judicieux — ça le rendrait énorme.
 
-* Pour parer ce problème, les drivers peuvent être chargés a posteriori dans le kernel grace à des *modules*.  
+  Pour parer ce problème, les drivers peuvent être chargés a posteriori dans le kernel grace à des *modules*.  
   La modularité du noyau permet d'ajouter du matériel sans qu'il soit toujours nécessaire de recompiler le noyau.
 
 * Les modules ne se limitent pas au drivers de périphériques, ça peut également être des drivers de systèmes de fichiers, de réseau, des appels système ou encore des loaders executables.
+
+  La plupart des fonctionnalités du noyau peuvent être configurées sous forme de modules, même s'il est peu probable qu'elles soient utilisées. Cette flexibilité facilite également le développement de nouvelle fonctionnalités, puisqu'il n'est presque jamais nécessaire de redémarrer le système pour effectuer des tests pendant le développement et le debuggage.
 
 * Les fichiers des modules du noyau sont stockés dans /lib/modules.  
   Chaque module est spécifique à un noyau, et est typiquement stocké dans `/lib/modules/*/kernel/drivers` — où `*` désigne la version du noyau Linux
@@ -31,12 +33,10 @@ category: Linux
   $ ls /lib/modules/5.4.0-122-generic/kernel/drivers
   ```
 
-* La plupart des fonctionnalités du noyau peuvent être configurées sous forme de modules, même s'il est peu probable qu'elles soient utilisées. Cette flexibilité facilite également le développement de nouvelle fonctionnalités, puisqu'il n'est presque jamais nécessaire de redémarrer le système pour effectuer des tests pendant le développement et le debuggage.
-
 ## Quand ajouter un driver
 
-* Si vous branchez un périphérique, vous remarquerez que la plupart du temps il marche directement:  
-  c'est parce que le système l'a détecté et a ajouté les pilotes qui manquaient.
+* Si vous branchez un périphérique, vous remarquerez que la plupart du temps, il marche directement:  
+  c'est parce que le système l'a détecté et a automatiquement ajouté les pilotes qui manquaient.
   On peut récupérer directement le pilote standard dans les repos Ubuntu — et non le pilote propriétaire.
 
 * Dans la plupart des cas, si vous achetez un périphérique, vous aurez avec un CD qui contient le pilote.
@@ -88,7 +88,7 @@ category: Linux
 
 * Les commandes `insmod` et `modprobe` permettent toutes deux d'insérer un module chargeable dans le noyau (avec les privilèges root).  
 
-* insmod prend le path absolu du module et ne charge pas ses dépendences, contrairement à modprobe.
+* insmod prend le path absolu du module et ne charge pas les dépendences du module, contrairement à modprobe.
 
   ``` bash
   $ ls /lib/modules/$(uname -r)/kernel/drivers/net/ethernet/intel/e1000e/e1000e.ko
@@ -109,7 +109,9 @@ category: Linux
 
 ### Base de données
 
-* modprobe nécessite une base de données de dépendances, stockée dans le fichier `/lib/modules/$(uname -r)/modules.dep`  
+* modprobe nécessite une base de données de dépendances.  
+  Elle est stockée dans le fichier `/lib/modules/$(uname -r)/modules.dep`
+
   Pour générer ou mettre à jour ce fichier:
 
   ``` bash
@@ -164,17 +166,17 @@ category: Linux
   sudo modprobe -r e1000e
   ```
 
-* Il est impossible de décharger un module utilisé par un ou plusieurs autres modules. Il est égalemeent impossible de décharger un module utilisé par un ou plusieurs processus. Ce qu'on peut vérifier dans les deux ca sà partir de la liste lsmod, colonne "Used by"
+* Il est impossible de décharger un module utilisé par un ou plusieurs autres modules. Il est égalemeent impossible de décharger un module utilisé par un ou plusieurs processus. Ce qu'on peut vérifier dans les deux cas à partir de la liste lsmod, colonne "Used by"
 
-  Certains modules ne tiennent pas compte de ce nombre de références, comme les drivers de périphérique réseua, car il serait trop difficile de remplacer temporairement un module par un autre sans arrêter et redémarrer une grande partie de la stack réseau.
+  Certains modules ne tiennent pas compte de ce nombre de références, comme les drivers de périphérique réseau, car il serait trop difficile de remplacer temporairement un module par un autre sans arrêter et redémarrer une grande partie de la stack réseau.
 
 ---
 
 ## Fichiers de configuration
 
-* Tous les fichiers `/etc/modprobe.d/*.conf` sont analysés quand des modules sont chargés ou décharges à l'aide de modprobe.
+* Tous les fichiers `/etc/modprobe.d/*.conf` sont analysés quand des modules sont chargés ou décharg"s à l'aide de modprobe.
 
-  Ces fichiers contrôlent certains paramètres, comme les alias et les options par défaut. On peut également établir un blacklist de modules pour éviter qu'ils ne soient chargés. Ces configurations peuvent être modifiées au besoin.
+  Ces fichiers contrôlent certains paramètres, comme les alias et les options par défaut. On peut également établir une blacklist de modules pour éviter qu'ils ne soient chargés. Ces configurations peuvent être modifiées au besoin.
 
   ``` bash
   $ cat /etc/modprobe.d/iwlwifi.conf

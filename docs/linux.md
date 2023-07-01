@@ -66,7 +66,7 @@ summary: false
 [system-specs]: !linux/system-specs.md
 [system-packages]: !linux/packages.md
 [network-history]: !linux/network-history.md
-[network-overview]: !linux/network-overview.md
+[network-intro]: !linux/network-intro.md
 [network-layer1-physical]: !linux/network-layer1-physical.md
 [network-layer2-mac]: !linux/network-layer2-mac.md
 [network-layer3-ip]: !linux/network-layer3-ip.md
@@ -180,7 +180,7 @@ summary: false
 
 * Réseau
   - [Théorie: histoire d'Internet][network-history]
-  - [Théorie: réseaux informatiques][network-overview]
+  - [Théorie: réseaux informatiques][network-intro]
   - [Théorie: couche 1 — liaison physique][network-layer1-physical]
   - [Théorie: couche 2 — transfert des données][network-layer2-mac]
   - [Théorie: couche 3 — routing][network-layer3-ip]
@@ -190,9 +190,10 @@ summary: false
 
   - [Afficher les configurations réseau](!linux/network-quick.md)
   - [Firewall](!linux/network-firewall-cmd.cmd)
+
   - [Interfaces][network-nic]
   - [Nom d'hôte][network-hostname]
-  - [Firewall](!linux/network-firewall-cmd.md), [Iptables][iptables], UFW [1 &#x21F2;](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-9)
+  - [Iptables][iptables], UFW [1 &#x21F2;](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-9)
 
 * Utilitaires
   - [Awk][awk]

@@ -3,7 +3,7 @@ title: Monter des partitions
 category: Linux
 ---
 
-* Pour pouvoir utiliser un système de fichier, il faut le monter. Monter consiste essentiellement à attacher un système de fichier à l'un des répertoires du système de fichier virtuel. Par exemple, si on monte un système de fichier monté sur /mnt, alors on pourra lire & écrire dans le système de fichier via /mnt
+* Pour pouvoir utiliser un système de fichier, il faut le monter. Monter consiste essentiellement à attacher un système de fichier à l'un des répertoires du système de fichier virtuel. Par exemple, si on monte un système de fichier sur /mnt, alors on pourra lire & écrire dans ce système de fichier via /mnt
 
   ``` bash
   # Monter

@@ -258,7 +258,7 @@ On peut utiliser les flux avec des fichiers textes, mais également des fichiers
   which (1)            - locate a command
   ```
 
-  Utiliser l'option `-a` pour ajouter à la fin et non écraser le contenu du fichier
+  Utiliser l'option `-a` pour ajouter à la fin (append) et non écraser le contenu du fichier
 
   ```
   $ man -k whereis | grep ^whereis | tee -a studyMe.txt

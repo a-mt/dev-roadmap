@@ -3,11 +3,11 @@ title: Libraries
 category: Linux
 ---
 
-* Une bibliothèque (*library*) est un morceau de code pouvant être utilisé par plusieurs programmes: plutôt que chaque développeur ait à développer sa propre logique (par exemple pour encoder des données), il peut simplement utiliser le code d'un autre développeur et ajouter cette librairie comme dépendance.
+* Une bibliothèque (*library*) est un morceau de code pouvant être utilisé par plusieurs programmes: plutôt que d'avoir chaque développeur qui développe sa propre logique (par exemple encoder ou encrypter des données), les développeurs peuvent simplement utiliser le code d'un autre développeur et ajouter cette librairie comme dépendance.
 
 ## ldd
 
-* La commande `ldd` (*list dynamic dependencies*) permet d'afficher les bibliothèques utilisées par un programme (en lui passant son path absolu)
+* La commande `ldd` (*list dynamic dependencies*) permet d'afficher les bibliothèques utilisées par un programme (avec son path absolu)
 
   ``` bash
   $ ldd /bin/ps
@@ -45,10 +45,10 @@ category: Linux
 
 ## Emplacement
 
-* Les commandes associées aux librairies suivent un ordre particulier pour trouver l'emplacement des fichiers:
+* Les commandes associées aux librairies suivent un ordre donné pour trouver l'emplacement des fichiers:
 
   1. Variable d'environnement LD_LIBRARY_PATH.  
-     Cette variable d'environnement contient tous les répertoires non standard ou de développement dans lesquels les bibliothèques doivent être recherchées. Cette variable n'est généralement définie que si vous développez vos propres bibliothèques.
+     Cette variable d'environnement contient tous les répertoires non standard ou de développement dans lesquels les bibliothèques doivent être recherchées. Cette variable ne sera généralement définie que si vous développez vos propres bibliothèques.
 
       ``` bash
       $ echo $LD_LIBRARY_PATH

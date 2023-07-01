@@ -86,7 +86,7 @@ category: Linux, Network
 ## Routage statique
 
 * Pour ajouter une route statique temporaire:  
-  Ici dirige le trafic en direction de 192.168.5.0/4 vers 178.28.168.207
+  Ici on dirige le trafic en direction de 192.168.5.0/4 vers 178.28.168.207
 
   ``` bash
   ip route add 192.168.5.0/24 via 178.28.168.207
@@ -98,7 +98,7 @@ category: Linux, Network
 
 * Un resolver permet de résoudre des noms d'hôte dynamiquement: si on cherche à joindre google.com, une requête sera envoyée au résolveur DNS configuré pour obtenir l'adresse IP de google.com — et le resolver répondra par exemple 203.0.113.9.
 
-* Le resolver est configuré dans /etc/resolv.conf
+* Le resolver est configuré dans `/etc/resolv.conf`
 
   ``` bash
   cat /etc/resolv.conf
@@ -111,7 +111,7 @@ category: Linux, Network
 
 ## Résolution DNS statique
 
-* La résolution DNS statique se fait via le fichier /etc/hosts.
+* La résolution DNS statique se fait via le fichier `/etc/hosts`.
 
   ``` bash
   $ cat /etc/hosts
@@ -127,8 +127,7 @@ category: Linux, Network
 
 ## ARP
 
-* Pour afficher le cache ARP:  
-  Permet de voir la liste des machines dont on connaît l'adresse MAC — et donc avec lesquelles on a conversé sans intermédiaire
+* Pour afficher le cache ARP, ce qui permet de vérifier la liste des machines dont on connaît l'adresse MAC — et donc avec lesquelles on converse sans intermédiaire
 
   ``` bash
   $ arp -a
@@ -137,7 +136,7 @@ category: Linux, Network
 
 ## DHCP
 
-* DHCP (*Dynamic Host Configuration Protocol*) est un protocole permettant à une machine se connectant à un réseau d'obtenir dynamiquement sa configuration réseau — principalement, son adresse IP.
+* DHCP (*Dynamic Host Configuration Protocol*) est un protocole permettant à une machine se connectant à un réseau d'obtenir dynamiquement sa configuration réseau — avec principalement, son adresse IP.
 
 * Pour supprimer l'adresse IP obtenue par le serveur DHCP:
 
@@ -146,7 +145,7 @@ category: Linux, Network
   Killed old client process
   ```
 
-* Pour obtenir une nouvelle adresse IP:
+* Et obtenir une nouvelle adresse IP:
 
   ``` bash
   $ sudo dhclient -v wlp164s0
@@ -170,13 +169,13 @@ category: Linux, Network
 
 ## Configuration statique temporaire
 
-* Pour temporairement définir l'adresse IP de l'interface eth0 (statique):
+* Pour temporairement définir l'adresse IP (statique) de l'interface eth0:
 
   ``` bash
   $ sudo ip addr add 192.168.1.7 dev eth0
   ```
 
-* Définir le MTU (*Maximum Transfer Unit*) à 1480 octets
+* Pour définir le MTU (*Maximum Transfer Unit*) à 1480 octets
 
   ``` bash
   $ sudo ip link set eth0 mtu 1480
@@ -186,7 +185,7 @@ category: Linux, Network
 
 ## Ports par défaut
 
-* Le fichier /etc/services contient la liste des ports standards et les services associés:
+* Le fichier `/etc/services` contient la liste des ports standards et les services associés:
 
   ``` bash
   $ grep ^ldap /etc/services
@@ -229,6 +228,8 @@ category: Linux, Network
   tcp    LISTEN   0        5                  [::1]:631             [::]:*                                                   
   tcp    LISTEN   0        128                 [::]:17500           [::]:*        users:(("dropbox",pid=2423,fd=52))
   ```
+
+## Fichiers ouverts
 
 * Afficher les infos du processus 2639
 

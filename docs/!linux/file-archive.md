@@ -362,6 +362,12 @@ category: Linux, Fichiers
   41943040+0 records in
   41943040+0 records out
   21474836480 bytes (21 GB) copied, 107.157 s, 200MB/s
+  
+  $ dd if=/dev/zero of=empty bs=64M count=16 status=progress
+  805306368 bytes (805 MB, 768 MiB) copied, 1 s, 797 MB/s
+  16+0 records in
+  16+0 records out
+  1073741824 bytes (1.1 GB, 1.0 GiB) copied, 1.29134 s, 831 MB/s
   ```
 
 * Pour restaurer ultérieurement un disque ou partition à partir d'une image, il suffit d'inverser les labels if et of.  

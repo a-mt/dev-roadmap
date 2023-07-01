@@ -64,10 +64,11 @@ category: Linux
 
     Ainsi, à chaque redémarrage la valeur par défaut de vm.swappiness sera 29
 
-* Jusqu'au prochain redémarrage, l'ancienne valeur sera toujours effective. Pour que Linux ajuste immédiatement le paramètre avec la valeur définie dans le fichier de configuration:
+* Jusqu'au prochain redémarrage, l'ancienne valeur sera toujours effective.  
+  Pour que Linux ajuste immédiatement le paramètre avec la valeur définie dans le fichier de configuration:
 
     ```
     $ sudo sysctl -p /etc/sysctl.d/swap-less.conf
     ```
 
-    Mnémotechnique: p comme persistent. On peut considérer qu'il s'agit d'une lecture du paramètre persistent comme moyen mnémotechnique.
+    Mnémotechnique: p comme persistent. On peut considérer qu'il s'agit d'une lecture du paramètre persistent.

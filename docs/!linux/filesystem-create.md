@@ -90,6 +90,14 @@ category: Linux
    259        2  499581952 nvme0n1p2
   ```
 
+* `blkid` permet de trouver l'UUID d'une partition.  
+  Sans argument, blkid retourne les infos de la partition en cours d'utilisation
+
+  ``` bash
+  $ blkid
+  /dev/mapper/data-root: UUID="8e457938-0422-4d44-872f-18aff2aef760" TYPE="ext4"
+  ```
+
 ---
 
 ## Modifier la table de partition

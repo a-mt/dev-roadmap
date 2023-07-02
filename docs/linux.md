@@ -161,6 +161,8 @@ summary: false
   - [Swap][filesystem-swap]
   - [LVM][filesystem-lvm]
   - [RAID][filesystem-raid]
+  - [NFS](!linux/filesystem-nfs.md)
+  - [Encryption](!linux/filesystem-crypt.md)
 
 * Gestion du système
   - [Ressources & utilisation][system-specs]

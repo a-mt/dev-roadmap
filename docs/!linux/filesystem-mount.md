@@ -42,6 +42,14 @@ category: Linux
   3. le système de fichiers (*type*)
   4. les options de montage — entre parenthèses
 
+* `findmnt`, liste tous les points de montage actuellement montés, y compris les systèmes de fichier virtuels. Et on peut filtrer sur un système de fichier donné avec l'option -t
+
+  ``` bash
+  $ findmnt -t xfs,ext4
+  TARGET SOURCE                FSTYPE OPTIONS
+  /      /dev/mapper/data-root ext4   rw,noatime,errors=remount-ro
+  ```
+
 ---
 
 ## Monter manuellement une partition
@@ -100,7 +108,7 @@ category: Linux
     * L'option -o permet de spécifier des options de montage — si non spécifiées, les options par défaut du système de fichier sont utilisées. Par exemple, pour monter le périphérique en mode lecture seule (*read-only*):
 
       ``` bash
-      $ sudo mount /dev/sdb1 /mnt/mydisk -o ro
+      $ sudo mount -o ro /dev/sdb1 /mnt/mydisk
       ```
 
 5. Vérifier si la partition a bien été montée
@@ -125,11 +133,37 @@ category: Linux
     $ df -hT
     ```
 
-* Si le système de fichier est monté avec les mauvais arguments, alors on utilise remount. Pour remonter le système de fichier avec les droits en écriture:
+### Options de mount
+
+* On peut monter un système de fichier avec plusieurs options, séparées par des virgules sans aucun espace
+
+  ``` bash
+  $ sudo mount -o ro,noexec,nosuid /dev/vdb2 /mnt
+  ```
+
+  -ro pour l'ouvrir en lecture-seule  
+  -noexec rend impossible le lancement de fichiers exécutables stockés sur ce système de fichier  
+  -nosuid désactive lapermission SUID — qui permet à des programmes de s'exécuter avec les privilèges root sans avoir à être préfixée de sudo.
+
+  Ces options sont parfois utilisées pour monter un système de fichier qui n'est pas censé contenir de programmes. Ainsi, si on ouvre une clé USB qui devrait contenir des photos et vidéos, même il elle est infectée avec un virus, ce virus ne peut s'exécuter et causer des dommages.
+
+* Si le système de fichier est déjà monté mais avec les mauvais arguments, alors on utilise remount. Par exemple, pour remonter le système de fichier avec les droits en écriture:
 
     ``` bash
     $ sudo mount -o remount,rw /
     ```
+
+### Options du système de fichier
+
+* Les options utilisées jusqu'à présent sont indépendantes du système de fichiers — elles peuvent être utilisées sur n'importe quel système de fichier, et sont décrites dans la page de manuel de mount. D'autres options sont spécifiques à un système de fichier.
+
+  ``` bash
+  sudo mount -o allocsize=32K /dev/vdb1 /mybackups
+  ```
+
+  Pour voir les options de montage spécifiques à système de fichier, consulter le manuel de ce système de fichier.
+
+* Les options dépendantes du système de fichier ne peuvent pas être appliquées sur un système de fichier déjà monté: ne pas utiliser l'option remount, à la place démonter avec umount et re-monter avec mount.
 
 ## Démonter une partition
 

@@ -179,6 +179,7 @@ summary: false
   - [Email][email]
   - [Impression][print]
   - [Logs][logging]
+  - [Serveur DNS](!linux/service-dns.md)
 
 * Réseau
   - [Théorie: histoire d'Internet][network-history]

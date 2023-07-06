@@ -246,7 +246,7 @@ category: Linux
 
 ### Commandes exécutées: X
 
-* X permet d'afficher les commandes exécutées au fur et à mesure de l'exécution du script
+* -x permet d'afficher les commandes exécutées au fur et à mesure de l'exécution du script
 
   ``` bash
   $ cat script

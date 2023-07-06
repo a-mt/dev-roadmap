@@ -5,18 +5,18 @@ category: Linux
 
 ## Pourquoi installer un serveur DNS local
 
-* Si on tappe google.com dans un navigateur web, l'ordinateur a besoin de connaître l'adresse IP de google.com pour lui envoyer une requête. Pour ce faire, il envoit une requête à un serveur DNS, souvent hébergé par notre fournisseur d'accès à Internet.
+* Si on tappe google.com dans un navigateur web, l'ordinateur a besoin de connaître l'adresse IP de google.com pour lui envoyer une requête. Pour ce faire, il envoit une requête à un serveur DNS, souvent hébergé par son FAI (fournisseur d'accès à Internet).
 
-  Si ce serveur DNS vient d'être démarré, il ne connaîtra pas l'adresse IP associée à ce nom de domaine, et devra démarrer un processus de résolution DNS. Une fois qu'il a reçu la réponse, celle-ci est renvoyée à l'ordinateur qui en a fait la demande et est stockée localement dnas le cache du serveur DNS. Si plus tard, l'ordinateur a de nouveau besoin de l'adresse l'IP de google.com, il peut rapidement l'obtenir du serveur DNS du FAI, qui l'a déjà dans son cache.
+  Si le serveur DNS du FAI vient d'être démarré, il ne connaîtra pas l'adresse IP associée à ce nom de domaine, et devra démarrer un processus de résolution DNS. Une fois qu'il a reçu la réponse, il la transmet à l'ordinateur qui en a fait la demande et la met en cache localement. Si plus tard, l'ordinateur a de nouveau besoin de l'adresse l'IP de google.com, il peut rapidement l'obtenir du serveur DNS du FAI, qui l'a déjà dans son cache.
 
-* Pour un utilisateur naviguant sur Internet, ce délai n'est peut-être pas important, mais si on a une application qui tourne sur un serveur Linux et que cette application demande encore et encore l'adresse IP de google.com, toutes les 50 ms peuvent être longues car elles s'additionnent lorsqu'on a des milliers de requêtes de ce type par heure. Réduire ce délai à 10 ou même 5ms permet d'accélerer considérablement les choses. Dans ces cas là, il peut être utilise de créer notre propre serveur DNS de mise en cache.
+* Pour un utilisateur naviguant sur Internet, ce délai de résolution DNS n'est peut-être pas important, mais si on a une application qui tourne sur un serveur Linux et que cette application demande encore et encore l'adresse IP de google.com, toutes les 50 ms peuvent être longues car elles s'additionnent lorsqu'on a des milliers de requêtes de ce type par heure. Réduire ce délai à 10 ou même 5ms permet d'accélerer considérablement les choses. Dans ce cas là, on peut envisager un serveur DNS local.
 
 ---
 
 ## Démarrer un Serveur DNS
 
-* `bind` est une application permet d'héberger un serveur DNS.  
-  bind-utils contient des programmes supplémentaires qui peuvent être très utiles lorsqu'on travaille avec des serveurs DNS, notamment dig, qui est utilisé pour interroger les informations DNS stockées dans les serveurs. DNS
+* `bind` est une application permettant de faire tourner un serveur DNS.  
+  bind-utils contient des programmes supplémentaires qui peuvent être très utiles lorsqu'on travaille avec des serveurs DNS — notamment dig, qui est utilisé pour interroger les informations DNS stockées dans les serveurs DNS
 
 1. Installer bind
 
@@ -55,13 +55,12 @@ category: Linux
     ;; Query time: 82 msec
     ns2.google.com. 172454 IN A 216.239.34.10
     ```
-
-    Ici il a fallu 82ms à bind pour répondre, parce qu'il a dû obtenir la réponse d'autres serveurs DNS en amont. Dans sa configuration par défaut, le cache est activé — la plupart des serveurs DNS font de même — ce qui rend les réponses ultérieures beaucoup plus rapides.
-
     ``` bash
     $ dig @127.0.0.1 google.com
     ;; Query time: 0 msec
     ```
+
+    Ici il a fallu à bind 82ms pour répondre la première fois, parce qu'il a dû obtenir la réponse d'autres serveurs DNS en amont. Dans sa configuration par défaut, le cache est activé (et la plupart des serveurs DNS font de même), ce qui rend les réponses ultérieures beaucoup plus rapides.
 
     On peut voir dans la réponse le TTL (*Time To Live*), qui est durée pendant la laquelle la réponse sera mise en cache, en secondes. À l'expiration de ce délai, le cache est supprimé et bind devra à nouveua obtenir ces données auprès d'autres serveurs DNS.
 
@@ -122,9 +121,10 @@ category: Linux
 
 ## Maintenir une zone DNS
 
-* Une zone regroupe les données DNS pour un nom de domaine spécifique. Pour ajouter une zone pour example.com
+* Une zone regroupe les données DNS pour un nom de domaine spécifique. Pour ajouter une zone DNS sur le serveur de nom local:
 
-1. Définir une zone dans le fichier de configuration `/etc/named.conf`
+1. Définir une zone dans le fichier de configuration `/etc/named.conf`  
+   Ici, on définit une zone pour le nom de domaine example.com
 
     ``` bash
     $ vim /etc/named.conf
@@ -135,7 +135,7 @@ category: Linux
     }
     ```
 
-    Type `master` indique qu'il s'agit d'un serveur de nom principal faisant autorité sur la zone de ce nom de domaine. On peut également avoir le type `slave`, qui indique que ce serveur de nom se synchronise automatiquement avec le master et conserve en quelque sorte une sauvegarde. Si le master tombe en panne, les esclaves peuvent transmettre les données DNS à sa place
+    Type `master` indique qu'il s'agit du serveur de nom principal contenant la zone de ce nom de domaine. On peut également avoir le type `slave`, qui indique que ce serveur de nom se synchronise automatiquement avec le master et conserve en quelque sorte une sauvegarde. Si le master tombe en panne, les esclaves peuvent transmettre les données DNS à sa place
 
 2. Créer un fichier de configuration `/var/named/example.com`, à partir du modèle /var/named/named.local  
    Le fichier de zone doit avoir le même utilisateur et groupe propriétaire que le fichier original, sinon bind n'aura pas la permission de le lire
@@ -167,7 +167,7 @@ category: Linux
 
 ### TTL
 
-* (Time To Live) indique aux autres serveurs DNS susceptibles de requête notre zone la durée pendant laquelle ils peuvent mettre ces données en cache
+* (Time To Live) indique aux autres serveurs DNS susceptibles de requêter notre zone la durée pendant laquelle ils peuvent mettre ces données en cache
 
   ```
   $TLL 1H
@@ -187,26 +187,26 @@ category: Linux
   )
   ```
 
-  `@` indique que cette entrée s'applique au domaine principale. En l'occurence example.com.
+  `@`: indique que cette cette entrée s'applique au domaine principal (example.com)
 
-  `IN` indique qu'il s'agit d'une entrée destinée à Internet. Ce champ avait plus de sens dans les premiers temps de l'informatique, lorsque d'autres classes étaient également utilisées. Aujourd'hui, ce champ peut simplement être omis
+  `IN`: indique qu'il s'agit d'une entrée destinée à Internet. Ce champ avait plus de sens dans les premiers temps de l'informatique, lorsque d'autres classes étaient également utilisées. Aujourd'hui, ce champ peut simplement être omis
 
-  `administrator.example.com` est l'adresse email à laquelle on peut contacter la personne responsable de cette zone. Il est important de terminer chaque nom de domaine complet par un point, cela indique un nom de domaine absolu
+  `administrator.example.com`: est l'adresse email à laquelle on peut contacter la personne responsable de cette zone. Il est important de terminer chaque nom de domaine complet par un point, cela indique un nom de domaine absolu
 
-  `serial` doit être incrémenté à chaque fois qu'on apporte une modification à la zone. Ainsi, un serveur DNS peut vérifier s'il doit mettre à jour son cache ou non
+  `serial`: est un numéro à incrémenter à chaque fois qu'on apporte une modification à la zone. Ainsi, un serveur DNS peut vérifier s'il doit mettre à jour son cache ou non
 
-  `refresh` est la durée que les serveurs DNS doivent attendre après une requête DNS avant de vérifier si leur cache est toujours valide
+  `refresh`: est la durée que les serveurs DNS doivent respecter après une requête DNS avant de vérifier si leur cache est toujours valide
 
-  `retry` est utilisé lorsqu'un serveur DNS souhaite rafraichir ses données et n'obtient pas de réponse. Retry indique combien de temps il doit attendre avant d'essayer à nouveau de rafraichir les données après la dernière tentative infructueuse
+  `retry`: est la durée que les serveurs DNS doivent respecter après une requête DNS infructeuse — si le serveur DNS souhaite rafraichir ses données et n'obtient pas de réponse.
 
-  `expire` indique à un serveur DNS de cesser de servir les données pour notre zone s'il n'a pas pu obtenir de réponse de notre serveur pendant cette période de temps
+  `expire`: est la durée après laquelle les serveurs DNS doivent cesser de servir les données pour notre zone s'ils n'ont pas pu obtenir de réponse de notre serveur
 
-  `minimum` indique aux serveurs DNS la durée de mise en cache des réponses négatives. Si par exemple un appareil demande des données concernant mail.example.com mais que le sous-domaine n'existe pas, alors il reçoit une réponse négative: le domaine n'existe pas
+  `minimum`: est la durée de mise en cache des réponses négatives — si par exemple un serveur demande des données concernant mail.example.com mais que le sous-domaine n'existe pas, alors il reçoit une réponse négative
 
 ### NS
 
-* (Name Server) spécifie un serveur de nom.  
-  Indique que les entrées DNS de cette se trouve sur le serveur de nom donné. En général, deux serveurs de noms sont utilisés pour s'assurer que le sysètme continue de fonctionner si le premier est hors ligne
+* (Name Server) spécifie un serveur de nom où est stocké la zone du domaine.  
+  En général, deux serveurs de noms sont utilisés pour s'assurer que le système continue de fonctionner si le premier est hors ligne
 
   ```
   @ NS ns1.example.com.
@@ -222,7 +222,7 @@ category: Linux
   ns2 A 10.11.12.10
   ```
 
-  On peut également que les gens puissent accéder à notre site web.
+  On veut également que les gens puissent accéder à notre site web.
 
   ```
   @ A 203.0.113.15
@@ -247,7 +247,7 @@ category: Linux
   ```
 
   Notons que la deuxième ligne hérite du domaine de la précédente.  
-  Le nombre suivant MX (10 et 20) correspond à la priorité: on essaie d'abord avec le serveur de priorité 10 et si celui-ci ne répond pas, on essaie avec le serveur de priorité 20.
+  Le nombre à la suite du mot-clé MX (ici 10 et 20 respectivement) correspond à la priorité: on indique d'essayer d'abord avec le serveur de priorité 10 et s'il ne répond pas, essayer avec le serveur de priorité 20.
 
   Comme pour l'entrée NS, il n'y a pas encore d'adresse IP définie pour ce domaine, il faut donc ajouter des entrées A.
 

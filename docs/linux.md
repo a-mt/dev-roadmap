@@ -179,7 +179,14 @@ summary: false
   - [Email][email]
   - [Impression][print]
   - [Logs][logging]
+
+  <!-- -->
+
   - [Serveur DNS](!linux/service-dns.md)
+  - [SSH](!linux/service-ssh.md)
+  - [Proxy — Squid](!linux/service-squid.md)
+  - [HTTP — Apache](!linux/service-apache.md)
+  - [DB — MariaDB](!linux/service-mariadb.md)
 
 * Réseau
   - [Théorie: histoire d'Internet][network-history]
@@ -193,11 +200,9 @@ summary: false
   <!-- -->
 
   - [Afficher les configurations réseau](!linux/network-quick.md)
-  - [Firewall](!linux/network-firewall-cmd.cmd)
-
   - [Interfaces][network-nic]
   - [Nom d'hôte][network-hostname]
-  - [Iptables][iptables], UFW [1 &#x21F2;](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-9)
+  - [Firewall](!linux/network-firewall-cmd.cmd), [Iptables][iptables], UFW [1 &#x21F2;](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-9)
 
 * Utilitaires
   - [Awk][awk]

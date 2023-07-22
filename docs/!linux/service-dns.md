@@ -3,6 +3,8 @@ title: DNS
 category: Linux
 ---
 
+[Théorie: DNS](dns.md)
+
 ## Pourquoi installer un serveur DNS local
 
 * Si on tappe google.com dans un navigateur web, l'ordinateur a besoin de connaître l'adresse IP de google.com pour lui envoyer une requête. Pour ce faire, il envoit une requête à un serveur DNS, souvent hébergé par son FAI (fournisseur d'accès à Internet).

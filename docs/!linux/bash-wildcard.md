@@ -60,12 +60,18 @@ category: Linux, Shell, Bash
 
 `man ascii` pour voir la table ASCII
 
-<!--
 ### Quantificateurs
 
-    @(a|b)     a ou b, exactement 1 fois (les expressions peuvent contenir des wildcards)
-    *(a|b)     a ou b, de 0 à n fois
-    ?(a|b)     a ou b, de 0 à 1 fois
-    +(a|b)     a ou b, au moins 1 fois
-    !(a|b)     Ni a ni b
--->
+  ```
+  @(a|b)     a ou b, exactement 1 fois (les expressions peuvent contenir des wildcards)
+  *(a|b)     a ou b, de 0 à n fois
+  ?(a|b)     a ou b, de 0 à 1 fois
+  +(a|b)     a ou b, au moins 1 fois
+  !(a|b)     Ni a ni b
+  ```
+
+``` bash
+$ CI_REGISTRY_IMAGE=registry.example.com:5000/projectname
+$ echo ${CI_REGISTRY_IMAGE/:*([0-9])/}
+registry.example.com/projectname
+```

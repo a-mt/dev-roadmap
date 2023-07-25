@@ -17,6 +17,7 @@ searchbar: true
 [css]: css.md
 [design]: design.md
 [digitalocean]: digitalocean.md
+[django]: django.md
 [docker]: docker.md
 [elasticsearch]: elasticsearch.md
 [electricite]: electricite.md
@@ -123,7 +124,7 @@ searchbar: true
   [Numpy][numpy], [Pandas][pandas], [Matplotlib][matplotlib], BeautifulSoup [1 &#x21F2;](https://gist.github.com/yoki/b7f2fcef64c893e307c4c59303ead19a)
 
 - Frameworks Python  
-  Django, Flask [1 &#x21F2;](https://medium.freecodecamp.org/how-to-build-a-web-application-using-flask-and-deploy-it-to-the-cloud-3551c985e492)
+  [Django][django], Flask [1 &#x21F2;](https://medium.freecodecamp.org/how-to-build-a-web-application-using-flask-and-deploy-it-to-the-cloud-3551c985e492)
 
 - Frameworks Ruby  
   Ruby on Rails

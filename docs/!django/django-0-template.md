@@ -2,7 +2,7 @@
 title: Template
 category: Python, Django
 ---
-
+{% raw %}
 ## Configurations
 
 * Activer le backend par défaut de Django pour les templates:
@@ -650,3 +650,4 @@ category: Python, Django
           },
       ]
       ```
+{% endraw %}

@@ -21,6 +21,9 @@ category: Python
 [orm-manager]: !django/django-orm-manager.md
 [orm-hooks]: !django/django-orm-hooks.md
 
+[test-factory]: !django/django-test-factory.md
+[test-model]: !django/django-test-model.md
+[test-api-drf]: !django/django-test-drf.md
 
 * Les bases
   * [Entrypoint][basics-entrypoint]
@@ -39,3 +42,9 @@ category: Python
 * i18n
   * [Traductions][gettext]
   * [Formats][formats]
+* Divers
+  * [Commandes][command]
+* Tests unitaires
+  * [Factories][test-factory]
+  * [Models][test-model]
+  * [API DRF][test-api-drf]

@@ -10,8 +10,8 @@ category: Python
 [basics-entrypoint]: !django/django-0-entrypoint.md
 [basics-applications]: !django/django-0-applications.md
 [basics-uRLs]: !django/django-0-urls.md
-[basics-templates]: !django/django-0-templates.md
-[basics-views]: !django/django-0-views.md
+[basics-templates]: !django/django-0-template.md
+[basics-views]: !django/django-0-view.md
 
 [orm-model]: !django/django-orm-model.md
 [orm-migration]: !django/django-orm-migration.md

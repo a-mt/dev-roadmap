@@ -83,6 +83,15 @@ On peut aussi passer par l'interface web:
   git push heroku master
   ```
 
+  Pour pusher uniquement un sous-répertoire (ici src):
+
+  ```
+  git subtree push --prefix src heroku master
+
+  # Avec force
+  git push heroku `git subtree split --prefix src master`:master -f
+  ```
+
 * Lancer une instance de l'application si elle ne tourne pas déjà  
   Il n'est pas possible de lancer plus d'une instance de la même application gratuitement.
 
@@ -101,6 +110,12 @@ On peut aussi passer par l'interface web:
 ---
 
 ## Spécifier un buildpack
+
+* Chercher un buildpack
+  
+  ```
+  heroku buildpacks:search php
+  ```
 
 * <ins>Python</ins>:
 
@@ -186,7 +201,7 @@ heroku logs --tail
 Pour n'afficher que les logs de l'application (`console.log`):
 
 ```
-heroku logs --source app-name
+heroku logs --app app-name
 ```
 
 ---
@@ -228,4 +243,10 @@ heroku rollback v12
 
   ```
   heroku local web
+  ```
+
+* Arrêter une appli
+
+  ```
+  heroku ps:scale web=0 --app app-name
   ```

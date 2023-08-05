@@ -36,6 +36,9 @@ category: Python, Django, Tests
             self.assertEqual(patient.national_identification_number_fmt, '2 00 12 38 185 001 14')
     ```
 
+* Peut également utiliser la classe `SimpleTestCase`.  
+  Elle n'a pas d'intégration avec la BDD, ce qui permet de gagner du temps lors de l'exécution des tests si aucun accès à la BDD n'est nécesssaire.
+
 ## Assertions
 
 * À l'intérieur des différentes méthodes, on appelle des méthode assert pour vérifier que l'état de l'application est bien celui attendu.
@@ -396,7 +399,7 @@ On peut temporairement modifier les configurations de l'application avec `django
             self.assertEqual(response.status_code, 401)
     ```
 
-## mail.outbox
+## mail.outbox: Vérifier les mails envoyés
 
 * Lors du lancement de tests unitaires, les mails ne sont pas envoyés au serveur SMTP mais à un container `django.core.mail`, dont on peut se servir pour vérifier le déclenchement d'envoi par mail
 
@@ -431,7 +434,102 @@ On peut temporairement modifier les configurations de l'application avec `django
             self.assertEqual(mail.outbox[0].to, [user.email])
     ```
 
-## requests_mock
+## unittest.mock: simuler du code
+
+* Le *mocking* consiste à remplacer ou modifier le comportement de dépendances pour les tests. Cela permet
+
+- d'éviter de dépendre de services externes lorsqu'on exécute des tests. On ne peut pas toujours garantir que les services externes sont disponibles lorsqu'on exécue les tests, ce qui les rend imprévisibles et incohérents.
+
+- d'éviter les effets secondaires et les conséquences involontaires lorsqu'on exécute les tests — par exemple, l'envoi accidentel de mails ou overload de services externes.
+
+- d'isoler le morceau de code testé, ce qui rend le test plus précis et plus fiable.
+
+* Pour simuler du code, on utilise `unittest.mock`
+
+* On par exemple peut forcer la valeur retournée par `uuid.uuid4()` en utilisant `patch.return_value`:
+
+    ``` diff
+    def recipe_image_file_path(instance, filename):
+        """Generate file path path for new recipe image."""
+        ext = os.path.splitext(filename)[1]
+    +   filename = f'{uuid.uuid4()}{ext}'
+
+        return os.path.join('uploads', 'recipe', filename)
+
+    class Recipe(models.Model):
+        """Recipe object."""
+        image = models.ImageField(
+            null=true,
+            upload_to=recipe_image_file_path,
+        )
+    ```
+    ``` diff
+    from unitttest.mock import patch
+    from django.test import TestCase
+
+    class ModelTests(TestCase):
+
+    +@patch('core.models.uuid.uuid4')
+    +def test_recipe_file_name_uuid(self, mock_uuid):
+
+        uuid = 'test-uuid'
+    +   mock_uuid.return_value = uuid
+
+        file_path = models.recipe_image_file_path(None, 'example.jpg')
+        self.assertEqual(file_path, f'uploads/recipe/{uuid}.jpg')
+    ```
+
+* Ou forcer une fonction à lever une exception lorsqu'on l'appelle avec `patch.side_effect`:
+
+    ``` diff
+    import time
+
+    from psycopg2 import OperationalError as Psycopg2Error
+    from django.db.utils import OperationalError
+    from django.core.mangement.base import BaseCommand
+
+    class Command(BaseCommand):
+        """
+        Django command to wait for database.
+        """
+        def handle(self, *args, **kwargs):
+            self.stdout.write('Waiting for database...')
+
+            db_up = False
+            while db_up is False:
+                try:
+    +               self.check(databases=['default'])
+                    db_up = True
+                except (Psycopg2Error, OperationalError):
+                    self.stdout.write('Database unavailable, waiting 1 second...')
+                    time.sleep(1)
+
+            self.stdout.write(self.style.SUCCES('Database available!'))
+    ```
+    ``` diff
+    +@patch('core.management.commands.wait_for_db.Command.check')
+    class CommandTests(SimpleTestCase):
+
+        @patch('time.sleep')
+        def test_wait_for_db_delay(self, patched_sleep, patched_check):
+            """
+            Test waiting for database when getting OperationalError
+            """
+
+            # Define various different values
+            # that happen each time we call it, in the order we call it
+    +       patched_check.side_effect = (
+                [Psycopg2Error] * 2
+                + [OperationalError] * 3
+                + [True]
+            )
+            call_command('wait_for_db')
+
+    +       self.assertEqual(patched_check.call_count, 6)
+    +       patched_check.assert_called_once_with(databases=['default'])
+    ```
+
+## requests_mock: simuler des appels externes
 
 * Permet de vérifier si un appel externe a été effectué.  
   Peut être ajouté via

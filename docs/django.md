@@ -6,6 +6,10 @@ category: Python
 [gettext]: !django/django-gettext.md
 [formats]: !django/django-formats.md
 [command]: !django/django-command.md
+[swagger]: !django/django-swagger.md
+[auth]: !django/django-auth.md
+[auth-2fa]: !django/django-auth-2fa.md
+[auth-reconnect]: !django/django-auth-reconnect.md
 
 [basics-entrypoint]: !django/django-0-entrypoint.md
 [basics-applications]: !django/django-0-applications.md
@@ -20,6 +24,9 @@ category: Python
 [orm-query]: !django/django-orm-query.md
 [orm-manager]: !django/django-orm-manager.md
 [orm-hooks]: !django/django-orm-hooks.md
+
+[drf-permission]: !django/django-drf-permission.md
+[drf-auth]: !django/django-drf-auth.md
 
 [test-factory]: !django/django-test-factory.md
 [test-model]: !django/django-test-model.md
@@ -39,11 +46,15 @@ category: Python
   * [Manager][orm-manager]
   * [Hooks][orm-hooks]
   * [Fixtures][orm-fixture]
-* i18n
+* Divers
   * [Traductions][gettext]
   * [Formats][formats]
-* Divers
   * [Commandes][command]
+  * [Swagger][swagger]
+  * [Auth][auth]
+* Django Rest Framework (DRF)
+  * [Permission][drf-permission]
+  * [Auth][drf-auth], [2FA][auth-2fa], [Reconnexion par cookie][auth-reconnect]
 * Tests unitaires
   * [Factories][test-factory]
   * [Models][test-model]

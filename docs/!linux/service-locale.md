@@ -197,11 +197,15 @@ Avant de pouvoir utiliser une locale, il faut l'activer
 
 * Une fois activée, on peut définir la locale à utiliser de manière globale (pour tous les utilisateurs du systèmes):
 
-  1. En éditant le fichier de configuration — <ins>/etc/locale.conf</ins> ou <ins>/etc/default/locale</ins>
+  1. En éditant le fichier de configuration — <ins>/etc/locale.conf</ins> ou <ins>/etc/default/locale</ins> suivant la distribution
+
+      ``` bash
+      echo 'LANG="C.UTF-8"' > /etc/default/locale
+      ```
 
   2. Ou en utilisant `localectl --set-locale`
 
-      ```
+      ``` bash
       localectl set-locale LANG=en_US.UTF-8
       ```
 

@@ -57,7 +57,7 @@ category: Linux
 * Pour modifier un paramètre de manière persistente, ajouter un fichier dans `/etc/sysctl.d`
 
     ``` bash
-    $ sudo vim /etv/sysctl.d/swap-less.conf
+    $ sudo vim /etc/sysctl.d/swap-less.conf
 
     vm.swappiness=29
     ```

@@ -48,7 +48,7 @@ category: Linux
 * Pour éditer les quotas pour l'utilisateur bob:
 
   ``` bash
-  $ sudo equota --user bob
+  $ sudo edquota --user bob
   Disk quotas for user bob (uid 1000):
     Filesystem  blocks  soft  hard  inodes  hard
     /dev/vdb1   102400  150M  200M       0     0

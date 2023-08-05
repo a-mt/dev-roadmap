@@ -5,16 +5,26 @@ category: Web, Python
 
 ## Principe de base
 
-Python est un language de programmation utilisé côté serveur.  
-Le créateur du language (Guido Van Rossum) explique l'avoir nommé d'après *Monty Python’s Flying Circus*, une série britannique passant sur la chaîne BCC dans les années 70, et non d'après l'animal.
+* Python est un language de programmation utilisé côté serveur.  
+  Le créateur du language (Guido Van Rossum) explique l'avoir nommé d'après *Monty Python’s Flying Circus*, une série britannique passant sur la chaîne BCC dans les années 70, et non d'après l'animal.
 
-Python est un language interprété sensible à la casse, aux indentations et aux retours chariots.
+* Python est un language interprété sensible à la casse, aux indentations et aux retours chariots.
 
-<ins>Exemple</ins>: file.py
+  <ins>Exemple</ins>: file.py
 
-``` python
-print("Hello World")
-```
+  ``` python
+  print("Hello World")
+  ```
+
+* Quand on parle de "Python", on parle généralement de CPython, l'implémentation de référence de Python — en C. Mais il en existe d'autres:
+
+  - Pypy, Python écrit en Python
+  - Stackless Python, the Eve Online secret sauce
+  - Jpython, tourne sur la JVM
+  - IronPython, tourne sur .Net
+  - MicroPython, pour les micro-contrôleurs
+  - Brython et Sculpt, pour générer du JS à partir de code Python
+  - RustPython, en Rust
 
 ---
 

@@ -19,6 +19,7 @@ category: Web
 * [Modules](!python/python-import.md)
 * [Fichiers](!python/python-file.md)
 * [Regex](!python/python-regex.md)
+* [Date](!python/python-date.md)
 * [Exceptions](!python/python-except.md)
 * [Classes & objets](!python/python-object.md)
 * [Divers](!python/python-misc.md)

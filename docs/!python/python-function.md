@@ -473,7 +473,7 @@ print("Your value is:", text)
 
 * Le décorateur `wrap` du module functools permet de recopier le nom de la fonction et sa description sur une autre fonction — ce qui permet notamment de préserver la documentation d'une fonction sur laquelle on applique un wrapper.
 
-  ```
+  ``` python
   from functools import wraps
 
   def my_decorator(f):
@@ -498,6 +498,21 @@ print("Your value is:", text)
   '''
   ```
 
+### functools.partial
+
+* `partial` permet de définir une fonction (ou classe) à partir d'une autre en lui spécifiant des paramètres — avant l'appel ou l'instanciation
+
+  ``` python
+  client_class = functools.partial(APIClient, enforce_csrf_checks=True)
+  ```
+  ``` python
+  # Convert to string, left-align, and truncate at max_colwidth - 1
+  max_colwidth = 60
+
+  form = "{{!s:<{}}}".format(max_colwidth - 1)
+
+  formatter = functools.partial(str.format, form)
+  ```
 
 ## Type hinting
 

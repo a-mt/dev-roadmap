@@ -29,9 +29,23 @@ ut labore et dolore magna aliqua.'''
 print(text)
 ```
 
+`dedent` permet de retirer les indentations en trop
+
+``` python
+from textwrap import dedent
+
+def fct():
+    content = dedent(r"""
+    t,F Resp
+    s,1/min
+    ,,
+    01:20,12.85
+    """)
+```
+
 ## Opérateurs
 
-* <ins>Get ([i])</ins>  
+* <ins>Get (`[i]`)</ins>  
   Une chaîne de caractères est fondamentalement une liste de caractères. On peut accéder aux différents caractères par leur index, de la même manière que si c'était une liste.
 
   ``` python
@@ -41,7 +55,7 @@ print(text)
   print(a[-1]) # o
   ```
 
-* <ins>Slice ([from:to])</ins>  
+* <ins>Slice (`[from:to]`)</ins>  
   On peut récupérer un sous-ensemble d'une chaîne de caractère avec la syntaxe `[from:to:step]`. Le max est non inclus.
 
   ``` python
@@ -58,7 +72,7 @@ print(text)
   print(a[-2:-5:-1]) # 876
   ```
 
-* <ins>Concat (+)</ins>
+* <ins>Concat (`+`)</ins>
 
   ``` python
   print("abc" + "def") # abcdef
@@ -69,13 +83,13 @@ print(text)
   print("My name is John, I am " + str(age))
   ```
 
-* <ins>Repeat (*)</ins>
+* <ins>Repeat (`*`)</ins>
 
   ``` python
   print("Python"*3) # PythonPythonPython
   ```
 
-* <ins>Appartenance (in)</ins>
+* <ins>Appartenance (`in`)</ins>
 
   ``` python
   print("World" in "Hello World") # True
@@ -166,10 +180,8 @@ print(f'Hello there {name1} and {name2}')
 
 1. La fonction [format](https://www.w3schools.com/python/ref_string_format.asp)
 
+    Paramètres non nommés:
     ``` python
-    print("{track:03d}. {artist:>8s} - {title:s}.mp3".format(track=1, artist="Bob", title="My song"))
-    # 001.      Bob - My song.mp3
-
     tu = (12,45,22222,103,6)
     print('{0} {2} {1} {2} {3} {2} {4} {2}'.format(*tu))
     # 12 22222 45 22222 103 22222 6 22222
@@ -177,8 +189,17 @@ print(f'Hello there {name1} and {name2}')
     print("{0:b}".format(9)) # 1001
     ```
 
+    Paramètres nommés:
+    ``` python
+    print("{track:03d}. {artist:>8s} - {title:s}.mp3".format(track=1, artist="Bob", title="My song"))
+    # 001.      Bob - My song.mp3
+
+    print('{chr:0>2s}'.format(chr=str(9))) # 09
+    ```
+
 2. La syntaxe `%`
 
+    Paramètres non nommés:
     ``` python
     myvar = "value"
     print("val = %s" % myvar) # val = value
@@ -193,11 +214,15 @@ print(f'Hello there {name1} and {name2}')
     print("val = %.2f" % a)     # 1.00
     print("val = %s" % a)       # 1.0
     print("val = %d" % a)       # 1
-
-    d = {'type': "name", 'value': 10}
-    print('invalid %(type)s value: %(value)r' % d)
-    # invalid name value: 10
     ```
+
+    Paramètres nommés:
+    ``` python
+    print('invalid %(type)s value: %(value)r' % {'type': "name", 'value': 10})
+    # invalid name value: 10
+
+    ngettext("%(count)d mois", "%(count)d mois", months) % {"count": months}
+            ```
 
 3. Les [f-strings](https://docs.python.org/3.6/whatsnew/3.6.html#whatsnew36-pep498) (depuis Python 3.6)
 
@@ -224,6 +249,16 @@ Une autre possibilité est de déclarer la chaîne de caractère en mode "raw":
 print('" \t"')  # " 	"
 print(r'" \t"') # " \t"
 ```
+
+## unidecode
+
+`unidecode` permet de remplacer les caractères accentués par leur équivalent non accentué
+
+  ``` python
+  from unidecode import unidecode
+
+  txt = unidecode(txt).lower()
+  ```
 
 ## Bytes
 

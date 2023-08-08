@@ -206,6 +206,14 @@ $ git diff --color-words file.txt
 
 Setter l'option `git config color.ui true` pour que diff affiche des couleurs
 
+### show
+
+`git show` permet d'afficher le contenu d'un commit donné
+
+``` bash
+git show f5a6
+```
+
 ---
 
 ### commit
@@ -641,7 +649,7 @@ Une liste de fichiers à ignorer globale peut également être mise en place (qu
 Elle doit être activé via les configs :
 
 <table>
-<tr><th align="left">git config --global core.excludesfiles ~/.gitignore_global</th><td>Définit l'emplacement du exclude global</td></tr>
+<tr><th align="left">git config --global core.excludesfile ~/.gitignore</th><td>Définit l'emplacement du exclude global</td></tr>
 </table>
 
 ---

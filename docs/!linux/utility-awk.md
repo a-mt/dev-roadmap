@@ -4,273 +4,645 @@ category: Linux
 ---
 
 Awk permet d'extraire et manipuler des données organisées par lignes et colonnes dans un fichier texte.  
-C'est un outil qui contient tous les éléments d'un langage de programmation (conditions, opérations mathématiques, etc)  
-Nommé d'après ses inventeurs : Al **A**ho, Peter **W**einberger et Briand **K**ernighan. Crée en 1978.
+Il contient tous les éléments d'un langage de programmation: conditions, opérations mathématiques, etc.  
+Le nom "awk" vient du nom de ses inventeurs : Al **A**ho, Peter **W**einberger et Briand **K**ernighan. Crée en 1978.
+
+## Données en entrée
+
+Les données en entrées peuvent provenir
+
+- d'un fichier
+
+    ``` bash
+    $ sudo awk 'BEGIN{FS=":"; OFS="\t"}{print $3, $1}' /etc/passwd | head -5
+    0   root
+    1   daemon
+    2   bin
+    3   sys
+    4   sync
+    ```
+
+- de plusieurs fichiers
+
+    ``` bash
+    # awk '/WARNING/{print substr($1, 6), substr($2, 0, 5), substr($0, 33)}' /var/log/unattended-upgrades/*.log | tail -5 | tac
+    08-23 10:44 Could not figure out development release: [Errno 2] No such file or directory: '/usr/share/distro-info/elementary.csv'
+    08-23 09:55 Could not figure out development release: [Errno 2] No such file or directory: '/usr/share/distro-info/elementary.csv'
+    08-22 07:51 Could not figure out development release: [Errno 2] No such file or directory: '/usr/share/distro-info/elementary.csv'
+    08-22 07:35 Could not figure out development release: [Errno 2] No such file or directory: '/usr/share/distro-info/elementary.csv'
+    08-21 11:50 Could not figure out development release: [Errno 2] No such file or directory: '/usr/share/distro-info/elementary.csv'
+    ```
+
+- de stdin
+
+  ``` bash
+  $ echo "A,B" | awk 'BEGIN{FS=","}{print $1}'
+  A
+  ```
+
+- et sinon, awk démarre un prompt interractif (CTRL + D pour terminer)
+
+## Syntaxe awk
+
+* Par défaut, le premier argument de awk est le programme à exécuter.
+
+    ``` bash
+    $ awk 'BEGIN{FS=":"; OFS="\t"}{print $3, $1}' /etc/passwd
+    ```
+
+  On peut executer un programme awk à partir d'un fichier avec l'option -f.  
+
+    ``` bash
+    $ echo 'BEGIN{FS=":"; OFS="\t"}{print $3, $1}' > script
+
+    $ awk -f script /etc/passwd
+    ```
+
+  L'avantage d'utiliser un fichier, c'est qu'on peut créer des commandes complexes plus lisibles, et d'inclure des boucles, conditions, etc, sans avoir à se soucier des retours à la ligne.
+
+  ``` bash
+  $ cat script
+  BEGIN{
+      FS=":";
+      OFS="\t"
+  }
+  {
+      print $3, $1
+  }
+
+  $ awk -f script /etc/passwd
+
+  ```
+
+* Le programme peut contenir plusieurs blocs, délimités par des accolades.  
+
+  - Un bloc préfixé par "BEGIN" est exécuté au tout début, avant de lire les données en entrée.  
+    On s'en sert généralement pour initialiser des variables
+
+  - Un bloc préfixé par "END" est exécuté à la toute fin, lorsqu'on a parcouru toutes les lignes.  
+    On s'en sert généralement pour afficher un total
+
+  - Un bloc sans préfixe est exécuté séquentiellement, ligne par ligne de haut en bas, sur les données en entrée.
+
+  - Un bloc préfixé de "/regex/" est éxécuté (séquentiellement) uniquement si la ligne matche la regex.  
+    Il est possible d'appliquer des modificateurs sur cette regex — plus d'info sur les filtres ci-dessous.
+
+  - Un bloc peut contenir plusieurs instructions, séparées par des points-virgule ;.
+
+    ``` bash
+    $ sudo awk 'BEGIN{FS=":"; OFS="\t"; count=0}{count += 1}/bash/{print count ":", $3, $1}END{print count " lignes"}' /etc/passwd
+    1:  0   root
+    45: 1000    aurelie
+    49 lignes
+    ```
+
+    ``` bash
+    $ cat <<'NOWDOC' > file
+    A 1
+    B 2
+    C 3
+    D 4
+    NOWDOC
+
+    $ awk 'BEGIN{total=0}{total+=$2}END{print "total: " total}' file
+    total: 10
+    ```
+
+
+* Il est possible d'initialiser des variables en dehors du bloc BEGIN, avec l'option `-v`:
+
+    ``` bash
+    $ sudo awk -v FS=":" -v OFS="\t" -v count=0 '{count += 1}/bash/{print count ":", $3, $1}END{print count " lignes"}' /etc/passwd
+    1:  0   root
+    45: 1000    aurelie
+    49 lignes
+    ```
+
+## Constantes
+
+awk utilise des variables au cours de son execution:
+
+- Les variables globales s'appliquent à l'ensemble du document et peuvent être modifiées dans un block BEGIN (ou avec -v) pour changer le comportement de awk.
+
+  - `FS` (Field Separator)  
+    Séparateur des champs en entrée.  
+    Il s'agit d'une regex, échapper le caractère avec un backslash pour un caractère littéral.  
+    Valeur par défaut: "[\t ]+" — une ou plusieurs tabulation ou espace
+
+    ``` bash
+    # "," pour séparateur
+    $ echo "A,B,C" | awk 'BEGIN{FS=","}{print $1, $3}'
+    A C
+
+    # "+" ou "-" pour séparateur
+    $ echo "A+B-C" | awk 'BEGIN{FS="[+-]"}{print $1, $3}'
+    A C
+
+    # ".." pour séparateur
+    $ echo "A..B..C" | awk 'BEGIN{FS="\.\."}{print $1, $3}'
+    A C
+    ```
+
+    Il est possible de spécifier FS en dehors du bloc BEGIN, avec l'option `-F`
+
+    ``` bash
+    $ echo "A,B,C" | awk -F',' '{print $1, $3}'
+    A C
+    ```
+
+  - `OFS` (Output Field Separator)  
+    Séparateur des champs en sortie. Par défaut: " "
+
+      ``` bash
+      $ echo "A B C" | awk 'BEGIN{OFS=","}{print $1, $3}'
+      A,C
+      ```
+
+  - `RS` (Record Separator)  
+    Séparateur des lignes en entrée. Par défaut: "\n"
+
+      ``` bash
+      $ echo "A B C / D E F" | awk 'BEGIN{RS=" / "}{print $1, $3}'
+      A C
+      D F
+      ```
+
+  - `ORS` (Output Record Separator)  
+    Séparateur des lignes en sortie. Par défaut: "\n"
+
+      ``` bash
+      $ echo -e "A B C\nD E F" | awk 'BEGIN{ORS=".."}{print $1, $3}'
+      A C..D F..
+      ```
+
+- Les variables contextuelles sont définies par awk à l'exécution de chaque bloc
+
+  - `$0` contient la ligne en cours
+
+    ``` bash
+    $ sudo awk '/idVendor/{print substr($0, 58)}' /var/log/kern.log | tail
+    usb 3-9: New USB device found, idVendor=27c6, idProduct=5335, bcdDevice= 1.00
+    usb 2-2: New USB device found, idVendor=05e3, idProduct=0626, bcdDevice=62.13
+    usb 3-8: New USB device found, idVendor=05e3, idProduct=0610, bcdDevice=62.13
+    usb 3-8.1: New USB device found, idVendor=25a4, idProduct=9311, bcdDevice= 2.01
+    usb 3-8.2: New USB device found, idVendor=046d, idProduct=c52b, bcdDevice=24.11
+    usb 2-1: New USB device found, idVendor=05e3, idProduct=0626, bcdDevice=62.13
+    usb 3-6: New USB device found, idVendor=05e3, idProduct=0610, bcdDevice=62.13
+    usb 2-1: New USB device found, idVendor=05e3, idProduct=0626, bcdDevice=62.13
+    usb 3-6.2: New USB device found, idVendor=1bcf, idProduct=0005, bcdDevice= 0.14
+    usb 3-6.1: New USB device found, idVendor=0bda, idProduct=2171, bcdDevice= 1.a4
+    ```
+
+  - `$1` contient le 1er champ, `$2` le 2ème champ, etc.  
+    `$NF` contient la valeur du dernier champ
+
+    ``` bash
+    $ echo "A B C" | awk '{print $1, $3, $NF}'
+    A C C
+    ```
+
+  - `NF` (Number Field)  
+    Nombre de champs de la ligne
+
+    ``` bash
+    $ echo -e "A A\nB B B" > file
+
+    $ awk '{print NF, $1}' file
+    2 A
+    3 B
+    ```
+
+  - `FILENAME`  
+    Nom du fichier en entrée (vaudra "-" pour stdin)
+
+    ``` bash
+    $ awk '{print FILENAME, $1}' file
+    file A
+    file B
+    ```
+
+  - `NR` (Number Record)  
+    Numéro de ligne
+
+    ``` bash
+    $ awk '{print NR, $1}' file
+    1 A
+    2 B
+    ```
+
+  - `FNR` (File Number Record)  
+    Numéro de ligne relativement au fichier en cours
+
+    ``` bash
+    $ echo -e "A B C\nD E F" > file_a
+    $ echo -e "G H I\nJ K L" > file_b
+
+    $ awk '{print NR, FILENAME ":" FNR, $0}' file_{a,b}
+    1 file_a:1 A B C
+    2 file_a:2 D E F
+    3 file_b:1 G H I
+    4 file_b:2 J K L
+    ```
 
 ---
 
-Convention :
-Le résultat d'une commande est indiqué après les `#`.
-Pour indiquer les caractères d'espace, de tabulation et les retours chariots, des caractères de remplacement sont utilisés :
+## Instructions awk
 
-| Caractère spécial | Caractère affiché |
-|---                |---                |
-| Tabulation        | &#x2E3A;          |
-| Espace            | &#xB7;            |
-| Retour chariot    | &#xAC;            |
+### Afficher du texte
 
----
+#### print
 
-## Execution
+* L'instruction `print` permet d'afficher du texte. On peut 
 
-### Source de données
+    - afficher une variable: `print varname`
 
-Les données en entrées peuvent provenir d'un ou des fichiers ou de stdin (pipeline).  
-Ici `..` remplace les commandes à éxécuter
+        ``` bash
+        $ echo -e 'A B\nC D' | awk '{print $1}'
+        A
+        C
 
-    awk .. file              Executer awk sur le contenu du fichier "file"
-    awk .. file file2        Executer awk sur le contenu des fichiers "file" et "file2" (concaténés)
-    awk ..                   Executer awk sur stdin
-                             Si stdin est vide, démarre un prompt interractif (CTRL + D pour terminer)
+        $ echo -e 'A B\nC D' | awk 'BEGIN{example = ""}{example = example $1}END{print example}'
+        AC
 
-Par exemple : `echo "A,B" | awk 'BEGIN{FS=","}{print $1}' # A`
+        $ echo -e 'A B\nC D' | awk '{print NR}'
+        1
+        2
+        ```
 
-### Commandes à executer
+    - ou afficher une chaîne de caractères: `print "text"`
 
-Les commandes awk sont executées ligne par ligne de haut en bas sur les données en entrée.  
-Ici, on part du principe que la source de données est stdin
+        ``` bash
+        $ echo -e 'A B\nC D' | awk '{print "-> " $1}'
+        -> A
+        -> C
+        ```
 
-    awk '{cmd}'              Executer une commande sur chaque ligne
-    awk '{cmd; cmd2}'        Executer deux commandes sur chaque ligne
-    awk '{cmd} {cmd2}'       Idem
+        Pour afficher une quote, utiliser "\x27" ou "'\''"
 
-<!-- -->
+        ``` bash
+        $ echo -e 'A B\nC D' | awk '{print "\x27" $1 "'\''"}'
+        'A'
+        'C'
+        ```
 
-    awk 'BEGIN{cmd}'         Executer une commande avant de lire les données en entrées
-                             (Pour définir des variables par exemple)
-    awk 'END{cmd}'           Executer une commande en fin de processus
-                             (Pour afficher des totaux par exemple)
-<!-- -->
+        Pour afficher une double-quote, utiliser "\x22" ou "\""
 
-    awk -f script file       Executer les commandes contenues dans le fichier "script"
+        ``` bash
+        $ echo -e 'A B\nC D' | awk '{print "\x22" $1 "\""}'
+        "A"
+        "C"
+        ```
 
-### Configuration
+* Si aucun argument n'est donné à `print`, alors l'instruction affiche la ligne en cours ($0)
 
-On peut déclarer des variables dans un block `BEGIN` ou via les options de la commande awk
+    ``` bash
+    $ echo -e 'A B\nC D' | awk '{print}'
+    A B
+    C D
+    ```
 
-Avec les options :
+* Toutes les variables et chaînes de caractères sont concaténées, les espaces qui se situent entre eux sont ignorés.  
+  Pour afficher un espace, mettre l'espace à l'intérieur de quotes, ou alors utiliser la virgule — qui sera remplacée par OFS.
 
-    awk -v var=value         Définir une variable
+  ``` bash
+  # Espace ignoré
+  $ echo -e 'A B\nC D' | awk '{print NR $1}'
+  1A
+  2C
 
-    awk -F"..."              Spécifier le délimiteur à utiliser (caractère de séparation des données en entrée)
-    awk -F"+-"               Utiliser "+-" comme délimiteur
-    awk -F"[+-]"             Utiliser "+" ou "-" comme délimiteur
+  # Espace entre quotes
+  $ echo -e 'A B\nC D' | awk '{print NR " " $1}'
+  1 A
+  2 C
 
-Avec un block `BEGIN` :
+  # Virgule avec OFS par défaut (= espace)
+  $ echo -e 'A B\nC D' | awk '{print NR, $1}'
+  1 A
+  2 C
 
-    awk 'BEGIN{var=value}'   Définir une variable
+  # Virgule avec OFS = "-"
+  $ echo -e 'A B\nC D' | awk -v OFS='-' '{print NR, $1}'
+  1-A
+  2-C
+  ```
 
-    awk 'BEGIN{FS="..."}'    Spécifier le délimiteur à utiliser
-    awk 'BEGIN{FS="+-"}'     Utiliser "+-" comme délimiteur
-    awk 'BEGIN{FS="[+-]"}'   Utiliser "+" ou "-" comme délimiteur
+#### printf
 
-Le séparateur par défaut est `"[\t ]+"` (une ou plusieurs tabulation ou espace)
+* `printf` permet de formatter une chaîne de caractères — même principe que le [% Python](https://www.golinuxcloud.com/python-string-format/).  
+  Contrairement à print, printf n'ajoute pas automatiquement de retour chariot à la fin.
 
-### Exemples
+    ``` bash
+    $ echo -e "Aaaaaa Bbbb\nCc Dddddd" | awk '{printf("%-10s %03d\n", $1, NR)}'
+    Aaaaaa     001
+    Cc         002
+    ```
 
-Afficher la 2ème colonne de chaque ligne :
+### Manipuler du texte
 
-`echo -e 'A:1 \n
-B:2 \n
-C:3 \n
-D:4' | awk 'BEGIN{FS=":"}{print $2}' # 1¬2¬3¬4`
+#### length
 
-Afficher le total de la 2ème colonne :
+* `length` retourne le nombre de carctères
 
-`echo -e 'A:1 \n
-B:2 \n
-C:3 \n
-D:4' | awk 'BEGIN{FS=":"; total=0}{total+=$2}END{print total}' # 10`
+    ``` bash
+    $ echo "A/b/c" | awk '{print length($0)}'
+    5
+    ```
 
-Changer le délimiteur pour éviter que les colonnes vides décalent la numérotation des colonnes :
+#### index
 
-`echo -e "1\t \t3" | awk '{print " 1:"$1 " 2:"$2 " 3:"$3}'               #  1:1 2:3 3: `  
-`echo -e "1\t \t3" | awk 'BEGIN{FS="\t"}{print " 1:"$1 " 2:"$2 " 3:"$3}' # 1:1 2:  3:3`
+* `index` retourne la position (à partir de 1) de la première occurence d'un caractère donné.  
+  0 si aucune occurence
 
----
+    ``` bash
+    $ echo "A/b/c" | awk '{print index($0, "/")}'
+    2
+    ```
 
-## Print / printf
+#### tolower
 
-La commande `print` peut afficher la valeur de champs, de variables ou des chaînes de caractères.  
-La commande `printf` est quasimment identique à `print`, à la différence près que `print` affiche un retour chariot à la fin et `printf` non.
+* `tolower` change la casse en minuscules
 
-`echo -e "A\tB" | awk '{print}'  # A⸺B`
+    ``` bash
+    $ echo "A/b/c" | awk '{print tolower($0)}'
+    a/b/c
+    ```
 
-    print $0       # A⸺B    Afficher la ligne en cours. Idem que print sans argument
-    print $2       # B        Afficher la valeur du 2ème champ
-    print $2 $1    # BA       Afficher les colonnes 2 et 1. Les espaces sont ignorés
-    print $2" "$1  # B·A      Mettre entre quotes pour garder les espaces
-    print $2,$1    # B·A      "," est remplacé par la valeur de la variable OFS (valeur par défaut : espace)
+#### toupper
 
-`echo -e "1\n2\n3" | awk 'BEGIN{sum=0}{sum+=$1; print sum}END{print "total:" sum}' # 1¬3¬6¬total:6`
+* `toupper` change la casse en majuscules
 
-    print "total"  # total    Afficher la chaîne de caractères "total"
-    print total    # 6        Afficher la valeur de la variable total
+    ``` bash
+    $ echo "A/b/c" | awk '{print toupper($0)}'
+    A/B/C
+    ```
 
-<!-- -->
+#### substr
 
-    print "\x27"   # '        Afficher une quote
-    print "'\''"   # '        Idem
-    print "\x22"   # "        Afficher une double-quote
-    print "\""     # "        Idem
+* `substr` tronque la chaîne de caractère
 
-### Formatter un nombre
+    ``` bash
+    # Du caractère 2 et jusqu'à la fin
+    $ echo "A/b/c" | awk '{print substr($0, 2)}'
+    /b/c
 
-`echo -e "1.1A \n 1.2B \n 2C" | awk '{print $1+0}' # 1.1¬1.2¬2`
+    # Du caractère 0 à 2
+    $ echo "A/b/c" | awk '{print substr($0, 0, 2)}'
+    A/
 
-    print var+0          # 1.1     Convertir en nombre (entier ou réel)
-                                   Récupérer les chiffrees en début de texte
+    # Le dernier caractère
+    $ echo "A/b/c" | awk '{print substr($0, length($0))}'
+    c
+    ```
 
-    print int(var)       # 1       Convertir en entier
-                                   Tronquer les décimales
+#### match
 
-    printf("%d\n", var)  # 1       Convertir en entier
-    printf("%.2f", var)  # 1.10    Arrondir sur 2 décimales
-    printf("%03d", var)  # 001     Afficher le nombre sur 3 chiffres (compléter par des 0 à gauche)
+* `match` permet de vérifier si une variable correspond à un motif donné.  
+   À l'appel de cette fonction, deux variables contextuelles sont définies:
 
-### Formatter du texte
+   - `RSTART`: position (à partir de 1) du match. Vaudra 0 si aucune occurence.  
+     Cette valeur est également retournée par la fonction `match`
 
- `echo -e "1.1A\n1.2B\n2C" | awk '{ printf("%4s,\n", $1) }' # 1.1A,¬1.2B,¬  2C,`
- 
-    printf("%4s", var)   #   2C,   Afficher sur 4 caractères, aligner à droite
-    printf("%-4s", var)  # 2C  ,   Afficher sur 4 caractères, aligner à gauche
+   - `RLENGTH`: longueur du match (greedy)
 
----
+    ``` bash
+    $ cat <<'NOWDOC' > script
+    {
+        # Contient une lettre minuscule?
+        if(match($0, /[a-z]/)){
 
-## Variables magiques
+            # L'afficher
+            print substr($0, RSTART, RLENGTH)
+        }
+    }
+    $ echo "A/b/c" | awk -f script
+    b
+    ```
 
-awk définit des variables au cours de son execution, certaines qui s'appliquent à l'ensemble du document, d'autres à la ligne en cours.
-Les variables qui s'appliquent à l'ensemble du document (les délimiteurs) peuvent être modifiée dans un block `BEGIN` pour changer le comportement de awk
+#### sub
 
-    FS             Délimiteur de champs en entrée (Field Separator, défaut " ")
-    OFS            Délimiteur de champs en sortie (Output Field Separator, défaut " ")
-    RS             Délimiteur de ligne en entrée (Record Separator, défaut "\n")
-    ORS            Délimiteur de lignes en sortie (Output Record Separator, défaut "\n")
+* `sub` permet de remplacer un match par autre chose. Utilise un pointeur  
+  Les backreferences ne sont pas supportées
 
-    NF             Nombre de champs de la ligne (Number Field)
-    FILENAME       Nom du fichier en entrée (ou "-" pour stdin)
-    NR             Numéro de ligne (Number Record)
-    FNR            Numéro de ligne relativement au fichier en cours (File Number Record)
+    ``` bash
+    $ echo "A/b/c" | awk '{sub(/\//, "-", $0); print $0}'
+    A-b/c
+    ```
 
-### Exemples
+* `gsub`, même principe que sub mais pour toutes les occurences. Utilise également un pointeur
 
-Modifier OFS :
+    ``` bash
+    $ echo "A/b/c" | awk '{gsub(/\//, "-", $0); print $0}'
+    A-b-c
+    ```
 
-`echo -e "A\tB" | awk '{print $2, $1}' # B·A`  
-`echo -e "A\tB" | awk 'BEGIN{OFS="-"}{print $2, $1}' # B-A`
+#### split
 
-Afficher le nombre de champs :
+* `split` permet de séparer les caractères d'une chaîne de caractère, suivant un délimiteur donné, dans un tableau.  
+  La second argument est le nom de la variable dans lequel le tableau sera crée — inutile de la déclarer au préalable.
+  Et la fonction retourne la longueur du tableau créé.  
 
-`echo -e "A A\nB B B" | awk '{printf("%d%s\n", NF, $1)}' # 2A¬3B`
+    ``` bash
+    $ cat <<'NOWDOC' > script
+    BEGIN{
+        FS=","
+    }
+    {
+        # Split $1 en nom prenom
+        split($1, aName, / /);
+        print "Prenom: " aName[1]
+        print "Nom: " aName[2]
 
-Afficher le numéro de ligne et nom de fichier :
+        # Affiche $2
+        print "Adresse:" $2
+    }
+    NOWDOC
 
-`echo "A" > tmp1`  
-`echo -e "A\nB" > tmp2`  
-`awk '{print NR, "(" FILENAME ", " FNR "):", $0}' tmp1 tmp2`  
-`# 1 (tmp1, 1): A¬`  
-`# 2 (tmp2, 1): A¬`  
-`# 3 (tmp2, 2): B`
+    $ echo "Bob Smith, 1 rue au Hasard" | awk -f script
+    Prenom: Bob
+    Nom: Smith
+    Adresse: 1 rue au Hasard
+    ```
+
+### Manipuler des nombres
+
+* `rand` permet de récupérer un nombre aléatoire (float) entre 0 et 1 — [0;1[
+
+    ``` bash
+    # Décimal entre 0 (inclus) et 1 (non inclus)
+    $ echo -e "alice\nbob\ncharlie" | awk '{printf ("%10s %s\n", $1, rand())}'
+         alice 0.669321
+           bob 0.312382
+       charlie 0.985882
+
+    # Entier entre entre 0 (inclus) et 10 (inclus)
+    $ echo -e "alice\nbob\ncharlie" | awk '{printf ("%10s %s\n", $1, int(rand()*11))}'
+         alice 1
+           bob 3
+       charlie 8
+    ```
+
+* Autres fonctions utiles:
+
+    ``` txt
+    sqrt(a)           Racine carrée
+    sin(a)            Sinus
+    cos(a)            Cosinus
+    log(a)            Logarithme népérien
+    exp(a)            Exponentielle
+
+    var+0             Parsefloat (récupérer les chiffres en début de texte)
+    int(var)          Parseint (tronquer les décimales)
+    ```
+
+[Built-in Functions awk](https://www.gnu.org/software/gawk/manual/gawk.html#Built_002din)
 
 ---
 
 ## Filtres
 
-Il est possible de filtrer les lignes sur lesquelles appliquer awk :
-- les lignes qui matchent une regex (syntaxe POSIX BRE)
-- les lignes dont un champs donné matche une regex (POSIX BRE)
-- en fonction de la valeur d'une variable (notamment les variables magiques : numéro de ligne, nombre de champs, valeur d'un champ...)
+* Il est possible de filtrer les lignes sur lesquelles un bloc d'instruction doit être appliqué.  
+  Ce peut être un filtre sur
+  
+  - Les lignes qui matchent une regex (syntaxe POSIX BRE)
 
-On peut également inverser un filtre avec `!`
+    ``` bash
+    $ echo -e "1 alice\n---\n3 bob\n4\n5 david\n---\n7 <deleted>" > file
 
-### Regex ligne
+    $ awk '/^[[:digit:]]/{print}' file
+    1 alice
+    3 bob
+    4
+    5 david
+    7 <deleted>
+    ```
 
-`echo -e "ABC\nAB\nBC" | awk '/C/{print NR, $0}' # 1·ABC¬3·BC`
+    Les lignes qui ne matchent pas une regex:
 
-    /up/        Les lignes qui contiennent /up/
-    !/up/       Les lignes qui NE contiennent PAS /up/
+    ``` bash
+    $ awk '!/^[[:digit:]]/{print}' file
+    ---
+    ---
+    ```
 
-### Regex champ
+  - Les lignes dont un champ donné matche une regex (POSIX BRE)
 
-    $4~/up/     Dont le 4ème champs contient "up"
-    $4!~/up/    Dont le 4ème champs ne contient pas "up"
+    ``` bash
+    $ awk '$2~/^[[:alpha:]]/{print}' file
+    1 alice
+    3 bob
+    5 david
+    ```
 
-### Test variable
+    Les lignes dont un champ donné ne matche pas:
 
-Tous les types de comparaison sont possibles (==, !=, <, <=, >, >=) pour tester la valeur d'une variable : `NF==2`  
-Il est également possible d'utiliser les opérateurs mathématiques : `NF%2==0`
+    ``` bash
+    $ awk '$2!~/^[[:alpha:]]/{print}' file
+    ---
+    4
+    ---
+    7 <deleted>
+    ```
 
-`echo -e "A B C\nA B\nB C" | awk 'NR%2!=0{print NR, $0}' # 1·A·B·C¬3·B·C`
+  - Ou encore en fonction de la valeur d'une variable — et notamment des variables contextuelles  
+    (numéro de ligne, nombre de champs, valeur d'un champ...)
 
-    NF==2        Les lignes qui contiennent 2 champs
-    NR>=2        À partir de la 2ème ligne
-    NR%2==0      Les lignes pairs (lignes 2,4,6,etc)
+    ``` bash
+    # Les lignes qui ont 2 champs
+    $ awk 'NF==2{print}' file
+    1 alice
+    3 bob
+    5 david
+    7 <deleted>
+    ```
 
-<!-- -->
+    Différents types de comparaison sont possibles pour tester la valeur d'une variable: ==, !=, <, <=, >, >=.  
+    Example: `NF!=2`
 
-    $2=="up"     Les lignes dont la VALEUR du 2ème champs vaut "up"
-    $NF=="up"    Les lignes dont la VALEUR du dernier champs vaut "up"
+    ``` bash
+    # Les lignes qui n'ont pas deux champs
+    $ awk 'NF!=2{print}' file
+    ---
+    4
+    ---
+    ```
 
-### Utiliser plusieurs filtres
+    Il est également possible d'utiliser les opérateurs mathématiques.  
+    Example: `NF%2==0` pour filtrer sur les lignes paires (lignes 2,4,6,etc)
 
-Il est possbile de combiner plusieurs filtres,
-- filtrer sur les lignes qui matchent un premier filtre OU un deuxième : `||`
-- filtrer sur les lignes qui matchent un premier filtre ET un deuxième : `&&`
-- filtrer non pas sur les lignes qui correspondent à un filtre donné mais qui se situent ENTRE deux filtres : `,`
-  (par exemple pour filtrer de la ligne x à la ligne y, ou pour récupérer l'ensemble des lignes situées entre deux délimiteurs de ligne.)  
-  EOF permet de matcher jusqu'à la fin du fichier (End Of File). 
+* On peut utiliser des opérations logiques:
 
-Les parenthèses sont admises pour modifier les priorités : `!(NR==3 || NR==5)`
+  - inverser un filtre: `!`
 
-#### ET
+  - filtre 1 OU filtre 2: `||`
 
-À partir de la ligne 3, les lignes qui ont plus d'un champs :
+    ``` bash
+    # La ligne 3 ou la ligne 5
+    $ awk 'NR==3 || NR==5{print}' file
+    3 bob
+    5 david
+    ```
 
-`echo -e "1\n2\n3\n4 a\n5 b\n6\n7" | awk 'NR>=3 && NF>1{print}' # 4·a¬5·b`
+  - filtre 1 ET filtre 2: `&&`
 
-#### OU
+    ``` bash
+    # À partir de la ligne 3, les lignes qui contiennent plus d'1 champ
+    $ awk 'NR>=3 && NF>1{print}' file
+    3 bob
+    5 david
+    7 <deleted>
+    ```
 
-Soit la ligne 3, soit la ligne 5 :
+  - les parenthèses sont admises pour modifier les priorités
 
-`echo -e "1\n2\n3\n4\n5\n6\n7" | awk 'NR==3 || NR==5{print}' # 3¬5`
+    ``` bash
+    # Toutes les lignes sauf la 3 et la 5
+    $ awk '!(NR==3 || NR==5){print}' file
+    ---
+    4
+    ---
+    7 <deleted>
+    ```
 
-#### DE... À
+* Pour filtrer sur les lignes ENTRE deux filtres: `,`
 
-De la ligne 3 à la ligne 5 :
+  ``` bash
+  # De la ligne 3 à la ligne 5
+  $ awk 'NR==3, NR==5{print}' file
+  3 bob
+  4
+  5 david
+  ```
 
-`echo -e "1\n2\n3\n4\n5\n6\n7" | awk 'NR==3, NR==5{print}' # 3¬4¬5`
+  EOF (End Of File) est un filtre désignant la dernière ligne du fichier.
 
-À partir de la ligne qui contient "---" jusqu'à la fin :
+  ``` bash
+  # De la première ligne qui contient "---" à la fin du fichier
+  $ awk '/---/, EOF{print}' file
+  ---
+  3 bob
+  4
+  5 david
+  ---
+  7 <deleted>
+  ```
 
-`echo -e "1\n---\n3\n4\n5\n---\n7" | awk '/---/,EOF{print} # ---¬3¬4¬5¬---¬7'`
+* Lorsque plusieurs blocs sont utilisés:  
+  si une ligne matche plusieurs blocs, alors tous ces différents blocs sont exécutés — et pas seulement le premier
 
-#### Combiner
-
-De la ligne qui contient "---" et où open==0, à la ligne qui contient "---" et où open==1 :
-
-`echo -e "1\n---\n3\n4\n5\n---\n7" | awk 'BEGIN{open=0} /---/,open==1&&/---/{open=1; print} # ---¬3¬4¬5¬---'`
-
-Tous les blocks admettent des filtres. Si une ligne matche les deux conditions, elle sera affichée 2 fois :
-
-`echo -e "AB\nBC\nAC" | awk '/A/{print "A:", $0} /B/{print "B:", $0}' # A:·AB¬B:·AB¬B:·BC¬A:·AC`
+  ``` bash
+  # Bloc1: sur toutes les lignes qui contiennent "---", passer open à 0 ou 1
+  # Bloc2: afficher les lignes entre "---" open, et "---" non open
+  $ awk -v open=0 '/---/{open=1-int(open)} open==1&&/---/, open==0&&/---/{print}' file
+  ---
+  3 bob
+  4
+  5 david
+  ---
+  ```
 
 ---
 
 ## Langage de programmation
-
-Pour rappel, awk peut executer les commandes qui se situent dans un fichier : `awk -f script file`.
-Cela permet de créer plus facilement des commandes plus complexes et d'inclure des boucles, conditions, etc, sans avoir à se soucier des retours à la ligne.
-La syntaxe awk est la suivante :
 
 ### Commentaires
 
@@ -290,6 +662,18 @@ La syntaxe awk est la suivante :
 
     print NF<2 ? "Un" : "Plusieurs"
 
+<ins>Regex</ins>:
+
+| Opérateur | Opération        |
+| ---       | ---              |
+|     ~     | matche une regex |
+|     !~    | ne matche pas    |
+    
+    open = 0
+    if ($0~/^---/) {
+      open = 1-open
+    }
+
 ### For
 
     for(i=1; i<=3; i++) {
@@ -305,60 +689,87 @@ La syntaxe awk est la suivante :
         print k ": " aName[k]
     }
 
-#### Exemple
+<details>
+<summary>
+<ins>Exemple</ins>: Transformer des données tabulaires en un tableau HTML
+</summary>
 
-Transformer des données séparées par tabulation et retours à la ligne en un tableau HTML  
-Données (fichier scores.txt) :
+<pre lang="bash">
+# Données tabulaire
+$ cat &lt;&lt;'NOWDOC' &gt; data
+Gretchen Galloway   268 178 256 259 282 139 167
+Isaac Steele    253 155 210 195 225 172 202
+Wayne Myers 290 283 227 243 128 221 103
+Lillith Lee 148 127 260 131 180 125 121
+Molly Blackwell 299 143 202 267 222 159 227
+Maia Arnold 204 198 294 158 254 205 253
+Lev Reese   180 278 156 170 261 283 113
+Carlos Guthrie  289 205 117 138 232 278 169
+Sophia Buck 112 104 191 112 147 294 280
+Vincent Mitchell    270 153 207 175 252 202 233
+Buffy Harris    206 107 187 286 286 244 156
+Reuben Miles    247 227 170 237 133 188 276
+Brendan Fowler  265 166 145 278 170 237 291
+Mason Hancock   217 231 271 187 284 179 262
+Nigel Boone 236 282 196 143 290 284 129
+Gretchen Foreman    276 228 186 223 156 257 161
+Serena Goodman  189 145 137 155 211 183 133
+Shoshana Velez  281 120 125 199 252 296 287
+Eve Hughes  236 176 249 173 158 146 216
+NOWDOC
 
-    Gretchen Galloway	268	178	256	259	282	139	167
-    Isaac Steele	253	155	210	195	225	172	202
-    Wayne Myers	290	283	227	243	128	221	103
-    Lillith Lee	148	127	260	131	180	125	121
-    Molly Blackwell	299	143	202	267	222	159	227
-    Maia Arnold	204	198	294	158	254	205	253
-    Lev Reese	180	278	156	170	261	283	113
-    Carlos Guthrie	289	205	117	138	232	278	169
-    Sophia Buck	112	104	191	112	147	294	280
-    Vincent Mitchell	270	153	207	175	252	202	233
-    Buffy Harris	206	107	187	286	286	244	156
-    Reuben Miles	247	227	170	237	133	188	276
-    Brendan Fowler	265	166	145	278	170	237	291
-    Mason Hancock	217	231	271	187	284	179	262
-    Nigel Boone	236	282	196	143	290	284	129
-    Gretchen Foreman	276	228	186	223	156	257	161
-    Serena Goodman	189	145	137	155	211	183	133
-    Shoshana Velez	281	120	125	199	252	296	287
-    Eve Hughes	236	176	249	173	158	146	216
-
-Awk :
-
-    # Contenu du fichier "script" :
-    BEGIN{
-        print "<table>";
-        print "<th>Name</th>";
-        for(i=1; i<=7; i++) {
-            print "<th>Round " i "</th>"
-        }
+# Script awk pour créer un tableau HTML
+$ cat &lt;&lt;'NOWDOC' &gt; script
+BEGIN{
+    print '&lt;table&gt;';
+    print '&lt;th&gt;Name&lt;/th&gt;';
+    for(i=1; i&lt;=7; i++) {
+        print '&lt;th&gt;Round ' i '&lt;/th&gt;'
     }
-    {
-        print "<tr>";
-        for(i=1; i<=8; i++) {
-            print "<td>" $i "</td>";
-            total[i] += $i
-        }
-        print "<tr>"
+}
+{
+    print '&lt;tr&gt;';
+    for(i=1; i&lt;=8; i++) {
+        print '&lt;td&gt;' $i '&lt;/td&gt;';
+        total[i] += $i
     }
-    END {
-        print "<tr>";
-        print "<td>Total</td>";
-        for(i=2; i<=8; i++) {
-            print "<td>" int(total[i]/NR) "</td>"
-        }
-        print "</tr>";
-        print "</table>"
+    print '&lt;tr&gt;'
+}
+END {
+    print '&lt;tr&gt;';
+    print '&lt;td&gt;Total&lt;/td&gt;';
+    for(i=2; i&lt;=8; i++) {
+        print '&lt;td&gt;' int(total[i]/NR) '&lt;/td&gt;'
     }
+    print '&lt;/tr&gt;';
+    print '&lt;/table&gt;'
+}
+NOWDOC
 
-`awk -F"\t" -f script scores.txt `
+# Appel au script awk sur les données
+$ awk -F' ' -f script data | head -20
+&lt;table&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Round 1&lt;/th&gt;
+&lt;th&gt;Round 2&lt;/th&gt;
+&lt;th&gt;Round 3&lt;/th&gt;
+&lt;th&gt;Round 4&lt;/th&gt;
+&lt;th&gt;Round 5&lt;/th&gt;
+&lt;th&gt;Round 6&lt;/th&gt;
+&lt;th&gt;Round 7&lt;/th&gt;
+&lt;tr&gt;
+&lt;td&gt;Gretchen&lt;/td&gt;
+&lt;td&gt;Galloway&lt;/td&gt;
+&lt;td&gt;268&lt;/td&gt;
+&lt;td&gt;178&lt;/td&gt;
+&lt;td&gt;256&lt;/td&gt;
+&lt;td&gt;259&lt;/td&gt;
+&lt;td&gt;282&lt;/td&gt;
+&lt;td&gt;139&lt;/td&gt;
+&lt;tr&gt;
+&lt;tr&gt;
+</pre>
+</details>
 
 ### While
 
@@ -379,19 +790,7 @@ Awk :
     break
     continue
 
-### Expressions
-
-#### Regex
-
-| Opérateur | Opération        |
-| ---       | ---              |
-|     ~     | matche une regex |
-|     !~    | ne matche pas    |
-    
-    open = 0
-    if ($0~/^---/) {
-      open = 1-open
-    }
+### Variable
 
 #### Incrémentation
 
@@ -405,7 +804,7 @@ Pré-incrémentation (incrémente la variable puis retourne la nouvelle valeur)
     ++a
     --a
 
-#### Maths
+#### Opérations mathématiques
 
 | Opérateur | Opération      |
 | ---       | ---            |
@@ -426,111 +825,45 @@ Pré-incrémentation (incrémente la variable puis retourne la nouvelle valeur)
     }
     pwr($1, $2)
 
-
-### Fonctions prédéfinies
-
-#### Maths
-
-    rand()             Nombre aléatoire (float) entre 0 et 1 ([0;1[)
-    int(rand()*6)+1    Nombre aléatoire (entier) entre 1 et 6 ([1;6])
-    
-<!-- -->
-
-     sqrt(a)           Racine carré
-     sin(a)            Sinus
-     cos(a)            Cosinus
-     log(a)            Logarithme népérien
-     exp(a)            Exponentielle
-
-#### Chaine de caractères
-
-`echo "A/b/c" | awk '{print length($0)}' # 5`
-
-     length(a)         # 5         Nombre de caractères
-     index(a, "/")     # 2         Position de la première occurence de "/" (à partir de 1. 0 si aucune occurence)
-     tolower(a)        # a/b/c     En minuscules
-     toupper(a)        # A/B/C     En majuscules
-     
-     substr(a, 2)     # /b/c       Caractères jusqu'à la fin, à partir du 2ème
-     substr(a, 0, 2)  # A/         2 caractères, à partir du début
-
-#### Regex
-
-Pour des besoins plus complexes que simplement vérifier si le texte matche une regex, awk dispose de fonctions.
- 
-`echo "A/b/c" | awk '{if(match($0, /[a-z]/)){ print substr($0, RSTART, RLENGTH) }}' # b`
-
-     match($0, /A/)        # 1     Position de la première occurence de /A/ (à partir de 1. 0 si aucune occurence)
-                                   Deux variables sont settées :
-                                   - RSTART : position du match (valeur également retournée par la fonction)
-                                   - RLENGTH : longueur du match (greedy)
-
-     sub(/\//, "-", $0)    # 1     Remplace la première occurence de /\// (= "/") par "-" dans $0 (pointeur)
-                                   Retourne le nombre de remplacements effectués (0 ou 1)
-
-     gsub(/\//, "-", $0)   # 2     Remplace la première occurence de /\// (= "/") par "-" dans $0 (pointeur)
-                                   Retourne le nombre de remplacements effectués (de 0 à n)
-
-     split($0, var, /\//)  # 3     Sépare tous les caractères délimités par /\// dans la variable var
-                                   Retourne la longueur du tableau crée
-                                   Il est inutile de déclarer la variable var au préalable
-
-##### Exemples
-
-Remplacer des caractères :
-
-`echo "A/b/c" | awk '{sub(/\//, "-", $0); print $0}' # A-b/c`  
-`echo "A/b/c" | awk '{gsub(/\//, "-", $0); print $0}' # A-b-c` 
-
-Utiliser split :
-
-    # Contenu du fichier "script" :
-    {
-        # Split nom prenom
-        split($1, aName, / /);
-        print "Prenom: " aName[1]
-        print "Nom: " aName[2]
-
-        # Adresse
-        print "Adresse:" $2
-    }
-
-<!-- -->
-
-    echo "Bob Smith, 1 rue au Hasard" | awk -F, -f script
-    # Prenom: Bob
-    # Nom: Smith
-    # Adresse: 1 rue au hasard
-
 ---
 
 ## Multiligne
 
-awk commence au début du document et execute les commandes ligne par ligne en avançant d'une ligne à fin de chaque commande.
-Mais il est également possible d'avancer d'une ligne (ou de plusieurs) à l'intérieur d'une commande.
+Par défaut, awk commence par la première ligne du document, exécute les différents blocs, avance d'une ligne, ré-exécute, etc.  
+Il est également possible de récupérer la valeur de plusieurs lignes dans un bloc:
 
-    getline var       Récupérer la ligne suivante et la mettre dans la variable var
-                      Retourne 1 si une ligne a été récupéré, 0 sinon (fin du document)
+* `getline var` permet de récupérer la ligne suivante et la mettre dans la variable "var".  
+  Retourne 1 si une ligne a été récupéré, 0 sinon — si on est à la fin du document
 
-### Exemples
+  ``` bash
+  # Concaténer toutes les deux lignes
+  $ echo -e "a\nb\nc\nd" | awk '{ getline nextRow; print $0, nextRow }'
+  a b
+  c d
+  ```
+  ``` bash
+  # Supprimer les retours à la ligne à l'intérieur de quotes
+  $ cat <<'NOWDOC' > script
+  {
+    # -- si le dernier champ commence par une quote
+    if($NF~/^"[^"]+$/){
 
-Concaténer toutes les deux lignes :
+      # -- tant que la ligne ne finit pas par une quote
+      while($0!~/"$/) {
 
-`echo -e "a\nb\nc\nd" | awk '{ getline nextRow; print $0, nextRow } # a·b¬c·d'`
+        # -- récupérer la ligne suivante — s'arrêter si on est à la fin du document
+        if(!getline nextRow) break;
 
-Supprimer les retours à la ligne à l'intérieur de quotes :
-
-    # Contenu du fichier "script" :
-    {
-      if($NF~/^"[^"]+$/){
-        while($0!~/"$/) {
-          if(!getline nextRow) break;
-          $0 = $0 nextRow;
-        }
+        # --- ajouter la ligne à $0
+        $0 = $0 nextRow;
       }
-      print $0
     }
+    # -- afficher $0
+    print $0
+  }
+  NOWDOC
 
-<!-- -->
-
-    echo -e '"a\nb\nc"\nd' | awk -f script # "abc"¬d
+  $ echo -e '"a\nb\nc"\nd' | awk -f script
+  "abc"
+  d
+  ```

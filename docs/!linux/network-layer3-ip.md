@@ -205,7 +205,7 @@ category: Linux, Network
   fe80:0000:0000:0000:0000
   ```
 
-  Ou écrit en abbrégé:
+  Ou écrit en abrégé:
 
   ```
   fe80::
@@ -230,7 +230,7 @@ category: Linux, Network
   0000:0000:0000:0000:0000:0000:0000:0001
   ```
 
-  Ou écrit en abbrégé:
+  Ou écrit en abrégé:
 
   ```
   ::1

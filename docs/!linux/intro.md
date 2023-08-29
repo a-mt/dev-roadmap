@@ -1,5 +1,5 @@
 ---
-title: Inroduction
+title: Introduction
 category: Linux
 ---
 
@@ -7,7 +7,7 @@ category: Linux
 
 * Les premiers ordinateurs ont été conçus pour exécuter une série de tâches simples, un peu comme une calculette. Dans les années 1950, ont été ajoutées des fonctions qui permettaient d'exécuter automatiquement différents programmes les uns après les autres afin d'accélérer le traitement. Puis dans les années 1960, des fonctions permettant d'utiliser des bibliothèques d'exécution, d'interrompre des processus et de paralléliser les traitements. C'est à partir là que naît la notion de système d'exploitation.
 
-* Un *système d'exploitation* (*operating system* en anglais, abrégé *OS*) est un ensemble d'outils servant d'intermédiaire entre le hardware et les logiciels qui tournent dessus. Son principal rôle d'organiser l'utilisation des ressources, mais il fournit également des services permettant de gérer le système et les programmes. Les principaux systèmes d'exploitations sont Windows, MacOS et Linux.
+* Un *système d'exploitation* (*operating system* en anglais, abrégé *OS*) est un ensemble d'outils servant d'intermédiaire entre le hardware et les logiciels qui tournent dessus. Son principal rôle est d'organiser l'utilisation des ressources, mais il fournit également des services permettant de gérer le système et les programmes. Les principaux systèmes d'exploitations sont Windows, MacOS et Linux.
 
 * Le *noyau* (aussi appelé *core* ou *kernel* en anglais) est la partie du système d'exploitation qui s'occupe d'interragir avec le composant matériel — tels que le processeur, les chipsets, la RAM, le disque dur, etc.
 
@@ -17,23 +17,23 @@ category: Linux
 
 * GNU est un projet initié par Richard Stallman en 1983, visant à développer un système d'exploitation open source compatible UNIX. Il invite la communauté hacker à le rejoindre et participer à son développement — cette annonce fait suite à la guerre déclarée par Symbolics au laboratoire d'intelligence artificielle du MIT et à la disparition de la communauté hacker Lisp.
 
-  L'effort est opiniâtrement poursuivi et, au début des années 90, le projet GNU possède tous les éléments nécessaires à la construction d'un système d'exploitation avec notamment un interpréteur de commande, un compilateur et un éditeur (emacs). Mais reste l'élément le plus central: le noyau.
+  L'effort est opiniâtrement poursuivi et, au début des années 90, le projet GNU possède tous les éléments nécessaires à la construction d'un système d'exploitation avec notamment un interpréteur de commande, un compilateur et un éditeur (emacs). Mais manque l'élément le plus central: le noyau.
 
   Note: GNU est l'acronyme de "GNU's not Unix", soit "GNU n'est pas Unix" en français. Il est souvent considéré comme le premier acronyme récursif: un acronyme dans lequel l'une des lettres désigne l'acronyme lui-même.
 
 * En 1991, Linus Torvalds entreprend le développement d'un noyau d'OS. Il souhaite avant tout comprendre le fonctionnement de son ordinateur, qui tourne avec un Intel 80386 et le système d'exploitation Minix.
 
-  Comme le concepteur de Minix, Andrew Tanenbaum, refuse d'intégrer les contributions visant à améliorer Minix, et après l'ajout de diverses fonctionnalités dont un système de fichiers compatible avec celui de Minix, Linus oriente son projet vers quelque chose de plus ambitieux: un noyau aux normes POSIX. POSIX (Portable Operating System Interface) est une ensemble de normes spécifiées par l'IEEE, ayant pour but de maintenir la compatibilité entre les systèmes d'exploitation.
+  Comme le concepteur de Minix, Andrew Tanenbaum, refuse d'intégrer les contributions visant à améliorer Minix, et après l'ajout de diverses fonctionnalités dont un système de fichiers compatible avec celui de Minix, Linus oriente son projet vers quelque chose de plus ambitieux: un noyau aux normes POSIX. POSIX (*Portable Operating System Interface*) est une ensemble de normes spécifiées par l'IEEE, ayant pour but de maintenir la compatibilité entre les systèmes d'exploitation.
 
-  À ce noyau, il adapte de nombreux composants disponibles du système d'exploitation GNU pour obtenir un système d'exploitation plus complet. Le 26 août 1991, il annonce sur le forum Usenet news :comp.os.minix qu'il écrit un système d'exploitation. Et suite aux efforts de la communauté open source, en février 1992, la version 0.12 du système d'exploitation GNU/Linux est ouverte au public (sous licence GNU GPL).
+  À ce noyau, il adapte de nombreux composants disponibles du système d'exploitation GNU pour obtenir un système d'exploitation plus complet. Le 26 août 1991, il annonce sur le forum Usenet news :comp.os.minix qu'il écrit un système d'exploitation. Et suite aux efforts de la communauté open source, en février 1992, la version 0.12 du système d'exploitation GNU/Linux est ouverte au public — sous licence GNU GPL.
 
 ## Distributions Linux
 
-* On appele *distribution* (parfois abbrégré *distro*) l'ensemble formé par le système d'exploitation GNU/Linux et une suite de logiciels pré-installés.
+* On appele *distribution* (parfois abrégré *distro*) l'ensemble formé par le système d'exploitation GNU/Linux et une suite de logiciels pré-installés.
 
-  Une distribution vient avec des choix pré-faits — quel logiciel fournira quel service. Par exemple, Mozilla Firefox vs Google Chrome pour navigateur web, apt vs yum pour gestionnaire d'applications, GNOME vs KDE pour environnement de travail. Une fois installée, il est toujours possible d'installer d'autres logiciels à la place. Toute personne peut créer une distribution et la diffuser.
+  Une distribution vient avec des choix pré-faits — quel logiciel fournira quel service. Par exemple, Mozilla Firefox vs Google Chrome pour navigateur web, apt vs yum pour gestionnaire d'applications, GNOME vs KDE pour environnement de travail. Une fois la distribution installée, il est toujours possible d'installer d'autres logiciels à la place. Toute personne peut créer une distribution et la diffuser.
 
-  Différentes distributions se concentrent sur différents cas d'utilisation: ordinateur de bureau, serveur, travail scientifique, etc. Certaines distributions offrent un soutient commercial; la plupart sont basées sur le bénévolat.
+  Différentes distributions se concentrent sur différents cas d'utilisation: ordinateur de bureau, serveur, travail scientifique, etc. Certaines distributions offrent un soutient commercial mais la plupart sont basées sur le bénévolat.
 
 * On trouve parmis les plus populaires, 5 grandes familles de distributions:
   1. Red Hat  
@@ -42,7 +42,7 @@ category: Linux
   4. Android
   5. Raspbian
 
-  RedHat et Debian couvrent la plupart (mais pas toutes) des principales différences entre les distributions.
+  RedHat et Debian couvrent la plupart des principales différences entre les distributions (mais pas toutes).
 
 * Dans la famille Debian, on trouve notamment:
 
@@ -52,7 +52,7 @@ category: Linux
 
   Dans la famille Red Hat:
 
-   - <u>Red Hat Enterprise Linux (RHEL)</u>: se concentre sur les serveurs. C'est une distribution stable avec de longs cycles de lancement, développée par l'entreprise Red Hat et offre un support commercial — mais est payante
+   - <u>Red Hat Enterprise Linux (RHEL)</u>: se concentre sur les serveurs. C'est une distribution stable avec de longs cycles de lancement, développée par l'entreprise Red Hat et offre un support commercial. Cette distribution est payante
    - <u>CentOS</u>: une version gratuite de RHEL qui n'offre pas de support
    - <u>Fedora</u>: une distribution sponsorisée par Red Hat, pour un bureau personnel avec les derniers logiciels
    - <u>Scientific Linux</u>: une distribution d'utilisation scientifique
@@ -76,10 +76,10 @@ category: Linux
 
 * Le terme "shell" vient de la terminologie employée avec les premiers systèmes d'exploitation de type Unix:
 
-  - le *kernel* ("cerneau" en français, qui est la partie comestible du noyau d'une noix)   
+  - le *kernel* (littéralement "cerneau" en français, qui est la partie comestible du noyau d'une noix)   
     est la couche de bas niveau du système d'exploitation,
 
-  - et le *shell* ("coque" en français)  
+  - et le *shell* (litt. "coque" en français)  
     est la couche de haut niveau.
 
   L'idée étant que pour accéder au kernel, il faut passer par le shell.
@@ -95,11 +95,11 @@ category: Linux
 * Chaque système d'exploitation a son interpréteur de commande, avec sa propre syntaxe.  
   L'interpréteur de commande sous Unix était "shell", aujourd'hui on l'appelle le "bourne shell".
 
-* Bash est l'interpréteur de commande du projet GNU — pour Bourne Again Shell. Il est compatible avec le Bourne Shell (la syntaxe Unix peut être utilisée sous Bash), mais ajoute des fonctionnalités supplémentaires.
+* Bash (pour Bourne Again Shell) est l'interpréteur de commande du projet GNU. Il est compatible avec le Bourne Shell (la syntaxe Unix peut être utilisée sous Bash), mais ajoute des fonctionnalités supplémentaires.
 
   Bash possède de nombreuses fonctions populaires, dont
   - un historique en ligne de commande
-  - scripting
+  - scripting (for, if...)
   - définition d'alias et variables
 
 * Il existe d'autres interpréteurs de commandes.  
@@ -116,9 +116,9 @@ category: Linux
 
   [Comparaison syntaxe shells](http://hyperpolyglot.org/unix-shells)
 
-* Dans la plupart des cas, l'interpréteur de commande est bash; mais certaines distributions fournissent un autre interpréteur de commande par défaut, comme le C-shell. 
+* Dans la plupart des distributions l'interpréteur de commande est bash, mais certaines fournissent un autre interpréteur de commande par défaut, comme le C-shell. 
 
-* Note: sous macOS, l'intérpréteur de commande est généralement zsh, tcsh ou bash.
+* Note: sous macOS, l'interpréteur de commande est généralement zsh, tcsh ou bash.
 
 ## Terminal
 
@@ -155,7 +155,8 @@ category: Linux
   - un environnement de bureau (*desktop environment*)
   - un gestionnaire de fenêtre (*windows manager*)
 
-* Le serveur graphique assure la connexion entre les composants de l'interface graphique et le kernel. Typiquement, il est lancé dans le terminal 7.
+* Le serveur graphique assure la connexion entre les composants de l'interface graphique et le kernel.  
+  Typiquement, il est lancé dans le terminal 7.
 
 * Actuellement, il existe deux grands serveurs graphiques:
 
@@ -175,7 +176,7 @@ category: Linux
   * <u>un gestionnaire d'écran</u> (*display manager*)  
     Un gestionnaire d'écran gère la fenêtre de connexion de l'environnement de bureau.
 
-    XDM est un gestionnaire d'écran basique — qui utilise XDMCP (X Display Manager Control Procol) pour communiquer avec le serveur graphique. La plupart des environnement de bureau ont leur propre gestionnaire d'écran, basé sur XDM:
+    XDM est un gestionnaire d'écran basique — qui utilise XDMCP (*X Display Manager Control Procol*) pour communiquer avec le serveur graphique. La plupart des environnement de bureau ont leur propre gestionnaire d'écran, basé sur XDM:
 
     - GNOME: GDM
     - KDE Plasma: SDDM

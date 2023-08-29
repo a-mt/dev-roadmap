@@ -229,6 +229,8 @@ category: Linux, Network
   tcp    LISTEN   0        128                 [::]:17500           [::]:*        users:(("dropbox",pid=2423,fd=52))
   ```
 
+  Memo: tulipe N
+
 ## Fichiers ouverts
 
 * Afficher les infos du processus 2639

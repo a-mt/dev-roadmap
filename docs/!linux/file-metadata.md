@@ -34,9 +34,9 @@ category: Linux, Fichiers
    Birth: -
   ```
 
-## ls -l (-h, -d)
+## ls -l, -h, -d
 
-* L'option -l (long) de ls permet d'afficher les metadonnées de fichiers
+* ls permet d'afficher les métadonnées des fichiers grâce à l'option= -l (long)
 
   ```
   $ ls -l /etc/shadow
@@ -46,11 +46,7 @@ category: Linux, Fichiers
   ![](https://i.imgur.com/QXu2WHHl.png)
 
 1. <ins>Type</ins>  
-   Le premier caractère indique le type du fichier:
-
-    ```
-    -
-    ```
+   Le premier caractère indique le type du fichier.
 
     | Caractère | Signification
     |--- |---
@@ -61,6 +57,12 @@ category: Linux, Fichiers
     | p | (pipe) fichier virtuel, permet la communication entre les processus
     | b | (bloc) fichier virtuel, utilisé pour communiquer avec le matériel
     | c | (characters) fichier virtuel, utilisé pour communiquer avec le matériel
+  
+   Dans l'example `-rw-r-----`:
+
+    ```
+    -
+    ```
 
 2. <ins>Permissions</ins>  
    Les 9 caractères qui suivent indiquent les permissions sur ce fichier
@@ -70,21 +72,21 @@ category: Linux, Fichiers
     ```
 
 3. <ins>Liens</ins>  
-    Ce nombre est le nombre de liens durs vers ce fichier
+    Nombre de liens durs vers ce fichier
 
     ```
     1
     ```
 
 4. <ins>Utilisateur propriétaire</ins>  
-    Il s'agit de l'utilisateur propriétaire du fichier, sur lequel les permissions utilisateur s'appliquent.
+    Utilisateur propriétaire du fichier, sur lequel les permissions utilisateur s'appliquent.
 
     ```
     root
     ```
 
 5. <ins>Groupe propriétaire</ins>  
-    Il s'agit du groupe propriétaire du fichier, sur lequel les permissions de groupe s'appliquent.
+    Groupe propriétaire du fichier, sur lequel les permissions de groupe s'appliquent.
 
     ```
     shadow
@@ -97,16 +99,21 @@ category: Linux, Fichiers
     1275
     ```
 
-    * Pour les fichiers texte, un octet est un caractère (pour du UTF-8) donc il est facile de comprendre la taille du fichier.
+    Notes:
 
-    * Pour les fichiers volumineux, on peut afficher la taille du fichier en méga ou giga-octets avec l'option -h (human format)
+    * Pour les fichiers texte, un octet est un caractère (pour du UTF-8)  
+      il est donc facile de comprendre la quantité que représente la taille du fichier.
+
+    * Pour les fichiers volumineux, on peut afficher la taille du fichier  
+      en méga ou giga-octets avec l'option -h (human format)
 
       ``` bash
       $ ls -lh /etc/shadow
       -rw-r----- 1 root shadow 1.3K Sep 22 11:07 /etc/shadow
       ```
 
-    * La taille indiqué pour un répertoire n'est pas la taille des fichiers qu'il contient mais juste du répertoire lui-même. Pour afficher la somme des tailles de fichier dans un répertoire, utiliser `du -sh`
+    * La taille indiqué pour un répertoire n'est pas la taille des fichiers qu'il contient  
+      mais juste du répertoire lui-même. Pour afficher la somme des tailles de fichier dans un répertoire, utiliser `du -sh`
 
       ``` bash
       $ ls -lhd /etc

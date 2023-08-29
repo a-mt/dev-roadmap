@@ -83,7 +83,8 @@ category: Linux, Fichiers
     $ setfacl -m user:utilisateur:rwx,user:utilisateur2:r,group:groupe:rw fichier
     ```
 
-* La valeur par défaut d'un répertoire (si définie) est héritée par les nouveaux fichiers crées dans ce répertoire. Pour la définir:
+* La valeur par défaut d'un répertoire (si définie) est héritée par les nouveaux fichiers crées dans ce répertoire.  
+  Pour définir la valeur par défaut:
 
     ``` bash
     $ setfacl -m d:u:isabelle:rx adir

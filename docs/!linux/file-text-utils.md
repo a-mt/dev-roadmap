@@ -13,17 +13,25 @@ category: Linux, Fichiers
   ```
 
   Pour afficher les caractères spéciaux:  
-  -v : caractères de contrôle  
+  -v : caractères de contrôle ([)  
   -e : caractères de fin de ligne ($)  
   -t : tabulations (^)  
 
   ``` bash
+  $ echo -e '\E[47;34m\033[1m'E'\033[0m'$'a\tb\nc' > filename
+
+  $ cat filename
+  𝗘a  b
+  c
+
   $ cat -vet filename
+  ^[[47;34m^[[1mE^[[0ma^Ib$
+  c$
   ```
 
 ## nl
 
-* `nl` permet d'afficher le contenu d'un fichier texte et les numéros de ligne
+* `nl` permet d'afficher le contenu d'un fichier texte en numérotant les lignes
 
   ``` bash
   $ nl /etc/passwd
@@ -38,29 +46,39 @@ category: Linux, Fichiers
        9  mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
   ```
 
-  Par défaut, les lignes vides ne sont pas numérotées
+* Par défaut, les lignes vides ne sont pas numérotées.  
+  L'option `-b` (body-numbering) permet de modifier ce comportement.
+  (t par défaut)
+
+  ``` diff
+   $ echo -e "Hello\n\nWorld" > file
+   $
+  -$ nl file
+        1  Hello
+  -       
+        2  World
+   $
+  +$ nl --body-numbering=a file
+        1  Hello
+  +     2  
+        3  World
+  ```
+
+* `-s` (number-separator) permet de modifier le suffixe après le numéro des lignes.
+  (tabulation par défaut)
 
   ``` bash
-  $ echo "Hello" > file
-  $ echo "" >> file
-  $ echo "World" >> file
-  $
-  $ nl file
-       1  Hello
-         
-       2  World
-  $
-  $ nl --body-numbering=a file
-       1  Hello
-       2  
-       3  World
-
   # suffix
   $ nl -s ') ' file
      1) Hello
         
      2) World
+  ```
 
+* `-n` (number-format) permet de modifier l'alignement des numéros.
+  (rn par défaut)
+
+  ``` bash
   # Right Justified, Leading Zeros ( rz )
   $ nl -n rz file
   000001  Hello
@@ -74,10 +92,19 @@ category: Linux, Fichiers
   2       World
   ```
 
+* `-w` de modifier le nombre de chiffres.
+  (6 par défaut)
+
+  ``` bash
+  $ nl -n rz -w 2 file
+  01  Hello
+     
+  02  World
+  ```
+
 ## head
 
 * `head` permet d'afficher les premières lignes d'un fichier texte  
-  L'option -n peut être utilisée pour indiquer le nombre de lignes à afficher (10 par défaut)
 
   ``` bash
   $ head /var/log/apt/term.log
@@ -93,10 +120,21 @@ category: Linux, Fichiers
   Preparing to unpack .../1-curl_7.58.0-2ubuntu3.19_amd64.deb ...
   ```
 
+* `-n` permet de modifier le nombre de lignes affichées (10 par défaut)
+
+  ``` bash
+  $ sudo nl --body-numbering=a /var/log/apt/term.log | head -n 5
+       1  
+       2  Log started: 2023-08-05  20:41:24
+  (Reading database ... 173249 files and directories currently installed.)
+       4  Preparing to unpack .../libatomic1_10.5.0-1ubuntu1~20.04_amd64.deb ...
+       5  Unpacking libatomic1:amd64 (10.5.0-1ubuntu1~20.04) over (10.3.0-1ubuntu1~20.04) ...
+  ```
+
 ## tail
 
-* `tail` permet d'afficher les dernières lignes d'un fichier texte  
-  -n pour modifier le nombre (10 par défaut)
+* `tail` permet d'afficher les dernières lignes d'un fichier texte.  
+  L'option `-n` permet de modifier le nombre de lignes affichées (10 par défaut)
 
   ``` bash
   $ tail -n 5 /var/log/kern.log
@@ -107,51 +145,53 @@ category: Linux, Fichiers
   Jul 21 18:04:35 am-XPS-13-7390 kernel: [49604.925104] pci_bus 0000:3b: Allocating resources
   ```
 
-  L'option -f permet d'afficher les dernières lignes et d'afficher les nouveaux messages au fur et à mesure qu'ils arrivent. Ctrl+C pour arrêter le processus
+* L'option `-f` permet d'afficher les dernières lignes puis afficher les nouveaux messages au fur et à mesure qu'ils arrivent.  
+  Ctrl+C pour arrêter le processus
 
 ## more
 
-* Pour consulter le contenu d'un gros fichier, la meilleure manière de parcourir les lignes est d'utiliser un utilitaire de pagination (dit *pager* en anglais).
+* Pour consulter le contenu d'un gros fichier, la meilleure manière de parcourir les lignes
+  est d'utiliser un utilitaire de pagination (dit *pager* en anglais).
 
-* `more` est un pager très simple
+* `more` est un pager très simple.  
+  Une fois lancé, il affiche la première page — une page correspond à suffisamment de texte pour remplir l'écran.  
+  Un pourcentage s'affiche en bas de l'écran, qui est la progression dans le fichier.
 
   ``` bash
   $ more /var/log/boot.log
   ```
 
-  Une fois lancé, il montre la première page — une page correspond à suffisamment de texte pour remplir l'écran. Un pourcentage s'affiche en bas de l'écran, qui est la progression dans le fichier.
+* On peut avancer dans le fichier une page à la fois avec la barre espace.  
+  Ou une seule ligne à la fois avec la touche Entrée.  
 
-  * On peut avancer dans le fichier une page à la fois avec la barre espace.  
-  * Ou une seule ligne à la fois avec la touche Entrée.  
-    Avec more, une fois qu'on a avancé, on ne peut plus revenir en arrière.  
-  * Une fois à la fin du fichier, la commande est terminée — on a de nouveau le prompt.
+* Avec more, une fois qu'on a avancé, on ne peut plus revenir en arrière.  
+  Et une fois à la fin du fichier, la commande est terminée — on a de nouveau le prompt.
 
 ## less
 
-* `less` est un pager plus récent, qui offre plus de fonctionnalités, mais n'est pas incluse dans toutes les distributions Linux — contrairement à `more`. Il tire son nom de "less is more".
+* `less` est un pager plus récent, qui offre plus de fonctionnalités, mais il n'est pas inclus dans toutes les distributions Linux, contrairement à `more`. Il tire son nom de "less is more".
+  Tout comme `more`, une fois lancé, il montre la première page. 
 
   ``` bash
   $ sudo less /var/log/boot.log
   ```
 
-  Tout comme `more`, une fois lancé, il montre la première page. 
+- On peut avancer une ligne à la fois avec Entrée ou la flèche vers le bas (`↓`).  
+  Pour remonter d'une ligne, utiliser la flèche vers le haut (`↑`).
 
-  - On peut avancer une ligne à la fois avec Entrée ou la flèche vers le bas (`↓`).  
-    Pour remonter d'une ligne, utiliser la flèche vers le haut (`↑`).
+- On peut avancer une page à la fois avec espace ou page suivante (`⇟`).  
+  Pour remonter d'une page, utiliser `b` (back) ou page précédente (`⇞`).
 
-  - On peut avancer une page à la fois avec espace ou page suivante (`⇟`).  
-    Pour remonter d'une page, utiliser `b` (back) ou page précédente (`⇞`).
+- On peut avancer d'une demi-page avec `d` (demi)  
+  Pour remonter d'une demi-page, utiliser `u` (undo demi)
 
-  - On peut avancer d'une demi-page avec `d` (demi)  
-    Pour remonter d'une demi-page, utiliser `u` (undo demi)
+- On peut effectuer une recherche en tapant `/` suivit du motif à chercher et Entrée.  
+  Pour effectuer une recherche en sens inverse, utiliser `?` suivit du motif et Entrée.
 
-  - On peut effectuer une recherche en tapant `/` suivit du motif à chercher et Entrée.  
-    Pour effectuer une recherche en sens inverse, utiliser `?` suivit du motif et Entrée.
+<!-- -->
 
-  <!-- -->
-
-  - Utiliser `h` pour voir toutes les informations d'aide.
-  - Une fois à la fin du fichier, on peut remonter vers le haut ou presser `q` pour quitter.
+- Utiliser `h` pour voir toutes les informations d'aide.
+- Une fois à la fin du fichier, on peut remonter vers le haut ou presser `q` pour quitter.
 
 * Les pages de manuel utilisent less
 
@@ -171,22 +211,22 @@ category: Linux, Fichiers
   41 /etc/passwd
   ```
 
-* -w (word) pour ne récupérer que le nombre de mots
+* -w (word) pour le nombre de mots
 
   ``` bash
   $ wc -w /etc/passwd
   70 /etc/passwd
   ```
 
-* -c (characters) pour ne récupérer que le nombre d'octets  
-  Notons qu'en ASCII et UTF-8, un octet = un caractère. Si le fichier contient des caractères sur plusieurs octets, alors le nombre d'octets (retourné) ne représente pas le nombre de caractères. 
+* -c (characters) pour le nombre d'octets.  
+  Notons qu'en ASCII et UTF-8, un octet = un caractère. Mais si le fichier contient des caractères sur plusieurs octets, alors le nombre d'octets retourné ne représente pas le nombre de caractères. 
 
   ``` bash
   $ wc -c /etc/passwd
   2426 /etc/passwd
   ```
 
-* -m (multibytes) pour récupérer le nombre de caractères  
+* -m (multibytes) pour le nombre de caractères.  
   Prend en compte les caractères sur plusieurs octets
 
   ``` bash
@@ -199,18 +239,20 @@ category: Linux, Fichiers
 
 ## split
 
-* `split` permet de séparer un gros fichier en plusieurs plus petits fichiers.  
-  Par défaut le préfixe est "x"
+* `split` permet de séparer un gros fichier en plusieurs plus petits fichiers.
 
-  -d  : utiliser un suffixe numérique (par défaut alphabétique : file_aa, file_ab, etc)  
-  -a N: longueur du suffixe (par défaut 2)  
-  -l N: nombres de lignes à mettre dans un fichier avant d'en créer un nouveau  
+  - Argument: par défaut le préfixe est "x",
+    on peut spécifier un autre préfixe en argument
+  - Option `-d`: par défaut split numérote les fichiers avec les lettres de l'alphabet (file_aa, file_ab, etc),  
+    on peut utiliser un suffixe numérique à la place (file_01, file_02, etc)
+  - Option `-a N`: spécifie la longueur du suffixe (par défaut 2)  
+  - Option `-l N`: spécifie le nombres de lignes dans chaque fichier
 
   ``` bash
   $ wc -l /var/log/kern.log
   13138 /var/log/kern.log
 
-  $ split -l 1000 -d /var/log/kern.log kern_
+  $ split -l 1000 -d -a 2 /var/log/kern.log kern_
   $ ls -l
   total 1400
   -rw-rw-r-- 1 am am 107508 juil. 21 20:33 kern_00
@@ -238,7 +280,7 @@ category: Linux, Fichiers
 
 ## cut
 
-* `cut` est utilisée pour travailler avec des fichiers qui contiennent des colonnes séparées par un délimiteur. Elle permet d'extraire certaines colonnes
+* `cut` est utilisée pour travailler avec des fichiers qui contiennent des données en colonnes, séparées par un délimiteur ou non. On peut extraire les données de ces colonnes
 
   * -d pour spécifier le(s) délimiteur(s) à utiliser  
     Par défaut, cut utilise le caractère Tab
@@ -246,46 +288,47 @@ category: Linux, Fichiers
   * -f pour spécifier les champs à afficher  
     Pour afficher plusieurs champs, utiliser
 
-    - la virgule: `1,3` pour les champs 1 et 3
-    - ou le tiret: `1-3` pour les champs 1 à 3
-    - ou les deux: `1,3-5,7`
+    - la virgule pour ET: `1,3` = les champs 1 et 3
+    - le tiret pour DE..À: `1-3` = les champs 1 à 3
+    - ou les deux: `1,3-5,7` = les champs 1, 3 à 5, et 7
 
-  ``` bash
-  $ cut -d: -f1,6 /etc/passwd | head
-  root:/root
-  daemon:/usr/sbin
-  bin:/bin
-  sys:/dev
-  sync:/bin
-  games:/usr/games
-  man:/var/cache/man
-  lp:/var/spool/lpd
-  mail:/var/mail
-  news:/var/spool/news
-  $
-  $ getent group docker | cut -d: -f3
-  1001
-  $
-  ```
+    ``` bash
+    $ cut -d: -f1,6 /etc/passwd | head
+    root:/root
+    daemon:/usr/sbin
+    bin:/bin
+    sys:/dev
+    sync:/bin
+    games:/usr/games
+    man:/var/cache/man
+    lp:/var/spool/lpd
+    mail:/var/mail
+    news:/var/spool/news
 
-* -c pour extraire les colonnes en fonction de la position des caractères
+    $ getent group docker | cut -d: -f3
+    1001
+    ```
 
-  ``` bash
-  $ cut -c1-10 /etc/passwd
-  root:x:0:0
-  daemon:x:1
-  bin:x:2:2:
-  sys:x:3:3:
-  sync:x:4:6
-  games:x:5:
-  ```
+  * -c pour extraire les données en fonction de la position des caractères
+
+    ``` bash
+    # Caractères de 1 à 10
+    $ cut -c1-10 /etc/passwd
+    root:x:0:0
+    daemon:x:1
+    bin:x:2:2:
+    sys:x:3:3:
+    sync:x:4:6
+    games:x:5:
+    ```
 
 ## tr
 
-* `tr` permet de remplacer un caractère par un autre  
-  tr n'accepte pas de nom de fichier en argument, uniquement stdin en entrée
+* `tr` permet de remplacer un caractère par un autre.  
+  tr prend stdin en entrée et n'accepte pas de nom de fichier en argument
 
   ``` bash
+  # Remplacer chaque deux-point par une tabulation
   $ tr : $'\t' < /etc/passwd
   root  x 0 0 root  /root /bin/bash
   daemon  x 1 1 daemon  /usr/sbin /usr/sbin/nologin
@@ -296,7 +339,7 @@ category: Linux, Fichiers
 
 ## column
 
-* `column` permet de créer présenter l'info en colonnes  
+* `column` permet de présenter des données tabulaires (ex csv) en colonnes.  
   Ajoute des espaces de manière appropriée pour que les infos soient alignées
 
   ``` bash
@@ -315,30 +358,30 @@ category: Linux, Fichiers
 
 ## uniq
 
-* `uniq` permet de supprimer les lignes dupliquées  
-  Des lignes sont considérées comme dupliquées si elles sont côte à côte.
+* `uniq` permet de supprimer les lignes dupliquées.  
+  Des lignes ne sont considérées comme dupliquées que si elles sont côte à côte.
 
-  ``` bash
-  $ echo "Hello" > word.txt
-  $ echo "World" >> word.txt
-  $ echo "World" >> word.txt
-  $ echo "World" >> word.txt
-  $ echo "Hello" >> word.txt
-  $
-  $ cat word.txt
-  Hello
-  World
-  World
-  World
-  Hello
-  $
-  $ uniq word.txt
-  Hello
-  World
-  Hello
+  ``` diff
+   $ echo "Hello" > word.txt
+   $ echo "World" >> word.txt
+   $ echo "World" >> word.txt
+   $ echo "World" >> word.txt
+   $ echo "Hello" >> word.txt 
+
+   $ cat word.txt
+   Hello
+  -World
+  -World
+  -World
+   Hello 
+
+   $ uniq word.txt
+   Hello
+  +World
+   Hello
   ```
 
-* -c pour récupérer le nombre d'occurence
+* Afficher le nombre d'occurence: `-c`
 
   ``` bash
   $ uniq -c word.txt
@@ -347,50 +390,55 @@ category: Linux, Fichiers
       1 Hello
   ```
 
-* -d pour n'afficher que les lignes dupliquées, une fois
+* N'afficher que les lignes dupliquées:  
+  Une fois: `-d`
 
   ``` bash
   $ uniq -d word.txt
   World
-  $
+
+  # + afficher le nombre d'occurences
   $ uniq -dc word.txt
       3 World
   ```
 
- * -D pour n'afficher que les lignes dupliquées, autant de fois qu'elle apparaissent
+  Autant de fois qu'elle apparaissent: `-D`
 
-  ``` baqh
+  ``` bash
   $ uniq -D word.txt
   World
   World
   World
   ```
 
-* -f pour ignorer N champs au début de la ligne
+* Ignorer N champs au début de la ligne: `-f N`
 
-  ``` bash
-  $ echo '1 Hello A' > wordk.txt
-  $ echo '2 World A' >> wordk.txt
-  $ echo '3 World B' >> wordk.txt
-  $ echo '4 World B' >> wordk.txt
-  $ echo '5 Hello B' >> wordk.txt
-  $ echo '6 World A' >> wordk.txt
-  $ echo '7 ! A' >> wordk.txt
-  $ cat wordk.txt
-  1 Hello A
-  2 World A
-  3 World B
-  4 World B
-  5 Hello B
-  6 World A
-  7 ! A
-  $ uniq -f 1 wordk.txt
-  1 Hello A
-  2 World A
-  3 World B   <-
-  5 Hello B
-  6 World A
-  7 ! A
+  ``` diff
+   $ echo '1 Hello A' > wordk.txt
+   $ echo '2 World A' >> wordk.txt
+   $ echo '3 World B' >> wordk.txt
+   $ echo '4 World B' >> wordk.txt
+   $ echo '5 Hello B' >> wordk.txt
+   $ echo '6 World A' >> wordk.txt
+   $ echo '7 ! A' >> wordk.txt 
+
+  -$ cat wordk.txt
+   1 Hello A
+   2 World A
+  -3 World B
+  -4 World B
+   5 Hello B
+   6 World A
+   7 ! A
+
+  # Ignorer les numéros de ligne (1 caractère en début de ligne)
+  +$ uniq -f 1 wordk.txt
+   1 Hello A
+   2 World A
+  +3 World B
+   5 Hello B
+   6 World A
+   7 ! A
   ```
 
 ## sort
@@ -406,154 +454,14 @@ category: Linux, Fichiers
   World
   World
   World
-  $
+  $ 
   $ sort word.txt | uniq -c
         1 
         2 Hello
         4 World
   ```
 
-* L'option -n permet d'effectuer un tri numérique  
-  et -V d'effectuer un tri naturel (alphabétique sur les caractères alphabétiques et numérique sur les caractères numériques).
-
-  ``` bash
-  $ echo -e "1. A\n20. B\n10. C\n100. D" > file
-  $ cat file
-  1. A
-  20. B
-  10. C
-  100. D
-  $
-  $ sort file
-  100. Z
-  10. W
-  1. A
-  20. Q
-  $
-  $ sort -n file
-  1. A
-  10. W
-  20. Q
-  100. Z
-  ```
-
-  ``` bash
-  $ echo -e "file1\nfile20\nfile10\nfile100" > file
-  $ cat file
-  file1
-  file20
-  file10
-  file100
-  $
-  $ sort file
-  file1
-  file10
-  file100
-  file20
-  $
-  $ sort -n file  # échoue puisque f n'est pas numérique
-  file1
-  file10
-  file100
-  file20
-  $
-  $ sort -V file  # fonctionne correctement
-  file1
-  file10
-  file20
-  file100
-  ```
-
-* sort peut réorganiser la sortie en fonction du contenu d'un ou plusieurs champs, déterminés par un délimiteur.
-
-  * -t pour spécifier le séparateur de champs.
-
-  * -k pour spécifier le numéro du champ à premier duquel trier les lignes.  
-    On peut utiliser une virgule pour s'arrêter avant la fin de la ligne  
-
-    Exemple: -k2 trie à partir de la colonne 2 (et colonne 3, 4 etc...),  
-    tandis que -k2,2 trie uniquement sur la colonne 2
-
-  ``` bash
-  $ getent passwd | sort -n -t: -k3
-  root:x:0:0:root:/root:/bin/bash
-  daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
-  bin:x:2:2:bin:/bin:/usr/sbin/nologin
-  sys:x:3:3:sys:/dev:/usr/sbin/nologin
-  sync:x:4:65534:sync:/bin:/bin/sync
-  ```
-
-  ``` bash
-  $ cat wordk.txt
-  1 Hello A
-  2 World A
-  3 World B
-  4 World B
-  5 Hello B
-  6 World A
-  $ sort -k2 wordk.txt
-  7 ! A
-  1 Hello A
-  5 Hello B
-  2 World A
-  6 World A
-  3 World B
-  4 World B
-  $ sort -k2,2 wordk.txt
-  7 ! A
-  1 Hello A
-  5 Hello B
-  2 World A
-  3 World B   <-
-  4 World B
-  6 World A   <-
-  ```
-
-* -u pour appliquer uniq sur les champs utilisés dans le tri
-
-  ``` bash
-  $ cat wordk.txt
-  1 Hello A
-  2 World A
-  3 World B
-  4 World B
-  5 Hello B
-  6 World A
-  7 ! A
-  $ sort -k2 wordk.txt
-  7 ! A
-  1 Hello A
-  5 Hello B
-  2 World A
-  6 World A
-  3 World B
-  4 World B
-  $ sort -k2 -u wordk.txt
-  7 ! A
-  1 Hello A
-  5 Hello B
-  2 World A
-  3 World B
-  $ sort -k2,2 -u wordk.txt
-  7 ! A
-  1 Hello A
-  2 World A
-  ```
-
-* -f pour ignorer la casse
-
-  ``` bash
-  $ echo '8 World a' >> wordk.txt
-
-  $ sort -k3 -u wordk.txt
-  8 World a
-  1 Hello A
-  3 World B
-
-  $ sort -k3 -uf wordk.txt
-  1 Hello A
-  3 World B
-  ```
+  [Plus sur sort](utility-sort.md)
 
 ## tac
 
@@ -569,7 +477,7 @@ category: Linux, Fichiers
 
 ## grep
 
-* `grep` permet de filtrer des lignes suivant un motif
+* `grep` permet de filtrer les lignes suivant un motif
 
   ``` bash
   $ grep root /etc/passwd
@@ -577,65 +485,27 @@ category: Linux, Fichiers
   nm-openvpn:x:116:123:NetworkManager OpenVPN,,,:/var/lib/openvpn/chroot:/usr/sbin/nologin
   ```
 
-  Le motif recherché est un regex (penser échapper les caractères interprétés par le shell s'il y en a)
+  ``` bash
+  # Récupèrer l'ensemble des lignes qui contiennent ERROR
+  # dans les fichiers du répertoire "logs" 
+  $ grep -rn 'ERROR' logs
+  ./subdir/file:1:ERROR ma 2ème erreur
+  ./file:2:ERROR mon erreur
+  ```
+
+  Le motif recherché est un regex — penser échapper les caractères interprétés par le shell (wildcards) s'il y en a
 
   ``` bash
   $ grep ^root /etc/passwd
   root:x:0:0:root:/root:/bin/bash
   ```
 
-* Quelques options utiles:
-
-  * <u>-F</u> (fixed strings) pour désactiver les regex  
-    Note: anciennement, plutôt que `grep -F` on utilisait `fgrep`, désormais déprécié
-
-    ``` bash
-    $ touch file1 file2 file.
-    $ ls | grep file.
-    file.
-    file1
-    file2
-    $ ls | grep -F file.
-    file.
-    ```
-
-  * <u>-E</u> (extended regex) pour utiliser des regex étendues  
-    Note: anciennenment, plutôt que `grep -E` on utilisait `egrep`, désormais déprécié
-
-    ``` bash
-    $ ls | grep -E '(html|css|js|map)$'
-    tmp.html
-    tmp.js
-    ```
-
-  * <u>-v</u> (invert) pour faire recherche inversée (exclure les lignes qui contiennent un motif)    
-    <u>-i</u> (insensitive) pour un motif insensible à la casse
-
-    ``` bash
-    $ grep -vi NOLOGIN /etc/passwd
-    root:x:0:0:root:/root:/bin/bash
-    sync:x:4:65534:sync:/bin:/bin/sync
-    :am:x:1000:1000:am,,,:/home/am:/bin/bash
-    ```
-
-  * <u>-d skip</u> pour ne rechercher qu'à l'intérieur des fichiers  
-    <u>-n</u> pour indiquer le numéro de la ligne
-
-    ``` bash
-    $ grep -n _HOME -d skip /etc/* 2>/dev/null
-    /etc/adduser.conf:58:# If SETGID_HOME is "yes" home directories for users with their own
-    /etc/adduser.conf:63:SETGID_HOME=no
-    /etc/deluser.conf:4:REMOVE_HOME = 0
-    /etc/deluser.conf:10:# REMOVE_HOME or REMOVE_ALL_FILES is set.
-    /etc/login.defs:207:DEFAULT_HOME  yes
-    ```
-
-  [Syntaxe grep](utility-grep.md)
+  [Plus sur grep](utility-grep.md)
 
 ## sed
 
-* `sed` permet de remplacer un mot par un autre, ligne par ligne  
-  Par défaut, seul la première occurence sur chaque ligne est remplacée  
+* `sed` permet de remplacer un mot par un autre, ligne par ligne.  
+  Par défaut, seul la première occurence sur chaque ligne est remplacée.  
   Ajouter le modifier `g` pour remplacer toutes les instances
 
   ``` bash
@@ -651,7 +521,7 @@ category: Linux, Fichiers
   I love strawberry vanilla cake
   ```
 
-  [Syntaxe sed](utiltiy-sed.md)
+  [Plus sur sed](utility-sed.md)
 
 ## awk
 
@@ -679,14 +549,14 @@ category: Linux, Fichiers
   file:7: END
   ```
 
-  [Syntaxe awk](utility-awk.md)
+  [Plus sur awk](utility-awk.md)
 
 ## diff
 
 * `diff` permet de voir les différences entre deux fichiers  
   Par défaut diff n'affiche que les différences, en utilisant la convention suivante:
 
-  - changement (c = change):  
+  - **c** (change): changement  
     1c1 signifie que la ligne 1 du fichier à changé (entre file1 et file2)
 
     ``` bash
@@ -699,7 +569,7 @@ category: Linux, Fichiers
     > abc
     ```
 
-  - ajout (a = add):  
+  - **a** (add): ajout  
     1a2 signifie que la ligne 2 a été ajoutée dans le deuxième fichier
 
     ``` bash
@@ -710,7 +580,7 @@ category: Linux, Fichiers
     > ac
     ```
 
-  - suppression (d = delete):  
+  - **d** (delete): suppression  
     2d1 signifie que la 2ème ligne du premier fichier a été supprimée
 
     ``` bash
@@ -740,7 +610,6 @@ category: Linux, Fichiers
 
 * `paste` permet de combiner des fichiers texte côte à côte, en colonnes  
   L'ordre des colonnes est déterminé par l'ordre des fichiers en argument  
-  Le séparateur par défaut est une tabulation
 
   ``` bash
   $ cat alpha.txt
@@ -770,7 +639,11 @@ category: Linux, Fichiers
   10   foxtrot
   42   november
   7    sierra
-  $
+  ```
+
+* `-d` permet de spécifier le séparateur à utiliser (tabulation par défaut)
+
+  ``` bash
   $ paste -d= alpha.txt numbers.txt 
   alpha=1
   foxtrot=3
@@ -782,17 +655,14 @@ category: Linux, Fichiers
 ## join
 
 * `join` permet de combiner des fichiers texte côte à côte en effectuant une jointure sur une colonne.  
-  Les lignes doivent être dans le même ordre entre les deux fichiers  
-  Par défaut:
+  Les lignes doivent être dans le même ordre entre les deux fichiers
 
-  - Le séparateur est l'espace  
-    -t pour spécifier un autre séparateur
+  - `-t` pour spécifier le séparateur (espace par défaut)
 
-  - Seules les lignes qui trouvent une correspondance sont retournées  
-    -a1 pour un left join
+  - `-a1` pour un left join (inner join par défaut)    
 
-  - La jointure est effectuée sur le premier mot des deux fichiers  
-    -12 -23 pour joindre sur le mot 2 du fichier 1 avec le mot 3 du fichier 2
+  - `-12 -23` pour joindre sur le mot 2 du fichier 1 avec le mot 3 du fichier 2  
+    (la jointure est effectuée sur le premier mot des deux fichiers par défaut, soit `-11 -21`)
 
   ``` bash
   $ sudo join -t: /etc/passwd /etc/shadow
@@ -830,7 +700,16 @@ category: Linux, Fichiers
   0000160 000010 000000 000000 000000 000003 000000 000004 000000
   0000200 001070 000000 000000 000000 001070 000000 000000 000000
   0000220 001070 000000 000000 000000 000034 000000 000000 000000
+  ```
 
+- `-Ax` pour afficher les adresses (à gauche) en hexadécimal
+- `-t` pour modifier la manière dont le contenu est affiché
+
+  - `z` en suffixe: afficher les caractères imprimables à la fin de chaque ligne
+  - `c`: afficher les caractères imprimables ou code d'échappement
+  - `xN` pour afficher le contenu hexadécimal, en prenant N octets
+
+  ``` bash
   $ od -A x -t x1z -v /bin/cat | head
   000000 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00  >.ELF............<
   000010 03 00 3e 00 01 00 00 00 10 27 00 00 00 00 00 00  >..>......'......<
@@ -842,7 +721,9 @@ category: Linux, Fichiers
   000070 08 00 00 00 00 00 00 00 03 00 00 00 04 00 00 00  >................<
   000080 38 02 00 00 00 00 00 00 38 02 00 00 00 00 00 00  >8.......8.......<
   000090 38 02 00 00 00 00 00 00 1c 00 00 00 00 00 00 00  >8...............<
+  ```
 
+  ``` bash
   $ od -A x -t c -v /bin/cat | head
   000000 177   E   L   F 002 001 001  \0  \0  \0  \0  \0  \0  \0  \0  \0
   000010 003  \0   >  \0 001  \0  \0  \0 020   '  \0  \0  \0  \0  \0  \0

@@ -5,7 +5,7 @@ category: Linux
 
 ## man
 
-* Pour rappel, UNIX est le système d'exploitation qui a servi de modèle à Linux. Les développeurs d'UNIX ont crée des documents d'aide appelés *man pages* (abbrégé de *manual pages*, "pages de manuel" en français). Ces documents fournissent une description de base du but de la commande, ainsi que des détails sur les options disponibles.
+* Pour rappel, UNIX est le système d'exploitation qui a servi de modèle à Linux. Les développeurs d'UNIX ont crée des documents d'aide appelés *man pages* (abrégé de *manual pages*, "pages de manuel" en français). Ces documents fournissent une description de base du but de la commande, ainsi que des détails sur les options disponibles.
 
   On peut visualiser les man pages d'une commande avec `man` suivit du nom de la commande.
 
@@ -15,11 +15,11 @@ category: Linux
 
   Utiliser les touches fléchées pour naviguer, ou espace pour faire défiler un écran à la fois, et <kbd>q</kbd> pour quitter
 
-* Les pages de manuel sont divisées en sections.  
-  Chaque section est conçue pour fournir des informations spécifiques sur une commande.  
+* Les pages de manuel sont divisées en parties.  
+  Chaque partie est conçue pour fournir des informations spécifiques sur une commande.  
   Les plus courantes sont:
 
-  | Section | Description
+  | Partie | Description
   |--- |---
   | NAME | Fournit le nom de la commande est un très brève description
   | SYNOPSIS | Fournit des exemples d'exécution de la commande
@@ -54,7 +54,7 @@ category: Linux
 
 ## man -k
 
-* On peut afficher toutes les entrées du manuel contenant un texte donné dans le titre ou le synopsis grâce à la commande `man -k`. C'est pratique pour retrouver le nom d'une commande dont on ne se souvient plus.
+* On peut afficher toutes les entrées du manuel contenant un texte donné dans le titre ou le synopsis grâce à la commande `man -k`. C'est pratique pour retrouver une commande dont on ne se souvient plus du nom.
 
   ```
   $ man -k scan
@@ -74,12 +74,12 @@ category: Linux
   vsscanf (3)          - input format conversion
   ```
 
-## man -f
+## Section
 
 * Il y a des milliers de pages de manuel sur une distribution Linux typique.  
   Pour organiser toutes ces pages de manuel, elles sont classées par sections.
 
-  Par défaut, il y a neuf sections par défaut des pages de manuel:
+  Par défaut par défaut 9 sections de pages de manuel:
   - 1 commandes générales
   - 2 appels systèmes
   - 3 appels de bibliothèque
@@ -103,7 +103,9 @@ category: Linux
   FDISK(8)       System Administration       FDISK(8)
   ```
 
-* Il arrive qu'il arrive des pages de manuel portant le même nom mais dans des sections différentes 
+## man -f
+
+* Il arrive qu'il y ait des pages de manuel de même nom mais dans des sections différentes 
   — par exemple, le fichier passwd et la commande passwd
 
   ```
@@ -149,7 +151,8 @@ category: Linux
 
 * `apropos` permet de chercher parmis les pages du manuel, même principe que `man -k`
 
-* apropos fonctionne avec une base de données, un programme vient la rafraîchir périodiquement. Sur une nouvelle machine, il est nécessaire de déclencher cette action manuellement avec `mandb`
+* apropos fonctionne avec une base de données, un programme vient la rafraîchir périodiquement.  
+  Sur une nouvelle machine, il est nécessaire de déclencher cette action manuellement avec `mandb`
 
   ``` bash
   $ apropos director
@@ -175,7 +178,7 @@ category: Linux
   - chaque page de manuel est un document séparé, non lié à une autre page de manuel
   - elles peuvent être longues et difficiles à lire
 
-* La commande `info` fournit également de la documentation sur les commandes et les fonctionnalités du système d'information. Considérer les pages de manuel comme une ressource de référence et les documents d'information comme un guide d'apprentissage.
+* La commande `info` fournit également de la documentation sur les commandes et les fonctionnalités du système d'information, mais peut contenir des hyperliens. On peut considérer les pages de manuel comme une ressource de référence et les pages d'info comme un guide d'apprentissage.
 
   ```
   $ info ls
@@ -191,7 +194,7 @@ category: Linux
 
 ## --help
 
-* De nombreuses commandes fourniront des informations de base, très similaires au SYNOPSIS que l'on trouve dans les pages de manuel en utilisant simplement l'option `--help` de la commande
+* De nombreuses commandes fourniront des informations de base, très similaires au SYNOPSIS qu'on trouve dans les pages de manuel, simplement avec l'option `--help`
 
   ```
   $ git --help
@@ -199,7 +202,7 @@ category: Linux
 
 ## README
 
-* Sur la plupart des systèmes, il existe un répertoire où l'on trouve de la documentaiton supplémentaire, comme les fichiers de document stockés par des fournisseurs de logiciels tiers. Ces fichiers de documentation sont souvent appelés fichiers *readme* car ils portent généralement des noms tels que README ou readme.txt
+* Sur la plupart des systèmes, il existe un répertoire où on trouve un supplément de documentation, souvent crées par des fournisseurs de logiciels tiers. Ces fichiers de documentation sont souvent appelés fichiers *readme* car ils sont généralement nommés README ou readme.txt
 
 * Les emplacement typiques pour ces fichiers incluent `/usr/share/doc` et `/usr/doc`
 

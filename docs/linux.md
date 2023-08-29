@@ -46,6 +46,8 @@ summary: false
 [sed]: !linux/utility-sed.md
 [grep]: !linux/utility-grep.md
 [vim]: !linux/utility-vim.md
+[sort]: !linux/utility-sort.md
+[find]: !linux/utility-find.md
 [iptables]: !linux/iptables.md
 
 [hardware-overview]: !linux/hardware-overview.md
@@ -180,7 +182,7 @@ summary: false
   - [Impression][print]
   - [Logs][logging]
 
-  <!-- -->
+    <!-- -->
 
   - [Serveur DNS](!linux/service-dns.md)
   - [SSH](!linux/service-ssh.md)
@@ -197,17 +199,19 @@ summary: false
   - [Théorie: couche 4 — connexion](!linux/network-layer4-tcp.md)
   - [Theorie: DNS](!linux/dns.md)
 
-  <!-- -->
+    <!-- -->
 
   - [Afficher les configurations réseau](!linux/network-quick.md)
   - [Interfaces][network-nic]
   - [Nom d'hôte][network-hostname]
   - [Firewall](!linux/network-firewall-cmd.cmd), [Iptables][iptables], UFW [1 &#x21F2;](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-9)
 
-* Utilitaires
+* Quicklink: utilitaires
   - [Awk][awk]
   - [Sed][sed]
   - [Grep][grep]
+  - [Sort][sort]
+  - [Find][find]
 
 * Éditeurs
   - [Vim][vim]

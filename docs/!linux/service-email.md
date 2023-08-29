@@ -224,7 +224,7 @@ category: Linux
   - un logiciel, comme Microsoft Outlook, Mozilla Thunderbird ou une application sur smarthone.  
     Dans ce cas, on a besoin d'un serveur IMAP
 
-* IMAP est l'abbrévation d'*Internet Message Access Protocol* (protocole d'accès aux messages Internet).  
+* IMAP est l'abrévation d'*Internet Message Access Protocol* (protocole d'accès aux messages Internet).  
   Un daemon IMAP couramment utilisé sous Linux est dovecot.
 
   Le processus est simple: le client de messagerie, comme Outlook, se connecte à dovecot et, une fois la connexion réussie, récupère les emails de l'utilisateur stockés sur notre serveur pour les afficher.

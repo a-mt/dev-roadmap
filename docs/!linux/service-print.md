@@ -7,7 +7,7 @@ category: Linux
 
 * Les ordinateurs et les divers périphériques qui y sont connectés, comme les imprimantes, n'utilisent pas le même language. De la même manière que deux humains ne parlant pas la même langue ont besoin d'un traducteur pour les aider à communiquer, les ordinateurs utilisent des traducteurs appelés *pilotes* (ou *driver* en anglais), pour faire le lien entre le système d'exploitation et le composant.
 
-* Le langage le plus courant pour les imprimantes est PostScript. Pour utiliser une imprimante PostScript, il est nécessaire d'avoir son fichier PPD — abbréviation de POstscript Pinter Description file. Ce fichier décrit à la fois l'imprimante et driver nécessaire.
+* Le langage le plus courant pour les imprimantes est PostScript. Pour utiliser une imprimante PostScript, il est nécessaire d'avoir son fichier PPD — abréviation de POstscript Pinter Description file. Ce fichier décrit à la fois l'imprimante et driver nécessaire.
 
   Souvent, pour les imprimantes prises en charge par Linux, le site Web du fabricant contient à la fois le driver et le fichier PPD nécessaires, ainsi que des instructions sur la manière de les installer sur Linux.
   On a également le site https://www.openprinting.org/ qui répertorie divers drivers et fichiers PPD.

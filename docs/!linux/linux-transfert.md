@@ -16,17 +16,17 @@ category: Linux
 * Ordinateur B
 
   ``` bash
-  nc 192.168.1.11 55555 # Se connecter au port 55555 sur 192.168.1.11
+  nc 192.168.1.11 55555 # Se connecter sur le port 55555 de 192.168.1.11
   ```
 
 * Taper du texte + Entrée  
-  Ce qui est écrit dans un terminal est envoyé à l’autre et réciproquement
+  Ce qui est écrit dans un terminal est envoyé à l’autre et inversemment
 
 ---
 
 ## Copier un fichier distant
 
-* Ordinateur A  
+* Ordinateur A (serveur)  
   Démarrer un serveur SSH
 
   ``` bash
@@ -36,7 +36,7 @@ category: Linux
   ifconfig # Noter son adresse IP (ex: 192.168.1.11)
   ```
 
-* Ordinateur B  
+* Ordinateur B (client)  
   Ex: copier /usr/share/applications/defaults.list (A) vers /tmp/defaults.list (B)
 
   ``` bash
@@ -45,11 +45,11 @@ category: Linux
 
 ---
 
-## Monter un filesystem distant
+## Monter un filesystem SSH
 
-Permet de monter une partition distante et de copier/coller les fichiers via GUI ou terminal
+Permet de monter localement un répertoire servi par ssh et ainsi copier/coller les fichiers via GUI ou terminal
 
-* Ordinateur B
+* Ordinateur B (client)
 
   ``` bash
   # Install sshfs

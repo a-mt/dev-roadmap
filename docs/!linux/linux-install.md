@@ -358,3 +358,19 @@ Pour voir la liste des drivers installés, ouvrir Logiciels & mises à jour > Pi
 Sinon, télécharger l'exe sur le site du constructeur. Ex: [Drivers Dell](https://www.dell.com/support/home/fr/fr/frbsdt1/product-support/product/inspiron-15-7577-laptop/drivers)
 
 [How to Update Firmware on Ubuntu 18.04](https://itsfoss.com/update-firmware-ubuntu/)
+
+---
+
+### Définir la timezone
+
+``` bash
+$ ls -l /etc/localtime
+$ ls /usr/share/zoneinfo/Europe/Paris
+$ sudo ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
+```
+
+---
+
+### Installation logiciels
+
+[Logiciels](linux-install-soft.md)

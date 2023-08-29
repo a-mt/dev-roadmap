@@ -5,7 +5,7 @@ category: Linux
 
 ## Théorie
 
-* NTP est l'abbréviation de *Network Time Protocole* (protocole de temps réseau). Il s'agit d'un protocole réseau permettant de synchroniser l'heure entre différents systèmes informatiques sur des réseaux de données à latence variable.
+* NTP est l'abréviation de *Network Time Protocole* (protocole de temps réseau). Il s'agit d'un protocole réseau permettant de synchroniser l'heure entre différents systèmes informatiques sur des réseaux de données à latence variable.
 
   Il permet de maintenir l'exactitude de l'horloge d'un ordinateur grâce à une hiérarchie de serveur dans le monde. Dans le monde entier, il existe de nombreux mécanismes de chronométrage précis, tels que les horloges atomiques et radiales, dont l'heure exacte est transmise à des serveurs connectés. Si tous les utilisateurs se connectaient directement à ces serveurs pour avoir l'heure exacte, ils seraient rapidement dépassés. Le protocole NTP utilise donc une hiérarchie pour assurer la fluidité du service.
 

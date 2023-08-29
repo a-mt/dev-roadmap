@@ -3,11 +3,11 @@ title: Wildcard
 category: Linux, Shell, Bash
 ---
 
-* Les caractères globaux (ou *globs* ou *wildcards*) sont des caractères symboliques qui ont une signification particulière pour le shell. Grâce aux globs, on peut spécifier des noms de fichiers qui suivent un modif donné: au lieu de manipuler un seul fichier à la fois, ont peut facilement exécuter des commandes qui affecteront de nombreux fichiers.
+* Les caractères globaux (aussi appelés *globs* ou *wildcards*) sont des caractères symboliques qui ont une signification particulière pour le shell. Grâce aux globs, on peut spécifier des noms de fichiers qui suivent un modif donné: au lieu de manipuler un seul fichier à la fois, ont peut facilement exécuter des commandes qui affecteront de nombreux fichiers.
 
-* Les wildcards sont interprétées directement par le shell et non par la commande appelée: si on lance `ls *.html`, la commande executée sera en vérité `ls file1.html file2.html`. On peut donc utiliser des wildcards avec toutes les commandes qui acceptent un ou des fichiers (ls, cat, cp, etc).
+* Les wildcards sont interprétées directement par le shell et non par la commande appelée: si on lance `ls *.html`, la commande executée sera en vérité `ls file1.html file2.html`. On peut donc utiliser des wildcards avec toutes les commandes qui acceptent un ou plusieurs fichiers (comme ls, cat, cp, etc).
 
-* Conséquence: attention à échapper les globs pour les commandes qui veulent prendre des regex en paramètre.
+* Conséquence: attention à échapper les globs pour les commandes qui veulent prendre des regex en paramètre, pour que le caractère ne soit pas interprété par le shell.
   - `.*` (wildcard) = le caractère `"."` suivit de n'importe quels caractères
   - `'.*'` (regex) = n'importe quels caractères
 
@@ -62,6 +62,8 @@ category: Linux, Shell, Bash
 
 ### Quantificateurs
 
+* Le shell bash accepte également des quantificateurs:
+
   ```
   @(a|b)     a ou b, exactement 1 fois (les expressions peuvent contenir des wildcards)
   *(a|b)     a ou b, de 0 à n fois
@@ -70,8 +72,10 @@ category: Linux, Shell, Bash
   !(a|b)     Ni a ni b
   ```
 
-``` bash
-$ CI_REGISTRY_IMAGE=registry.example.com:5000/projectname
-$ echo ${CI_REGISTRY_IMAGE/:*([0-9])/}
-registry.example.com/projectname
-```
+  <ins>Exemple</ins>:
+
+  ``` bash
+  $ CI_REGISTRY_IMAGE=registry.example.com:5000/projectname
+  $ echo ${CI_REGISTRY_IMAGE/:*([0-9])/}
+  registry.example.com/projectname
+  ```

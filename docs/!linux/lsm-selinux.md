@@ -164,7 +164,7 @@ category: Linux, Linux security modules
 * Chaque niveau est une paire `sensibilité:catégories`, où la catégorie est optionelle.  
   s0 est la sensibilité 0, sans catégorie
 
-  Si l'ensemble de catégorie est contigue, on peut l'abbréger: c0.c3 équivaut à
+  Si l'ensemble de catégorie est contigue, on peut l'abréger: c0.c3 équivaut à
   c0,c1,c2,c3.  
   s0:c0.c1023 est la sensibilité 0, autorisé pour toutes les catégories
 

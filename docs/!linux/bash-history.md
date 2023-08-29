@@ -6,8 +6,7 @@ category: Linux, Shell, Bash
 ## Utiliser l'historique
 
 * Lorsqu'une commande est exécutée dans le terminal, elle est stockée dans l'historique.  
-  Appuyer sur la touche "Flèche vers le haut" pour afficher la commande précédente.
-
+  Appuyer sur la touche "Flèche vers le haut" pour afficher la commande précédente.  
   Une autre possibilité est d'utiliser Ctrl + r pour chercher une commande dans l'historique (à partir de la fin).
 
 * Pour afficher l'historique complet, utiliser la commande `history`
@@ -47,13 +46,13 @@ category: Linux, Shell, Bash
   Pour ré-exécuter la dernière commande, il y a un raccourci: `!!`.
 
 * Pour executer une commande sans l'ajouter à l'historique,  
-  ajouter au moins un espace en début de ligne : <code>  cmd</code>
+  ajouter au moins un espace en début de ligne : <code>  cmd</code>
 
 ---
 
-## Expansion
+## Expansion d'historique
 
-### Des commandes
+### Commandes
 
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
@@ -94,10 +93,10 @@ On peut ajouter des "filtres" à ces expansions:
   <td>Afficher la dernière commande executée</td>
 </tr>
 <tr>
-  <th align="left">!11-</th>
+  <th align="left">!11:-</th>
   <td>Executer la commande n°11 en supprimant le dernier argument
   <pre lang="shell">11                  npm install -S package
-!11- newpackage     npm install -S newpackage</pre></td>
+!11:- newpackage     npm install -S newpackage</pre></td>
 </tr>
 <tr>
   <th align="left">!11:s/abc/def</th>
@@ -121,17 +120,17 @@ Raccourcis pour la dernière commande:
 </tr>
 </table>
 
-### Des paramètres
+### Paramètres des commandes
 
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
 <tr>
-  <th align="left">!*</th>
+  <th align="left">!:*</th>
   <td>Tous les arguments de la dernière commande</td>
 </tr>
 <tr>
   <th align="left">!611:*</th>
-  <td>Tous les arguments de commande n°611</td>
+  <td>Tous les arguments de la commande n°611</td>
 </tr>
 <tr>
   <th align="left">!-2:*</th>
@@ -144,55 +143,61 @@ On peut cibler différentes commandes de l'historique de la même manière qu'av
 <table>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
 <tr>
-  <th align="left">!$</th>
-  <td>Le dernier argument
+  <th align="left">!11:$</th>
+  <td>Le dernier argument de la commande n°11
   <pre lang="shell">ls /media/F468-BB77/Music
 find . -ctime 0 -exec cp -v {} !$ \;
 # recopier les fichiers crées aujourd'hui dans "/media/..."</pre></td>
 </tr>
 <tr>
-  <th align="left">!$:h</th>
-  <td>Le dernier argument, en supprimant le nom de fichier du path
+  <th align="left">!11:^</th>
+  <td>Le premier argument de la commande 11</td>
+</tr>
+<tr>
+  <th align="left">!11:$:h</th>
+  <td>Le dernier argument de la commande n°11, en supprimant le nom de fichier du path (= récupérer ce qui est avant le dernier /)
   <pre lang="shell">du -sh /home/tom/work/doc.txt
 cd !$:h # cd /home/tom/work</pre></td>
 </tr>
 <tr>
-  <th align="left">!$:t</th>
-  <td>Le dernier argument, en supprimant le nom de dossier du path
+  <th align="left">!11:$:t</th>
+  <td>Le dernier argument de la commande n°11, en supprimant le nom de dossier du path (= récupérer ce qui est après le dernier /)
   <pre lang="shell">ls /home/tom/work/doc.txt
 echo document=!$:t # document=doc.txt</pre></td>
 </tr>
 <tr>
-  <th align="left">!$:r</th>
-  <td>Le dernier argument, en supprimant l'extension du fichier
+  <th align="left">!11:$:r</th>
+  <td>Le dernier argument de la commande n°11, en supprimant l'extension du fichier (= récupérer ce qui est avant le dernier .)
   <pre lang="shell">vi /home/tom/work/doc.txt
 echo stripext=!$:r # stripext=/home/tom/work/doc</pre></td>
 </tr>
 <tr>
-  <th align="left">!$:e</th>
-  <td>Le dernier argument, uniquement l'extension du fichier
+  <th align="left">!11:$:e</th>
+  <td>Le dernier argument de la commande n°11, uniquement l'extension du fichier (= récupérer ce qui est après le dernier .)
   <pre lang="shell">vi /home/tom/work/doc.txt
 echo extonly=!$:e # extonly=.txt</pre></td>
 </tr>
 <tr>
-  <th align="left">!^</th>
-  <td>Le premier argument</td>
+  <th align="left">!11:$:t:r</th>
+  <td>Le dernier argument de la commande n°11, uniquement le nom de fichier moins l'extension (= récupérer ce qui est après le dernier / et avant le dernier .)
+  <pre lang="shell">vi /home/tom/work/doc.txt
+echo filename=!$:t:r # filename=doc</pre></td></td>
 </tr>
 <tr>
-  <th align="left">!!:2</th>
-  <td>Le 2ème argument</td>
+  <th align="left">!11:2</th>
+  <td>Le 2ème argument de la commande n°11</td>
 </tr>
 <tr>
-  <th align="left">!!:3-5</th>
-  <td>Les arguments 3 à 5 (= 3,4,5)</td>
+  <th align="left">!11:3-5</th>
+  <td>Les arguments 3 à 5 (= 3,4,5) de la commande n°11</td>
 </tr>
 <tr>
-  <th align="left">!!:3*</th>
-  <td>De l'argument 3 au dernier argument (= de 3 à n)</td>
+  <th align="left">!11:3*</th>
+  <td>De l'argument 3 au dernier argument (= de 3 à n) de la commande n°11</td>
 </tr>
 <tr>
-  <th align="left">!!:3-</th>
-  <td>De l'argument 3 à l'avant-dernier argument (= de 3 à n-1)</td>
+  <th align="left">!11:3-</th>
+  <td>De l'argument 3 à l'avant-dernier argument (= de 3 à n-1) de la commande n°11</td>
 </tr>
 </table>
 
@@ -258,21 +263,21 @@ echo extonly=!$:e # extonly=.txt</pre></td>
 
 ## Variables d'environnement
 
-* HISTFILE: emplacement du fichier history
+* **HISTFILE**: emplacement du fichier history
 
   ```
   $ echo $HISTFILE
   /home/am/.bash_history
   ```
 
-* HISTFILESIZE: nombre maximum de lignes dans le fichier history
+* **HISTFILESIZE**: nombre maximum de lignes dans le fichier history
 
   ```
   $ echo $HISTFILESIZE
   2000
   ```
 
-* HISTSIZE: nombre maximum de lignes dans la session en en cours
+* **HISTSIZE**: nombre maximum de lignes gardé en mémoire
 
   ```
   $ echo $HISTSIZE

@@ -6,7 +6,7 @@ category: Linux, Shell
 ## Flux
 
 * <ins>stdin</ins>  
-  Normalement, on entre des données ou des commandes via le clavier ou la souris: c'est l'*entrée standard* (*standard input* en anglais), abbrégé stdin. Il s'agit du flux 0.
+  Normalement, on entre des données ou des commandes via le clavier ou la souris: c'est l'*entrée standard* (*standard input* en anglais), abrégé stdin. Il s'agit du flux 0.
 
   Notons qu'un grand nombre de commande acceptent deux manières d'opérer:
 
@@ -59,7 +59,7 @@ La *redirection de flux* est la capacité d'envoyer ou de recevoir du texte non 
   ```
 
 * Le chevron simple écrase le contenu d'un fichier existant.  
-  Pour ajouter le contenu à la fin du fichier, au lieu d'écraser le contenu, utiliser un double chevron (`>>`):
+  Pour ajouter le contenu à la fin du fichier, au lieu d'en écraser le contenu, utiliser un double chevron (`>>`):
 
   ``` bash
   $ ls -d /bin >> file
@@ -68,7 +68,7 @@ La *redirection de flux* est la capacité d'envoyer ou de recevoir du texte non 
   /bin
   ```
 
-* Les fichiers utilisés par les redirections sont ouverts en écriture avant que la commande ne sont lancée: il n'est donc pas possible d'utiliser une commande qui redirige vers un fichier (= utilise un fichier en écriture) et lit ce même fichier.
+* Les fichiers utilisés par les redirections sont ouverts en écriture avant que la commande ne soit lancée: il n'est donc pas possible d'utiliser une commande qui redirige vers un fichier (= utilise un fichier en écriture) et lit ce même fichier.
 
   ``` bash
   # Ne marche pas
@@ -95,7 +95,11 @@ La *redirection de flux* est la capacité d'envoyer ou de recevoir du texte non 
   ls: cannot access '/nop': No such file or directory
   ```
 
-* Utiliser `2>>` pour ajouter à la fin du fichier et non écraser
+* Même principe que stsdin, utiliser un double-chevron pour ajouter à la fin du fichier et non écraser
+
+  ``` bash
+  $ ls /nop 2>> file2
+  ````
 
 ### 2>&1 : sortie vers une autre sortie
 
@@ -136,9 +140,7 @@ La *redirection de flux* est la capacité d'envoyer ou de recevoir du texte non 
   ```
 
   ``` bash
-  $ while IFS=: read user pass uid autres; do
-  > echo $user: $uid
-  > done < /etc/passwd
+  $ while IFS=: read user pass uid rest; do echo $user: $uid; done < /etc/passwd
   root: 0
   bin: 1
   ...
@@ -146,7 +148,7 @@ La *redirection de flux* est la capacité d'envoyer ou de recevoir du texte non 
   tremblay: 1000
   ```
 
-### <<DELIM : here document
+### &lt;&lt;DELIM : here document
 
 * En l'utilisant `<<`, l'entrée standard peut être récupérée à partir d'une chaîne de caractère.  
   La première ligne précise le délimiteur, qui indiquera la dernière ligne (on utilise souvent EOF, pour *end of file*)
@@ -162,7 +164,7 @@ La *redirection de flux* est la capacité d'envoyer ou de recevoir du texte non 
   EOF
   ```
 
-### <<< : here string
+### &lt;&lt;&lt; : here string
 
 * Une variante similaire, le `<<<`, permet de passer une chaîne de caractère sur seule ligne en entrée. Pas de délimiteur nécessaire ici.
 
@@ -246,11 +248,11 @@ On peut utiliser les flux avec des fichiers textes, mais également des fichiers
   colord  /usr/sbin/nologin
   ```
 
-### tee : stdout vers un fichier + stdout
+### tee file : stdout vers un fichier + stdout
 
 * `tee` permet de sauvegarder stdout dans un fichier en plus de l'afficher dans le terminal.
 
-  ```
+  ``` bash
   $ man -k which | grep ^which | tee studyMe.txt
   which (1)            - locate a command
   $
@@ -258,9 +260,9 @@ On peut utiliser les flux avec des fichiers textes, mais également des fichiers
   which (1)            - locate a command
   ```
 
-  Utiliser l'option `-a` pour ajouter à la fin (append) et non écraser le contenu du fichier
+  Utiliser l'option `-a` pour ajouter à la fin (append) au lieu d'écraser le contenu du fichier
 
-  ```
+  ``` bash
   $ man -k whereis | grep ^whereis | tee -a studyMe.txt
   whereis (1)          - locate the binary, source, and manual page files for a command
   $
@@ -269,11 +271,18 @@ On peut utiliser les flux avec des fichiers textes, mais également des fichiers
   whereis (1)          - locate the binary, source, and manual page files for a command
   ```
 
-### exec
+### exec : créer des flux
 
-* `exec` permet de rediriger les flux du shell courant
+* La commande `exec` permet de créer des flux supplémentaires.  
+  Il est déconseillé d'utiliser un *n* supérieur à 9, car il peut entrer en conflit avec les flux utilisés en interne par le shell.
+
+  [Documentation: Redirections](https://www.gnu.org/software/bash/manual/html_node/Redirections.html)
+
+* `exec TO<file` permet de créer un flux en entrée à partir d'un fichier  
+  `exec TO<&FROM` permet de créer un flux en entrée à partir d'un autre flux
 
   ``` bash
+  # -- exec TO<file
   # Met le contenu du fichier "datafile" dans fd6
   exec 6< datafile
 
@@ -281,14 +290,25 @@ On peut utiliser les flux avec des fichiers textes, mais également des fichiers
   read a1 <&6
   read a2 <&6
 
+  # -- exec TO<&FROM
   # Supprime fd6
   exec 6<&-
   ```
 
+  <ins>Formellement</ins>:  
+  `[n]<&word` duplique un flux en entrée (crée n à partir de word)  
+  Si *n* n'est pas spécifié, alors 0 est utilisé  
+  Si *word* vaut `-`, alors le file descriptor *n* est fermé.
+
+* `exec TO>file` permet de créer un flux en sortie à partir d'un fichier  
+  `exec TO>&FROM` permet de créer un flux en sortie à partir d'un autre flux  
+
   ``` bash
+  # -- exec TO>&FROM
   # Copie stdout (fd1) dans fd6
   exec 6>&1
 
+  # -- exec TO>file
   # Remplace stdout par le fichier "logfile"
   exec > logfile
 
@@ -297,6 +317,7 @@ On peut utiliser les flux avec des fichiers textes, mais également des fichiers
   echo "-------------------------------------"
   ls -al
 
+  # -- exec TO>&FROM
   # Restaure stdout à partir de fd6
   # puis supprime fd6
   exec 1>&6 6>&-
@@ -313,15 +334,25 @@ On peut utiliser les flux avec des fichiers textes, mais également des fichiers
   -rw-rw-r--  1 am am        68 Apr  4 08:36 logfile
   ```
 
+  <ins>Formellement</ins>:
+  `[n]>&word` duplique un flux en sortie (crée n à partir de word)  
+  Si *n* n'est pas spécifié, alors 1 est utilisé  
+  Si *word* vaut `-`, alors le file descriptor *n* est fermé.  
+  Si *word* vaut `N-`, alors le file descriptor *N* est fermé après avoir été dupliqué dans *n*.
+
+* <ins>Exemple d'exec avec un fichier /dev/tcp</ins>:
+
   ``` bash
   # Window1: Démarer l'écoute sur le port 55555
   $ nc -l 55555
 
   # Window2: Rediriger la sortie vers le port 55555
-  $ exec 6>&1 $ exec > /dev/tcp/127.0.0.1/55555
+  $ exec 6>&1
+  $ exec > /dev/tcp/127.0.0.1/55555
   # ou nc 127.0.0.1 55555
 
-  $ echo "hello world" $ date
+  $ echo "hello world"
+  $ date
 
   # Window1: A reçu la sortie
   hello world
@@ -337,24 +368,26 @@ On peut utiliser les flux avec des fichiers textes, mais également des fichiers
   # ou nc -z 127.0.0.1 80
   ```
 
-* Formellement
+### Quick ref
 
-  - `[n]>&word` duplique un flux en sortie  
-    Si *n* n'est pas spécifié, alors 1 est utilisé  
-    Si *word* vaut `-`, alors le file descriptor *n* est fermé.
+```
+1> file       : stdout vers un fichier
+> file        : idem
 
-  - `[n]<&word` duplique un flux en entrée  
-    Si *n* n'est pas spécifié, alors 0 est utilisé  
-    Si *word* vaut `-`, alors le file descriptor *n* est fermé.
+2> file       : stderr vers un fichier
+2>&1          : stdout vers le même endroit que stdin
+&> file       : toutes les sorties vers un fichier
 
-  - `[n]<&digit-` déplace un flux en entrée  
-    Si *n* n'est pas spécifié, alors 0 est utilisé  
-    *digit* est fermé après avoir été dupliqué dans *n*
+< file        : stdin à partir d’un fichier
+<<DELIM       : here document
+<<<           : here string
 
-  - `[n]<&digit-` déplace un flux en entrée  
-    Si *n* n'est pas spécifié, alors 1 est utilisé  
-    *digit* est fermé après avoir été dupliqué dans *n*
+|             : stdout vers stdin
+tee file      : stdout vers un fichier + stdout
 
-  Il est déconseillé d'utiliser un *n* supérieur à 9, car il peut entrer en conflit avec les flux utilisés en interne par le shell.
+exec TO<file  : crée un flux en entrée (fdin) à partir d'un fichier
+exec TO<&FROM : crée un flux en entrée (fdin) à partir d'un autre flux
 
-  [Redirections](https://www.gnu.org/software/bash/manual/html_node/Redirections.html)
+exec TO>file  : crée un flux en sortie (fdout) à partir d'un fichier
+exec TO>&FROM : crée un flux en sortie (fdout) à partir d'un autre flux
+```

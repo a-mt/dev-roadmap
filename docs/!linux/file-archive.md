@@ -13,13 +13,13 @@ category: Linux, Fichiers
 
   Il existe deux types de compressions:
   - sans perte: aucune information n'est supprimée
-  - avec perte: certaines informations sur les fichiers peuvent être retirées
+  - avec perte: certaines informations sur les fichiers peuvent être retirées — par exemple les permissions
 
 ## tar
 
-* tar est l'utilitaire d'archivage traditionnel d'UNIX — tar est une forme abbrégée de *tape archive* (archive cassette). Lorsqu'une archive tar est compressée, on dit qu'il s'agit d'une *tarball*.
+* tar est l'utilitaire d'archivage traditionnel d'UNIX, le nom "tar" est une forme abrégée de *tape archive* (archive cassette). Lorsqu'une archive tar est compressée, on dit qu'il s'agit d'une *tarball*.
 
-  tar conserve une certain nombre d'attributs du système de fichier, comme le nom, la date de création, le propriétaire & permissions et la hiérarchie des répertoire. tar retire le répertoire racine (`/`) sur les chemins absolus de fichier, on peut donc restaurer une archive n'importe où dans le répertoire virtuel.
+  tar conserve une certain nombre d'attributs du système de fichier, comme le nom, la date de création, le propriétaire et permissions et la hiérarchie des répertoire. tar retire le répertoire racine (`/`) sur les chemins absolus de fichier, on peut donc restaurer une archive n'importe où dans le répertoire virtuel.
 
   POSIX a abandonné tar en faveur de pax, mais tar reste très populaire.
 
@@ -51,6 +51,39 @@ category: Linux, Fichiers
 
   $ ls file?
   file1 file2 file3 file4
+  ```
+
+* Par défaut, l'arborescence des répertoires est recréée à l'intérieur du tar relativement à /,
+  on peut utiliser `--directory` ou `-C` pour modifier le répertoire à partir duquel l'arborescence va être créé — et les fichiers en arguments doivent être des path relatifs à ce répertoire.
+
+  ``` bash
+  # Archive le répertoire /home/bob/databases/ vers /opt/archive.tar.bz2
+  # home/bob/databases/ est le répertoire de base pour les fichiers stockés dans cette archive
+  $ sudo tar -czf /opt/archive2.tar.gz bob/databases/
+
+  $ tar tf /opt/archive.tar.bz2
+  home/bob/databases/
+  home/bob/databases/file.sql
+  home/bob/databases/data.txt
+  home/bob/databases/file
+
+  # Idem mais le répertoire de base est bob/databases/
+  $ sudo tar --directory=/home -czf /opt/archive2.tar.gz bob/databases/
+
+  $ tar tf /opt/archive2.tar.gz
+  bob/databases/
+  bob/databases/file.sql
+  bob/databases/data.txt
+  bob/databases/file
+
+  # /var/www est le répertoire de base (on garde le / initial)
+  tar -P -czvf /root/www-backup.tar.gz /var/www/
+  ```
+
+  À l'extraction, on peut utiliser `--strip` pour retirer les répertoires parents dont on ne veut pas
+
+  ``` bash
+  tar xvf /backup/backup.tar --strip 1  
   ```
 
 ### Voir
@@ -96,22 +129,30 @@ category: Linux, Fichiers
   file4
   ```
 
+  ``` bash
+  # Extraire l'archive backup.tar.gz vers /opt/restored/
+  $ sudo tar -xzf backup.tar.gz -C /opt/restored
+  ```
+
 ### Compresser
 
 * Il est possible de compresser une archive à la volée quand on la crée, ou de la décompresser quand on l'extrait, en spécifiant l'algorithme de compression à utiliser.
 
   | UNIX-style | Bash-style | Description
   |---  |---        |---
+  | -z  | --gzip    | Utiliser gzip pour compresser/décompresser l'archive
   | -j  | --bzip2   | Utiliser bzip2 pour compresser/décompresser l'archive
   | -J  | --xz      | Utiliser xz pour compresser/décompresser l'archive
-  | -z  | --gzip    | Utiliser gzip pour compresser/décompresser l'archive
+
+  Memo: z = gzip, j = 2, J = non j
+
+  ![](https://i.imgur.com/g0H0jEF.jpg)
 
 * La bonne pratique veut que le type de compression utilisé soit indiqué dans l'extension du fichier:
 
   - .tar.gz pour une archive tar compressée par gzip
   - .tar.bz ou .tbz pour du bzip2
   - .tar.xz ou .txz ppur du xz
-
 
 * Par exemple, pour une archive avec compression xz:
 

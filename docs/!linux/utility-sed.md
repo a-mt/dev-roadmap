@@ -3,322 +3,613 @@ title: Sed
 category: Linux
 ---
 
-Sed (Stream EDitor) permet de manipuler des chaines de caractères : remplacer, ajouter, supprimer des caractères,
-ou sur des lignes, filtrer, inverser. Crée en 1973 par Bell Labs.
+Sed (Stream EDitor) permet de manipuler des chaines de caractères: remplacer, ajouter, supprimer des caractères,
+ou sur des lignes, filtrer, inverser. Créé en 1973 par Bell Labs.
 
 ---
 
-Convention :
-Le résultat d'une commande est indiqué après les `#`.
-Pour indiquer les caractères d'espace, de tabulation et les retours chariots, des caractères de remplacement sont utilisés :
+## Données en entrée
 
-| Caractère spécial | Caractère affiché |
-|---                |---                |
-| Tabulation        | &#x2E3A;          |
-| Espace            | &#xB7;            |
-| Retour chariot    | &#xAC;            |
+Comme awk, les données en entrées de sed peuvent provenir
 
----
+* d'un fichier
 
-## Execution
+    ``` bash
+    $ echo 'A-B-C' > file
 
-### Source de données
+    # Remplacer tous les tirets par des ..
+    $ sed 's/-/../g' file
+    A..B..C
+    ```
 
-Les données en entrées peuvent provenir d'un ou des fichiers ou de stdin (pipeline) - exactement pareil que awk.  
-Ici `..` remplace les commandes à executer
+* de plusieurs fichiers
 
-    sed .. file          Executer sed sur le contenu du fichier "file"
-    sed .. file file2    Executer sed sur le contenu des fichiers "file" et "file2" (concaténés)
-    sed ..               Executer sed sur stdin
-                         Si stdin est vide, démarre un prompt interractif (CTRL + D pour terminer)
+    ``` bash
+    # Remplacer http: par https:
+    $ sed 's/http:/https:/g' *.html
+    ```
 
-Par exemple : `echo "abc" | sed 's/a/A/' # Abc`
+* ou de stdin
 
-### Commandes à executer
+    ``` bash
+    # Remplacer tous les tirets par des ..
+    $ echo 'A-B-C' | sed 's/-/../g'
+    A..B..C
+    ```
 
-    sed -e cmd -e cmd2 file    Executer deux commandes
-                               La deuxième commande est executée sur le résultat de la première
-    sed -f script file         Executer les commandes contenues dans le fichier "script"
-
-### Options
-
-    sed -i .. file       Executer sed sur le contenu du fichier "file" et écrire le résultat dans ce même fichier
-    sed -n ..            Executer sed sans afficher le résultat
-                         Généralement utilisé avec le flag p pour n'afficher que les lignes ayant subit des changements
-
-#### Exemple
-
-`echo -e "a\nb\nc" | sed '3p'    # a¬b¬c¬c`  
-`echo -e "a\nb\nc" | sed -n '3p' #¬c`
-
-Sed ignore les espaces :
-
-
-`echo -e "a\nb\nc" | sed '3 p'    # a¬b¬c¬c` 
+* Si stdin est vide, un prompt interractif est démarré (CTRL + D pour terminer)
 
 ---
 
-## Substitutions
+## Syntaxe awk
 
-`echo "aaa" | sed 's/a/b/' # baa`
+* Par défaut, le premier argument de sed est le programme à exécuter.
 
-    s/old/new/          Remplacer la première occurence de /old/ par "new"
-                        Regex POSIX BRE, ERE possible en échappant les caractères
-                        N'importe quel délimiteur peut être utilisé
+    ``` bash
+    $ echo -e "A-B-C\nD..E..F\nG-E-H" > file
 
-    s/old//             Supprimer la première occurence de /old/
-                        = Remplacer par rien
+    $ sed 's/-/../g' file
+    A..B..C
+    D..E..F
+    G..E..H
+    ````
 
-    s/old/new/g          Remplacer toutes les occurences de /old/ par "new"
-    s/old/new/2          Remplacer la 2ème occurence de /old/ par "new"
+* Le programme peut contenir plusieurs instructions, délimitées par des points-virgules,  
+  et les espaces entre les instructions ou entre les filtres sont ignorés
 
-Backreferences possibles dans la chaîne de substitution :
+    ``` bash
+    # Supprimer les lignes qui contiennent un "."
+    # et remplacer les "-" par ".." sur les lignes restantes
+    $ sed '/\./d; s/-/../g' file
+    A..B..C
+    G..E..H
+    ```
 
-    \1                   1er groupe capturant
-    &                    Chaîne matchée complète
+* Les instructions peuvent être regroupées dans des blocs, délimités par des accolades.
 
-### Exemples
+    ``` bash
+    # Sur les lignes qui ne contiennent pas un "."
+    # Replacer les "-" par ".."
+    # et les lettres par "*"
+    $ sed '/\./! {s/-/../g; s/[a-zA-Z]/*/g}' file
+    *..*..*
+    D..E..F
+    *..*..*
+    ```
 
-`echo "aaa" | sed 's/a\{2\}/b/' # ab`  
-`echo "aaa" | sed 's/a\+/b/' # b`  
-`echo "aaa" | sed 's/a/b/g' # bbb`  
-`echo "aaa" | sed 's/a/b/2' # aba`
-`echo "aaa" | sed 's/a\+/(&)/' # (aaa)`  
-`echo "abcd" | sed 's/\(.\)\(.\)/\2\1/g' # badc`
+* On peut executer un programme sed à partir d'un fichier avec l'option `-f`.  
+  On peut ajouter des commentaires dans ce fichier avec le caractère `#` — commentaire allant jusqu'à la fin de la ligne.
 
-## Transformations
+    ``` bash
+    $ cat <<'NOWDOC' > script
+    # Comment
+    /\.\./d
+    s/-/|/g
+    NOWDOC
 
-`echo "a-b-c-d" | sed 'y/abc/ABC/' # A-B-C-d`
+    $ sed -f script file
+    A|B|C
+    G|E|H
+    ```
 
-    y/abc/ABC/          Remplace caractère par caractère
-                        Pas de Regex, les caractères sont interprétés littéralement
-                        Pas possible d'utiliser les filtres avec cette commande
+    Ça permet de créer des commandes complexes plus lisibles.
 
----
-
-## Filtres
-
-Il est possible de n'appliquer sed que sur certaines lignes
-
-`echo -e "1\n2\n3\n4" | sed '2s/./-/' # 1¬-¬3¬4`
-
-    2                   Sur la 2ème ligne
-    $                   Sur la dernière ligne
-    /word/              Sur les lignes contenant /word/ (POSIX BRE)
-
-D'inverser le filtre
-
-`echo -e "1\n2\n3\n4" | sed '2!s/./-/' # -¬2¬-¬-`
-
-    !                   Inverser le filtrer (placé après le filtre inversé)
-
-Filtrer de... à
-
-`echo -e "1\n2\n3\n4" | sed '3,$s/./-/' # 1¬2¬-¬-`
-
-     ,                   Filtrer sur les lignes ENTRE deux filtres (match inclus)
-
-Incrément (extension GNU)
-
-`echo -e "1\n2\n3\n4" | sed '1~2s/./-/' # -¬2¬-¬4`
-
-    1~2                  À partir de la ligne 1, toutes les 2 lignes (= lignes impaires)
-    2~2                  À partir de la ligne 2, toutes les 2 lignes (= lignes paires)
-
----
-
-## Commandes utiles avec les filtres
-
-`echo -e "1\n2\n3" | sed '2q' # 1¬2`
-
-    p                   Afficher (print)
-    d                   Supprimer (delete)
-    q                   Arrêter (quit)
-
-### Exemples
-
-Afficher la 3ème ligne :
-
-`echo -e "1\n2\n3" | sed -n '3p' # 3`
-
-Supprimer la dernière ligne
-
-`echo -e "1\n2\n3" | sed '$d' # 1¬2`
-
-Afficher toutes les lignes jusqu'à celle contenant /c/
-
-`echo -e "a\nb\nc\n" | sed '/c/q'̀ # a¬b¬c`
-
----
-
-## Insertion de texte
-
-`echo -e "a\nb" | sed 'a text' # a¬text¬b¬text`
-
-    a text              Ajouter une ligne contenant "text" après le match
-    i text              Ajouter une ligne contenant "text" avant le match
-
-`echo -e "a\nb\nc\nd" | sed '/b/,/c/ c ...' # a¬...¬d`
-
-    c text              Remplacer le match par "text"
-
----
-
-## I/O fichier
-
-    r file              Ajouter le contenu de "file" après le match
-    w file              Ecrire les lignes matchées dans "file"
-
-### Exemples
-
-    echo text > file
-    echo -e "a\nb" | sed 'r file' # a¬text¬b¬text
-
-<!-- -->
-
-    echo -e "a\nb" | sed '2 s/$/./w file' # a¬b.
-    cat file                              # b.
-
-Attention à bien placer les modifieurs AVANT :
-
-    echo -e "aa\nbb\ncc" | sed 's/./-/gw file' # --¬--¬--
-    cat file                                   # --¬--¬--
-
-<!-- -->
-
-    echo -e "aa\nbb\ncc" | sed 's/./-/wg file' # -a¬-b¬-c
-    cat "g file"                               # -a¬-b¬-c
-
----
-
-## Blocs
-
-Sed peut exécuter des blocs contenant plusieurs commandes ou d'autres blocs, ce qui va permettre des actions plus complexe
-(multiples filtres, saut de ligne, utilisation du buffer, etc).
-
-### Exemple
-
-Remplacer les lignes de 3 à 6 qui contiennent /a/ par "-" :
-
-    # Contenu du fichier "script" :
+    ``` bash
+    # Sur les lignes 3 à 6 qui contiennent un "a"
+    # Remplacer la ligne entière par "-"
+    $ cat <<'NOWDOC' > script
     3,6 {
        /a/ {
            c -
        }
     }
+    NOWDOC
 
-<!-- -->
+    $ echo -e "1a\n2b\n3a\n4b\n5a\n6b\n7a\n8b" | sed -f script
+    1a
+    2b
+    -
+    4b
+    -
+    6b
+    7a
+    8b
+    ```
 
-    echo -e "1a\n2b\n3a\n4b\n5a\n6b\n7a\n8b" | sed -f script # 1a¬2b¬-¬4b¬-¬6b¬7a¬8b
+## Options
+
+### -i, inplace
+
+* `-i` permet d'exécuter sed sur le contenu d'un fichier et écrire le résultat dans ce même fichier au lieu de l'afficher dans stdout
+
+  ``` bash
+  # Remplacer /assets/ par /static/assets/
+  for file in `find dist -type f | egrep '(html|css|js|map)$'`;
+      do sed -i 's/"\/assets/"\/static\/assets/g' $file;
+  done
+  ```
+
+### -n, nooutput
+
+* Par défaut, sed parcourt toutes les lignes et les affiche au fur et à mesure dans stdout, qu'une modification ait été effectuée sur cette ligne ou non.   
+  `-n` permet de ne pas afficher les lignes dans stdout, et seules les lignes explicitement envoyées à stdout avec le flag `p` seront affichées
+
+  ``` diff
+  $ echo -e "A-B-C\nD..E..F\nG-E-H" > file
+
+  -$ sed 's/-/../g' file
+   A..B..C
+  -D..E..F
+   G..E..H
+
+  +$ sed -n 's/-/../gp' file
+   A..B..C
+   G..E..H
+  ```
+
+### -e, expression
+
+* `-e` permet de cumuler plusieurs instructions sed  
+  La deuxième instruction est executée sur le résultat de la première
+
+    ``` bash
+    # Supprimer les lignes qui contiennent ".." et remplacer "-" par "|"
+    $ sed -e '/\.\./d' -e 's/-/|/g' file
+    A|B|C
+    G|E|H
+    ```
 
 ---
 
-## Commentaires
+## Filtres
 
-    # Comment        Commentaire jusqu'à la fin de la ligne
+### Nème ligne
 
-----
+* Appliquer sed sur la Nème ligne: préfixer de `N`
 
-## Caractères spéciaux
+    ``` diff
+    $ echo -e "1a-1b-1c\n2a.2b.2c\n3a-3b-3c" > file
 
-`echo -e "1\t2" | sed 's/1/a/;l;d' # a\t2$`
+    # Remplacer les lettres par "*" sur la 1ère ligne
+    +$ sed '1s/[a-z]/*/g' file
+    +1*-1*-1*
+     2a.2b.2c
+     3a-3b-3c
+    ```
 
-    l        Afficher le code des caractères spéciaux (ex: "\t" à la place de la tabulation)
+* Appliquer sur la dernière ligne: préfixer de `$`
+
+    ``` diff
+    # sur la dernière ligne
+    +$ sed '$s/[a-z]/*/g' file
+     1a-1b-1c
+     2a.2b.2c
+    +3*-3*-3*
+    ```
+
+### Regex
+
+* Appliquer sur les lignes qui contiennent un motif donné (POSIX BRE): préfixer de `/regex/`
+
+    ``` diff
+    # Sur les lignes qui contiennent "."
+    +$ sed '/\./s/[a-z]/*/g' file
+     1a-1b-1c
+    +2*.2*.2*
+     3a-3b-3c
+    ```
+
+### Not
+
+* Inverser le filtre: ajouter `!` à la fin du filtre
+
+    ``` diff
+    # Sur les lignes qui ne contiennent pas "."
+    $ sed '/\./!s/[a-z]/*/g' file
+    1*-1*-1*
+    2a.2b.2c
+    3*-3*-3*
+    ```
+
+    ``` diff
+    +$ sed '1!s/[a-z]/*/g' file
+     1a-1b-1c
+    +2*.2*.2*
+    +3*-3*-3*
+    ```
+
+### De ... à
+
+* Filtrer sur les lignes entre deux filtres: `,`
+
+    ``` diff
+    # À partir de la ligne contenant "." et jusqu'à la dernière ligne
+    +$ sed '/\./,$s/[a-z]/*/g' file
+     1a-1b-1c
+    +2*.2*.2*
+    +3*-3*-3*
+    ```
+
+### Toutes les N lignes
+
+* Filtrer à partir de la ligne N avec un pas de M: `N~M`
+
+    ``` diff
+    # À partir de la 1ère ligne, toutes les 2 lignes (= lignes impaires)
+    +$ echo -e "1\n2\n3\n4" | sed '1~2s/./-/'
+    +-
+     2
+    +-
+     4
+    ```
+
+    ``` diff
+    # À partir de la 2ème ligne, toutes les 2 lignes (= lignes paires)
+    +$ echo -e "1\n2\n3\n4" | sed '2~2s/./-/'
+     1
+    +-
+     3
+    +-
+    ```
 
 ---
 
-## Numéro de ligne
+## Instructions simples
 
-`echo -e "a\nb\nc" | sed '=' # 1¬a¬2¬b¬3¬c`
+### Afficher
 
-    =        Affiche le numéro de la ligne avant la ligne
+#### p, print
+
+* `p` permet d'afficher la ligne
+
+    ``` bash
+    # Afficher la 3ème ligne
+    $ echo -e "a\nb\nc" | sed '3p'
+    a
+    b
+    c
+    c
+    ```
+
+    On s'en sert généralement avec l'option `-n`, pour n'afficher que les lignes modifiées
+
+    ``` bash
+    # Afficher la 3ème ligne
+    $ echo -e "a\nb\nc" | sed -n '3p'
+    c
+    ```
+
+#### l, line characters
+
+* `l` permet d'afficher les caractères spéciaux sous forme de code.  
+  Utiliser `d` pour masquer la ligne sans les caractères spéciaux formattés
+
+    ``` diff
+     # Remplacer 1 par "a"
+     $ echo -e "1\t2" | sed 's/1/a/'
+     a   2
+
+     # Remplacer 1 par "a" et afficher les caractères spéciaux
+    +$ echo -e "1\t2" | sed 's/1/a/;l'
+    +a\t2$
+     a   2
+
+     # Remplacer 1 par "a", afficher les caractères spéciaux et supprimer la ligne du contexte
+     $ echo -e "1\t2" | sed 's/1/a/;l;d'
+     a\t2$
+    ```
+
+#### q, quit
+
+* `q` permet d'arrêter la commande sed dès que le bloc est exécuté
+
+    ``` bash
+    # Afficher toutes les lignes jusqu'à celle contenant /c/
+    $ echo -e "a\nb\nc\n" | sed '/c/q'
+    a
+    b
+    c
+    ```
+
+    ``` bash
+    # Affiche le path du premier fichier trouvé
+    gem contents jekyll-theme-primer | sed '1{s/[^/]*$//;q}'
+    ```
+
+### Transformer
+
+#### s, substitute
+
+* `s` permet de remplacer une occurence (regex) par une autre.
+
+    ``` bash
+    # Remplacer 2 "a" par "b"
+    $ echo "aaa" | sed 's/a\{2\}/b/'
+    ba
+
+    # Remplacer N "a" par b
+    $ echo "aaa" | sed 's/a\+/b/'
+    b
+
+    # Remplacer tous les "a" par "b"
+    $ echo "aaa" | sed 's/a/b/g'
+    bbb
+
+    # Remplacer la 2ème occurence de "a" par "b"
+    $ echo "aaa" | sed 's/a/b/2'
+    aba
+    ```
+
+* Les backreferences sont possibles
+
+  - `\1` désigne le 1er groupe capturant
+
+    ``` bash
+    # Permuter les lettres 2 par 2
+    $ echo "abcd" | sed 's/\(.\)\(.\)/\2\1/g'
+    badc
+    ```
+
+  - `&` désgine la chaîne matchée complète
+
+    ``` bash
+    $ echo "xaaax" | sed 's/a\+/(&)/'
+    x(aaa)x
+    ```
+
+#### y, transliterate
+
+* `y` permet de remplacer un caractère par un autre — même principe que tr.  
+  Pas de regex ici, les caractères sont interprétés littéralement
+
+  ``` bash
+  $ echo -e "1a\n2b\n3a\n4b\n5a\n6b\n7a\n8b" | sed 'y/a/*/'
+  1*
+  2b
+  3*
+  4b
+  5*
+  6b
+  7*
+  8b
+  ```
+
+#### d, delete
+
+* `d` permet de supprimer des lignes
+
+    ``` bash
+    $ echo -e "1\n2\n3" | sed '$d'
+    1
+    2
+    ```
+
+### Insérer
+
+#### c, create
+
+* `c` permet de remplacer des lignes
+
+    ``` bash
+    $ echo -e "1a\n2b\n3a\n4b" | sed '/a/ c ---'
+    ---
+    2b
+    ---
+    4b
+    ```
+
+#### i, insert
+
+* `i` permet d'ajouter une ligne avant le match
+
+    ``` bash
+    $ echo -e "1a\n2b\n3a\n4b" | sed '/a/ i ---'
+    ---
+    1a
+    2b
+    ---
+    3a
+    4b
+    ```
+
+#### =, line number
+
+* `=` permet d'afficher le numéro de ligne avant le match
+
+    ``` bash
+    $ echo -e "a\nb\nc" | sed '/[a-z]/ {s/$/!/; =}'
+    1
+    a!
+    2
+    b!
+    3
+    c!
+    ```
+
+#### a, append
+
+* `a` permet d'ajouter une ligne après le match
+
+    ``` bash
+    $ echo -e "1a\n2b\n3a\n4b" | sed '/a/ a ---'
+    1a
+    ---
+    2b
+    3a
+    ---
+    4b
+    ```
+
+#### r, read
+
+* `r` permet d'insérer le contenu d'un fichier après le match
+
+    ``` bash
+    $ echo '<<<' > join
+
+    $ echo -e "1a\n2b\n3a\n4b" | sed '/a/ r join'
+    1a
+    <<<
+    2b
+    3a
+    <<<
+    4b
+    ```
+
+### Sauvegarder
+
+#### w, write
+
+* `w` permet d'écrire les lignes matchés dans un fichier
+
+    ``` bash
+    # Sur la 2ème ligne, ajouter un point à la fin de la ligne
+    # Écrire le résultat dans result
+    $ echo -e "a\nb" | sed '2 s/$/./w result'
+    a
+    b.
+
+    $ cat result
+    b.
+    ```
+
+    Attention à bien placer le `w` en dernier — juste avant le nom du fichier:
+
+    ``` bash
+    # Remplacer tous les caractères par un "-"
+    # Écrire le résultat dans result
+    $ echo -e "aa\nbb\ncc" | sed 's/./-/gw result1'
+    --
+    --
+    --
+    $ cat result1
+    --
+    --
+    --
+    ```
+    ``` bash
+    $ echo -e "aa\nbb\ncc" | sed 's/./-/wg result2'
+    -a
+    -b
+    -c
+
+    $ cat result2
+    cat: result2: No such file or directory
+    ```
+
+[Sed often-used commands](https://www.gnu.org/software/sed/manual/html_node/Common-Commands.html)  
+[Sed less frequently-used commands](https://www.gnu.org/software/sed/manual/html_node/Other-Commands.html)
 
 ---
 
-## Multi-ligne
+## Instructions multi-lignes
 
-### Passer à la suivante
+### Buffer courant
 
-    n        Passer à la ligne suivante
+#### n, next
 
-#### Exemple
+* `n` permet de passer à la ligne suivante
 
-Supprimer les lignes qui suivent une ligne contenant /---/ :
-
-    # Contenu du fichier "script" :
+    ``` bash
+    $ cat <<'NOWDOC' > script
     /---/ {
         n
         d
     }
+    NOWDOC
 
-<!-- -->
+    # Supprimer les lignes qui suivent une ligne contenant /---/
+    $ echo -e "---\nNom:\nSmith\n---\nNom:\nCarpenter" | sed -f script
+    ---
+    Smith
+    ---
+    Carpenter
+    ```
 
-    echo -e "---\nNom:\nSmith\n---\nNom:\nCarpenter" | sed -f script # ---¬Smith¬---Carpenter
+#### N, next one
 
-### Ajouter la suivante
+* `N` permet d'ajouter la ligne suivante au buffer (conserve le retour à la ligne)
 
-    N        Ajoute la ligne suivante au buffer (converse le retour à la ligne)
-
-#### Exemple
-
-Concaténer les lignes contenant "a" avec la ligne qui suit 
-
-    # Contenu du fichier "script" :
-    /a/ {
+    ``` bash
+    $ cat <<'NOWDOC' > script
+    # Concaténer les 2 lignes qui suivent une ligne contenant /---/
+    /---/ {
+        n
         N
-        s/\n//
+        s/\n/ /
     }
+    NOWDOC
 
-<!-- -->
+    $ echo -e "---\nNom:\nSmith\n---\nNom:\nCarpenter" | sed -f script
+    ---
+    Nom: Smith
+    ---
+    Nom: Carpenter
+    ```
 
-    echo -e "a\nb\na\nc" | sed -f script # ab¬ac
-
-Inverser toutes les deux lignes :
-
-    # Contenu du fichier "script":
+    ``` bash
+    $ cat <<'NOWDOC' > script
+    # Inverser toutes les deux lignes
     {
         N
         s/\(.*\)\n\(.*\)/\2\n\1/
     }
+    NOWDOC
 
-<!-- -->
+    $ echo -e "1\n2\n3\n4\n5" | sed -f script
+    2
+    1
+    4
+    3
+    ```
 
-    echo -e "1\n2\n3\n4\n5" | sed -f script # 2¬1¬4¬3¬5
+#### P, print one
 
-### Afficher le buffer
+* `P` permet d'afficher la première ligne dans le buffer (exemple avec D)
 
-    P         Afficher la première ligne dans le buffer
-    D         Supprimer la première ligne dans le buffer
+#### D, delete one
 
-#### Exemple
+* `D` permet de supprimer la première ligne dans le buffer
 
-Supprimer les 2 dernières lignes
-
-    # Contenu du fichier "script":
+    ``` bash
+    $ cat <<'NOWDOC' > script
+    # Supprimer les 2 dernières lignes
     {
         N            # Récupérer la prochaine ligne
         $! { P; D }  # C'est pas la dernière : afficher le buffer et le vider
         $d           # C'est la dernière : supprimer le buffer (qui contient deux lignes)
     }
+    NOWDOC
 
-<!-- -->
+    $ echo -e "1\n2\n3\n4\n5" | sed -f script
+    1
+    2
+    3
+    ```
 
-    echo -e "1\n2\n3\n4\n5" | sed -f script # 1¬2¬3
+### Branchements
 
----
+#### :, label
 
-## Branchements
+* `: name` définit un branchement "name"
 
-    : name        Définit un branchement "name"
-    b name        Saute au branchement "name" (ou à la fin du script du "name" omis)
-    t name        Saute au branchement "name" uniquement si des substitutions ont été effectuées
-    T name        Saute au branchement "name" uniquement si des substitutions N'ONT PAS été effectuées
+#### b, branch
 
-### Exemple
+* `b name` saute au branchement "name" (ou à la fin du script si "name" omis)
 
-Supprimer les retours à ligne devant toutes les lignes qui commençent par />/ après une ligne qui contient /Chemin/ :
+#### t, test and branch
 
-    # Contenu du fichier "script":
+* `t branch` saute au branchement "name" uniquement si des substitutions ont été effectuées
+
+#### T, NOT test and branch
+
+* `T branch` saute au branchement "name" uniquement si des substitutions n'ont pas été effectuées
+
+    ``` bash
+    $ cat <<'NOWDOC' > script
+    # Supprimer les retours à ligne devant toutes les lignes
+    # qui commençent par />/ après une ligne qui contient /Chemin/
+
     /Chemin/ {
         : while
 
@@ -328,39 +619,36 @@ Supprimer les retours à ligne devant toutes les lignes qui commençent par />/ 
             t while
         }
     }
-
-<!-- -->
+    NOWDOC
 
     echo -e "Chemin\n> Sous-chemin\n> Sous-sous-chemin\nChemin" | sed -f script
     # Chemin > Sous-chemin > Sous-sous-chemin
     # Chemin
+    ```
 
----
+### Hold buffer
 
-## Hold buffer
-
-Le hold buffer est un buffer temporaire où l'on peut placer des données pour les sortir du buffer courant
+Le hold buffer est un buffer temporaire où on peut placer des données pour les sortir du buffer courant  
 et venir les récupérer plus tard.
 
-    h        Copie le buffer dans le hold buffer
-    g        Copie le hold buffer dans le buffer
+#### h, hold
 
-    H        Ajoute le buffer dans le hold buffer
-    G        Ajoute le hold buffer dans le buffer
+* `h` copie le buffer courant dans le hold buffer (example avec g)
 
-    x        Echange le hold buffer avec le buffer
+#### g, get
 
-### Exemples
+* `g` copie le hold buffer dans le buffer courant
 
-Afficher un avant/après :
-
-    # Contenu du fichier "script":
-    {
+    ``` bash
+    $ cat <<'NOWDOC' > script
+    # Sur les lignes qui contiennent "a":
+    # Remplacer "a" par "-" et afficher un avant/après
+    /a/ {
         # Sauvegarde la valeur avant modification dans le hold buffer
         h
 
         # Effectue une substitution et l'affiche
-        s/^/before: /
+        s/^/<<< /
         p
 
         # Récupère la valeur dans le hold buffer
@@ -368,48 +656,57 @@ Afficher un avant/après :
 
         # Effectue une substitution et l'affiche
         s/a/-/
-        s/^/after : /
-
-        # Affiche "---" après
-        a ---
+        s/^/>>> /
     }
+    NOWDOC
 
-<!-- -->
+    $ echo -e "a\nb" | sed -f script
+    <<< a
+    >>> -
+    b
+    ```
 
-    echo -e "a\nb" | sed -f script
-    # before: a
-    # after : -
-    # ---
-    # before: b
-    # after : b
-    # ---
+#### H, hold one
 
-Ajouter les lignes qui matchent le filtre à la fin :
+* `H` ajoute le buffer courant dans le hold buffer (example avec G)
 
-    # Contenu du fichier "script":
+#### G, get one
+
+* `G` ajoute le hold buffer dans le buffer courant
+
+    ``` bash
+    $ cat <<'NOWDOC' > script
+    # Ajouter les lignes qui matchent le filtre à la fin
     1~2{
-        H  # Ajoute toutes les lignes pairs au hold buffer
+        H  # Ajoute toutes les lignes paires au hold buffer
     }
     ${
         p
         G                 # Récupère le hold buffer
         s/^[^\n]*\n/---/  # Remplace la première ligne (= $) par "---"
     }
+    NOWDOC
 
-<!-- -->
+    $ echo -e "1\n2\n3\n4\n5\n6" | sed -f script
+    1
+    2
+    3
+    4
+    5
+    6
+    ---
+    1
+    3
+    5
+    ```
 
-    echo -e "1\n2\n3\n4\n5\n6" | sed -f script
-    # 1
-    # 2
-    # 3
-    # 4
-    # ---
-    # 1
-    # 3
+#### x, exchange
 
-Afficher un avant/après sur la même ligne :
+* `x` échange le hold buffer avec le buffer courant
 
-    # Contenu du fichier "script":
+    ``` bash
+    $ cat <<'NOWDOC' > script
+    # Afficher un avant/après sur la même ligne
     {
         # Sauvegarde la valeur avant modification dans le hold buffer
         h
@@ -424,16 +721,16 @@ Afficher un avant/après sur la même ligne :
         # Remplace le retour à la ligne par " -> "
         s/\n/ -> /
     }
+    NOWDOC
 
-<!-- -->
+    $ echo -e "a\nb" | sed -f script
+    a -> -
+    b -> b
+    ```
 
-    echo -e "a\nb" | sed -f script
-    # a -> -
-    # b -> b
-
-Remplacer \_texte\_ par \<i>texte\</i>
-
-    # Contenu du fichier "script":
+    ``` bash
+    $ cat <<'NOWDOC' > script
+    # Remplacer \_texte\_ par \<i>texte\</i>
     : while
 
     /_/ {
@@ -465,8 +762,46 @@ Remplacer \_texte\_ par \<i>texte\</i>
         # Boucler tant qu'il reste des "_"
         b while
     }
+    NOWDOC
 
-<!-- -->
+    $ echo "Ceci est du _texte en italique_" | sed -f script
+    Ceci est du <i>texte en italique</i>
+    ```
 
-    echo "Ceci est du _texte en italique_" | sed -f script
-    # Ceci est du <i>texte en italique</i>
+## Mnemonics
+
+``` txt
+: (label)
+= (print line number)
+a (append text lines)
+b (branch)
+c (change to text lines)
+D (delete first line)
+d (delete)
+e (evaluate)
+F (File name)
+G (appending Get)
+g (get)
+H (append Hold)
+h (hold)
+i (insert text lines)
+L (fLow paragraphs)
+l (list unambiguously)
+N (append Next line)
+n (next-line)
+P (print first line)
+p (print)
+q (quit)
+Q (silent Quit)
+r (read file)
+R (read line)
+s (substitute)
+T (test and branch if failed)
+t (test and branch if successful)
+v (version)
+w (write file)
+W (write first line)
+x (eXchange)
+y (transliterate)
+z (Zap)
+```

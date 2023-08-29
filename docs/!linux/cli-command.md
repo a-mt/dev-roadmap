@@ -24,7 +24,7 @@ category: Linux, Shell
     $ ls -l
     ```
 
-    Les options sont souvent des lettres simples, mais parfois aussi des mots ou des phrases. Les options à une lettre sont précédées d'un tiret unique (-x), tandis que les mots sont précédés de deux tirets (--extract). On peut grouper les options à une lettre avec un seul tiret:
+    Les options sont souvent des lettres simples, mais parfois aussi des mots ou des phrases. Les options à une lettre sont précédées d'un tiret unique (`-x`), tandis que les mots sont précédés de deux tirets (`--extract`). On peut grouper les options à une lettre avec un seul tiret:
 
     ```
     $ ls -l -H
@@ -60,7 +60,7 @@ Il existe 3 grands formats d'option, acceptés ou non suivant la commande:
   ps -elf
   ```
 
-* les options style BSD (Berkeley Software Distribution): n'ont pas de tiret
+* les options style BSD (*Berkeley Software Distribution*): n'ont pas de tiret
 
   ```
   ps aux
@@ -121,7 +121,7 @@ Il existe 3 grands formats d'option, acceptés ou non suivant la commande:
 
 ## Alias
 
-* Un alias peut être utilisé pour définir une commande personnalisée, soit plus généralement mapper une commande à un nom plus court ou ajouter des options par défaut à une commande.
+* Un alias peut être utilisé pour définir une commande personnalisée, par exemple pour mapper une commande à un nom plus court ou ajouter des options par défaut à une commande.
 
   ``` bash
   $ type ls
@@ -131,7 +131,7 @@ Il existe 3 grands formats d'option, acceptés ou non suivant la commande:
   /bin/ls
   ```
 
-* `unalias` permet de supprimer un alias
+* `unalias NAME` permet de supprimer un alias
 
   ``` bash
   $ unalias ls
@@ -139,7 +139,7 @@ Il existe 3 grands formats d'option, acceptés ou non suivant la commande:
   ls is /bin/ls
   ```
 
-* `alias` permet de créer un alias  
+* `alias NAME=value` permet de créer un alias  
   Ne vaut que pour le shell en cours. Pour qu'un alias existe toujours, il faut l'ajouter à un fichier d'environnement
 
   ``` bash
@@ -164,7 +164,7 @@ Il existe 3 grands formats d'option, acceptés ou non suivant la commande:
   alias ls='ls --color=auto'
   ```
 
-  Ou on peut afficher la valeur d'un alias:
+* `alias NAME` permet d'afficher la valeur d'un alias donné
 
   ``` bash
   $ alias l

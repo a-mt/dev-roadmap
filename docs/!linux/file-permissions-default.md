@@ -27,7 +27,7 @@ Lorsqu'un fichier ou répertoire est créé, le groupe en cours est assigné com
   am
   ```
 
-  Cette partie peut déconcerter: il s'agit généralement du même nom que le nom d'utilisateur. C'est typique de nombreuses distributions Linux: un groupe est crée lors de la création du compte utilisateur et il a exactement le même nom que l'utilisateur. Ce groupe est souvent le groupe primaire et il devient le groupe en cours lorsqu'on se connecte.
+  Cette partie peut déconcerter: il s'agit généralement du même nom que le nom d'utilisateur. C'est typique de nombreuses distributions Linux: un groupe est crée lors de la création du compte utilisateur et il a exactement le même nom que l'utilisateur. Ce groupe est souvent le groupe principal et il devient le groupe en cours lorsqu'on se connecte.
 
 * Pour voir tous les groupes de l'utilisateur en cours:
 

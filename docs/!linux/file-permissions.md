@@ -89,7 +89,7 @@ category: Linux, Fichiers
       ```
 
   3. <ins>autres</ins> (other, world):  
-     si l'utilisateur en cours n'est ni l'utilisateur ni le groupe propriétaire du fichier, alors les permissions "autres" (ème ensemble) s'appliquent
+     si l'utilisateur en cours n'est ni l'utilisateur ni le groupe propriétaire du fichier, alors les permissions "autres" (3ème ensemble) s'appliquent
 
       ``` bash
       # am a les droits de l'utilisateur propriétaire
@@ -134,8 +134,8 @@ category: Linux, Fichiers
 
 * Chaque ensemble peut avoir 3 permissions:  
 
-  - <ins>lecture</ins> (read):  
-    Pour un fichier: permet de lire le contenu du fichier — le contenu peut être vu et copié  
+  - <ins>lecture</ins> (read, r, 4):  
+    Pour un fichier: permet voir et copier un fichier — le contenu du fichier peut être lu
     Pour un répertoire: permet de voir le contenu du répertoire
 
     ``` bash
@@ -160,9 +160,9 @@ category: Linux, Fichiers
     ls: cannot open directory '.': Permission denied
     ```
 
-  - <ins>écriture</ins> (write):  
+  - <ins>écriture</ins> (write, w, 2):  
     Pour un fichier: permet de modifier le contenu du fichier  
-    Pour un répertoire: permet d'ajouter ou supprimer des fichiers
+    Pour un répertoire: permet d'ajouter ou supprimer des fichiers à l'intérieur du répertoire
 
     ``` bash
     # Écriture non accordée sur un fichier
@@ -191,7 +191,7 @@ category: Linux, Fichiers
     hello world
     ```
 
-  - <ins>exécuter</ins> (execute):  
+  - <ins>exécuter</ins> (execute, x, 1):  
     Pour un fichier: permet d'executer le fichier comme un script  
     Pour un répertoire: permet d'aller dans ce répertoire avec cd et voir les détails des fichiers
 
@@ -219,6 +219,8 @@ category: Linux, Fichiers
     bash: cd: tmp: Permission denied
     ```
 
+  - Aucune permission est indiqué par - (symbolique) ou 0 (octal)
+
 ---
 
 ## Changer de propriétaire
@@ -245,7 +247,8 @@ category: Linux, Fichiers
   -rw-rw-r-- 1 bob bob 0 juil. 21 11:22 file
   ```
 
-  chown permet également de changer le groupe propriétaire: indiquer le groupe à associer après deux-point; si non indiqué, alors le groupe principal de l'utilisateur choisit est assigné.
+  chown permet également de changer le groupe propriétaire: indiquer le groupe à associer après deux-point;  
+  si les deux-points sont ajoutés mais que le groupe n'est pas indiqué, alors le groupe principal de l'utilisateur choisit est assigné.
 
   ``` bash
   $ ls -l file
@@ -307,13 +310,15 @@ category: Linux, Fichiers
       - `r` pour la lecture (read)
       - `w` pour l'écriture (write)
       - `x` pour l'exécution (execute)
+      - `-` aucune permission
 
-* On peut désigner plusieurs ensembles sur lesquels appliquer les opérations, ou définir plusieurs permissions, simplement en les concaténant  
-  Et on peut cumuler plusieurs modifications en utilisant la virgule
+* On peut utiliser une concaténation pour appliquer les opérations sur plusieurs ensembles  (ex. go=-),  
+  ou pour appliquer plusieurs permissions (ex. u=rw).  
+  Et on peut cumuler plusieurs modifications en utilisant la virgule (ex. u=r,g=w)
 
   <ins>Exemple</ins>:
 
-  ```
+  ``` bash
   # Ajouter les droits d'execution à l'utilisateur
   chmod u+x file
 
@@ -347,7 +352,7 @@ category: Linux, Fichiers
 
   <ins>Exemple</ins>:
 
-  ```
+  ``` bash
   # Assigner les droits de lecture & écriture à l'utilisateur,
   # et les droits d'execution au groupe & aux autres
   chmod 611 file
@@ -358,4 +363,4 @@ category: Linux, Fichiers
   chmod 764 file
   ```
 
-* Notons qu'avec la notation octale on assigne les permissions des 3 ensemble: que pour ne modifier qu'un seul ensemble, on est obligé d'utiliser la notation symbolique.
+* Notons qu'avec la notation octale on assigne les permissions des 3 ensemble: pour ne modifier qu'un seul ensemble, on est obligé d'utiliser la notation symbolique.

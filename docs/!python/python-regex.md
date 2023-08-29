@@ -3,6 +3,7 @@ title: Regex
 category: Web, Python
 ---
 
+{% raw %}
 Pour utiliser des regex en Python, on utilise le package `re`
 
 ``` python
@@ -230,3 +231,5 @@ import re
 * Un certain nombre de fonction sur les objets regex acceptent des paramètres supplémentaires: `pos` et `endpos`, qui permettent de limiter l'application du regex à une partie de la chaîne de caractères (à partir ou jusqu'à l'index spécifié).
 
   [Documentation Regular Expression Objects](https://docs.python.org/3/library/re.html#regular-expression-objects)
+
+{% endraw %}

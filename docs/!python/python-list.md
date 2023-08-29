@@ -200,7 +200,8 @@ print(l2) # [5.0, 10.0, 15.0]
   print(sorted(l)) # [1, 6, 27, 36, 78, 215]
   ```
 
-  Le paramètre `key` peut prendre une fonction lambda en entrée. Cette fonction doit retourner la ou les valeurs à utiliser pour le tri.
+  Le paramètre `key` peut prendre une fonction lambda en entrée.  
+  Cette fonction doit retourner la ou les valeurs à utiliser pour le tri.
 
   ``` python
   sorted_by_key = sorted([
@@ -241,6 +242,24 @@ print(l2) # [5.0, 10.0, 15.0]
       return 0
 
   sorted(values, key=cmp_to_key(sort_records))
+  ```
+
+  ``` python
+  @cmp_to_key
+  def sort_excel(col1, col2):
+      """
+      Usage: sorted(columns, key=sort_excel)
+      to sort in this order: A,B,AA,BB
+      """
+      if len(col1) < len(col2): return -1 # noqa
+      if len(col1) > len(col2): return 1 # noqa
+      return -1 if col1 < col2 else 1
+
+  def test_sort_excel(self):
+      columns = ['AK', 'CF', 'J', 'A', 'CG', 'BW']
+      res = sorted(columns, key=functions.sort_excel)
+
+      self.assertEqual(res, ['A', 'J', 'AK', 'BW', 'CF', 'CG'])
   ```
 
   ``` python

@@ -647,3 +647,134 @@ Il existe tout un tas de méthodes magiques permettant de surcharger le résulta
   with custom_open('file') as f:
       contents = f.read()
   ```
+
+## Metaclass
+
+* Une metaclasse fonctionne comme un template pour la création de classes, on les appelle parfois des *class factories*.
+
+  ``` python
+  class Meta(type):
+     def __new__(cls, name, bases, dct):
+         x = super().__new__(cls, name, bases, dct)
+         x.attr = 100
+         return x
+
+  class Foo(metaclass=Meta):
+       pass
+
+  Foo.attr
+  100
+  ```
+
+* L'avantage de la metaclasse, c'est qu'on peut vérifier les attributs qui ont été définis sur la classe et agir en fonction
+
+  ``` python
+  class GenericForeignKey(FieldCacheMixin):
+      def contribute_to_class(self, cls, name, **kwargs):
+          self.name = name
+          self.model = cls
+          cls._meta.add_field(self, private=True)
+          setattr(cls, name, self)
+
+  def _has_contribute_to_class(value):
+      # Only call contribute_to_class() if it's bound.
+      return not inspect.isclass(value) and hasattr(value, 'contribute_to_class')
+
+  class ModelBase(type):
+      """Metaclass for all models."""
+
+      def __new__(cls, name, bases, attrs, **kwargs):
+          super_new = super().__new__
+
+          # Also ensure initialization is only performed for subclasses of Model
+          # (excluding Model class itself).
+          parents = [b for b in bases if isinstance(b, ModelBase)]
+          if not parents:
+              return super_new(cls, name, bases, attrs)
+
+          # Separate attrs into new_attrs & contributable_attrs
+          attr_meta = attrs.pop('Meta', None)
+          module = attrs.pop('__module__')
+
+          new_attrs = {
+            '__module__': module,
+          }
+          if (classcell := attrs.pop('__classcell__', None)) is not None:
+              new_attrs['__classcell__'] = classcell
+
+          contributable_attrs = {}
+          for obj_name, obj in attrs.items():
+              if _has_contribute_to_class(obj):
+                  contributable_attrs[obj_name] = obj
+              else:
+                  new_attrs[obj_name] = obj
+
+          # Create the class.
+          # Give all attrs without a (Django-specific) contribute_to_class()
+          # method to type.__new__() so that they're properly initialized
+          new_class = super_new(cls, name, bases, new_attrs, **kwargs)
+          meta = attr_meta or getattr(new_class, 'Meta', None)
+
+          # Look for an application configuration to attach the model to.
+          app_label = None
+          app_config = apps.get_containing_app_config(module)
+
+          if getattr(meta, 'app_label', None) is None:
+              if app_config is None:
+                    raise RuntimeError(
+                        "Model class %s.%s doesn't declare an explicit "
+                        "app_label and isn't in an application in "
+                        "INSTALLED_APPS." % (module, name)
+                    )
+              else:
+                  app_label = app_config.label
+
+          # Add _meta on class
+          base_meta = getattr(new_class, '_meta', None)
+          new_class.add_to_class('_meta', Options(meta, app_label))
+
+          # Add remaining attributes (those with a contribute_to_class() method)
+          # to the class.
+          for obj_name, obj in contributable_attrs.items():
+              new_class.add_to_class(obj_name, obj)
+
+      def add_to_class(cls, name, value):
+          if _has_contribute_to_class(value):
+              value.contribute_to_class(cls, name)
+          else:
+              setattr(cls, name, value)
+
+  class Model(metaclass=ModelBase):
+      pass
+  ```
+
+* Le même effet peut être obtenu soit via
+
+  - l'héritage simple
+
+    ``` python
+    class Base:
+       attr = 100
+
+    class X(Base):
+       pass
+
+    X.attr
+    100
+    ```
+
+  - un décorateur de classe
+
+    ``` python
+    def decorator(cls):
+       class NewClass(cls):
+           attr = 100
+       return NewClass
+
+    @decorator
+    class X:
+       pass
+
+    X.attr
+    100
+    ```

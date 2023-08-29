@@ -3,6 +3,8 @@ title: Fonctions
 category: Web, Python
 ---
 
+{% raw %}
+
 ## Déclarer une fonction
 
 * On déclare une fonction avec la fonction `def`.  
@@ -546,3 +548,5 @@ x = [[1.0, 0.0], [0.0, 1.0]]
 y = [[2.0, 1.0], [0.0, -2.0]]
 z = addMatrix(x, y)
 ```
+
+{% endraw %}

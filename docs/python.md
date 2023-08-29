@@ -23,3 +23,5 @@ category: Web
 * [Exceptions](!python/python-except.md)
 * [Classes & objets](!python/python-object.md)
 * [Divers](!python/python-misc.md)
+
+[Sharing data between processes](https://superfastpython.com/numpy-share-array-processes/)

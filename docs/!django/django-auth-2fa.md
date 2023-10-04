@@ -234,6 +234,8 @@ L'authentification à double facteur consiste à demander plusieurs méthodes de
    - Définir une constante permettant de désactiver l'authentification à deux facteurs au besoin
 
       ``` python
+      from distutils.util import strtobool
+
       IS_2FA_ENABLED = bool(strtobool(os.getenv('IS_2FA_ENABLED', 'True')))
       ```
 

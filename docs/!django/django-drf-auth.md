@@ -3,10 +3,12 @@ title: Auth
 category: Python, Django, DRF
 ---
 
+## Authentification
+
 * Django Rest Framework peut utiliser différents types d'authentification, par exemple une authentification par session, qui s'appuie sur la logique native de Django, ou une authentification par token, qui vérifie les entêtes HTTP. L'authentification est effectuée avant la vérification des permissions.
 
 * La liste d'authentification par défaut se définit dans les configurations.  
-  DRF boucle sur les authentifications tant qu'il n'a pas récupéré un utilisateur ou qu'une exception `APIException` est levée.
+  DRF boucle sur les authentifications tant qu'il n'a pas récupéré un utilisateur ou une exception `APIException`.
 
     ``` python
 
@@ -18,6 +20,8 @@ category: Python, Django, DRF
     }
     ```
 
+## authentication_classes
+
 * On peut écraser les classes par défaut en définissant la propriété `authentication_classes`
 
     ``` python
@@ -27,6 +31,8 @@ category: Python, Django, DRF
         authentication_classes = (SessionAuthentication, TokenAuthentication)
         permission_classes = (IsToken | IsSuperUser,)
     ```
+
+## BaseAuthentication
 
 * Pour créer une authentification personnalisée, hériter de `rest_framework.authentication.BaseAuthentication`
 

@@ -23,9 +23,8 @@ category: Python, Django
 
   - un sous-ensemble d'endpoint avec en paramètre l'URL et un `include` d'un autre fichier urls
 
-  - un endpoint en passant en paramètres de la fonction `re_path` le motif de URL et la vue associée.  
-    Note: `url` est un alias de re_path, `path` accepte une version simplifiée de paramètres dans l'URL.  
-    Il est possible d'ajouter des types personnalisés: [Path converters & Registering custom path converters¶](https://docs.djangoproject.com/en/dev/topics/http/urls/#path-converters)
+  - un endpoint en passant en paramètres de la fonction `re_path` le motif de URL et la vue associée (cf section paramètres ci-dessous).  
+    Note: `url` est un alias de re_path
 
     <ins>urls.py</ins>:
 
@@ -62,8 +61,27 @@ category: Python, Django
         path('home/', TemplateView.as_view(template_name='home.html'), name='home'),
 
         path('healthcheck/', include('core.healthchecks.urls'), namespace='healthcheck'),
-
         path('posts/', views.posts, name='posts-index'),
+    ]
+    # Include only if application is listed in INSTALLED_APPS
+    if apps.is_installed('api'):
+        urlpatterns.append(
+          path('api/', include(('api.urls', 'api'), namespace='api')),
+        )
+    ```
+
+### Paramètres
+
+* Pour définir des paramètres, on peut soit
+
+  - utiliser `path` et indiquer entre chevrons: le type de données, le séparateur deux-point (:) et le nom de la variable à assigner.  
+    Par exemple `users/<int:id>/`
+
+  - utiliser `re_path` (ou `url`) et spécifier une regex  
+    Par exemple `r'^users/(?P<pk>[0-9]+)/$'`
+
+    ``` python
+    urlpatterns = [
         path('posts/<int:record_id>', views.posts, name='posts-detail'),
         re_path(
           r'(?P<uidb64>[0-9A-Za-z]+)/(?P<token>.+)/',
@@ -83,12 +101,33 @@ category: Python, Django
             ),
         ),
     ]
-    # Include only if application is listed in INSTALLED_APPS
-    if apps.is_installed('api'):
-        urlpatterns.append(
-          path('api/', include(('api.urls', 'api'), namespace='api')),
-        )
     ```
+
+* Il est possible d'ajouter des types personnalisés: [Path converters & Registering custom path converters¶](https://docs.djangoproject.com/en/dev/topics/http/urls/#path-converters)
+
+  ``` python
+  from django.urls import path
+  from datetime import date, datetime
+
+  from myapp.views import post_detail, post_archive
+
+  class DateConverter:
+      regex = r"\d{4}-\d{1,2}-\d{1,2}"
+      format = "%Y-%m-%d"
+
+      def to_python(self, value: str) -> date:
+          return datetime.strptime(value, self.format).date()
+
+      def to_url(self, value: date) -> str:
+          return value.strftime(self.format)
+
+  register_converter(DateConverter, "date")
+
+  urlpatterns = [
+      path('posts/<int:post_id>/', post_detail, name="post_detail"),
+      path('posts/archive/<date:archive_date>/', post_archive, name="post_archive"),
+  ]
+  ```
 
 ## Namespace
 

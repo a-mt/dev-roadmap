@@ -689,7 +689,9 @@ Outre les options, le type de champ utilisé va permettre de convertir les valeu
 
   Référence: [Arithmétique en nombres à virgule flottante](https://docs.python.org/fr/3/tutorial/floatingpoint.html)
 
-### Spéciaux
+## Champs spéciaux
+
+### UUID
 
 * **UUIDField**  
   Champ utilisé pour les uuid
@@ -703,6 +705,8 @@ Outre les options, le type de champ utilisé va permettre de convertir les valeu
   )
   ```
 
+### IP
+
 * **GenericIPAddressField**  
   Champ utilisé pour les adresses IPv4 ou IPv6  
   Les addresses IPv6 sont normalisées — par exemple 2001:0::0:01 devient 2001::1
@@ -713,6 +717,8 @@ Outre les options, le type de champ utilisé va permettre de convertir les valeu
       null=True,
   )
   ```
+
+### Array
 
 * **ArrayField** (spécifique à postgres)  
   Champ utilisé pour enregistrer une liste de champs
@@ -736,6 +742,8 @@ Outre les options, le type de champ utilisé va permettre de convertir les valeu
   )
   ```
 
+### JSON
+
 * **JSONField**  
   Dictionnaire ou liste de dictionnaires  
   Spécifier l'`encoder` permet de gérer les valeurs python qui ne sont pas prises en charge par JSON — par exemple un DateTime
@@ -754,6 +762,8 @@ Outre les options, le type de champ utilisé va permettre de convertir les valeu
       help_text='Date + comment',
   )
   ```
+
+### File
 
 * **FileField**  
   Champ permettant d'enregistrer un fichier  
@@ -787,6 +797,8 @@ Outre les options, le type de champ utilisé va permettre de convertir les valeu
   ```
 
   Lorsqu'on accède à ce champ, on obtient une instance de `FieldFile`. Le chemin relatif du fichier est accessible dans la propriété `name` et on a également des propriétés et méthodes permettant entre autres de lire le fichier ou vérifier sa taille sur le disque.
+
+### Binary
 
 * **BinaryField**  
   Champ contenant des données binaires brutes

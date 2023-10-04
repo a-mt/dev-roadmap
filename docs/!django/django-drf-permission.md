@@ -6,10 +6,13 @@ category: Python, Django, DRF
 ## Créer une classe Permission
 
 * Les permissions déterminent si l'accès à une vue doit être accordé ou refusé.  
-  Il y a deux types de permissions:
+  On peut créer des permissions personnalisées en créant une classe qui hérite de `rest_framework.permissions.BasePermission`
+
+* Il y a deux types de permissions:
 
     - **permission**    
-      Les contrôles de permission sont exécutés en amont, avant que le code de la vue ne soit exécuté.
+      Les contrôles de permission sont exécutés en amont, avant que le code de la vue ne soit exécuté.  
+      Se fait via la méthode `has_permission`
 
         ``` python
         from rest_framework.permissions import BasePermission
@@ -26,7 +29,8 @@ category: Python, Django, DRF
 
     - **object_permission**  
       Les contrôles sont effectués lorsqu'on essaie de récupérer l'objet en cours (avec `get_object`) —
-      notamment appelé dans la fonction retrieve.
+      notamment appelé dans la fonction retrieve.  
+      Se fait via la méthode `has_object_permission`
 
         | Action         | queryset | permission_classes
         |---             |---       |---
@@ -56,7 +60,7 @@ category: Python, Django, DRF
                 return permission and permission <= PermissionChoicesMixin.PERMISSION_WRITE
         ```
 
-## Appliquer une Permission
+## Appliquer une permission
 
 ### Default permission classes
 
@@ -87,19 +91,7 @@ category: Python, Django, DRF
 
 ### Function attribute
 
-* Ou la propriété de même nom dans le décorateur `@action` d'une méthode
-
-    ``` python
-    from rest_framework.permissions import AllowAny
-
-    class UserAuthViewSet(UserAuthMixin, GenericViewSet):
-
-        @action(methods=['GET'], url_path='is-authenticated', permission_classes=(AllowAny,))
-        def is_authenticated(self, request, **kwargs):
-            pass
-    ```
-
-* Ou encore le décorateur `permission_classes` sur une fonction
+* Ou le décorateur `permission_classes` sur une fonction
 
     ``` python
     from rest_framework.decorators import api_view, permission_classes
@@ -111,10 +103,22 @@ category: Python, Django, DRF
         pass
     ```
 
+* Le décorateur `@action` accepte également le paramètre `permission_classes`
+
+    ``` python
+    from rest_framework.permissions import AllowAny
+
+    class UserAuthViewSet(UserAuthMixin, GenericViewSet):
+
+        @action(methods=['GET'], url_path='is-authenticated', permission_classes=(AllowAny,))
+        def is_authenticated(self, request, **kwargs):
+            pass
+    ```
+
 ### Runtime permissions
 
 * Définir `permission_classes` nécessite de re-définir l'ensemble des classes.  
-  Si on veut en ajouter en gardant les valeurs par défaut, on peut
+  Si on veut ajouter des permissions à remplir, tout en gardant les valeurs par défaut, on peut
 
   - ajouter des permissions directement dans `get_permissions`
 
@@ -141,8 +145,8 @@ category: Python, Django, DRF
             return plist
     ```
 
-  - ou écraser `check_permissions` / `check_object_permissions` pour ajouter des vérifications
-    — et lever une erreur PermissionDenied si elles ne sont pas vérifiées
+  - ou écraser les méthodes natives `check_permissions` / `check_object_permissions` pour ajouter des vérifications
+    et lever une erreur PermissionDenied lorsqu'elles ne sont pas vérifiées
 
     ``` python
     from rest_framework.exceptions import PermissionDenied
@@ -190,7 +194,7 @@ category: Python, Django, DRF
 
 ## Opérateurs logique
 
-* Il est possible d'appliquer des opérations logiques sur les permissions.
+* Il est possible d'appliquer des opérations logiques sur les permissions — mais le message d'erreur en cas d'erreur de permission seront non équivoque.
 
     ``` python
     permission_classes = (IsTokenAuth | IsSuperUser,)

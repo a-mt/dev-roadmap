@@ -310,3 +310,7 @@ category: Python, Django
   +     self.assertStatus(response, 204, 'Could not authenticate')
         self.stdout.write('.', ending='')
   ```
+
+## Django-admin
+
+[Cheatsheet commandes django-admin](https://github.com/LeCoupa/awesome-cheatsheets/blob/master/backend/django.py)

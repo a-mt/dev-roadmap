@@ -5,7 +5,7 @@ category: Python, Django, i18n
 
 ## Internationalisation
 
-* Outre la traduction d'un texte d'un language à l'autre (c'est à dire la *localisation*, abbrégé l10n), on veut également ajouter de l'*internationalisation* (abbrégé i18n), de sorte que l'application puisse être utilisée n'importe où dans le monde. Il va donc falloir prendre en compte un ensemble plus large de règles que le language, par exemple:
+* Outre la traduction d'un texte d'un language à l'autre (c'est à dire la *localisation*, abrégé l10n), on veut également ajouter de l'*internationalisation* (abrégé i18n), de sorte que l'application puisse être utilisée n'importe où dans le monde. Il va donc falloir prendre en compte un ensemble plus large de règles que le language, par exemple:
 
   - en France un nombre à décimale s'écrit avec une virgule (3,1) tandis qu'en Angleterre, on utilise le point (3.1).
   - la date s'écrit jour/mois (31/12) tandis qu'en Angleterre, on écrit mois/jour (12/31)

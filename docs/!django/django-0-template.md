@@ -298,6 +298,8 @@ category: Python, Django
 
 * Utiliser gettext
 
+  Django < 3.0:
+
   ```
   {% load i18n %}
   {% trans "Erreur 403" %}
@@ -315,9 +317,32 @@ category: Python, Django
   {% blocktrans with name=account.get_full_name pk=account.pk %}
     Utilisateur <strong>{{ name }}</strong> (#{{ pk }})
   {% endblocktrans %}
+
+  {% translate "This is the title" as the_title %}
+  <title>{{ the_title }}</title
+
+  {% blocktrans count count=forloop.counter %}
+       Valued Customer
+  {% plural %}
+       Valued Customers
+  {% endblocktrans %} 
   ```
 
+  Django >= 3.1:
+  ```
+  {% translate "Error 403" %}
+  {% blocktranslate %}{% endblocktranslate %}
+  ````
+
   [Built-in template tags and filters](https://docs.djangoproject.com/en/4.1/ref/templates/builtins/#built-in-template-tags-and-filters)
+
+* Si une variable est donnée au tag `{% translate %}`, comme ci-dessous, alors la variable est d'abord résolue en une chaîne de caractère au moment de l'exécution et la traduction de ce résultat est recherché dans les messages gettext.
+
+  ```
+  <title>{% translate myvar %}</title>
+  ```
+
+  Pour afficher la valeur d'une variable, utiliser un `{% blocktranslate %}`
 
 ### Héritage
 

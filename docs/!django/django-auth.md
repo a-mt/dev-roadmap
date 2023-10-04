@@ -297,3 +297,357 @@ Pour comprendre comment ça marche:
 
 * **Session**  
   L'utilisateur s'identifie une fois avec un nom d'utilisateur et mot de passe pour obtenir un cookie de session. Le cookie de session permet de s'authentifier. C'est le type d'authentification le plus courant pour les sites web.
+
+---
+
+## Créer un utilisateur
+
+* La commande Django `createsuperuser` permet de créer un utilisateur admin à partir du terminal.
+
+    ``` bash
+    python manage.py createsuperuser
+    ```
+
+* Pour pouvoir l'utiliser, le manager du modèle User doit implémenter les méthodes `create_user` et `create_superuser`
+
+    <details>
+      <summary>
+        <ins>www/core/models/user.py</ins>
+      </summary>
+      <br>
+
+      <pre lang="python">
+      from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+      from django.core.validators import validate_email
+      from django.db import models
+      from django.utils.translation import gettext_lazy as _
+
+
+      # +---------------------------------------------------------
+      # | MANAGER & QUERYSET
+      # +---------------------------------------------------------
+
+      class UserManager(BaseUserManager):
+          """
+          Define the create_user and create_superuser methods
+          To be able to use `python manage.py createsuperuser`
+          """
+          use_in_migrations = True
+
+          def get_by_natural_key(self, key):
+              return self.get(email=key)
+
+          def _create_user(self, email, password, **extra_fields):
+              if not email:
+                  raise ValueError('The given email must be set')
+
+              user = self.model(email=email, **extra_fields)
+              user.set_password(password)
+              user.save(using=self._db)
+
+              return user
+
+          def create_user(self, **user_data):
+              user_data.setdefault('is_superuser', False)
+
+              return self._create_user(**user_data)
+
+          def create_superuser(self, **user_data):
+              user_data.setdefault('is_superuser', True)
+              user_data.setdefault('is_staff', True)
+
+              if user_data.get('is_superuser') is not True:
+                  raise ValueError('Superuser must have is_superuser=True.')
+
+              return self._create_user(**user_data)
+
+
+      # +---------------------------------------------------------
+      # | MODEL
+      # +---------------------------------------------------------
+
+      class User(AbstractBaseUser, PermissionsMixin):
+          r"""
+          Model used to check user authentication / permissions
+          Required fields: email, password
+
+          Authentication Fields:
+              - email: Char
+                  254 chars max
+                  Encoded in database (= 256 bytes in db with AES padding)
+
+              - password: Char
+                  128 chars max + validates all checks defined in AUTH_PASSWORD_VALIDATORS
+
+              - created_at: DateTime
+              - updated_at: DateTime
+              - last_login: DateTime
+              - is_active: Boolean
+              - is_staff: Boolean
+              - is_superuser: Boolean
+
+          Permissions Fields:
+              - is_superuser: Boolean
+                  this user has all permissions without explicitly assigning them
+
+              - user_permissions: Permission*
+                  specific permissions for this user
+
+              - groups: Group*
+                  a user will get all permissions granted to each of their groups
+
+              Usage: u.has_perm("<app_label>.<permission__codename>")
+          """
+          created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+          updated_at = models.DateTimeField(auto_now=True)
+
+          # Authentication fields
+          email = models.CharField(
+              _('email address'),
+              max_length=254,
+              unique=True,
+              validators=[validate_email],
+              help_text='Required. 254 characters or fewer. Used to authenticate and send emails.',
+              error_messages={
+                  'unique': _('A user with that email already exists.'),
+              },
+          )
+          is_active = models.BooleanField(
+              _('active'),
+              default=True,
+              help_text=(
+                  'Designates whether this user should be treated as active. '
+                  'Unselect this instead of deleting accounts.'
+              ),
+          )
+          is_waiting_validation = models.BooleanField(
+              default=False,
+              help_text='Designates whether this user is waiting an administrator validation',
+          )
+          is_staff = models.BooleanField(
+              _('staff status'),
+              default=False,
+              help_text='Designates whether the user can log into the admin site.',
+          )
+          is_superuser = models.BooleanField(
+              _('superuser status'),
+              default=False,
+              help_text='Designates that this user has all permissions without explicitly assigning them.',
+          )
+
+          # User account
+          firstname = models.CharField(
+              _('first name'),
+              max_length=256,
+              blank=True,
+              null=True,
+          )
+          lastname = models.CharField(
+              _('last name'),
+              max_length=256,
+              blank=True,
+              null=True,
+          )
+          USERNAME_FIELD = 'email'
+
+          objects = UserManager()
+
+          class Meta:
+              base_manager_name = 'objects'
+              ordering = ['-pk']
+      </pre>
+    </details>
+
+* On peut créer une commande personnalisée pour créer des utilisateurs non admin à partir du terminal:
+
+    <details>
+      <summary>
+        <ins>core/management/commands/createuser.py</ins>
+      </summary>
+
+      <pre lang="python">
+      import getpass
+      import sys
+
+      from django.db import DEFAULT_DB_ALIAS
+      from django.core.management.base import CommandError
+      from django.contrib.auth.management.commands.createsuperuser import Command as BaseCommand
+      from django.contrib.auth.password_validation import validate_password
+      from django.core.exceptions import ValidationError as DjangoValidationError
+
+      PASSWORD_FIELD = 'password'
+
+
+      class Command(BaseCommand):
+          """
+          Pretty much the same thing as createsuperuser
+          but with our logic to create a regular user
+
+          Usage: python manage.py createuser
+          """
+
+          help = 'Create a regular user'
+
+          def add_arguments(self, parser):
+              """
+              We're not handling arguments to specify the fields values,
+              just use this command interactively
+              """
+              parser.add_argument(
+                  '--database',
+                  default=DEFAULT_DB_ALIAS,
+                  help='Specifies the database to use. Default is "default".',
+              )
+
+          def handle(self, *args, **options):
+              database = options['database']
+
+              user_data = {
+                  PASSWORD_FIELD: None,
+              }
+              # Same as user_data but without many to many fields and with
+              # foreign keys as fake model instances instead of raw IDs.
+              fake_user_data = {}
+
+              try:
+                  # Set fields
+                  self._set_username(database, user_data, fake_user_data)
+
+                  for field_name in [
+                      'is_superuser',
+                      'email',
+                  ]:
+                      self._set_field(field_name, user_data, fake_user_data)
+
+                  self._set_password(user_data, fake_user_data)
+
+                  # Create user
+                  self.UserModel._default_manager.db_manager(database).create_user(**user_data)
+                  if options['verbosity'] >= 1:
+                      self.stdout.write('User created successfully.')
+
+              except KeyboardInterrupt:
+                  self.stderr.write('\nOperation cancelled.')
+                  sys.exit(1)
+
+              except DjangoValidationError as e:
+                  raise CommandError('; '.join(e.messages))
+
+          def _set_username(self, database, user_data, fake_user_data):
+              """
+              :param database
+              :param dict[pointer] user_data
+              :param dict[pointer] fake_user_data
+              """
+              default_username = ''
+              verbose_field_name = self.username_field.verbose_name
+              username = None
+
+              # Prompt for username.
+              while username is None:
+                  message = self._get_input_message(self.username_field, default_username)
+                  username = self.get_input_data(self.username_field, message, default_username)
+                  if username:
+                      error_msg = self._validate_username(username, verbose_field_name, database)
+                      if error_msg:
+                          self.stderr.write(error_msg)
+
+                          username = None
+                          continue
+
+              user_data[self.UserModel.USERNAME_FIELD] = username
+              fake_user_data[self.UserModel.USERNAME_FIELD] = (
+                  self.username_field.remote_field.model(username)
+                  if self.username_field.remote_field else username
+              )
+
+          def _set_field(self, field_name, user_data, fake_user_data):
+              """
+              :param string field_name
+              :param dict[pointer] user_data
+              :param dict[pointer] fake_user_data
+              """
+              field = self.UserModel._meta.get_field(field_name)
+              input_value = None
+
+              # Get input data
+              while input_value is None:
+                  message = self._get_input_message(field)
+                  input_value = self.get_input_data(field, message)
+
+                  if field.many_to_many and input_value:
+                      if not input_value.strip():
+                          input_value = None
+                          self.stderr.write('Error: This field cannot be blank.')
+                          continue
+
+                      input_value = [pk.strip() for pk in input_value.split(',')]
+
+              # Set value / relationship
+              if type(input_value) == str:
+                  input_value = None if input_value == '' else input_value.strip()
+
+              user_data[field_name] = input_value
+              if not field.many_to_many:
+                  fake_user_data[field_name] = input_value
+
+              # Wrap any foreign keys in fake model instances.
+              if field.many_to_one:
+                  fake_user_data[field_name] = field.remote_field.model(input_value)
+
+          def _set_password(self, user_data, fake_user_data):
+              """
+              :param dict[pointer] user_data
+              :param dict[pointer] fake_user_data
+              """
+              password = ''
+
+              # Prompt for a password if the model has one.
+              while password is None:
+                  input_password = getpass.getpass()
+                  input_password2 = getpass.getpass('Password (again): ')
+
+                  if input_password != input_password2:
+                      self.stderr.write("Error: Your passwords didn't match.")
+                      # Don't validate passwords that don't match.
+                      continue
+
+                  if input_password.strip() == '':
+                      self.stderr.write("Error: Blank passwords aren't allowed.")
+                      # Don't validate blank passwords.
+                      continue
+
+                  try:
+                      validate_password(input_password, self.UserModel(**fake_user_data))
+                  except DjangoValidationError as e:
+                      self.stderr.write('\n'.join(e.messages))
+
+                      response = input('Bypass password validation and create user anyway? [y/N]: ')
+                      if response.lower() != 'y':
+                          continue
+
+              user_data[PASSWORD_FIELD] = password
+      </pre>
+    </details>
+
+* La validation des mots de passe s'appuie sur la liste des validateurs définie dans les configurations
+
+  ``` python
+  # Password validation
+  # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+
+  AUTH_PASSWORD_VALIDATORS = [
+      {
+          'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+      },
+      {
+          'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+      },
+      {
+          'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+      },
+      {
+          'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+      },
+  ]
+  ```

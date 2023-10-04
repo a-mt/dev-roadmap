@@ -77,6 +77,7 @@ category: Web, Python
     ```
     python
     >> print("Hello World")
+    Hello World
     >> exit()
     ```
 

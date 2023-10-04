@@ -59,6 +59,12 @@ Les opérateurs disponibles sur les chaînes de caractères sont également disp
   print(l[-2:-5:-1]) # [8, 7, 6]
   ```
 
+  ``` python
+  list1 = [0, 3, 4, 1, 2]
+  list1[2:5] = [8, 9]
+  print(list1)  # [0,3,8,9]
+  ```
+
 * <ins>Set (=)]</ins>  
   On peut assigner une valeur donnée à un index donné mais on peut aussi remplacer un intervalle par un autre
 

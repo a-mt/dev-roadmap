@@ -11,7 +11,7 @@ Les différents types de données Python sont:
 |---                   |---        |---
 | Valeur nulle         | `None`    | `None`
 | Chaîne de caractères | `str`     | `"Hello World"` / `'Hello World'`
-| Entier               | `int`     | `1`
+| Entier               | `int`     | `1`, `1_00_0000_000`
 | Réel                 | `float`   | `1.1`
 | Nombre complexe      | `complex` | `1j` / `1 + 1j`
 | Booléen              | `bool`    | `True` / `False`
@@ -71,6 +71,14 @@ a, b = a, b
 
   print(var)            # Hello
   print("mavar =", var) # mavar = Hello
+  ```
+
+  ``` python
+  $ print("Hello World")
+  Hello World
+
+  $ print(1, 2, 3, 4, sep='#', end='&')
+  1#2#3#4&
   ```
 
 * Par défaut, un espace est ajouté entre chaque valeur affichée. On peut changer ce comportement en définissant le paramètre `sep`

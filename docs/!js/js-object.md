@@ -65,7 +65,7 @@ var info = {
 };
 ```
 
-### Déclaration de propriété: Version abbrégée
+### Déclaration de propriété: Version abrégée
 
 On peut ommetre la clé de la propriété lorsqu'on crée une propriété à partir d'une valeur [ES6].  
 Le nom de la propriété sera égal au nom de la variable, et la valeur de la propriété à la valeur de la variable.
@@ -82,13 +82,13 @@ var obj = {
 }; // {a: 'foo', b: 'bar'}
 ```
 
-<ins>Version abbrégée</ins>:
+<ins>Version abrégée</ins>:
 
 ``` js
 var obj = {a, b}; // {a: 'foo', b: 'bar'}
 ```
 
-### Déclaration de méthode: Version abbrégée
+### Déclaration de méthode: Version abrégée
 
 On peut ommetre le mot-clé `function` pour déclarer une fonction [ES6].
 
@@ -102,7 +102,7 @@ var obj = {
 };
 ```
 
-<ins>Version abbrégée</ins>:
+<ins>Version abrégée</ins>:
 
 ``` js
 var obj = {
@@ -141,9 +141,9 @@ var myvar = "email";
 console.log(info[myvar]);      // bob@exemple.com
 ```
 
-### Version abbrégée
+### Version abrégée
 
-On peut utiliser la notation abbrégée, avec un point (*dot notation*), lorsque la clé respecte les conventions de nommage d'une variable:
+On peut utiliser la notation abrégée, avec un point (*dot notation*), lorsque la clé respecte les conventions de nommage d'une variable:
 
 ``` js
 console.log(info.email);       // bob@exemple.com

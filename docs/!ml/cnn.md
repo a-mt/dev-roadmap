@@ -4,7 +4,7 @@ category: Machine learning, algo
 latex: true
 ---
 
-* Les réseaux neuronaux convolutionnel (abbrégé CNN ou convnet) sont un type de réseau neuronal utilisé pour le traitement d'image, notamment pour des problèmes de classification d'image. Un CNN est simplement un réseau neuronal artificiel auquel on a ajouté un nouveau type de couches: des couches de convolutions.
+* Les réseaux neuronaux convolutionnel (abrégé CNN ou convnet) sont un type de réseau neuronal utilisé pour le traitement d'image, notamment pour des problèmes de classification d'image. Un CNN est simplement un réseau neuronal artificiel auquel on a ajouté un nouveau type de couches: des couches de convolutions.
 
 ## Convolution
 

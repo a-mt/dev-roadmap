@@ -28,7 +28,7 @@ MapReduce est un autre élément essentiel de Hadoop. Il est utilisé pour la ma
 
 * Le processus de *réduction* prend les résultats des analyses effectuées sur chacun de ces ordinateurs et combine les résultats pour donner un résultat unique.
 
-Le programme MapReduce original a été remplacé par Hadoop YARN, qui est l'abbréviation de Yet Another Resource Negociator (encoore un négociateur de ressources), parfois appelé MapReduce2.
+Le programme MapReduce original a été remplacé par Hadoop YARN, qui est l'abréviation de Yet Another Resource Negociator (encoore un négociateur de ressources), parfois appelé MapReduce2.
 
 YARN permet beaucoup de choses que le MapReduce d'origine ne pouvait pas faire. MapReduce était basé sur du *batch processing* (traitement par lot), ce qui nécessitait d'obtenir l'ensemble les données, de diviser toutes ces données, d'attendre la fin du processus et enfin d'aggréger le résultat. YARN introduit le traitement en *streaming* (flux continu), ce qui signifie que les données entrent et le résultat ressort aussi rapidement que possible, en simultané.
 Il introduit également le traitement de graphes, ce qui permet de traiter les connections de réseaux sociaux.

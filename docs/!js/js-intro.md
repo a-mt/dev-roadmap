@@ -3,7 +3,7 @@ title: JavaScript
 category: Web
 ---
 
-JavaScript ou JS en abbrégé est un des 3 langages de base des pages Web
+JavaScript ou JS en abrégé est un des 3 langages de base des pages Web
 * HTML, langage de balisage pour le contenu et la structure
 * CSS, langage de feuille de style pour la présentation
 * JS, langage de programmation pour le comportement et l'interraction
@@ -158,7 +158,7 @@ Pour debugger du code JavaScript, la plupart des navigateurs proposent une conso
 
 * Devenu populaire dans Netscape, Microsoft crée sa propre version pour Internet Explorer. Ne pouvant pas l'appeler JavaScript, ils le nommèrent JScript. Il y avait des différence entre Netscape et Microsoft, si bien qu'il fallait deux développements différents pour supporter les deux navigateurs.
 
-* Netscape soumis le langage à l'ECMA (European Computer Manufacturers Assocation), organisation de standardisation dans le domaine de l'informatique, en 1997, pour créer une édition indépendante de tout navigateur et officiellement standardisée. Ce langage s'appelle ECMAScript (abbrégé ES) - mais tout le monde continue de l'appeler JavaScript.
+* Netscape soumis le langage à l'ECMA (European Computer Manufacturers Assocation), organisation de standardisation dans le domaine de l'informatique, en 1997, pour créer une édition indépendante de tout navigateur et officiellement standardisée. Ce langage s'appelle ECMAScript (abrégé ES) - mais tout le monde continue de l'appeler JavaScript.
 
 * Le comité qui supervise l'évolution de la norme ECMA-262 (norme officielle d'ECMAScript) est le TC39, qui représente le comité technique 39 d'ECMA.
 

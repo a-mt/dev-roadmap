@@ -414,6 +414,7 @@ awk utilise des variables au cours de son execution:
             print substr($0, RSTART, RLENGTH)
         }
     }
+    NOWDOC
     $ echo "A/b/c" | awk -f script
     b
     ```

@@ -7,9 +7,9 @@ Raccourcis clavier et actions souris usuels pour éditer du texte : sélection d
 
 ---
 
-Conventions : Ci-dessous la liste des touches du clavier, leur nom (en anglais) et leur abbréviation dans ce document, si différente du nom.
+Conventions : Ci-dessous la liste des touches du clavier, leur nom (en anglais) et leur abréviation dans ce document, si différente du nom.
 
-| Apparence clavier    | Nom de la touche | Abbréviation |
+| Apparence clavier    | Nom de la touche | abréviation |
 |---                   |---            |---          |
 | <kbd> &#8670; </kbd> | PageUp        | PgUp        |
 | <kbd> &#8671; </kbd> | PageDown      | PgDn        |

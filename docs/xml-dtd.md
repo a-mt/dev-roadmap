@@ -3,7 +3,7 @@ title: DTD
 category: Web, XML
 ---
 
-DTD est l'abbréviation de *Document Type Definition*.  
+DTD est l'abréviation de *Document Type Definition*.  
 Une DTD est un ensemble de règles qui définissant
 - les balises autorisées dans un document XML, leur contenu
 

@@ -56,7 +56,7 @@ CSS accepte différentes manières de spécifier la *couleur* (color)
 
 <sup>(1)</sup> Il existe <a href="https://www.w3schools.com/colors/colors_names.asp">147 noms de couleurs prédéfinis</a>
 
-<sup>(2)</sup> On peut utiliser une version abbrégée #RGB[A]  
+<sup>(2)</sup> On peut utiliser une version abrégée #RGB[A]  
 &emsp; Par exemple <code>#F9A</code> = <code>#FF99AA</code>
 
 <sup>(3)</sup> H = Hue (teinte sur une palette circulaire de 0 à 360)  

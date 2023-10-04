@@ -35,7 +35,7 @@ Quelques exemples :
   </thead>
   <tbody>
     <tr><td>1ff91bf13a6d5461a85ad44f4cbacd77ee6c4917     </td><td> SHA du commit                </td></tr>
-    <tr><td>1ff91bf1                                     </td><td> SHA abbrégé (non ambigu, au moins 4 caractères) </td></tr>
+    <tr><td>1ff91bf1                                     </td><td> SHA abrégé (non ambigu, au moins 4 caractères) </td></tr>
     <tr><td>HEAD                                         </td><td> Pointeur en cours            </td></tr>
     <tr><td>master                                       </td><td> Branche master               </td></tr>
     <tr><td>v0.99.8                                      </td><td> Tag v0.99.8                  </td></tr>
@@ -327,7 +327,7 @@ $ git log --pretty=format:"%C(white reverse blue bold)%h%Creset %s"
 <table>
 <tr><th align="left">%ad</th><td>author date</td></tr>
 <tr><th align="left">%an</th><td>author name</td></tr>
-<tr><th align="left">%h</th><td>SHA hash abbrégé</td></tr>
+<tr><th align="left">%h</th><td>SHA hash abrégé</td></tr>
 <tr><th align="left">%s</th><td>subject</td></tr>
 <tr><th align="left">%d</th><td>description</td></tr>
 <tr><th align="left">%C(colors)</th><td>switch color<br>
@@ -1101,7 +1101,7 @@ $ git stash list
     stash@{1}: WIP on gerbils: b2bdead Add dogs.
 ```
 
-WIP est l'abbréviation de Work In Progress.
+WIP est l'abréviation de Work In Progress.
 
 ---
 

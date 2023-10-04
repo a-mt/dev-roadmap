@@ -26,7 +26,7 @@ Exemple: Apple, WWF, Pepsi.
 
 ### Lettermark
 
-Un **lettermark** est une abbréviation ou des initiales qui sont utilisées à la place du nom de l'entreprise.  
+Un **lettermark** est une abréviation ou des initiales qui sont utilisées à la place du nom de l'entreprise.  
 Exemple: Cable News Network, British Broadcasting Corporation, Volkswagen.
 
 ![](https://i.imgur.com/Z3ZCaGYl.png)

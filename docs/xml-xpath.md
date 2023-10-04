@@ -139,12 +139,12 @@ following-sibling::chapter[position()=1]
 
 ---
 
-## Abbréviations
+## abréviations
 
 <table>
   <tr>
     <th>Version longue</th>
-    <th>Abbréviation</th>
+    <th>abréviation</th>
   </tr>
   <tr>
     <td><code>child::para</code></td>

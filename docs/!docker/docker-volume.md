@@ -21,7 +21,7 @@ Un volume fonctionne un peu sur le même principe qu'un fichier/dossier partagé
 Les volumes sont indépendants des images. Le contenu des volumes ne sera pas inclus lorsque vous téléchargez une image, et le contenu des volumes ne sera pas exporté si vous créez une image à partir du container.  
 Par défaut, le contenu des volumes est sauvegardé dans `/var/lib/docker/volumes` sur la machine hôte.
 
-* Pour utiliser un volume, utiliser l'option `--mount` ou pour la syntaxe abbrégée `-v`:
+* Pour utiliser un volume, utiliser l'option `--mount` ou pour la syntaxe abrégée `-v`:
 
   ```
   docker run -d \

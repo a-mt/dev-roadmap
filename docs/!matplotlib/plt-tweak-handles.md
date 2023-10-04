@@ -177,7 +177,7 @@ plt.scatter(x, x + 1, color='k')
 
 ## Fmt
 
-* On peut spécifier le style de trait, le style de marqueur et la couleur du trait en utilisant une notation abbrégée:
+* On peut spécifier le style de trait, le style de marqueur et la couleur du trait en utilisant une notation abrégée:
 
   ``` txt
   fmt = '[marker][line][color]'

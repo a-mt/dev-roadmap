@@ -171,27 +171,28 @@ category: Linux
   -rw-rw-r-- 1 aurelie bob 0 Apr 16 14:24 /tmp/test2
   ```
 
-* `su` (prononcer "ess-you") permet de s'authentifier en tant que root.   
-  L'approche sudo est largement préférée à su
+* `su` (prononcer "ess-you", pour switch user) permet de s'identifier avec le compte d'un autre utilisateur.  
+  
+  - Si le nom de l'utilisateur n'est pas spécifié alors on s'authentifie en tant que root.
+    L'approche sudo est largement préférée à su
 
-  ```
-  $ su
-  ```
+    ```
+    $ su
+    ```
 
-  PAM (*Pluggable Authentication Modules*) peut être utilisé pour restreindre quels utilisateurs ont le droit de s'identifier en tant que root
+    PAM (*Pluggable Authentication Modules*) peut être utilisé pour restreindre quels utilisateurs ont le droit de s'identifier en tant que root
 
-* Ou on peut s'identifier avec le compte d'un autre utilisateur.  
-  Utiliser le dash (-) aura pour effet d'executer les fichiers d'environnement de l'utilisateur — on aura donc les variables d'environnement de cet utilisateur et non plus celle de l'utilisateur qu'on avait avant de changer
+  - Utiliser le dash (-) aura pour effet d'executer les fichiers d'environnement de l'utilisateur — on aura donc les variables d'environnement de cet utilisateur et non plus celle de l'utilisateur qu'on avait avant de changer
 
-  ```
-  $ su - christine
-  ```
+    ```
+    $ su - christine
+    ```
 
-  ``` bash
-  su -
-  su -l
-  su --login
-  ```
+    ``` bash
+    su -
+    su -l
+    su --login
+    ```
 
 * Pour s'identifier en tant que root:
 

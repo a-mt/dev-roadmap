@@ -91,7 +91,7 @@ searchbar: true
   [Wep API][js-webapi], [Jquery][jquery], [MustacheJS][mustachejs], D3.js, Lodash, [Three.js][threejs]
 
 - Frameworks JS  
-  [React][react], [Vue][vue], [Angular][angular], [Ember.js][ember], Backbone.js
+  [React][react], [Vue][vue], [Angular][angular], [Ember.js][ember], Backbone.js, Next.js [1 &#x21F2;](https://nextjs.org/learn/foundations/about-nextjs/what-is-nextjs)
 
 - Préprocesseurs CSS  
   [Sass][sass], Less

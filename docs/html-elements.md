@@ -679,7 +679,7 @@ Délimite une variable à l'intérieur d'une phrase.
 
 ### kbd
 
-Délimite une entrée clavier à l'intérieur d'une phrase (kbd = abbréviation de keyboard).
+Délimite une entrée clavier à l'intérieur d'une phrase (kbd = abréviation de keyboard).
 
 ``` html
 <kbd>Ctrl</kbd> + <kbd>s</kbd> permet de déclencher la sauvegarde du document pour la plupart des logiciels.
@@ -755,7 +755,7 @@ Délimite un indice (subscript)
 
 ### abbr
 
-Délimite une abbréviation ou un acronyme.
+Délimite une abréviation ou un acronyme.
 
 ``` html
 The <abbr title="World Health Organization">WHO</abbr> was founded in 1948. 

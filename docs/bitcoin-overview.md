@@ -25,7 +25,7 @@ Le prix d'échange du bitcoin (BTC) avec le dollar américain (USD) étant élev
 * 1000 sat = 1 kilo satoshi (1 ⋅ 10<sup>-5</sup> BTC).
 
 
-| Bitcoins | Unité (Abbréviation)
+| Bitcoins | Unité (abréviation)
 |---  |---
 | 1.0 | bitcoin (BTC)
 | 0.01 | bitcent (cBTC)

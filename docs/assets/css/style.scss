@@ -278,6 +278,11 @@ body {
 .markdown-body ol ul {
     margin-bottom: 5px;
 }
+.markdown-body li > p {
+    margin-top: 0;
+    margin-bottom: 1.25em;
+}
+
 ul.breadcrumb {
     color: #989898;
 }

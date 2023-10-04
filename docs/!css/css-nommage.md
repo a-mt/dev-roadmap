@@ -505,7 +505,7 @@ Source: [Make Your CSS Variable Names Suck Less](https://fixate.it/blog/make-you
     </style>
     ```
 
-* La valeur par défaut des attributs de typographie et de forme a été abbrégé en une ligne.  
+* La valeur par défaut des attributs de typographie et de forme a été abrégé en une ligne.  
   La structure interne est comme suit:
 
     ``` xml

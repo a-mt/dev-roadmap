@@ -414,6 +414,8 @@ category: Linux, Fichiers
 * Pour restaurer ultérieurement un disque ou partition à partir d'une image, il suffit d'inverser les labels if et of.  
   Attention cette commande écrase toutes les données présentes dans la destination.
 
+---
+
 ## rsync
 
 * Un outil populaire pour sauvegarder des données de `rsync` (remote synchronization), qui permet de garder un répertoire sur le server 1 synchronisé avec un répertoire sur le serveur 2 en copiant les données à travers le réseau, via SSH.

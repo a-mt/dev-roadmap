@@ -21,7 +21,7 @@ Un **team** permet de gérer les permissions de multiple développeurs travailla
 
 ## Authentification à deux facteurs
 
-On peut activer l'authentification à deux facteurs (*two factor authentication* en anglais, abbrégé 2FA) dans les configurations du profil (onglet Security). 
+On peut activer l'authentification à deux facteurs (*two factor authentication* en anglais, abrégé 2FA) dans les configurations du profil (onglet Security). 
 Au moment de se logger à Github, après avoir renseigné le nom d'utilisateur et mot de passe, un code d'accès sera demandé. Ce code d'accès est envoyé par SMS, il change de manière récurrente mais pas à chaque utilisation.  
 Pour éviter de se retrouver bloqué en cas de perte du code d'accès, des [codes de récupération](https://help.github.com/articles/downloading-your-two-factor-authentication-recovery-codes/) peuvent être crées (à mettre en place avant de perdre le code !).
 

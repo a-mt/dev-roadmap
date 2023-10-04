@@ -3,7 +3,7 @@ title: Regex
 category: Other
 ---
 
-Une regex, abbrégé de *Regular Expression* (en français : *expression régulière* ou *expression rationnelle*) est une syntaxe qui permet de tester si le contenu d'une chaîne de caractères contient ou correspond à un pattern (motif).
+Une regex, abrégé de *Regular Expression* (en français : *expression régulière* ou *expression rationnelle*) est une syntaxe qui permet de tester si le contenu d'une chaîne de caractères contient ou correspond à un pattern (motif).
 
 Cela permet de
 - valider des données: vérifier si le texte correspond au format d'un numéro de téléphone, email, mot de passe, url, ...

@@ -143,7 +143,7 @@ On peut l'utiliser par exemple
       delegate_to: 127.0.0.1
   ```
 
-Il existe une syntaxe abbrégée pour déléguer à 127.0.0.1: `local_action`
+Il existe une syntaxe abrégée pour déléguer à 127.0.0.1: `local_action`
 
 ```
 tasks:

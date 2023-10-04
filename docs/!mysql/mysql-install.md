@@ -5,7 +5,7 @@ category: BDD, MySQL
 
 ## `mysql` ou `mysqld`
 
-MySQL est un système de gestion de base de données relationnelle (*Relational Database Management System* en anglais, abbrégé RDBMS).
+MySQL est un système de gestion de base de données relationnelle (*Relational Database Management System* en anglais, abrégé RDBMS).
 
 * Le serveur MySQL `mysqld` est le programme qui s'occupe de persister les données sur le disque, en gère l'accès et fournit une interface pour y accéder: le language SQL.
 * Le client MySQL `mysql` est un programme accessible via la ligne de commande, qui permet d'envoyer des requêtes à un serveur MySQL — ce peut être un serveur sur la machine locale ou un serveur distant.

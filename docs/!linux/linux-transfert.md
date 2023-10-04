@@ -10,7 +10,7 @@ category: Linux
   ``` bash
   ifconfig    # Noter son adresse IP (ex: 192.168.1.11)
 
-  nc -l 55555 # Démarrer l'écoute sur le port 55555
+  nc -l 55555 # Démarrer l'écoute sur le port 55555 (avec netcat)
   ```
 
 * Ordinateur B

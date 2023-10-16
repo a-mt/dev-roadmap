@@ -3,7 +3,7 @@ title: Multiplexeurs
 category: Linux, Applications
 ---
 
-* Un multiplexeur de terminal permet de diviser le terminal en plusieurs écrans (appelées *régions* ou *focus*) pour afficher les informations de différents terminaux et interagir avec. Les multiplexeurs de terminal les plus courants sont GNU Screen et tmux. Ils ne sont généralement pas installés par défaut.
+* Un multiplexeur de terminal permet de diviser un terminal en plusieurs écrans (appelées *régions* ou *focus*) pour afficher les informations de différents terminaux et interagir avec. Les multiplexeurs de terminal les plus courants sont GNU Screen et tmux. Ils ne sont généralement pas installés par défaut.
 
 ## GNU Screen
 

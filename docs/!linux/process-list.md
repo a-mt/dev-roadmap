@@ -30,7 +30,7 @@ category: Linux, Applications
 
 ## pstree
 
-* Lorsqu'un processus démarre un autre processus, on parle de processus *parent* et *enfant*.  
+* Lorsqu'un processus démarre un autre processus, on parle de processus *parent* et *enfant* respectivement.  
   Le processus d'initialisation (init ou systemd) est le premier processus lancé par le système d'exploitation: c'est le parent de tous les processus du système.
 
 * `pstree` permet de visualiser la hiérarchie des processus dans un arbre
@@ -299,17 +299,17 @@ category: Linux, Applications
 
 ## lsof
 
-* lsof (*list open file*) permet de lister les fichiers ou répertoires utilisés par un processus
-
-  ```  bash
-  # Fichiers utilisés par le processus PID 8401
-  $ lsof -p 8401
-  ```
-
-* Ou de lister les processus utilisant un fichier
+* lsof (*list open file*) permet de lister lister les processus utilisant un fichier
 
   ``` bash
   $ sudo lsof /var/log/messages
   ```
 
-  ![](Screenshot from 2023-05-01 08-11-50.png)
+  ![](https://i.imgur.com/DwxIoSr.png)
+
+* Ou inversemment, de lister les fichiers ou répertoires utilisés par un processus
+
+  ```  bash
+  # Fichiers utilisés par le processus PID 8401
+  $ lsof -p 8401
+  ```

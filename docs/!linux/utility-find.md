@@ -5,16 +5,23 @@ category: Linux
 
 ## Logique: et, ou, non
 
-* find applique une logique ET, pour appliquer une logique OU utiliser `-o`.  
-  On peut également appliquer un NON avec `-not`
+* Pour appliquer une logique ET, spécifier plusieurs filtres
 
   ``` bash
   # Dont le nom commence par "f" ET pèse 512k
   find -name "f*" -size 512k
+  ```
 
+* Pour appliquer une logique OU, utiliser `-o`.  
+
+  ``` bash
   # Dont le nom commence par "f" OU pèse 512k
   find -name "f*" -o -size 512k
+  ```
 
+* Pour appliquer un NON, utiliser `-not`
+
+  ``` bash
   # Dont le nom ne commence pas par "f"
   find -not -name "f*"
   ```
@@ -39,14 +46,17 @@ category: Linux
 - `-regex REGEX`  
   Filtrer les fichiers suivant une regex
 
-## maxdepth
+## mindepth, maxdepth
+
+- `-mindepth N`  
+  Pronfondeur minimale. Permet notamment d'exclure le répertoire parent du résultat avec `-mindepth 1`
 
 - `-maxdepth N`  
   Limiter le nombre de récursion.  
 
   ``` bash
   # Ne rechercher que dans le répertoire /etc (et non les sous-répertoires)
-  find /etc -maxpdeth 1 -name passwd
+  find /etc -mindepth 1 -maxpdeth 1 -name passwd
   ```
 
 ## mtime, ctime
@@ -122,23 +132,28 @@ category: Linux
 
 ## size, empty
 
-* `-size N` par taille
+* `-size N`  
+  Filtrer les fichiers en fonction de leur taille
 
   *  N = exactement N octets
   * +N = plus de N octets
   * -N = moins de N octets
 
   ``` bash
-  find -size 512k
-  find -size +512k   # greater than 512 kb
-  find -size -512k   # less than 512 kb
+  find -size 512k    # 512 kb
+  find -size +512k   # plus de 512 kb
+  find -size -512k   # moins de 512 kb
   ```
 
   ``` bash
-  find /lib64 -size +10M
+  find /lib64 -size +10M  # plus de 10 M
   ```
 
 - `-empty` pour filtrer sur les fichiers vides
+
+  ``` bash
+  find . -type d -empty -exec rmdir {} \;
+  ```
 
 ## perm, executable
 
@@ -149,19 +164,28 @@ category: Linux
   * perm /MODE = au moins un des bits de permissions du fichier matche
 
   ``` bash
-  $ find -perm 664              # exactement ces permissions
-  $ find -perm u=rw,g=rw,o=r    # exactement ces permissions
+  # exactement 664
+  $ find -perm 664
+  $ find -perm u=rw,g=rw,o=r
 
-  $ find -perm -664             # au moins ces permissions
-  $ find -perm -u=rw,g=rw,o=r   # au moins ces permissions
+  # 664 ou plus
+  $ find -perm -664
+  $ find -perm -u=rw,g=rw,o=r
 
-  $ find -perm /664             # une de ces permissions
-  $ find -perm /u=rw,g=rw,o=r   # une de ces permissions
+  # Un 4 à n'importe quelle position, ou 2 assigné à l'utilisateur ou groupe
+  $ find -perm /664
+  $ find -perm /u=rw,g=rw,o=r
+  ```
 
-  # Les fichiers avec SUID et SGID
+  ``` bash
+  # Les fichiers avec SUID ou SGID
   $ sudo find /usr/*bin -perm /6000 -type f
   /usr/bin/gpasswd
   ...
+
+  # Les fichiers avec SUID et SGID
+  $ sudo find /usr/*bin -perm -6000 -type f
+  /usr/bin/at
   ```
 
 * `-executable`  filtre sur les fichiers exécutables et les répertoires searchable par l'utilisateur en cours

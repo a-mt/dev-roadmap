@@ -81,6 +81,7 @@ summary: false
 [accounts-quota]: !linux/accounts-quota.md
 [accounts-pam]: !linux/accounts-pam.md
 [selinux]: !linux/lsm-selinux.md
+[accounts-sudoers]: !linux/accounts-sudoers.md
 
 [scheduled-jobs]: !linux/service-scheduled-jobs.md
 [time]: !linux/service-time.md
@@ -140,6 +141,7 @@ summary: false
 * Comptes
   - [Utilisateurs][accounts-user]
   - [Groupes][accounts-group]
+  - [Escalade de privilèges][accounts-sudoers]
   - [Environnement](!linux/env.md)
   - [Limites][accounts-limits]
   - [Quotas][accounts-quota]
@@ -156,7 +158,7 @@ summary: false
 
 * Système de fichiers
   - [Théorie: système de fichiers][filesystem-overview]
-  - [Déclarer une partition][filesystem-create]
+  - [Créer une partition][filesystem-create]
   - [Formatter une partition][filesystem-format]
   - [Monter une partition][filesystem-mount]
   - [Modifier une partition][filesystem-tuning]
@@ -171,9 +173,10 @@ summary: false
   - [Paquets & gestionnaires de paquet][system-packages]
   - [Librairies partagées](!linux/libraries.md)
   - [Modules](!linux/kernel-modules.md)
+  - [Drivers & logs système](!linux/system-troubleshooting.md)
   - [Paramètres kernel](!linux/kernel-parameters.md)
 
-* Services
+* Services I
   - [Tâches récurrentes][scheduled-jobs]
   - [Date & temps][time]
   - [NTP][ntp]
@@ -182,15 +185,14 @@ summary: false
   - [Impression][print]
   - [Logs][logging]
 
-    <!-- -->
-
+* Services II
   - [Serveur DNS](!linux/service-dns.md)
   - [SSH](!linux/service-ssh.md)
   - [Proxy — Squid](!linux/service-squid.md)
   - [HTTP — Apache](!linux/service-apache.md)
   - [DB — MariaDB](!linux/service-mariadb.md)
 
-* Réseau
+* Réseau: théorie
   - [Théorie: histoire d'Internet][network-history]
   - [Théorie: réseaux informatiques][network-intro]
   - [Théorie: couche 1 — liaison physique][network-layer1-physical]
@@ -199,11 +201,12 @@ summary: false
   - [Théorie: couche 4 — connexion](!linux/network-layer4-tcp.md)
   - [Theorie: DNS](!linux/dns.md)
 
-    <!-- -->
-
+* Réseau
   - [Afficher les configurations réseau](!linux/network-quick.md)
   - [Interfaces][network-nic]
   - [Nom d'hôte][network-hostname]
+  - [Adresses IP](!linux/network-ip.md) — ifconfig
+  - [Routing](!linux/network-route.md)
   - [Firewall](!linux/network-firewall-cmd.cmd), [Iptables][iptables], UFW [1 &#x21F2;](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-9)
 
 * Quicklink: utilitaires

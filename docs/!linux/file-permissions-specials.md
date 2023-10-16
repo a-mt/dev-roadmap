@@ -167,7 +167,6 @@ Rappel: Le fichier doit également avoir les droits d'execution au même niveau 
   ./both
   ```
 
-
 ---
 
 ## Attributs étendus

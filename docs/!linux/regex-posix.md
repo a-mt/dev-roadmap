@@ -4,18 +4,18 @@ category: Linux
 ---
 
 Certaines commandes Linux, comme grep, sed, ou awk, acceptent des regex POSIX
-(POSIX est ni plus ni moins que le nom des normes qui s'appliquent aux commandes et logiciels des plateformes UNIX).
+(POSIX [Portable Operating System Interface] est ni plus ni moins que le nom des normes qui s'appliquent aux commandes et logiciels des plateformes UNIX).
 
 Il existe deux familles :
 - les regex POSIX BRE (Basic Regex Expression), qui ne comprennent que le strict minimum des regex,
-- et les regex POSIX ERE (Extended Regex Expression), une extension des BRE, qui ajoute le support des groupes, backreferencs et quantificateurs
+- et les regex POSIX ERE (Extended Regex Expression), une extension des BRE, qui ajoute le support des groupes, backreferences et quantificateurs
 
 | Type de Regex | Commandes                                                               |
 | ---           | ---                                                                     |
 | BRE           | grep, vi, sed, csplit, dbx, dbxtool, more, ed, expr, lex, pg, nl, rdist |
 | ERE           | egrep, awk, nawk                                                        |
 
-`grep` utilise par défaut les regex BRE, il est possible d'utiliser les caractères ERE pourvu qu'ils soient précédés d'un backslash (\\) : `ls | grep 'filea\|fileb'`
+`grep` utilise par défaut les regex BRE, mais il est possible d'utiliser les caractères ERE pourvu qu'ils soient précédés d'un backslash (\\) : `ls | grep 'filea\|fileb'`
 
 ---
 
@@ -42,7 +42,11 @@ Il ne faut pas confondre les regex POSIX et les [wildcards](bash-wildcard.md). A
     \s         Caractère d'espace ([ \t\r\n\v\f])
     \S         PAS un caractère d'espace
 
-Il est évidemment possible d'utiliser les [classes POSIX](regex.md#classe-posix)
+Il est évidemment possible d'utiliser les [classes POSIX](../regex.md#classe-posix)
+
+    ```
+    [[:alpha:]]
+    ```
 
 ### Quantificateurs
 

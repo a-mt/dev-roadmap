@@ -16,7 +16,7 @@ une partie matérielle (*hardware*) et logicielle (*software*). Pour la partie m
 
 ### CPU
 
-* Le <ins>CPU (*Central Processing Unit*)</ins>, (CPT, *Unité Centrale de Traitement*  ou *processeur* en français) est souvent désigné comme le "cerveau" de l'ordinateur: il prend les différentes instructions qui proviennent des logiciels, les traite et retourne le résultat en sortie.
+* Le <ins>CPU (*Central Processing Unit*)</ins>, (*Unité Centrale de Traitement*  ou *processeur* en français) est souvent désigné comme le "cerveau" de l'ordinateur: il prend les différentes instructions qui proviennent des logiciels, les traite et retourne le résultat en sortie.
 
   On pense souvent à tord que le processeur est très sophistiqué. En réalité, le CPU est un circuit électronique qui ne réalise que des instructions très simples:
   * lire de l’information en mémoire;
@@ -79,20 +79,20 @@ une partie matérielle (*hardware*) et logicielle (*software*). Pour la partie m
 
 ### ROM
 
-* La ROM (*Read Only Memory*) ou *mémoire morte* est une mémoire permanente et à lecture seule — écrite directement par le fabricant. C'est dans cette mémoire que se trouve le BIOS (Basic Input/Output System), un ensemble de fonctions qui permettent d'initialiser l'état du système lors de sa mise sous tension.
+* La ROM (*Read Only Memory*) ou *mémoire morte* est une mémoire permanente et à lecture seule — écrite directement par le fabricant. C'est dans cette mémoire que se trouve le BIOS (*Basic Input/Output System*), un ensemble de fonctions qui permettent d'initialiser l'état du système lors de sa mise sous tension.
 
   ![](https://i.imgur.com/XVOXGcq.png)
 
 * Dans les ordinateurs plus récents, une mémoire flash EPROM (*Erasable Programmable Read-Only Memory*) remplace la mémoire ROM, ce qui permet de mettre à jour le BIOS — ce qu'on appelle couramment "flasher le BIOS".
-  Le BIOS admet également certaines configurations utilisateur, par exemple pour la séquence de démarrage. 
-  Ces modificatons sont stockées dans la CMOS, un circuit électrique alimenté par une petite pile. Cette pile lui permet de conserver toutes les modifications apportées — si elle est retirée, ou si elle tombe en panne, alors les paramètres du BIOS reviennent à leur état initial.
+  Le BIOS admet également quelques configurations utilisateur, par exemple pour modifier la séquence de démarrage. 
+  Ces modifications sont stockées dans la CMOS, un circuit électrique alimenté par une petite pile. Cette pile lui permet de conserver toutes les modifications apportées — si elle est retirée, ou si elle tombe en panne, alors les paramètres du BIOS reviennent à leur état initial.
 
 ### Disque dur
 
 * La RAM ne peut conserver les données que tant qu'elle est alimentée. Pour que les données soient conservées une fois l'appareil éteint, elles doivent être transférées dans un dispositif de stockage long-terme.
 
 * Le <ins>HDD (*Hard Disk Drive*)</ins> ou *disque dur magnétique* est le dispositif de stockage long-terme le moins cher.  
-  Les données sont stockées sous forme de motif magnétique sur un disque recouvert d'un film magnétique — un 0 lorsque le pôle magnétique vers le haut est négatif, 1 lorsqu'il est positif.
+  Les données sont stockées sous forme de motif magnétique sur un disque recouvert d'un film magnétique — un 0 lorsque le pôle magnétique est négatif (vers le haut), 1 lorsqu'il est positif.
 
   Comme le disque doit tourner sous la tête de lecture jusqu'à l'endroit où se trouvent les données pour être lu, la latence de ces lecteurs est 100 000 fois plus lente que celle de la DRAM.
 
@@ -140,15 +140,15 @@ Les composants externes sont également appelés *périphériques*.
 
 * Aux débuts de l'informatique, les composants comme le CPU ou la RAM n'étaient pas contenu sur un même circuit intégré mais plutôt dans des armoires (*racks*) individuelles. Les données voyageaient d'une armoire à l'autre via un ensemble de fils appelée une *barre-bus* (*bus bar*), qui devint plus tard juste un *bus*.
 
-* Un bus est un groupe de fils électriques (*lanes*) qui transportent un signal.
+* Aujourd'hui, un bus désigne un groupe de fils électriques (*lanes*) qui transportent un signal.
 
   ![](https://i.imgur.com/I202Jvq.jpg?1)
 
-* On distingue généralement un bus
-  * d’une liaison point à point, qui ne concerne que deux composants qui en ont l’usage exclusif
-  * et d’un réseau, qui implique des participants indépendants entre eux, c’est-à-dire pouvant fonctionner de manière autonome, et qui comprend plusieurs canaux permettant des communications simultanées
+* Le bus (du latin *omnibus*, à tous) est partagé entre plusieurs composants d’un système numérique.
 
-  Le bus (du latin *omnibus*, à tous) est lui partagé entre plusieurs composants d’un système numérique.
+  On distingue généralement un bus
+  * d’une *liaison point à point*, qui ne concerne que deux composants qui en ont l’usage exclusif
+  * et d’un *réseau*, qui implique des participants indépendants entre eux, c’est-à-dire pouvant fonctionner de manière autonome, et qui comprend plusieurs canaux permettant des communications simultanées
 
 #### Série vs parallèle
 
@@ -157,17 +157,15 @@ Les composants externes sont également appelés *périphériques*.
   * le <ins>bus en série</ins>: transmet les données sur un seul fil — chaque bit suit le précédent.  
   * le <ins>bus en parallèle</ins>: transmet les données sur plusieurs fils en parallèle.
 
-  La transmission en série a été la première technologie utilisée.  
-  Ensuite, est venu le parallèle: envoyer plusieurs données en même temps permettait d'augmenter la vitesse de transmission.
-
   ![](https://i.imgur.com/B0tiE1im.png)
 
-  Avec l'amélioration de l'électronique, la vitesse à laquelle chaque bit transite s'est accéléré. Pour une transmission en parallèle, si on veut garder l'ordre des bits, alors toutes les données doivent arriver à destination avant que d'autres puissent être envoyées; et si tous les canaux ne sont pas exactement synchronisés, alors la transmission doit ralentir pour le rester.
+* Historiquement, la transmission en série a été la première technologie utilisée.  
+  Puis est venu le parallèle, qui permettait d'augmenter la vitesse de transmission en envoyant plusieurs données en même temps. 
+
+  Avec les années, et avec l'amélioration de l'électronique, la tendance s'est de nouveau inversée vers la transmission en série:
+  pour une transmission en parallèle, si on veut garder l'ordre des bits, alors toutes les données doivent arriver à destination avant que d'autres puissent être envoyées; et si tous les canaux ne sont pas exactement synchronisés, alors la transmission doit ralentir pour le rester. La vitesse à laquelle chaque bit transite s'étant accéléré, et parce que (contrairement à la transmission en série) la vitesse à laquelle le parallèle peut fonctionner est limitée, la communication en série a désormais remplacé la communication en parallèle pour la plupart des bus dans les ordinateurs plus récents, y compris pour les bus du CPU — ce qui permet une vitesse plus élevée et nécessite moins de fils.
 
   ![](https://i.imgur.com/pusf7tDm.png)
-
-  Ainsi, la vitesse à laquelle le parallèle peut fonctionner est limitée, contrairement à la transmission en série.
-  Pour cette raison, dans les ordinateurs plus récents, la communication en série a désormais remplacé la communication en parallèle pour la plupart des bus de l'ordinateur, y compris pour les bus du CPU — cela permet une vitesse plus élevée et nécessite moins de fils.
 
 #### Traces
 
@@ -183,8 +181,11 @@ Les composants externes sont également appelés *périphériques*.
 
 ### Interfaces
 
-* Une *interface* est un point de liaison avec un bus.  
-  On dira d'un disque dur qu'il est SATA si son interface est SATA.  
+* Quand on parle de connexions physiques, les termes *port* et *interface* sont interchangeable.  
+  Une *interface* ou *port* est un point d'entrée ou sortie d'un bus.
+
+  On peut dire qu'un ordinateur a une interface ou un port USB.  
+  On dit d'un disque dur possédant une interface SATA, qu'il s'agit d'un disque dur SATA.  
   [Bus Interface in Microprocessor](https://www.eeeguide.com/bus-interface-in-microprocessor/)
 
 * Parmis les interfaces les plus courantes pour les périphériques de stockage, on trouve:
@@ -218,50 +219,52 @@ Les composants externes sont également appelés *périphériques*.
 
   [PCIe vs SATA vs USB – Storage Interfaces Explained](https://www.unbxtech.com/2019/03/pcie-sata-usb-interfaces-explained.html)
 
-### Ports & connecteurs
+### Prises
 
-* Un *port* est une prise femelle.  
-  C'est une interface permettant de connecter un périphérique à l'ordinateur, on peut dire qu'un ordinateur a une interface ou un port USB.
+* Pour connecter un périphérique à l'ordinateur, il faut brancher
+  une prise femelle à une prise mâle de même type / même standard
 
-* Un *connecteur* est une prise mâle, qui permet de connecter un appareil à un port
+  * Un *port* est une prise femelle
 
-  ![](https://i.imgur.com/TZgLRJnl.png)
+    ![](https://i.imgur.com/TZgLRJnl.png)
 
-  ![](https://i.imgur.com/vSoeN8Kl.png)
+  * Un *connecteur* est une prise mâle
 
-#### Standards
+    ![](https://i.imgur.com/vSoeN8Kl.png)
+
+### Standards
 
 * Il existe tout un tas de connecteurs
 
-  - Le plus courant est le connecteur USB (*Universal Serial Bus*).  
+  - Le plus courant est le connecteur **USB** (*Universal Serial Bus*).  
     Il en existe différentes variantes:
 
     ![](https://i.imgur.com/6pTEvBw.png)
 
-  - FireWire est un connecteur spécialisé conçu par Apple mais il n'a jamais vraiment décollé.  
+  - **FireWire** est un connecteur spécialisé conçu par Apple mais il n'a jamais vraiment décollé.  
     Aujourd'hui, l'utilisation de FireWire est rare.
 
     ![](https://i.imgur.com/zrFcicl.png)
 
-  - VGA est un ancien connecteur, qui ne peut prendre en charge que des écrans à faible résolution (640x480). On ne trouve donc pas de connecteurs VGA sur les équipements modernes
+  - **VGA** est un ancien connecteur, qui ne peut prendre en charge que des écrans à faible résolution (640x480). On ne trouve donc pas de connecteurs VGA sur les équipements modernes
 
     ![](https://i.imgur.com/ZNNrIzM.png)
 
-  - DVI est une norme encore plus ancienne mais qu'on peut encore trouver aujourd'hui. Les connecteurs DVI prennent en charge la vidéo HD — une résolution jusqu'à 1080p
+  - **DVI** est une norme encore plus ancienne mais qu'on peut encore trouver aujourd'hui. Les connecteurs DVI prennent en charge la vidéo HD — une résolution jusqu'à 1080p
 
     ![](https://i.imgur.com/J6QI5QJ.png)
 
-  - HDMI est une norme qui a la particularité de transporter de l'audio et vidéo sur le même câble, elle est couramment utilisée pour connecter les ordinateurs et téléviseurs ou moniteurs.
+  - **HDMI** est une norme qui a la particularité de transporter de l'audio et vidéo sur le même câble, elle est couramment utilisée pour connecter les ordinateurs et téléviseurs ou moniteurs.
 
     ![](https://i.imgur.com/bHhHZsO.png)
 
-  - DisplayPort prend en charge la vidéo à très haute résolution, jusqu'à 5K et au-delà.
+  - **DisplayPort** prend en charge la vidéo à très haute résolution, jusqu'à 5K et au-delà.
 
     ![](https://i.imgur.com/PyTxqvH.png)
 
   - Les moniteurs modernes peuvent également être connectés à l'aide de connecteurs USB-C. Ils peuvent fonctionner aux résolutions maximales disponibles aujourd'hui et envoyer de l'audio, de la vidéo et de l'alimentation sur le même câble si utilisés avec la norme Thunderbolt.
 
-    Thunderbolt est une norme d'interface matérielle conçue par Intel, qui permet d'envoyer des données et de l'alimentation sur le même câble. Thunderbolt utilise les connecteurs existants: les deux premières versions de Thunderbolt utilisaient des connecteurs mini DisplayPort, et les versions plus récentes (Thunderbolt 3 et 4) utilisent des connecteurs USB-C.
+    **Thunderbolt** est une norme d'interface matérielle conçue par Intel, qui permet d'envoyer des données et de l'alimentation sur le même câble. Thunderbolt utilise les connecteurs existants: les deux premières versions de Thunderbolt utilisaient des connecteurs mini DisplayPort, et les versions plus récentes (Thunderbolt 3 et 4) utilisent des connecteurs USB-C.
 
   [Guide visuel des ports et connecteurs](https://www.dell.com/support/kbdoc/fr-fr/000132029/a-guide-to-the-external-ports-and-connectors-on-a-dell-computer)
 

@@ -13,8 +13,7 @@ category: Linux, Processus
 
 * Un utilisateur peut influencer la priorité qu'il souhaite donner à un processus en définissant une valeur *nice* (gentillesse). L'échelle de "gentilesse" va de -20 à 19, où -20 sera la priorité la plus élevée (le processus demande à passer en premier) et 19 la priorité la plus basse (le processus est prêt à céder sa place). La valeur par défaut pour les processus utilisateurs est 0.
 
-  Seul root peut définir des valeurs *nice* négatives ou modifier baisser celle d'un processus existant — autrement dit, donner une priorité plus élevé.
-  Pour un utilisateur standard, le module PAM pam_limits.so (cf /etc/security/limits.conf) limite la valeur de nice à zéro. Il faut être identifié en tant que root pour définir des valeurs nice négatives.
+  Seul root peut définir des valeurs *nice* négatives ou modifier baisser celle d'un processus existant — autrement dit, donner une priorité plus élevé. Il faut être identifié en tant que root pour définir des valeurs nice négatives. Pour un utilisateur standard, le module PAM pam_limits.so limite la valeur de nice à zéro, la limite peut également être modifiée dans /etc/security/limits.conf.
 
 * Par défaut, un processus hérite de la niceness du processus qui l'a déclenché
 
@@ -78,7 +77,7 @@ category: Linux, Processus
   ```
 
 * La commande `top` permet également de modifier la valeur nice  
-  <kbd>r</kbd> pour renice (taper le PID puis la valeur nice)
+  <kbd>r</kbd> pour renice, et taper le PID puis la valeur nice
 
 ## Priorité
 
@@ -118,10 +117,10 @@ category: Linux, Processus
 
 * Dans l'exemple ci-dessous, on peut voir que
 
-  - pulseaudio, le daemon qui s'occupe du son, est un processus utilisateur — priorité entre 0 et 39
+  - pulseaudio, le daemon qui s'occupe du son, est un processus utilisateur — priorité (PR) entre 0 et 39
   - qu'il a la priorité par rapport à Xorg, le serveur graphique
-  - que les processus en temps réel sont des processus lancés par root — priorité inférieure à 0, niceness non définie  
-    Certains processus ont une priorité "rt", ce qui correspond à la priorité -100.
+  - que les processus en temps réel — PR inférieure à 0 — sont des processus lancés par root, et que leur niceness (NI) n'est pas définie  
+  - certains processus ont une priorité "rt", ce qui correspond à la priorité -100.
 
   ```
   top - 09:57:09 up  1:06,  1 user,  load average: 0,90, 0,77, 0,68

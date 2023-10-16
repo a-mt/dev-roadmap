@@ -99,7 +99,7 @@ category: Linux, Shell, Bash
 
 ## Supprimer une fonction
 
-* On peut supprimer une fonction avec `unset`
+* On peut supprimer une fonction avec `unset -f `
 
   ```
   unset -f myfunc

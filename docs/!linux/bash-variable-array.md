@@ -32,7 +32,7 @@ category: Linux, Shell, Bash, Variable
   <tr>
     <th align="left">array=(a b c)</th>
     <td>Affecte les valeurs "a", "b" et "c" au tableau array.<br>
-    Entourer de parenthèses permet de mettre les valeurs dans un tableau. <sup>(1)</sup>
+    Entourer de parenthèses permet de mettre les valeurs dans un tableau.
     <pre lang="shell">$ array=("a a" b "c c" d)
   $ for i in "${array[@]}"; do echo - $i; done
   - a a
@@ -103,7 +103,7 @@ $ for i in "${array[@]}"; do echo - $i; done
 
 Si les valeurs du tableau contiennent des caractères de délimitation, il faut les échapper à la lecture et à l'écriture.
 
-```
+``` bash
 $ array=("a a" b "c c" d)
 $ echo ${#array}
 3

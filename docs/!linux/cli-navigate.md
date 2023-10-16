@@ -102,6 +102,8 @@ category: Linux, Shell
   /tmp
   ```
 
+### HOME, ~
+
 * Lorsqu'elle utilisée sans arguments, la commande `cd` conduit l'utilisateur dans son répertoire personnel.
 
   ```
@@ -109,6 +111,22 @@ category: Linux, Shell
   $ pwd
   /home am
   ```
+
+* La variable $HOME correspond au répertoire personnel de l'utilisateur en cours.  
+  ~ correspond à la variable $HOME  
+  ~bozo correspond au répertoire de l'utilisateur bozo
+
+  Si l'utilisateur en cours est bob, les commandes suivantes sont donc équivalentes:
+
+  ```
+  $ cd
+  $ cd ~
+  $ cd $HOME
+  $ cd ~bob
+  $ cd /home/bob
+  ```
+
+### OLDPWD, ~-
 
 * Lorsqu'elle est utilisée avec l'argument `-`, elle conduit vers le répertoire précédent
 
@@ -118,11 +136,27 @@ category: Linux, Shell
   /tmp
   ```
 
-* Note: il y a différentes manières d'aller dans le home directory
+* Le variable $OLDPWD correspond au répertoire précédent.  
+  ~- correspond à la variable $OLDPWD
 
   ```
-  cd
-  cd ~
-  cd $HOME
-  cd /home/username
+  $ cd /tmp; cd
+  $ echo ~-
+  /tmp
+  $ echo $OLDPWD
+  /tmp
+  ```
+
+### PWD, ~+
+
+* La variable $PWD correspond au répertoire en cours.  
+  ~+ correspond à la variable $PWD
+
+  ```
+  $ echo .
+  .
+  $ echo ~+
+  /tmp
+  $ echo $PWD
+  /tmp
   ```

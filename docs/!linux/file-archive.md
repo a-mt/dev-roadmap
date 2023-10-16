@@ -7,7 +7,7 @@ category: Linux, Fichiers
 
 * Une *archive* (par exemple un fichier zip) est un fichier permettant de rassembler plusieurs fichiers en un seul. On utilise des archives lorsqu'un ou plusieurs fichiers doivent être transmis ou stockés aussi efficacement que possible
 
-  Les archives contiennent généralement de grandes quantités de fichiers et peuvent prendre beaucoup de place sur un système, c'est pourquoi elles sont généralement compressées pour prendre moins de place.
+  Les archives contiennent généralement de grandes quantités de fichiers et peuvent prendre beaucoup de place sur un système, c'est pourquoi elles sont généralement compressées.
 
 * La *compression* réduit la quantité de données nécessaires au stockage ou à la transmission d'un fichier tout en le stockant de manière à ce que le fichier puisse être restauré. Un algorithme de compression est une procédure que l'ordinateur utilise pour encoder le fichier original et, par conséquent, le rendre plus petit.
 
@@ -17,11 +17,12 @@ category: Linux, Fichiers
 
 ## tar
 
-* tar est l'utilitaire d'archivage traditionnel d'UNIX, le nom "tar" est une forme abrégée de *tape archive* (archive cassette). Lorsqu'une archive tar est compressée, on dit qu'il s'agit d'une *tarball*.
-
-  tar conserve une certain nombre d'attributs du système de fichier, comme le nom, la date de création, le propriétaire et permissions et la hiérarchie des répertoire. tar retire le répertoire racine (`/`) sur les chemins absolus de fichier, on peut donc restaurer une archive n'importe où dans le répertoire virtuel.
-
+* tar est l'utilitaire d'archivage traditionnel d'UNIX, le nom "tar" est une forme abrégée de *tape archive* (archive cassette). Lorsqu'une archive tar est compressée (par exemple un .tar.gz), on dit qu'il s'agit d'une *tarball*.  
   POSIX a abandonné tar en faveur de pax, mais tar reste très populaire.
+
+  tar conserve une certain nombre d'attributs du système de fichier, comme le nom, la date de création, le propriétaire, les permissions et la hiérarchie des répertoire.
+
+  tar retire le répertoire racine (`/`) sur les chemins absolus de fichier, on peut donc restaurer une archive n'importe où dans le répertoire virtuel.
 
 ### Créer
 
@@ -53,8 +54,7 @@ category: Linux, Fichiers
   file1 file2 file3 file4
   ```
 
-* Par défaut, l'arborescence des répertoires est recréée à l'intérieur du tar relativement à /,
-  on peut utiliser `--directory` ou `-C` pour modifier le répertoire à partir duquel l'arborescence va être créé — et les fichiers en arguments doivent être des path relatifs à ce répertoire.
+* Par défaut, l'arborescence des répertoires est recréée à l'intérieur du tar relativement à /.  
 
   ``` bash
   # Archive le répertoire /home/bob/databases/ vers /opt/archive.tar.bz2
@@ -66,29 +66,37 @@ category: Linux, Fichiers
   home/bob/databases/file.sql
   home/bob/databases/data.txt
   home/bob/databases/file
-
-  # Idem mais le répertoire de base est bob/databases/
-  $ sudo tar --directory=/home -czf /opt/archive2.tar.gz bob/databases/
-
-  $ tar tf /opt/archive2.tar.gz
-  bob/databases/
-  bob/databases/file.sql
-  bob/databases/data.txt
-  bob/databases/file
-
-  # /var/www est le répertoire de base (on garde le / initial)
-  tar -P -czvf /root/www-backup.tar.gz /var/www/
   ```
 
-  À l'extraction, on peut utiliser `--strip` pour retirer les répertoires parents dont on ne veut pas
+  - L'option `--directory` ou `-C` permet de modifier le répertoire à partir duquel l'arborescence va être créé — et les fichiers en arguments doivent être des path relatifs à ce répertoire.
 
-  ``` bash
-  tar xvf /backup/backup.tar --strip 1  
-  ```
+    ``` bash
+    # Idem mais le répertoire de base est bob/databases/
+    $ sudo tar --directory=/home -czf /opt/archive2.tar.gz bob/databases/
+
+    $ tar tf /opt/archive2.tar.gz
+    bob/databases/
+    bob/databases/file.sql
+    bob/databases/data.txt
+    bob/databases/file
+    ```
+
+  - L'option -P permet de préserver le / initial
+
+    ``` bash
+    # /var/www est le répertoire de base (on garde le / initial)
+    tar -P -czvf /root/www-backup.tar.gz /var/www/
+    ```
+
+  - À l'extraction, on peut utiliser `--strip` pour retirer les répertoires parents dont on ne veut pas
+
+    ``` bash
+    tar xvf /backup/backup.tar --strip 1  
+    ```
 
 ### Voir
 
-* Pour voir les fichiers dans une archive, sans en extraire le contenu:
+* Pour lister les fichiers dans une archive, sans en extraire le contenu:
 
   | UNIX-style | Bash-style | Description
   |---  |---         |---
@@ -178,7 +186,7 @@ category: Linux, Fichiers
 
 ## gzip
 
-* Il est possible de compresser un fichier quelconque — mais il faudra le décompresser avant de pouvoir consulter le contenu.
+* Il est possible de compresser un fichier quelconque et donc pas uniquement des archives) — mais il faudra le décompresser avant de pouvoir consulter le contenu.
 
 * <ins>Compresser un fichier en .gz</ins>  
   gzip permet de compresser un fichier avec l'algorithme gzip. Quand cette commande est terminée, le fichier d'origine est supprimé, ne reste plus que la version compressée — avec l'extension .gz
@@ -279,7 +287,7 @@ category: Linux, Fichiers
   $ xzcat file3.xz | less
   ```
 
-* Pour décompresser:
+* Et pour décompresser:
 
   ``` bash
   $ gunzip file1.gz
@@ -336,7 +344,7 @@ category: Linux, Fichiers
 
 * <ins>Extraire une archive</ins>  
   Pour extraire une archive, utiliser l'option -i (mode copy in)  
-  -I pour spécifier le nom de l'archive en entrée
+  -I (input) pour spécifier le nom de l'archive en entrée
 
   ```
   $ cpio -iv -I archive.cpio
@@ -376,7 +384,7 @@ category: Linux, Fichiers
 
 ## dd
 
-* `dd` (duplicate disk) permet de sauvegarder un disque ou une partition entière. Cette command prend toutes les données présentes sur le disque ou la partition et effectue une copie exacte bit par bit. On processus également appelé "imaging" — le processus de créer une image de disque.
+* `dd` (duplicate disk) permet de sauvegarder un disque ou une partition entière. Cette command prend toutes les données présentes sur le disque ou la partition et effectue une copie exacte bit par bit. Un processus également appelé "imaging" — le processus de créer une image de disque.
 
   Avant de sauvegarder une image de disque ou de partition, démonter ce disque ou cette partition pour s'assurer qu'aucune donnée n'est modifiée pendant la sauvegarde.
 
@@ -386,7 +394,8 @@ category: Linux, Fichiers
   - le fichier en entrée avec `if=inputFilename`  
   - le fichier en sortie avec `of=outputFilename`  
   - `status=progress` permet d'avoir une barre de progression
-  - `bs=1M` (block size de 1M) permet d'accélérer considérablement le processus
+  - `bs=1M` permet de spécifier la taille des blocs (block size de 1M), l'augmenter permet d'accélérer considérablement le processus  
+  - `count=16` permet de ne copier que le nombre de blocs spécifié. Ainsi un fichier contenant 16 blocs de 1M pèsera au final 16M
 
   ``` bash
   $ sudo lsblk
@@ -419,15 +428,15 @@ category: Linux, Fichiers
 ## rsync
 
 * Un outil populaire pour sauvegarder des données de `rsync` (remote synchronization), qui permet de garder un répertoire sur le server 1 synchronisé avec un répertoire sur le serveur 2 en copiant les données à travers le réseau, via SSH.
-   Si la commande est exécutée une seconde fois, rsync ne copiera quue les données qui ont été modifiées et ignorera les anciennes données qui sont encore à jour
+   Si la commande est exécutée une seconde fois, rsync ne copiera que les données qui ont été modifiées: les anciennes données qui sont encore à jour ne seront pas écrasées, ce qui permet d'accélérer le processus
 
-* Pour copier un répertoire local vers un répertoire distant  
+* Pour copier un répertoire local vers un répertoire distant:  
 
- ``` bash
- rsync -a Pictures/ aaron@9.9.9.9:/home/aaron/Pictures/
- ```
+  ``` bash
+  rsync -a Pictures/ aaron@9.9.9.9:/home/aaron/Pictures/
+  ```
 
-  -a (archive) permet à rsync de synchroniser le sous-répertoires, les permissions de fichiers, la date de modification, etc.
+  Note: L'option -a (archive) permet à rsync de synchroniser le sous-répertoires, les permissions de fichiers, la date de modification, etc.
 
 * Pour copier un répertoire distant vers un répertoire local:
 
@@ -435,7 +444,7 @@ category: Linux, Fichiers
   rsync -a aaron@9.9.9.9:/home/aaron/Pictures/ Pictures/
   ```
 
-* Notons qu'on peut également synchroniser des répertoires locaux
+* On peut également synchroniser des répertoires locaux
 
   ``` bash
   rsync -a Pictures/ /Backups/Pictures/

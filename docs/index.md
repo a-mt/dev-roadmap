@@ -273,7 +273,7 @@ searchbar: true
   - [Minimiser des Images](https://tinypng.com/)
   - [Diagrams](https://app.diagrams.net)
   - [Flowcharts](https://whimsical.com)
-  - [Wireframing](https://designer.gravit.io/)
+  - Maquettes: [Gravit](https://designer.gravit.io/) or [Canva](https://www.canva.com/fr_fr/creer/maquette-wireframe-site-web/)
   - [Créer des Logos/images](https://www.canva.com/)
   - [Identifier une Police](https://www.myfonts.com/WhatTheFont/)
   - [Free images, Videos](http://thestocks.im)

@@ -5,7 +5,7 @@ category: Linux, Fichiers
 
 ### ls -F (classify)
 
-* Ajoute un symbole, appelé *indicateur de classification*, derrière les fichiers (autres que des fichiers normaux) pour indiquer de quel type de fichier il s'agit. On trouve notamment:
+* Ajoute un symbole, appelé *indicateur de classification*, derrière le nom des fichiers (autres que des fichiers réguliers) pour indiquer de quel type de fichier il s'agit. On trouve notamment:
 
   * `/` = répertoire
   * `*` = fichier exécutable
@@ -34,7 +34,7 @@ category: Linux, Fichiers
 
 ### ls -R (recursive)
 
-* Permet d'afficher les fichiers récursivement — les fichiers du répertoire courant, les fichiers des sous-répertoires, et ainsi de suite.
+* Permet d'afficher les fichiers récursivement — les fichiers du répertoire courant, les fichiers des sous-répertoires, etc.
 
   ```
   $ ls -R /tmp
@@ -105,7 +105,7 @@ category: Linux, Fichiers
 
 * La commande `locate` utilise une base de données pour effectuer ses recherches — c'est donc très rapide. Cette base de données s'appelle mlocate.db et est généralement mise à jour quotidiennement.
 
-  Un fichier crée après la dernière mise à jour BDD figurera pas dans les résultats. Pour le retrouver avec locate, déclencher une mise à jour de la BDD manuellement avec `updatedb` (nécessite les permissions root)
+  Un fichier crée après la dernière mise à jour BDD ne figurera pas dans les résultats. Pour le retrouver avec locate, déclencher une mise à jour de la BDD manuellement avec `updatedb` (nécessite les droits root)
 
   ```
   $ touch newword.txt
@@ -116,7 +116,15 @@ category: Linux, Fichiers
   /home/am/Documents/newword.txt
   ```
 
-* Le fichier de configuration <ins>/etc/updatedb.conf</ins> est utilisé pour sélectionner les répertoires à inclure ou ignorer dans la base de données mlocate (PRUNEPATHS). On peut également ignorer des types de systèmes de fichiers (PRUNEFS).
+* Le fichier de configuration <ins>/etc/updatedb.conf</ins> est utilisé pour sélectionner les répertoires à inclure ou ignorer dans la base de données mlocate (dans la variable PRUNEPATHS). On peut également ignorer des types de systèmes de fichiers (PRUNEFS).
+
+  ``` bash
+  $ cat /etc/updatedb.conf
+  PRUNE_BIND_MOUNTS="yes"
+  # PRUNENAMES=".git .bzr .hg .svn"
+  PRUNEPATHS="/tmp /var/spool /media /var/lib/os-prober /var/lib/ceph /home/.ecryptfs /var/lib/schroot"
+  PRUNEFS="NFS afs autofs binfmt_misc ceph cgroup cgroup2 cifs coda configfs curlftpfs debugfs devfs devpts devtmpfs ecryptfs ftpfs fuse.ceph fuse.cryfs fuse.encfs fuse.glusterfs fuse.gvfsd-fuse fuse.mfs fuse.rozofs fuse.sshfs fusectl fusesmb hugetlbfs iso9660 lustre lustre_lite mfs mqueue ncpfs nfs nfs4 ocfs ocfs2 proc pstore rpc_pipefs securityfs shfs smbfs sysfs tmpfs tracefs udev udf usbfs"
+  ```
 
 ### find
 
@@ -156,7 +164,7 @@ category: Linux, Fichiers
 
 ### xargs
 
-* On peut utiliser `xargs` pour utiliser le résultat d'un filtre sur les fichiers
+* On peut utiliser `xargs` pour transformer stdin en argument  
 
   ``` bash
   # Récupèrer l'ensemble des lignes qui se situent entre START et END (multiligne)
@@ -188,18 +196,29 @@ category: Linux, Fichiers
 
 ### for
 
-* Ou alors une boucle `for`
+* On peut utiliser une boucle `for` pour boucler sur les résultats
 
   ``` bash
   files=(lib/*)
 
-  for file in "${files[@]}";
-    do echo "-"$file;
+  for file in "${files[@]}"; do
+    echo "-"$file;
   done
   ```
 
   ``` bash
-  for file in `find dist -type f | egrep '(html|css|js|map)$'`;
-      do sed -i 's/"\/assets/"\/static\/assets/g' $file;
+  IFS=$'\n'
+
+  # split ':' => '\n'
+  LIST=(${PATH//:/$'\n'})
+
+  for file in "${LIST[@]}"; do
+    echo $file
+  done
+  ```
+
+  ``` bash
+  for file in `find dist -type f | egrep '(html|css|js|map)$'`; do
+    sed -i 's/"\/assets/"\/static\/assets/g' $file;
   done
   ```

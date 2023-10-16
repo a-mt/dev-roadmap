@@ -23,7 +23,7 @@ category: Linux, Shell, Bash
     export VAR1 VAR2
     ```
 
-    Notons que les processus enfant peuvent à modifier les variables exportées, mais le changement ne se propage pas au shell parent: les variables exportées ne sont pas partagées mais seulement copiées.
+    Notons que les processus enfant peuvent modifier les variables exportées, mais le changement ne se propage pas au shell parent: les variables exportées ne sont pas partagées mais seulement copiées.
 
   * <u>les variables locales</u>  
     Sont définies uniquement pour le shell courant, les processus enfants n'en héritent pas.  
@@ -33,7 +33,7 @@ category: Linux, Shell, Bash
     nom_variable=value
     ```
 
-Il y a différentes manières d'affecter la valeur d'une variable.
+Il y a différentes manières d'affecter la valeur d'une variable.  
 Dans tous les cas, ne jamais mettre d'espaces autour du égal — ils sont invalides à cet endroit
 
 <table>
@@ -44,23 +44,23 @@ Dans tous les cas, ne jamais mettre d'espaces autour du égal — ils sont inval
 <tr>
   <th align="left">var=test</th>
   <td>Affecte la valeur "test" à la variable var. <br>
-    Si la valeur contient des caractères spéciaux, comme "$", alors il faut les échapper.</td>
+    Si la valeur contient des caractères spéciaux, comme "$", alors il faut les échapper.<br>
+    Si la valeur contient des espaces, alors il est nécessaire d'utiliser des quotes.</td>
 </tr>
 <tr>
   <th align="left">var="hello world"</th>
   <td>Affecte la valeur "hello world" à la variable var. <br>
-    Si la valeur contient des espaces, alors il est nécessaire d'utiliser des quotes.<br>
     Les caractères spéciaux, comme "$", doivent être échappés.</td>
 </tr>
 <tr>
   <th align="left">var=$'1\n2'</th>
-  <td>Affecte la chaîne de caractère en interprétant les <a href="https://www.gnu.org/software/bash/manual/bash.html#ANSI_002dC-Quoting">caractères spéciaux</a> à la variable var.
+  <td>Affecte la chaîne de caractère à la variable var en interprétant les <a href="https://www.gnu.org/software/bash/manual/bash.html#ANSI_002dC-Quoting">caractères spéciaux</a>.
   <pre lang="shell">var=$'1\n2'
 echo "$var"</pre></td>
 </tr>
 <tr>
   <th align="left">var=$"Text"</th>
-  <td>Affecte la traduction de "Text", selon la locale en cours, à la variable var.
+  <td>Affecte la traduction de "Text" à la variable var, selon la locale en cours.
   <pre lang="shell"># cd /usr/share/locale/fr/LC_MESSAGES
 # ls
 # msgunfmt apt.mo
@@ -75,7 +75,7 @@ Tu as $n nouveaux messages!<br>
 HEREDOC<br>
 )</th>
   <td>Affecte une valeur sur plusieurs lignes à la variable var. <br>
-    Les caractères spéciaux, comme "$", doivent être échappés.</td>
+    Les caractères spéciaux, comme "$", doivent être échappés.<br>Le délimiteur de fin doit être seul sur la ligne</td>
 </tr>
 <tr>
   <th align="left">var=$(cat &lt;&lt;'NOWDOC'<br>
@@ -96,7 +96,7 @@ echo "Salut ${user}!"</pre></td>
 </tr>
 <tr>
   <th align="left">var=$(basename $(pwd))</th>
-  <td>Affecte le résultat de la commande "basename" sur "pwd" à la variable var.<br> Possibilité d'imbriquer les commandes avec cette syntaxe
+  <td>Donne le résultat de la commande "pwd" à la commande "basename" et affectue ce résultat à la variable var.<br> Possibilité d'imbriquer les commandes avec cette syntaxe
   <pre lang="shell">dir=$(basename $(pwd))
 echo "Dossier: $dir"</pre>
 
@@ -114,6 +114,8 @@ echo $var # Hello World</pre></td>
 $ var=$(($var + 1))
 $ echo $var
 2
+</pre>
+<pre lang="shell">
 $ operation="$var + 1"
 $ echo operation
 2 + 1
@@ -131,9 +133,9 @@ RANDOM est une variable d'environnement spéciale: elle contient un nombre aléa
 4386
 $ echo $RANDOM
 21621
-$ echo $((RANDOM%=200))      # entre 0 et 200
+$ echo $((RANDOM%=200))      # nombre aléatoire entre 0 et 200
 155
-$ echo $((1+($RANDOM%100)))  # entre 1 et 100</pre></td>
+$ echo $((1+($RANDOM%100)))  # nombre aléatoire entre 1 et 100</pre></td>
 </tr>
 <tr>
   <th align="left">let var=var+1</th>
@@ -181,11 +183,11 @@ $ echo $((1+($RANDOM%100)))  # entre 1 et 100</pre></td>
 
 ## Variables spéciales
 
-* Il y a également des variables spéciales, qui sont crées automatiquement par le shell:
+* Chaque script a des variables spéciales, créées automatiquement par le shell:
 
   | Variable    | Description
   |---          |---
-  | 0,1,2,3,... | Paramètres utilisés pour lancer le script en cours.<br> 0 contient le nom de la commande, 1 et plus contiennent le reste des paramètre
+  | 0,1,2,3,... | Paramètres utilisés pour lancer le script en cours.<br> 0 contient le nom de la commande (telle qu'elle a été appelée, peut être un path absolu ou relatif ou même un lien symbolique), 1 et plus contiennent le reste des paramètre
   | #           | Nombre de paramètres passés au script
   | @           | Liste des paramètres passés au script (à partir de 1)
   | ?           | Statut de la dernière commande (code numérique).<br> 0 si OK, différent de 0 en cas d'erreur
@@ -197,7 +199,6 @@ $ echo $((1+($RANDOM%100)))  # entre 1 et 100</pre></td>
     echo 'Usage: chr NUM'
     exit 1
   fi
-
   python -c "print(chr($1))"
   ```
 
@@ -214,7 +215,7 @@ $ echo $((1+($RANDOM%100)))  # entre 1 et 100</pre></td>
 
 * Pour afficher la valeur d'une variable, on précède son nom par `$`.
 
-  ```
+  ``` bash
   $ username="bob"
   $ echo $username
   bob
@@ -244,8 +245,9 @@ $ echo $((1+($RANDOM%100)))  # entre 1 et 100</pre></td>
     for i in $@; do
       echo - $i
     done
-
-    $ bash exemple -H hello world !
+    </pre>
+    <pre lang="bash">
+    $ bash exemple.sh -H hello world !
     Shell: /bin/bash
     Variable: test
     PID: 15206
@@ -274,7 +276,7 @@ echo $var     # test</pre>
 </tr>
 <tr>
   <th align="left">echo "$var"</th>
-  <td>Écrit la valeur de la variable <code>var</code> en empêchant l'interprétation des caractères spéciaux par le shell. Cela permet d'afficher les caractères spéciaux, qui ne seraient pas visibles autrement puisque interceptés par le shell.
+  <td>Écrit la valeur de la variable <code>var</code> en empêchant l'interprétation des caractères spéciaux par le shell. Permet d'afficher les caractères spéciaux, qui ne seraient pas visibles autrement puisqu'interceptés par le shell.
   <pre lang="shell">$ var=$'1\n2'
 $ echo $var
 1 2
@@ -286,7 +288,7 @@ $ echo "$var"
 </tr>
 <tr>
   <th align="left">print "%q\n" "$var"</th>
-  <td>Écrit la valeur de la variable <code>var</code> en ANSI C Quoting = remplace les caractères spéciaux par les séquences de caractères qui correspondent.
+  <td>Écrit la valeur de la variable <code>var</code> en <a href="https://www.gnu.org/software/bash/manual/bash.html#ANSI_002dC-Quoting">ANSI C Quoting</a> = remplace les caractères spéciaux par les séquences de caractères qui correspondent.
   <pre lang="shell">$ var=$'1\n2'
 $ echo "$var"
 1
@@ -342,7 +344,7 @@ testok</pre>
 
 ## Supprimer une variable
 
-* On peut supprimer une variable, locale ou d'environnement avec `unset`
+* Pour supprimer une variable, locale ou d'environnement, utiliser `unset`
 
   ``` bash
   unset var
@@ -398,8 +400,8 @@ var: B
   <td>Retourne la valeur de var ou la chaîne "nok" si la valeur est vide ou que la variable n'existe pas.
       La valeur de var n'est pas affectée
       <pre lang="shell">var=""
-echo ${var:-vide} # vide
-echo $var         # (rien)</pre>
+echo ${var:-NA} # NA
+echo $var       # (rien)</pre>
   </td>
 </tr>
 <tr>
@@ -407,7 +409,7 @@ echo $var         # (rien)</pre>
   <td>Retourne "ok" si var existe et a une valeur.
       <br>La valeur de var n'est pas affectée
       <pre lang="shell">var=""
-echo ${var:+ok}   # vide
+echo ${var:+ok}   # (rien)
 echo $var         # (rien)</pre>
   </td>
 </tr>
@@ -415,8 +417,8 @@ echo $var         # (rien)</pre>
   <th align="left">${var:=nok}</th>
   <td>Affecte var à "nok" si la valeur de var est vide ou que la variable n'existe pas puis affiche la valeur de var.
       <pre lang="shell">var=""
-echo ${var:=vide} # vide
-echo $var         # vide</pre>
+echo ${var:=NA} # NA
+echo $var       # NA</pre>
   </td>
 </tr>
 <tr>
@@ -424,8 +426,8 @@ echo $var         # vide</pre>
   <td>Affiche "nok" dans stderr si la variable var n'existe pas ou que sa valeur est vide.
       <br>La valeur de var n'est pas affectée
       <pre lang="shell">var=""
-echo ${var:?vide} # bash: var: vide (dans stderr)
-echo $var         # (rien)</pre>
+echo ${var:?NA} # bash: var: NA (dans stderr)
+echo $var       # (rien)</pre>
   </td>
 </tr>
 </table>
@@ -436,20 +438,20 @@ echo $var         # (rien)</pre>
 <tr><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td><td></td></tr>
 <tr>
   <th align="left">${var:3}</th>
-  <td>Supprime les 3 premiers caractères de la variable var
+  <td>À partir de l'index 3 =<br>Supprime les 3 premiers caractères de la variable var
   <pre lang="shell">var=123456789
 echo ${var:3}      # 456789</pre></td>
 </tr>
 <tr>
   <th align="left">${var:0:3}</th>
-  <td>Retourne les 3 premiers caractères de la variable var<br>À partir de 0, 3 caractères
+  <td>À partir de l'index 0, 3 caractères =<br>Retourne les 3 premiers caractères de la variable var
   <pre lang="shell">var=123456789
 echo ${var:0:3}    # 123
 echo ${var:0:12}   # 123456789</pre></td>
 </tr>
 <tr>
   <th align="left">${var:2:1}</th>
-  <td>Retourne le 3ème caractère de la variable var
+  <td>À partir de l'index 2, 1 caractère =<br>Retourne le 3ème caractère de la variable var
   <pre lang="shell">var=123456789
 echo ${var:2:1}    # 3</pre></td>
 </tr>
@@ -457,25 +459,25 @@ echo ${var:2:1}    # 3</pre></td>
 <tr><td colspan="2"></td></tr>
 <tr>
   <th align="left">${var:0:-3}</th>
-  <td>Supprime les 3 derniers caractères de la variable var
+  <td>À partir de l'index 0, le nombre de caractères dans la chaîne - 3 =<br>Supprime les 3 derniers caractères de la variable var
   <pre lang="shell">var=123456789
 echo ${var:0:-3}   # 123456</pre></td>
 </tr>
 <tr>
   <th align="left">${var:&nbsp;-3}</th>
-  <td>Retourne les 3 derniers caractères de la variable var<br>ATTENTION, ne pas oublier l'espace avec le "-" (moins) pour un "à partir de" négatif
+  <td>À partir de l'index -3 (3 à partir de la fin)=<br>Retourne les 3 derniers caractères de la variable var<br>ATTENTION, ne pas oublier l'espace avec le "-" (moins) pour un "à partir de" négatif
   <pre lang="shell">var=123456789
 echo ${var: -3}    # 789</pre></td>
 </tr>
 <tr>
   <th align="left">${var: -3:1}</th>
-  <td>Retourne le 3ème caractère à partir de la fin de la variable var.<br>À partir de -3, un caractère
+  <td>À partir de -3, un caractère =<br>Retourne le 3ème caractère à partir de la fin de la variable var
   <pre lang="shell">var=123456789
 echo ${var: -3:1}  # 7</pre></td>
 </tr>
 <tr>
   <th align="left">${var:&nbsp;-3:-1}</th>
-  <td>Retourne les 3 derniers caractères de la variable var, sauf le dernier.<br>À partir de -3, -1 caractère
+  <td>À partir de -3, -1 caractère =<br>Retourne les 3 derniers caractères de la variable var, sauf le dernier.
   <pre lang="shell">var=123456789
 echo ${var: -3:-1} # 78
 echo ${var: -3:-4} # erreur</pre></td>
@@ -508,35 +510,41 @@ echo ${var#*.}  # b.c</pre></td>
 </tr>
 <tr>
   <th align="left">${var##*.}</th>
-  <td>Supprime tout ce qu'il y a AVANT le DERNIER point<br><code>${variable##pattern}</code> = supprimer le match le PLUS LONG à partir du début
+  <td>Supprime tout ce qu'il y a AVANT le DERNIER point<br><code>${variable##pattern}</code> = supprimer le match le PLUS LONG à partir du DÉBUT
   <pre lang="shell">var=a.b.c
 echo ${var##*.}  # c</pre></td>
 </tr>
 </table>
 
 ``` bash
-var="123name"
-
-$ echo ${var#+([[:digit:]])}
-23name
-
-$ echo ${var##+([[:digit:]])}
-name
-
-$ echo ${var%+([[:alpha:]])}
-123nam
-
-$ echo ${var%%+([[:alpha:]])}
-123
-```
-``` bash
 var="...a.b.c..."
 
+# Supprimer les points à la fin, match le plus long
 $ echo ${var%%+(.)}
 ...a.b.c
 
+# Supprimer les points au début, match le plus long
 $ echo ${var##+(.)}
 a.b.c...
+```
+``` bash
+var="123name"
+
+# Supprimer les nombres au début, match le plus court
+$ echo ${var#+([[:digit:]])}
+23name
+
+# Supprimer les nombres au début, match le plus long
+$ echo ${var##+([[:digit:]])}
+name
+
+# Supprimer les lettres à la fin, match le plus court
+$ echo ${var%+([[:alpha:]])}
+123nam
+
+# Supprimer les lettres à la fin, match le plus long
+$ echo ${var%%+([[:alpha:]])}
+123
 ```
 
 ### Replace
@@ -548,6 +556,15 @@ a.b.c...
   <td>Remplace le PREMIER espace par un point<br><code>${parameter/pattern/string}</code> où <code>pattern</code> est un wildcard (plus long match)<br> Si <code>string</code> est vide (revient à supprimer ce qui mache pattern), le deuxième slash n'est pas nécessaire.
   <pre lang="shell">var="a b c d "
 echo ${var/ /.}  # a.b c d </pre></td>
+</tr>
+<tr>
+  <th align="left">${var// /.}</th>
+  <td>Remplace TOUS les espaces par un point
+  <pre lang="shell">var="a b c d "
+echo ${var// /.} # a.b.c.d.</pre>
+
+  <pre lang="shell">for i in ${PATH//:/ }; do echo $i; done
+# Affiche les chemins ligne par ligne</pre></td>
 </tr>
 <tr>
   <th align="left">${var/# /.}</th>
@@ -567,32 +584,28 @@ echo ${var/% /.} "a b c d."
 var="a b c d"
 echo ${var/% /.} "a b c d"</pre></td>
 </tr>
-<tr>
-  <th align="left">${var// /.}</th>
-  <td>Remplace TOUS les espaces par un point
-  <pre lang="shell">var="a b c d "
-echo ${var// /.} # a.b.c.d.</pre>
-
-  <pre lang="shell">for i in ${PATH//:/ }; do echo $i; done
-# Affiche les chemins ligne par ligne</pre></td>
-</tr>
 </table>
 
 ``` bash
 var="12name34"
 
+# Remplacer la 1ère lettre par -
 $ echo ${var/[[:alpha:]]/-}
 12-ame34
 
+# Remplacer toutes les lettres par -
 $ echo ${var//[[:alpha:]]/-}
 12----34
 
+# Remplacer tous les chiffres par rien
 $ echo ${var//[[:digit:]]/}
 name
 
+# Remplacer tous les chiffres situés au début par -
 $ echo ${var/#+([[:digit:]])/-}
 -name34
 
+# Remplacer tous les chiffres situés à la fin par -
 $ echo ${var/%+([[:digit:]])/-}
 12name-
 ```

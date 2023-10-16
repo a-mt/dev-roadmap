@@ -49,49 +49,54 @@ done
 
 Boucler sur une liste.
 
-* Créer une liste manuellement
+* Avec une liste de valeurs créée manuellement
 
   ``` bash
   items=("a b c")
+
   for item in $items
      do echo "$item"
   done
   ```
 
-* Lister des fichiers
+* Avec une liste de fichiers
 
   ``` bash
   files=(lib/*)
-  for file in "${files[@]}"; do echo "-"$file; done
+
+  for file in "${files[@]}";
+      do echo "-"$file
+  done
   ```
 
-* Splitter une chaîne de caractères
+* Avec une chaîne de caractères qu'on a splitée
 
   ``` bash
   dir=(${PATH//:/$'\n'})
 
   for i in "${!dir[@]}"; do
-    echo "$i: ${dir[$i]}"
+      echo "$i: ${dir[$i]}"
   done
   ```
 
-* Utiliser un intervalle
+* Avec un intervalle
 
   ``` bash
-  for num in `seq 1 10`
-      do touch fichier"$num"
-  done
-  ```
-
-  ``` bash
-  for num in {1..10}
-      do touch fichier"$num"
+  for num in `seq 1 10`; do
+      touch fichier"$num"
   done
   ```
 
   ``` bash
-  for (( i=0; i<=$#; i++ ))
-  do
-  echo " \$$i = ${!i}"
+  for num in {1..10}; do
+      touch fichier"$num"
+  done
+  ```
+
+* Avec un test et incrémentation
+
+  ``` bash
+  for (( i=0; i<=$#; i++ )); do
+      echo " \$$i = ${!i}"
   done
   ```

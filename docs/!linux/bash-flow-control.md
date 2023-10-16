@@ -7,7 +7,7 @@ category: Linux, Shell, Bash
 
 * Plutôt que de chaîner des commandes avec `&&` et `||`, on peut utiliser des structures de contrôle: si la commande réussit, le code dans le bloc sera exécuté; sinon, le script passera directement au code qui suit la fin du bloc.
 
-  ```
+  ``` bash
   #!/bin/bash
 
   if ls -d /bin; then
@@ -17,7 +17,7 @@ category: Linux, Shell, Bash
 
   Comme la plupart des langages de programmation, il est possible d'ajouter une instruction else:
 
-  ```
+  ``` bash
   #!/bin/bash
 
   if ls -d /nop; then
@@ -29,7 +29,7 @@ category: Linux, Shell, Bash
 
   Et des else if:
 
-  ```
+  ``` bash
   #!/bin/bash
 
   if ls -d /nop; then
@@ -41,6 +41,25 @@ category: Linux, Shell, Bash
   fi
   ```
 
+## NOP
+
+* Le deux-points est l'équivalent shell d'un NOP (*no op*, c'est à dire "pas d'operation")
+
+  ```
+  if condition
+  then : # Ne rien faire et continuer
+  else
+  faire_quelque_chose
+  fi
+  ```
+
+* Son état de sortie est vrai (0)
+
+  ```
+  :
+  echo $? # 0
+  ```
+
 ## Expressions booléennes
 
 ### exit status
@@ -48,8 +67,6 @@ category: Linux, Shell, Bash
 * Le code retour d'une commande est stocké dans la variable `$?`  
   Si le code retour vaut 0, c'est que la commande a réussit.  
   Sinon, qu'une erreur s'est produite (cf [exit Codes with Special Meanings](http://tldp.org/LDP/abs/html/exitcodes.html))
-
-  Si le code retour est 0, alors on entre dans le bloc `if`
 
   ``` bash
   $ ls -d /bin
@@ -62,6 +79,8 @@ category: Linux, Shell, Bash
   $ echo $?
   2
   ```
+
+* Si le code retour est 0, alors on entre dans le bloc `if`
 
 ### Commande test
 
@@ -77,7 +96,7 @@ category: Linux, Shell, Bash
   1
   ```
 
-  On peut donc se servir de cette commande avec un `if`
+* On peut donc se servir de cette commande avec un `if`
 
   ``` bash
   if test $USER = root; then
@@ -89,7 +108,7 @@ category: Linux, Shell, Bash
 
 ### Crochets
 
-* On voit rarement la commande test dans un script shell, à la place on utilise les crochets — ce qui revient à exécuter la commande test. Les espaces après la première accolade et avant la dernière sont obligatoires.
+* On voit rarement la commande test dans un script shell, à la place on utilise les crochets — ce qui revient à exécuter la commande test. Il est obligatoire d'avoir un espace après la première accolade, et un espace avant la dernière (`[ ... ]` et non `[...]`).
 
   ``` bash
   if [ $USER = root ]; then
@@ -151,28 +170,67 @@ category: Linux, Shell, Bash
 * Il y a deux manières de grouper des commandes / expressions logiques:
 
   - `( list )`  
-    Placer une liste de commandes entre parenthèses oblige l'interpréteur de commandes à créer un sous-shell. Les affectations de variables ne restent pas en vigueur après la fin du sous-shell
+    Placer une liste de commandes entre parenthèses oblige l'interpréteur de commandes à créer un sous-shell.  
+    Les affectations de variables ne restent pas en vigueur après la fin du sous-shell
 
-  - `{ list, }`  
-    Placer une liste de commandes entre accolades permet de grouper des commandes sans créer de sous-shell. Le point-virhule (ou le retour chariot) est obligatoire à la fin de la ligne
+  - `{ list; }`  
+    Placer une liste de commandes entre accolades permet de grouper des commandes sans créer de sous-shell.  
+    Le point-virgule (ou le retour chariot) est obligatoire à la fin de la ligne
+
+    ``` bash
+    { /bin/dbdump_start.sh && /bin/dbdump_clean.sh; } 2>&1 | logger -p local0.notice -t DB
+    ```
+
+    ``` bash
+    #!/bin/bash
+    # Lit les lignes de /etc/fstab.
+    Fichier=/etc/fstab
+
+    {
+    read ligne1
+    read ligne2
+    } < $Fichier
+
+    echo "La première ligne dans $Fichier est :"
+    echo "$ligne1"
+    echo
+    echo "La deuxième ligne dans $Fichier est :"
+    echo "$ligne2"
+    ```
 
 ### Doubles crochets
 
-* Dans sa version 2.02, Bash introduit l'expression étendue de test: les doubles crochets — qui est une expression en elle-même et non une commande. Cette syntaxe est supportée par ksh, bash et zsh.
+* Dans sa version 2.02, Bash introduit l'expression étendue de test: les doubles crochets — qui est une expression en elle-même et non une commande. Cette syntaxe est supportée par ksh, bash et zsh. L'expression étendue ajoute des fonctionnalités:
 
-  L'expression étendue ajoute des fonctionnalités, notamment les regex et les opérateurs logiques: `&&`, `||`, `<` et `>` fonctionnent à l'intérieur d'une expression `[[ ... ]]` alors qu'ils génèrent une erreur à l'intérieur d'une expression `[ ... ]`
+  - `&&`, `||`, `<` et `>` fonctionnent à l'intérieur d'une expression `[[ ... ]]` alors qu'ils génèrent une erreur à l'intérieur d'une expression `[ ... ]`
 
-  <table>
-  <tr><th align="left">[[ STRING =~ REGEX ]]</th><td>STRING matche la REGEX</td></tr>
-  </table>
+    ``` bash
+    if [[ -z "$firstVar" || -z "$secondVar" ]]; then
+      echo "Either firstVar or secondVar is empty"
+    else
+      echo "Both variables are defined"
+    fi
 
-  ``` bash
-  str="Hello World"
+    if [[ -n "$firstVar" && -n "$secondVar" ]]; then
+      echo "Both variables are defined"
+    else
+      echo "Either firstVar or secondVar is empty"
+    fi
+    ```
 
-  if [[ $str =~ ^Hello ]]; then
-    echo "str says Hello"
-  fi
-  ```
+  - `=~` permet de vérifier une regex
+
+    <table>
+    <tr><th align="left">[[ STRING =~ REGEX ]]</th><td>STRING matche la REGEX</td></tr>
+    </table>
+
+    ``` bash
+    str="Hello World"
+
+    if [[ $str =~ ^Hello ]]; then
+      echo "str says Hello"
+    fi
+    ```
 
 ### true et false
 
@@ -212,7 +270,7 @@ category: Linux, Shell, Bash
   Si une expression est vraie, son état est 0; et si elle est fausse, son état est 1.  
   Elles fonctionnent seulement avec Bash, version 2.04 ou ultérieure.
 
-  ```
+  ``` bash
   $ var=1
   $
   $ (( $var > 0 ))
@@ -233,19 +291,31 @@ category: Linux, Shell, Bash
 
   `((...))` est une évaluation arithmétique et peut être utilisé dans if `if`.  
   `$((...))` est une expansion arithmétique et retourne un résultat qu'on peut afficher / assigner.  
-  `$[...]` est l'ancienne syntaxe de l'expansion arithmétique et est dépréciée.  
-  Le résultat d'une comparaison via expansion arithmétique est l'inverse du statut de l'évaluation arithmétique (1 = true, 0 = false).
+  `$[...]` est l'ancienne syntaxe de l'expansion arithmétique et est dépréciée.
 
-  ```
+  En bash, le code retour 0 indique qu'il n'y a pas d'erreur (= le test est vrai),  
+  et différent de 0 qu'il y a eu une erreur (= le test est faux).  
+  Le résultat d'une comparaison via expansion arithmétique (1 = true, 0 = false)  
+  est l'inverse du code retour de l'évaluation arithmétique (0 = true, 1 = false).
+
+  ``` bash
+  # Résultat Vrai => 1, Faux => 0
+  $ var=1
   $ echo $(( $var > 0 ))
   1
   $ echo $(( $var > 2 ))
   0
   $
+  # Résultat Vrai => 1, Faux => 0
+  # Code retour Vrai => 0, Faux  => 1
   $ let "res = (( $var > 0 ))"
+  $ echo $?
+  0
   $ echo $res
   1
   $ let "res = (( $var > 2 ))"
+  $ echo $?
+  1
   $ echo $res
   0
   ```
@@ -329,17 +399,13 @@ esac
 ### Chaîne de caractères
 
 <table>
-<tr><th align="left">[ -z STRING ]</th><td>Vide</td></tr>
-<tr><th align="left">[ -n STRING ]</th><td>Non vide</td></tr>
+<tr><th align="left">[ -z STRING ]</th><td>Vide (longueur zéro)</td></tr>
+<tr><th align="left">[ -n STRING ]</th><td>Non vide (longueur non zéro)</td></tr>
 <tr><th align="left">[ STRING1 = STRING2 ]</th><td>Égalité</td></tr>
 <tr><th align="left">[ STRING1 != STRING2 ]</th><td>Non égalité</td></tr>
 <tr><th align="left">[ STRING1 < STRING2 ]</th><td>Dans un tri alphabétique, STRING1 vient avant STRING2</td></tr>
 <tr><th align="left">[ STRING1 > STRING2 ]</th><td>Dans un tri alphabétique, STRING1 vient après STRING2</td></tr>
 </table>
-
-Tip:  
--z retourne vrai si la taille de la chaîne vaut zéro  
--n retourne vrai si la taille de la chaîne n'est pas zéro
 
 ``` bash
 $ empty=""
@@ -390,20 +456,16 @@ fi
 <tr><th align="left">[ -g FILE ]</th><td>A le flag setgid</td></tr>
 <tr><th align="left">[ -u FILE ]</th><td>A le flag setuid</td></tr>
 <tr><th align="left">[ -k FILE ]</th><td>A le flag sticky bit</td></tr>
-<tr><th align="left">[ FILE1 -nt FILE2 ]</th><td>1 est plus récent que 2</td></tr>
-<tr><th align="left">[ FILE1 -ot FILE2 ]</th><td>1 est plus ancien que 2</td></tr>
-<tr><th align="left">[ FILE1 -ef FILE2 ]</th><td>Même fichier</td></tr>
+<tr><th align="left">[ FILE1 -nt FILE2 ]</th><td>1 est plus récent que 2 (newer than)</td></tr>
+<tr><th align="left">[ FILE1 -ot FILE2 ]</th><td>1 est plus ancien que 2 (older than)</td></tr>
+<tr><th align="left">[ FILE1 -ef FILE2 ]</th><td>Même fichier (equal file)</td></tr>
 <tr><th align="left">[ -N FILE ]</th><td>A une date d'accès inférieure ou égale à la date de modification</td></tr>
 <tr><th align="left">[ -U FILE ]</th><td>L'utilisateur en cours est propriétaire du fichier</td></tr>
 <tr><th align="left">[ -G FILE ]</th><td>L'utilisateur en cours fait partie du groupe propriétaire du fichier</td></tr>
 </table>
 
-Tip:  
--nt: newer than  
--ot: older than  
--ef: equal file
-
 ``` bash
+# Vérifier si file1.txt existe
 if [ -e file1.txt ]; then
   echo "File exists"
 fi
@@ -412,27 +474,33 @@ fi
 $ touch test1 test2
 $ [ test1 -ef test2 ] && echo "yes" || echo "no"
 no
+# test3 est un lien symbolique vers test1 = même fichier
 $ ln -s test1 test3
 $ [ test1 -ef test3 ] && echo "yes" || echo "no"
 yes
 ```
 ``` bash
 $ touch test
+# Juste crée: accès < modification
 $ [ -N test ] && echo "yes" || echo "no"
 yes
 $
+# Juste lu: accès < modification
 $ cat test
 $ [ -N test ] && echo "yes" || echo "no"
 yes
 $
+# Juste modifié: accès < modification
 $ echo "Hello World" > test
 $ [ -N test ] && echo "yes" || echo "no"
 yes
 $
+# Date d'accès modifiée: accès > modification
 $ touch -a test
 $ [ -N test ] && echo "yes" || echo "no"
 no
 $
+# Date de création modifiée: accès < modification
 $ touch test
 $ [ -N test ] && echo "yes" || echo "no"
 yes
@@ -455,7 +523,7 @@ ls -d /nop
 if [ $? -eq 0 ]; then
   echo "Last command succeeded"
 else
-  echo "Last command failed than 100"
+  echo "Last command failed"
 fi
 ```
 

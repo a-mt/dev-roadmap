@@ -36,7 +36,7 @@ category: Linux, Applications
 
 ## Arrière-plan
 
-* Lorsqu'on s'attend à ce qu'une commande prenne du temps à s'exécuter (par exemple si c'est un daemon), on exécute généralement cette commande en *arrière-plan*. Ce type de processus est aussi appelé un *job*. Celui-ci est toujours associé au shell en cours, et sera stoppé si le shell est fermé, mais le processus libère le contrôle vers le processus parent et l'utilisateur récupère le prompt.
+* Lorsqu'on s'attend à ce qu'une commande prenne du temps à s'exécuter (par exemple si c'est un daemon), on exécute généralement cette commande en *arrière-plan*. Un processus qui s'execute en arrière-plan est aussi appelé un *job*. Celui-ci est toujours associé au shell en cours, et sera stoppé si le shell est fermé, mais le processus libère le contrôle vers le processus parent et l'utilisateur récupère le prompt.
 
   Pour lancer une commande en arrière, on ajoute l'opérateur `&` à la fin.
 
@@ -56,7 +56,7 @@ category: Linux, Applications
   18:24:53 10
   ```
 
-* Lorsqu'on lance un processus en arrière plan, une ligne d'information indique 1. le numéro du job (entre crochets) et 2. le PID du processus.
+* Lorsqu'on lance un processus en arrière plan, une ligne d'information indique 1) le numéro du job (entre crochets) et 2) le PID du processus.
 
 * Notons qu'en lançant la commande en arrière-plan, les flux stdout et stderr restent inchangés: ils continuent de s'afficher dans le terminal. Généralement, pour ne pas être interrompu par les messages des processus qui tournent en arrière plan, on redirige les sorties d'une commande lancée en arrière-plan.
 
@@ -68,7 +68,8 @@ category: Linux, Applications
 
 ## jobs
 
-* La commande `jobs` permet d'afficher la liste des processus en arrière-plan associés au terminal en cours. Les jobs des autres terminaux ne sont pas affichés.
+* La commande `jobs` permet d'afficher la liste des processus en arrière-plan associés au terminal en cours.  
+  Les jobs des autres terminaux ne sont pas affichés.
 
   ```
   $ jobs
@@ -100,7 +101,7 @@ category: Linux, Applications
 Pour mettre en arrière-plan un processus actuellement en avant-plan
 
 1. Mettre le processus en pause avec <kbd>Ctrl</kbd>+<kbd>z</kbd>  
-    Cela passe le processus en arrière-plan et permet de récupérer le prompt, mais le processus est en pause, il ne s'éxecute plus
+    A pour effet de passer le processus en arrière-plan et permet de récupérer le prompt, mais le processus est en pause, il ne s'éxecute plus
 
     ```
     $ sleep 100

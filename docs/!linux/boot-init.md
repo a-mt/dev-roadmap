@@ -7,7 +7,7 @@ category: Linux, Boot
 
 1. Le firmware lance l'opération POST (un contrôle du matériel)
 2. Le firmware cherche et charge le bootloader
-3. Le bootloader charge le kernel — et peut éventuellement laisser l'utilisateur choisir lequel parmi une liste
+3. Le bootloader charge le kernel — et peut éventuellement laisser l'utilisateur choisir lequel parmi une liste de choix
 4. Le kernel lance des modules et crée le système de fichier virtuel
 5. Le kernel lance le premier processus, le *processus d'initialisation* — auquel est attribué le PID 1.
 6. Le processus d'initialisation lance différents processus et leur affecte un PID dans l'ordre séquentiel.
@@ -18,7 +18,7 @@ category: Linux, Boot
 * Le *processus d'initialisation* est le premier processus lancé par le kernel,  
   il s'occupe de lancer tous les autres processus au démarrage.
 
-* Historiquement, le processus d'initialisation Linux suivait les spécifications établies avec la sortie du système V Unix (années 1980): on appelle ce processus *system 5 init*, *sysVinit* ou simplement *init*.
+* Historiquement, le processus d'initialisation Linux suivait les spécifications établies avec la sortie du système V Unix (dans le années 1980): on appelle ce processus *system 5 init*, *sysVinit* ou simplement *init*.
 
 * init étant relativement lent, il a été remplacé par Upstart dans la version 6.10 (Edgy Eft) d'Ubuntu.  
   Upstart fut ensuite intégré à la version 9 de Fedora.
@@ -34,7 +34,7 @@ category: Linux, Boot
 
 ## Lequel est en cours
 
-* Le processus d'initialisation est toujours /sbin/init — et ce, afin de maintenir la compatibilité avec de nombreux processus hérités.
+* Le processus d'initialisation est toujours <ins>/sbin/init</ins>, qui sous les systèmes récents est un lien symbolique vers le véritable processus init — et ce, afin de maintenir la compatibilité avec de nombreux processus hérités.
 
   ```
   $ ls -l /sbin/init
@@ -43,9 +43,9 @@ category: Linux, Boot
 
 * Utiliser pstree ou ls ne permet pas de distinguer upstart de init. Pour savoir avec certitude quel est le processus d'initialisation utilisé, on peut vérifier les répertoires qui existent:
 
-  Si le système a un répertoire `/etc/systemd`: c'est  systemd  
-  Sinon et s'il y a un répertoire `/etc/init`: c'est  upstart  
-  S'il n'y a ni l'un ni l'autre: c'est sysVinit
+  Si le système a un répertoire `/etc/systemd`: c'est  <ins>systemd</ins>  
+  Sinon et s'il y a un répertoire `/etc/init`: c'est  <ins>upstart</ins>  
+  S'il n'y a ni l'un ni l'autre: c'est <ins>sysVinit</ins>
 
 ## Service
 
@@ -77,7 +77,7 @@ category: Linux, Boot
 ### Services
 
 * Tous les services sont définis dans `/etc/rc.d/init.d` (ou `/etc/init.d` sous certaines distributions)  
-  rc vient de "run commands". Les scripts de ce répertoire sont souvent appelés *scripts init*.
+  rc vient de *run commands*. Les scripts de ce répertoire sont souvent appelés *scripts init*.
 
   ![](https://i.imgur.com/CJsWLBVl.png)
 
@@ -95,7 +95,6 @@ category: Linux, Boot
   $ sudo service syslog status
   syslogd (pid 1602) is running...
   klogd (pid 1605) is running...
-  $
   ```
 
 ### Lancer un service manuellement
@@ -116,9 +115,9 @@ category: Linux, Boot
 * Chaque runlevel a un sous-répertoire `/etc/rc.d/rcN.d` — où N est le numéro du runlevel.    
   Ce sous-répertoire contient les scripts qui devront être exécutés pour le runlevel associé.
 
-  Ces scripts sont des liens symboliques vers init.d, ainsi il est uniquement nécessaire d'aller dans ces répertoires pour ajouter, supprimer ou modifier l'ordre d'un service — et non sa configuration.
-
   ![](https://i.imgur.com/u1g83xAl.png)
+
+* Ces scripts sont des liens symboliques vers init.d, ainsi il est uniquement nécessaire d'aller dans ces répertoires pour ajouter, supprimer ou modifier l'ordre d'un service — et non sa configuration.
 
   * Les liens symboliques commencent soit par K soit par S:  
     lorsque le système démarre ou change de runlevel, les services K (kill) sont arrêtés et les services S (start) sont démarrés.
@@ -128,7 +127,8 @@ category: Linux, Boot
 
 ### Runlevel par défaut
 
-* Le fichier `/etc/inittab` (pour *initialization table*) contient les configurations de systemVinit, et notamment le runlevel par défaut — celui avec lequel le système est démarré
+* Le fichier `/etc/inittab` (pour *initialization table*) contient les configurations de systemVinit,
+  et notamment le runlevel par défaut — celui avec lequel le système est démarré
 
   ```
   $ grep ^id /etc/inittab
@@ -150,7 +150,6 @@ category: Linux, Boot
   # runlevel
   N 5
   ```
-
 
 * La commande `who -r` affiche également le runlevel actuel du système.  
   Un des avantages de cette technique est qu'elle affiche la date et heure à laquelle le niveau d'exécution a été atteint.
@@ -216,7 +215,7 @@ category: Linux, Boot
 
   Pour pouvoir démarrer en mode rescue ou emergency, root doit avoir un mot de passe. Autrement, ce n'est pas possible
 
-* La plupart des cibles reposent sur d'autres cibles: par exemple graphical.target inclut les services de multi-user.target et charge le service display-manager.service en plus
+* La plupart des cibles reposent sur d'autres cibles: par exemple graphical.target inclut les services de multi-user.target et charge display-manager.service en plus
 
   ```
   $ cat /lib/systemd/system/graphical.target
@@ -246,15 +245,34 @@ category: Linux, Boot
   | `service` | Configure le démarrage du service
   | `install` | Indique quelle cible démarre ce service
 
-  ![](https://i.imgur.com/svYqzCx.png)
+  ``` txt
+  $ systemctl cat syslog.service
+  # /lib/systemd/system/rsyslog.service
+  [Unit]
+  Description=System Logging Service
+  Requires=syslog.socket
+  Documentation=man:rsyslogd(8)
+  Documentation=http://www.rsyslog.com/doc/
+
+  [Service]
+  Type=notify
+  ExecStart=/usr/sbin/rsyslogd -n
+  StandardOutput=null
+  Restart=on-failure
+
+  [Install]
+  WantedBy=multi-user.target
+  Alias=syslog.service
+  ```
 
 ### Statut d'un service
 
-* Chaque service a deux types de statuts:  
-  - statut en cours: le service est-il en train de tourner?  
+* Chaque service a deux types de statuts:
+
+  - <ins>statut actuel</ins>: le service est-il en train de tourner?  
     Peut être `active` ou `inactive`
 
-  - statut de démarrage: le service est-il lancé au démarrage?  
+  - <ins>statut de démarrage</ins>: le service est-il lancé au démarrage?  
     Peut être
 
     | Statut     | Description
@@ -267,7 +285,7 @@ category: Linux, Boot
   L'extension .service peut être omise
 
   ```
-  $ systemctl status httpd.servce
+  $ systemctl status httpd.service
   $ systemctl status httpd
   ```
 
@@ -276,12 +294,17 @@ category: Linux, Boot
 
 ### Lancer un service manuellement
 
-* Les sous-commandes `stop` et `start` permettent de temporairement stopper ou démarrer un service.
+* Les sous-commandes `stop` et `start` permettent de stopper ou démarrer un service temporairement.
+
+  ``` bash
+  $ sudo systemctl start network-manager
+  $ sudo systemctl stop network-manager
+  ```
 
   ![](https://i.imgur.com/DoIOauH.png)
   ![](https://i.imgur.com/YmljM3h.png)
 
-* systemd permet également l'utilisation de `service` — attention l'ordre des paramètres n'est pas le même entre service et systemctl
+* systemd supporte également la commande `service`, qui était d'usage sous sysVinit — attention l'ordre des paramètres n'est pas le même entre service et systemctl
 
   ```
   $ sudo service bluetooth status
@@ -289,9 +312,13 @@ category: Linux, Boot
   $ sudo service bluetooth stop
   ```
 
-### Lister
+### Lister les services
 
 * Pour voir tous les fichiers unitaires du système et leur statut de démarrage, on peut utiliser la commande `systemctl` avec la sous-commande `list-unit-files`:
+
+  ``` bash
+  $ systemctl list-unit-files
+  ```
 
   ![](https://i.imgur.com/Z3BEhwm.png)
 
@@ -305,7 +332,7 @@ category: Linux, Boot
     systemd-ask-password-console.path    loaded    inactive dead      Dispatch Password Requests to Console Directory Watch
   ```
 
-  Pour filtrer sur les fichiers unitaires de type "service":
+  Pour lister les fichiers unitaires de type "service":
 
   ```
   $ systemctl -t service
@@ -315,9 +342,14 @@ category: Linux, Boot
     apparmor.service                      loaded   active   exited    AppArmor initialization
   ```
 
-### Services au démarrage
+### Lancement automatique au démarrage
 
 * Les sous-commandes `enable` et `disable` permettent d'activer ou désactiver un service au démarrage
+
+  ``` bash
+  $ sudo systemctl disable network-manager
+  $ sudo systemctl enable network-manager
+  ```
 
   ![](https://i.imgur.com/zIZMSDH.png)
   ![](https://i.imgur.com/C8LKliV.png)
@@ -331,13 +363,10 @@ category: Linux, Boot
   degraded
   ```
 
-* list-dependencies permet de lister les différentes unités représentées sous forme d'arbre.
-
-  - Une pastille blanche indique que le service est actuellement arrêté — ce qui n'est généralement pas un problème, certains services s'exécutent une fois au démarrage et se terminent directement, et d'autres ne sont pas censés démarrer automatiquement.
-
-  - Une pastille verte indique que le service est en cours d'execution — en règle générale, les services importants (actifs en permanence) devraient accompagnés d'une pastille verte.
+* `list-dependencies` permet de lister les différents fichiers unitaires de la cible en cours représentés sous forme d'arbre.
 
   ```
+  $ systemctl list-dependencies
   default.target
   ● ├─accounts-daemon.service
   ○ ├─e2scrub_reap.service
@@ -349,6 +378,10 @@ category: Linux, Boot
   ○   ├─anacron.service
   ●   ├─avahi-daemon.service
   ```
+
+  - Une pastille blanche indique que le service est actuellement arrêté — ce qui n'est généralement pas un problème, certains services s'exécutent une fois au démarrage et se terminent directement, et d'autres ne sont pas censés démarrer automatiquement.
+
+  - Une pastille verte indique que le service est en cours d'execution — en règle générale, les services importants (actifs en permanence) devraient accompagnés d'une pastille verte.
 
 ### Cible par défaut
 

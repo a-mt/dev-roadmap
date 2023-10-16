@@ -6,15 +6,15 @@ category: Linux
 ## Intro
 
 * En tant habituel, le bootloader, la table de partition et le système d'exploitation sont initialisés par le fabricant.
-  L'utilisateur n'a plus qu'à processer à l'installation du système d'exploitation, son emplacement sur le disque aura déjà mis en place. Pour installer un autre système d'exploitation, il est nécessaire:
+  L'utilisateur n'a plus qu'à processer à l'installation du système d'exploitation, son emplacement sur le disque aura déjà mis en place. Mais si on veut installer un autre système d'exploitation, alor i l faut:
  
-  1. pour du dual-boot: de modifier la table de partition existante  
+  1. pour du dual-boot: modifier la table de partition existante  
       Réduire la taille de la partition occupant le plus gros du disque.
 
-  2. dans tous les cas: de démarrer avec un disque d'installation  
+  2. dans tous les cas: démarrer avec un disque d'installation  
       La création des partitions sera faite à ce moment, pour fournir un emplacement aux fichiers du système d'exploitation. La plupart des programmes d'installation fournissent un programme basé sur l'interface graphique (GUI), ce qui rend la création des partitions très facile. Le programme d'installation créera automatiquement un système de fichiers pour la nouvelle partition et la configurera pour qu'elle soit automatiquement montée pendant le processus de démarrage.
 
-* Il est possible de modifier la table de partition après l'installation, du système en cours ou d'un périphérique:  
+* Il est possible de modifier la table de partition du système après l'installation (ou celle d'un périphérique):  
   Pour du <ins>MBR</ins>: `fdisk`, `cfdisk`, `sfdisk`  
   Pour du <ins>GPT</ins>: `gdisk`, `cgdisk`, `sgdisk`  
 
@@ -37,23 +37,27 @@ category: Linux
 
 ---
 
-## Lister les partitions
+## Les fichiers virtuels des partitions
 
-### Les fichiers virtuels
-
-* Les fichiers `/dev/sd*` désignent les disques connectés par une interface SATA etes partitions de chaque disque reçoivent des noms basés sur le disque sur lequel elles résident:
+* Les fichiers `/dev/sd*` désignent les disques connectés par une interface SATA et les partitions de ces disques reçoivent des noms basés sur le disque sur lequel elles résident:
 
   - Le premier disque est appelé <ins>/dev/sda</ins>, le second /dev/sdb, etc.
   - La première partition du disque /dev/sda est <ins>/dev/sda1</ins>, la seconde /dev/sda2, etc.
+
+<!-- -->
 
 * Les fichiers `/dev/nvme*` désignent les disques connectés par PCI Express:  
   - <ins>/dev/nvme0</ins> est le premier contrôleur NVM Express
   - <ins>/dev/nvme0n1</ins> est le premier disque (*namespace*) du contrôleur
   - <ins>/dev/nvme0n1p1</ins> est la première partition du disque
 
+<!-- -->
+
 * Les fichiers `/dev/hd*` représente les disques durs magnétiques et lecteurs optiques.
 
-### Les partitions
+## Lister les partitions
+
+### lsblk
 
 * `lsblk` permet de lister les disques et leurs partitions — qu'elles soient montées ou non
 
@@ -79,6 +83,8 @@ category: Linux
   sr0               11:0    1  1024M  0 rom
   ```
 
+### /proc/partitions
+
 * On peut également retrouver cette liste dans `/proc/partitions`
 
   ```
@@ -89,6 +95,8 @@ category: Linux
    259        1     524288 nvme0n1p1
    259        2  499581952 nvme0n1p2
   ```
+
+### blkid
 
 * `blkid` permet de trouver l'UUID d'une partition.  
   Sans argument, blkid retourne les infos de la partition en cours d'utilisation
@@ -107,8 +115,14 @@ category: Linux
 * `gdisk` (*GPT disk*) permet de modifier une table de partition GPT interactivement.  
   Nécessite les privilèges root  
 
-  Lancer gdisk avec le path du disque à modifier en argument  
-  et utiliser les sous-commandes gdisk pour effectuer des actions:
+* Pour modifier une table de partition GPT:  
+  lancer gdisk avec le path du disque à modifier en argument
+
+  ``` bash
+  $ sudo gdisk /dev/sdb
+  ```
+
+  Ensuite, utiliser les sous-commandes gdisk pour effectuer des actions:
 
   - <ins>i (*info*)</ins> pour voir les partitions
 
@@ -124,14 +138,18 @@ category: Linux
 
   ![](https://i.imgur.com/jNtXEyz.png)
 
-* Exemple: modifier une table de partition MBR en GPT
+* <details>
+    <summary>
+      Si la table de partition n'est pas GPT mais MBR, gdisk permettra de la convertir en GPT.
+    </summary>
 
-    ``` bash
+    <pre lang="bash">
     $ lsblk -f /dev/sda
     NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
     sda                 
     └─sda1 vfat         000E-3592
-
+    </pre>
+    <pre lang="txt">
     $ sudo gdisk /dev/sda
     GPT fdisk (gdisk) version 1.0.5
 
@@ -188,20 +206,34 @@ category: Linux
     Do you want to proceed? (Y/N): Y
     OK; writing new GUID partition table (GPT) to /dev/sda.
     The operation has completed successfully.
-    ```
+    </pre>
+  </details>
 
-* `gdisk -l` permet de lister les partitions  
-  (de tous les disques ou d'un disque donné) — non interactif:
+  Pour modifier une table de partition MBR, utiliser fdisk à la place.
+
+#### gdisk -l
+
+* Pour lister les partitions (de tous les disques ou d'un disque donné) — non interactif:
+
+  ``` bash
+  $ gdisk -l
+  ```
 
   ![](https://i.imgur.com/MuSoIEG.png)
 
 ### fdisk
 
 * `fdisk` (*fixed disk*) est un utilitaire plus ancien mais similaire à gdisk  
-  Note: les disques durs étaient auparavant dits fixes parce qu'ils n'étaient pas amovibles.  
+  Note: Les disques durs étaient auparavant dits "disques fixes" parce qu'ils n'étaient pas amovibles, contrairement aux périphériques.  
   Initialement, fdisk ne pouvait gérer que les tables de partition MBR mais il peut désormais également gérer GPT.
 
+* Pour modifier une table de partition (MBR ou GPT):
+
   1. Lancer fdisk avec le path du disque à modifier en argument
+
+      ``` bash
+      $ sudo fdisk /dev/sdb
+      ```
 
      ![](https://i.imgur.com/FtuIiIC.png)
 
@@ -214,7 +246,9 @@ category: Linux
       - <ins>w (*write*)</ins> pour sauvegarder les modifications et quitter
       - <ins>q (*quit*)</ins> pour quitter sans sauvegarder
 
-      <ins>Par exemple, créer la partition 4 (étendue)</ins>:
+      <!-- -->
+
+      <ins>Exemple: créer la partition 4 (étendue)</ins>:
 
       ![](https://i.imgur.com/tjq6LDo.png)
 
@@ -226,31 +260,35 @@ category: Linux
 
       ![](https://i.imgur.com/HaJTB3c.png)
 
-    La sous-commande `n` pose plusieurs questions:
+* <ins>n (new)</ins>  
+  La sous-commande `n` pose plusieurs questions:
 
-    1. **type de partition**  
-       Les choix disponibles dépendrons des partitions qui existent déjà.  
-       Dans une table de partition MBR, il ne peut y avoir que 4 partitions — donc typiquement, la 4ème partition sera une partition étendue, ce qui permettra d'ajouter autant de partitions logiques qu'on veut.
+  1. **type de partition**  
+     Les choix disponibles dépendrons des partitions qui existent déjà.  
+     Dans une table de partition MBR, il ne peut y avoir que 4 partitions — donc typiquement, la 4ème partition sera une partition étendue, ce qui permettra d'ajouter autant de partitions logiques qu'on veut.
 
-    2. **numéro de partition**  
-        Si le dernier numéro de partition était 2, alors la partition suivante doit être numérotée 3.  
-        Lors de la création de partitions logiques, l'utilitaire fdisk ne demandera pas de numéro de partition et attribuera un numéro par défaut
+  2. **numéro de partition**  
+      Si le dernier numéro de partition était 2, alors la partition suivante doit être numérotée 3.  
+      Lors de la création de partitions logiques, l'utilitaire fdisk ne demandera pas de numéro de partition et attribuera un numéro par défaut
 
-    3. **secteur de départ**  
-       L'attribution du secteur de départ est extrêmement simple: fdisk sait quel est le prochain secteur disponible, il suffit d'appuyer sur Entrée pour accepter la valeur proposée (= le prochain secteur disponible). Il est possible de taper manuellement le numéro de secteur, mais ce n'est pas recommandé car on peut créer des plages de secteurs inutilisables.
+  3. **secteur de départ**  
+     L'attribution du secteur de départ est extrêmement simple: fdisk sait quel est le prochain secteur disponible, il suffit d'appuyer sur Entrée pour accepter la valeur proposée (= le prochain secteur disponible). Il est possible de taper manuellement le numéro de secteur, mais ce n'est pas recommandé car on peut se retrouver avec des plages de secteurs inutilisables.
 
-    4. **taille de la partition**  
-       Il y a 3 moyens d'assigner le dernier secteur:  
-       - "dernier secteur",
-       - "+secteur",
-       - "+taille{K,M,G,T,P}". Par exemple +100MB.  
-         C'est typiquement la technique préférée car aucun calcul n'est nécessaire.  
-       - taper Entrée directement: la partition prendra toute la place disponible restante
+  4. **taille de la partition**  
+     Il y a 3 moyens d'assigner le dernier secteur:  
+     - "dernier secteur",
+     - "+secteur",
+     - "+taille{K,M,G,T,P}". Par exemple +100MB.  
+       C'est généralement cette technique qui est utilisée car aucun calcul n'est nécessaire.  
+     - taper Entrée directement: la partition prendra toute la place disponible restante
 
-* Par défaut, l'utilitaire fdisk définit les partitions primaires et logiques avec le système de fichiers 83 (Linux).  
+<!-- -->
+
+* <ins>t (type)</ins>  
+  Par défaut, l'utilitaire fdisk définit les partitions primaires et logiques avec le système de fichiers 83 (Linux).  
   Pour les partitions étendues, l'ID doit être 5 et ne doit jamais être changé.
 
-* Pour changer le type de système de fichiers, on peut utiliser la sous-commande `t` de fdisk.  
+  Pour changer le type de système de fichiers, on peut utiliser la sous-commande `t` de fdisk.  
   Entrer le numéro de partition à modifier suivit de l'ID du système de fichier en hexadécimal — utiliser `L` pour afficher la liste des codes hexadécimaux disponibles.
 
   ![](https://i.imgur.com/MvD8lo2.png)
@@ -258,12 +296,16 @@ category: Linux
 * Notons que fdisk ne fait que modifier la table de partition,  
   après avoir modifié le type déclaré dans la table, il est encore nécessaire de formatter la partition — avec mkfs
 
+#### partprobe
+
 * Après avoir modifié la table de partition, la commande `partprobe` ou `kpartx` doit être exécutée. Sinon, le système devra être redémarré avant que les nouvelles partitions puissent être utilisées.
 
-  ```
+  ``` bash
   $ sudo partprobe
   $ sudo fdisk -l
   ```
+
+#### fdisk -l
 
 * `fdisk -l` permet de lister les partitions (de tous les disques ou d'un disque donné) — non interactif:
 
@@ -277,8 +319,6 @@ category: Linux
 
 * GNU parted est un autre utilitaire pour éditer les partitions — moins user-friendly.
 
-  ![](https://i.imgur.com/hHwYZDr.png)
-
   ``` bash
   $ sudo parted -s /dev/loop1 mklabel msdos
 
@@ -286,6 +326,8 @@ category: Linux
   $ sudo parted -s /dev/loop1 unit MB mkpart primary ext4 256 512
   $ sudo parted -s /dev/loop1 unit MB mkpart primary ext4 512 1024
   ```
+
+  ![](https://i.imgur.com/hHwYZDr.png)
 
 ---
 

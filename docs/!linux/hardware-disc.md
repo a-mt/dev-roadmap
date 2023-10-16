@@ -46,7 +46,7 @@ category: IT
   ![](https://i.imgur.com/1UZi0Nf.jpg)
 
 * <ins>Actionneur</ins>  
-  Les bras de lecture/écriture (*read-write arm* ou *actuator arm*) sont contrôlés par une colonne commune aux différents bras (*arm assembly*). Cette colonne est mise en mouvement par un *actionneur* (*actuator*): toutes les têtes se déplacent simultanément.
+  Les bras de lecture/écriture (*read-write arm* ou *actuator arm*) sont contrôlés par une colonne commune aux différents bras (*arm assembly*) — ainsi toutes les têtes se déplacent simultanément. Cette colonne est mise en mouvement par un *actionneur* (*actuator*).
 
   ![](https://i.imgur.com/lqK8Lca.png)
   ![](https://i.imgur.com/BrAwgL0.png)
@@ -139,7 +139,7 @@ category: IT
     Mesuré en millisecondes  
 
     Le latence de rotation moyenne est de l'ordre de 2 à 6ms, ce qui peut paraître rapide, mais est très lent comparé à la vitesse du processeur et  de la RAM, et peut être source de ralentissements.  
-    La latence de rotation est liée à la <ins>vitesse de rotation</ins> du disque (*rotational speed*), qui est mesurée en tours par minute [tr/min] (revolutions per minute [rpm] en anglais)
+    La latence de rotation est liée à la <ins>vitesse de rotation</ins> du disque (*rotational speed*), qui est mesurée en tours par minute (tr/min, ou *revolutions per minute*, rpm en anglais)
 
     | Vitesse de rotation (tr/min) | Latence de rotation (ms)
     |--- |---
@@ -162,9 +162,8 @@ category: IT
     Temps d'accès + temps de lecture  
     Mesuré en millisecondes
 
-    Plutôt que le temps de transmission, on a souvent le <ins>taux de transfert</ins> (*tranfer rate*).  
-    Mesuré en bits/s.  
-    Les pistes de la zone 0 ont les taux de transfert les plus rapides du disque (puisque nécessitent moins de mouvement de la tête de lecture). et pour cette raison, les spécifications du taux de transfert sont parfois indiquées à l'aide de plages.
+    Plutôt que le temps de transmission, on a souvent le <ins>taux de transfert</ins> (*tranfer rate*), qui est lui mesuré en bits/s.  
+    Les pistes de la zone 0 ont les taux de transfert les plus rapides du disque (puisque nécessitent moins de mouvement de la tête de lecture). Et pour cette raison, les spécifications du taux de transfert sont parfois indiquées à l'aide de plages.
 
 Sources:  
 [Data Center Environment](https://www.jbiet.edu.in/coursefiles/cse/HO/cse4/SAN2.pdf)  

@@ -80,7 +80,7 @@ Grep peut filtrer sur
   tmp.js
   ```
 
-* <u>-F</u> (fixed strings) permet de désactiver les regex — autrement dit chercher une chaîne littérale 
+* <u>-F</u> (fixed strings) permet de désactiver les regex — autrement dit chercher une chaîne littérale  
   Note: anciennement, plutôt que `grep -F` on utilisait `fgrep`, désormais déprécié
 
   ``` bash

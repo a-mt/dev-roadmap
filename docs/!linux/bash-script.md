@@ -25,7 +25,7 @@ Deux modes d'utilisation du shell sont possibles: interractif ou scripté.
   ls *.sh
   ```
 
-* À l'époque d'Unix, il était courant de mettre /bin/sh comme shell à utiliser. Dans les scripts shell modernes, c'est une mauvaise pratique: sous Linux, ce fichier est un lien
+* À l'époque d'Unix, il était courant de mettre /bin/sh comme shell à utiliser. Dans les scripts shell modernes, c'est une mauvaise pratique: sous Linux, ce fichier est un lien symbolique
 
   - sous une distribution Ubuntu récente, c'est un lien vers dash;
   - sous une distribution Ubuntu plus ancienne, c'était un lien vers bash.
@@ -35,7 +35,9 @@ Deux modes d'utilisation du shell sont possibles: interractif ou scripté.
   lrwxrwxrwx 1 root root 4 mai    6  2021 /bin/sh -> dash
   ```
 
-* Après le shebang, le dièse (`#`) dénote un commentaire — les lignes qui commençent par un dièse sont ignorées.
+## Commentaire
+
+* Passé le shebang, le dièse (`#`) dénote un commentaire — les lignes qui commençent par un dièse sont ignorées.
 
 ## Exécuter un script
 
@@ -102,7 +104,7 @@ Deux modes d'utilisation du shell sont possibles: interractif ou scripté.
   The shell level is 1
   ```
 
-* Lancer avec `.`
+* Lancer avec `.`  
   Exécute dans le shell en cours
 
   ``` bash
@@ -113,4 +115,4 @@ Deux modes d'utilisation du shell sont possibles: interractif ou scripté.
 ## Binaire
 
 On peut créer un binaire exécutable à partir d'un script en utilisant [shc](http://www.datsi.fi.upm.es/~frosal/sources/).  
-Le binaire peut, dans certains cas, etre décrypté pour retrouver le code source original ([article](http://www.linuxjournal.com/article/8256)).
+Le binaire peut, dans certains cas, eêtre décrypté pour retrouver le code source original ([article](http://www.linuxjournal.com/article/8256)).

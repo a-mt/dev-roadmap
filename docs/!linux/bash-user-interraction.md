@@ -7,7 +7,7 @@ category: Linux, Shell, Bash
 
 ### Unix-style
 
-* La fonction `getopts` permet de récupérer les options passés au script.
+* La fonction `getopts` permet de récupérer les options passées au script.
 
   ``` bash
   #!/bin/bash
@@ -214,9 +214,28 @@ $
 ## Couleurs
 
 * Bash accepte certains caractères spéciaux pour modifier l'affichage, déplacer le curseur et réaffecter des touches.  
-  [ANSI Escape sequences](http://ascii-table.com/ansi-escape-sequences.php)
+  [ANSI Escape sequences](https://web.archive.org/web/20210126100003/http://ascii-table.com/ansi-escape-sequences-vt-100.php)
 
-* `Esc[VALUE;...;VALUEm` permet de modifier l'affichage:
+* `Esc[VALUE;...;VALUEm` permet de modifier l'affichage.  
+  Dans le shell, le caractère ESCAPE est représenté par `^[`, tandis que `\e` est interprété comme un véritable ESCAPE.  
+  Il a le code decimal 27, octal 33, hexadécimal 1b. On a donc différentes manières de désigner un ESCAPE:  
+
+  ```
+  ^[ = \27 = \033 = \x1b = \e
+  ```
+
+  <ins>Exemple</ins>:
+
+  ``` bash
+  $ echo -e "\E[31mDu texte en rouge"
+  Du texte en rouge
+
+  $ echo -e "\033[32mDu texte en vert"
+  Du texte en vert
+
+  $ echo -e "\x1b[33mDu texte en rouge"
+  Du texte en orange
+  ```
 
   ``` bash
   echo -e '          \E[37;44m\033[1m'Liste de contacts'\033[0m'
@@ -236,7 +255,7 @@ $
 
   <ins>Les valeurs acceptées sont</ins>:
 
-  <table>
+  <table id="table--small">
     <tr><td>&emsp;&emsp;</td><td></td></tr>
     <tr>
       <th colspan="2" align="center">Attributs du texte</th>
@@ -339,6 +358,8 @@ $
     </tr>
   </table>
 
+---
+
 ## Écrire dans stderr
 
 ``` bash
@@ -348,8 +369,6 @@ echo "Tout va bien"
 # Écrit dans stderr
 echo "Une erreur" >&2
 ```
-
----
 
 ## Code retour
 

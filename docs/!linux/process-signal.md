@@ -48,7 +48,7 @@ category: Linux, Processus
 
 * Quand on ferme un terminal, toutes les commandes associées à ce terminal reçoivent le signal SIGHUP: ainsi, tous les processus en arrière-plan lancés dans le terminal en cours vont être terminés.
 
-  Pour qu'un processus ignore le signal SIGHUP, on peut utiliser la commande `nohup`: cela permettra au processus  de continuer de tourner après que l'utilisateur se soit déconnecté du terminal. Notons que nohup redirige les sorties de la commande vers le fichier nohup.out dans le répertoire en cours.
+  Pour qu'un processus ignore le signal SIGHUP, on peut utiliser la commande `nohup`: cela permettra au processus  de continuer de tourner après que l'utilisateur se soit déconnecté du terminal. Notons que nohup redirige les sorties de la commande vers un fichier nohup.out dans le répertoire en cours.
 
   ```
   $ nohup sleep 42000 &
@@ -79,7 +79,7 @@ category: Linux, Processus
   ```
 
 * La commande `top` permet également d'envoyer un signal à un processus  
-  <kbd>k</kbd> pour kill (taper le PID puis le signal à envoyer)
+  <kbd>k</kbd> pour kill, et taper le PID puis le signal à envoyer
 
 ## killall
 
@@ -105,9 +105,12 @@ category: Linux, Processus
 
 * Comme pgrep, pkill permet de chercher un processus en utilisant différents critères (utilisateur, terminal, nom de commande, etc) et d'envoyer un signal aux processus correspondants.
 
-  ```
+  ``` bash
+  # Lister tous les processus déclenchés par le processus 2250 (-g 2250)
+  # et afficher le nom de la commande (-a)
   $ pgrep -ag 2250
   2250 sleep 42000
   $
+  # Tuer tous les processus déclenchés par le processus 2250
   $ pkill -15 -g 2250
   ```

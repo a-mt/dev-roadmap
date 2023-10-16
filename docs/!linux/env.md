@@ -3,35 +3,54 @@ title: Environnement shell
 category: Linux
 ---
 
-## Variable d'environnement
+## Variables d'environnements
 
-* Une variable d'environnement est une variable stockant des information sur la l'environnement, et qui peut être utilisée par n'importe quel programme pour configurer son comportement. Les variables d'environnement sont généralement en majuscule
+* Une variable d'environnement est une variable stockant des information sur l'environnement en cours, et qui peut être utilisée par n'importe quel programme pour vérifier les configurations de l'environnement ou modifier son comportement.
 
-* Parmis les variables d'environnement noatables on trouve:
+* Par convention, les variables d'environnement sont en majuscule et les variables locales en minuscule
 
-  - PWD contient le répertoire de travail actuel
-  - PATH contient la liste des répertoires, séparés par des :, dans lesquels le système va chercher des executables
-  - LD_LIBRARY_PATH contient les listes des répertoires dans lesquels les librairies vont être cherchées. Typiquement utilisé quand on teste une nouvelle librairie
+### Variables notables
+
+Parmis les variables d'environnement notables on trouve:
+
+* <ins>Path</ins>:
+
+  - **PWD**: contient le répertoire de travail actuel
 
     ``` bash
     $ echo $PWD
     /home/christine
+    ```
 
+  - **PATH**: contient la liste des répertoires (séparés par des :) dans lesquels le système va chercher des executables
+
+    ``` bash
     $ echo $PATH
     /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     ```
 
-  - USER contient le nom de l'utilisateur en cours
-  - UID contient l'identifiant de l'utilisateur en cours
-  - GROUPS contient les identfiiants des groupes de l'utilisateur
+  - **LD_LIBRARY_PATH**: contient les listes des répertoires dans lesquels les librairies vont être cherchées.  
+    Typiquement utilisé quand on teste une nouvelle librairie
+
+* <ins>Utilisateur</ins>:
+
+  - **USER**: contient le nom de l'utilisateur en cours
 
     ``` bash
     $ echo $USER
     christine
+    ```
 
+  - **UID**: contient l'identifiant de l'utilisateur en cours
+
+    ``` bash
     $ echo $UID
     1000
+    ```
 
+  - **GROUPS**: contient les identfiiants des groupes de l'utilisateur
+
+    ``` bash
     $ echo $GROUPS
     1000
 
@@ -39,22 +58,30 @@ category: Linux
     1000 24 27 30 46 116 126 4
     ```
 
-  - SHELL contient le shell le path du shell en cours
-  - BASH_VERSION contient la version du shell bash en cours
-  - HOSTNAME contient le nom de l'hôte en cours
+* <ins>Shell</ins>:
+
+  - **SHELL**: contient le path du shell en cours
 
     ``` bash
     $ echo $SHELL
     /bin/bash
+    ```
 
+  - **BASH_VERSION**: contient la version du shell bash en cours
+
+    ``` bash
     $ echo $BASH_VERSION
-    4.4.20(10-release)
+    5.0.17(1)-release
+    ```
 
+  - **HOSTNAME**: contient le nom de l'hôte en cours
+
+    ``` bash
     $ echo $HOSTNAME
     UbuntuDesktop1804
     ```
 
-  - PS1 détermine l'apparence du prompt
+  - **PS1**: détermine l'apparence du prompt
 
     ``` bash
     $ echo $PS1
@@ -63,7 +90,7 @@ category: Linux
     My prompt>
     ```
 
-  - PS2 détermine l'apparence du prompt secondaire
+  - **PS2**: détermine l'apparence du prompt secondaire
 
     ``` bash
     $ echo $PS2
@@ -78,7 +105,8 @@ category: Linux
     christine
     ```
 
-  - SHLVL indique le niveau du shell en cours, 1 signifie qu'on ne se trouve pas dans un sous-shell
+  - **SHLVL**: (shell level) indique le niveau du shell en cours  
+    1 signifie qu'on ne se trouve pas dans un sous-shell
 
     ``` bash
     $ echo $SHLVL
@@ -93,23 +121,54 @@ category: Linux
     1
     ```
 
-  - LANG contient la locale en cours  
-  - Les variables LC_* permettent d'écraser la locale utilisée pour différentes catégories, par exemple LC_TIME pour la localisation de la date/heure uniquement
-  - TZ si définie, permet à un utilisateur d'utiliser une timezone différente de la timezone du système
+* <ins>Language</ins>:
+
+  - **LANG**: contient la locale en cours  
 
     ``` bash
     $ echo $LANG
     en_US.UTF-8
+    ```
 
+  - **LC_\***: ces variables permettent d'écraser la locale utilisée pour différentes catégories.  
+    Par exemple **LC_TIME** pour la localisation de la date/heure uniquement
+
+    ``` bash
     $ echo $LC_TIME
     fr_FR.UTF-8
     ```
 
-* On peut lister les variables d'environnement avec `env` ou `printenv`
+  - **TZ**: si définie, permet à un utilisateur d'utiliser une timezone différente de la timezone du système
+
+### Lister les variables d'environnement
+
+* Pour lister les variables d'environnement: `env` ou `printenv`
+
+  ``` bash
+  $ env | head
+  SHELL=/bin/bash
+  SESSION_MANAGER=local/XPS1393057cc859cd:@/tmp/.ICE-unix/1832,unix/XPS1393057cc859cd:/tmp/.ICE-unix/1832
+  QT_ACCESSIBILITY=1
+  COLORTERM=truecolor
+  XDG_CONFIG_DIRS=/etc/xdg/xdg-pantheon:/etc/xdg
+  XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+  XDG_MENU_PREFIX=gnome-
+  GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+  LANGUAGE=en_US
+  LC_ADDRESS=en_GB.UTF-8
+  ```
+
+### Définir des variables d'environnemnt
 
 * On peut créer ou modifier des variables d'environnement avec `export VAR=value`
 
-  Définir des variables d'environnement de cette manière ne survivra pas à une déconnexion: pour ce faire il faut les définir dans un fichier d'environnement, qui sont des fichiers exécutés lorsqu'on ouvre un shell.
+  Définir des variables d'environnement de cette manière ne survivra pas à une déconnexion: pour qu'une variable d'environnement persiste il faut qu'elle soit définie dans un fichier d'environnement — un fichier exécuté lorsqu'on ouvre un nouveau shell.
+
+  ``` bash
+  $ MAVAR="1"
+  $ export MAVAR
+  $ export MAVAR2="2"
+  ```
 
 ---
 
@@ -135,17 +194,23 @@ category: Linux
     setterm -inversescreen on
     ```
 
-* Les **fichiers d'environnement globaux** sont exécutés pour quiconque se connectant au shell.
+### Fichiers d'environnment globaux
 
-  - <ins>/etc/profile</ins> est généralement présent sur toutes les distributions Linux.  
+* Les fichiers d'environnement globaux sont exécutés pour quiconque se connectant au shell.
+
+  - <ins>/etc/profile</ins>  
+    est généralement présent sur toutes les distributions Linux.  
     Il est exécuté lorsqu'un utilisateur se connecte, et va charger des fichiers d'environnement secondaires
 
-  - <ins>/etc/profile.d</ins> est un répertoire contenant un ensemble de scripts chargés par /etc/profile
+  - <ins>/etc/profile.d</ins>  
+    est un répertoire contenant un ensemble de scripts chargés par /etc/profile
 
-  - <ins>/etc/bash.bashrc</ins> est également un fichier chargé par /etc/profile sous Ubuntu  
-    <ins>/etc/bashrc</ins> sous CentOS
+  - <ins>/etc/bash.bashrc</ins> sous Ubuntu  
+    ou <ins>/etc/bashrc</ins> sous CentOS  
+    est également un fichier chargé par /etc/profile 
 
-  - <ins>/etc/environment</ins> est un fichier de configuration permettant de définir des variables d'environnement pour tous les utilisateurs. Seul root peut le modifier
+  - <ins>/etc/environment</ins>  
+    est un fichier de configuration permettant de définir des variables d'environnement pour tous les utilisateurs. Seul root peut le modifier
 
     ``` bash
     $ cat /etc/environment
@@ -153,23 +218,30 @@ category: Linux
     CI_PIPELINE=staging
     ```
 
-* Les **fichiers d'environnement locaux** sont personnels à chaque utilisateur, ce sont des fichiers cachés situés dans le répertoire $HOME, exécutés après l'exécution des fichiers globaux.
+### Fichiers d'environnement locaux
 
-  Le shell va chercher les fichiers suivants, et exécuter uniquement le premier fichier trouvé — le reste est ignoré:
+* Les fichiers d'environnement locaux sont personnels à chaque utilisateur,  
+  ce sont sont des fichiers cachés situés dans le répertoire $HOME, exécutés après l'exécution des fichiers globaux.
 
-  1. <ins>\~/.bash_profile</ins>
-  2. <ins>\~/.bash_login</ins>
-  3. <ins>\~/.profile</ind>
+* Le shell va chercher les fichiers suivants, et exécuter uniquement le premier fichier trouvé — les fichiers restants seront ignorés s'ils existent:
 
-  Typiquement, tout fichier d'environnement local va charger un fichier d'environnement local secondaire: <ins>\~/.bashrc</ins>. C'est donc l'endroit idéal pour mettre des paramètres d'environnement personnels.
+  - 1) <ins>\~/.bash_profile</ins>
+  - 2) <ins>\~/.bash_login</ins>
+  - 3) <ins>\~/.profile</ins>
+
+  Typiquement, tout fichier d'environnement local va charger un fichier d'environnement local secondaire: <ins>\~/.bashrc</ins>.  
+  Le fichier .bashrc est donc l'endroit idéal pour mettre des paramètres d'environnement personnels.
 
 * <ins>\~/.bash_logout</ins> est un script shell exécuté lorsqu'un utilisateur se déconnecte du shell. Il peut ne pas exister.
 
 ---
 
-## Options
+## Flags
 
-* Il est possible d'activer des options, officiellement appelés *flags*, pour modifier le comportement de la session en cours. La variable `$-` contient la liste des flags activés
+### Lister les flags
+
+* Il est possible d'activer des options, officiellement appelés *flags*, pour modifier le comportement de la session en cours.  
+  La variable `$-` contient la liste des flags activés
 
   ```
   $ echo $-
@@ -177,6 +249,8 @@ category: Linux
   ```
 
   Pour voir ce que chaque lettre signifie: `help set`
+
+### Définir des flags
 
 * On peut utiliser la commande `set` pour ajouter ou enlever une option
 
@@ -190,26 +264,7 @@ category: Linux
   himBHs
   ```
 
-* On peut également ajouter des options lorsqu'on crée un sous-shell:
-
-  ``` bash
-  bash -x NOM_SCRIPT
-  ```
-
-  Ou au niveau de shebang
-
-  ``` bash
-  #!/bin/bash -x
-  ```
-
-  Ce qui revient au même qu'ajouter la commande `set` au début du script
-
-  ``` bash
-  #!/bin/bash
-  set -x
-  ```
-
-* Sans paramètre, `set` liste toutes les variables et fonctions définies dans la session en cours
+  Note: Sans paramètre, `set` liste toutes les variables et fonctions définies dans la session en cours
 
   ```
   $ set | head
@@ -225,7 +280,26 @@ category: Linux
   BASH_SOURCE=()
   ```
 
-### Expansion des accolades: B
+* On peut également ajouter des options lorsqu'on crée un sous-shell:
+
+  ``` bash
+  bash -x NOM_SCRIPT
+  ```
+
+  Ou au niveau du shebang
+
+  ``` bash
+  #!/bin/bash -x
+  ```
+
+  Ce qui revient au même qu'ajouter la commande `set` au début du script
+
+  ``` bash
+  #!/bin/bash
+  set -x
+  ```
+
+### Flag B: Expansion des accolades
 
 * L'expansion des accolades est l'une des nombreuses options qu'on peut activer ou désactiver pour la session en cours — si activée, l'interpréteur de commandes lira les éléments entre les accolades comme une liste.
 
@@ -244,7 +318,7 @@ category: Linux
   himBHs
   ```
 
-### Commandes exécutées: X
+### Flag X: Afficher les commandes
 
 * -x permet d'afficher les commandes exécutées au fur et à mesure de l'exécution du script
 
@@ -269,7 +343,9 @@ category: Linux
   + ln -sfT 002/ current
   ```
 
-### Vérifications: o
+### Flag o: Options de vérifications
+
+#### nounset
 
 * Activer `nounset` lèvera une erreur si on fait référence à des variables indéfinies (qui par défaut prennent la valeur "")
 
@@ -288,6 +364,8 @@ category: Linux
   $
   ```
 
+#### errexit
+
 * Activer `errexit` permet de sortir du script si une commande échoue
 
   ``` bash
@@ -304,44 +382,45 @@ category: Linux
   tmp: line 5: foo: command not found
   ```
 
+#### pipefail
+
 * Activer `pipefail` permet aux pipelines de conserver le dernier statut non nul.  
-  Normalement, une pipeline retourne le statut de la dernière commande.
+  
+  - En temps habituel, une pipeline retourne le statut de la dernière commande: si on pipe plusieurs commandes, errexit ne sera donc déclenché que si la dernière commande échoue et non une commande intermédiaire.
 
-  Ainsi errexit ne se déclenchera pas si la dernière commande de la pipeline réussit, même si une commande intermédiaire échoue
+    ``` bash
+    $ cat secur3.sh
+    #!/bin/bash -
+    set -o errexit
 
-  ``` bash
-  $ cat secur3.sh
-  #!/bin/bash -
-  set -o errexit
+    foo 2>&1 | xargs echo '- '
+    echo "FIN"
 
-  foo 2>&1 | xargs echo '- '
-  echo "FIN"
+    $ ./secur3.sh
+    -  tmp: line 4: foo: command not found
+    FIN
+    ```
 
-  $ ./secur3.sh
-  -  tmp: line 4: foo: command not found
-  FIN
-  ```
+  - pipefail modifie ce comportement
 
-  À moins qu'activer pipefail
+    ``` bash
+    $ cat secur4.sh
+    #!/bin/bash -
+    set -o errexit
+    set -o pipefail
 
-  ``` bash
-  $ cat secur4.sh
-  #!/bin/bash -
-  set -o errexit
-  set -o pipefail
+    foo 2>&1 | xargs echo '- '
+    echo "FIN"
 
-  foo 2>&1 | xargs echo '- '
-  echo "FIN"
+    $ ./secur4.sh
+    -  tmp: line 5: foo: command not found
+    ```
 
-  $ ./secur4.sh
-  -  tmp: line 5: foo: command not found
-  ```
+### Flag r: Mode restreint
 
-### Mode restreint: r
+* Le fait d'exécuter un script ou une partie de script en mode restreint désactive certaines commandes qui, sans cette option, seraient disponibles. Cette mesure de sécurité est prévue pour limiter les droits de l'utilisateur du script et donc minimiser les risques liés à l'exécution du script.
 
-* Le fait d'exécuter un script ou une partie de script en mode restreint désactive certaines commandes qui, sans cela, seraient disponibles. Cette mesure de sécurité est prévue pour limiter les droits de l'utilisateur du script et donc minimiser les risques liés à l'exécution du script.
-
-   Les commandes et actions ci-dessous sont désactivées :
+   Les commandes et actions désactivées sont:
   * L'usage de `cd` pour changer de répertoire de travail.
   * Le changement de valeur des variables d'environnement suivantes : `$PATH`, `$SHELL`, `$BASH_ENV`, `$ENV`.
   * La lecture ou le remplacement d'options d'environnement de shell `$SHELLOPTS`.

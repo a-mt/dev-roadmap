@@ -5,6 +5,7 @@ searchbar: true
 
 [accessibilite]: accessibilite.md
 [agile]: agile.md
+[12-factor]: 12-factor.md
 [angular]: angular.md
 [ansible]: ansible.md
 [apache-vhost]: apache-vhost.md
@@ -152,8 +153,8 @@ searchbar: true
 - Task Runners & Module Bundlers  
   Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html), Grunt, Gulp [1 &#x21F2;](https://medium.freecodecamp.org/super-simple-gulp-tutorial-for-beginners-45141974bfe8), [Webpack][webpack], Make
 
-- Éditeurs de texte
-  [Raccourcis d'édition de texte  ][text-shortcut], Sublime Text [1 &#x21F2;](https://gist.github.com/mrliptontea/4c793ebdf72ed145bcbf)
+- Éditeurs de texte  
+  [Raccourcis d'édition de texte][text-shortcut], Sublime Text [1 &#x21F2;](https://gist.github.com/mrliptontea/4c793ebdf72ed145bcbf)
 
 - [Open Source (github)][opensource]
 
@@ -166,10 +167,12 @@ searchbar: true
   [Développement web][webdev], [Versionnement sémantique][semver], [Encodages][encoding], Caractères BOM [1 &#x21F2;](https://medium.freecodecamp.org/a-quick-tale-about-feff-the-invisible-character-cd25cd4630e7), [Base de données][bdd], [Testing][testing]
 
 - Méthodologie  
-  [Paradigmes de programmation][paradigm], [Agile][agile], 12-factor app [1 &#x21F2;](https://12factor.net/fr/)
+  [Paradigmes de programmation][paradigm], [Agile][agile], [12-factor app][12-factor]
 
 - Sécurité  
-  [Fondamentaux][securite], Vulnérabilités [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9), [Cryptographie][crypto], [SSL][ssl], [IPSec][ipsec], [Courbes elliptiques][crypto-ec]
+  [Fondamentaux][securite], Vulnérabilités [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9) [2 &#x21F2;](https://portswigger.net/web-security/all-topics
+
+), [Cryptographie][crypto], [SSL][ssl], [IPSec][ipsec], [Courbes elliptiques][crypto-ec]
 
 - Réseau  
   DNS [1 &#x21F2;](https://medium.freecodecamp.org/why-cant-a-domain-s-root-be-a-cname-8cbab38e5f5c), CORS [1 &#x21F2;](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b)
@@ -195,6 +198,8 @@ searchbar: true
 - Extensions navigateur [1 &#x21F2;](https://github.com/faisal3389/template-browser-extension) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-make-a-cross-browser-extension-using-javascript-and-browser-apis-355c001cebba)
 
 - Mobile [2 &#x21F2;](https://medium.freecodecamp.org/a-deeply-detailed-but-never-definitive-guide-to-mobile-development-architecture-6b01ce3b1528)
+
+- Flutter
 
 ## Exploitation
 
@@ -336,3 +341,4 @@ searchbar: true
   - [Emails jetables Gmail](https://smailpro.com/)
   - [Screen size map](https://www.screensizemap.com/)
   - [Commandes Windows](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands#command-line-reference-a-z)
+  - [Stacks](https://stackshare.io/stacks)

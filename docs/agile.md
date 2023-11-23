@@ -44,9 +44,9 @@ En plus du manifeste, [12 principes](http://agilemanifesto.org/iso/fr/principles
 8. Les processus agiles encouragent un rythme de <ins>travail soutenable</ins>.  
   Les acteurs doivent être en mesure de maintenir un rythme constant indéfiniment.
 
-9. Une attention continue à l'<ins>excellence technique</ins> et à une bonne conception améliorere l'agilité.
+9. Une attention continue à l'<ins>excellence technique</ins> et à une bonne conception améliore l'agilité.
 
-10. La <ins>simplicité</ins> - l'art de maximiser la quantité de travail inutile - est essentielle.
+10. La <ins>simplicité</ins> - l'art de minimiser la quantité de travail inutile - est essentielle.
 
 11. Les meilleures architectures, spécifications et conceptions émargent d'<ins>équipes auto-organisées</ins>.
 

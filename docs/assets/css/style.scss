@@ -9,6 +9,13 @@
     position: relative;
     left: -20px;
 }
+li:empty {
+    list-style-type: none;
+
+    &::before {
+        content: ' ';
+    }
+}
 
 body.index {
     ul {

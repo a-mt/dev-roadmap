@@ -253,6 +253,11 @@ searchbar: true
 - Monitoring  
   Splunk, Evident.io, FireEye, Metasploit
 
+## Algorithmes
+
+- [Rubik's cube 3x3](/!rubiks/rubiks3x3.html)
+- [Rubik's cube 4x4](/!rubiks/rubiks4x4.html)
+
 ## Quick links
 
 - Caractères
@@ -300,6 +305,7 @@ searchbar: true
   - [Image Placeholder](http://placehold.it/350x150)
   - [CSV Placeholder](https://mockaroo.com/)
   - [GAN Generated profile photo](https://thispersondoesnotexist.com/)
+  - Website report: [Lighthouse](https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=fr&pli=1)
 
 - Codes  
   - Norme BCP 47 (ex: en_GB)
@@ -314,8 +320,7 @@ searchbar: true
 
 - Challenges
   - [Project Euler](https://projecteuler.net/archives)
-  - [Codefights](http://codefights.com/)
-  - [Hackerrank](http://hackerrank.com/)
+  - HackerRank, Codingame, Codility, Coderpad, Coderbyte, CodeSignal (ex codefights)
 
 - Business
   - [Générateur mentions légales](https://fr.orson.io/1371/generateur-mentions-legales)

@@ -1,0 +1,517 @@
+---
+title: Résoudre un Rubik's cube 4x4
+summary: false
+---
+
+<!-- STEP 1 -->
+<h2>1. Résoudre le centre blanc</h2>
+
+<ul>
+    <li>
+        Trouver deux pièces centrales blanches et les joindre.<br>
+        Cela forme une <i>barre</i><br>
+
+        <div class="animecubejs" data-config="facelets=
+        ................
+        ................
+        ......0.........
+        ................
+        ................
+        ......0.........
+        &move=R 2U"></div>
+    </li>
+    <li>
+        Trouver les deux autres pièces centrales blanches et les joindre aussi, sans casser la prmeière barre<br>
+
+        <div class="animecubejs" data-config="facelets=
+        ......0.........
+        ................
+        .....00.........
+        .....0..........
+        ................
+        ................
+        &move=U 2R'"></div>
+    </li>
+    <li>
+        Joindre les deux barres ensemble<br>
+
+        <div class="animecubejs" data-config="facelets=
+        .....00.........
+        ................
+        .....00.........
+        ................
+        ................
+        ................
+        &move=U' 2R'
+        "></div>
+    </li>
+</ul>
+
+<!-- STEP 2 -->
+<h2>2. Résoudre le centre jaune</h2>
+
+<ul>
+    <li>
+        Créer une barre jaune<br>
+        Si les deux pièces centrales jaunes sont en diagonales, les séparer et utiliser une rotation de manière à ce que, lorsqu'on les rejoint de nouveau, cela forme une autre barre.
+    </li>
+    <li>
+        Placer la barre jaune à l'opposé du centre blanc<br>
+
+        <div class="animecubejs" data-config="facelets=
+        .....00..00.....
+        ................
+        .....1....1.....
+        ................
+        ................
+        ................
+        &move=2U' R 2U X 2R' F2 2R X'
+        "></div>
+    </li>
+    <li>
+        Créer une deuxième barre jaune et la placer à l'opposé du centre blanc
+
+        <div class="animecubejs" data-config="facelets=
+        .....00..00.....
+        .....11.........
+        ................
+        ................
+        ................
+        .....11.........
+        &move=X F 2U F2 2U' X'"></div>
+    </li>
+</ul>
+
+<!-- STEP 3 -->
+<h2>3. Résoudre 3 bords blancs</h2>
+
+<p>Un bord est une pièce avec 2 couleurs — ce n'est ni une pièce centrale ni un coin</p>
+
+<h3>Premier bord</h3>
+<ul>
+    <li>
+        Trouver deux bords blancs, qui ont les même couleurs, comme blanc/bleu avec blanc/bleu.
+    </li>
+    <li>
+        Placer ces deux bords sur les 2 tranches du milieu, un sur la tranche du haut, un sur la tranche du bas.
+    </li>
+    <li>
+        Tourner une tranche pour rejoindre les deux bords blancs.
+    </li>
+    <li>
+        Effectuer une rotation pour mettre le bord blanc dans le côté blanc, blanc contre blanc.
+
+        <div class="animecubejs" data-config="facelets=
+        .....00..002....
+        .....11..11.....
+        .............0..
+        ................
+        ................
+        .2......0.......
+        &move=2U R 2U2' B"></div>
+    </li>
+</ul>
+
+<h3>Deuxième bord</h3>
+<ul>
+    <li>
+        Trouver une autre paire
+    </li>
+    <li>
+        Comme précédemment, placer ces deux bords sur les tranches du milieu avant de les rejoindre.<br>
+        Prêter attention au bord blanc résolu: les rotations ne doivent être effectuées que sur les faces où les bords ne sont pas déjà résolus (sinon, tourner la face supérieure pour les mettre à l'écart).
+    </li>
+    <li>
+        Mettre le nouveau bord blanc dans le côté blanc, blanc contre blanc.<br>
+        Respecter l'<u>ordre des couleurs: BORG</u> (Blue Orange Red Green) — le côté bleu à l'opposé du vert, orange à l'opposé du rouge.
+
+        <div class="animecubejs" data-config="facelets=
+        .....000.000....
+        .....11..11...4.
+        ..............0.
+        ................
+        ................
+        ..4.2...2..0....
+        &move=D' 2D F' 2D' F2' L'"></div>
+    </li>
+</ul>
+
+<h3>Troisème bord</h3>
+<ul>
+    <li>
+        Même principe pour le troisième bord blanc, toujours en respectant l'ordre BORG.<br>
+
+        <div class="animecubejs" data-config="facelets=
+        ....00000000....
+        .....11.011...3.
+        ...........3....
+        ................
+        .44.............
+        ....2...2..0....
+        &move=F U R' 2U2 U F"></div>
+    </li>
+    <li>
+        On s'occupera du dernier bord blanc après avoir résolu les centres.
+    </li>
+</ul>
+
+<!-- STEP 4 -->
+<h2>4. Résoudre les centres</h2>
+
+<ul>
+    <li>
+        Résoudre les 4 centres restants, en les alignant avec les côtés de la face blanche.<br>  
+        Pour ne pas casser les 3 bords blancs résolus, les rotations doivent toujours être effectuées sur le côté qui n'a pas le bord blanc.<br>
+        Également prêter attention à n'effectuer les rotations qu'entre deux faces aux centres non résolus
+
+        <div class="animecubejs" data-config="facelets=
+        ....00000000.00.
+        .....11..11.....
+        .....2...2......
+        ....32..32......
+        .44.............
+        ....2...2.......
+        &move=F2 2U2 e"></div>
+
+        <div class="animecubejs" data-config="facelets=
+        ....00000000.00.
+        .....11..11.....
+        .....3..........
+        ....333.33......
+        .44.............
+        ....222.222.....
+        &move=Y 2D2' L' 2D2"></div>
+
+        <div class="animecubejs" data-config="facelets=
+        ....00000000.00.
+        .....11..11.....
+        ......4..4......
+        ....333.333.....
+        .44......44.....
+        ....222.222.....
+        &move=Y' 2U' R' 2U R 2D' U F2 U' 2D"></div>
+    </li>
+</ul>
+
+<!-- STEP 5 -->
+<h2>5. Créer les bords</h2>
+
+<p>Appairer tous les bords, sans chercher à les placer au bon endroit.</p>
+
+<h3>Placer les bords au milieu</h3>
+
+<ul>
+    <li>
+        Commencer par le bord blanc restant<br>  
+        Si le bord blanc se situe sur la face blanche, le déplacer vers la face jaune
+    </li>
+    <li>
+        Tenir la face jaune vers le haut.
+    </li>
+    <li>
+        Si un ou deux bords <u>se situent sur la face supérieure</u>:<br>
+        Placer les deux bords sur les tranches du milieu.<br>  
+        Effectuer une rotation verticale, remplacer le bord qui s'y trouvait par le bord blanc, redescendre la face.
+
+        <div class="animecubejs" data-config="facelets=
+        ..5.00000000.00.
+        .....11..11.....
+        .....55.055.....
+        ....333.333..0..
+        .44..445.44.....
+        ....222.222.....
+        &move=F2 Z2 R U' R'">
+        </div>
+    </li>
+</ul>
+
+<h3>Appairer deux pièces du milieu</h3>
+
+<ul>
+    <li>
+        Regarder dans quelle tranche (ligne horizontale) se trouve les deux pièces.
+    </li>
+    <li>
+        <u>Cas n°1: différentes tranches</u>:<br>
+
+        <ul>
+            <li>Les appairer en tournant le milieu. Cela casse les centres, mais on va les restaurer juste après.</li>
+            <li>Effectuer une rotation de la face où se situe le bord, pour le mettre dans la couche supérieure</li>
+            <li>Le remplacer par n'importe quel bord non résolu</li>
+            <li>Remettre la face à sa position précédente</li>
+            <li>Restaurer les centres</li>
+        </ul>
+
+        <div class="animecubejs" data-config="facelets=
+        ....00000000.00.
+        .....11..11.....
+        ..5..55..55.....
+        ....333.333..0..
+        .44..445044.....
+        ....222.222.....
+        &initmove=Z2&move=u' R' U R u">
+    </li>
+    <li>
+        <u>Cas n°2: même tranche</u>:<br>  
+        Que ce soit sur la tranche supérieure ou inférieure, l'algorithme est le même:
+
+        <ul>
+            <li>
+                Tourner le milieu pour appairer la pièce du haut du premier bord, avec la pièce du bas du deuxième bord
+            </li>
+            <li>
+                Inverser le bord droit: R U R' F R' F' R
+                <ul>
+                <li>Couche droite vers le haut</li>
+                <li>Couche supérieure vers la gauche</li>
+                <li>Couche droite vers le bas</li>
+                <li></li>
+                <li>Couche frontale vers la droite</li>
+                <li>Couche droite vers le bas</li>
+                <li>Couche frontale vers le haut</li>
+                <li>Couche droite vers le haut</li>
+                </ul>
+            </li>
+            <li>
+                Restaurer les centres
+            </li>
+        </ul>
+
+        <div class="animecubejs" data-config="facelets=
+        .00.00000000.00.
+        .....11..11.....
+        .41.555.555..45.
+        ....333.333.....
+        .44.544.444.....
+        .51.222.222.....
+        &initmove=Z2&move=u' R U R' F R' F' R u">
+    </li>
+</ul>
+
+<h3>Appairer les deux derniers bords non résolus</h3>
+
+<ul>
+    <li><u>Cas n°1: même tranche</u>: comme d'habitude</li>
+    <li>
+        <u>Cas n°2: différentes tranches</u>:
+        <ul>
+            <li>Inverser le bord droit: R U R' F R' F' R</li>
+            <li>Résoudre les bords comme d'habitude — les couleurs sont sur la même ligne</li>
+        </ul>
+    </li>
+</ul>
+
+<!-- STEP 6 -->
+<h2>6. Résoudre les coins blancs</h2>
+
+<p>Même principe qu'un Rubik's cube 3x3</p>
+
+<!-- STEP 7 -->
+<h2>7. Résoudre les couches intermédiares</h2>
+
+<p>Même principe qu'un Rubik's cube 3x3</p>
+
+<!-- STEP 8 -->
+<h2>8. Créer la croix jaune</h2>
+
+<ul>
+    <li>
+        Toujours le même principe qu'un Rubik's cube 3x3.
+    </li>
+    <li>
+        <u>Si un bord est inversé</u>: <b>Parité OLL</b><br>
+        Dans certains cas, on peut finir avec un bord inversé — la couleur gauche est sur le côté et non sur la face supérieure. Si ça arrive, on utilise l'algorithme Parité OLL: cet algorithme retourne le bord en haut sur la face frontale, et inverse les deux bords tranverses sur la face supérieure.
+
+        <ul>
+            <li>Mettre le bord à inverser en face</li>
+            <li></li>
+            <li>Milieu droit vers le haut (<b>r</b>)</li>
+            <li>Couche supérieure vers la droite, deux fois (U2)</li>
+            <li>Retourner le cube pour avoir en haut la face frontale (x)</li>
+            <li></li>
+            <li>Milieu droit vers le haut (<b>r</b>)</li>
+            <li>Couche supérieure vers la droite, deux fois (U2)</li>
+            <li>Milieu droit vers le haut (<b>r</b>)</li>
+            <li>Couche supérieure vers la droite, deux fois (U2)</li>
+            <li></li>
+            <li>Milieu droit vers le bas (<b>r'</b>)</li>
+            <li>Couche supérieure vers la droite, deux fois (U2)</li>
+            <li>Milieu gauche vers le bas (<b>l</b>)</li>
+            <li>Couche supérieure vers la droite, deux fois (U2)</li>
+            <li></li>
+            <li>Milieu droit vers le bas (<b>r'</b>)</li>
+            <li>Couche supérieure vers la droite, deux fois (U2)</li>
+            <li>Milieu droit vers le haut (<b>r</b>)</li>
+            <li>Couche supérieure vers la droite, deux fois (U2)</li>
+            <li></li>
+            <li>Milieu droit vers le bas (<b>r'</b>)</li>
+            <li>Couche supérieure vers la droite, deux fois (U2)</li>
+            <li>Milieu droit vers le bas (<b>r'</b>)</li>
+        </ul>
+
+        <div class="animecubejs" data-config="facelets=
+        0000000000000000
+        5113211121111111
+        2224222122212225
+        4443444444444444
+        5555555555551551
+        3332333333333332
+        &initmove=Z2
+        &move=r U2 x r U2 r U2 r' U2 l U2 r' U2 r U2 r' U2 r'">
+        </div>
+    </li>
+    <li>
+        S'assurer que les bords respectent l'ordre: bleu opposé à rouge, orange opposé à vert
+    </li>
+    <li>
+        <u>Pour inverser deux bords l'un face à l'autre</u>:<br>
+        Placer les deux bords à l'avant/arrière et appliquer l'algorithme de <b>Parité PLL</b> (Permutation of the Last Layer)
+        <ul>
+            <li>2ème couche de droite vers le haut, deux fois (2R2)</li>
+            <li>Couche supérieure vers la droite, deux fois (U2)</li>
+            <li></li>
+            <li>2ème couche de droite vers le haut, deux fois (2R2)</li>
+            <li>Moitié supérieure vers la droite, deux fois (u2)</li>
+            <li></li>
+            <li>2ème couche de droite vers le haut, deux fois (2R2)</li>
+            <li>Moitié supérieure vers la droite, deux fois (u2)</li>
+            <li></li>
+            <li>Réaligner les coins</li>
+        </ul>
+
+        <div class="animecubejs" data-config="facelets=
+        0000000000000000
+        1113111111112114
+        2222222222222223
+        4441444444444444
+        5555555555555551
+        3331333333333335
+        &initmove=Z2
+        &move=2R2 U2 2R2 u2 2R2 u2">
+        </div>
+    </li>
+    <li>
+        <u>Pour inverser deux bords adjacents</u>:<br>
+        Placer les deux bords à l'avant/côté droit et appliquer l'algorithme de <b>Parité OLL</b> (Orientation of the Last Layer)
+        <ul>
+            <li>Côté droit vers le haut (R)</li>
+            <li>Côté supérieur vers la gauche (U)</li>
+            <li>Côté droit vers le bas (R')</li>
+            <li>Côté supérieur vers la droite (U')</li>
+            <li></li>
+            <li>Parité PLL</li>
+            <li></li>
+            <li>Côté supérieur vers la droite (U')</li>
+            <li>Côté droit vers le haut (R)</li>
+            <li>Côté supérieur vers la droite (U')</li>
+            <li>Côté droit vers le bas (R')</li>
+        </ul>
+    </li>
+</ul>
+
+<!-- STEP 9 -->
+<h2>9. Placer les coins jaunes</h2>
+
+<ul>
+    <li>
+        Même principe qu'un 3x3: mettre les coins jaunes au bon endroit, sans s'occuper de les aligner correctement avec les centres. Il est possible de se retrouver avec 2 coins résolus et 2 coins non résolus (ce qui est impossible avec un 3x3) — il s'agit d'un problème de parité.
+    </li>
+    <li>
+        <u>Cas n°1: 2 coins non résolus en diagonale</u>
+        <ul>
+            <li>
+                Réarranger les coins (avec la technique utilisée dans le 3x3) pour avoir les 2 coins non résolus du même côté.<br>  
+                Ensuite, appliquer le cas n°2 — ci-dessous
+
+                <div class="animecubejs" data-config="facelets=
+                0000000000000000
+                1111111111111111
+                2222222222222224
+                4444444444444442
+                5555555555555553
+                3335333333333333
+                &initmove=Z2
+                &move=U R U' L' U R' U' L
+                U R U' L' U R' U' L">
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <u>Cas n°2: 2 coins non résolus du même côté</u>
+        <ul>
+            <li>
+                Les mettre en face
+            </li>
+            <li>
+                Appliquer l'algorithme PLL (voir étape 10) — il inverse le bord à l'avant avec le bord à l'arrière.
+            </li>
+            <li>
+                Normalement, il est maintenant possible de placer les coins normalement.  
+                S'il reste deux coins non résolus, répéter l'algorithme
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<!-- STEP 10 -->
+<h2>10. Résoudre la croix et les coins jaunes</h2>
+
+<p>À cette étape, il est possible d'avoir à résoudre des problèmes de parité: <a href="https://jperm.net/algs/4x4/pll">4x4 PLL</a></p>
+
+<!-- SOURCES -->
+<hr>
+Sources:<br>
+<a href="https://www.youtube.com/watch?v=KWOZHbDdOeo" target="_blank" rel="noopener noreferrer">
+    Learn How to Solve a 4x4 in 10 Minutes (Full Yau Method Tutorial)
+</a><br>
+<a href="https://www.youtube.com/watch?v=NlVCP2ld9mQ" target="_blank" rel="noopener noreferrer">
+    4x4 Rubik's Cube: OLL Parity Prediction & OLL Skips
+</a><br>
+<a href="https://www.youtube.com/watch?v=N7VQs8gEh54&t=5s" target="_blank" rel="noopener noreferrer">
+     4x4 Rubik's Cube: Best PLL Parity Method & Tricks 
+</a>
+<a href="https://www.speedsolving.com/wiki/index.php/OLL">
+OLL</a>
+
+<!-- JS -->
+<link href="/assets/css/animecubejs.css?v=dev" rel="stylesheet">
+<script src="/assets/javascript/AnimCube4.min.js"></script>
+<script type="text/javascript">
+(function(){
+
+    // https://github.com/cubing/AnimCubeJS
+
+    // Params:
+    // https://animcubejs.cubing.net/animcubejs.html#bgcolor
+    const DEFAULT_PARAMS = [
+      'bgcolor=ffffff',
+      'butbgcolor=4287d2',
+      'troughcolor=ffffff',
+      'slidercolor=4287d2',
+      'buttonheight=16',
+      'borderwidth=7',
+      'snap=1',
+      'sign=1',
+      'counter=1',
+      // white:0 yellow:1 blue:2 orange:3 green:4 red:5
+      'colors=eeeeee FFFF00 0077ff FFA500 00dd00 ff0000'.replace(/ /g, ''),
+      'colorscheme=012345',
+    ].join('&') + '&';
+
+    document.querySelectorAll('.animecubejs').forEach((cube, i) => {
+
+      // Compute params
+      let params = DEFAULT_PARAMS + cube.dataset.config;
+      let id = cube.id || `cube${i}`;
+
+      cube.setAttribute('id', id);
+      params += `&id=${id}`;
+      console.log(params)
+
+      // Add AnimCube4
+      AnimCube4(params.replace(/\n\s+/g, ''));
+    });
+
+}());
+</script>

@@ -1,0 +1,365 @@
+---
+title: Résoudre un Rubik's cube 3x3
+summary: false
+---
+
+<h1>À propos</h1>
+
+<p>Le Rubik's cube a été inventé par Ernő Rubik, d'où il tire son nom.<br>
+Il s'agit du jouet de plus vendu de tous les temps, avec 350 million d'unités vendues depuis 1980.</p>
+
+<!--
+<dl>
+    <dt>Pièce (Piece)</dt>
+    <dd>Une pièce est la plus petite partie mobile.</dd>
+
+    <dt>Centre (Center piece)</dt>
+    <dd>Les pièces centrales sont situées au centre et ont 1 seule couleur.</dd>
+
+    <dt>Bord (Edge piece)</dt>
+    <dd>Les bords se situent entre deux pièces centrales, et ont 2 couleurs.</dd>
+
+    <dt>Coin (Corner piece)</dt>
+    <dd>Les coins se situent dans les angles, et ont 3 couleurs.</dd>
+
+    <dt>Face / côté (Face / side)</dt>
+    <dd>Un cube a 5 faces: avant, arrière, gauche, droite, haut, bas.</dd>
+
+    <dt>Couche (Layer)</dt>
+    <dd>Un peu comme une face, mais les couleurs des bords sont également corrects sur les autres faces.</dd>
+
+    <dt>Tranche (Slice)</dt>
+    <dd>Une tranche est groupe de couches, on commence à en entendre parler dans les Rubik's cubes 4x4.</dd>
+
+    <dt>Placer (Make a piece / Move into position)</dt>
+    <dd>Placer une pièce à l'endroit où elle est censée se trouver, même si les couleurs ne sont pas alignées correctement.</dd>
+
+    <dt>Résoudre (Solve a piece)</dt>
+    <dd>Placer une pièce à sa position, en alignant correctement les couleurs.</dd>
+
+    <dt>Algorithme</dt>
+    <dd>Un algorithme est une séquence pré-mémorisée de mouvements sur le cube, utilisé pour déplacer une pièce d'un emplacement A à un emplacement B, ou même faire en sorte que deux pièces échangent leur position.</dd>
+</dl>
+-->
+
+<p>La méthode de résolution pour débutant a 7 étapes.</p>
+
+<!-- STEP 1 -->
+<h2>1. Résoudre la croix blanche</h2>
+
+<p>But: Placer tous les bords (pièces avec 2 couleurs) à côté du centre blanc.<br> Veiller à ce que les couleurs de l'autre côté des bords soient également alignés avec les autres centres.</p>
+
+<ul>
+    <li>
+        Trouver la pièce centrale blanche et la placer sur le dessus.
+
+        <div class="roofpig width100" data-config="colored=Um|colors=F:o U:w R:g B:r L:b D:y"></div>
+    </li>
+    <li>Chercher un bord blanc — une pièce qui a deux couleurs, le blanc et une autre couleur.
+
+    <li>
+        <u>Si cette pièce est sur la couche inférieure</u>
+        <ul>
+            <li>
+                Tourner la face inférieure jusqu'à ce que la pièce se trouve sous le centre de la même couleur.<br>
+                Si le bord est blanc et rouge, alors la placer sous le centre rouge.
+            </li>
+            <li>Tourner cette face jusqu'à ce que le bord blanc fasse partie de la croix blanche.
+            </li>
+        </ul>
+        <div class="roofpig width100" data-config="colored=Um Fm Ufe Fue|colors=F:o U:w R:g B:r L:b D:y|alg=D' F2|hover=3|tweaks=X:Ufe"></div>
+    </li>
+
+    <li>
+        <u>Si la pièce est sur la couche supérieure</u> (c'est la bonne position mais les couleurs sont inversées).
+        <ul>
+            <li>La tenir en face</li>
+            <li>Tourner la face frontale vers la droite, pour placer le bord blanc sur le côté droit</li>
+            <li>Tourner la face supérieure dans le sens inverse des aiguilles d'une montre — vers la droite</li>
+            <li>Tourner le bord droit vers le haut</li>
+            <li>Tout remettre en place: tourner la face supérieure dans le sens des aiguilles d'une montre — vers la gauche</li>
+        </ul>
+
+        <div class="roofpig width100" data-config="colored=Um Ule Lue Fm Ufe Fue|colors=F:o U:w R:g B:r L:b D:y|alg=F U' R U|hover=none|tweaks=X:Ufe"></div>
+    </li>
+
+    <li>
+        <u>Si la pièce se trouve sur la couche intermédiaire</u>: la déplacer vers la couche inférieure
+        <ul>
+            <li>Tourner le bord blanc vers la face inférieure</li>
+            <li>Tourner la couche inférieure pour écarter le bord blanc</li>
+            <li>Remettre la face à sa position initiale</li>
+            <li>Maintenant que le bord blanc est sur la couche inférieure, le résoudre comme d'habitude</li>
+        </ul>
+
+        <div class="roofpig width100" data-config="colored=Um Fm Rde Dre Ube Bue|colors=F:o U:w R:g B:r L:b D:y|hover=3|tweaks=F:Rde U:Dre X:Dre|alg=B' D' B"></div>
+    </il>
+
+    <li>
+        Répéter jusqu'à ce que le croix blanche soit entièrement résolue, les couleurs sur les côtés doivent également être alignées avec les centres de même couleur.
+
+        <div class="roofpig width100" data-config="colored=Um U*/e Fm Rm Lm Bm|colors=F:o U:w R:g B:r L:b D:y"></div>
+    </li>
+</ul>
+
+<!-- STEP 2 -->
+<h2>2. Résoudre la couche blanche</h2>
+
+<p>Maintenant que les bords sont résolus, résoudre les coins (pièces avec 3 couleurs).</p>
+
+<ul>
+    <li>
+        Retourner le cube: centre jaune vers le haut.
+
+        <div class="roofpig width100" data-config="colored=Um|colors=F:o U:y R:b B:r L:g D:w"></div>
+    </li>
+    <li>
+        Chercher un <u>coin blanc dans la couche supérieure</u>
+        <ul>
+            <li>Regarder les autres couleurs: si la pièce  est vert/blanc/orange, elle va entre les centres vert/blanc/orange</li>
+            <li>
+                Tourner la couche supérieure jusqu'à ce que le coin soit juste au-dessus de l'emplacement où il doit aller
+
+                <div class="roofpig width100" data-config="colored=Um Fm Rm|hover=3|tweaks=D:Rfu X:Rfu R:Ufr F:Fur|colors=F:o U:y R:b B:r L:g D:w|alg=U"></div>
+            </li>
+
+            <li>
+                <u>Si le blanc est sur le côté droit</u>: utiliser l'algorithme de la main droite en 4 mouvements
+                <ul>
+                    <li>Face droite vers le haut</li>
+                    <li>Face supérieure vers la gauche</li>
+                    <li>Face droite vers le bas</li>
+                    <li>Face supérieure vers la droite</li>
+                </ul>
+
+                <div class="roofpig width100" data-config="colored=Um Fm Rm Fdr Rfd Dfr|hover=3|tweaks=X:Dfr|colors=F:o U:y R:b B:r L:g D:w|alg=R U R' U'"></div>
+            </li>
+            <li>
+                <u>Si le blanc est sur le côté gauche</u>: main gauche en 4 mouvements
+                <ul>
+                    <li>Face gauche vers le haut</li>
+                    <li>Face supérieure vers la droite</li>
+                    <li>Fauche gauche vers le bas</li>
+                    <li>Face supérieure vers la gauche</li>
+                </ul>
+
+                <div class="roofpig width100" data-config="colored=Um Fm Rm Fdr Rfd Dfr|hover=3|tweaks=X:Dfr|colors=F:o U:y R:b B:r L:g D:w|alg=F' U' F U"></div>
+            </li>
+            <li>
+                <u>Si le blanc est sur la face supérieure</u>:<br> répéter le même algorithme (gauche ou droite) jusqu'à ce que le coin soit résolu — prendra jusqu'à 3 répétitions
+
+                <div class="centeredblock">
+                    <div class="roofpig width100 inlineblock" data-config="colored=Um Fm Rm Fdr Rfd Dfr|hover=3|tweaks=X:Dfr|colors=F:o U:y R:b B:r L:g D:w|alg=F' U' F U F' U' F U F' U' F U"></div>
+                    <div class="roofpig width100 inlineblock" data-config="colored=Um Fm Rm Fdr Rfd Dfr|hover=3|tweaks=X:Dfr|colors=F:o U:y R:b B:r L:g D:w|alg=R U R' U' R U R' U' R U R' U'"></div>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li>
+        Si le <u>coin blanc est sur la couche inférieure</u> mais que les couleurs ne s'alignent pas:<br>
+        mettre n'importe quel coin à sa place, puis résoudre le coin blanc comme d'habitude.
+
+        <div class="roofpig width100" data-config="colored=Um Fm Rm|hover=3|tweaks=D:Rfu X:Rfu R:Ufr F:Fur|colors=F:o U:y R:b B:r L:g D:w|alg=R U R' U'"></div>
+    </li>
+    <li>
+        Répéter jusqu'à avoir résolu la couche blanche.<br>
+        Vérifier que toutes les couleurs sur les côtés sont correctes, puis passer à l'étape suivante.
+
+        <div class="roofpig width100" data-config="colored=Um D*|hover=3|colors=F:o U:y R:b B:r L:g D:w"></div>
+    </li>
+</ul>
+
+<!-- STEP 3 -->
+<h2>3. Résoudre la 2ème couche</h2>
+
+<ul>
+    <li>
+        La couche supérieure est jaune, donc <u>trouver un bord sur la couche supérieure qui n'a pas de jaune</u>
+        <ul>
+            <li>
+                Déplacer la pièce pour que la couleur sur le côté soit de la même couleur que le centre:<br>
+                Si la pièce est bleue sur la face supérieure et orange sur le côté, tourner jusqu'à ce que le orange s'aligne avec le centre orange
+
+                <div class="roofpig width100" data-config="colored=Um Fm Rm D*|tweaks=R:Ufe F:Fue X:Fue X:Ufe|hover=3|colors=F:o U:y R:b B:r L:g D:w|alg=U"></div>
+            </li>
+            <li>Déterminer dans quelle direction la pièce doit aller:<br> si la pièce en cours est alignée avec le centre orange, et que 2ème couleur est le bleu, elle doit aller du côté du centre bleu — ici à droite</li>
+                <ul>
+                    <li>
+                        <u>Pour l'insérer à droite</u>
+                        <ul>
+                            <li>Réserver la pièce sur le côté gauche: tourner la couche supérieure vers la gauche</li>
+                            <li>Sortir le coin blanc avec la main droite: côté droit vers le haut, tourner le haut vers la gauche, côté dront vers le bas, tourner le haut vers la droite</li>
+                            <li>Réinsérer le coin avec la main gauche: côté gauche vers le haut, tourner le haut vers la droite, côté gauche vers le bas, tourner le haut vers la gauche
+                        </ul>
+
+                        <!--<div class="roofpig width100 inlineblock" data-config="colored=Um Fm Rm Fre Rfe D*|tweaks=X:Rfe X:Fre|hover=3|colors=F:o U:y R:b B:r L:g D:w|alg=U R U R' U' F' U' F U"></div>-->
+
+                        <div class="roofpig width100" data-config="colored=Um Fm Rm Fre Rfe D*|tweaks=X:Rfe X:Fre|hover=3|colors=F:o U:y R:b B:r L:g D:w|alg=U R U R' U' y L' U' L U"></div>
+                    </li>
+                    <li>
+                        <u>Pour l'insérer à gauche</u>
+                        <ul>
+                            <li>Réserver la pièce sur le côté droit: tourner la couche supérieure vers la droite</li>
+                            <li>Sortir le coin blanc avec la main gauche: côté gauche vers le haut, tourner le haut vers la droite, côté gauche vers le bas, tourner le haut vers la gauche</li>
+                            <li>Réinsérer le coin blanc avec la main droite: côté droit vers le haut, tourner le haut vers la gauche, côté droit vers le bas, tourner le haut vers la droite</li>
+                        </ul>
+
+                        <div class="roofpig width100" data-config="colored=Um Fm Rm Fre Rfe D*|tweaks=X:Rfe X:Fre|hover=3|colors=F:o U:y R:b B:r L:g D:w|alg=U' F' U' F U R U R' U'"></div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        Si la pièce est <u>déjà sur la 2ème couche</u>, mais que les couleurs ne s'alignent pas:<br>
+        mettre n'importe quel bord supérieur à sa place et continuer comme d'habitude.
+    </li>
+</ul>
+
+<!-- STEP 4 -->
+<h2>4. Créer la croix jaune</h2>
+
+<p>Une fois les deux premières couches résolues, créer la croix jaune. Ignorer les coins et ne pas chercher à résoudre les bords: les couleurs sur les côtés n'ont pas d'importance, seul le jaune sur la face supérieure importe.</p>
+
+<ul>
+    <li>
+        <u>Cas n°1: aucun bord</u>
+        <ul>
+            <li>Tourner la face frontale vers la droite</li>
+            <li>Algorithme de la main droite: face droite vers le haut, face supérieure vers la gauche, face droite vers le bas, face supérieure vers la droite</li>
+            <li>Tourner la face frontale vers la gauche</li>
+        </ul>
+
+        <div class="roofpig width100" data-config="colored=Um U-|tweaks=F:Ulf L:Ful F:Uef U:Fue U:Urf R:Fur B:Ruf R:Ure U:Rue F:Urb R:Rub U:Bru L:Ube U:Bue U:Ubl B:Bul L:Lub B:Ule U:Lue U:Luf X:Um|hover=3|colors=F:o U:y R:b B:r L:g D:w|flags=startsolved|alg=F R U R' U' F'"></div>
+    </li>
+    <li>
+        <u>Cas n°2: L</u>
+        <ul>
+            <li>En cas de forme en L, le placer en haut à gauche (forme un ⮥)</li>
+            <li>Faire la même chose que le cas n°1</li>
+        </ul>
+
+        <div class="roofpig width100" data-config="colored=Um U-|tweaks=U:Ulf B:Ful U:Uef L:Fue U:Urf L:Fur F:Ruf U:Ure F:Rue L:Urb U:Rub B:Bru R:Ube U:Bue F:Ubl R:Bul U:Lub B:Ule U:Lue R:Luf X:Um X:Ure X:Ufe|hover=3|colors=F:o U:y R:b B:r L:g D:w|flags=startsolved|alg=U2 F R U R' U' F'"></div>
+    </li>
+    <li>
+        <u>Cas n°3: ligne</u>
+        <ul>
+            <li>En cas de ligne, la mettre à l'horizontal (forme un ―)</li>
+            <li>Faire la même chose que le cas n°1</li>
+        </ul>
+
+        <div class="roofpig width100" data-config="colored=Um U-|tweaks=F:Ulf U:Ful L:Uef U:Fue U:Urf B:Fur L:Ruf U:Ure R:Rue F:Urb U:Rub L:Bru B:Ube U:Bue U:Ubl R:Bul B:Lub U:Ule F:Lue R:Luf X:Um X:Ule X:Ure|hover=3|colors=F:o U:y R:b B:r L:g D:w|flags=startsolved|alg=F R U R' U' F'"></div>
+    </li>
+</ul>
+
+<!-- STEP 5 -->
+<h2>5. Résoudre la croix jaune</h2>
+
+<p>Maintenant, il faut que toutes les couleurs de la croix jaune soient correctes sur les côtés.</p>
+
+<ul>
+    <li>
+        Essayer d'aligner autant de pièces que possible.<br> Ce sera soit 4 soit 2.
+
+        <div class="roofpig width100" data-config="colored=Um U- U*/e|tweaks=F:Ulf L:Ful F:Fue U:Urf B:Fur L:Ruf B:Rue R:Urb U:Rub F:Bru L:Bue B:Ubl U:Bul R:Lub R:Lue U:Luf X:Fm X:Fue X:Rm X:Rue X:Lm X:Lue X:Bm X:Bue|hover=3|colors=F:o U:y R:b B:r L:g D:w|flags=startsolved|alg=U'"></div>
+    </li>
+    <li>
+        Si possible, tenir les deux bords résolus <u>sur le côté droit et à l'arrière</u>.<br>  
+        S'ils sont en face l'un de l'autre, faite l'algorithme à partir de n'importe où.
+        <ul>
+            <li>Couche droite vers le haut</li>
+            <li>Couche supérieure vers la gauche</li>
+            <li>Couche droite vers le bas</li>
+            <li></li>
+            <li>Couche supérieure vers la gauche</li>
+            <li>Couche droite vers le haut</li>
+            <li></li>
+            <li>Couche supérieure vers la droite</li>
+            <li>Couche supérieure vers la droite</li>
+            <li>Couche droite vers le bas</li>
+        </ul>
+        Si c'est fait correctement, il devrait être possible de tout aligner.
+
+        <div class="roofpig width100" data-config="colored=Um U- U*/e|tweaks=B:Ulf R:Ful R:Fue F:Urf U:Fur L:Ruf F:Rue U:Urb B:Rub L:Bru B:Bue R:Ubl U:Bul F:Lub L:Lue U:Luf X:Fm X:Fue X:Rm X:Rue X:Lm X:Lue X:Bm X:Bue|hover=3|colors=F:o U:y R:b B:r L:g D:w|flags=startsolved|setupmoves=y'|alg=y R U R' U R U' U' R' U"></div>
+    </li>
+</ul>
+
+<!-- STEP 6 -->
+<h2>6. Placer les coins jaunes</h2>
+
+<p>Placer tous les coins jaunes au bon endroit.</p>
+
+<ul>
+    <li>Chercher les coins qui sont au bon endroit (même si les couleurs ne s'alignent pas):<br> le coin vert/orange/jaune va entre le vert/orange/jaune.<br> Il y aura 4, 1 ou 0 coins corrects.</li>
+    <li>Si 1 coin est correct, <u>le tenir sur l'avant-droit</u>.<br> Si aucun n'est correct, exécuter l'algorithme à partir de n'importe où.
+        <ul>
+            <li>Face supérieure vers la gauche</li>
+            <li>Face droite vers le haut</li>
+            <li>Face supérieure vers la droite</li>
+            <li>Face gauche vers le haut</li>
+            <li></li>
+            <li>Face supérieure vers la gauche</li>
+            <li>Face droite vers le bas</li>
+            <li>Face supérieure vers la droite</li>
+            <li>Face gauche vers le bas</li>
+        </ul>
+        <div class="roofpig width100" data-config="colored=Um U- U*/e|tweaks=U:Ulf R:Ful U:Urf R:Fur B:Ruf F:Urb U:Rub L:Bru B:Ubl L:Bul U:Lub F:Luf X:Ubl|hover=3|colors=F:o U:y R:b B:r L:g D:w|flags=startsolved|alg=y U R U' L' U R' U' L"></div>
+    </li>
+    <li>Répéter si nécessaire</li>
+</ul>
+
+<!-- STEP 7 -->
+<h2>7. Résoudre les coins jaunes</h2>
+
+<p>Maintenant tous les coins jaunes sont à la bonne position, mais pas forcemment alignés correctement.</p>
+
+<ul>
+    <li>
+        Retourner le cube: le centre blanc vers le dessus
+
+        <div class="roofpig width100" data-config="colored=Um U- U*/e|tweaks=U:Ulf F:Ful F:Urf R:Fur U:Ruf R:Urb B:Rub U:Bru B:Ubl L:Bul U:Lub L:Luf|hover=3|colors=F:o U:y R:b B:r L:g D:w|flags=startsolved|setupmoves=y2 x2'|alg=x2"></div>
+    </li>
+    <li>Mettre le coin non résolu <u>en bas à droite</u>
+        <ul>
+            <li>
+                Exécuter l'algorithme de la main droite:
+                couche droite vers le haut, couche supérieure vers la gauche, couche droite vers le bas, couche supérieure vers la droite
+            </li>
+            <li>Répéter ces 4 mouvements jusqu'à ce que le coin soit résolu.<br> Ne pas oublier le dernier mouvement (couche supérieure vers la droite), même si le coin inférieur est résolu, autrement la couche supérieure sera mélangée à la fin.</li>
+        </ul>
+        <div class="roofpig width100" data-config="colored=Dm D- D*/e|tweaks=X:Rdb F:Dlf D:Drf B:Drb L:Dbl L:Fld F:Frd R:Rfd D:Rbd R:Brd D:Bdl B:Ldb D:Ldf|colors=F:o U:w R:g B:r L:b D:y|flags=startsolved|setupmoves=y'|alg=y R U R' U' R U R' U' R U R' U' R U R' U'"></div>
+    </li>
+    <li>
+        Faites passer le prochain <u>coin non résolu en bas à droite</u>.<br> Ne pas retourner le cube, simplement tourner la couche inférieure.</br>  
+        Répéter l'étape précédente.
+
+        <div class="roofpig width100" data-config="colored=*|tweaks=X:Bdl L:Ulf U:Ful L:Fdl B:Urb U:Rub U:Reb R:Bur L:Ber R:Ueb B:Ubl L:Bul D:Bdl U:Lub B:Ldb B:Lue F:Luf D:Ldf F:Dfl L:Dlb|colors=F:o U:w R:g B:r L:b D:y|flags=startsolved|setupmoves=y|alg=D' R U R' U' R U R' U' R U R' U' R U R' U'"></div>
+    </li>
+    </li>
+    <li>
+        Résoudre tous les coins un par un jusqu'à ce qu'ils soient tous résolus
+
+        <div class="roofpig width100" data-config="colored=*|tweaks=X:Bdl F:Ufl L:Ful R:Fdl R:Fed R:Fdr B:Rfd B:Red B:Rbd B:Rub U:Reb R:Urb U:Bur L:Brd L:Bue L:Bde U:Bul D:Bdl B:Lub B:Lue U:Luf F:Led F:Lfd L:Ubl R:Uel F:Dbl|colors=F:o U:w R:g B:r L:b D:y|flags=startsolved|setupmoves=y|alg=D' R U R' U' R U R' U' R U R' U' R U R' U'"></div>
+    </li>
+    <li>
+        Tout aligner.
+
+        <div class="roofpig width100" data-config="colored=*|colors=F:o U:w R:g B:r L:b D:y|setupmoves=y|alg=D2'"></div>
+    </li>
+</ul>
+
+<!-- SOURCES -->
+<hr>
+Sources:<br>
+<a href="https://www.youtube.com/watch?v=ydQ5zQB6Qow" target="_blank" rel="noopener noreferrer">
+    I Tried Solving A Rubik’s Cube In Under 60 Seconds
+</a><br>
+<a href="https://www.youtube.com/watch?v=7Ron6MN45LY" target="_blank" rel="noopener noreferrer">
+    Learn How to Solve a Rubik's Cube in 10 Minutes (Beginner Tutorial)
+</a>
+
+<!-- JS -->
+<link href="/assets/css/roofpig.css?v=dev" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js"></script>
+<script type="text/javascript" src="/assets/javascript/roofpig.js"></script>

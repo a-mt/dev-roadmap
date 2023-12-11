@@ -54,6 +54,8 @@ category: Python
   * [Manager][orm-manager]
   * [Hooks][orm-hooks]
   * [Fixtures][orm-fixture]
+  * Multi-héritage
+  * Polymorphisme
 * Divers
   * [Traductions][gettext]
   * [Formats][formats]
@@ -71,6 +73,10 @@ category: Python
 * Services
   * [Celery][celery]
   * [Sentry][sentry]
+  * Emails
+  * SMS
+  * Postgres
+  * Mongo
 * Tests unitaires
   * [Factories][test-factory]
   * [Models][test-model]

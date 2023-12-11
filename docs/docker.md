@@ -15,8 +15,6 @@ category: Workflow, Containers
 * [Docker API](!docker/docker-api.md)
 * [NVIDIA Docker](docker-nvidia.md)
 
-[Docker commands](https://docs.docker.com/v17.12/edge/engine/reference/commandline/docker/)
-
 ---
 
 ## Conseils et mises en garde

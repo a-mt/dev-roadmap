@@ -5,10 +5,19 @@
 
 /* LAYOUT */
 
-.task-list-item-checkbox {
-    position: relative;
-    left: -20px;
+.task-list {
+    list-style: none;
 }
+.task-list-item {
+    position: relative;
+}
+.task-list-item-checkbox {
+    position: absolute;
+    left: -20px;
+    top: 6px;
+    pointer-events: none;
+}
+
 li:empty {
     list-style-type: none;
 

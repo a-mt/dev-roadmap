@@ -13,7 +13,7 @@ category: Other
   * [Minage](bitcoin-mining.md)
   * [Extra](bitcoin-more.md)
 
-Pouur aller plus loin:  
+Pour aller plus loin:  
 [Malware taking a bit(coin) more than we bargained for](https://www.virusbulletin.com/virusbulletin/2018/02/vb2012-paper-malware-taking-bitcoin-more-we-bargained/)  
 [Hidden surprises in the Bitcoin blockchain and how they are stored: Nelson Mandela, Wikileaks, photos, and Python software](http://www.righto.com/2014/02/ascii-bernanke-wikileaks-photographs.html)
 

@@ -7,7 +7,6 @@ category: Web, JavaScript
 - [x] [Document Object Model (DOM)](!jsapi/js-dom.md)
   - [x] [Événements](!jsapi/js-events.md)
   - [x] [AJAX](!jsapi/js-ajax.md)
-  - [x] [JSON, JSONP](!jsapi/js-json.md)
 - [x] [Gestion de la mémoire](!jsapi/js-memory.md)
 - [x] [Console](!jsapi/js-console.md)
 - Interraction

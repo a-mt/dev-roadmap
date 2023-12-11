@@ -1,0 +1,125 @@
+---
+---
+
+h2 + ul,
+h3 + ul {
+    &, ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0 !important;
+        align-items: flex-start;
+    }
+
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    max-width: 80vw;
+    margin: 0 auto;
+
+    > li {
+        width: 100%;
+    }
+    ul ul {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    li {
+        margin: 5px;
+        border: 1px solid lightgrey;
+        background: #F5F5F5;
+        border-radius: 5px;
+        text-align: center;
+        min-width: 100px;
+        color: #bbb;
+        overflow: hidden;
+
+        img {
+            background: none !important;
+            opacity: 0.3;
+            max-width: 50px;
+            max-height: 50px;
+            filter: grayscale(100%);
+        }
+        &, p, a, h5 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        p {
+            height: 100%;
+        }
+        p, a, h5 {
+            width: 100%;
+            padding: 0;
+            margin: 0 !important;
+        }
+        a {
+            position: relative;
+            color: #aaa;
+            background-color: #ddd;
+        }
+        h5 {
+            padding-top: .5em;
+            background: #333;
+            color: white;
+
+            a {
+                background: none;
+            }
+            .anchorjs-link {
+              width: fit-content;
+              padding-left: 0 !important;
+            }
+        }
+        a, h5 {
+            img {
+                opacity: 0.7;
+                filter: grayscale(100%) brightness(0%) contrast(100%) invert(100%);
+            }
+        }
+
+        // yellow
+        a.tests {
+            color: hsl(37,96,52);
+            background-color: hsla(37,96,61,0.4);
+        }
+        // orange
+        a.pkg {
+            color: hsl(29,65,53);
+            background-color: #E4832A55;
+        }
+        // purple
+        a.syntax {
+            color: #6c2b51;
+            background-color: hsla(325,55,58,0.35);
+        }
+        // red
+        a.lib {
+            color: hsl(341,55,48);
+            background-color: hsla(341,65,48,0.25); 
+        }
+        // blue
+        a.framework {
+            color: #0366d6;
+            background-color: #0366d633;
+        }
+        // cyan
+        a.lang {
+            color: hsl(189,90,36);
+            background-color: hsla(189,100,39,0.25);
+        }
+        // green
+        a.theory {
+            color: hsl(156,40,36);
+            background-color: #47bf8f55;
+        }
+        // lavender
+        a.cli {
+            color: hsl(238,50,33);
+            background-color: hsla(238,86,32,0.3);
+        }
+    }
+}

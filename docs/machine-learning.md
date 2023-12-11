@@ -12,5 +12,3 @@ category: Other
 5. [Évaluer](!ml/ml-workflow-5.md)
 6. [Optimiser](!ml/ml-workflow-5b.md)
 7. [Déployer](!ml/ml-workflow-6.md)
-
-[Algorithmes](!ml/ml-algorithms.md)

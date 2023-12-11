@@ -3,262 +3,348 @@ title: Roadmap
 searchbar: true
 ---
 
-[accessibilite]: accessibilite.md
-[agile]: agile.md
-[12-factor]: 12-factor.md
-[angular]: angular.md
-[ansible]: ansible.md
-[apache-vhost]: apache-vhost.md
-[bdd]: bdd.md
-[bitcoin]: bitcoin.md
-[bitwise]: bitwise-operations.md
-[composer]: composer.md
-[crypto]: crypto.md
-[crypto-ec]: crypto-ec.md
-[css]: css.md
-[design]: design.md
-[digitalocean]: digitalocean.md
-[django]: django.md
-[docker]: docker.md
-[elasticsearch]: elasticsearch.md
-[electricite]: electricite.md
-[ember]: ember.md
-[encoding]: encodages.md
-[gettext]: gettext.md
-[git]: git.md
-[github-pages]: github-pages.md
-[google-drive]: google-drive.md
-[graphql]: graphql.md
-[heroku]: heroku.md
-[host-domain]: host-domain.md
-[host-ip]: host-ip.md
-[html]: html.md
-[ipsec]: ipsec.md
-[jekyll]: jekyll.md
-[jenkins]: jenkins.md
-[jquery]: jquery.md
-[js-webapi]: js-webAPI.md
-[js]: js.md
-[json]: json.md
-[jsx]: jsx.md
-[latex]: latex.md
-[linux]: linux.md
-[liquid]: liquid.md
-[markdown]: gfm.md
-[matplotlib]: matplotlib.md
-[maths]: maths.md
-[ml]: machine-learning.md
-[mongodb]: mongodb.md
-[mustachejs]: mustachejs.md
-[mysql]: mysql.md
-[numpy]: numpy.md
-[opensource]: github.md
-[pandas]: pandas.md
-[paradigm]: paradigm.md
-[php]: php.md
-[posix]: !linux/regex-posix.md
-[pre-commit]: pre-commit.md
-[puppet]: puppet.md
-[python]: python.md
-[react]: react.md
-[regex]: regex.md
-[sass]: sass.md
-[securite]: securite.md
-[semver]: semver.md
-[ssh]: ssh.md
-[ssl-howto]: ssl-howto.md
-[ssl]: ssl.md
-[svg]: svg.md
-[testing]: testing.md
-[text-shortcut]: text-editing.md
-[threejs]: three.md
-[ts]: typescript.md
-[twig]: twig.md
-[webdev]: web.md
-[webpack]: webpack.md
-[windows-task-scheduler]: windows-task-scheduler.md
-[xml]: xml.md
-[yaml]: yaml.md
-[vue]: vue.md
+## Front-End
 
-## Développement
+* ##### ![](/assets/img/html.png) HTML
+  * Langage
+    * [HTML][html]{: .lang}
+  * Syntaxe
+    * [Accessiblité][accessibilite]{: .syntax}
+    * [SVG][svg]{: .syntax}
 
-### Front-End
+* ##### ![](/assets/img/css.png) CSS
+  * Langage
+    * [CSS][css]{: .lang}
+  * Préprocesseurs
+    * [Sass][sass]{: .lang}
+    * Less
+  * Frameworks
+    * Bootstrap twitter
+    * Tailwind
+    * SmolCSS [1 &#x21F2;](https://smolcss.dev/#smol-breakout-grid)
+  * Nommage
+    * [BEM etc](!css/css-nommage.md){: .syntax}
 
-- Langages de programmation  
-  [HTML][html], [CSS][css], [JS][js], [Accessiblité][accessibilite], [SVG][svg], [JSX][jsx], [TypeScript][ts]
+* ##### ![](/assets/img/js.png) JS
+  * Langage
+    * [JS][js]{: .lang}
+    * [JSX][jsx]{: .lang}
+    * [TypeScript][ts]{: .lang}
+    * Flow
 
-- Librairies JS  
-  [Wep API][js-webapi], [Jquery][jquery], [MustacheJS][mustachejs], D3.js, Lodash, [Three.js][threejs]
+  * Syntaxe
+    * [JSON](!jsapi/js-json){: .syntax}
+    * HOCON [1 &#x21F2;](https://github.com/lightbend/config/blob/master/HOCON.md)
 
-- Frameworks JS  
-  [React][react], [Vue][vue], [Angular][angular], [Ember.js][ember], Backbone.js, Next.js [1 &#x21F2;](https://nextjs.org/learn/foundations/about-nextjs/what-is-nextjs)
+  * Libraries
+    * [Wep API][js-webapi]{: .lib}
+    * [Jquery][jquery]{: .lib}
+    * [MustacheJS][mustachejs]{: .lib}
+    * D3.js&#10;{: .syntax}
+    * Lodash&#10;{: .syntax}
+    * [Three.js][threejs]{: .lib}
 
-- Préprocesseurs CSS  
-  [Sass][sass], Less
+  * Frameworks 
+    * [React][react]{: .framework}
+    * [Vue][vue]{: .framework}
+    * [Angular][angular]{: .framework}
+    * [Ember.js][ember]{: .framework}
+    * Backbone.js&#10;{: .framework}
+    * Next.js [1 &#x21F2;](https://nextjs.org/learn/foundations/about-nextjs/what-is-nextjs)
+    * Cycle
+
+  * Tests
+    * Enzyme&#10;{: .test}
+    * Jest&#10;{: .test}
+    * Karma&#10;{: .test}
+    * Jasmine&#10;{: .test}
+    * AVA&#10;{: .test}
+    * Tape&#10;{: .test}
+    * Mocha&#10;{: .test}
+
+* ##### ![](/assets/img/tools.png) Outils
+  * Builder
+    * Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html)
+    * Grunt
+    * Gulp [1 &#x21F2;](https://medium.freecodecamp.org/super-simple-gulp-tutorial-for-beginners-45141974bfe8)
+    * [Webpack][webpack]{: .lib}
+    * Make
+    * Browserify
+    * Rollup
 
 [The Front-End Tooling Survey 2018](https://ashleynolan.co.uk/blog/frontend-tooling-survey-2018-results)  
 [Top JavaScript Frameworks & Topics to Learn in 2017](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711)
 
 ## Back-End
 
-- Langages de programmation  
-  [PHP][php],
-  Node.js,
-  [Python][python],
-  Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d),
-  R [1 &#x21F2;](https://www.datacamp.com/)
+* ##### ![](/assets/img/python.png) Python
+  * Langage
+    * [Python][python]{: .lang}
+  * Pkg manager
+    * PIP
+  * Librairies
+    * [Numpy][numpy]{: .lib}
+    * [Pandas][pandas]{: .lib}
+    * [Matplotlib][matplotlib]{: .lib}
+    * BeautifulSoup [1 &#x21F2;](https://gist.github.com/yoki/b7f2fcef64c893e307c4c59303ead19a)
+  * Frameworks
+    * [Django][django]{: .framework}
+    * Flask [1 &#x21F2;](https://medium.freecodecamp.org/how-to-build-a-web-application-using-flask-and-deploy-it-to-the-cloud-3551c985e492)
+  * Tests
+    * unittest
 
-- Gestion des dépendences  
-  [Composer][composer], NPM [1 &#x21F2;](http://blog.npmjs.org/post/168978377570/new-package-moniker-rules)
+* ##### ![](/assets/img/php.png) PHP
+  * Langage
+    * [PHP][php]{: .lang}
+  * Pkg manager
+    * [Composer][composer]{: .pkg}
+  * Frameworks
+    * Symfony
+    * Laravel
+  * Tests
+    * PHPUnit
 
-- Base données  
-  [MySQL][mysql], [MongoDB][mongodb], [ElasticSearch][elasticsearch]
+* ##### ![](/assets/img/nodejs.png) Node.js
+  * Pkg manager
+    * NPM [1 &#x21F2;](http://blog.npmjs.org/post/168978377570/new-package-moniker-rules)
+    * Yarn
+    * Bower
+  * Frameworks
+    * Express.js
 
-- Frameworks JS  
-  Express
+* ##### ![](/assets/img/ruby.png) Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
+  * Frameworks
+    * Ruby on Rails
+  * Librairies
+    * [Jekyll][jekyll]{: .lib}
+  * Pkg Manager
+    * RuByGems
 
-- Frameworks PHP  
-  Laravel, Symfony
+* ##### ![](/assets/img/bdd.png) BDD
+  * Relationnelle
+    * [MySQL][mysql]{: .lang}
+    * Postgres
+  * NoSQL
+    * [MongoDB][mongodb]{: .lang}
+    * [ElasticSearch][elasticsearch]{: .lang}
+  * Cache
+    * Redis
+    * Memcache
 
-- Libraries Python  
-  [Numpy][numpy], [Pandas][pandas], [Matplotlib][matplotlib], BeautifulSoup [1 &#x21F2;](https://gist.github.com/yoki/b7f2fcef64c893e307c4c59303ead19a)
+* ##### ![](/assets/img/tools.png) Outils
+  * Templating
+    * [Liquid][liquid]{: .syntax}
+    * [Twig][twig]{: .syntax}
+    * Smarty
+    * Pug
 
-- Frameworks Python  
-  [Django][django], Flask [1 &#x21F2;](https://medium.freecodecamp.org/how-to-build-a-web-application-using-flask-and-deploy-it-to-the-cloud-3551c985e492)
+  * Version. 
+    * [Git][git]{: .cli}
+    * [Sémantique][semver]{: .syntax}
 
-- Frameworks Ruby  
-  Ruby on Rails
+  * Validation
+    * [XML][xml]{: .lang}
+    * [Pre-commit][pre-commit]{: .lib}
 
-- Templates  
-  [Liquid][liquid], [Twig][twig], Smarty, Pug
+  * Traductions
+    [Gettext][gettext]{: .syntax}
+
+  * Serveur web
+    * Nginx [1 &#x21F2;](https://www.freecodecamp.org/news/an-introduction-to-nginx-for-developers-62179b6a458f/)
+    * Apache [Vhost][apache-vhost] .htaccess [1 &#x21F2;](https://perishablepress.com/stupid-htaccess-tricks/)
+ 
+  * Broker
+    * RabbitMQ
+
+  * API
+    * REST&#10;{: .syntax}
+    * [GraphQL][graphql]{: .syntax}
+  * Auth
+    * JWT
+
+* ##### Autres langages
+  * R [1 &#x21F2;](https://www.datacamp.com/)
+  * Perl
+
+## Operating
+
+* ##### ![](/assets/img/tux.png) Administration Système
+  - [Linux][linux]{: .cli}
+
+* ##### ![](/assets/img/cloud.png) Hébergement
+  * Cloud Providers
+    * AWS [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-your-first-safe-server-ready-for-production-f1cc60eec69a) [2 &#x21F2;](https://github.com/open-guides/og-aws)
+    * Microsoft Azure [1 &#x21F2;](https://blogs.msdn.microsoft.com/mihansen/2018/07/03/open-emr-in-azure-paas-commercial-and-government/)
+    * [Digital Ocean][digitalocean]{: .cli}
+    * Firebase [1 &#x21F2;](https://medium.freecodecamp.org/how-to-get-started-using-firebase-hosting-439d4bd45cb6)
+    * [Heroku](heroku.md){: .cli}
+    * Now [1 &#x21F2;](https://www.sitepoint.com/how-to-deploy-node-applications-heroku-vs-now-sh/)
+  * Static
+    * [Google Drive][google-drive]
+    * [Github Pages][github-pages]
+
+* ##### ![](/assets/img/devops.png) DevOps
+  * VM
+    * LXC
+    * VirtualBox
+  * Containers
+    * [Docker][docker]{: .cli}
+    * [Docker Compose][docker-compose]{: .syntax}
+    * [YAML][yaml]{: .syntax}
+  * Orchestration
+    * [Docker Swarm][docker-swarm]{: .cli}
+    * Kubernetes [1 &#x21F2;](https://godaddy.github.io/2018/05/02/kubernetes-introduction-for-developers/) [2 &#x21F2;](https://medium.freecodecamp.org/learn-kubernetes-in-under-3-hours-a-detailed-guide-to-orchestrating-containers-114ff420e882) [3 &#x21F2;](https://medium.freecodecamp.org/how-to-leverage-the-power-of-kubernetes-to-optimise-your-hosting-costs-c2e168a232a2)
+    * Helm
+  * Provisioning
+    * Terraform
+  * Infra Monitoring
+    * Prometheus
+    * Grafana
+  * CI/CD
+    * Gitlab Auto DevOps
+    * Github Actions
+    * [Jenkins][jenkins]{: .pkg}
+  * Automatisation
+    * [Ansible][ansible]{: .pkg}
+    * Chef
+    * [Puppet][puppet]{: .pkg}
+  * Binary manager
+    * Nexus Repository Manager
+    * JFrog Artifactory
+
+* ##### ![](/assets/img/devops.png) DevSecOps
+
+  - Scan codebase
+    * CheckMarx
+    * Gitrob
+
+  - Test & scans  
+    * Evident.IO
+    * GauntLT
+    * Contrast
+
+  - Artefacts  
+    * Sonatype
+    * Nessus
+    * Tanium
+
+  - Déploiement  
+    * INSPEC
+    * Beaker
+
+  - Monitoring  
+    * Splunk
+    * Evident.io
+    * FireEye
+    * Metasploit
 
 ## Autres
 
-- Données formattées  
-  [XML][xml], [JSON][json], [YAML][yaml], HOCON [1 &#x21F2;](https://github.com/lightbend/config/blob/master/HOCON.md)
+* ##### Outils
+  - Logique  
+    * [Regex POSIX][posix]{: .syntax}
+    * [Regex][regex]{: .syntax}
+    * [Opérateurs sur les bits][bitwise]{: .syntax}
 
-- Communication entre machines  
-  REST, [GraphQL][graphql], RabbitMQ
+  - Documents  
+    * [Markdown][markdown]{: .syntax}
+    * [Latex][latex]{: .syntax}
+    * reStructuredText [1 &#x21F2;](http://docutils.sourceforge.net/docs/user/rst/cheatsheet.txt)
+    * Textile
 
-- Logique  
-  [Regex POSIX][posix], [Regex][regex], [Opérateurs sur les bits][bitwise]
+  - Éditeurs de texte  
+    * [Raccourcis d'édition de texte][text-shortcut]
+    * Sublime Text [1 &#x21F2;](https://gist.github.com/mrliptontea/4c793ebdf72ed145bcbf)
 
-- Documents formattés  
-  [Markdown][markdown], [Latex][latex], reStructuredText [1 &#x21F2;](http://docutils.sourceforge.net/docs/user/rst/cheatsheet.txt), Textile
+  - [Github / Open Source][opensource]{: .theory}
 
-- Versionnement de Code  
-  [Git][git], [Pre-commit][pre-commit]
+* ##### Méthodes
+  * Programmation
+    * [Paradigmes][paradigm]{: .theory}
+    * [12-factor app][12-factor]{: .theory}
+  * Gestion de projet
+    * [Agile][agile]{: .theory}
 
-- Task Runners & Module Bundlers  
-  Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html), Grunt, Gulp [1 &#x21F2;](https://medium.freecodecamp.org/super-simple-gulp-tutorial-for-beginners-45141974bfe8), [Webpack][webpack], Make
+* ##### Culture
+  * Informatique
+    * [Développement web][webdev]{: .theory}
+    * [Encodages][encoding]{: .theory} Caractères BOM [1 &#x21F2;](https://medium.freecodecamp.org/a-quick-tale-about-feff-the-invisible-character-cd25cd4630e7)
+    * [Base de données][bdd]{: .theory}
+    * [Testing][testing]{: .theory}
 
-- Éditeurs de texte  
-  [Raccourcis d'édition de texte][text-shortcut], Sublime Text [1 &#x21F2;](https://gist.github.com/mrliptontea/4c793ebdf72ed145bcbf)
+  * Machine Learning
+    * [Fondamentaux][ml]{: .theory}
+    * [Algorithmes][ml-algo]{: .theory}
 
-- [Open Source (github)][opensource]
+  * Crypto
+    * [Bitcoin][bitcoin]{: .theory}
+  
+  * Big Data
+    * [Hadoop](hadoop.md){: .theory}
 
-- Outils   
-  [Gettext][gettext], [Jekyll][jekyll]
+  * Voisins
+    - [Design][design]{: .theory}
+    - [Électricité][electricite]{: .theory}
+    - [Maths][maths]{: .theory}
 
-## Théorie
+  - Rubiks
+    - [3x3](/!rubiks/rubiks3x3.html)
+    - [4x4](/!rubiks/rubiks4x4.html)
 
-- Programmation  
-  [Développement web][webdev], [Versionnement sémantique][semver], [Encodages][encoding], Caractères BOM [1 &#x21F2;](https://medium.freecodecamp.org/a-quick-tale-about-feff-the-invisible-character-cd25cd4630e7), [Base de données][bdd], [Testing][testing]
+  * Workflow  
+    * [Dev](workflow-dev.md)
+    * [Prod](workflow-prod.md)
+    * [Accès via adresse IP][host-ip]
+    * [Obtenir un Nom de domaine][host-domain]
+    * [Obtenir un Certificat SSL][ssl-howto]
+    * [Obtenir une clé SSH][ssh]
 
-- Méthodologie  
-  [Paradigmes de programmation][paradigm], [Agile][agile], [12-factor app][12-factor]
+  * Protocoles
+    * DNS [1 &#x21F2;](https://medium.freecodecamp.org/why-cant-a-domain-s-root-be-a-cname-8cbab38e5f5c)
+    * HSTS [1 &#x21F2;](https://freshman.tech/securing-your-website/#http-strict-transport-security-hsts)
+    * CORS [1 &#x21F2;](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b)
 
-- Sécurité  
-  [Fondamentaux][securite], Vulnérabilités [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9) [2 &#x21F2;](https://portswigger.net/web-security/all-topics
+  - Windows  
+    * Script: Batch, Powershell
+    * Firewall: Windows Defender
+    * Planification tâches Windows: [Windows Task Scheduler][windows-task-scheduler]
 
-), [Cryptographie][crypto], [SSL][ssl], [IPSec][ipsec], [Courbes elliptiques][crypto-ec]
+* ##### Webmarketing
+  * Psychologie [1 &#x21F2;](http://jamesarcher.me/user-motivators) [2 &#x21F2;](https://www.nngroup.com/articles/zigzag-page-layout/) [3 &#x21F2;](https://www.nngroup.com/articles/multi-tab-page-parking/)
+  * Outils [2 &#x21F2;](https://www.seomix.fr/webmarketing/)
+  * Google Analytics [1 &#x21F2;](https://medium.freecodecamp.org/how-and-why-to-get-started-with-google-analytics-153dc35b7812)
+  * SEO [1 &#x21F2;](https://support.google.com/webmasters/answer/7451184)  [2 &#x21F2;](https://moz.com/learn/seo/on-site-seo), Rich snippets, robots.txt
+  * Mailchimp [1 &#x21F2;](https://business.tutsplus.com/articles/how-to-create-an-email-newsletter-with-mailchimp-for-free--fsw-39066)
 
-- Réseau  
-  DNS [1 &#x21F2;](https://medium.freecodecamp.org/why-cant-a-domain-s-root-be-a-cname-8cbab38e5f5c), CORS [1 &#x21F2;](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b)
+* ##### Sécurité
+  * Théorie
+    * [Fondamentaux][securite]{: .theory}
+    * [Cryptographie][crypto]{: .theory}
+    * [Courbes elliptiques][crypto-ec]{: .theory}
+  * Protocoles
+    * [SSL][ssl]{: .theory}
+    * [IPSec][ipsec]{: .theory}
+  * Web
+    * Vulnérabilités [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9) [2 &#x21F2;](https://portswigger.net/web-security/all-topics)
 
-- [Électricité][electricite]
+* ##### Algorithmie [1 &#x21F2;](https://github.com/trekhleb/javascript-algorithms)  
+  * Fondamentaux [1 &#x21F2;](https://www.geeksforgeeks.org/fundamentals-of-algorithms/)
+  * Arbres binaires de recherche [1 &#x21F2;](https://medium.freecodecamp.org/data-structures-101-binary-search-tree-398267b6bff0)
+  * Théorie des graphes [1 &#x21F2;](https://medium.freecodecamp.org/i-dont-understand-graph-theory-1c96572a1401)
 
-- Algorithmie [1 &#x21F2;](https://github.com/trekhleb/javascript-algorithms)  
-  Fondamentaux [1 &#x21F2;](https://www.geeksforgeeks.org/fundamentals-of-algorithms/), Arbres binaires de recherche [1 &#x21F2;](https://medium.freecodecamp.org/data-structures-101-binary-search-tree-398267b6bff0), Théorie des graphes [1 &#x21F2;](https://medium.freecodecamp.org/i-dont-understand-graph-theory-1c96572a1401)
+* ##### Autres dev
 
-- [Design][design]
+  * Logiciel
+    - Electron [1 &#x21F2;](https://electronjs.org/) [2 &#x21F2;](https://github.com/electron-userland/electron-builder)
 
-- Marketing  
-  Psychologie [1 &#x21F2;](http://jamesarcher.me/user-motivators) [2 &#x21F2;](https://www.nngroup.com/articles/zigzag-page-layout/) [3 &#x21F2;](https://www.nngroup.com/articles/multi-tab-page-parking/), Outils [2 &#x21F2;](https://www.seomix.fr/webmarketing/), Google Analytics [1 &#x21F2;](https://medium.freecodecamp.org/how-and-why-to-get-started-with-google-analytics-153dc35b7812), SEO [1 &#x21F2;](https://support.google.com/webmasters/answer/7451184)  [2 &#x21F2;](https://moz.com/learn/seo/on-site-seo), Rich snippets, robots.txt, Mailchimp [1 &#x21F2;](https://business.tutsplus.com/articles/how-to-create-an-email-newsletter-with-mailchimp-for-free--fsw-39066)
+  - Extensions navigateur [1 &#x21F2;](https://github.com/faisal3389/template-browser-extension) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-make-a-cross-browser-extension-using-javascript-and-browser-apis-355c001cebba)
 
-* [Maths][maths]
-* [Machine Learning][ml]
-* [Bitcoin][bitcoin]
+  - Mobile [2 &#x21F2;](https://medium.freecodecamp.org/a-deeply-detailed-but-never-definitive-guide-to-mobile-development-architecture-6b01ce3b1528)
+    * Flutter
 
-## Logiciel
+---
 
-- Electron [1 &#x21F2;](https://electronjs.org/) [2 &#x21F2;](https://github.com/electron-userland/electron-builder)
-
-- Extensions navigateur [1 &#x21F2;](https://github.com/faisal3389/template-browser-extension) [2 &#x21F2;](https://medium.freecodecamp.org/how-to-make-a-cross-browser-extension-using-javascript-and-browser-apis-355c001cebba)
-
-- Mobile [2 &#x21F2;](https://medium.freecodecamp.org/a-deeply-detailed-but-never-definitive-guide-to-mobile-development-architecture-6b01ce3b1528)
-
-- Flutter
-
-## Exploitation
-
-- [Linux][linux]
-
-- Réseau  
-  [IP][host-ip], [Nom de domaine][host-domain], [HTTPS][ssl-howto], HSTS [1 &#x21F2;](https://freshman.tech/securing-your-website/#http-strict-transport-security-hsts), [SSH][ssh]
-
-- Serveurs web  
-  Apache ([Vhost][apache-vhost], .htaccess [1 &#x21F2;](https://perishablepress.com/stupid-htaccess-tricks/)), Nginx [1 &#x21F2;](https://www.freecodecamp.org/news/an-introduction-to-nginx-for-developers-62179b6a458f/)
-
-- Hébergement  
-  AWS [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-your-first-safe-server-ready-for-production-f1cc60eec69a) [2 &#x21F2;](https://github.com/open-guides/og-aws), Microsoft Azure [1 &#x21F2;](https://blogs.msdn.microsoft.com/mihansen/2018/07/03/open-emr-in-azure-paas-commercial-and-government/), [Digital Ocean][digitalocean], Firebase [1 &#x21F2;](https://medium.freecodecamp.org/how-to-get-started-using-firebase-hosting-439d4bd45cb6), [Heroku](heroku.md), Now [1 &#x21F2;](https://www.sitepoint.com/how-to-deploy-node-applications-heroku-vs-now-sh/), [Google Drive][google-drive], [Github Pages][github-pages]
-
-- Workflow  
-  [Dev](workflow-dev.md), [Prod](workflow-prod.md)
-
-- Windows  
-  * Script: Batch, Powershell
-  * Firewall: Windows Defender
-  * Planification tâches: [Windows Task Scheduler][windows-task-scheduler]
-
-## DevOps
-
-- Automatisation du Provisionnement  
-  Chef, [Puppet][puppet], [Ansible][ansible]
-
-- Outils d'intégration continue  
-  [Jenkins][jenkins]
-
-- Container / Orchestration  
-  [Docker][docker], Kubernetes [1 &#x21F2;](https://godaddy.github.io/2018/05/02/kubernetes-introduction-for-developers/) [2 &#x21F2;](https://medium.freecodecamp.org/learn-kubernetes-in-under-3-hours-a-detailed-guide-to-orchestrating-containers-114ff420e882) [3 &#x21F2;](https://medium.freecodecamp.org/how-to-leverage-the-power-of-kubernetes-to-optimise-your-hosting-costs-c2e168a232a2), [Hadoop](hadoop.md)
-
-- Gestionnaire de fichiers binaires (.jar, .zip)  
-  Nexus Repository Manager, JFrog Artifactory
-
-## DevSecOps
-
-- Scan du code source  
-  CheckMarx, Gitrob
-
-- Test & scans  
-  Evident.IO, GauntLT, Contrast
-
-- Artefacts  
-  Sonatype, Nessus, Tanium
-
-- Déploiement  
-  INSPEC, Beaker
-
-- Monitoring  
-  Splunk, Evident.io, FireEye, Metasploit
-
-## Algorithmes
-
-- [Rubik's cube 3x3](/!rubiks/rubiks3x3.html)
-- [Rubik's cube 4x4](/!rubiks/rubiks4x4.html)
-
-## Quick links
+# Quick links
 
 - Caractères
   - [Comparaison encodages Latin et ASCII](/assets/encoding-latin-vs-ansi.html)
@@ -291,6 +377,7 @@ searchbar: true
   - Colors that go well together: [coolor.co](https://coolors.co/app) or [mycolor.space](https://mycolor.space/)
   - Color palettes: [colorpalettes.net](https://colorpalettes.net/)
   - [Color Format Converter](https://www.w3schools.com/colors/colors_converter.asp)
+  - [Vector logo](https://worldvectorlogo.com/)
 
 - Fiddles
   - [JsFiddle](https://jsfiddle.net/)
@@ -347,3 +434,85 @@ searchbar: true
   - [Screen size map](https://www.screensizemap.com/)
   - [Commandes Windows](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands#command-line-reference-a-z)
   - [Stacks](https://stackshare.io/stacks)
+
+
+[accessibilite]: accessibilite.md
+[agile]: agile.md
+[12-factor]: 12-factor.md
+[angular]: angular.md
+[ansible]: ansible.md
+[apache-vhost]: apache-vhost.md
+[bdd]: bdd.md
+[bitcoin]: bitcoin.md
+[bitwise]: bitwise-operations.md
+[composer]: composer.md
+[crypto]: crypto.md
+[crypto-ec]: crypto-ec.md
+[css]: css.md
+[design]: design.md
+[digitalocean]: digitalocean.md
+[django]: django.md
+[docker]: docker.md
+[docker-compose]: !docker/docker-compose.md
+[docker-swarm]: !docker/docker-swarm.md
+[elasticsearch]: elasticsearch.md
+[electricite]: electricite.md
+[ember]: ember.md
+[encoding]: encodages.md
+[gettext]: gettext.md
+[git]: git.md
+[github-pages]: github-pages.md
+[google-drive]: google-drive.md
+[graphql]: graphql.md
+[heroku]: heroku.md
+[host-domain]: host-domain.md
+[host-ip]: host-ip.md
+[html]: html.md
+[ipsec]: ipsec.md
+[jekyll]: jekyll.md
+[jenkins]: jenkins.md
+[jquery]: jquery.md
+[js-webapi]: js-webAPI.md
+[js]: js.md
+[json]: json.md
+[jsx]: jsx.md
+[latex]: latex.md
+[linux]: linux.md
+[liquid]: liquid.md
+[markdown]: gfm.md
+[matplotlib]: matplotlib.md
+[maths]: maths.md
+[ml]: machine-learning.md
+[ml-algo]: !ml/ml-algorithms.md
+[mongodb]: mongodb.md
+[mustachejs]: mustachejs.md
+[mysql]: mysql.md
+[numpy]: numpy.md
+[opensource]: github.md
+[pandas]: pandas.md
+[paradigm]: paradigm.md
+[php]: php.md
+[posix]: !linux/regex-posix.md
+[pre-commit]: pre-commit.md
+[puppet]: puppet.md
+[python]: python.md
+[react]: react.md
+[regex]: regex.md
+[sass]: sass.md
+[securite]: securite.md
+[semver]: semver.md
+[ssh]: ssh.md
+[ssl-howto]: ssl-howto.md
+[ssl]: ssl.md
+[svg]: svg.md
+[testing]: testing.md
+[text-shortcut]: text-editing.md
+[threejs]: three.md
+[ts]: typescript.md
+[twig]: twig.md
+[webdev]: web.md
+[webpack]: webpack.md
+[windows-task-scheduler]: windows-task-scheduler.md
+[xml]: xml.md
+[yaml]: yaml.md
+[vue]: vue.md

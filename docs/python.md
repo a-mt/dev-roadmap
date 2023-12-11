@@ -24,4 +24,5 @@ category: Web
 * [Classes & objets](!python/python-object.md)
 * [Divers](!python/python-misc.md)
 
-[Sharing data between processes](https://superfastpython.com/numpy-share-array-processes/)
+[Sharing data between processes](https://superfastpython.com/numpy-share-array-processes/)  
+[Python best practices](https://peps.python.org/)

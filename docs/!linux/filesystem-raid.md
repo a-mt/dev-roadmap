@@ -7,11 +7,11 @@ category: Linux
 
 * Une métrique intéressante pour un disque est le <ins>temps moyen de défaillance</ins>, *Mean Time Between Failures* (MTBF).  
   Elle indique la fiabilité attendue des disques durs dans un environnement avec de nombreux lecteurs.
-  Par exemple une MTBF de 1.25 millions d'heures, soit environ 135 ans, indique que si vous avez 135 disques, vous pouvez vous attendre à une panne de lecteur une fois par an.
+  Par exemple: une MTBF de 1.25 millions d'heures, soit environ 135 ans, indique que si on a 135 disques, on peut s'attendre à une panne de lecteur une fois par an.
 
   Dans un environnement de stockage avec un grand nombre de disques, il est donc quasi-certain que des pannes de disques arriverons, et des disques de rechange doivent être préparés à l'avance. Ça souligne également l'importance des techniques de redondance de disque, tel que le RAID (*Redundant Array of Independent Disks*).
 
-* RAID consiste à placer plusieurs disques durs sur un même serveur, et sauvegarder les données écrites a plusieurs endroits: si un disque est endommagé, il est toujours possible de récupérer les données perdues sur un autre disque. Ça permet d'une part de se protéger des pertes de données en cas de panne d'un des disques durs, et d'autre part peut permettre de gagner en performance puisque plusieurs opérations d'entrée-sortie peuvent être effectuées en même temps.
+* RAID consiste à placer plusieurs disques durs sur un même serveur, et sauvegarder les données a plusieurs endroits: si un disque est endommagé, il est toujours possible de récupérer les données perdues sur un autre disque. Cela permet d'une part de se protéger des pertes de données en cas de panne d'un des disques durs, et d'autre part peut permettre de gagner en performance puisque plusieurs opérations d'entrée-sortie peuvent être effectuées en même temps.
 
 ### RAID0
 
@@ -25,7 +25,7 @@ category: Linux
 
 * Un RAID5, ou *distributed parity*, utilise une technique connue sous le nom de *parité*. La parité est une information supplémentaire calculée et stockée avec les données que l'utilisateur souhaite écrire sur le disque. Cette information peut être utilisée pour vérifier l'intégrité des données stockées et pour calculer les données perdues si une partie des données manque. Un RAID5 nécessite au minimum 3 disques.
 
-  Pour comprendre le principe: imaginons une équation telle que "9 = X + 4." X est une donnée inconnue qui a été précédemment stockée sur le disque A qui est tombé en panne. Le 4 est une donnée stockée sur le disque B, et le 9 est une donnée de parité stockée sur le disque C, calculée au préalable à des fins de redondance. En résolvant X, on peut reconstituer les données perdues du disque A — 5.
+  Pour comprendre le principe: imaginons qu'on ait une équation telle que "9 = X + 4." X est une donnée inconnue qui a été précédemment stockée sur le disque A qui est tombé en panne. Le 4 est une donnée stockée sur le disque B, et le 9 est une donnée de parité stockée sur le disque C, calculée au préalable à des fins de redondance. En résolvant X, on peut reconstituer les données perdues du disque A: 5.
 
   Cela permet d'avoir une redondance sans stocker une copie complète des données (9 et 5), et ainsi d'économiser de l'espace disque. En pratique, RAID5 utilise la fonction mathématique "XOR".
 
@@ -37,12 +37,13 @@ category: Linux
 
 ### RAID 10
 
-* Les niveaux de RAID combinés sont l'association de deux niveaux. Un RAID 10, ou *1 plus 0*, est la combinaison du niveau 1 et 0.
+* Les niveaux de RAID combinés (contiennent deux chiffres) sont l'association de deux niveaux.  
+  Un RAID 10, ou *1 plus 0*, est la combinaison du niveau 1 et 0.
 
   Par exemple, dans le niveau 0 si on a 4 disques de 1T, on aura au final l'espace cumulé de tous les disques, 4T.  
   Et dans le niveau 1, si on a 4 disques de 1T, on aura toujours au final l'espace d'un seul disque, 1T.
 
-  Avec un RAID 10: on peut créer un miroir contenant 2 disques d'1T (soit un espace d'1T) accolé à un deuxième miroir de 2 disques d'1T, ce qui nous donne au donne 2T d'espace disque utilisable.
+  Avec un RAID 10: on crée un miroir contenant 2 disques d'1T (soit un espace d'1T) accolé à un deuxième miroir de 2 disques d'1T, ce qui nous donne au donne 2T d'espace disque utilisable.
 
   ![](https://i.imgur.com/1V9RyfK.png)
 
@@ -90,7 +91,7 @@ category: Linux
   sudo mdadm
     --create /dev/dm0 --level=1
     --raid-devices=2 /dev/vdc /dev/vdd
-    --space-devices=1 /dev/vde
+    --spare-devices=1 /dev/vde
   ```
 
 ## Ajouter un disque
@@ -98,7 +99,7 @@ category: Linux
 * Pour ajouter un disque à un RAID existant:
 
   ``` bash
-  sudo mdadm --manage /dev/dm0 --add /dev/vde
+  sudo mdadm --manage /dev/md0 --add /dev/vde
   ```
 
 ## Retirer un disque

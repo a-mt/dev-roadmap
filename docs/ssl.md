@@ -7,11 +7,12 @@ category: other
 
 ## SSL/TLS
 
-TLS (Transport Layer Security) et son prédecesseur SSL (Secure Socket Layer) sont des protocoles de sécurisation des échanges. SSL/TLS est ajouté par dessus les packets TCP/IP.
+TLS (*Transport Layer Security*) et son prédecesseur SSL (*Secure Socket Layer*) sont des protocoles de sécurisation des échanges.  
+La couche SSL/TLS est ajouté par dessus TCP/IP.
 
 ![](https://i.imgur.com/omuf6sd.png)
 
-Les packets TCP/IP n'ayant pas besoin d'être modifiés, il est très facile d'ajouter TLS/SSL sur d'autres protocoles — encapsuler une connexion non protégée, non encryptée avec SSL ou TLS.
+Les packets TCP/IP n'ayant pas besoin d'être modifiés, il est très facile d'ajouter TLS/SSL sur d'autres protocoles du layer 7 pour encapsuler une connexion non protégée / non encryptée.
 
 ![](https://i.imgur.com/uR94tTX.png)
 
@@ -20,7 +21,7 @@ Ils assurent l'authentification, l'intégrité et la confidentialité des échan
 
 ## SSL ou TLS
 
-Le protocole SSL a été déprécié en faveur de TLS 1.2 en raison de la vulnérabilité [POODLE (Padding Oracle On Downgraded Legacy Encryption)](https://en.wikipedia.org/wiki/POODLE). SSL reste le terme le plus connu et le plus couramment utilisé. La plupart du temps, quand les gens disent SSL, ils parlent de TLS. C'est ce que je vais faire.
+Le protocole SSL a été déprécié en faveur de TLS 1.2 en raison de la vulnérabilité [POODLE (Padding Oracle On Downgraded Legacy Encryption)](https://en.wikipedia.org/wiki/POODLE). SSL reste le terme le plus connu et le plus couramment utilisé. La plupart du temps, quand les gens disent SSL, ils parlent de TLS. Et c'est ce qu'on va faire ici.
 
 La [RFC 2246](https://www.ietf.org/rfc/rfc2246.txt) contient la documentation complète de TLS.
 
@@ -28,8 +29,8 @@ La [RFC 2246](https://www.ietf.org/rfc/rfc2246.txt) contient la documentation co
 
 ## Clé publique et clé privée (RSA)
 
-SSL repose sur une paire de clés: une clé publique et une clé privée (clés asymétriques).  
-La clé publique peut être obtenu par n'importe qui, tandis que la clé privée reste privée.
+SSL repose sur une paire de clés: une clé publique et une clé privée (comme il y a deux clés différentes, on dit que ce sont des clés asymétriques).  
+La clé publique peut être obtenu par n'importe qui, tandis que la clé privée doit rester privée.
 
 Les deux clés sont mathématiquement liées, tel que `Clé_privée(Clé_publique(Message)) = Message` et inversement.  
 Recalculer la clé privée à partir de la clé publique est théoriquement faisable mais trop difficile à faire en pratique, même avec de très gros ordinateurs, c'est pourquoi la clé publique est publique.
@@ -48,14 +49,14 @@ Un texte lisible sans étape supplémentaire est un *plain text*.
   
   ![](https://i.imgur.com/eTc37gi.png)
   
-  En plus du certificat, le serveur envoie également une valeur aléatoire de 32 octets.
+  En plus du certificat, le serveur envoie également une valeur aléatoire de 32 octets (ce qu'on appelle un nonce).
   
   ```
   Serveur:
   envoie Certificat + NonceServer
   ```
 
-* Le client génère à son tour une valeur aléatoire (le secret *premaster*), la crypte avec la clé publique qu'il a reçue du serveur et envoie cette valeur avec un autre valeur aléatoire de 32 octets.
+* Le client génère à son tour une valeur aléatoire, le secret *premaster*, la crypte avec la clé publique qu'il a reçue du serveur et envoie cette valeur avec un autre valeur aléatoire de 32 octets.
 
   ```
   Client:
@@ -82,7 +83,7 @@ Un texte lisible sans étape supplémentaire est un *plain text*.
   Master = PRF(Premaster, "master secret", NonceClient + NonceServer)
   ```
 
-* Le client et le serveur ont désormais un secret partagé (la clé master), qui sera utilisée pour crypter/décrypter toutes les futures communications — dans les deux sens.
+* Le client et le serveur ont désormais un secret partagé, la clé *master*, qui sera utilisée pour crypter/décrypter toutes les futures communications — dans les deux sens.
 
 ---
 
@@ -129,7 +130,7 @@ La négociation se fait à l'aide de suites de chiffrement (*cipher suite* en an
 * L'algorithme RC4, en utilisant une clé de 128 bits, pour l'encryption des données
 * L'algorithme MD5, pour MAC
 
-Quand le client initie une connexion vers le serveur, il envoie la suite des suites de chiffrement qu'il supporte — il s'agit des *cipher specs*.  
+Quand le client initie une connexion vers le serveur, il envoie la liste des suites de chiffrement qu'il supporte — ce qu'on appelle des *cipher specs*.  
 Le serveur choisira le chiffrement le plus fort que lui et le client supporte.  
 Si la connexion échoue, il réessaiera automatiquement avec un protocole inférieur, tel que TLS 1.0 ou SSL 3.0, jusqu'à ce que le handshake réussisse.
 
@@ -143,29 +144,28 @@ Toutes les suites de chiffrement ne sont pas fortes. Certaines peuvent être cra
 
 Un point faible des algorithmes à clés asymétriques est la propagation des clés publiques: si, au début de la connexion, quelqu'un intercepte la réponse du serveur et renvoit sa propre clé publique à la place, il peut alors intercepter toutes les requêtes suivantes du client — se faisant passer pour le serveur — les décrypter puis les envoyer au véritable serveur — se faisant passer pour le client. Même chose dans l'autre sens.
 
-C'est ce qu'on appelle une attaque *man in the middle* (MITM). Cette technique est plus sophistiquée que simplement lire les communications qui passent sur le réseau, mais cela compromet tout de même la confidentialité des communications.
+C'est ce qu'on appelle une attaque *man in the middle* (MITM). Cette technique est plus sophistiquée que simplement lire les communications qui passent sur le réseau, mais compromet tout de même la confidentialité des communications.
 
 ---
 
 ## Autorité de Certification
 
 Pour prévenir les attaques MITM, il existe des entités spécialisées dans la vérification des identités physiques, les autorités de certification (*Certificate Authority* en anglais ou CA).  
-La vérification varie considérablement d'une CA à l'autre. Par exemple, GoDaddy vérifie s'il peut envoyer un email au propriété du site — tel qu'indiqué dans les enregistrements DNS.
+La vérification varie considérablement d'une CA à l'autre. Par exemple, GoDaddy vérifie s'il peut envoyer un email au propriétaire du site — tel qu'indiqué dans les enregistrements DNS.
 
-Après vérification, la CA génère un certification de serveur, ajoute sa propre identité dans la section "Issuer" et ajoute sa signature numérique (en utilisant sa propre clé privée).  
-Cela garantit que le serveur a bien été vérifié par cette CA et que la clé publique à l'intérieur lui appartient bien.
+Après vérification, la CA génère un certificat de serveur, ajoute sa propre identité dans la section "Issuer" et ajoute sa signature numérique (en utilisant sa propre clé privée).  
+Cela garantit que le serveur a bien été vérifié par cette CA et que la clé publique à l'intérieur du certificat appartient bien au serveur.
 
-Maintenant, le client peut faire confiance au certificat du serveur s'il a confiance que la CA a vérifié le serveur avant de la signer. En d'autres termes, si le client fait confiance à l'autorité de certification, il fait confiance à tous certificats de serveur qu'elle a signé.
+Maintenant, le client peut faire confiance au certificat du serveur s'il a confiance que la CA a vérifié ce serveur avant de la signer. En d'autres termes, si le client fait confiance à l'autorité de certification, il fait confiance à tous certificats de serveur qu'elle a signé.
 
 ---
 
 ## Trust Store
 
-Les navigateurs sont livrés avec une liste pré-installée de CA de confiance (*trusted CA* en anglais), aussi connue sous le nom de *Trusted Root CA store* — réserve de CA de confiance racine.  
+Les navigateurs sont livrés avec une liste pré-installée de CA de confiance (*trusted CA* en anglais), aussi connue sous le nom de *Trusted Root CA store* — réserve de CA de confiance racine en français.  
 Pour être ajoutée à cette liste, l'entreprise doit se conformer aux normes de sécurité et d'authentification établies par les navigateurs et faire l'objet d'un audit.
 
-Si la CA ayant signé le certificat du serveur n'est pas dans cette liste, le navigateur affiche un avertissement — que [le certificat n'est pas fiable](https://www.sslshopper.com/ssl-certificate-not-trusted-error.html).  
-L'utilisateur peut ajouter manuellement de nouveaux certificats de CA à son trust store.
+Si la CA ayant signé le certificat du serveur n'est pas dans cette liste, alors le navigateur affiche un avertissement — que [le certificat n'est pas fiable](https://www.sslshopper.com/ssl-certificate-not-trusted-error.html).  L'utilisateur peut ajouter manuellement de nouveaux certificats de CA à son trust store.
 
 ---
 
@@ -198,7 +198,7 @@ Par conséquent, il est important de changer la clé privée de temps en temps. 
 ## Révocation
 
 Les certificats peuvent être révoqués par les autorités de certification — par exemple, si la clé privée n'est plus secrète ou le propriété a changé d'organisation.  
-L'état de révocation des certifications peut être vérifié à l'aide du protocole OCSP (Online Certificate Status Protocol) ou de la liste de révocation des certificats (*Certificate Revocation List* en anglais, ou CRL).
+L'état de révocation des certifications peut être vérifié à l'aide du protocole OCSP (*Online Certificate Status Protocol*) ou de la liste de révocation des certificats (*Certificate Revocation List* en anglais, ou CRL).
 
 ### CRL
 

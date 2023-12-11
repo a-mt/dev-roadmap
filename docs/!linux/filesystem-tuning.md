@@ -1,11 +1,9 @@
 ---
-title: Maintenir les partitions
+title: Vérifier et réparer le système de fichier
 category: Linux
 ---
 
-## Vérifier et réparer le système de fichier
-
-### fsck
+## fsck
 
 * `fsck` (*filesystem check*) permet de vérifier et si nécessaire, réparer, un système de fichiers.  
   Il s'agit d'un wrapper faisant en réalité appel à d'autres commandes.
@@ -25,8 +23,7 @@ category: Linux
   lrwxrwxrwx 1 root root    8 May 13  2018 /sbin/fsck.vfat -> fsck.fat*
   ```
 
-* Il est nécessaire de démonter le système de fichier avant d'utiliser cette commande.
-  -I pour vérifier ce que fsck va faire, sans qu'il le fasse  
+* Il est nécessaire de démonter le système de fichier avant d'utiliser cette commande.  
   -C pour afficher une barre de progression pendant l'execution
 
   ![](https://i.imgur.com/mYgHhni.png)
@@ -36,26 +33,27 @@ category: Linux
 
 * Pour utiliser fsck,
 
-  1. identifier la partition à traiter:
+  1. identifier la partition à réparer:
 
       ``` bash
       $ sudo fdisk -l
       ```
 
-      Cette commande nous renseignera sur le nom de la partition à examiner.  
-      Si la partition est montée, on peut utiliser la commande `df` qui nous donnera une sortie plus explicite:
+      Ou si la partition est montée, on peut aussi utiliser:
 
       ``` bash
       $ df -hT
       ```
 
-  2. démonter cette partition pour pouvoir l'examiner / réparer
+  2. démonter cette partition
 
       ``` bash
-      $ sudo umount /dev/partitionname
+      $ sudo umount /dev/sdb1
       ```
 
-  3. lancer la vérification:
+  3. lancer la vérification du système de fichiers.  
+      fsck lancera la vérification adaptée au système de fichiers de la partition cible:  
+      si c'est une partition ext4, alors fsck lance automatiquement fsck.ext4
 
       ``` bash
       $ sudo fsck /dev/sdb1
@@ -70,14 +68,12 @@ category: Linux
       /dev/sdb1: 11/946560 files (0.0% non-contiguous), 83032/3784448 blocks
       ```
 
-      L'interface fsck lance le vérificateur adapté au système de fichiers de la partition ciblée:  
-      si la partition est formatée en ext4, alors fsck lancera automatiquement fsck.ext4. fsck le détecte en examinant les premiers octets de la partition
-
-      Si fsck ne détecte pas le bon système de fichier:
+      fsck détecte le type de système de fichiers en examinant les premiers octets de la partition.  
+      Si fsck ne détecte pas le bon système de fichier, utiliser -t pour le spécifier:
 
       ``` bash
       $ sudo fsck -t ext4 /dev/sda10
-
+      # ou
       $ sudo fsck.ext4 /dev/sda10
       ```
 
@@ -106,6 +102,8 @@ category: Linux
       $ ls -l /mnt
       ```
 
+### Restaurer le superbloc
+
 * fsck est le wrapper de e2fsck pour les partitions ext2/ext3/ext4
 
   ``` bash
@@ -121,6 +119,8 @@ category: Linux
 
   ![](https://i.imgur.com/AU2nF4l.png)
 
+### Forcer fsck au démarrage
+
 * fsck est automatiquement lancé après un certain nombre de montages infructueux ou après un arrêt anormal. Pour forcer la vérification de tous les systèmes de fichiers montés au démarrage:
 
   ``` bash
@@ -130,6 +130,8 @@ category: Linux
   ```
 
   Le fichier /forcefsck sera supprimé après une vérification réussie.
+
+## Autres systèmes de fichiers
 
 * Pour d'autres systèmes de fichiers:
 

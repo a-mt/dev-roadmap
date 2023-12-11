@@ -334,7 +334,7 @@ category: Linux
 ## Sauvegarder et restaurer la table de partition
 
 * `sfdisk` peut être utilisé pour sauvegarder et restaurer la table de partition d'un disque.  
-  Avant de partitionner un disque, il est bon de sauvegarder les données de la table de partition actuelle. Ainsi, en cas d'erreur lors de l'utilisation des outils d'édition de partitions, la table de partition sauvegardé pourra ainsi être restaurée. Attention cependant, restaurer le mauvais fichier peut entrainer la perte totale des données.
+  Avant de partitionner un disque, c'est généralement une bonne idée de sauvegarder les données de la table de partition actuelle: en cas d'erreur lors de l'utilisation des outils d'édition de partitions, la table de partition sauvegardée pourra être restaurée. Par contre attention,  restaurer le mauvais fichier peut entrainer la perte totale des données.
 
 * Pour sauvegarder la table de partitions:
 

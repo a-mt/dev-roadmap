@@ -87,4 +87,5 @@ filter: blur( <length> ) ||
 }
 ```
 
-[JSFiddle filter](https://jsfiddle.net/amt01/f5avs5jq/)
+[JSFiddle filter](https://jsfiddle.net/amt01/f5avs5jq/)  
+[Hex color to css filter](https://isotropic.co/tool/hex-color-to-css-filter/)

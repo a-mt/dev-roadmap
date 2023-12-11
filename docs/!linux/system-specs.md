@@ -839,9 +839,30 @@ category: Linux
 
   La taille d'un répertoire affichée par <code>ls</code> est la taille des blocs de données occupés par le répertoire: c'est à dire les noms des fichier à l'intérieur du répertoire et leurs numéros d'inode. Si on s'intéresse à la taille des fichiers à l'intérieur, à alors il faut parcourir les métadonnées de chacun de ces fichiers — récursivement s'il y a des sous-répertoires.<br><br>
 
-  -h (<i>human</i>) pour afficher les tailles dans un format lisible par un humain (par exemple 1K, 234M, 5G)<br>
+  -h (<i>human</i>) pour afficher les tailles dans un format lisible par un humain (par exemple 1K, 234M, 5G)<br>  
+  -x (<i>exclude</i>) pour rester sur un seul système de fichiers, ne pas regarder les répertoires qui ne se trouvent pas dans le répertoire / signifiera ignorer /dev /proc /run /sys — qui sont des sytèmes de fichiers virtuels<br>
   -s (<i>summary</i>) afficher seulement le total<br>  
-  --inodes pour afficher le nombre d'inodes utilisées<br><br>
+  --inodes pour afficher le nombre d'inodes utilisées<br>
+  --maxdepth=1 pour descendre d'un niveau à partir du répertoire et résumer tout ce qui se trouve en-dessous récursivement
+  <br>
+
+  <pre lang="bash">
+  $ sudo du --max-depth=1 -hx /
+  9.2G  /usr
+  4.0K  /srv
+  48K /snap
+  8.0K  /media
+  15M /etc
+  1.1G  /opt
+  285M  /boot
+  19G /var
+  16K /lost+found
+  4.0K  /mnt
+  87G /home
+  136K  /tmp
+  1.7G  /root
+  117G  /
+  </pre>
 
   <pre lang="bash">
   $ pwd

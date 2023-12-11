@@ -96,7 +96,7 @@ category: Linux
 4. Tester
 
     ``` bash
-    $ ls /shares  # Noting is mounted yet
+    $ ls /shares  # Nothing is mounted yet
 
     $ ls /shares/mynetworkshare
     mysharedfile1    mysharedfile2

@@ -77,7 +77,7 @@ category: Linux
 
 3. <ins>Volume Group (VG)</ins>  
     Créer un *groupe de volumes* contenant différents volumes physiques.  
-    Le groupes de volumes sera utilisé comme base pour créer un volume logique — un groupe constitué de 50Go (/dev/sdb1) + 20Go (/dev/sdb2) + 10Go (/dev/sdd1), peut être utilisé pour créer un volume logique de 80Go.
+    Le groupes de volumes sera utilisé comme base pour créer un volume logique. Par exemple, un groupe de 80Go (constitué de /dev/sdb: 50Go + /dev/sdb: 20Go + /dev/sdd1: 10Go), peut être utilisé pour créer un volume logique de 80Go.
 
     ``` bash
     $ sudo vgcreate vg /dev/sda1 /dev/sdb1
@@ -191,7 +191,7 @@ category: Linux
     ```
 
 5. Créer une partition dans le volume logique.  
-    Comme il ne s'agit pas véritablement d'une partition sur un périphérique régulier (mais sur un volume logique), on parle plutôt de *volume LVM*.
+    Comme il ne s'agit pas véritablement d'une partition sur un périphérique régulier (mais sur un volume logique), techniquement on ne parle pas de *partition* mais de *volume LVM*.
 
     ``` bash
     $ sudo mkfs.ext4 /dev/vg/backup

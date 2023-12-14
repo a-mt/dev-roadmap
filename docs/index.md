@@ -287,6 +287,10 @@ searchbar: true
     - [Électricité][electricite]{: .theory}
     - [Maths][maths]{: .theory}
 
+  * Médecine
+    - [Imagerie médicale][medical-imaging]{: .theory}
+    - [DICOM][dicom]{: .theory}
+
   - Rubiks
     - [3x3](/!rubiks/rubiks3x3.html)
     - [4x4](/!rubiks/rubiks4x4.html)
@@ -450,6 +454,7 @@ searchbar: true
 [crypto-ec]: crypto-ec.md
 [css]: css.md
 [design]: design.md
+[dicom]: !health/dicom.md
 [digitalocean]: digitalocean.md
 [django]: django.md
 [docker]: docker.md
@@ -482,6 +487,7 @@ searchbar: true
 [markdown]: gfm.md
 [matplotlib]: matplotlib.md
 [maths]: maths.md
+[medical-imaging]: !health/imaging.md
 [ml]: machine-learning.md
 [ml-algo]: !ml/ml-algorithms.md
 [mongodb]: mongodb.md

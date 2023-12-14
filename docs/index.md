@@ -290,6 +290,7 @@ searchbar: true
   * Médecine
     - [Imagerie médicale][medical-imaging]{: .theory}
     - [DICOM][dicom]{: .theory}
+    - [Spirométrie][spirometry]{: .theory}
 
   - Rubiks
     - [3x3](/!rubiks/rubiks3x3.html)
@@ -507,6 +508,7 @@ searchbar: true
 [sass]: sass.md
 [securite]: securite.md
 [semver]: semver.md
+[spirometry]: !health/spirometry.md
 [ssh]: ssh.md
 [ssl-howto]: ssl-howto.md
 [ssl]: ssl.md

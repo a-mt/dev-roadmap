@@ -157,7 +157,8 @@ searchbar: true
     * RabbitMQ
 
   * API
-    * REST&#10;{: .syntax}
+    * [API][api]{: .theory}
+    * [REST][api-rest]{: .syntax}
     * [GraphQL][graphql]{: .syntax}
   * Auth
     * JWT
@@ -441,12 +442,14 @@ searchbar: true
   - [Stacks](https://stackshare.io/stacks)
 
 
-[accessibilite]: accessibilite.md
+[accessibilite]: accessibilite.md0
 [agile]: agile.md
 [12-factor]: 12-factor.md
 [angular]: angular.md
 [ansible]: ansible.md
 [apache-vhost]: apache-vhost.md
+[api]: api.md
+[api-rest]: api-rest.md
 [bdd]: bdd.md
 [bitcoin]: bitcoin.md
 [bitwise]: bitwise-operations.md

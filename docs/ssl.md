@@ -224,22 +224,22 @@ Lorsque le navigateur se connecte au site Web, le serveur groupe (ou "agrafe") l
 
 Les autorités de certification peuvent délivrer différents types de certificats SSL:
 
-* Domain Validated (DV)  
+* <ins>Domain Validated (DV)</ins>  
   Ils sont délivrés avec très peu de validation (généralement automatisée): le serveur n'a qu'à prouver qu'il détient son nom de domaine. C'est le type de certificat de plus courant.
 
-* Extended Validation (EV)
+* <ins>Extended Validation (EV)</ins>  
   Cela exige une validation approfondie de l'entreprise et de son autorisation, cela peut prendre quelques jours à quelques semaines pour la recevoir.  
   Les certificats DV n'assurent pas l’identité de l'organisation en possession du serveur, les certificats EV si. Ils sont plus chers que les autres types de certificats mais activent la "barre d'adresse verte" dans la plupart des navigateurs. Ex: Paypal.
 
-* Wildcard  
+* <ins>Wildcard</ins>  
   Ils peuvent être utilisés pour sécuriser un nombre illimité de sous-domaines sur un même nom de domaine.  
   Par exemple, un certificat pour `*.mondomaine.com` fonctionnera pour `secure.mondomaine.com`, `www.mondomaine.com`, etc.
 
-* Multi-domaine  
+* <ins>Multi-domaine</ins>  
   Aussi connus sous le noms de certificats de Communications Unifiées (*Unified Communications* en anglais, ou UC) ou certificats SAN.  
     Ils utilisent une section SAN (Subject Alternative Names) pour sécuriser une liste d'hôte définie.
 
-* Code Signing  
+* <ins>Code Signing</ins>  
   Ce type de certificat est différent des autres: il s'agit d'un fichier contenant une signature numérique qui peut être utilisée pour signer des exécutables et des scripts.
 
   Les certificats auto-signés (*self-signed* en anglais) sont des certificats qui sont signés avec la clé privée du serveur plutôt qu'avec une autorité de certification.  

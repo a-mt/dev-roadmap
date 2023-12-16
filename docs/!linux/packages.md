@@ -19,6 +19,6 @@ category: Linux
 <!-- -->
 
 * Différentes distributions ont différents utilitaires pour gérer les packages:
-  * [Debian: dpkg, apt](packages-debian.md)
-  * [Red Hat: rpm, yum](packages-redhat.md)
-  * [OpenSuse: zypper](packages-opensuse.md)
+  * Debian: dpkg, apt
+  * Red Hat: rpm, yum
+  * OpenSuse: zypper

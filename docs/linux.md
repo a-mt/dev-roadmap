@@ -1,6 +1,7 @@
 ---
 title: Linux
 summary: false
+roadmap: true
 ---
 
 [intro]: !linux/intro.md
@@ -91,130 +92,160 @@ summary: false
 [print]: !linux/service-print.md
 [logging]: !linux/service-logging.md
 
-* [Introduction][intro]
+## Terminal
 
-* Hands-on
-  * [Installer][linux-install]
-  * [Transférer des données][linux-transfert]
+* The beginning
+  * [Linux][intro]{: .theory}
+  * [Installer Linux][linux-install]{: .cli}
+  * [Transférer des données][linux-transfert]{: .cli}
 
 * CLI
-  - [Format d'une commande][command]
-  - [Naviguer][navigate]
-  - [Raccourcis clavier][shortcuts]
-  - [Wildcards][wildcard]
-  - [Règles d'échappement][escape]
-  - [Historique][history]
-  - [Manpages][manpages]
-  - [Redirection de flux][redirect]
-  - [Chaîner des commandes][chaining]
+  * I
+    - [Format d'une commande][command]{: .syntax}
+    - [Naviguer le terminal][navigate]{: .cli}
+    - [Raccourcis clavier][shortcuts]
+    - [Wildcards][wildcard]{: .syntax}
+    - [Règles d'échappement][escape]{: .syntax}
+  * II
+    - [Historique][history]{: .cli}
+    - [Manpages][manpages]{: .cli}
+    - [Redirection de flux][redirect]{: .syntax}
+    - [Chaîner des commandes][chaining]{: .syntax}
+  * Scripts
+    - [Exécuter un script][script]{: .cli}
+    - [Variables][variable]{: .syntax}
+    - [Tableaux][var-array]{: .syntax}
+    - [if/else][flow-control]{: .syntax}
+    - [Boucles][flow-loop]{: .syntax}
+    - [Fonctions][flow-function]{: .syntax}
+    - [Interraction utilisateur][flow-user]{: .cli}
+    - [Regex POSIX][regex-posix]{: .syntax}
 
 * Fichiers
-  - [Standard de hiérarchie][fhs]
-  - [Créer/déplacer/supprimer][file-create]
-  - [Metadonnées][file-metadata]
-  - [Liens][link]
-  - [Permissions][permissions]
-  - [Permissions spéciales][permissions-specials]
-  - [Permissions par défaut][permissions-default]
-  - [Permissions ACL][permissions-acl]
-  - [Manipuler des fichiers texte][text-utils]
-  - [Lister des fichiers][file-list]
-  - [Archiver][archive]
-
-* Scripts
-  - [Exécuter un script][script]
-  - [Variables][variable]
-  - [Tableaux][var-array]
-  - [if/else][flow-control]
-  - [Boucles][flow-loop]
-  - [Fonctions][flow-function]
-  - [Interraction utilisateur][flow-user]
-  - [Regex POSIX][regex-posix]
-
-* Processus
-  - [Avant & arrière plan][process-jobs]
-  - [Signaux][process-signal]
-  - [Priorité][process-nice]
-  - [Lister les processus][process-list]
-  - [Multiplexeur de terminal][multiplexer]
-
-* Comptes
-  - [Utilisateurs][accounts-user]
-  - [Groupes][accounts-group]
-  - [Escalade de privilèges][accounts-sudoers]
-  - [Environnement](!linux/env.md)
-  - [Limites][accounts-limits]
-  - [Quotas][accounts-quota]
-  - [PAM][accounts-pam]
-  - [SELinux][selinux]
-
-* Boot
-  - [Théorie: matériel][hardware-overview]
-  - [Théorie: disque dur magnétique][hardware-disc]
-  - [Théorie: boot][hardware-boot]
-  - [Bootloaders][boot-bootloader]
-  - [Processus d'initialisation & services][boot-init]
-  - [Arrêter ou redémarrer][boot-reboot]
-
-* Système de fichiers
-  - [Théorie: système de fichiers][filesystem-overview]
-  - [Créer une partition][filesystem-create]
-  - [Formatter une partition][filesystem-format]
-  - [Monter une partition][filesystem-mount]
-  - [Modifier une partition][filesystem-tuning]
-  - [Swap][filesystem-swap]
-  - [LVM][filesystem-lvm]
-  - [RAID][filesystem-raid]
-  - [NFS](!linux/filesystem-nfs.md)
-  - [Encryption](!linux/filesystem-crypt.md)
-
-* Gestion du système
-  - [Ressources & utilisation][system-specs]
-  - [Paquets & gestionnaires de paquet][system-packages]
-  - [Librairies partagées](!linux/libraries.md)
-  - [Modules](!linux/kernel-modules.md)
-  - [Drivers & logs système](!linux/system-troubleshooting.md)
-  - [Paramètres kernel](!linux/kernel-parameters.md)
-
-* Services I
-  - [Tâches récurrentes][scheduled-jobs]
-  - [Date & temps][time]
-  - [NTP][ntp]
-  - [Locale][locale]
-  - [Email][email]
-  - [Impression][print]
-  - [Logs][logging]
-
-* Services II
-  - [Serveur DNS](!linux/service-dns.md)
-  - [SSH](!linux/service-ssh.md)
-  - [Proxy — Squid](!linux/service-squid.md)
-  - [HTTP — Apache](!linux/service-apache.md)
-  - [DB — MariaDB](!linux/service-mariadb.md)
-
-* Réseau: théorie
-  - [Théorie: histoire d'Internet][network-history]
-  - [Théorie: réseaux informatiques][network-intro]
-  - [Théorie: couche 1 — liaison physique][network-layer1-physical]
-  - [Théorie: couche 2 — transfert des données][network-layer2-mac]
-  - [Théorie: couche 3 — routing][network-layer3-ip]
-  - [Théorie: couche 4 — connexion](!linux/network-layer4-tcp.md)
-  - [Theorie: DNS](!linux/dns.md)
-
-* Réseau
-  - [Afficher les configurations réseau](!linux/network-quick.md)
-  - [Interfaces][network-nic]
-  - [Nom d'hôte][network-hostname]
-  - [Adresses IP](!linux/network-ip.md) — ifconfig
-  - [Routing](!linux/network-route.md)
-  - [Firewall](!linux/network-firewall-cmd.cmd), [Iptables][iptables], UFW [1 &#x21F2;](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-9)
+  * Bases
+    - [Standard de hiérarchie][fhs]{: .theory}
+    - [Créer/déplacer/supprimer][file-create]{: .cli}
+    - [Metadonnées][file-metadata]{: .cli}
+    - [Liens][link]{: .cli}
+  * Permisssions
+    - [Permissions][permissions]{: .cli}
+    - [Permissions spéciales][permissions-specials]{: .cli}
+    - [Permissions par défaut][permissions-default]{: .cli}
+    - [Permissions ACL][permissions-acl]{: .cli}
+  * Manipuler
+    - [Manipuler des fichiers texte][text-utils]{: .cli}
+    - [Lister des fichiers][file-list]{: .cli}
+    - [Archiver][archive]{: .cli}
 
 * Quicklink: utilitaires
-  - [Awk][awk]
-  - [Sed][sed]
-  - [Grep][grep]
-  - [Sort][sort]
-  - [Find][find]
+  - [Awk][awk]{: .cli}
+  - [Sed][sed]{: .cli}
+  - [Grep][grep]{: .cli}
+  - [Sort][sort]{: .cli}
+  - [Find][find]{: .cli}
 
 * Éditeurs
   - [Vim][vim]
+
+## Gestion
+
+* Processus
+  * Gérer les processus
+    - [Avant & arrière plan][process-jobs]{: .cli}
+    - [Signaux][process-signal]{: .cli}
+    - [Priorité][process-nice]{: .cli}
+    - [Lister les processus][process-list]{: .cli}
+  * Utilitaires
+    - [Multiplexeur de terminal][multiplexer]{: .cli}
+
+* Comptes
+  * I
+    - [Utilisateurs][accounts-user]{: .cli}
+    - [Groupes][accounts-group]{: .cli}
+    - [Escalade de privilèges][accounts-sudoers]{: .cli}
+    - [Environnement](!linux/env.md){: .syntax}
+  * II
+    - [Limites][accounts-limits]{: .cli}
+    - [Quotas][accounts-quota]{: .cli}
+    - [PAM][accounts-pam]{: .cli}
+    - [SELinux][selinux]{: .cli}
+
+* Boot
+  * Théorie
+    - [Matériel][hardware-overview]{: .theory}
+    - [Disque dur magnétique][hardware-disc]{: .theory}
+    - [Boot][hardware-boot]{: .theory}
+  * Démarrage
+    - [Bootloaders Linux][boot-bootloader]{: .theory}
+    - [Processus d'initialisation & services][boot-init]{: .cli}
+    - [Arrêter ou redémarrer][boot-reboot]{: .cli}
+
+* Système de fichiers
+  * I
+    - [Théorie: système de fichiers][filesystem-overview]{: .theory}
+    - [Créer une partition][filesystem-create]{: .cli}
+    - [Formatter une partition][filesystem-format]{: .cli}
+    - [Monter une partition][filesystem-mount]{: .cli}
+    - [Modifier une partition][filesystem-tuning]{: .cli}
+    - [Swap][filesystem-swap]{: .cli}
+  * II
+    - [LVM][filesystem-lvm]{: .cli}
+    - [RAID][filesystem-raid]{: .cli}
+    - [NFS](!linux/filesystem-nfs.md){: .cli}
+    - [Encryption](!linux/filesystem-crypt.md){: .cli}
+
+* Gestion du système
+  * I
+    - [Ressources & utilisation][system-specs]{: .cli}
+    - [Paquets & gestionnaires de paquet][system-packages]{: .theory}
+    * [Paquets Debian: dpkg, apt](packages-debian.md){: .cli}
+    * [Paquets Red Hat: rpm, yum](packages-redhat.md){: .cli}
+    * [Paquets OpenSuse: zypper](packages-opensuse.md){: .cli}
+  * II
+    - [Librairies partagées](!linux/libraries.md){: .cli}
+    - [Drivers / Modules kernel](!linux/kernel-modules.md){: .cli}
+    - [Paramètres kernel](!linux/kernel-parameters.md){: .cli}
+
+## Services
+
+* Services
+  * I
+    - [Tâches récurrentes][scheduled-jobs]{: .cli}
+    - [Date & temps][time]{: .cli}
+    - [NTP][ntp]{: .cli}
+    - [Locale][locale]{: .cli}
+    - [Email][email]{: .cli}
+    - [Impression][print]{: .cli}
+    - [Logs][logging]{: .cli}
+
+  * II
+    - [Serveur DNS](!linux/service-dns.md){: .cli}
+    - [SSH](!linux/service-ssh.md){: .cli}
+    - [Proxy: Squid](!linux/service-squid.md){: .cli}
+    - [HTTP: Apache](!linux/service-apache.md){: .cli}
+    - [DB: MariaDB](!linux/service-mariadb.md){: .cli}
+    - [SSL](!linux/ssl.md){: .cli}
+
+## Réseau
+
+* Réseau
+  * Théorie
+    - [Histoire d'Internet][network-history]{: .theory}
+    - [Réseaux informatiques][network-intro]{: .theory}
+    - [Couche 1: liaison physique][network-layer1-physical]{: .theory}
+    - [Couche 2: transfert des données][network-layer2-mac]{: .theory}
+    - [Couche 3: routing][network-layer3-ip]{: .theory}
+    - [Couche 4: connexion](!linux/network-layer4-tcp.md){: .theory}
+    - [DNS](!linux/dns.md){: .theory}
+
+  * Configurer
+    - [Afficher les configurations réseau](!linux/network-quick.md){: .cli}
+    - [Interfaces][network-nic]{: .cli}
+    - [Nom d'hôte][network-hostname]{: .cli}
+    - [Adresses IP](!linux/network-ip.md){: .cli}
+    - [Routing](!linux/network-route.md){: .cli}
+
+  * Firewall
+    * [Firewalld](!linux/network-firewall-cmd.md){: .cli}  
+    * [Iptables][iptables]{: .cli}
+    * UFW [1 &#x21F2;](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-9)

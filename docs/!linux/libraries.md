@@ -25,6 +25,48 @@ category: Linux
     libgpg-error.so.0 => /lib/x86_64-linux-gnu/libgpg-error.so.0 (0x00007f59fd1b3000)
   ```
 
+## strace
+
+* `strace` permet de lancer une commande et d'intercepter et afficher tous les appels système et signaux reçus pour son processus
+
+  ```
+  $ strace -e file uptime
+  execve("/usr/bin/uptime", ["uptime"], 0x7ffc8d3bfff0 /* 65 vars */) = 0
+  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+  access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+  openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libprocps.so.6", O_RDONLY|O_CLOEXEC) = 3
+  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libsystemd.so.0", O_RDONLY|O_CLOEXEC) = 3
+  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/librt.so.1", O_RDONLY|O_CLOEXEC) = 3
+  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/liblzma.so.5", O_RDONLY|O_CLOEXEC) = 3
+  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+  openat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/liblz4.so.1", O_RDONLY|O_CLOEXEC) = 3
+  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libgcrypt.so.20", O_RDONLY|O_CLOEXEC) = 3
+  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3
+  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
+  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libgpg-error.so.0", O_RDONLY|O_CLOEXEC) = 3
+  openat(AT_FDCWD, "/proc/sys/kernel/osrelease", O_RDONLY) = 3
+  openat(AT_FDCWD, "/sys/devices/system/cpu/online", O_RDONLY|O_CLOEXEC) = 3
+  openat(AT_FDCWD, "/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+  openat(AT_FDCWD, "/etc/localtime", O_RDONLY|O_CLOEXEC) = 3
+  openat(AT_FDCWD, "/proc/uptime", O_RDONLY) = 3
+  access("/var/run/utmpx", F_OK)          = -1 ENOENT (No such file or directory)
+  openat(AT_FDCWD, "/var/run/utmp", O_RDONLY|O_CLOEXEC) = 4
+  openat(AT_FDCWD, "/proc/loadavg", O_RDONLY) = 4
+   14:55:20 up  9:39,  1 user,  load average: 1,64, 1,03, 1,05
+  +++ exited with 0 +++
+  ```
+
 ## Convention de nommage
 
 * Le nom des libraries suit la convention suivante:

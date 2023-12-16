@@ -224,33 +224,44 @@ category: Linux, Network
 
 * Tous les paramètres réseau, adresse IP, routeurs, résolveurs DNS, routes réseaux, etc, peuvent être configurés de manière dynamique ou statique.
 
-  - Dans le cas d'une configuration dynamique, l'appareil reçoit généralement ses paramètres d'un service tel que DHCP, le protocole de configuration dynamique des hôtes (*Dynamic Host Configuration Protocol*)
+  - Dans le cas d'une <ins>configuration dynamique</ins>, l'appareil reçoit généralement ses paramètres d'un service tel que DHCP, le protocole de configuration dynamique des hôtes (*Dynamic Host Configuration Protocol*)
 
-  - Avec une configuration statique, on ajoute manuellement ces paramètres nous-même.
+  - Avec une <ins>configuration statique</ins>, on ajoute manuellement ces paramètres nous-même.
 
 ## Fichiers de configuration
 
 * Historiquement, pour rendre des configurations permanentes on utilisait des fichiers de configuration. Le problème c'est que
 
-  1. Chaque distribution possède son propre ensemble de fichiers/répertoires, qui peuvent également varier suivant la version de la distribution
+  1. Chaque distribution possède son propre ensemble de fichiers/répertoires,  
+     qui peuvent également varier suivant la version de la distribution
 
-    - Red Hat
-      /etc/sysconfig/network
-      /etc/sysconfig/network-scripts/ifcfg-ethX
-      /etc/sysconfig/network-scripts/ifcfg-ethX:Y
-      /etc/sysconfig/network-scripts/route-ethX
+      - Red Hat
 
-    - Debian
-      /etc/network/interfaces
+        ```
+        /etc/sysconfig/network
+        /etc/sysconfig/network-scripts/ifcfg-ethX
+        /etc/sysconfig/network-scripts/ifcfg-ethX:Y
+        /etc/sysconfig/network-scripts/route-ethX
+        ```
 
-    - SUSE
-      /etc/sysconfig/network
+      - Debian
+
+        ```
+        /etc/network/interfaces
+        ```
+
+      - SUSE
+
+        ```
+        /etc/sysconfig/network
+        ```
 
   2. Les fichiers de configuration peuvent facilement gérer des situations statiques, alors que les systèmes modernes ont souvent des configurations dynamiques:
 
     - les réseaux peuvent changer lorsqu'un appareil est déplacé d'un endroit à l'autre
     - les appareils sans fils peuvent disposer d'un large choix de réseaux auxquels se connecter
-    - les appareils peuvent changer au fur à mesure que des appareils sont allumés ou éteints
+    - les appareils peuvent changer au fur à mesure que des appareils sont allumés ou éteints  
+       
 
 * Aujourd'hui on utilise plutôt des utilitaires pour manipuler et mettre à jour les configurations, notamment Network Manager. Bien que Network Manager utilise toujours des fichiers de configuration, il ajoute une couche d'abstraction qui nous permet de facilement passer d'une distribution à l'autre ou d'une interface à l'autre.
 

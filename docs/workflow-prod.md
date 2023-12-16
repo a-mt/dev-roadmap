@@ -3,9 +3,10 @@ title: Workflow Prod
 category: Other
 ---
 
+* Sentry
 * VPS
 * Nom de domaine
-* [Certificat SSL](ssl-howto.md)
+* Certificat SSL
 * Google
   * [Soumettre une nouvelle URL à Google](https://www.google.com/webmasters/tools/submit-url)
   * [Supprimer une URL qui n'existe plus](https://www.google.com/webmasters/tools/removals?pli=1)

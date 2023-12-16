@@ -1,6 +1,7 @@
 ---
 title: Roadmap
 searchbar: true
+roadmap: true
 ---
 
 ## Front-End
@@ -302,7 +303,6 @@ searchbar: true
     * [Prod](workflow-prod.md)
     * [Accès via adresse IP][host-ip]
     * [Obtenir un Nom de domaine][host-domain]
-    * [Obtenir un Certificat SSL][ssl-howto]
     * [Obtenir une clé SSH][ssh]
 
   * Protocoles
@@ -513,7 +513,6 @@ searchbar: true
 [semver]: semver.md
 [spirometry]: !health/spirometry.md
 [ssh]: ssh.md
-[ssl-howto]: ssl-howto.md
 [ssl]: ssl.md
 [svg]: svg.md
 [testing]: testing.md

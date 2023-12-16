@@ -6,7 +6,8 @@ category: Linux, Network
 * Lorsqu'un ordinateur reçoit des paquets, soit
 
   - un programme les intercepte et les traite
-  - ou aucun programme n'est configuré pour traiter ces paquets et ils sont simplement rejetés
+  - ou aucun programme n'est configuré pour traiter ces paquets et ils sont simplement rejetés  
+     
 
 * Pour renforcer la sécurité, un pare-feu (*firewall*) peut être ajouté au système. Ce pare-feu filtrera les paquets réseau autorisés à entrer dans le système, et même les paquets autorisés à en sortir.
 

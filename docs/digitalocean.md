@@ -17,5 +17,5 @@ category: Hosting
   * [Personnaliser Wordpress](host-wordpress2.md)
 
 * HTTPS
-  * [Obtenir un certificat SSL wildcard](ssl-letsencrypt-wildcard.md)
+  * [Obtenir un certificat SSL wildcard](digitalocean-letsencrypt.md)
   * [Configurer les containers pour utiliser le certificat SSL](host-ssl.md)

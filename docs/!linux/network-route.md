@@ -10,10 +10,10 @@ category: Linux, Network
 
 * Pour voir la table de routage:
 
-``` bash
-ip route show
-ip r
-```
+  ``` bash
+  ip route show
+  ip r
+  ```
   ``` bash
   $ ip route show
   default via 192.168.1.254 dev wlp164s0 

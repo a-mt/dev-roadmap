@@ -226,6 +226,8 @@ roadmap: true
     - [DB: MariaDB](!linux/service-mariadb.md){: .cli}
     - [SSL](!linux/ssl.md){: .cli}
 
+  * [Créer un service systemd](!linux/service-systemd.md){: .syntax}
+
 ## Réseau
 
 * Réseau
@@ -249,3 +251,12 @@ roadmap: true
     * [Firewalld](!linux/network-firewall-cmd.md){: .cli}  
     * [Iptables][iptables]{: .cli}
     * UFW [1 &#x21F2;](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-9)
+
+## Serveurs
+
+* Gestion des serveurs
+  * I
+    * [VM](!linux/vm-overview.md){: .theory}
+    * [Créer une VM](!linux/vm-create.md){: .cli}
+  * II
+    * [CSP](!linux/csp.md){: .theory}

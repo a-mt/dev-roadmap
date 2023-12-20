@@ -463,7 +463,7 @@ text1       TXT  "This is a TXT record"
 * Un *regitraire* (*registrar*), aussi appelé bureau d’enregistrement ou fournisseur de nom de domaine, est une organisation qui gère et vend des noms de domaine disponibles sur internet. Il sert d'intermédiaire entre les organismes qui gèrent les noms de domaine, comme l'AFNIC pour le .fr, et les personnes souhaitant acheter un nom de domaine.  
   Ex: GoDaddy, namecheap
 
-  ![](https://i.imgur.com/yVjjsYk.png)
+  ![](https://i.imgur.com/n2d2CLK.png)
 
 * Si le registre (ex AFNIC) est l'entrepôt, le registraire est le magasin: c'est par lui que les utilisateurs finaux passent pour acquérir des produits disponibles dans l'entrepôt. Le registraire met en place les paiements récurrents de ses clients et doit transmettre les redevances aux registres et à l'ICANN.
 

@@ -62,7 +62,8 @@ category: Linux
 
     - /etc/auto.shares est un fichier de configuration qui contiendra les options de montage automatique associées à /shares
 
-    - 4000 est le délai avant démontage automatique: si le point de montage n'est pas utilisé pendant 4000s alors le répertoire est démonté.  
+    - 4000 est le délai avant démontage automatique:  
+      si le point de montage n'est pas utilisé pendant 4000s alors le répertoire est démonté.  
       Si --timeout est omis, la valeur par défaut est 300 secondes.
 
 3. Créer le fichier de configuration qu'on a spécifié, `/etc/auto.shares`

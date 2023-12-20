@@ -32,6 +32,12 @@ category: Linux, Fichiers
   Videos
   ```
 
+* Affiche les résultas séparés par des virgules
+
+  ```
+  $ ls --format=commas
+  ```
+
 ### ls -R (recursive)
 
 * Permet d'afficher les fichiers récursivement — les fichiers du répertoire courant, les fichiers des sous-répertoires, etc.

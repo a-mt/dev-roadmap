@@ -203,7 +203,7 @@ roadmap: true
     * Prometheus
     * Grafana
   * CI/CD
-    * Gitlab Auto DevOps
+    * [Gitlab Auto DevOps][gitlab-ci]{: .cli}
     * Github Actions
     * [Jenkins][jenkins]{: .pkg}
   * Automatisation
@@ -470,6 +470,7 @@ roadmap: true
 [encoding]: encodages.md
 [gettext]: gettext.md
 [git]: git.md
+[gitlab-ci]: !gitlab/gitlab-ci.md
 [github-pages]: github-pages.md
 [google-drive]: google-drive.md
 [graphql]: graphql.md

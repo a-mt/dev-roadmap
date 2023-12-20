@@ -1,0 +1,268 @@
+stages:
+  - build-base
+  - deploy-settings
+  - lint
+  - test
+  - build-cicd
+  - deploy-cicd
+
+# Only run pipelines for given branches
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "staging"
+      variables:
+        CI_PIPELINE: 'staging'
+        CI_IMAGE_VERSION: latest
+    - if: $CI_COMMIT_BRANCH == "prod"
+      variables:
+        CI_PIPELINE: 'prod'
+        CI_IMAGE_VERSION: '2.5'
+
+# -- TEMPLATES
+# Abstract job definitions that may be extended
+
+.python:
+  image:
+    name: python:3.10.2
+    pull_policy: if-not-present
+
+.test:
+  image:
+    name: "$CI_REGISTRY_IMAGE:latest"
+    pull_policy: if-not-present
+  services:
+    - name: postgres:14
+      alias: postgres-test
+
+.deploy:
+  image:
+    name: alpine:latest
+    pull_policy: if-not-present
+  tags:
+    - deploy  # task picked up by runners allowed to deploy
+  before_script:
+    - chmod og= $ID_RSA
+    - apk update && apk add openssh-client
+
+.docker:
+  image:
+    name: docker:latest
+    pull_policy: if-not-present
+  tags:
+    - docker  # task picked up by runners allowed to build with Docker
+  services:
+    - docker:dind
+
+# -- JOBS
+# ONLY ON STAGING BRANCH
+# Build image with system/python dependencies
+# Includes the job and sets to when:manual if any "changes" detected.
+# You have to manually trigger it and set CI_IMAGE_VERSION
+build-base:
+  stage: build-base
+  extends: .docker
+  variables:
+    TAG_VERSION: "$CI_REGISTRY_IMAGE:$CI_IMAGE_VERSION"
+    TAG_LATEST: "$CI_REGISTRY_IMAGE:latest"
+  script:
+    - echo "Building $TAG_VERSION"
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - >
+      docker build
+      --build-arg CI_COMMIT_SHA=$CI_COMMIT_SHA
+      --build-arg CI_COMMIT_TAG=$CI_COMMIT_TAG
+      --build-arg CI_COMMIT_BRANCH=$CI_COMMIT_BRANCH
+      -t $TAG_VERSION
+      -t $TAG_LATEST .
+    - docker push $TAG_VERSION
+    - docker push $TAG_LATEST
+  rules:
+    - if: $CI_PIPELINE == "staging"
+      changes:
+        paths:
+          - Dockerfile
+          - requirements.txt
+      when: manual
+
+# Push new configs to the server
+# Also offers it as artifacts in case you want you put it manually on a server
+deploy-settings-staging:
+  stage: deploy-settings
+  extends: .deploy
+  script:
+    - >
+      if [ -d "cicd/$CI_PIPELINE" ]; then
+        echo "Using cicd/$CI_PIPELINE"
+        ls cicd/$CI_PIPELINE
+      else
+        echo "Could not find cicd/$CI_PIPELINE" >&2
+        exit 1
+      fi
+    - >
+      sum=$(sha1sum cicd/$CI_PIPELINE/* | sha1sum) &&
+      hash=${sum:0:40} &&
+      echo "Hash: $hash"
+    - >
+      echo "Creating artifacts" &&
+      mkdir -p artifacts/$hash &&
+      cd artifacts/$hash &&
+      echo "$hash" > cicd.settings &&
+      cp $CI_PROJECT_DIR/cicd/$CI_PIPELINE/* . &&
+    - >
+      echo "Pushing $hash" &&
+      scp -r
+      -i $ID_RSA
+      -o StrictHostKeyChecking=no
+      . $SERVER_USER@$SERVER_IP:/home/deployer/cicd/$hash
+  rules:
+    - if: $CI_PIPELINE == "staging"
+      changes:
+        paths:
+          - 'cicd/staging/**'
+  artifacts:
+    paths:
+      - artifacts
+    expire_in: 1 day
+
+update-settings-prod:
+  stage: deploy-settings
+  extends: .python
+  script:
+    - >
+      if [ -d "cicd/$CI_PIPELINE" ]; then
+        echo ">>>>>>>>>>>>>>>>>> UPDATE THE PRODUCTION SERVER MANUALLY"
+        echo "Detected a change of settings in cicd/$CI_PIPELINE"
+        git diff HEAD^..HEAD cicd/$CI_PIPELINE
+      else
+        echo "Could not find cicd/$CI_PIPELINE" >&2
+        exit 1
+      fi
+    - >
+      sum=$(sha1sum cicd/$CI_PIPELINE/* | sha1sum) &&
+      hash=${sum:0:40} &&
+      echo "cicd.settings=$hash"
+  rules:
+    - if: $CI_PIPELINE == "prod"
+      changes:
+        paths:
+          - 'cicd/prod/**'
+
+# Code linting
+pre-commit:
+  stage: lint
+  extends: .python
+  variables:
+    PRE_COMMIT_HOME: $CI_PROJECT_DIR/.cache/pre-commit
+  cache:
+    key: pre-commit
+    policy: pull-push
+    paths:
+      - ${PRE_COMMIT_HOME}
+  script:
+    - echo "Running tests for pipeline $CI_PIPELINE"
+    - pip install --upgrade pre-commit
+    - pre-commit run -v --all-files --show-diff-on-failure
+  rules:
+    - exists:
+      - .pre-commit-config.yaml
+  allow_failure: false
+
+# Run unit tests (using git checkout)
+test-unit:
+  stage: test
+  extends: .test
+  variables:
+    # Services.postgres variables
+    POSTGRES_USER: test
+    POSTGRES_PASSWORD: test
+    POSTGRES_DB: test
+    # App variables
+    DB_HOST: postgres-test
+    DB_PORT: 5432
+    DB_NAME: test
+    DB_USER: test
+    DB_PASS: test
+    TAG_VERSION: "$CI_REGISTRY_IMAGE:$CI_IMAGE_VERSION"
+  script:
+    - echo "Image $TAG_VERSION ($IMAGE_VERSION)"
+    - cd www
+    - python manage.py test
+  interruptible: true
+  allow_failure: false
+
+# Build app (on top of base)
+build-cicd:
+  stage: build-cicd
+  extends: .docker
+  variables:
+    TAG_VERSION: "$CI_REGISTRY_IMAGE/$CI_PIPELINE:$CI_COMMIT_SHA"
+    TAG_LATEST: "$CI_REGISTRY_IMAGE/$CI_PIPELINE:latest"
+  script:
+    - echo "Building $TAG_VERSION"
+    - >
+      sum=$(sha1sum cicd/$CI_PIPELINE/* | sha1sum) &&
+      hash=${sum:0:40} &&
+      echo "Settings: $hash"
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - >
+      docker build
+      --build-arg CI_COMMIT_SHA=$CI_COMMIT_SHA
+      --build-arg CI_COMMIT_TAG=$CI_COMMIT_TAG
+      --build-arg CI_COMMIT_BRANCH=$CI_COMMIT_BRANCH
+      --build-arg CI_IMAGE_VERSION=$CI_IMAGE_VERSION
+      --label "cicd.pipeline=$CI_PIPELINE"
+      --label "cicd.settings=$hash"
+      --label "cicd.ci_commit_sha=$CI_COMMIT_SHA"
+      --file Dockerfile.cicd
+      -t $TAG_VERSION
+      -t $TAG_LATEST .
+    - docker push $TAG_VERSION
+    - docker push $TAG_LATEST
+  rules:
+    - exists:
+      - Dockerfile.cicd
+  interruptible: true
+
+# Push the image to the end host
+deploy:
+  stage: deploy-cicd
+  extends: .deploy
+  variables:
+    GIT_STRATEGY: none
+    TAG_LATEST: "$CI_REGISTRY_IMAGE/$CI_PIPELINE:latest"
+  script:
+    - >
+      ssh
+      -i $ID_RSA
+      -o StrictHostKeyChecking=no
+      $SERVER_USER@$SERVER_IP "~/bin/docker_pull.sh $TAG_LATEST -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY && ~/bin/docker_start.sh $TAG_LATEST" &&
+      echo "OK"
+  rules:
+    - if: $CI_PIPELINE == "staging"
+      exists:
+      - Dockerfile.cicd
+  allow_failure: true
+
+# Something went wrong: launch a previous image
+# You have to manually trigger it and set CI_COMMIT_SHA
+# You may also restore the database to a previous state by
+# setting PGDUMP_FILE (- to list or NAME.pgdump)
+rollback:
+  stage: deploy-cicd
+  extends: .deploy
+  variables:
+    GIT_STRATEGY: none
+    TAG_VERSION: "$CI_REGISTRY_IMAGE/$CI_PIPELINE:$CI_COMMIT_SHA"
+    PGDUMP_FILE: "-"
+  script:
+    - >
+      ssh
+      -i $ID_RSA
+      -o StrictHostKeyChecking=no
+      $SERVER_USER@$SERVER_IP "
+        [ -n \"$PGDUMP_FILE\" ] && ~/bin/dbdump_restore.sh \"$PGDUMP_FILE\"; \
+        ~/bin/docker_start.sh $TAG_VERSION; \
+      " && echo "OK"
+  rules:
+    - if: $CI_PIPELINE == "staging"
+  when: manual

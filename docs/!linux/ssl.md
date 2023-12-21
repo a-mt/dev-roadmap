@@ -185,15 +185,17 @@ Certbot est un utilitaire de Let's Encrypt, qui permet d’obtenir un certificat
 
 * Installer Certbot (en tant que root)
 
-  ```  bash
-  apt install certbot
-  certbot --version
-  certbot plugins
+  ``` bash
+  $ apt install certbot
+  $ certbot --version
+  $ certbot plugins
+  * standalone
+  * webroot
   ```
 
 ### Version nginx
 
-* Créer un répertoire pour que nginx serve les challenges crées par certbot.
+* Créer un répertoire .well-known pour tous les projets front — qui nécessitent un certificat SSL.
 
   ``` bash
   mkdir front/certbot
@@ -202,7 +204,7 @@ Certbot est un utilitaire de Let's Encrypt, qui permet d’obtenir un certificat
   echo hello > ~/front/certbot/.well-known/acme-challenge/healthcheck
   ```
 
-  nginx doit être configuré de manière à ce que le contenu de /.well-known/acme-challenge/healthcheck soit accessible via HTTP pour tous les domaines
+  Si le serveur front (ex nginx) est configuré correctement, le fichier crée doit être accessible via HTTP sur /.well-known/acme-challenge/healthcheck
 
 * Créer un certificat SSL avec certbot.
 

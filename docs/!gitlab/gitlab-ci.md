@@ -526,7 +526,7 @@ Pour utiliser sa propre machine locale comme runner:
 
 # Lancer une pipeline
 
-* Aller sur Gitlab et s'assurer qu'il y a au moin sun runner disponible (icône verte).  
+* Aller sur Gitlab et s'assurer qu'il y a au moins un runner disponible (icône verte).  
   S'il n'y en a pas: configurer un runner avant de revenir à cette étape
 
   ![](https://i.imgur.com/zEUK2Xx.png)
@@ -534,4 +534,99 @@ Pour utiliser sa propre machine locale comme runner:
 * Pusher sur Gitlab déclenchera la pipeline. Notons que si un `workflow` est spécifié dans le fichier .gitlab-ci.yml, alors la pipeline ne sera déclenchée que si le commit / branche correspond aux règles indiquées
 
 * Vérifier que la pipeline s'exécute correctement du début à la fin:  
-  CI/CD > Pipelines
+  CI/CD > Pipelines.  
+  Cliquer sur l’id de la pipeline (ex: #12839 dans l'exemple ci-dessous) pour voir la liste des différents jobs et leurs status respectifs. Cliquer sur un job pour consulter ses logs.
+
+  ![](https://i.imgur.com/FViSK4J.png)
+
+---
+
+# Tester SSH + registry
+
+## Configurer les variables CI/CD
+
+- Settings > CICD > Variables
+    - Ajouter un fichier contenant <ins>la clé privée RSA</ins>: Add variable
+        - Key: `ID_RSA`
+        - Value: coller la clé privée RSA + un retour à la ligne à la fin
+        - Type: File
+        - Environment Scope: All (default)
+        - Protect variable: Décoché
+        - Mask variable: Décoché (on verra le path du fichier mais pas son contenu)
+
+    - Ajouter une variable contenant <ins>l’adresse IP du serveur</ins>: Add variable
+        - Key: `SERVER_IP`
+        - Value: coller l’adresse IP du serveur
+        - Type: Variable
+        - Environment scope: All (default)
+        - Protect variable: Décoché
+        - Mask variable: ☑ Coché
+
+    - Ajouter une variable contenant <ins>le nom d’utilisateur</ins>: Add variable
+        - Key: `SERVER_USER`
+        - Value: deployer
+        - Type: Variable
+        - Environment scope: All (default)
+        - Protect variable: Décoché
+        - Mask variable: ☑ Coché
+
+    - Pour le front: ajouter un fichier contenant le fichier robots.txt
+        - Key: `ROBOTS`
+        - Value:
+
+            ```bash
+            # http://www.robotstxt.org
+            User-agent: *
+            Disallow: /
+            ```
+
+        - Type: File
+        - Environment scope: All (default)
+        - Protect variable: Décoché
+        - Mask variable: Décoché
+
+### Créer le fichier .gitlab-ci.yml
+
+``` bash
+stages:
+  - test-ssh
+  - test-registry
+
+ssh:
+  stage: test-ssh
+  image:
+    name: alpine:latest
+    pull_policy: if-not-present
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - chmod og= $ID_RSA
+    - apk update && apk add openssh-client
+    - >
+      ssh
+      -i $ID_RSA
+      -o StrictHostKeyChecking=no
+      $SERVER_USER@$SERVER_IP '
+      pwd &&
+      whoami &&
+      docker --version &&
+      echo "OK"
+      '
+
+docker:
+  stage: test-registry
+  image:
+    name: docker:latest
+    pull_policy: if-not-present
+  tags:
+    - docker  # task picked up by runners allowed to run Docker in Docker (privileged)
+  services:
+    - docker:dind
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - >
+      docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY &&
+      echo "OK" &&
+      docker logout
+```

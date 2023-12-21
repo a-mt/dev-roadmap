@@ -258,5 +258,6 @@ roadmap: true
   * I
     * [VM](!linux/vm-overview.md){: .theory}
     * [Créer une VM](!linux/vm-create.md){: .cli}
+    * [Installer un serveur](!linux/server-install.md){: .cli}
   * II
     * [CSP](!linux/csp.md){: .theory}

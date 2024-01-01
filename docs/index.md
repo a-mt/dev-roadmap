@@ -284,9 +284,10 @@ roadmap: true
   * Big Data
     * [Hadoop](hadoop.md){: .theory}
 
-  * Voisins
+  * Related fields
     - [Design][design]{: .theory}
     - [Électricité][electricite]{: .theory}
+    - [Chimie][chemistry]{: .theory}
     - [Maths][maths]{: .theory}
 
   * Médecine
@@ -453,6 +454,7 @@ roadmap: true
 [bdd]: bdd.md
 [bitcoin]: bitcoin.md
 [bitwise]: bitwise-operations.md
+[chemistry]: chemistry.md
 [composer]: composer.md
 [crypto]: crypto.md
 [crypto-ec]: crypto-ec.md

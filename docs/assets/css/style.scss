@@ -281,6 +281,9 @@ body {
     background: #eee;
     padding: 1.6em;
 }
+.markdown-body pre img {
+    background: none;
+}
 .markdown-body code {
     background: #eee;
     font-size: 0.9375rem;

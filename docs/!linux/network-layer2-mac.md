@@ -252,3 +252,7 @@ category: Linux, Network
   - plus de sécurité. En séparant les systèmes contenant des données sensibles du reste du réseau, on diminue les risques que des personnes accèdent à des informations qu'elles ne sont pas autorisées à voir
 
   - le regroupement logique. Si une station change de rôle, il n'est pas nécessaire de la déplacer physiquement, on peut simplement la changer de VLAN
+
+## Format d'une trame Wifi ou Ethernet
+
+![](https://i.imgur.com/uY3rDaj.jpg)

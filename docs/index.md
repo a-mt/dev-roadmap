@@ -126,8 +126,13 @@ roadmap: true
     * [MySQL][mysql]{: .lang}
     * Postgres
   * NoSQL
-    * [MongoDB][mongodb]{: .lang}
+    * [Mongo][mongodb]{: .lang}
     * [ElasticSearch][elasticsearch]{: .lang}
+  * Graph
+    * Neo4j
+  * Big Data
+    * Cassandra
+    * Scylla
   * Cache
     * Redis
     * Memcache
@@ -167,6 +172,7 @@ roadmap: true
 * ##### Autres langages
   * R [1 &#x21F2;](https://www.datacamp.com/)
   * Perl
+  * Rust
 
 ## Operating
 
@@ -306,15 +312,28 @@ roadmap: true
     * [Obtenir un Nom de domaine][host-domain]
     * [Obtenir une clé SSH][ssh]
 
-  * Protocoles
-    * DNS [1 &#x21F2;](https://medium.freecodecamp.org/why-cant-a-domain-s-root-be-a-cname-8cbab38e5f5c)
-    * HSTS [1 &#x21F2;](https://freshman.tech/securing-your-website/#http-strict-transport-security-hsts)
-    * CORS [1 &#x21F2;](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b)
-
   - Windows  
     * Script: Batch, Powershell
     * Firewall: Windows Defender
     * Planification tâches Windows: [Windows Task Scheduler][windows-task-scheduler]
+
+* ##### Protocoles
+  * 3/ IP
+  * 4/ TCP
+    * HTTP, HTTPS
+    * HSTS [1 &#x21F2;](https://freshman.tech/securing-your-website/#http-strict-transport-security-hsts)
+    * HTTP/3 (QUIC)
+    * Web Socket
+    * SMTP
+    * FTP
+  * 4/ UDP
+    * WebRTC [1 &#x21F2;](https://www.cometchat.com/tutorials/what-is-webrtc)
+    * DNS [1 &#x21F2;](https://medium.freecodecamp.org/why-cant-a-domain-s-root-be-a-cname-8cbab38e5f5c)
+    * RTP
+  * 6/ [SSL][ssl]{: .theory}
+  * 3/ [IPSec][ipsec]{: .theory}
+
+  * CORS [1 &#x21F2;](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b)
 
 * ##### Webmarketing
   * Psychologie [1 &#x21F2;](http://jamesarcher.me/user-motivators) [2 &#x21F2;](https://www.nngroup.com/articles/zigzag-page-layout/) [3 &#x21F2;](https://www.nngroup.com/articles/multi-tab-page-parking/)
@@ -328,9 +347,6 @@ roadmap: true
     * [Fondamentaux][securite]{: .theory}
     * [Cryptographie][crypto]{: .theory}
     * [Courbes elliptiques][crypto-ec]{: .theory}
-  * Protocoles
-    * [SSL][ssl]{: .theory}
-    * [IPSec][ipsec]{: .theory}
   * Web
     * Vulnérabilités [1 &#x21F2;](https://medium.freecodecamp.org/security-vulnerabilities-explained-with-rivers-and-parties-9c08798289b9) [2 &#x21F2;](https://portswigger.net/web-security/all-topics)
 

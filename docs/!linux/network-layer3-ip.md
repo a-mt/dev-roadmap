@@ -471,3 +471,7 @@ category: Linux, Network
 
 * IPv6 n'a pas besoin d'adressage privée, et n'a donc pas besoin de NAT,  
   ce qui peut rendre IPv6 un peu plus rapide qu'IPv4.
+
+## Format d'un paquet IP
+
+![](https://i.imgur.com/2feJVid.jpg)

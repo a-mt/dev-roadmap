@@ -10,6 +10,8 @@ IPSec résout
 - la plupart des attaques DoS
 - le problème de la confidentialité des données
 
+![](https://i.imgur.com/DTq5Yf4.png)
+
 ## Mode transport vs mode tunnel
 
 IPsec peut fonctionner en mode transport ou en mode tunnel réseau.

@@ -133,3 +133,7 @@ category: Linux, Network
     | Compatible NAT | Oui | Oui
     | ECC | Oui | Oui
     | Taille du header | 20-60 octets | 8 octets
+
+## Format d'un segment TCP ou UDP
+
+![](https://i.imgur.com/4R0p30x.jpg)

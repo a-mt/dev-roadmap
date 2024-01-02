@@ -1,10 +1,10 @@
 ---
 title: Résoudre un Rubik's cube 4x4
-summary: false
+summary: true
 ---
 
 <!-- STEP 1 -->
-<h2>1. Résoudre le centre blanc</h2>
+<h2 id="resoudre-centre-blanc">1. Résoudre le centre blanc</h2>
 
 <ul>
     <li>
@@ -48,7 +48,7 @@ summary: false
 </ul>
 
 <!-- STEP 2 -->
-<h2>2. Résoudre le centre jaune</h2>
+<h2 id="resource-centre-jaune">2. Résoudre le centre jaune</h2>
 
 <ul>
     <li>
@@ -83,11 +83,11 @@ summary: false
 </ul>
 
 <!-- STEP 3 -->
-<h2>3. Résoudre 3 bords blancs</h2>
+<h2 id="resoudre-3bords-blanc">3. Résoudre 3 bords blancs</h2>
 
 <p>Un bord est une pièce avec 2 couleurs — ce n'est ni une pièce centrale ni un coin</p>
 
-<h3>Premier bord</h3>
+<h3 id="resoudre-bord-blanc1">Premier bord</h3>
 <ul>
     <li>
         Trouver deux bords blancs, qui ont les même couleurs, comme blanc/bleu avec blanc/bleu.
@@ -112,7 +112,7 @@ summary: false
     </li>
 </ul>
 
-<h3>Deuxième bord</h3>
+<h3 id="resoudre-bord-blanc2">Deuxième bord</h3>
 <ul>
     <li>
         Trouver une autre paire
@@ -136,7 +136,7 @@ summary: false
     </li>
 </ul>
 
-<h3>Troisème bord</h3>
+<h3 id="resoudre-bord-blanc3">Troisème bord</h3>
 <ul>
     <li>
         Même principe pour le troisième bord blanc, toujours en respectant l'ordre BORG.<br>
@@ -156,7 +156,7 @@ summary: false
 </ul>
 
 <!-- STEP 4 -->
-<h2>4. Résoudre les centres</h2>
+<h2 id="resoudre-centres">4. Résoudre les centres</h2>
 
 <ul>
     <li>
@@ -194,11 +194,11 @@ summary: false
 </ul>
 
 <!-- STEP 5 -->
-<h2>5. Créer les bords</h2>
+<h2 id="creer-bords">5. Créer les bords</h2>
 
 <p>Appairer tous les bords, sans chercher à les placer au bon endroit.</p>
 
-<h3>Placer les bords au milieu</h3>
+<h3 id="creer-bord-placer">Placer les bords au milieu</h3>
 
 <ul>
     <li>
@@ -225,7 +225,7 @@ summary: false
     </li>
 </ul>
 
-<h3>Appairer deux pièces du milieu</h3>
+<h3 id="creer-bord-appairer">Appairer deux pièces du milieu</h3>
 
 <ul>
     <li>
@@ -288,7 +288,7 @@ summary: false
     </li>
 </ul>
 
-<h3>Appairer les deux derniers bords non résolus</h3>
+<h3 id="creer-bord-final">Appairer les deux derniers bords non résolus</h3>
 
 <ul>
     <li><u>Cas n°1: même tranche</u>: comme d'habitude</li>
@@ -302,17 +302,17 @@ summary: false
 </ul>
 
 <!-- STEP 6 -->
-<h2>6. Résoudre les coins blancs</h2>
+<h2 id="resoudre-coin-blanc">6. Résoudre les coins blancs</h2>
 
 <p>Même principe qu'un Rubik's cube 3x3</p>
 
 <!-- STEP 7 -->
-<h2>7. Résoudre les couches intermédiares</h2>
+<h2 id="resoudre-couche-interm">7. Résoudre les couches intermédiares</h2>
 
 <p>Même principe qu'un Rubik's cube 3x3</p>
 
 <!-- STEP 8 -->
-<h2>8. Créer la croix jaune</h2>
+<h2 id="creer-croix-jaune">8. Créer la croix jaune</h2>
 
 <ul>
     <li>
@@ -410,7 +410,7 @@ summary: false
 </ul>
 
 <!-- STEP 9 -->
-<h2>9. Placer les coins jaunes</h2>
+<h2 id="creer-coin-jaune">9. Placer les coins jaunes</h2>
 
 <ul>
     <li>
@@ -445,17 +445,51 @@ summary: false
             </li>
             <li>
                 Appliquer l'algorithme PLL (voir étape 10) — il inverse le bord à l'avant avec le bord à l'arrière.
+
+                <div class="animecubejs" data-config="facelets=
+                0000000000000000
+                3111111111115111
+                2222222222222222
+                4444444444444444
+                5555555555551555
+                3331333333333333
+                &initmove=Z2
+                &move=2R2 U2 2R2 u2 2R2 u2">
+                </div>
             </li>
             <li>
-                Normalement, il est maintenant possible de placer les coins normalement.  
-                S'il reste deux coins non résolus, répéter l'algorithme
+                Remettre les bords au bon endroit
+
+                <div class="animecubejs" data-config="facelets=
+                0000000000000000
+                3111111111115111
+                2222222222222222
+                4444444444444444
+                5555555555551555
+                3331333333333333
+                &initmove=Z2 2R2 U2 2R2 u2 2R2 u2
+                &move=R U2 R' U' R U' R'">
+                </div>
+                <div class="animecubejs" data-config="facelets=
+                0000000000000000
+                3111111111115111
+                2222222222222222
+                4444444444444444
+                5555555555551555
+                3331333333333333
+                &initmove=Z2 2R2 U2 2R2 u2 2R2 u2 R U2 R' U' R U' R' Y
+                &move=R U2 R' U' R U' R' U'">
+                </div>
+            </li>
+            <li>
+                Remettre les coins au bon endroit, <a href="rubiks3x3.html#resoudre-coin-jaune">même principe qu'un 3x3</a>
             </li>
         </ul>
     </li>
 </ul>
 
 <!-- STEP 10 -->
-<h2>10. Résoudre la croix et les coins jaunes</h2>
+<h2 id="resoudre-coin-jaune">10. Résoudre la croix et les coins jaunes</h2>
 
 <p>À cette étape, il est possible d'avoir à résoudre des problèmes de parité: <a href="https://jperm.net/algs/4x4/pll">4x4 PLL</a></p>
 

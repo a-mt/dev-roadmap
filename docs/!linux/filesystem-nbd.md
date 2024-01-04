@@ -11,10 +11,8 @@ category: Linux
 
   Du point de vue applicatif, ils ont l'apparence et se comportent comme n'importe quel autre périphérique bloc — sauf que derrière, à chaque fois qu'on lit ou écrit sur ce périphérique, les requêtes sont envoyés aux périphériques d'un autre serveur.
 
-* Pour utiliser un NBD, deux emplacements doivent être configurés:
-
+* Pour utiliser un NBD, deux éléments doivent être configurés:
     - le serveur NBD, qui possède le périphérique bloc qui sera partagé au réseau
-
     - le client NBD, où sera attaché le périphérique bloc
 
 ## Serveur NBD

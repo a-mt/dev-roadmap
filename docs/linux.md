@@ -192,6 +192,7 @@ roadmap: true
     - [LVM][filesystem-lvm]{: .cli}
     - [RAID][filesystem-raid]{: .cli}
     - [NFS](!linux/filesystem-nfs.md){: .cli}
+    - [NBD](!linux/filesystem-nbd.md){: .cli}
     - [Encryption](!linux/filesystem-crypt.md){: .cli}
 
 * Gestion du système

@@ -36,6 +36,8 @@ category: Linux
 
     ![](https://i.imgur.com/1YJJmBxm.png)
 
+  Si on a un serveur avec 64 coeurs de CPU et 1024G de RAM, au lieu de louer un gros serveur physique à un seul client, on peut louer des petits serveurs virtuels à 32 client — avec 2 CPU virtuels et 32G de RAM. C'est ce que font les sociétés cloud telles que Digital Ocean, Amazon Web Service ou Google Cloud.
+
 * Les VMs ont de nombreuses utilisations, mais les principales sont
 
   - une utilisation plus efficace du matériel
@@ -208,24 +210,7 @@ Contre
      C'est le plus simple et le plus facile à exporter vers d'autres émulateurs non QEMU.  
      Les secteurs vides ne prennent pas de place.
 
-  * **qcow2** (*Copy on Write*)  
+  * **qcow2** (COW est l'acronyme de *Copy on Write*)  
     Voir `qemu-img`
 
 * Les autres formats disponibles sont principalement là pour des raisons historiques et pour des utilitaires de conversion.  
-  Pour convertir une image d'un format à un autre:
-
-    ``` bash
-    # Convert a VMWare .vmdk image file to a qcow2 file for KVM
-    $ qemu-img convert -O qcow2 myvm.vmdk myvm.qcow2
-    ```
-
-* Pour la complète liste des formats supportés:
-
-    ``` bash
-    $ qemu-img --help | grep formats:
-    Supported formats: blkdebug blklogwrites blkreplay blkverify copy-on-read file ftp ftps gluster
-    ↪ host_cdrom host_device http https iscsi iser luks nbd null-aio null-co nvme qcow2 quorum raw rbd ssh
-    ↪ throttle vhdx vmdk vpc
-    ```
-
-    Notons en particulier, `vdi` utilisé par Oracle VirtualBox et `vmdk` utilisé par VMware.

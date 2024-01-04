@@ -257,7 +257,8 @@ roadmap: true
 * Gestion des serveurs
   * I
     * [VM](!linux/vm-overview.md){: .theory}
-    * [Créer une VM](!linux/vm-create.md){: .cli}
+    * [Créer une VM avec virt-manager](!linux/vm-create.md){: .cli}
+    * [Virsh](!linux/vm-virsh.md){: .cli}
     * [Installer un serveur](!linux/server-install.md){: .cli}
   * II
     * [CSP](!linux/csp.md){: .theory}

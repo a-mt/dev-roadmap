@@ -45,38 +45,148 @@ relativement indépendantes de l'hyperviseur:
 
 ## Avec virt-manager
 
-1. S'assurer que libvirt tourne et démarrer virt-manager
+1. Installer virt-manager  
+   Normalement, virt-manager est destiné aux machines Linux avec interface graphique — puisque virt-manager est un client graphique. Mais on peut aussi l'installer sur une machine sans interface graphique, non pas pour utiliser l'application elle-même, mais installer ses dépendences qui incluent un certain nombre d'utilitaires.
+
+    ```
+    sudo apt install virt-manager
+    ```
+
+2. S'assurer que libvirt tourne et démarrer virt-manager
 
     ``` bash
     $ sudo systemctl start libvirtd
     $ sudo virt-manager
     ```
 
-2. Créer une nouvelle VM à partir d'un disque d'installation (image ISO)
+4. Créer une nouvelle VM à partir d'un disque d'installation (image ISO)
 
     * File > Create New Machine  
     * Cocher Local install media (ISO image or CDROM)  
     * Naviguer dans le système de fichiers et choisir l'image désirée  
        
 
-3. Définir la quantite de mémoire et le nombre de CPU à utiliser.  
+5. Définir la quantite de mémoire et le nombre de CPU à utiliser.  
   Pour une petite image (TinyCoreLinux), 256 Mo est plus que suffisant
 
-4. Configurer l'emplacement et la taille de la VM crée.  
+6. Configurer l'emplacement et la taille de la VM crée.  
    L'interface graphique ne vous laissera pas choisir moins de 0.1 Go (soit environ 100 Mo)
 
     Si vous ne cliquez pas sur Select or Create custom storage,  
     l'image sera placée par défaut dans <ins>/var/lib/libvirt/images</ins>
 
-5. Démarrer l'installation de la VM, à partir du disque d'installation TinyCoreLinux.  
+7. Démarrer l'installation de la VM, à partir du disque d'installation TinyCoreLinux.  
    Une fois l'installation terminée, aller dans le menu File et arrêter la VM
 
-## Avec QEMU
+![](https://i.imgur.com/ggyMVDf.png)
 
+### QEMU
+
+* Télécharger une image d'installation  
+   
+   ```
+   wget https://xxx.img
+   ```
+
+    ![](https://i.imgur.com/JTXeuwl.png)
+
+* Afficher les informations d'une image:
+
+  ```
+  qemu-img info ubuntu-*.img
+  ```
+
+  ![](https://i.imgur.com/NW4cvqn.png)
+
+* Augmenter la taille du disque virtuel à 10G:
+
+  ```
+  qemu-img resize ubuntu-*.img 10G
+  ```
+
+  ![](https://i.imgur.com/tSS7fFg.png)
+
+* Convertir une image d'un format à un autre:
+
+    ``` bash
+    # Convert a VMWare .vmdk image file to a qcow2 file for KVM
+    $ qemu-img convert -O qcow2 myvm.vmdk myvm.qcow2
+    ```
+
+* Lister des formats supportés:
+
+    ``` bash
+    $ qemu-img --help | grep formats:
+    Supported formats: blkdebug blklogwrites blkreplay blkverify copy-on-read file ftp ftps gluster
+    ↪ host_cdrom host_device http https iscsi iser luks nbd null-aio null-co nvme qcow2 quorum raw rbd ssh
+    ↪ throttle vhdx vmdk vpc
+    ```
+
+    Notons en particulier, `vdi` utilisé par Oracle VirtualBox et `vmdk` utilisé par VMware.
+
+<!--
 ``` bash
 $ sudo qemu-img create -f qcow2 /var/lib/libvirtd/myimg.qcow2 24M
 $ sudo qemu-system-x86_64 -hda /var/lib/libvirtd/myimg.qcow2 -cdrom CorePlus-current.iso -usbdevice tablet
 ```
+-->
+
+## Avec virt-install
+
+* Les outils de virtualisation ont besoin d'accéder à un *storage pool*.  
+  Dans ce pool sont stockés les images disque, snapshots et autres données.  
+  Par défaut, le chemin utilisé est `/var/lib/libvirt`
+
+* Placer l'image dans le dossier `images`
+
+  ``` bash
+  $ ls /var/lib/libvirt/imagesboot dnsmasq images qemu sanlock
+  $ sudo cp unbuntu-*.img /var/lib/libvirt/images/
+  ````
+
+  ![](https://i.imgur.com/7QLkieM.png)
+
+* Lister les images disque:
+
+  ``` bash
+  $ virt-install --osinfo list 
+  ...
+  ubuntu-lt-latest, ubuntu-stable-latest, ubuntu22.04, ubuntujammy
+  ```
+
+* Créer une VM:  
+  Le mot de passe de root, généré aléatoirement, sera affiché pendant 10 secondes. Il faut donc être prêt à sélectionner et copier le mot de passe sur l'écran avant que la VM ne commence à démarrer — autrement, il faudra scroller.
+
+  ``` bash
+  $ sudo virt-install
+      --osinfo ubuntu22.04
+      --name ubuntu1
+      --memory 1024   # 1G
+      --vcpus 1
+      --import        # skip the install step
+      --disk /var/lib/libvirt/images/ubuntu-22.04*.img --graphics none # no GUI
+      --cloud-init root-password-generate=on  # generate a random password for the root user
+  ```
+
+  ![](https://i.imgur.com/QhEN2lb.png)
+
+  Si virsh-install ne connaît pas l'OS de l'image (parce qu'il est trop récent), on peut soit indiquer à virsh-install de détecter automatiquement l'OS qui se trouve dans l'image:
+
+  ```
+  --osinfo detect=on
+  ```
+
+  Ou en utiliser un générique
+
+  ```
+  --osinfo linux2022
+  ```
+
+* Une fois la VM démarrée, entrer le mot de passe
+
+  ![](https://i.imgur.com/CIfkuwM.png)
+
+* Pour retourner à la machine hôte, entrer `logout` puis Ctrl+]
 
 ---
 

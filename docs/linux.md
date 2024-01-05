@@ -240,6 +240,7 @@ roadmap: true
     - [Couche 3: routing][network-layer3-ip]{: .theory}
     - [Couche 4: connexion](!linux/network-layer4-tcp.md){: .theory}
     - [DNS](!linux/dns.md){: .theory}
+    - [Bridge & bond](!linux/network-bridge.md){: .theory}
 
   * Configurer
     - [Afficher les configurations réseau](!linux/network-quick.md){: .cli}

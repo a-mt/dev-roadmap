@@ -16,8 +16,7 @@ relativement indépendantes de l'hyperviseur:
   Le fichier /proc/cpuinfo contient des flags qui permettent de vérifier la prise en charge de la virtualisation
 
   - `vmx` signifie que le système supporte la virtualisation et qu'il est équipé d'une puce Intel
-  - `svm` signifie que le système supporte la virtualisation et qu'il est équipé d'une puce AMD  
-     
+  - `svm` signifie que le système supporte la virtualisation et qu'il est équipé d'une puce AMD
 
   ```
   grep ^flags /proc/cpuinfo | grep -e vmx -e sv
@@ -63,8 +62,7 @@ relativement indépendantes de l'hyperviseur:
 
     * File > Create New Machine  
     * Cocher Local install media (ISO image or CDROM)  
-    * Naviguer dans le système de fichiers et choisir l'image désirée  
-       
+    * Naviguer dans le système de fichiers et choisir l'image désirée
 
 5. Définir la quantite de mémoire et le nombre de CPU à utiliser.  
   Pour une petite image (TinyCoreLinux), 256 Mo est plus que suffisant
@@ -140,7 +138,8 @@ $ sudo qemu-system-x86_64 -hda /var/lib/libvirtd/myimg.qcow2 -cdrom CorePlus-cur
 * Placer l'image dans le dossier `images`
 
   ``` bash
-  $ ls /var/lib/libvirt/imagesboot dnsmasq images qemu sanlock
+  $ ls /var/lib/libvirt/
+  imagesboot dnsmasq images qemu sanlock
   $ sudo cp unbuntu-*.img /var/lib/libvirt/images/
   ````
 
@@ -155,7 +154,7 @@ $ sudo qemu-system-x86_64 -hda /var/lib/libvirtd/myimg.qcow2 -cdrom CorePlus-cur
   ```
 
 * Créer une VM:  
-  Le mot de passe de root, généré aléatoirement, sera affiché pendant 10 secondes. Il faut donc être prêt à sélectionner et copier le mot de passe sur l'écran avant que la VM ne commence à démarrer — autrement, il faudra scroller.
+  Le mot de passe de root, généré aléatoirement, sera affiché pendant 10 secondes. Il faut donc être prêt à sélectionner et copier le mot de passe sur l'écran avant que la VM ne démarre — sinon, il faudra scroller.
 
   ``` bash
   $ sudo virt-install
@@ -170,23 +169,22 @@ $ sudo qemu-system-x86_64 -hda /var/lib/libvirtd/myimg.qcow2 -cdrom CorePlus-cur
 
   ![](https://i.imgur.com/QhEN2lb.png)
 
-  Si virsh-install ne connaît pas l'OS de l'image (parce qu'il est trop récent), on peut soit indiquer à virsh-install de détecter automatiquement l'OS qui se trouve dans l'image:
+  Si virsh-install ne connaît pas l'OS de l'image (typiquement parce qu'il est trop récent), on peut soit indiquer à virsh-install de détecter automatiquement l'OS qui se trouve dans l'image:
 
   ```
   --osinfo detect=on
   ```
 
-  Ou en utiliser un générique
+  Ou utiliser un OS générique
 
   ```
   --osinfo linux2022
   ```
 
-* Une fois la VM démarrée, entrer le mot de passe
+* Une fois la VM démarrée, entrer le mot de passe  
+  Et pour retourner à la machine hôte, entrer `logout` puis Ctrl+]
 
   ![](https://i.imgur.com/CIfkuwM.png)
-
-* Pour retourner à la machine hôte, entrer `logout` puis Ctrl+]
 
 ---
 

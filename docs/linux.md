@@ -67,6 +67,7 @@ roadmap: true
 [filesystem-raid]: !linux/filesystem-raid.md
 
 [system-specs]: !linux/system-specs.md
+[system-usage]: !linux/system-usage.md
 [system-packages]: !linux/packages.md
 [network-history]: !linux/network-history.md
 [network-intro]: !linux/network-intro.md
@@ -94,7 +95,7 @@ roadmap: true
 
 ## Terminal
 
-* The beginning
+* Débuter
   * [Linux][intro]{: .theory}
   * [Installer Linux][linux-install]{: .cli}
   * [Transférer des données][linux-transfert]{: .cli}
@@ -137,15 +138,14 @@ roadmap: true
     - [Lister des fichiers][file-list]{: .cli}
     - [Archiver][archive]{: .cli}
 
-* Quicklink: utilitaires
+* Utilitaires
   - [Awk][awk]{: .cli}
   - [Sed][sed]{: .cli}
   - [Grep][grep]{: .cli}
   - [Sort][sort]{: .cli}
   - [Find][find]{: .cli}
-
-* Éditeurs
-  - [Vim][vim]
+  - Éditeurs
+    - [Vim][vim]
 
 ## Gestion
 
@@ -182,7 +182,7 @@ roadmap: true
 
 * Système de fichiers
   * I
-    - [Théorie: système de fichiers][filesystem-overview]{: .theory}
+    - [Système de fichiers][filesystem-overview]{: .theory}
     - [Créer une partition][filesystem-create]{: .cli}
     - [Formatter une partition][filesystem-format]{: .cli}
     - [Monter une partition][filesystem-mount]{: .cli}
@@ -196,16 +196,18 @@ roadmap: true
     - [Encryption](!linux/filesystem-crypt.md){: .cli}
 
 * Gestion du système
-  * I
-    - [Ressources & utilisation][system-specs]{: .cli}
-    - [Paquets & gestionnaires de paquet][system-packages]{: .theory}
+  * Paquets
+    * [Paquets & gestionnaires de paquet][system-packages]{: .theory}
     * [Paquets Debian: dpkg, apt](packages-debian.md){: .cli}
     * [Paquets Red Hat: rpm, yum](packages-redhat.md){: .cli}
     * [Paquets OpenSuse: zypper](packages-opensuse.md){: .cli}
-  * II
-    - [Librairies partagées](!linux/libraries.md){: .cli}
+  * Kernel
     - [Drivers / Modules kernel](!linux/kernel-modules.md){: .cli}
     - [Paramètres kernel](!linux/kernel-parameters.md){: .cli}
+  * Resources
+    - [Hardware][system-specs]{: .cli}
+    - [Utilisation][system-usage]{: .cli}
+    - [Librairies partagées](!linux/libraries.md){: .cli}
 
 ## Services
 

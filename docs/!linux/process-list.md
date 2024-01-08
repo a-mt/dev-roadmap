@@ -7,7 +7,7 @@ category: Linux, Applications
 
 * Une fonction clé du kernel est de gérer les processus — c'est lui qui s'occupe d'allouer les accès au CPU, la RAM, le disque, les interfaces réseaux ou encore les périphériques.
 
-* Le kernel fournit un accès aux informations sur les processus actifs via le répertoire `/proc`.  
+* Le kernel fournit un accès aux informations sur les processus actifs des fichiers virtuels présents dans le répertoire `/proc`.  
   On y trouve notamment la liste des ID processus (PID):
 
   ```
@@ -30,7 +30,7 @@ category: Linux, Applications
 
 ## pstree
 
-* Lorsqu'un processus démarre un autre processus, on parle de processus *parent* et *enfant* respectivement.  
+* Lorsqu'un processus démarre un autre processus, on parle respectivement de processus *parent* et *enfant*.  
   Le processus d'initialisation (init ou systemd) est le premier processus lancé par le système d'exploitation: c'est le parent de tous les processus du système.
 
 * `pstree` permet de visualiser la hiérarchie des processus dans un arbre
@@ -232,7 +232,11 @@ category: Linux, Applications
 
 ## top
 
-* `top` permet de voir la liste des processus en temps réel, ainsi de d'effectuer des actions dessus.  
+* `top` permet de voir la liste des processus en temps réel, ainsi de d'effectuer des actions dessus.
+
+  Est indiqué la charge du CPU et de la mémoire disponible (en haut) suivit de la liste des processus.<br>
+  Par défaut, les processus sont triés par utilisation du CPU (le processus en haut de la liste est le plus gourmand) et sont constamment réordonné. Apppuyer sur la touche <kbd>m</kbd> permet de trier sur l'utilisation de la mémoire — appuyer sur la touche <kbd>m</kbd> quelques fois de plus pour revenir au tri par CPU.
+
   <kbd>Shift</kbd>+<Kbd>l</kbd> pour chercher un processus par son nom (taper le nom de la commande puis Entrée)  
   <kbd>h</kbd> pour afficher tous les raccourcis clavier supportés par top.
 
@@ -257,8 +261,6 @@ category: Linux, Applications
       1 root      20   0  225544   9260   6660 S   0,0  0,1   0:01.79 systemd
       2 root      20   0       0      0      0 S   0,0  0,0   0:00.05 kthreadd
   ```
-
-  Par défaut, top réordonne constamment les processus pour afficher les plus gourmands en CPU en haut de la liste
 
 * On peut scroller parmi la liste de résultats à l'aide des flèches.
 
@@ -296,20 +298,3 @@ category: Linux, Applications
     $ pgrep -ag 2250
     2250 sleep 42000
     ```
-
-## lsof
-
-* lsof (*list open file*) permet de lister lister les processus utilisant un fichier
-
-  ``` bash
-  $ sudo lsof /var/log/messages
-  ```
-
-  ![](https://i.imgur.com/DwxIoSr.png)
-
-* Ou inversemment, de lister les fichiers ou répertoires utilisés par un processus
-
-  ```  bash
-  # Fichiers utilisés par le processus PID 8401
-  $ lsof -p 8401
-  ```

@@ -10,8 +10,7 @@ category: Linux
     La différence entre un ordinateur physique et un ordinateur virtuel est à peu près la même qu'entre un livre physique et un livre virtuel:
 
     - le premier est imprimé sur un support physique,
-    - le second, plus généralement appelé ebook, peut être lu avec un lecteur ebook mais il n'a pas de copie physique qu'on peut tenir et mettre sur une étagère.  
-        
+    - le second, plus généralement appelé ebook, peut être lu avec un lecteur ebook mais il n'a pas de copie physique qu'on peut tenir et mettre sur une étagère.
 
 * Un ordinateur virtuel est plus généralement appelé *machine virtuelle* (ou *virtual machine* en anglais, abrégé VM).  
   Lorsqu'un ordinateur virtuel est démarré et fonctionne, on parle d'*instance* ou d'*image système*.  
@@ -183,8 +182,7 @@ category: Linux
   - QEMU dispose d'une interface graphique, qui permet de gérer les machines virtuelles plus facilement
   - Les OS invités n'ont pas besoin d'êtres réécrits pour fonctionner sous QEMU
   - QEMU peut sauvegarder, mettre en pause et restaurer une VM à tout moment
-  - Il est sous licence GPL  
-     
+  - Il est sous licence GPL
 
 * QEMU est beaucoup plus lent que la machine hôte, mais il peut être utilisé avec KVM pour atteindre des vitesses proches de celles de l'hôte natif. Ainsi QEMU et KVM sont généralement utilisés ensemble.  
     QEMU peut également être utilisé avec Xen, également natif de Linux, et fonctionner en mode de virtualisation matérielle si l'architecture le permet, comme c'est le cas pour x86 et certaines variantes ARM.  

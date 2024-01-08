@@ -110,8 +110,7 @@ d'une part dans de l'eau, d'autre part dans un mélange tampon.
   * C<sub>b</sub> est le nombre de moles de base initial (n<sub>b</sub>) moins x, divisé par le volume V.
   * C<sub>a</sub> est le nombre de moles d'acide initial (n<sub>a</sub>) plus x, divisé par le volume V.
   * Lorsque x est petit par rapport à n<sub>a</sub> et n<sub>b</sub>, l'effet de x sur la fraction sera faible,  
-    et donc le pH restera voisin de sa valeur initiale.  
-     
+    et donc le pH restera voisin de sa valeur initiale.
 
   ![](https://i.imgur.com/IubrYVY.png)
 

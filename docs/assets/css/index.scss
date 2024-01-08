@@ -1,6 +1,9 @@
 ---
 ---
 
+.markdown-body ul ul {
+    margin-bottom: 5px;
+}
 h2 + ul,
 h3 + ul {
     &, ul {

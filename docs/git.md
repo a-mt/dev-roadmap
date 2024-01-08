@@ -204,6 +204,12 @@ $ git diff --color-words file.txt
     Hello WorldEverybody
 ```
 
+``` shell
+# Vérifier si le fichier Dockerfile ou requirements.txt
+# Ont changés depuis le tag staging-1.0
+git diff staging-1.0..HEAD -- Dockerfile requirements.txt
+```
+
 Setter l'option `git config color.ui true` pour que diff affiche des couleurs
 
 ### show

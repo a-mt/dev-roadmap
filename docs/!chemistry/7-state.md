@@ -7,8 +7,7 @@ La matière peut exister sous 3 états: solide, liquide ou gazeux.
 
 * Un *solide* a un volume et une forme fixe
 * Un *liquide* a un volume fixe mais une forme variable: il adopte la forme du récipient dans lequel on le verse
-* Un *gaz* n'a ni volume ni forme fixe: il occupe tout le volume disponible  
-   
+* Un *gaz* n'a ni volume ni forme fixe: il occupe tout le volume disponible
 
 ![](https://i.imgur.com/jIAROg3.png)
 

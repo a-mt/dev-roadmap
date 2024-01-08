@@ -26,8 +26,7 @@ category: Chimie
 
   - Noter la formule AX<sub>m</sub>E<sub>n</sub> en remplaçant:
     * `m`: nombre d'atomes périphériques
-    * `n`: nombre de paires libres  
-       
+    * `n`: nombre de paires libres
 
   <ins>Par exemple</ins>:  
   H<sub>2</sub>O = AX<sub>2</sub>E<sub>2</sub> (2 atomes périphériques — 2 paires libres)  

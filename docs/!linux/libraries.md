@@ -5,7 +5,7 @@ category: Linux
 
 * Une bibliothèque (*library*) est un morceau de code pouvant être utilisé par plusieurs programmes: plutôt que d'avoir chaque développeur qui développe sa propre logique (par exemple encoder ou encrypter des données), les développeurs peuvent simplement utiliser le code d'un autre développeur et ajouter cette librairie comme dépendance.
 
-## ldd
+## ldd: liste des bibliothèques
 
 * La commande `ldd` (*list dynamic dependencies*) permet d'afficher les bibliothèques utilisées par un programme (avec son path absolu)
 
@@ -25,51 +25,9 @@ category: Linux
     libgpg-error.so.0 => /lib/x86_64-linux-gnu/libgpg-error.so.0 (0x00007f59fd1b3000)
   ```
 
-## strace
+### Convention de nommage
 
-* `strace` permet de lancer une commande et d'intercepter et afficher tous les appels système et signaux reçus pour son processus
-
-  ```
-  $ strace -e file uptime
-  execve("/usr/bin/uptime", ["uptime"], 0x7ffc8d3bfff0 /* 65 vars */) = 0
-  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
-  access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
-  openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
-  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
-  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libprocps.so.6", O_RDONLY|O_CLOEXEC) = 3
-  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
-  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
-  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
-  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libsystemd.so.0", O_RDONLY|O_CLOEXEC) = 3
-  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
-  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/librt.so.1", O_RDONLY|O_CLOEXEC) = 3
-  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
-  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/liblzma.so.5", O_RDONLY|O_CLOEXEC) = 3
-  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
-  openat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/liblz4.so.1", O_RDONLY|O_CLOEXEC) = 3
-  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
-  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libgcrypt.so.20", O_RDONLY|O_CLOEXEC) = 3
-  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
-  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3
-  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
-  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
-  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
-  openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libgpg-error.so.0", O_RDONLY|O_CLOEXEC) = 3
-  openat(AT_FDCWD, "/proc/sys/kernel/osrelease", O_RDONLY) = 3
-  openat(AT_FDCWD, "/sys/devices/system/cpu/online", O_RDONLY|O_CLOEXEC) = 3
-  openat(AT_FDCWD, "/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
-  openat(AT_FDCWD, "/etc/localtime", O_RDONLY|O_CLOEXEC) = 3
-  openat(AT_FDCWD, "/proc/uptime", O_RDONLY) = 3
-  access("/var/run/utmpx", F_OK)          = -1 ENOENT (No such file or directory)
-  openat(AT_FDCWD, "/var/run/utmp", O_RDONLY|O_CLOEXEC) = 4
-  openat(AT_FDCWD, "/proc/loadavg", O_RDONLY) = 4
-   14:55:20 up  9:39,  1 user,  load average: 1,64, 1,03, 1,05
-  +++ exited with 0 +++
-  ```
-
-## Convention de nommage
-
-* Le nom des libraries suit la convention suivante:
+* Le nom des libraories suit la convention suivante:
 
   1/ préfixe "lib"  
   2/ nom de la librairie  
@@ -85,7 +43,7 @@ category: Linux
   Les noms des fichiers varient souvent par rapport à cette convention.  
   On peut par exemple trouver des fichiers avec le numéro de version avant l'extension.
 
-## Emplacement
+## Path des librairies
 
 * Les commandes associées aux librairies suivent un ordre donné pour trouver l'emplacement des fichiers:
 
@@ -127,17 +85,17 @@ category: Linux
       ``` bash
       $ ls -d /lib*
       /lib /lib64
-      $
+
       $ ld -d /usr/lib*
       /usr/lib /usr/libexec
       ```
 
-## Cache
+## ldconfig, mise en cache des librairies
 
-* Le cache de bibliothèque est une liste des différents répertoires et librairies qui s'y trouvent.  
-  Il est utilisé pour charger rapidemment les programmes, et non pour les installer.
+* Le *dynamic loader* est un programme qui s'occupe de trouver toutes les bibliothèques nécessaires à une application et tente de les charger.
+  La liste des différents répertoires et librairies trouvées est ensuite mise en cache — cache qui permet de lancer plus rapidemment les programmes.
 
-  Pour le consulter:
+  Pour consulter le cache:
 
   ``` bash
   $ ldconfig -p | head
@@ -154,7 +112,8 @@ category: Linux
   ```
 
   Pour lister les répertoires et librairies dans le cache:  
-  (-N indique à ldconfig de ne pas reconstruire le cache, -v de rendre la sortie verbeuse)
+  -N indique à ldconfig de ne pas reconstruire le cache  
+  -v de rendre la sortie plus verbeuse
 
   ``` bash
   $ ldconfig -vN | head
@@ -170,9 +129,9 @@ category: Linux
     libsoxr.so.0 -> libsoxr.so.0.1.2
   ```
 
-* Le cache est automatiquement mis à jour par les gestionnaires de paquets lorsque vous installez des packages.  
-  Lors du développement d'une nouvelle application, il doit souvent être mise à jour — par exemple, après avoir modifié LD_LIBRARY_PATH.  
-  Pour le mettre à jour:
+* Le cache est automatiquement mis à jour par les gestionnaires de paquets lorsqu'on installe des packages.  
+  Ce n'est typiquement que pendant le développement d'une nouvelle application qu'on doit le mettre à jour — par exemple, après avoir modifié LD_LIBRARY_PATH.  
+  Pour mettre à jour le cache:
 
   ``` bash
   $ sudo ldconfig
@@ -180,8 +139,7 @@ category: Linux
 
 ## Dynamic loader
 
-* Pour résoudre des problèmes de résolution de librairie d'une application, on peut utiliser le *dynamic loader*.  
-  Ce programme s'occupe de trouver toutes les bibliothèques nécessaires à une application et tente de les charger.
+* Pour résoudre des problèmes de résolution de librairie d'une application:
 
   1. Obtenir le path absolu de l'application
 
@@ -190,7 +148,7 @@ category: Linux
       /usr/bin/man
       ```
 
-  2. Lister les bibliothèque de cette application
+  2. Lister les bibliothèques de cette application
 
       ``` bash
       $ ldd /usr/bin/man
@@ -218,7 +176,7 @@ category: Linux
       ldconfig
       ```
 
-  4. Vérifier que ce fichier existe et a les droit d'execution.  
+  4. Vérifier que ce fichier existe et a les droits d'execution.  
      Si le fichier n'existe pas, réinstaller l'application
 
       ``` bash

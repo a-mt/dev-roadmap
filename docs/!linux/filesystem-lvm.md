@@ -11,6 +11,30 @@ category: Linux
 * La gestion de volumes logiques (*logical volume management*, LVM) permet de créer des partitions en utilisant plusieurs disques durs.
   Par exemple, si on a 4 disques de 250Go, on peut créer un groupe logique de 1To sur lequel on pourra créer 1To de fichiers sur un même système de fichier. Cette méthode ne nécessite pas d'arrêter le système et est utilisée lorsqu'on a besoin d'héberger un grand nombre de données.
 
+* On peut utiliser `lvmdiskscan` pour lister tous les disques connus du système
+
+  ``` bash
+  $ sudo lvmdiskscan
+    /dev/loop0 [     <49.84 MiB] 
+    /dev/loop1 [      63.28 MiB] 
+    /dev/loop2 [    <111.95 MiB] 
+    /dev/vda2  [       2.00 GiB] 
+    /dev/loop3 [     <53.26 MiB] 
+    /dev/vda3  [    <126.00 GiB] LVM physical volume
+    /dev/loop4 [      63.45 MiB] 
+    /dev/vdb   [     100.00 MiB] 
+    /dev/vdc   [     100.00 MiB] 
+    /dev/vdd   [     100.00 MiB] 
+    /dev/vde   [     100.00 MiB] 
+    /dev/vdf   [     100.00 MiB] 
+    /dev/vdg   [     100.00 MiB] LVM physical volume # disk 1
+    /dev/vdh   [     100.00 MiB] LVM physical volume # disk 2
+    5 disks
+    6 partitions
+    2 LVM physical volume whole disks
+    1 LVM physical volume
+  ```
+
 ## Créer un volume logique
 
 1. Pour utiliser le disque entier: s'assurer que le disque est vide, sans table de partition. S'il y a des partitions, les supprimer  

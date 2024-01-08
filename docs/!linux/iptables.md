@@ -69,7 +69,7 @@ La plupart des protocoles nécessitent une communication dans les deux sens pour
 
   ```
   sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
-
+  ```
 
 * Accepter les requêtes ping:
 

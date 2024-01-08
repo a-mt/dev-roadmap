@@ -36,9 +36,10 @@ category: Linux, Network
 * Les ports sont classés en 3 types:
 
   - les <ins>ports connus</ins> (*well known ports*): de 0 à 1023  
-    Ces ports désignent des services et sont définis par l'IANA (*Internet Assigned Numbers Authority*). Ils nécessitent généralement les privilèges d'un super-utilisateur pour être liés.
+    Ces ports désignent des services spécifiques et sont définis par l'IANA (*Internet Assigned Numbers Authority*).  
+    Ils nécessitent généralement les privilèges d'un super-utilisateur pour être ouverts.
 
-    Si on effectue une requête http sans préciser le port à utiliser, le paquet sera envoyé pour le port 80, qui est le port standard pour http. Parmis les ports les plus connus on trouve:
+    Si on effectue une requête http sans préciser le port à utiliser, le paquet sera envoyé au destinataire port 80, qui est le port standard pour http. Parmis les ports les plus connus on trouve:
 
     | Port | Protocole | Service
     |---   |---        |---
@@ -57,7 +58,8 @@ category: Linux, Network
     | 995  | TCP       | POP3S (*POP3 over SSL*)
 
   - les <ins>ports enregistrés</ins> (*registered ports*): de 1024 à 49151  
-    Ces ports sont également attribués par l'IANA. Sur la plupart de systèmes, ils peuvent être liés par des privilèges autres de root.
+    Ces ports sont également attribués par l'IANA.  
+    Sur la plupart des systèmes, ils peuvent être ouverts par des utilisateurs autres de root.
 
     Quelques ports enregistrés notables:
 
@@ -68,9 +70,11 @@ category: Linux, Network
     | 1433 | TCP       | Serveur MySQL
 
   - les <ins>ports dynamiques ou éphèmères</ins> (*dynamic or ephemeral ports*): de 49152 à 65535  
-    Les ports éphèmères sont utilisés comme ports source pour le côté client d'une connexion TCP ou UDP. On peut également utiliser les ports épéhmères pour un service temporaire ou n'ayant pas les droits root.
+    Les ports éphèmères sont assignés dynamiquement lorsqu'un client envoie une requête:
+    le port éphémère est indiqué comme port source lors de l'envoi d'une trame, et va permet au serveur de répondre au client en l'envoyant à ce port.  
+    On peut également utiliser les ports éphèmères pour un service temporaire ou n'ayant pas les droits root.
 
-* Si vous avez un système directement connecté à Internet, les ports connus sont constamment attaqués,  
+* Quand on a un système directement connecté à Internet, les ports connus sont constamment attaqués,  
   il est donc bon de les bloquer et d'utiliser un port non standard si possible.
 
 ---
@@ -88,36 +92,37 @@ category: Linux, Network
 
   ![](https://i.imgur.com/JLXZ8gZ.png)
 
-## Fiabilité
+## TCP
 
-* Le protocole TCP assure la fiabilité de la connexion:  
-  il s'occupe de la gestion des pertes et détection de l'altération des données.
+* TCP (*Transmission Control Protocol*) est un protocole avec connexion (donc avec 3-way handshake).  
+  Il assure la fiabilité de la connexion: il gère les pertes, fournit un contrôle d'erreur, et détecte l'altération des données.
 
-* Pour résumer le processus:
+* Pour résumer simplement l'échange de données avec TCP:
 
-  - Avant d'être transmises, les informations sont divisées en plusieurs petites parties, appelés "paquets"
+  - [Protocole IP]  
+    Avant d'être transmises, les informations sont divisées en plusieurs petites parties, appelés "paquets"
 
-  - Chaque paquet est doté de "headers" contenant un numéro d'identification.
+  - [Protocole TCP]  
+    Chaque paquet est doté de "headers" contenant un numéro d'identification séquentiel.  
+    L'entête contient également l'adresse IP de destination et l'adresse IP source.
 
-  - L'entête contient également l'adresse IP de destination et l'adresse IP source.
+  - [Réseau coeur]  
+    Les routeurs déterminent le chemin le plus rapide pour acheminer les paquets vers l'adresse IP de destination. Il existe des millions d'itinéraires différents possibles pour que les paquets parviennent d'un ordinateur à l'autre et pour éviter la congestion du réseau, les paquets n'empruntent pas tous les même chemin. Le temps du trajet n'étant pas constant, il est possible que les paquets arrivent à leur destination dans le désordre.
 
-  - Les routeurs déterminent le chemin le plus rapide pour acheminer les paquets vers l'adresse IP de destination. Il existe des millions d'itinéraires différents possibles pour que les paquets parviennent d'un ordinateur à l'autre et pour éviter la congestion du réseau, les paquets n'empruntent pas tous les même chemin. Le temps du trajet n'étant pas constant, il est possible que les paquets arrivent à leur destination dans le désordre.
+  - [Protocole TCP]  
+    Lorsque les paquets arrivent à destination, ils sont remis dans le bon ordre (grâce à leur numéro d'identification) pour reconstituer le message d'origine
 
-  - Lorsque les paquets arrivent à destination, ils sont remis dans le bon ordre (grâce à leur numéro) pour reconstituer le message d'origine
-
-## TCP vs UDP
-
-* TCP (*Transmission Control Protocol*) est un protocole avec connexion (donc avec 3-way handshake) et qui fournit un contrôle d'erreur
-
-  Il est utilisé par plusieurs autres protocoles du niveau application, dont
+* TCP est utilisé par plusieurs autres protocoles du niveau application, dont
   - HTTP (*Hypertext Transfer Protocol*)
   - HTTPS (*Hypertext Transfer Protocol over SSL*)
   - SMTP (*Simple Mail Transfer Protocol*)
   - FTP (*File Transfer Protocol*)
 
+## UDP
+
 * UDP (*User Datagram Protocol*) est un autre protocole au niveau de la couche transport. C'est un protocole sans connexion, qui ne garantit pas la livraison des données. Il ne corrige pas l'ordre des paquets s'ils arrivent dans le désordre.
 
-  Il est utilisé notamment par
+* Il est utilisé notamment par
   - DNS (*Domain Name System*),
   - les applications de streaming media
   - VOIP (*Voice-Over Internet Protocol*)
@@ -136,4 +141,4 @@ category: Linux, Network
 
 ## Format d'un segment TCP ou UDP
 
-![](https://i.imgur.com/4R0p30x.jpg)
+![](https://i.imgur.com/4R0p30xl.jpg)

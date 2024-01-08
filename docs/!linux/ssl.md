@@ -180,8 +180,7 @@ Certbot est un utilitaire de Let's Encrypt, qui permet d’obtenir un certificat
     * posséder un nom de domaine
     * avoir définit un enregistrement DNS A qui dirige le nom de domaine vers l’adresse IP du serveur
     * le serveur doit pouvoir atteindre la CA sur le port 443
-    * la CA doit pouvoir atteindre le serveur sur le port 80  
-       
+    * la CA doit pouvoir atteindre le serveur sur le port 80
 
 * Installer Certbot (en tant que root)
 

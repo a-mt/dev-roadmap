@@ -134,8 +134,7 @@ category: Chimie
   En l'occurence,
   * les ions MnO<sub>4</sub><sup>-</sup> sont présents sous forme de permanganate de potassium (KMnO<sub>4</sub>)
   * les ions H<sup>+</sup> sont présents sous forme d'acide sulfurique (H<sub>2</sub>SO<sub>4</sub>) — ajouté pour rendre la solution acide
-  * et on doit donc ajouter des K<sup>+</sup> et SO<sub>4</sub> côté produit — ce qu'il reste après consommation du MnO<sub>4</sub> et H<sup>+</sup>  
-     
+  * et on doit donc ajouter des K<sup>+</sup> et SO<sub>4</sub> côté produit — ce qu'il reste après consommation du MnO<sub>4</sub> et H<sup>+</sup>
 
   ![](https://i.imgur.com/zeWZCVk.png)
 
@@ -198,8 +197,7 @@ category: Chimie
 * L'état standard correspond à
 
   * une concentration de 1 mol/L pour les espèces en solution aqueuse
-  * une pression de 1 bar pour les gaz  
-     
+  * une pression de 1 bar pour les gaz
 
   ```
   C° = 1 mol/L

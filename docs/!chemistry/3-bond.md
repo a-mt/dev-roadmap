@@ -9,8 +9,7 @@ category: Chimie
   Ainsi, quand deux atomes se trouvent à proximité, 
   * les <ins>protons</ins> des deux atomes se repoussent,
   * les <ins>électrons</ins> des deux atomes se repoussent,
-  * mais les <ins>protons et électrons</ins> sont attirés entre eux.  
-     
+  * mais les <ins>protons et électrons</ins> sont attirés entre eux.
 
   Si les électrons se placent entre les noyaux pour atténuer la répulsion des protons, alors les atomes se retrouvent "bloqués" à la *distance optimale* l'un de l'autre, où les forces d'attractions et de répulsion se compensent exactement. On dit qu'ils ont créés une *liaison chimique*.
 

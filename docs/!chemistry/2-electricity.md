@@ -79,8 +79,7 @@ category: Chimie
   exprimées en mégajoules par gramme de matière (MJ/g). On voit que
   - on arrache assez facilement le 1er électron: c'est le premier pallier,
   - les 8 prochains électrons requièrent une énergie d'ionisation plus élevée: ils constituent le second pallier,
-  - et les 2 derniers requièrent une énergie d'ionisation très élevée: c'est un 3ème pallier  
-     
+  - et les 2 derniers requièrent une énergie d'ionisation très élevée: c'est un 3ème pallier
 
   <!--![](https://i.imgur.com/dPwd6eUm.png)-->
 
@@ -230,14 +229,12 @@ category: Chimie
      <ins>Par exemple</ins>:  
      * Un hydrogène a 1 électron: 1s<sup>1</sup>
      * Un fluor a 9 électrons: 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>5</sup>
-     * Un fer a 26 électrons: 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>6</sup>  
-        
+     * Un fer a 26 électrons: 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>6</sup>
 
   2. sommer le nombre d'électrons dans les sous-couches
      * Hydrogène: 1s<sup>1</sup> = K<sup>1</sup>
      * Fluor: 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>5</sup> = K<sup>2</sup> L<sup>2+5</sup> = K<sup>2</sup>L<sup>7</sup>
-     * Fer: 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>6</sup>   = K<sup>2</sup> L<sup>2+6</sup> M<sup>2+6+6</sup> N<sup>2</sup> = K<sup>2</sup>L<sup>8</sup>M<sup>14</sup>N<sup>2</sup>  
-        
+     * Fer: 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>6</sup>   = K<sup>2</sup> L<sup>2+6</sup> M<sup>2+6+6</sup> N<sup>2</sup> = K<sup>2</sup>L<sup>8</sup>M<sup>14</sup>N<sup>2</sup>
 
   Par convention, on écrit le numéro de la couche, suivit de la lettre de la sous-couche et le nombre d'électrons en exposant.
 
@@ -252,8 +249,7 @@ category: Chimie
   * chaque sous-couche *s* contient 1 emplacement,
   * chaque sous-couche *p* contient 3 emplacements,
   * chaque sous-couche *d* en contient 5
-  * et chaque sous-couche *f*, 7.  
-     
+  * et chaque sous-couche *f*, 7.
 
 * On appelle les "emplacements" d'une sous-couche des *orbitales*.
 

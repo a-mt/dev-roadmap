@@ -104,8 +104,7 @@ category: Chimie
 * Lorsque les réactifs ne sont pas introduits en proportions stoechiométriques,
   * l'un des réactif se trouve *en excès* par rapport à l'autre,
   * l'autre se trouve *en défaut*.  
-    On dit aussi qu'il est *limitant* puisqu'il limite la quantité de produit formée: il sera totalement consommé tandis qu'il restera une quantité non utilisée du composé en excès à la fin de la réaction chimique.  
-     
+    On dit aussi qu'il est *limitant* puisqu'il limite la quantité de produit formée: il sera totalement consommé tandis qu'il restera une quantité non utilisée du composé en excès à la fin de la réaction chimique.
 
   ![](https://i.imgur.com/SLNIdoz.png)
 

@@ -4,19 +4,20 @@ category: Linux, Network
 ---
 
 * Un *bridge* (*pont* en français) relie deux interfaces ou plus,  
-  ce qui permet aux appareils de ces réseaux de communiquer entre eux comme s'ils se trouvaient sur un seul réseau
+  et permet aux appareils de ces réseaux de communiquer entre eux comme s'ils se trouvaient sur un seul réseau
 
-* Un *bond* (*lien* en français) accole deux connexions (/ports) ou plus à un réseau.
+* Un *bond* (*lien* en français) regroupe deux connexions (/ports) ou plus à un réseau.
 
 # Bond
 
-* Normalement, les serveurs sont connectés au serveur via un switch. Le problème est que si le câble de l'interface est coupé, le serveur est déconnecté du réseau. Cela crée un point de défaillance unique.
+* Normalement, les serveurs sont connectés à Internet via un switch. Le problème c'est que si le câble de l'interface est coupé, le serveur est déconnecté du réseau. Cela crée un point de défaillance unique.
   On peut ajouter une autre interface et la connecter également au switch mais ce n'est pas une solution idéale puisqu'il s'agirait d'une interface séparée, avec une adresse IP séparée et une configuration séparée.
 
-* Ce qu'on peut faire, c'est créer un bond qui prend les deux interfaces et les fait fonctionner comme une seule. Ainsi, le serveur et le périphérique réseau verront une seule interface.  
-  Comme il s'agit d'une interface unique, le trafic sera load balanced entre les deux, et si un lien tombe en panne, ce n'est pas un problème puisque l'autre prendra en charge le trafic.
+* Ce qu'on peut faire, c'est créer un *bond* qui prend les deux interfaces et les fait fonctionner comme une seule. Ainsi, le serveur et le périphérique réseau verrons une seule interface.
 
-* L'OS fait comme s'il n'y avait qu'un seul câble entre le serveur et le réseau, ce qui simplifie les choses: il n'est pas nécessaire de configurer les applications pour utiliser diverses cartes réseau, diverses connexions et adresses IP pour atteindre la même destination à travers différents paths, on utilise simplement le bond comme interface.
+  L'OS fait comme s'il n'y avait qu'un seul câble entre le serveur et le réseau, ce qui simplifie les choses: il n'est pas nécessaire de configurer les applications pour utiliser diverses cartes réseau, diverses connexions et adresses IP pour atteindre la même destination à travers différents paths, on utilise simplement le bond comme interface.
+
+  Comme il s'agit d'une interface unique, le trafic est load balanced entre les deux, et si un lien tombe en panne, ce n'est pas un problème puisque l'autre prend en charge le trafic.
 
 * Linux supporte 7 modes de liaison:  
   Le mode 0 (round-robin) est le mode par défaut.
@@ -44,7 +45,7 @@ category: Linux, Network
 
 # Bridge
 
-* Un bridge fait exactement ce que le mot indique: on ajoute un pont entre le réseau 1 et 2. Il permet aux ordinateurs situés sur deux réseaux distincts de communiquer entre eux comme s'ils faisaient partie du même réseau. Il est même possible de relier plus de deux réseaux si nécessaire.
+* Un bridge fait exactement ce que le mot indique: il agit comme un pont entre le réseau A et B. Il permet aux ordinateurs situés sur deux réseaux distincts de communiquer entre eux comme s'ils faisaient partie du même réseau. Il est même possible de relier plus de deux réseaux si nécessaire.
 
 * Dans la terminologie Linux, le bridge est également appelé controller, et les appareils réseaux faisant partie du bridge sont appelés des ports.
 

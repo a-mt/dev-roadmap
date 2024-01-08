@@ -10,8 +10,7 @@ category: Chimie
 
   1. Des réactions concurrentes peuvent se produire, menant à des produits non souhaités
   2. Les expériences ne sont pas réalisées dans des conditions optimales (température, pression, quantité)
-  3. Certaines réactions ne sont intrinsèquement pas complètes  
-      
+  3. Certaines réactions ne sont intrinsèquement pas complètes
 
 * <ins>Exemple</ins>:  
   Les réactions dites d'estérification constituent un bel exemple de réaction incomplète.  
@@ -28,8 +27,7 @@ category: Chimie
 * Une réaction est dite *inversible* si elle peut se produire dans les deux sens: 
 
   * du réactif au produit — c'est ce qu'on appelle une *réaction directe*
-  * du produit au réactif — c'est ce qu'on appelle une *réaction inverse*  
-     
+  * du produit au réactif — c'est ce qu'on appelle une *réaction inverse*
 
 * Le choix de désigner les uns comme réactifs, et les autres comme produits est arbitraire:  
   on désignera généralement comme produits les substances qu'on cherche à obtenir.
@@ -111,8 +109,7 @@ Il faut que la chaleur soit transférée du milieu extérieur vers le système: 
 
 * Une réaction aura tendance à se produire de manière à
   1. diminuer l'énergie du système (sens exothermique — dégager de la chaleur)
-  2. augmenter l'entropie du système (augmenter le nombre de molécules)  
-      
+  2. augmenter l'entropie du système (augmenter le nombre de molécules)
 
   Ces deux conditions ne peuvent pas toujours être réalisées en même temps.  
   Lorsqu'elles le sont, la réaction sera complète.  

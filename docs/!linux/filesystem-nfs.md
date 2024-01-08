@@ -97,6 +97,13 @@ category: Linux
     sudo exportfs -v
     ```
 
+    ``` bash
+    $ showmount -e
+
+    Export list for terminal:
+    /nfs/share       192.168.10.0/24
+    ````
+
     ![](https://i.imgur.com/qjUDIkB.png)
 
 ## Client NFS

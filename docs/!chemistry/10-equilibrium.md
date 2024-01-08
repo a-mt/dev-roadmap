@@ -32,8 +32,7 @@ category: Chimie
   on constate que la constante d'équilibre répond à une règle: elle est à égale à
 
   - la concentration du réactif, mis à la puissance du coefficient stoechiométrique du réactif
-  - divisé par la concentration du produit, mis à la puissance du coefficient stoechiométrique du produit  
-     
+  - divisé par la concentration du produit, mis à la puissance du coefficient stoechiométrique du produit
 
   <pre>
   <img src="https://i.imgur.com/JrspX3Q.png" />

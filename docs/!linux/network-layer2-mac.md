@@ -126,7 +126,7 @@ category: Linux, Network
 
 *  Une *adresse MAC* (*Media Access Control*) est une adresse, unique dans le monde, que possède chaque carte réseau vendu sur le marché. Cette adresse est écrite par le fabricant de la carte dans sa ROM — certaines cartes réseau permettent toutefois de modifier leur adresse MAC. Chaque station dispose ainsi d'une adresse physique qui lui est propre, qui ne change a priori jamais.
 
-* L'adresse MAC est utilisée lorsque des machines communiquent avec leur voisin immédiat sur le réseau. Les paquets envoyés proviennent d'une adresse MAC et sont envoyés vers une autre adresse MAC. Si un ordinateur reçoit un paquet, il compare l'adresse MAC de destination à sa propre adresse MAC. Si les adresses correspondent, le paquet est traité, sinon il est rejeté.
+* L'adresse MAC est utilisée lorsque des machines communiquent avec leur voisin immédiat sur le réseau. Les paquets envoyés proviennent d'une adresse MAC et sont envoyés vers une autre adresse MAC. Si un ordinateur reçoit un signal, il compare l'adresse MAC de destination à sa propre adresse MAC. Si les adresses correspondent, le paquet est traité, sinon il est rejeté.
 
   Lorsqu'on utilise un switch, celui-ci stocke en mémoire l'adresse MAC de chaque machine branchée pour ne transférer les paquets que vers les machines auxquelles les paquets sont destinés.
 
@@ -155,7 +155,7 @@ category: Linux, Network
 ### EUI-64
 
 * L'IEEE gère l'attribution des adresses MAC, connues à l'origine sous le nom de MAC-48 — puisqu'elles font 48 bits.  
-  L'IEE les désigne désormais sous le nom d'EUI-48 (pour *Extended Unique Identifier*) et estime que ces adresses seront épuisées d'ici 2080. Leur usage est par conséquent restreint aux applications Ethernet et pour les applications non Ethernet, il est conseillé qu'elles utilisent des adresses EUI-64 — des adresses de 8 nombres de 8 bits.
+  L'IEE les désigne désormais sous le nom d'EUI-48 (pour *Extended Unique Identifier*) et estime que ces adresses seront épuisées d'ici 2080. Leur usage est par conséquent restreint aux applications Ethernet; pour les applications non Ethernet, il est conseillé d'utiliser des adresses EUI-64 — des adresses de 8 nombres de 8 bits.
 
 * On peut construire une adresse EUI-64 à partir d'une adresse MAC en insérant FFFE dans les octets 4 et 5.
 
@@ -202,7 +202,7 @@ category: Linux, Network
 * Un switch est un appareil réseau reliant les dispositifs entre eux en utilisant la commutation de paquets pour recevoir, traiter et acheminer les données vers la bonne destination.
   La plupart du temps, les switchs opèrent au niveau de la couche 2 du modèle OSI: ils assurent la commutation en fonction des adresses MAC.
 
-* Chaque switch garde en mémoire une *table d'adresses MAC*, aussi appelée *table d'apprentissage*, qui lui permet de savoir à quel port physique correspond quelle adresse MAC.
+* Chaque switch garde en mémoire une *table d'adresses MAC*, aussi appelée *table d'apprentissage*, qui lui permet de savoir quel port physique correspond à quelle adresse MAC.
 
   1. Au début la table MAC est vide
 
@@ -220,7 +220,7 @@ category: Linux, Network
 
      ![](https://i.imgur.com/NCXT2Nf.png)
 
-      Sans base de données, le switch doit envoyer le trafic reçu sur un port donné vers tous les autres ports pour s'assurer qu'il atteint sa destination. Avec la base de données d'adresses MAC, le traffic est filtré en fonction de sa destination.
+      Sans base de données / ou base de données vide, le switch doit envoyer le trafic reçu sur un port donné vers tous les autres ports pour s'assurer qu'il atteint sa destination. Tandis qu'une fois la base de données d'adresses MAC remplie, le traffic est filtré en fonction de sa destination.
 
       Cet apprentissage automatique permet d'ajouter de nouvelles machines au réseau sans avoir à configurer le switch manuellement pour qu'il la reconnaisse, ni d'avoir à configurer la machine pour qu'elle connaisse le switch.
 
@@ -230,20 +230,20 @@ category: Linux, Network
 
 * Envoyer des messages (en *broadcast* ou *flooding*) à un nombre important de machines peut entraîner un trafic parasite important, et entraîner une latence qui, si elle n'est pas contrôlée, peut provoquer des pannes et des pertes de service.
 
-  Pour parer ce problème, les switchs permettent de diviser le réseau en plusieurs sous-sections, et de choisir quelle machine appartient à quelle section.  
-  Pour ce faire, on crée un réseau local virtuel ou *virtual local area network* (VLAN) en anglais. Un switch peut avoir des milliers de VLAN en cours d'exécution en même temps. Seuls les appareils appartenant à la même VLAN recevrons les message en broadcast.
+  Pour parer ce problème, les switchs permettent de diviser le réseau en plusieurs sous-sections via l'utilisation de *réseau local virtuel* ou *virtual local area network* (VLAN) en anglais, qui est en quelque sorte un tag qu'on va pouvoir assigner aux machines du réseau.
+  Par exemple si une machine est dans la VLAN 0, et envoit un message en broadcast, alors seuls les appareils qui appartiennent à la VLAN 0 recevrons ce message.
+
+  Associer un appareil à une VLAN se fait dans les configurations du switch.  
+  Un switch peut avoir des milliers de VLAN en cours d'exécution en même temps.  
 
 * Inversemment, une VLAN permet également de combiner deux ou plusieurs LAN séparées pour qu'elles apparaissent comme un seul et même réseau local.
+  Pour ce faire, il faut configurer un port *trunk* pour la communication switch à switch
 
-  Généralement, des configurations sont nécessaires:  
-  - définir la ou les VLAN(s) dans les configurations du switch  
-  - configurer le port *trunk* pour la communication switch à switch
+  ![](https://i.imgur.com/xJKyoTdl.png)
 
-  ![](https://i.imgur.com/DmbmGFC.png)
+  Certaines configurations peuvent être minimisées ou éliminées grâce à des options et des protocoles plus récents.
 
-  Certaines configurations epuvent être minimisées ou éliminées grâce à des options et des protocoles plus récents.
-
-* Si un routeur ou switch L-3 n'est pas connecté entre les VLAN (pour transmettre les données en utilisant les adresses IP des trames et non plus les adresses MC), alors deux hôtes placés sur des VLAN différentes ne peuvent pas communiquer.
+* Si un routeur ou switch L-3 (appareils permettant de transmettre les données en utilisant les adresses IP des trames et non plus les adresses MAC) n'est pas connecté entre les VLAN, alors deux machines placées sur des VLAN différentes ne peuvent pas communiquer.
 
 * Les VLANs ont plusieurs avantages:
 
@@ -255,4 +255,4 @@ category: Linux, Network
 
 ## Format d'une trame Wifi ou Ethernet
 
-![](https://i.imgur.com/uY3rDaj.jpg)
+![](https://i.imgur.com/uY3rDajl.jpg)

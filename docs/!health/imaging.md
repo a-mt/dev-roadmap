@@ -234,16 +234,14 @@ Un workflow PACS suit généralement ces différentes étapes:
 * Une fenêtre se configure avec deux valeurs:
 
   * le **centre** (*level*, L)
-  * et la **largeur** (*window*, W)  
-     
+  * et la **largeur** (*window*, W)
 
   Par exemple, si on choisit de centrer sur une densité de 40, avec une largeur de 70:
   - la valeur 40 sera grise
   - une valeur &gt;75 sera blanche (70/2=35, 40+35=75)
   - une valeur &lt;5 sera noire (40-35=5)
   - une valeur entre 40 et 75 sera une nuance de gris clair
-  - et une valeur entre 5 et 40 sera une nuance de gris foncé  
-     
+  - et une valeur entre 5 et 40 sera une nuance de gris foncé
 
 * Le fenêtrage désigne donc le réglage permettant d'optimiser l'étude d'une région donnée. Son principe est simple:
 

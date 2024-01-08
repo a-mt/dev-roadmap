@@ -39,8 +39,8 @@ category: Linux
         PasswordAuthentication no
         ```
 
-    * Jusqu'ici les paramètres sont appliqués globalement, à tous les utilisateurs souhaitant se connecter via SSH. On peut également définir des paramètres spécifiques pour des utilisateurs donnés.
-
+    * Jusqu'ici les paramètres sont appliqués globalement, à tous les utilisateurs souhaitant se connecter via SSH.  
+      On peut également définir des paramètres spécifiques pour des utilisateurs donnés.  
         Par exemple, pour faire une exception:
 
         ```
@@ -48,6 +48,8 @@ category: Linux
         Match User aaron
             PasswordAuthentication yes
         ```
+
+        On peut également utiliser `Match Group` pour un groupe
 
 * Après avoir modifié le fichier de config, il faut redémarrer le daemon SSH pour que les nouveaux paramètres soient appliqués
 

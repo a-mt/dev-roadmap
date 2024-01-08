@@ -5,7 +5,7 @@ category: Linux
 
 ## Pourquoi faire
 
-* Les ordinateurs utilisent les adresses IP pour communiquer sur le réseau, mais ces adresses sont difficiles à mémoriser — imaginez devoir mémoriser l'adresse IP de chaque serveur web auquel vous souhaitez accéder...
+* Les ordinateurs utilisent les adresses IP pour communiquer sur le réseau, mais ces adresses sont difficiles à mémoriser — ce serait impossible de mémoriser l'adresse IP de chaque serveur web auquel on souhaite accéder...
 
 * Pour parer ce problème, on utilise des noms de domaine. Les serveurs DNS traduisent les noms (tel que google.com) en adresses IP (tel que 172.217.19.46).
 
@@ -48,8 +48,8 @@ category: Linux
 
   ![](https://i.imgur.com/ACBJ5HEm.png)
 
-* La norme prévoit qu'un label ne peut contenir que des caractères de A à Z (insensibles à la casse), des chiffres et des traits d'union.  
-  Un label ne peut dépasser 63 caractères, et un FQDN ne peut dépasser 253 caractères. 
+* Un label ne doit contenir que des caractères de A à Z (insensibles à la casse), des chiffres et des traits d'union.  
+  Chaque label fait au maximum 63 caractères, et un FQDN au maximum 253 caractères. 
 
 ### TLD
 
@@ -57,7 +57,7 @@ On distingue différents types de TLD:
 
 - ccTLD (*Country-Code TLD*)  
   Sont des TLD à deux lettres, établis pour les pays et territoires. Il y a en plus de 250.  
-  Exemple: .de, .fr, .jp.
+  Exemple: .de, .fr, .jp
 
 - gTLD (*Generic TLD*)  
   Sont des TLD à trois lettres ou plus.  
@@ -68,7 +68,7 @@ On distingue différents types de TLD:
     Exemple: .com, .net, .org
 
   - [sTLD](https://en.wikipedia.org/wiki/Sponsored_top-level_domain) (*Sponsored TLD*)  
-    Fonctionne selon des politiques étables par un *sponsor*, une organisation à qui est délégué la responsabilité de gérer la TLD. Ces TLD sont destinés à des communautés précises (ethnique, géographique, professionnelle, technique ou autre) et ont un usage limité — il faut prouver auprès du sponsor votre légitimité à obtenir ce TLD.  
+    Fonctionne selon des politiques étables par un *sponsor*, une organisation à qui est délégué la responsabilité de gérer la TLD. Ces TLD sont destinés à des communautés précises (ethnique, géographique, professionnelle, technique ou autre) et ont un usage limité — il faut prouver auprès du sponsor sa légitimité à obtenir un domaine de ce TLD.  
     Exemple: .gov, .edu, .mil, .museum
 
   [Liste des TLDs](http://archive.icann.org/en/tlds/)
@@ -77,37 +77,6 @@ On distingue différents types de TLD:
 
 ## Résolution DNS
 
-### Hiérarchie
-
-* Le DNS est un système hiérarchique, lorsqu'un serveur DNS doit effectuer une recherche,  
-  il pose une série de questions qui aboutissent finalement à la réponse définitive.
-  C'est la raison pour laquelle on appelle ce type de serveur DNS un <ins>résolveur DNS récursif</ins> ou récurseur DNS
-
-* Si le serveur DNS ne connaît pas l'adresse IP associée au nom de domaine demandé:
-
-  1. Il envoit une requête à un <ins>serveur de noms racine</ins> (*DNS root nameserver*).  
-     La liste mondiale des serveurs racines est gérée par l'IANA — il y en a 13.
-
-  2. Le serveur racine renvoit l'adresse IP d'un des <ins>serveurs de noms TLD</ins> (*DNS TLD nameserver*) qui répond au TLD demandé (ex .com).  
-     Un serveur TLD conserve les informations relatives à ses domaines
-
-      <!-- -->
-       
-
-  3. Le serveur DNS va à nouveau envoyer une requête, cette fois à un serveur TLD.
-  4. Le serveur TLD répond avec l'adresse IP d'un serveur DNS faisant autorité pour le domaine souhaité,  
-     le <ins>serveur DNS de référence</ins> (*authoritative nameserver*)
-
-      <!-- -->
-       
-
-  5. Le serveur DNS envoit une requête, cette fois au serveur DNS faisant autorité
-  6. Le serveur DNS lui répond l'adresse IP associée au nom de domaine demandé.
-
-  ![](https://i.imgur.com/zkzhFCh.png)
-
-* Quand le résolveur DNS reçoit la réponse finale, il met en cache l'association nom de domaine / adresse IP pour les demandes ultérieures.
-
 ### Résolveur stub
 
 * Le processus du système d'exploitation qui traite les requêtes DNS est communément appelé un *résolveur stub* ou client DNS.
@@ -115,12 +84,40 @@ On distingue différents types de TLD:
 
 * Si le résolveur stub n'a pas l'information, il envoit une requête DNS à l'extérieur du réseau local,
   vers un résolveur récursif DNS dépendant du FAI (*fournisseur d'accès Internet*).
-  Lorsqu'un résolveur récursif reçoit une requête DNS, il vérifie lui assu si l'information est déjà stockée dans sa couche de persistance locale.
+  Lorsqu'un résolveur récursif reçoit une requête DNS, il vérifie lui aussi si l'information est déjà stockée dans sa couche de persistance locale.
 
 * Si le résolveur récursif n'a pas l'information, alors une résolution DNS est déclenchée.  
   Les données DNS peuvent être mises en cache à divers endroits, chacun stockant des enregistrements DNS pendant un laps de temps déterminé par une TTL (*Time to live*, durée de vie en français).
 
 [What is DNS](https://www.cloudflare.com/fr-fr/learning/dns/what-is-dns/)
+
+### Hiérarchie
+
+* Le DNS est un système hiérarchique, lorsqu'un serveur DNS doit effectuer une résolution DNS,  
+  il lance une série de requêtes qui aboutissent finalement à la réponse définitive.  
+  C'est la raison pour laquelle on appelle ce type de serveur DNS un <ins>résolveur DNS récursif</ins> ou récurseur DNS
+
+* Si le serveur DNS ne connaît pas l'adresse IP associée au nom de domaine demandé:
+
+  1. Il envoit une requête à un <ins>serveur de noms racine</ins> (*DNS root nameserver*).  
+     La liste mondiale des serveurs racines est gérée par l'IANA — il y en a 13.
+  2. Le serveur racine renvoit l'adresse IP d'un des <ins>serveurs de noms TLD</ins> (*DNS TLD nameserver*) qui répond au TLD demandé (ex .com).  
+     Un serveur TLD conserve les informations relatives à ses domaines
+
+      <!-- -->
+
+  3. Le serveur DNS va à nouveau envoyer une requête, cette fois à un serveur TLD.
+  4. Le serveur TLD répond avec l'adresse IP d'un serveur DNS faisant autorité pour le domaine souhaité,  
+     le <ins>serveur DNS de référence</ins> (*authoritative nameserver*)
+
+      <!-- -->
+
+  5. Le serveur DNS envoit une requête, cette fois au serveur DNS faisant autorité
+  6. Le serveur DNS lui répond l'adresse IP associée au nom de domaine demandé.
+
+  ![](https://i.imgur.com/zkzhFCh.png)
+
+* Quand le résolveur DNS reçoit la réponse finale, il met en cache l'association nom de domaine / adresse IP pour les demandes ultérieures.
 
 ---
 
@@ -146,9 +143,64 @@ On distingue différents types de TLD:
 
 * Un *fichier de zone* est un fichier texte stocké sur un serveur DNS, 
   qui contient la représentation réelle de la zone, avec toutes les entrées DNS pour chaque domaine de la zone.  
-  Le fichier doit respecter un format donné — s'il n'est pas respecté, le Client reçoit le message d’erreur SERVFAIL.
+  Le fichier doit respecter un format donné — s'il n'est pas respecté, le client reçoit le message d’erreur SERVFAIL.
 
-* De manière facultative, le fichier peut commencer par le nom de la zone suivi du TTL.    
+  <details>
+  <summary>Exemple de fichier zone</summary>
+
+  <pre lang="txt">
+  $TTL  604800  ; This TTL declaration applies to all
+       ; records defined below that do not define
+       ; their own TTL
+
+  ; In this file, @ means the "current origin domain"
+
+  @    IN   SOA   ns.example.com. root.example.com. (
+                  1     ; Serial
+             604800     ; Refresh
+              86400     ; Retry
+            2419200     ; Expire
+             604800     ; Negative Cache TTL
+            )
+
+  @        NS   ns
+  ns       A    192.168.0.1
+  @        NS   ns.example.com.
+  ns       A    192.168.0.254
+
+  @    IN   MX   1 host
+  @    IN   MX   2 mail2.example.net. ; note this is
+                       ; in another
+                       ; zone/domain
+
+  host  IN   A    192.168.0.2
+        AAAA   2001:db8:85a3:0:0:8a2e:370:7334
+
+  $TTL 1w2d3h4m5s ; The TTL defined here overwrites the
+         ; setting above and applies to all the
+         ; records below it that do not define their
+         ; own TTLs.
+
+  foo.bar       A   192.168.0.3 ; An example of a
+                    ; relative address:
+                    ; foo.bar.example.com.
+  foo.bar.example.com. A   192.168.0.4 ; An example of an
+                    ; absolute address
+
+  alias        CNAME host
+
+  _sip._udp      SRV  0 5 5060 sipserver
+  sipserver  3600  A   192.168.0.5 ; This record has
+                     ; its own TTL (3600)
+
+  text1       TXT  "This is a TXT record"
+  *.wildcards    TXT  "This is a wildcard TXT record"
+  </pre>
+  </details>
+
+<!-- -->
+
+* Le fichier peut éventuellement commencer par préciser le nom de la zone et le TTL.    
   Si renseigné à ce niveau, le TTL est alors applicable à toute la zone et évite d’avoir à préciser cette donnée dans chaque enregistrement 
 
   ``` txt
@@ -156,15 +208,10 @@ On distingue différents types de TLD:
   $TTL 12879
   ```
 
-* La première entrée DNS obligatoirement être le SOA (*Start of Authority*),  
-  qui spécifie entre autres les coordonnées de l’administrateur de la zone.  
-  Viennent ensuite les enregistrements qui concernent les noms des serveurs, suivis des enregistrements A et AAAA.
+* La première entrée DNS doit obligatoirement être le SOA (*Start of Authority*),  
+  qui spécifie entre autres les coordonnées de l’administrateur de la zone.
 
-* On peut ajouter des commentaires en utilisant des points-virgules, et les lignes vides sont également ignorée.  
-  À chaque enregistrement, sa propre ligne: un retour à la ligne marque la fin d’un enregistrement.  
-  Et si on veut saisir un même enregistrement sur plusieurs lignes, alors on utilise des parenthèses.
-
-  ``` txt
+  ```
   @    IN   SOA   ns.example.com. root.example.com. (
                   1     ; Serial
              604800     ; Refresh
@@ -174,58 +221,11 @@ On distingue différents types de TLD:
             )
   ```
 
-<details>
-<summary>Exemple de fichier zone</summary>
+* Les entrées suivantes sont des enregistrements DNS (*DNS records*).  
+  On peut ajouter des commentaires en utilisant des points-virgules, et les lignes vides sont également ignorées.
 
-<pre lang="txt">
-$TTL  604800  ; This TTL declaration applies to all
-     ; records defined below that do not define
-     ; their own TTL
-
-; In this file, @ means the "current origin domain"
-
-@    IN   SOA   ns.example.com. root.example.com. (
-                1     ; Serial
-           604800     ; Refresh
-            86400     ; Retry
-          2419200     ; Expire
-           604800     ; Negative Cache TTL
-          )
-
-@        NS   ns
-ns       A    192.168.0.1
-@        NS   ns.example.com.
-ns       A    192.168.0.254
-
-@    IN   MX   1 host
-@    IN   MX   2 mail2.example.net. ; note this is
-                     ; in another
-                     ; zone/domain
-
-host  IN   A    192.168.0.2
-      AAAA   2001:db8:85a3:0:0:8a2e:370:7334
-
-$TTL 1w2d3h4m5s ; The TTL defined here overwrites the
-       ; setting above and applies to all the
-       ; records below it that do not define their
-       ; own TTLs.
-
-foo.bar       A   192.168.0.3 ; An example of a
-                  ; relative address:
-                  ; foo.bar.example.com.
-foo.bar.example.com. A   192.168.0.4 ; An example of an
-                  ; absolute address
-
-alias        CNAME host
-
-_sip._udp      SRV  0 5 5060 sipserver
-sipserver  3600  A   192.168.0.5 ; This record has
-                   ; its own TTL (3600)
-
-text1       TXT  "This is a TXT record"
-*.wildcards    TXT  "This is a wildcard TXT record"
-</pre>
-</details>
+  À chaque enregistrement, sa propre ligne: un retour à la ligne marque la fin d’un enregistrement.  
+  Et si on veut saisir un même enregistrement sur plusieurs lignes, alors on utilise des parenthèses.
 
 ### Entrées DNS
 
@@ -234,21 +234,22 @@ text1       TXT  "This is a TXT record"
   - **nom**:  
     Domaine ou sous-domaine
 
-  - **TTL (Time to Live)**:  
+  - **TTL (Time to Live)**: — optionnel   
     Durée pendant laquelle les clients et serveurs DNS peuvent mettre en cache une réponse.  
     Peut être omis si définit au niveau de la zone
 
-  - **classe**:  
-    Théoriquement, les DNS records sont répartis en plusieurs classes: IN pour Internet, CH pour Chaos et HS pour Hesiod [&#x21F2;](https://en.wikipedia.org/wiki/Domain_Name_System#cite_ref-40). En pratique, la plupart des enregistrements DNS relèvent de la classe Internet, cette information est donc facultative.
+  - **classe**: — optionnel  
+    Théoriquement, les enregistrements DNS sont répartis en plusieurs classes: IN pour Internet, CH pour Chaos et HS pour Hesiod [&#x21F2;](https://en.wikipedia.org/wiki/Domain_Name_System#cite_ref-40). En pratique, la plupart des enregistrements DNS relèvent de la classe Internet, cette information est donc facultative.
 
   - **type**:  
-    A, MX, TXT, CNAME, etc. Les plus courant sont le type "A", qui mappe un nom à une adresse IPv4; et "MX", qui mappe un nom à un serveur mail
+    A, MX, TXT, CNAME, etc.  
+    Les plus courant sont le type "A" qui mappe un nom à une adresse IPv4, et "MX" qui mappe un nom à un serveur mail
 
-  - **rdlength**:  
+  - **rdlength**: — optionnel    
     Champ facultatif spécifiant la taille en octets du champ de données suivant
 
   - **rdata**:  
-    Nom de domaine, adresse IP ou tout autre valeur pertinente
+    Nom de domaine, adresse IP ou tout autre valeur pertinente pour le type de l'enregistrement
 
   ```
   foo.bar   A   192.168.0.3
@@ -259,10 +260,10 @@ text1       TXT  "This is a TXT record"
 * Les types d'entrées les plus courantes sont:
 
   * <ins>A</ins> (Address Mapping)  
-    Stocke un nom d'hôte et l'adresse IPv4 correspondante
+    Spécifie le nom d'hôte et l'adresse IPv4 correspondante
 
   * <ins>AAAA</ins> (IP Version 6 Address Mapping)  
-    Stocke un nom d'hôte et l'adresse IPv6 correspondante
+    Spécifie le nom d'hôte et l'adresse IPv6 correspondante
 
   * <ins>CNAME</ins> (Caninocal Name)  
     Peut être utilisé pour aliaser un nom d'hôte vers un autre. Lorsqu'un client DNS demande une entrée contenant un CNAME qui pointe vers un autre nom d'hôte, le processus de résolution DNS est répété avec le nouveau nom d'hôte.
@@ -271,7 +272,7 @@ text1       TXT  "This is a TXT record"
     Spécifie un serveur de messagerie SMTP pour le domaine
 
   * <ins>NS</ins> (Name Server)  
-    Indique qu'une zone DNS (telle que exemple.com) est déléguée à un autre serveur de nom de référence, et fournit l'adresse du serveur de nom.
+    Indique qu'une zone DNS (comme exemple.com) est déléguée à un autre serveur de nom de référence, et fournit l'adresse du serveur de nom.
 
   * <ins>PTR</ins> (reverse-lookup Pointer)  
     Associe une adresse IP à un nom de domaine.  
@@ -287,7 +288,7 @@ text1       TXT  "This is a TXT record"
     Donne des informations sur la position géographique du serveur: latitude, longitude, altitude au-dessus du niveau de la mer et précision de la position indiquée.
 
   * <ins>TXT</ins> (Text)  
-    Contient des données textuelles, typiquement destinées à être lues par une machine. On peut par exemple avoir à créer une entrée TXT donnée pour prouver qu'on détient la propriété du nom de domaine pendant le processus d'obtention d'un certificat SSL.
+    Contient des données textuelles, typiquement destinées à être lues par une machine. On peut par exemple devoir créer une entrée TXT donnée pour prouver qu'on détient la propriété du nom de domaine pendant le processus d'obtention d'un certificat SSL.
 
   * <ins>SOA</ins> (Start Of Authority)  
     Indique le serveur de noms faisant autorité pour la zone DNS actuelle, les coordonnées de l'administrateur du domaine, le numéro de série du domaine et des information sur la fréquence de rafraîchissement des informations DNS pour cette zone.
@@ -305,10 +306,12 @@ text1       TXT  "This is a TXT record"
   un département de l'ICANN (*Internet Corporation for Assigned Names and Numbers*).
 
   ``` txt
+  ; Infos du serveur racine A
   .                        3600000      NS    A.ROOT-SERVERS.NET.
   A.ROOT-SERVERS.NET.      3600000      A     198.41.0.4
   A.ROOT-SERVERS.NET.      3600000      AAAA  2001:503:ba3e::2:30
 
+  # Infos du serveur racine B
   .                        3600000      NS    B.ROOT-SERVERS.NET.
   B.ROOT-SERVERS.NET.      3600000      A     199.9.14.201
   B.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:200::b
@@ -359,15 +362,21 @@ text1       TXT  "This is a TXT record"
   Ex: A.ROOT-SERVERS.NET. (198.41.0.4) est un des serveurs de noms racine — il est géré par VeriSign.
 
   ``` txt
+  ...
+  ; Liste des serveurs TLD pour .xyz
   xyz.      172800  IN  NS  x.nic.xyz.
   xyz.      172800  IN  NS  y.nic.xyz.
   xyz.      172800  IN  NS  z.nic.xyz.
   xyz.      172800  IN  NS  generationxyz.nic.xyz.
+
+  ; Signature
   xyz.      86400 IN  DS  3599 8 1 3FA3B264F45DB5F38BEDEAF1A88B76AA318C2C7F
   xyz.      86400 IN  DS  3599 8 2 B9733869BC84C86BB59D102BA5DA6B27B2088552332A39DCD54BC4E8D66B0499
   xyz.      86400 IN  RRSIG DS 8 1 86400 20230712190000 20230629180000 60955 . IADUdpUkAL98HbsQdZgnSdw5sguwPCXHsw75TNeEYIYnyp5dIQs+8XgxDxBqvx211Lvlk6mZt0G0Skz9T0xpfMEi3ENmzed17Bg0SkhK2igSdsF6bUvAO8gGzMtL6/R8tkzfbqNIqY5GunhVZaXstl8uF8FO15nr+nkvPlybWaMv1qB4kUctOxowF/VWtN6jQDPhUM8obCPDayNJz9dSJrLtT4jeSG2itG/dMiJeQooUMNN68d9agAvmNkmdka/CIp7odPds9xF6ghiAKgshObVRd1EVd3KyW4WG7VsLGfIEcuFHK9oMbp+ABzH9iyr/QMwvzt3ugBCn3KjXVmtAIA==
   xyz.      86400 IN  NSEC  yachts. NS DS RRSIG NSEC
   xyz.      86400 IN  RRSIG NSEC 8 1 86400 20230712190000 20230629180000 60955 . eWCxD9Quiky4IKo/wFko6UL05Z2ejwT3V7i2TO+pfbsGpdGQHrvZWODBxS5cRquCzYvQ34jPzlSMwj/Y5zomjwVsF2B/FxABgvXhqCSFRjY5uRCeInfpfMXHC57REdffrjnAp2ps0un6x5jj0IKOetS93sQS4ceudNXIUiVVuMwYdx65FEjUw1HhNUWG9l61nvWZQ5scy8ozSFckrryoHwuRDCuwHq1MxJwd5oT9+gM4DqfrLPG5AOr7rnh2sIktZWkmvFsu7x38gocf3LpGPYM+8KyvJPcJuki+lE3DnCOJLHsVBVpPg+y3/0N4Rtw8hlBOK95+QcPXQrPCYGJORw==
+
+  ; Addresses IP des serveurs TLD
   generationxyz.nic.xyz.  172800  IN  A 212.18.249.42
   generationxyz.nic.xyz.  172800  IN  AAAA  2a04:2b00:13ff:0:0:0:0:42
   x.nic.xyz.    172800  IN  A 194.169.218.42
@@ -387,7 +396,8 @@ text1       TXT  "This is a TXT record"
 
 ### Un serveur TLD: liste des serveurs de référence
 
-* Un *serveur TLD* héberge la zone TLD de son domaine, qui contient la liste de tous les noms de domaine associés au TLD du serveur.  
+* Un *serveur TLD* héberge la zone TLD de son domaine,  
+  qui contient la liste de tous les noms de domaine associés au TLD du serveur.  
   Ex: x.nic.xyz (194.169.218.42) est un des serveurs de noms TLD du .xyz
 
 * L'accès au fichiers zone des TLD est disponible via le *Centralized Zone Data Service (CZDS)* (service centralisé de données de zone) de l'ICANN, qui a été crée pour simplifier le processus de demande de données de zone.
@@ -471,11 +481,11 @@ text1       TXT  "This is a TXT record"
 
 * Le registraire doit suivre les protocoles établis par l'ICANN pour s'assurer que les domaines sont disponibles et empêcher que le même domaine soit enregistré par deux personnes en même temps par l'intermédiaire de deux registraires différents.
 
-  Le registraire (par exemple GoDaddy) se connectera à son installation avec le registraire (par exemple Verisgn), généralement via EPP, pour demander une mise à jour du registre, que le registraire effectuera ensuite sur ses serveurs DNS.
+  Le registraire (par exemple GoDaddy) se connectera à son installation avec le registre (par exemple Verisgn), généralement via EPP, pour demander une mise à jour du registre, que le registraire effectuera ensuite sur ses serveurs DNS.
 
 ### Titulaire: propriétaire d'un nom de domaine
 
-* Un *titulaire** (*registrant*) est une personne propriétaire d'un nom de domaine. Pour résumer, on a donc
+* Un *titulaire* (*registrant*) est une personne propriétaire d'un nom de domaine. Pour résumer, on a donc
 
   - le *registrant*: propriétaire d'un nom de domaine — la propriété du domaine est officialisée quand ses données sont ajoutés au *registry*
   - le *registry*: base de données des *registrants* et des noms de domaine détenus
@@ -485,7 +495,8 @@ text1       TXT  "This is a TXT record"
 
 ### Serveur de référence: zone du domaine
 
-* Un *serveur de référence* héberge les entrées DNS d'un nom de domaine. Les serveurs TLD associent le nom de domaine à l'adresse de ce serveur de référence.
+* Un *serveur de référence* héberge les entrées DNS d'un nom de domaine.  
+  Les serveurs TLD associent le nom de domaine à l'adresse de ce serveur de référence.
 
 * L’achat d’un nom de domaine vous autorise à contrôler la zone DNS de ce nom, par exemple à diriger le nom www.example.com vers l'adresse IP de votre site web.
 

@@ -66,8 +66,7 @@ En 1884, Arrhénius propose une première définition des acides:
 * BrØnsted et Lowry ont complétés et généralisés la définition d'Arrhénius:  
 
   * Un *acide* est une espèce donneuse de protons (H<sup>+</sup>) — ça n'a pas changé
-  * Une *base* est une espèce qui accepte des protons (H<sup>+</sup>)  
-     
+  * Une *base* est une espèce qui accepte des protons (H<sup>+</sup>)
 
   <pre>
   <img src="https://i.imgur.com/eCsRHL0.png" />
@@ -150,8 +149,7 @@ Mélanger des réactifs ne donne pas toujours une réaction.
   le rôle d'acide ou de base — selon l'environnement dans lequel il est placé.  
 
   * Si le milieu est riche en protons, l'ampholyte se comporte comme une base (capte un proton)
-  * Si le milieu est pauvre en protons, l'ampholyte se comporte comme un acide (libère un proton)  
-     
+  * Si le milieu est pauvre en protons, l'ampholyte se comporte comme un acide (libère un proton)
 
 * L'eau joue parfois le role d'acide et parfois le role de base.
 

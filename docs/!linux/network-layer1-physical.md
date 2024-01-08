@@ -24,9 +24,9 @@ category: Linux, Network
 ## Catégories de liaisons
 
 * 3 types de liaisons peuvent être utilisées:
-  - des câbles métalliques, faisant passer des courants électriques
-  - des câbles optiques, faisant passer des signaux lumineux
-  - ou l'air, faissant passer des ondes radio
+  - des câbles métalliques, qui font passer des courants électriques
+  - des câbles optiques, qui font passer des signaux lumineux
+  - ou l'air, qui font passer des ondes radio
 
   ![](https://i.imgur.com/AMZXjHc.png)
 
@@ -89,11 +89,11 @@ Les transmissions peuvent être transmises en mode simplex ou duplex.
   et la bande passante (*bandwidth*)  
   désignent tous la même chose et sont tous mesurés en bps.
 
-* Les réseaux modernes sont capables de faire circuler des données très rapidement, de sorte que leur vitesse n'est plus mesurée en bits par secondes, mais avec un multiple K, M ou G:
+* Les réseaux modernes sont capables de faire circuler des données très rapidement, de sorte que leur vitesse n'est plus mesurée en bits par secondes, mais avec un multiple K, M ou G — Kbps, Mbps ou Gbps:
 
   ![](https://i.imgur.com/Lgoqu1tm.png)
 
-* Notons qu'un b minuscule représente un bit, tandis qu'un B majuscule représente un byte (octet), soit 8 bits. Pour savoir combien de KB un réseau peut déplacer par seconde, il faut diviser le Kbps par 8.
+* Notons qu'un b minuscule représente un bit, tandis qu'un B majuscule représente un byte (octet), soit 8 bits. Pour savoir combien de KB (kilo-octets) un réseau peut déplacer par seconde, il faut diviser le Kbps par 8.
 
 ## Liaisons
 
@@ -148,20 +148,20 @@ Les transmissions peuvent être transmises en mode simplex ou duplex.
 * Les T568A et T568B correspondent à deux cas d'usage:
 
   - <ins>le câble de raccordement ou *câble droit* (*straight-through*)</ins>  
-    La sortie reste la sortie — on utilise deux T568A ou deux T568B. La broche 1 du connecteur A passe à la broche 1 du connecteur B, la broche 2 à broche 2, etc.
-    Il est utilisé pour connecter un ordinateur à un switch, hub ou routeur.
+    La sortie reste la sortie — le câble a deux connecteurs T568A ou deux T568B à ses extrémités. La broche 1 du connecteur A passe à la broche 1 du connecteur B, la broche 2 à broche 2, etc.
+    Ce type de câble est utilisé pour connecter un ordinateur à un switch, hub ou routeur.
 
     ![](https://i.imgur.com/I36WOPem.png)
 
   - <ins>le *câble croisé* (*crossover*)</ins>  
-    La sortie devient l'entrée — on utilise un T568A et un T568B. La broche 1 sur le connecteur A passe a la broche 3 du connecteur B, la broche 2 à la broche 6, la broche 3 à la broche 1 et la broche 6 a la broche 2, etc.
-    Il est utilisé pour connecter 2 ordinateurs, 2 routeurs ou 2 hubs, entre eux.
+    La sortie devient l'entrée — la câble a un connecteur un T568A et un T568B. La broche 1 sur le connecteur A passe a la broche 3 du connecteur B, la broche 2 à la broche 6, la broche 3 à la broche 1 et la broche 6 a la broche 2, etc.
+    Ce type de câble est utilisé pour connecter 2 ordinateurs, 2 routeurs ou 2 hubs, entre eux.
 
     ![](https://i.imgur.com/2lx1Pdjm.png)
 
 ### Câble téléphonique
 
-* Les câbles utilisés pour les téléphones fixes sont dotés de connecteurs RJ-11.  
+* Les câbles utilisés par les téléphones fixes sont dotés de connecteurs RJ-11.  
   Ils ressemblent aux RJ-45 mais sont plus petits, et n'ont que 6 broches.
 
   ![](https://i.imgur.com/E7ZfXmrt.png)
@@ -192,7 +192,7 @@ Les transmissions peuvent être transmises en mode simplex ou duplex.
 
 ### Fibre optique
 
-* La *fibre optique* est un câble contenant des brins de fibres de verre.  
+* La *fibre optique* est un câble qui contient des brins de fibres de verre.  
   Ils sont conçus pour les réseaux à longue distance et à haute performance.
 
 * Il existe deux grands types de câbles à fibre optique:
@@ -211,7 +211,7 @@ Les transmissions peuvent être transmises en mode simplex ou duplex.
 
   ![](https://i.imgur.com/mAmgPyr.png)
 
-  Dans tous les cas, il faudra un convertisseur Ethernet / Fibre optique — les appareils des réseaux utilisateur ne disposant pas d'interfaces pour connecter la fibre optique directement
+  Dans tous les cas, il faudra un convertisseur Ethernet / Fibre optique — puisque les appareils des réseaux utilisateur n'ont pas d'interfaces pour connecter la fibre optique directement
 
   ![](https://i.imgur.com/lwWHoPJm.png)
 
@@ -295,7 +295,7 @@ Les transmissions peuvent être transmises en mode simplex ou duplex.
   Et pour les LAN sans fil:
 
   - <ins>Topologie en maillage complet (*full mesh*)</ins>:  
-    C'est la topologie la plus simple, chaque appareil à une liaison dédiée (dit *point à point*) avec chaque appareils.
+    C'est la topologie la plus simple, chaque appareil à une liaison dédiée (dit *point à point*) avec chaque appareil.
 
   - <ins>Topologie en étoile (*hub & spoke*)</ins>:  
     Un appareil sert de point central (dit *hub*).  

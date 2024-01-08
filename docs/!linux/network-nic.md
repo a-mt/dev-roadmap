@@ -260,8 +260,7 @@ category: Linux, Network
 
     - les réseaux peuvent changer lorsqu'un appareil est déplacé d'un endroit à l'autre
     - les appareils sans fils peuvent disposer d'un large choix de réseaux auxquels se connecter
-    - les appareils peuvent changer au fur à mesure que des appareils sont allumés ou éteints  
-       
+    - les appareils peuvent changer au fur à mesure que des appareils sont allumés ou éteints
 
 * Aujourd'hui on utilise plutôt des utilitaires pour manipuler et mettre à jour les configurations, notamment Network Manager. Bien que Network Manager utilise toujours des fichiers de configuration, il ajoute une couche d'abstraction qui nous permet de facilement passer d'une distribution à l'autre ou d'une interface à l'autre.
 

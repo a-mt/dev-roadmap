@@ -107,8 +107,7 @@ category: Chimie
   * O pour l'oxygène
   * C pour le carbone
   * Ca pour le calcium
-  * Cl pour le chlore  
-     
+  * Cl pour le chlore
 
   Parfois, il faut passer par d'anciens noms ou par le latin:
 

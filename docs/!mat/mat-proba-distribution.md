@@ -21,7 +21,7 @@ Il existe un certain nombre de situation qu'on retrouve très fréquemment en th
 Une fonction de distribution de probabilité est une fonction qui, pour un résultat possible, retourne la probabilité associée.
 
 Il y a 3 types de fonctions de distributions de probabilité:
-* la <ins>fonction de masse de probabilité</ins> (pmf)  
+* la <ins>fonction de masse de probabilité</ins> (*probability mass function*, pmf)  
   Pour les variables aléatoires discrètes.  
   Fonction qui pour une valeur x, retourne la probabilité associée.
 
@@ -29,7 +29,7 @@ Il y a 3 types de fonctions de distributions de probabilité:
   f(x) = \mathbb{P}(X = x)
   $$
 
-* la <ins>fonction de densité de probabilité</ins> (pdf)  
+* la <ins>fonction de densité de probabilité</ins> (*probability density function*, pdf)  
   Pour les variables aléatoires continues.  
   Fonction qui pour un intervalle [a,b] retourne l'aire sous la courbe entre ces deux bornes — donc la probabilité d'être entre ces deux bornes.
 
@@ -37,7 +37,7 @@ Il y a 3 types de fonctions de distributions de probabilité:
   \mathbb{P}(a < x < b) = \int_a^b f(x)dx
   $$
 
-* la <ins>fonction de distribution cumulative</ins> (cdf) ou *fonction de répartition*  
+* la <ins>fonction de distribution cumulative</ins> (*cumulative distribution function*, cdf) ou *fonction de répartition*  
   Pour les variables aléatoires discrètes et continues.  
   Fonction qui pour une valeur x, retourne la probabilité qu'elle soit supérieure à une variable aléatoire X.
 
@@ -131,8 +131,8 @@ Quelle est la probabilité qu'ils aient 3 filles?
 
 binom(5,3) = C(5,3) (0.5)**3 &times; (1 - 0.5)**(5-3)
            = 5!/(3!(5-3)!) &times; 0.125 &times; 0.25
-           = (5*4)/2 &times; 0.125 &times 0.25
-           = 0.3125 &approx; 31%
+           = (5*4)/2 &times; 0.125 &times; 0.25
+           = 0.3125 &asymp; 31%
 </pre>
 
 <pre>
@@ -140,8 +140,8 @@ Ex: Lucas a 20% de chance de réussir un lancer franc.
 Il vaut en faire 4. Quelle est la probabilité  qu'il en réussise exactement 2 sur les 4?
 
 binom(2,4) = C(4,2) 0.2**2 0.8**2
-           = 4!/(2!(4-2)!) &times; 0.04 &times 0.64
-           = 6 &times; 0.04 &times 0.64
+           = 4!/(2!(4-2)!) &times; 0.04 &times; 0.64
+           = 6 &times; 0.04 &times; 0.64
            = 0.1536
 </pre>
 
@@ -202,7 +202,7 @@ P(X = 125) = (e**(-100) * 100**125)/125!
 ## Distribution géométrique
 
 Probabilité de succès au n-ème essai.  
-Répond à "combien d'essais avant un succès"? À ne pas confondre avec la distribution binomiale, qui est utilisée pour déterminer le nombre de succès pour un nombre d'essais donné.
+Répond à "combien d'essais avant un succès"? À ne pas confondre avec la distribution binomiale, qui est utilisée pour déterminer la probabilité d'un nombre de succès k pour un nombre d'essais n.
 
 Pour utiliser la distribution géométrique, les conditions suivantes doivent être réunies:
 
@@ -233,7 +233,7 @@ p = 1/6
 geom(3) = (1/6) * (1 - 1/6)**(3-1)
         = (1/6) * (5/6)**2
         = 25/216
-        &approx; 0.1157
+        &asymp; 0.1157
 
 En moyenne, combien d'essais faut-il avant d'obtenir un succès (tomber sur un 6)?
 E = 1/p = 1/1/6 = 6
@@ -261,12 +261,12 @@ $$
 <pre>
 Ex: On souhaite trouver 3 personnes ayant été à l'étranger au moins une fois dans leur vie.  
 On part du principe que la probabilité qu'une personne soit déjà allé à l'étranger est de 50%.
-Quelle est la probabilité qu'il nous faille demande à 10 personnes pour obtenir 3 succès?
+Quelle est la probabilité qu'il nous faille demander à 10 personnes pour obtenir 3 succès?
 
 pascal(10,3) = C(10-1,3-1) * 0.5**3 * (1 - 0.5)**(10-3)
              = 9!/(2!(9-2)!) * 0.5**3 * 0.5**7
              = 36 * 0.5**3 * 0.5**7
-             &approx; 0.035
+             &asymp; 0.035
 </pre>
 
 ## Distribution hypergéométrique
@@ -299,8 +299,8 @@ k = 4
 P(X = 4) = (C(0.1*50,4) * C(0.9*50,10-4)) / C(50,10)
          = (C(5,4) * C(45,6)) / C(50,10)
          = (5 * 8145060) / 10272278170
-         &approx; 0.0040
-         &approx; 0.4%
+         &asymp; 0.0040
+         &asymp; 0.4%
 </pre>
 
 ---
@@ -325,7 +325,7 @@ $$
 Ex: On génère du bruit blanc entre 5 et 16 kHz.  
 Quelle est la probabilité de générer un son de 7.3 kHz?
 
-P(7.3) = 1/(16-5) = 1/11 &approx; 0.09
+P(7.3) = 1/(16-5) = 1/11 &asymp; 0.09
 </pre>
 
 ## Distribution exponentielle
@@ -365,7 +365,7 @@ Utilise la distribution de Poisson.
 P(X < 2) = P(X = 0) + P(X = 1)
          = (e**(-2) 2**0)/0! + (e**(-2) 2**1)/1!
          = (e**(-2) 1)/1 + (e**(-2) 2)/1
-         &approx; 0.40
+         &asymp; 0.40
 
 Quelle est la probabilité qu'il vous faille entre 5 et 8 minutes pour réaliser un devoir?  
 Utilise la distribution exponentielle.
@@ -374,7 +374,7 @@ Utilise la distribution exponentielle.
 P(5 < X < 8) = P(X < 8) - P(X < 5)
              = 1-e**(-0.1*8) - [1-e**(-0.1*5)]
              = -e**(-0.1*8) + e**(-0.1*5)
-             &approx; 0.1575
+             &asymp; 0.1575
 </pre>
 
 [Video de l'exemple: The Difference Between Poisson and Exponential Distributions](https://www.youtube.com/watch?v=Z-8FtjZNlb4)
@@ -415,22 +415,22 @@ Quelle est la probabilité qu'il vous faille
 moins de 60 minutes pour livrer 3 pizzas?
 
 P(X < 60) = int(0,60) 1/2 * 1/20**3 x**2 e**(-x/20) dx
-          &approx; .577
+          &asymp; .577
 </pre>
 
 [Video: Gamma Basics](https://www.youtube.com/watch?v=wpNjufjkhl8)  
 [Integral calculator](https://www.integral-calculator.com/#expr=1%2F2%20%2A%201%2F20%5E3%20x%5E2%20e%5E%28-x%2F20%29&lbound=0&ubound=60)
 
-## Distribution normale (ou distribution de Laplace-Gauss)
+## Distribution normale (aka distribution Z ou Laplace-Gauss)
 
 * Les premiers statisticiens ont constaté que de nombreuses distributions statistiques observées pouvaient être décrites et modélisées par une même loi, qu'ils ont appelé loi *normale*.
 
 * Les propriétés d'une distribution normale sont comme suit:
   * La distribution des données est en forme de cloche: symétrique, centrée autour de la moyenne. La moyenne est la médiane sont donc égales.
 
-  * &approx; 99.73% des observations sont comprises dans un intervalle de 3 écart-type autour de la moyenne.  
-    &approx; 95.45% dans un intervalle de 2 écart-type autour de la moyenne.  
-    &approx; 68.27% dans un intervalle de 1 écart-type autour de la moyenne.
+  * &asymp; 99.73% des observations sont comprises dans un intervalle de 3 écart-type autour de la moyenne.  
+    &asymp; 95.45% dans un intervalle de 2 écart-type autour de la moyenne.  
+    &asymp; 68.27% dans un intervalle de 1 écart-type autour de la moyenne.
 
   ![](https://i.imgur.com/kN8onS2.png)
 
@@ -481,7 +481,7 @@ Quel est la probabilité de trouver un pin de diamètre supérieur à 210cm?
 
 * La taille des gens, le QI ou encore la plupart des éléments crées en usine (comme le poids des boîtes de céréales) sont distribués normalement. Mais la raison pour laquelle on parle autant de la distribution normale, c'est parce que la distribution des moyennes est normale.
 
-* Ex: Si on lance un dé, on a 6 résultat possibles: de 1 à 6, où chaque résultat a autant de probabilité d'appaître. Si on lance deux dé, il n'y a qu'une façon d'obtenir une somme de 2 (1+1) ou 12 (6+6) mais 6 façons d'obtenir un 7 (4+3, 5+2, 6+1, 1+6, 5+2, 3+4).
+* Ex: Si on lance un dé, on a 6 résultat possibles: de 1 à 6, où chaque résultat a autant de probabilité d'appaître. Si on lance deux dés, il n'y a qu'une façon d'obtenir une somme de 2 (1+1) ou 12 (6+6) mais 6 façons d'obtenir un 7 (4+3, 5+2, 6+1, 1+6, 5+2, 3+4).
 
   Plus on augmente la taille de l'échantillon dont on calcule la moyenne, plus cette tendance se renforce: les valeurs centrales deviennent de plus en plus probables et les valeurs extrêmes deviennent de moins en moins probables.
   C'est parce qu'il y a plusieurs combinaisons possibles pour obtenir une moyenne au centre (valeurs minimales & maximales, valeurs maximales & minimales, ou valeurs centrales) mais une seule combinaison possible pour obtenir une moyenne se situant aux extrêmes (que des valeurs minimales, que des valeurs maximales).
@@ -578,7 +578,7 @@ Quel est la probabilité de trouver un pin de diamètre supérieur à 210cm?
   </pre>
   </details>
 
-  L'estimation de l'écart-type (*standard deviation* en anglais) d'une distribution  est appelé l'*erreur-type* (*standard error* en anglais). Calculer l'erreur-type avec une distribution de moyenne qui de petits échantillons aura tendance à sous-estimer l'écart-type de la distribution initiale. Avec n = 2, le nombre est sous-estimé d'environ 25%, pour n = 6 de 5%. Diminuer l'incertitude d'une estimation requiert donc l'acquisition de plus d'observations dans les échantillons.
+  L'estimation de l'écart-type (*standard deviation* en anglais) d'une distribution  est appelée l'*erreur-type* (*standard error* en anglais). Calculer l'erreur-type avec une distribution de moyenne qui de petits échantillons aura tendance à sous-estimer l'écart-type de la distribution initiale. Avec n = 2, le nombre est sous-estimé d'environ 25%, pour n = 6 de 5%. Diminuer l'incertitude d'une estimation requiert donc l'acquisition de plus d'observations dans les échantillons.
 
 ### Distribution T
 

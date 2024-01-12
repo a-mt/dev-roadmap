@@ -157,7 +157,7 @@ $$
 $$
 
 Le seuil de significativité est une probabilité (une valeur entre 0 et 1) et on le note &alpha; (alpha).  
-&alpha; = 0.05 indique qu'on accepte un risque de 5% (5 fois sur 100) de conclure à une différence alors qu'en vérité il n'y en a pas. On peut choisir un risque un risque plus bas, typiquement en médicine on prendra 1%, mais choisir un risque plus grand serait accompagné d'une telle incertitude qu'il serait déraisonnable de s'y fier.
+&alpha; = 0.05 indique qu'on accepte un risque de 5% (5 fois sur 100) de conclure à une différence alors qu'en vérité il n'y en a pas. On peut choisir un risque plus bas, typiquement en médicine on prendra 1%, mais choisir un risque plus grand serait accompagné d'une telle incertitude qu'il serait déraisonnable de s'y fier.
 
 ---
 
@@ -165,7 +165,7 @@ Le seuil de significativité est une probabilité (une valeur entre 0 et 1) et o
 
 * Le risque &alpha; (alpha), ou risque de premier degré, est le risque de rejeter H<sub>0</sub> si H<sub>0</sub> est vraie — et donc de se tromper en concluant à un effet qui n'existe pas. Si &alpha; = 0.03: il y a 3 chances sur 100 de se tromper.
 
-* Le risque &beta; (beta), ou risque de second degré, est le risque de ne pas rejeter H<sub>0</sub> si H<sub>1</sub> — et donc de se tromper en disant qu'il n'y a pas d'effet statistiquement significatif. On ne sait pas quantifier &beta;.
+* Le risque &beta; (beta), ou risque de second degré, est le risque de ne pas rejeter H<sub>0</sub> si H<sub>1</sub> est vraie — et donc de se tromper en disant qu'il n'y a pas d'effet statistiquement significatif. On ne sait pas quantifier &beta;.
 
   ![](https://i.imgur.com/dx2iIXem.png)
 

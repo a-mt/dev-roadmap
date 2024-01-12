@@ -19,7 +19,7 @@ category: Other, Bitcoin
 
 ## Unité
 
-Le prix d'échange du bitcoin (BTC) avec le dollar américain (USD) étant élevé — 1 BTC &approx; 10 000 USD — les transferts de bitcoins ne se font généralement pas à l'unité mais en fraction de bitcoin. Pour cette raison, on exprime généralement le solde du compte et le montant des transactions non pas en bitcoins mais en satoshis (sat):
+Le prix d'échange du bitcoin (BTC) avec le dollar américain (USD) étant élevé — 1 BTC &asymp; 10 000 USD — les transferts de bitcoins ne se font généralement pas à l'unité mais en fraction de bitcoin. Pour cette raison, on exprime généralement le solde du compte et le montant des transactions non pas en bitcoins mais en satoshis (sat):
 
 * 1 sat = 0,00000001 BTC (1 ⋅ 10<sup>-8</sup> BTC).
 * 1000 sat = 1 kilo satoshi (1 ⋅ 10<sup>-5</sup> BTC).

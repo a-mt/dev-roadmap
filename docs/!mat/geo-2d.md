@@ -143,7 +143,7 @@ On distingue différents types de triangles:
   ![](https://i.imgur.com/nELZRkc.png?1)
 
   &pi; est un nombre irrationnel, il a un nombre infini de chiffres après la virgule.  
-  Pour se faire une idée de la longueur de la circonférence, on utilise une valeur approchée de &pi; &approx; 3.1416.
+  Pour se faire une idée de la longueur de la circonférence, on utilise une valeur approchée de &pi; &asymp; 3.1416.
 
 ---
 

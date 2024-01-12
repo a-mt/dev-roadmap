@@ -54,7 +54,7 @@ Cov(Y,X) & Cov(Y,Y)
 
 ## Coefficient de Corrélation (R)
 
-* Une covariance proche de 0 signifie qu'il n'y a pas de relation linéaire entre les deux variables. Inversemment, plus la covariance s'écarte de 0, plus la relation observée est importante. Mais cette valeur doit être interprétée au regard des unités utilisée: des valeurs proches de zéro auront une faible covariance et des valeurs qui s'expriment en milliers auront une covariance élevée, il est donc difficile d'estimer à quel point la relation entre les variables est marquée. Le coefficient de corrélation résout ce problème.
+* Une covariance proche de 0 signifie qu'il n'y a pas de relation linéaire entre les deux variables. Inversemment, plus la covariance s'écarte de 0, plus la relation observée est importante. Mais cette valeur doit être interprétée au regard des unités utilisées: si les valeurs de l'échantillon sont des valeurs proches de zéro la covariance sera faible, tandis que si les valeurs s'expriment en milliers la covariance sera élevée, il est donc difficile d'estimer à quel point la relation entre les variables est marquée. Le coefficient de corrélation résout ce problème.
 
 * Le **coefficient de corrélation** (ou *algorithme de Pearson*) normalise la covariance par l'écart-type de chaque variable:
 
@@ -111,7 +111,7 @@ Une corrélation n'implique pas un lien de causalilté. On peut notamment citer 
    On a inversé le sens de la causalité: que la variable X cause Y, alors qu'en réalité la Y cause X. Il faut toujours être prudent lorsqu'on tire des conclusions avec des statistiques car les statistiques à elles seules ne peuvent rien dire sur les relations de causalité.
 
 2. <ins>Temporalité</ins>  
-   On a reccueilli des données sur la part de marché d'Internet Explorer ainsi que sur les meurtres aux États-Unis pour 100 000 habitants. On constante une relation linéaire positive — plus la part de marché d'Internet Explorer augmente, plus le nombre de meutres augmente:
+   On a reccueilli des données sur la part de marché d'Internet Explorer ainsi que sur les meurtres aux États-Unis pour 100 000 habitants. On constate une relation linéaire positive — plus la part de marché d'Internet Explorer augmente, plus le nombre de meutres augmente:
 
    ![](https://i.imgur.com/I7lRaQj.png)
 
@@ -122,9 +122,9 @@ Une corrélation n'implique pas un lien de causalilté. On peut notamment citer 
 
    ![](https://i.imgur.com/aInu5wg.png?1)
 
-   Pourtant les pompiers ne sont pas à l'origine des dégats mais une troisième variable ⋅ l'origine des deux autres: la taille du feu.
+   Pourtant les pompiers ne sont pas à l'origine des dégats mais une troisième variable, qui est à l'origine des deux autres: la taille du feu.
 
-   Un peu dans la même veine, on constate que de différentes machines sensées decafféiner les grains de café n'ont pas toutes eu les mêmes résultats. On pourrait penser que le problème vient de la machine mais en regardant les configurations des machines, on constate qu'il existe un facteur sous-jacent à l'origine des résultats constatés: le temps d'extraction.
+   Un peu dans la même veine, on constate que différentes machines sensées decafféiner les grains de café n'ont pas toutes eut les mêmes résultats. On pourrait penser que le problème vient de la machine mais en regardant les configurations des machines, on constate qu'il existe un facteur sous-jacent à l'origine des résultats constatés: le temps d'extraction configuré n'était pas le même.
 
    ![](https://i.imgur.com/s2CX7iy.png)
 
@@ -165,14 +165,14 @@ Il peut être difficile de prouver une relation de causalité. Pour appuyer nos 
   ryz = np.corrcoef(Y, Z)[0,1]
 
   corrp  = rxy - rxz * ryz
-  corrp /= np.sqrt(1 - rxz\*\*2) * np.sqrt(1 - ryz\*\*2) 
+  corrp /= np.sqrt(1 - rxz**2) * np.sqrt(1 - ryz**2) 
   corrp
   </pre>
   </details>
 
-* Exemple: On veut utiliser la relation entre puissance (X) et consommation (Y) en contrôlant le rôle de la cylindrée (Z).
+* Exemple: On veut utiliser la relation entre puissance (X) et consommation (Y) d'une voiture en contrôlant le rôle de la cylindrée (Z).
 
-  La cylindrée exprime le volume de la chambre des pistons en litres. Plus la cylindrée d’un moteur est importante, plus sa capacité à tirer le poids total de la voiture sera grande. La voiture aura donc une accélération plus importante et plus lisse. Une grosse cylindrée a tendance à être puissance mais elle a aussi tendance à consommer plus que de riason.
+  La cylindrée exprime le volume de la chambre des pistons en litres. Plus la cylindrée d’un moteur est importante, plus sa capacité à tirer le poids total de la voiture sera grande. La voiture aura donc une accélération plus importante et plus lisse. Une grosse cylindrée a tendance à être puissance mais elle a aussi tendance à consommer plus que de raison.
 
   Notons qu'il est extrêmement rare de voir des moteurs diesels avec de grosses cylindrées tout simplement parce qu’une voiture diesel, à l’instar d’un moteur essence, n’est pas à vocation sportive et l’industrie automobile n’a donc aucune raison de construire des véhicules diesel à grosse cylindrée.
 
@@ -200,7 +200,7 @@ On appelle *ordre* le nombre de variable contrôlées.
   r_{XY \cdot Z_1 Z_2} = \frac{r_{XY \cdot Z_1} - r_{XZ_2 \cdot Z_1} \cdot r_{YZ_2 \cdot Z_1}}{ \sqrt{1 - r_{XZ_2 \cdot Z_1}^2 } \cdot  \sqrt{1 - r_{YZ_2 \cdot Z_1}^2 }}
   $$
 
-* Exemple: Mesurer la relation puissance (X) et consommation (Y) en contrôlant cylindrée (Z<sub>1</sub>) et poids (Z<sub>2</sub>)
+* Exemple: Mesurer la relation puissance (X) et consommation (Y) d'une voiture en contrôlant la cylindrée (Z<sub>1</sub>) et le poids (Z<sub>2</sub>)
 
   On calcule les corrélations suivantes: r<sub>xy ⋅ z1</sub> = 0.2955, r<sub>xz2 ⋅ z1</sub> = 0.6878, r<sub>yz2 ⋅ z1</sub> = 0.1663.
 

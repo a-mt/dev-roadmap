@@ -51,7 +51,7 @@ Ex: Suite à un sondage, on a récolté les données suivantes:
 ## Graphique en barres
 
 Ou *diagramme en bâtons*. (*bar chart* en anglais)  
-Un diagramme en barres utilise le nombre d'effectifs pour créer des barres de hauteur égale.   
+Un diagramme en barres utilise le nombre d'effectifs pour déterminer la hauteur des barres.   
 Permet de comparer les quantités entre différents groupes (en comparant la hauteur des barres au lieu de regarder des chiffres bruts).
 
 ![](https://i.imgur.com/ZNG0aQX.png)
@@ -362,7 +362,7 @@ Un diagramme de Venn utilise des cercles pour représenter différents ensembles
 ## Carte de fréquentation
 
 (*heatmap* en anglais)  
-Une carte de fréquentation consiste à donner un code-couleur aux nombres suivant leur position dans l'intervalle (ex: bleu pour les valeurs inférieures à la médianne, rouge pour les valeurs supérieures).  
+Une carte de fréquentation consiste à donner un code-couleur aux nombres suivant leur position dans l'intervalle (ex: bleu pour les valeurs inférieures à la médiane, rouge pour les valeurs supérieures).  
 Permet de vérifier si les données suivent un motif.
 
 ![](https://i.imgur.com/ReyvGlL.png)

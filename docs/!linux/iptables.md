@@ -154,3 +154,5 @@ Les modifications apportées aux iptables sont perdues lorsqu'on redémarre l'or
     ```
     sudo chmod +x /etc/network/if-pre-up.d/iptablesload
     ```
+
+[IPtables packet rate limit against DDOS](https://www.baeldung.com/linux/iptables-packet-rate-limit)

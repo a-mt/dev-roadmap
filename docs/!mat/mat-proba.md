@@ -63,7 +63,7 @@ latex: true
   Probabilité = \frac{nombre\ d'occurences}{nombre\ total}
   $$
 
-  Ex: au lancer de dé, la probabilité d'obtenir un 6 est de 1/6 (&approx; 0.17, soit 17%).  
+  Ex: au lancer de dé, la probabilité d'obtenir un 6 est de 1/6 (&asymp; 0.17, soit 17%).  
   La probabilité d'obtenir un nombre pair est de 3/6 (= 0.5, soit 50%)
 
 * L'[analyse combinatoire](mat-combine.md) permet de compter le nombre de cas qui nous intéressent.
@@ -106,7 +106,7 @@ latex: true
 
 ## Variable aléatoire
 
-* Dans de nombreuses expérience aléatoires, on n'est pas intéressé directement par le résultat de l'expérience, mais par une certaine fonction de ce résultat.
+* Dans de nombreuses expériences aléatoires, on n'est pas intéressé directement par le résultat de l'expérience, mais par une certaine fonction de ce résultat.
 
   Une **variable aléatoire** est une fonction qui associe un réel (typiquement un gain ou perte) à chaque événement de l'univers d'une expérience aléatoire.
 
@@ -236,10 +236,10 @@ Ex: Suite à un sondage, on a récolté les données suivantes:
 Quelle est la probabilité empirique qu'une personne ait un chat ou un chien?
 
 Nombre total de personne: (2+4) + (11+12) = 29
-P(chat)          = (2+11)/29     (&approx; 0.45)
-P(chien)         = (2+4)/29      (&approx; 0.20)
-P(chat et chien) = 2/29          (&approx; 0.07)
-P(chat ou chien) = (2+11+2+4)/29 - 2/29 = (2+11+4)/29 (&approx; 0.57)
+P(chat)          = (2+11)/29     (&asymp; 0.45)
+P(chien)         = (2+4)/29      (&asymp; 0.20)
+P(chat et chien) = 2/29          (&asymp; 0.07)
+P(chat ou chien) = (2+11+2+4)/29 - 2/29 = (2+11+4)/29 (&asymp; 0.57)
 </pre>
 
 ### Union d'événements / A et B
@@ -262,10 +262,10 @@ B = le 2ème dé vaut 2
 
 P(A et B) = P(A) &times; P(B)
           = 1/6 &times; 1/6
-          = 1/36 (&approx; 0.03)
+          = 1/36 (&asymp; 0.03)
 </pre>
 
-Quand deux événements sont dépendants, la probabilité que les événements A et B se produisent tous deux est P(A) &times; P(B|A) — où P(B|A) signifie "probabilité que l'événement B se produise sachant que l'événement A s'est produit".
+Quand deux événements sont dépendants, la probabilité que les événements A et B se produisent tous deux est P(A) &times; P(B&#124;A) — où P(B&#124;A) signifie "probabilité que l'événement B se produise sachant que l'événement A s'est produit".
 
 $$
 \text{Union} \\
@@ -283,7 +283,7 @@ B = probabilité que le 2ème étudiant soit en informatique
 
 P(A) = 30/80
 P(B|A) = 29/79
-P(A et B) = (30/80) × (29/79) = 870/6320 (&approx; 13.77%)
+P(A et B) = (30/80) × (29/79) = 870/6320 (&asymp; 13.77%)
 </pre>
 
 ### Probabilité conditionnelle / A si B
@@ -317,12 +317,12 @@ Ex: On a demandé à 100 jeunes s'ils préféraient avoir le super-pouvoir
 4. Quelle est la probabilité qu'un garçon ait choisit voler?
    P(voler|garçon) = P(voler et garçon)/P(garçon)
                    = 26/100 &div; 48/100
-                   = 26/48 &approx; 54%
+                   = 26/48 &asymp; 54%
 
 5. Quelle est la probabilité qu'un enfait ayant choisit voler soit un garçon?
    P(garçon|voler) = P(voler et garçon)/P(voler)
                    = 26/100 &div; 38/100
-                   = 26/38 &approx; 68%
+                   = 26/38 &asymp; 68%
 </pre>
 
 ### Exemple d'application union & intersection
@@ -344,12 +344,12 @@ Quelle est la probabilité d'obtenir deux fois Face?
 P(FF) = P(Truquée et FF) + P(Non truquée et FF)
       = 0.135 + 0.15625
       = 0.29125
-      &approx; 29%
+      &asymp; 29%
 </pre>
 
 ### Test d'indépendance
 
-Si A et B sont indépendants, par définition, la probabilité que l'événement A se produise est égale à la probabilité que l'événement A se produise si l'événement B s'est produit: P(A|B) = P(A).
+Si A et B sont indépendants, par définition, la probabilité que l'événement A se produise est égale à la probabilité que l'événement A se produise si l'événement B s'est produit: P(A&#124;B) = P(A).
 
 $$
 \text{Preuve} \\
@@ -376,7 +376,7 @@ B = gagne plus de 40000€
 Nombre total de personnes: 36+109+35 + 24+56+40 = 300
 P(A)   = (24+56+40)/300 = 120/300 (= 40%)
 P(B)   = (35+40)/300    = 75/300  (= 25%)
-P(B|A) = 40/120 = 1/3             (&approx; 33%)
+P(B|A) = 40/120 = 1/3             (&asymp; 33%)
 
 La probabilité qu'un ingénieur choisit au hasard
 ait un salaire annuel supérieur à 40000€ (25%)
@@ -426,10 +426,10 @@ P(cancer sein) = 0.063
 P(cancer sein | homme) = 0.001
 On partira du principe que P(homme) est 0.5.
 
-P(homme | sein cancer) = (P(cancer sein | homme) &times P(homme)) / P(cancer sein)
+P(homme | sein cancer) = (P(cancer sein | homme) &times; P(homme)) / P(cancer sein)
                        = (0.001 &times; 0.5) / 0.063
-                       &approx; 0.0079 &approx; 0.79%
+                       &asymp; 0.0079 &asymp; 0.79%
 
-C'est donc peu probable — mais la probabilité que ce soit un homme
+C'est donc assez peu probable — mais la probabilité que ce soit un homme
 est peut-être plus élevée que vous ne l'auriez anticipé.
 </pre>

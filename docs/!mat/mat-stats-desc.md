@@ -80,7 +80,7 @@ Plutôt que la moyenne, on peut également choisir d'utiliser
     $$\begin{aligned} \underset{pond}{\mu} &= \frac{\displaystyle \sum_{i=1}^n w_i X_i}{\displaystyle \sum_{i=1}^n w_i\quad} \\ \\ &= \frac{w_1 X_1 + \ldots + w_n X_n}{w_1 + \ldots + w_n} \end{aligned}$$
 
     Multiplier chaque valeur par le poids qu'on lui donne, sommer le tout, et diviser par la somme des poids. Typiquement le poids peut correspondre à un nombre d'heures, un tarif, un volume ou juste l'importance accordée à un élément plutôt qu'un autre.  
-    Ex: La moyenne pondérée des points 5 coef 1, 5 coef 1, 7 coef 2, 20 coef 3 est (5×1 + 5×1 + 7×2 + 10×3) / (1+1+2+3) &approx; 7.71
+    Ex: La moyenne pondérée des points 5 coef 1, 5 coef 1, 7 coef 2, 20 coef 3 est (5×1 + 5×1 + 7×2 + 10×3) / (1+1+2+3) &asymp; 7.71
 
 ### Moyenne ajustée
 
@@ -102,9 +102,9 @@ Plutôt que la moyenne, on peut également choisir d'utiliser
 
     Multiplier toutes les valeurs entre elles, et porter le résultat à la puissance 1/n (autrement dit, prendre la racine n-ième), où n correspond au nombre de valeurs.
 
-    Ex 1: +100% la première année, -50% la deuxième année. La moyenne géométrique est (2*0.5)^(1/2) = 1. On peut dire qu'en moyenne, la croissance a été de +0% chaque année.
+    Ex 1: +100% la première année, -50% la deuxième année. La moyenne géométrique est (2×0.5)^(1/2) = 1. On peut dire qu'en moyenne, la croissance a été de +0% chaque année.
 
-    Ex 2: +30% la première année, -12% la deuxième année, +5% la troisième année. La moyenne géométrique est (1.30*0.88*1.05)^(1/3) &approx; 1.06. On peut dire qu'en moyenne, la croissance a été d'environ +6% chaque année.
+    Ex 2: +30% la première année, -12% la deuxième année, +5% la troisième année. La moyenne géométrique est (1.30×0.88×1.05)^(1/3) &asymp; 1.06. On peut dire qu'en moyenne, la croissance a été d'environ +6% chaque année.
 
 ---
 
@@ -222,7 +222,7 @@ Plutôt que la moyenne, on peut également choisir d'utiliser
   $$\sigma = \sqrt{\frac{\displaystyle \sum_{i=1}^n (X_i - \mu)^2}{n}} = \sqrt{\frac{(X_1 - \mu)^2 + \ldots + (X_n - \mu)^2}{n}}$$
 
   Prendre la racine carrée de la variance.  
-  Ex: L'écart-type des points 5,5,7,20 est &radic;39.1875 &approx; 6.26
+  Ex: L'écart-type des points 5,5,7,20 est &radic;39.1875 &asymp; 6.26
 
   <details>
   <summary>python</summary>
@@ -246,7 +246,7 @@ Plutôt que la moyenne, on peut également choisir d'utiliser
   $$
 
   Diviser l'écart type par la moyenne. Souvent exprimé en pourcentages (×100).  
-  Ex: Le coefficient de variation des points 5,5,7,20 est 6.26/9.25*100 &approx; 67,68. En moyenne, les points s'écartent de 68% de la moyenne, il y a donc une forte dispersion des données.
+  Ex: Le coefficient de variation des points 5,5,7,20 est 6.26/9.25*100 &asymp; 67,68. En moyenne, les points s'écartent de 68% de la moyenne, il y a donc une forte dispersion des données.
 
 ### Écart-réduit
 
@@ -349,7 +349,7 @@ On utilise généralement 4 moments pour décrire numériquement la forme d'une 
   ![](https://i.imgur.com/1dHznVSm.png)
 
 * 3ème moment: le coefficient d'asymétrie (*skewness* en anglais)  
-  Détermine si les valeurs sont réparties uniformément de part et d'autre de la valeur moyenne ou si le graphique est étale d'un côté.
+  Détermine si les valeurs sont réparties uniformément de part et d'autre de la valeur moyenne ou si le graphique est étalé d'un côté.
 
   $$S = \mathbb{E}\left(\frac{X - \mu}{\sigma}\right)^3$$
 

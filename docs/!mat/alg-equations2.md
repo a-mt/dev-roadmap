@@ -62,19 +62,19 @@ Des opérations *réciproques* sont des opérations qui se neutralisent l'une l'
 
   <ins>Exemple a</ins>:
 
-  ![](https://i.imgur.com/KwuU8BX.png)
+  <img src="https://i.imgur.com/KwuU8BX.png" />
 
   <ins>Exemple b</ins>:
 
-  ![](https://i.imgur.com/u3ozbKd.png)
+  <img src="https://i.imgur.com/u3ozbKd.png" />
 
   <ins>Exemple c</ins>:
 
-  ![](https://i.imgur.com/S8eKt3j.png)
+  <img src="https://i.imgur.com/S8eKt3j.png" />
 
   <ins>Exemple d</ins>:
 
-  ![](https://i.imgur.com/62AX3MR.png)
+  <img src="https://i.imgur.com/62AX3MR.png" />
   </details>
 
 * C'est toujours bien de vérifier son résultat. Pour ce faire, on remplace l'inconnue par la solution trouvée dans l'équation initiale. On utilise le symbole ≟ à la place de = tant qu'on ne sait pas si l'égalité est vraie ou fausse. Ensuite, on effectue les calculs et on vérifie que l'égalité est bien vraie — donc que la solution trouvée est bonne.

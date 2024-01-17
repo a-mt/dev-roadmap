@@ -30,6 +30,7 @@ title: Maths
     * [Fonctions polynômiales](!mat/alg-fct-poly.md)
     * [Fonctions par morceaux](!mat/alg-fct-morceau.md)
     * [Fonctions avec valeur absolue](!mat/alg-fct-abs.md)
+    * [Fonctions inverse](!mat/alg-fct-power.md)
     * [Fonctions composées](!mat/alg-fct-composee.md)
 
 <!-- -->
@@ -37,7 +38,7 @@ title: Maths
 * Géométrie classique
   * [Introduction](!mat/geo-intro.md)
   * [Éléments de base](!mat/geo-basics.md)
-  * [Transformations](!mat/geo-transform.md)
+  * [Repère & transformations](!mat/geo-transform.md)
   * [Géométrie analytique](!mat/geo-analyse.md)
   * [Formes 2D](!mat/geo-2d.md)
   * [Formes 3D](!mat/geo-3d.md)
@@ -50,11 +51,19 @@ title: Maths
 
 <!-- -->
 
-* Stats & proba
+* Stats
   * [Introduction aux Statistiques](!mat/mat-stats.md)
   * [Statistiques descriptives - univariables](!mat/mat-stats-desc.md)
   * [Statistiques descriptives - bivariables](!mat/mat-stats-desc-2.md)
   * [Visualisations](!mat/mat-visual.md)
+
+* Probabilités
+  * [Notation des ensembles](!mat/mat-ensemble.md)
+  * [Analyse combinatoire](!mat/mat-combine.md)
   * [Probabilités](!mat/mat-proba.md)
   * [Distributions de probabilité](!mat/mat-proba-distribution.md)
+
+* Inférences
   * [Statistiques inférentielles](!mat/mat-stats-inf.md)
+  * [Tests statistiques](!mat/mat-stat-inf-freq.md)
+  * [Inférences Bayésiennes](!mat/mat-stat-inf-bayes.md)

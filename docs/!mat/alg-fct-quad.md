@@ -31,6 +31,15 @@ Concepts: sommet, convexe, concave, taux de variation moyen, intersection avec l
   | Canonique  | 2(x + 4)² - 8   |
   | Factorisée | 2(x + 6)(x + 2) |
 
+## Fonction carrée
+
+* La fonction carrée est la fonction définie sur ℝ par x ⟼ x². Autrement dit, f(x) = x²  
+  Elle admet pour minimum 0 en x=0.
+
+* Dans un repère orthogonal, la courbe est symétrique par rapport à l'axe des ordonnées car deux nombres opposés ont le même carré, quelque soit le réel — (x)² = (-x)². On dit que la fonction carré est *paire*
+
+  ![](https://i.imgur.com/HvCXkF5m.jpg)
+
 ---
 
 ## Sommet d'un parabole
@@ -69,7 +78,10 @@ Concepts: sommet, convexe, concave, taux de variation moyen, intersection avec l
 ## Calculer les intersections avec les abscisses
 
 * Pour trouver les intersections avec les abscisses, il faut trouver les valeurs pour lesquelles *y=0*.  
-  Autrement dit, il faut résoudre l'équation.
+  Autrement dit, il faut [résoudre l'équation](alg-equations2.md#résoudre-une-équation-de-2nd-degré).  
+  Il y a autant d'intersections avec l'axe des abcisses qu'il y a de solutions.
+
+  ![](https://i.imgur.com/isWjIoK.png)
 
   ```
   Soit f(x) = x² + 6x + 8.

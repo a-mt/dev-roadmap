@@ -23,7 +23,7 @@ category: Linux
 1. Installer bind
 
     ``` bash
-    sudo dns install bind bind-utils
+    sudo apt install bind bind-utils
     ```
 
     Copier l'adresse IP du serveur

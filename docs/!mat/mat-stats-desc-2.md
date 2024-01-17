@@ -207,3 +207,19 @@ On appelle *ordre* le nombre de variable contrôlées.
   $$
   r_{XY \cdot Z_1 Z_2} = \frac{0.2955 - 0.6878 \cdot 0.1663}{\sqrt{(1 - 0.6878^2)(1 - 0.1663^2)}} = 0.25309
   $$
+
+## Ajustement
+
+* Effectuer un *ajustement de y en x* d'un nuage de points consiste à trouver une fonction f telle que la courbe d'équation y = f(x) passe "le plus près possible" des points du nuage.
+
+  Étudier la forme du nuage de points permet de se faire une idée du type de liaison entre x et y.
+
+  ![](https://i.imgur.com/XSAxyXH.jpg)
+
+* Pour les statisticiens, une formule telle que y = f(x) est appelée un *modèle*.  
+  x est la variable *explicative* et y la variable *expliquée*
+
+* Plusieurs critères sont possibles pour définir ce qu'on entend par "le plus près possible".  
+  La méthode la plus employée est celle des "moindres carrés".
+
+  Exemple: [Régression linéaire](../!ml/linear-regression)

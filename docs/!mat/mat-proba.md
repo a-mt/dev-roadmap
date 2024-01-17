@@ -66,7 +66,7 @@ latex: true
   Ex: au lancer de dé, la probabilité d'obtenir un 6 est de 1/6 (&asymp; 0.17, soit 17%).  
   La probabilité d'obtenir un nombre pair est de 3/6 (= 0.5, soit 50%)
 
-* L'[analyse combinatoire](mat-combine.md) permet de compter le nombre de cas qui nous intéressent.
+* L'[analyse combinatoire](mat-combine.md) permet de compter le nombre de cas qui nous intéressent.  
 
   <pre>
   Ex: Un jeu de 36 cartes est composé de 4 couleurs (coeur, carreaux, trègles et piques).  
@@ -185,7 +185,7 @@ latex: true
 
 ## Exclusifs, indépendents
 
-* Deux événements sont dits **mutuellement exclusifs** (ou *disjoints*) s'ils ne peuvent pas se produire en même temps.
+* Deux événements sont dits **mutuellement exclusifs** (ou *disjoints* ou encore *incompatibles*) s'ils ne peuvent pas se produire en même temps.
 
   Exemples:
   * Si on tire un dé, tomber sur un 1 exclut le fait de tomber sur un 2. On tombe soit sur 1 soit sur 2 mais pas les deux: P(1) et P(2) sont mutuellement exclusifs.

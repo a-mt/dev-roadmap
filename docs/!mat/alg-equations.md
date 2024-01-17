@@ -104,13 +104,13 @@ Concepts: réduire, décomposer, développer, identités remarquables, factorise
   <summary>Plus d'exemples</summary>
 
   <ins>Exemple a</ins>:  
-  ![](https://i.imgur.com/QBHIoFn.png)
+  <img src="https://i.imgur.com/QBHIoFn.png" />
 
   <ins>Exemple b</ins>:  
-  ![](https://i.imgur.com/bbst0wN.png)
+  <img src="https://i.imgur.com/bbst0wN.png" />
 
   <ins>Exemple c</ins>:  
-  ![](https://i.imgur.com/BaYgM24.png)
+  <img src="https://i.imgur.com/BaYgM24.png" />
   </details>
 
 ### Forme factorisée: ax² - b => (Ax - B)(Ax + B)
@@ -162,23 +162,23 @@ Concepts: réduire, décomposer, développer, identités remarquables, factorise
   <details>
   <summary>Plus d'exemples</summary>
 
-  ```
+  <pre>
   Mettre x² - 4x = 5 sous forme canonique.
 
   x² - 4x + 4 - 4 - 5 = 0
         (x² - 2)² - 9 = 0
-  ```
+  </pre>
 
-  ```
+  <pre>
   Mettre -2x² + 8x + 8 sous forme canonique.
 
   -2(x² - 4x - 4)
   -2(x² - 4x + 4 - 4 - 4)
   -2((x - 2)² - 8)
   -2(x - 2)² - 16
-  ```
+  </pre>
 
-  ```
+  <pre>
   Mettre 2x² + 11x + 15 sous forme canonique.
 
   2(x² + 11/2x + 15/2)
@@ -186,5 +186,5 @@ Concepts: réduire, décomposer, développer, identités remarquables, factorise
   2((x + 11/4)² - 121/16 + 120/16)
   2((x + 11/4)² - 1/16)
   2(x + 11/4)² - 1/8
-  ```
+  </pre>
   </details>

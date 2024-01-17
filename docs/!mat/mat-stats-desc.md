@@ -152,7 +152,7 @@ Plutôt que la moyenne, on peut également choisir d'utiliser
 
 ### Intervalle
 
-* l'**intervalle** (*range* en anglais)
+* l'**intervalle** ou **étendue** (*range* en anglais)
 
   $$intervalle = max - min$$
 

@@ -94,9 +94,9 @@ Concepts: racine d'un polynôme, tableau des signes, parité d'une fonction
 <details>
 <summary>Plus d'exemples</summary>
 
-![](https://i.imgur.com/UlsLbGc.png)
+<img src="https://i.imgur.com/UlsLbGc.png" />
 
-![](https://i.imgur.com/hGkEOLh.png)
+<img src="https://i.imgur.com/hGkEOLh.png" />
 </details>
 
 ---

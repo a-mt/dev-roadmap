@@ -54,6 +54,19 @@ Concepts: coefficient directeur, ordonnée à l'origine, abscisse à l'origine, 
 
 * L'*abscisse à l'origine* est le point où  la droite coupe l'axe des abscisses (plan horizontal, celui des *x*), c'est à dire la valeur de *x* quand *y* vaut 0.
 
+## Calculer l'intersection avec l'abscisse
+
+* Pour trouver l'intersection avec l'abscisse, il faut trouver la valeur pour laquelle y=0. Autrement dit, résoudre l'équation.  
+  L'équation ax+b=0 a une seule solution: -b/a
+
+  ```
+  ax + b = 0
+  ax = -b
+  x - -b/a
+  ```
+
+  ![](https://i.imgur.com/DMSLtCM.png)
+
 ---
 
 ## Lire l'équation d'une droite

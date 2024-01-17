@@ -34,6 +34,16 @@ Concepts: intervalles, ensembles, sous-ensembles, quantificateurs, connecteurs
 
   ![](https://i.imgur.com/WH7ceAhl.png)
 
+* Lorsque les deux bornes de l'intervalle sont des nombres réels, l'intervalle est dit *borné*.  
+  Lorsqu'une ou deux bornes sont l'infini, alors l'intervalle est dit *non borné*.
+
+  <ins>Examples d'intervalles non bornés</ins>:
+  <pre>
+  [13; +∞[ 
+  ]-∞; 13]  
+  ]-∞; +∞[
+  </pre>
+
 ## Ensembles
 
 * Un *ensemble* représente une collection d'objets.
@@ -63,6 +73,11 @@ Concepts: intervalles, ensembles, sous-ensembles, quantificateurs, connecteurs
 
   * ou encore faire un mix des deux  
     Par exemple: {x ∈ [99]: 2|x} signifie tous les éléments pairs de 1 à 99
+
+* Pour rappel:  
+  * ∈: appartient
+  * ∉: n'appartient pas
+  * ⊂: est inclus dans / est une partie de
 
 ## Quantificateurs
 

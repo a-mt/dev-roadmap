@@ -63,8 +63,6 @@ Concepts: inconnue, expression littérale, équation, inéquation, solution, for
 
     ![](https://i.imgur.com/mSsItzv.png)
 
-  
-
 * Une fonction peut être exprimée par une équation:
 
   ![](https://i.imgur.com/tAXyxHJ.png)

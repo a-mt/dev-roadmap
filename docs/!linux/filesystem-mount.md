@@ -282,7 +282,7 @@ category: Linux
      Si différent de 0, utilise `dump` pour créer un backup du système de fichier  
      Peu de systèmes l'utilisent
 
-  6. <ins>pass</ins>  
+  6. <ins>filesystemcheck / pass</ins>  
      Si différent de 0, utilise `fsck` pour vérifier le système de fichier au démarrage — s'effectue par ordre de priorité, le 1 avant 2.
      Pour les partitions crées lors de l'installation, laisser les valeurs par défaut. Pour des partitions créées manuellement, les valeurs doivent être
 

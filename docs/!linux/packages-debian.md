@@ -151,7 +151,7 @@ La base de données de dpkg se situe dans le répertoire /var/lib/dpkg
 
 ### search
 
-* L'option `-S` ou `--search` liste tous les packages contenant le fichier indiqué.
+* L'option `-S` ou `--search` liste tous les packages contenant le fichier indiqué (équivalent à whatprovides de yum).
 
   ```
   $ sudo dpkg -S venv/

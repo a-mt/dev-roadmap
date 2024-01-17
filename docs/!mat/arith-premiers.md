@@ -17,6 +17,16 @@ Concepts: premier, composé, PPCM, PGCD
 
   ![](https://i.imgur.com/4eofOvj.png)
 
+### Crible d'Ératosthène
+
+* Le *crible d'Ératosthène* est une technique permettant de trouver tous les nombres premiers inférieurs à un nombre donné, qu'on notera *n*.
+
+  1. Énumérer tous les nombres entre 2 et *n*
+  2. Rayer les multiples de *i*, où *i* est la valeur en cours d'une boucle de 2 à *n* (multiples de 2, multiples de 3, etc).  
+     Ignorer les *i* déjà précédemment rayés, et s'arrêter lorsque i² > n
+
+  ![](https://i.imgur.com/TuyMvH3.gifv)
+
 ### Plus Petit Commun Multiple (PPCM)
 
 * Le PPCM de 2 nombres (ou plus) est le plus petit multiple commun à tous ces nombres.  

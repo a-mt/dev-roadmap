@@ -217,7 +217,7 @@ category: Linux, Linux security modules
   drwxr-xr-x. root root unconfined_u:object_r:default_t:s0 virtualHosts
   ```
 
-  Notons que modifier le contexte par défaut d'un répertoire ne modifie pas les fichiers à l'intéireur.  
+  Notons que modifier le contexte par défaut d'un répertoire ne modifie pas les fichiers à l'intérieur.  
   Pour ce faire, il faut appeler restorecon après.
 
 * Pour réinitialiser le contexte des fichiers en fonction des paramètres du répertoire parent:

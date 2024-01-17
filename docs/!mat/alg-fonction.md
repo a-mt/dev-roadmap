@@ -5,6 +5,11 @@ category: Maths, Algèbre
 
 Concepts: image, antécédant, ensemble de définition, extremum, ensemble des images, positive, négative, croissante, décroissante
 
+## Définition
+
+* Pour rappel, une *fonction* est une règle qui établit la relation entre deux inconnues (ou plus).  
+  [Terminologie d'algèbre](alg-intro.md#fonction)
+
 ## Réecrire une équation en fonction
 
 * Pour écrire une fonction, il faut isoler *y* d'un côté de l'équation:
@@ -67,6 +72,14 @@ Toute fonction a
   On peut aussi dire que l'image de 7 est -13.
   ```
 
+### Courbe représentative
+
+* Pour construire une courbe représentant une fonction f, définie sur D:  
+   1. choisir un repère,  
+   2. construire tous les points dont l'abscisse est un nombre de D et l'ordonnée est l'image de l'abscisse
+
+  ![](https://i.imgur.com/JY73yWR.png)
+
 ### Lire l'image ou l'antécédant d'un nombre
 
 * On peut éventuellement lire les valeurs sur un graphique — si elles sont entières.  
@@ -95,6 +108,9 @@ Toute fonction a
   ![](https://i.imgur.com/WoVxhvRm.png?2)
 
   ![](https://i.imgur.com/fZiZTmym.png)
+
+* Soit D, l'ensemble de définition de la fonction f.  Définir sur fonction f sur D, c'est donner un procédé (une formule, une situation concrète) qui à chaque nombre de D associe un (et un seul) réel.  
+  En notation mathématique, "f : D ⟶ ℝ, x ⟼ y" se lit "f est la fonction de D vers ℝ qui a tout nombre x associe y"
 
 ### Extremum
 
@@ -131,12 +147,30 @@ Toute fonction a
 * Une fonction est dite *croissante* sur un intervalle quand augmenter *x* augmente *y*.  
   On peut aussi dire qu'elle a une *pente positive*.  
 
-  Ele est dite *décroissante* sur un intervalle quand augmenter *x* diminue *y*.  
+  Elle est dite *décroissante* sur un intervalle quand augmenter *x* diminue *y*.  
   On peut aussi dire qu'elle a une *pente négative*.
 
   ![](https://i.imgur.com/lbTKGQPl.png)
 
   ![](https://i.imgur.com/M5CWd8Cl.png)
+
+* Soit f une fonction définie sur un ensemble D, et I un intervalle inclut dans D
+
+  * Si f est croissante sur I: quelque soit a ∈ I et b ∈ I, si a < b alors f(a) ≤ f(b).  
+    Autrement dit, le plus petit nombre a la plus petite image.  
+    On dit aussi que f conserve l'ordre sur I.
+
+  * Si f est décroissante sur I: quelque soit a ∈ I et b ∈ I, si a < b alors f(a) ≤ f(b).  
+    Autrement dit, le plus grand nombre a la plus petite image.  
+    On dit aussi que f modifie l'ordre sur I
+
+  * Si f est constante sur I: quelque soit a ∈ I et b ∈ I, alors f(a) = f(b)
+
+### Sens de variation
+
+* Étudier le sens de variation de f, c'est découper son ensemble de définition D en intervalles sur lesquels f est soit croissante soit décroissante soit constante. On consigne les résultats dans un tableau de variation de f.
+
+  ![](https://i.imgur.com/qVKWAHc.png)
 
 ---
 

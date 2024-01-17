@@ -96,7 +96,9 @@ Concepts: inégalité triangulaire, propriétés, théorème de pythagore, théo
 
 ## Triangles égaux
 
-* Des triangles sont dits *égaux* si on peut les faire coïncider par glissement ou rotation.
+* Des triangles sont dits *égaux* ou *isométriques* si on peut les faire coïncider par glissement ou rotation:  
+  - leurs angles sont égaux
+  - leurs côtés ont la même longueur
 
   ![](https://i.imgur.com/ngozAoF.png)
 
@@ -119,11 +121,14 @@ Concepts: inégalité triangulaire, propriétés, théorème de pythagore, théo
      ![](https://i.imgur.com/gCHlpkL.png)
      ![](https://i.imgur.com/alSm0kv.png)
 
+* Lorsque les triangles sont égaux, les éléments (angles ou côtés) sont dits *omologues*.
+
 ---
 
 ## Triangles semblables
 
-* Des triangles sont dits *semblables* lorsqu'ils ont la même forme: les mêmes angles mais pas nécessairement la même taille.
+* Des triangles sont dits *semblables* lorsqu'ils ont la même forme:  
+  ils ont des angles respectivement égaux, mais leurs côtés ont pas la même longueur.
 
   ![](https://i.imgur.com/Vv25Uhq.png)
 
@@ -143,6 +148,15 @@ Concepts: inégalité triangulaire, propriétés, théorème de pythagore, théo
   3. Les longueurs de deux côtés sont proportionnelles et l'angle entre ces deux côtés est égal (CAC).
 
      ![](https://i.imgur.com/RUxN9kk.png)
+
+* Pour deux triangles semblables, si on note *k* le facteur de proportionnalité permettant de passer des longueurs d'un triangle à l'autre, alors le rapport des aires est égal à *k²*.
+
+  ```
+  aire(A'B'C') = 1/2 * A'B' * C'D'
+               = 1/2 * (kAB) * (kCD)
+               = 1/2 * AB * CD * k²
+               = aire(ABC) * k²
+  ```
 
 <ins>Exemple</ins>:
 

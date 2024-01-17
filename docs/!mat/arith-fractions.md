@@ -182,7 +182,7 @@ Concepts: fraction, numérateur, dénominateur, fraction impropre, nombre fracti
 
   ![](https://i.imgur.com/UrAnyXt.png)
 
-* Une augmentation de x% (+x/100) revient à une multiplication par 1+(x/100)
+* Une augmentation de x% (+x/100) revient à une multiplication par 1+(x/100) — `Q + x/100*Q = Q*(1 + x/100)`
 
   ```
   Le prix des goyaves qui étaient à 15€ a augmenté de 30%.
@@ -208,6 +208,35 @@ Concepts: fraction, numérateur, dénominateur, fraction impropre, nombre fracti
   18*(1-0.3) = 18*0.7 = 12.6
   ```
 
+### Pourcentage d'évolution
+
+* Lorsqu'une quantité passe d'une valeur A a une valeur B, le pourcentage d'évolution est égal à
+
+  ```
+    (B-A)/A * 100
+  = (B/A - A/A) * 100
+  = (B/A - 1) * 100
+  ```
+
+  ```
+  Un article passe de 85€ à 102€. Calculer l'évolution en pourcentage
+
+  B/A = 102/85 = 1.2
+  B/A - 1 = 0.2
+
+  Taux d'évolution: +20%
+  ```
+  ```
+  Un article passe de 137€ à 95€. Calculer l'évolution en pourcentage
+
+  A/B = 95/137 = 0.6934
+  1 - A/B = 0.3066
+
+  Taux d'évolution: -30.66%
+  ```
+
+### Évolutions successives en pourcentage
+
 * Notons que le prix initial moins x% est différent du prix final plus x% — puisque le pourcentage ne s'applique pas sur le même nombre.
 
   ```
@@ -220,4 +249,31 @@ Concepts: fraction, numérateur, dénominateur, fraction impropre, nombre fracti
 
   ≠ Augmentation de 30% sur le prix final:
   12.6*1.3 = 16.38
+  ```
+
+* Si une quantité subit successivement deux hausses, l'une de t% et l'autre de t'%, alors elle est multipliée par (1 + t/100) * (1+t'/100)
+
+  ```
+  Calculer l'évolution en pourcentage
+
+  - d'une hausse de 8% suivit d'une hausse de 10%
+
+    1.08 × 1.10 = 1.188  
+    Donc +18.8%
+
+  - d'une baisse de 12% suivie d'une baisse de 15%
+
+    0.88 × 0.85 = 0.748
+    1 - 0.748 = 0.252
+    Donc -25.2%
+
+  - d'une hausse de 30% suivit d'une baisse de 30%
+
+    1.30 × 0.7 = 0.91
+    Donc -9%
+
+  - de 12 hausses successives de 1%
+
+    1.01**12 = 1.1268
+    Donc +12.68%
   ```

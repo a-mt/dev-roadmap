@@ -19,6 +19,6 @@ category: Maths, Géométrie
 
   Thalès (philosophe grec) est généralement considéré comme le premier à introduire l'utilisation de la preuve logique basée sur la déduction plutôt que sur l'expérience et l'intuition pour étayer un argument. Il est traditionnellement désigné comme le premier mathématicien et père de la géométrie.
 
-* En bref, la géométrie plane est née du besoin de mesurer des terrains, et la géométrie de l'espace de mesurer des constructions.
-
+* En bref, la géométrie plane est née du besoin de mesurer des terrains,  
+  et la géométrie de l'espace de mesurer des constructions.  
   Si on travaille dans le plan, on utilise deux dimensions (2D): la longueur et la largeur. Si on travaille dans l'espace, on utilise trois dimensions (3D): la longueur, la largeur et la profondeur.

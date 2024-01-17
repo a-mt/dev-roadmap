@@ -198,9 +198,9 @@ roadmap: true
 * Gestion du système
   * Paquets
     * [Paquets & gestionnaires de paquet][system-packages]{: .theory}
-    * [Paquets Debian: dpkg, apt](packages-debian.md){: .cli}
-    * [Paquets Red Hat: rpm, yum](packages-redhat.md){: .cli}
-    * [Paquets OpenSuse: zypper](packages-opensuse.md){: .cli}
+    * [Paquets Debian: dpkg, apt](!linux/packages-debian.md){: .cli}
+    * [Paquets Red Hat: rpm, yum](!linux/packages-redhat.md){: .cli}
+    * [Paquets OpenSuse: zypper](!linux/packages-opensuse.md){: .cli}
   * Kernel
     - [Drivers / Modules kernel](!linux/kernel-modules.md){: .cli}
     - [Paramètres kernel](!linux/kernel-parameters.md){: .cli}

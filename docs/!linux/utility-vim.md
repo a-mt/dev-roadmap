@@ -289,7 +289,7 @@ NB `xp` = transposer deux lettres (supprimer et coller)
 ## Filtres
 
 Les filtres permettent de cibler des lignes et sont utilisés avec les diverses commandes Vi.  
-Par exemple `:2d` (+ entrée) supprime la 2ème ligne du fichier.  
+Par exemple `:2d` (+ entrée) supprime la 2ème ligne du fichier, `:10,$d` supprime de la 10ème à la dernière ligne.  
 Seuls, les filtres n'ont aucune action, si ce n'est que de déplacer le curseur au début de la sélection.
 
     :2                  Sur la ligne 2
@@ -317,7 +317,7 @@ Vim peut executer toutes les commandes Shell sur les lignes du fichier.
 Quelques exemples :
 
     !!tr a-z A-Z               Sur la ligne en cours, mettre toutes les lettres en majuscules
-    :%!grep '.'                Dans tout le fichier, supprimer les lignes vides (= les lignes qui contiennent pas au moins un caractère)
+    :%!grep '.'                Dans tout le fichier, supprimer les lignes vides (= filtrer sur les lignes qui contiennent au moins un caractère)
     6!sed 's/ /-/g'            Sur la ligne 6, remplacer tous les espaces par des tirets
     !}awk '{print "- " $0}'    Dans le paragraphe en cours, préfixer toutes les lignes d'un tiret
     :%!uniq                    Supprimer les lignes dupliquées

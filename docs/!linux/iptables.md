@@ -134,6 +134,13 @@ Les modifications apportées aux iptables sont perdues lorsqu'on redémarre l'or
   ```
 
 * Ubuntu:
+
+  ``` bash
+  sudo /sbin/iptables-save > /etc/iptables/rules.v4
+  sudo /sbin/ip6tables-save > /etc/iptables/rules.v6
+  ```
+
+* Ancienne méthode Ubuntu:
   * Sauvegarder les iptables dans un fichier
 
     ```
@@ -156,3 +163,60 @@ Les modifications apportées aux iptables sont perdues lorsqu'on redémarre l'or
     ```
 
 [IPtables packet rate limit against DDOS](https://www.baeldung.com/linux/iptables-packet-rate-limit)
+
+## Exemple
+
+``` bash
+$ cat /etc/iptables/rules.v4
+
+*mangle
+ 
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+ 
+ 
+COMMIT
+ 
+ 
+*nat
+ 
+:PREROUTING ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+ 
+-A POSTROUTING -s 10.8.0.0/24 -m policy --pol none --dir out -j MASQUERADE
+ 
+COMMIT
+ 
+ 
+*filter
+ 
+:INPUT DROP [0:0]
+:FORWARD DROP [0:0]
+:OUTPUT ACCEPT [0:0]
+ 
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -p esp -j ACCEPT
+-A INPUT -p ah -j ACCEPT 
+-A INPUT -p icmp --icmp-type echo-request -m hashlimit --hashlimit-upto 5/s --hashlimit-mode srcip --hashlimit-srcmask 32 --hashlimit-name icmp-echo-drop -j ACCEPT
+-A INPUT -p udp -m multiport --dports 21194 -j ACCEPT
+-A INPUT -p tcp -s 1xx.yy.zz.ttt,10.8.0.0/24,10.8.1.0/24 --dport 22 -m conntrack --ctstate NEW -j ACCEPT
+-A INPUT -p tcp --dport 3128 -d 10.8.0.1 -s 10.8.0.0/24,10.8.1.0/24  -m conntrack --ctstate NEW -j ACCEPT
+-A INPUT -d 172.xx.yyy.zzz -p udp --dport 53 -j ACCEPT
+-A INPUT -d 172.xx.yyy.z -p udp --dport 53 -j ACCEPT
+-A INPUT -i eth0 -m limit --limit 5/min -j LOG --log-prefix "[iptables denied] " --log-level 7
+-A FORWARD -s 10.8.0.0/24 -d 10.8.0.0/24 -j DROP
+-A OUTPUT -d 10.8.0.0/24 -m owner --gid-owner 15000 -j DROP
+-A FORWARD -s 10.8.0.0/24 -d 169.254.0.0/16 -j DROP
+-A OUTPUT -d 169.254.0.0/16 -m owner --gid-owner 15000 -j DROP
+-A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+-A FORWARD -p tcp --dport 445 -j DROP
+-A FORWARD -p udp -m multiport --ports 137,138 -j DROP
+-A FORWARD -p tcp -m multiport --ports 137,139 -j DROP
+-A FORWARD -m conntrack --ctstate NEW -s 10.8.0.0/24 -m policy --pol none --dir in -j ACCEPT
+-A FORWARD -m limit --limit 5/min -j LOG --log-prefix "[iptables forward denied] " --log-level 7
+COMMIT
+```

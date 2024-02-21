@@ -3,8 +3,8 @@ title: Yaml
 category: Web
 ---
 
-Le Yaml est un format de représentation de données.
-C'est un langage concurrent au JSON.
+Le YAML (pour "YAML Ain't Markup Language") est un format de représentation de données, souvent utilisé pour les fichiers de configuration.
+- C'est un superset de JSON — chaque fichier JSON est aussi un fichier YAML valide
 - La syntaxe YAML se veut plus facilement lisible par une personne que le JSON.
 - Le YAML inclut des fonctionnalités non supportés par JSON, comme les commentaires et les références.
 - Il est analysable en une seule passe de lecture.

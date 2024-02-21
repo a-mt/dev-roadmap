@@ -59,7 +59,8 @@ category: Linux
     WantedBy=multi-user.target
     ```
 
-* Lorsqu'on ajoute, supprime ou édite un fichier service, il faut recharger le daemon system:
+* Après avoir modifié (ajouté, supprimé ou édité) un fichier de config de systemd,  
+  recharger le daemon de systemd:
 
     ``` bash
     $ sudo systemctl daemon-reload

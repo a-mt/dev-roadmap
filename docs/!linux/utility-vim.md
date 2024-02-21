@@ -112,24 +112,6 @@ U                  Annuler toutes les modifications sur la ligne en cours
 
 ---
 
-## Préférences
-
-Quelques commandes EX pour changer les options :
-
-    :set nu            Afficher le numéro des lignes
-    :set nonu          Ne pas afficher le numéro des lignes
-
-    :set ic            Rendre la recherche insensible à la casse
-    :set noic          Rendre la recherche sensible à la casse
-
-    :set ai            Activer l'auto-indentation
-    :set noai          Désactiver l'auto-indentation
-
-Le fichier `~/.exrc` est automatiquement exécuté à l'ouverture de Vi.
-Il peut contenir des commandes EX et ainsi définir des options à activer par défaut (ne pas précéder les commandes de ":").
-
----
-
 ## Déplacements
 
 Lorsqu'on accède à Vim via une console et non un terminal, les flèches directionnelles ne sont pas disponibles.
@@ -485,9 +467,13 @@ De nouvelles fenêtres peuvent être crées en divisant une fenêtre horizontale
     :vsp file2         Diviser verticalement la fenêtre en cours
                        : file2 à gauche, la fenêtre qui était en cours à droite
 
+    :terminal          Ouvrir un terminal dans la fenêtre en cours
+    :shell             Retourner au shell
+
 <!-- -->
 
     :q                 Fermer la fenêtre en cours
+    :exit              Idem
     :only              Fermer toutes les fenêtres sauf celle en cours
     :qall              Fermer toutes les fenêtres
 
@@ -496,6 +482,11 @@ De nouvelles fenêtres peuvent être crées en divisant une fenêtre horizontale
 <pre>
 <kbd>Ctrl</kbd> ww           Aller à la fenêtre suivante
 <kbd>Ctrl</kbd> wl           Aller à la fenêtre à droite (marche avec hjkl)
+
+:wincmd h
+:wincmd j
+:wincmd k
+:wincmd l
 </pre>
 
 <pre>
@@ -539,9 +530,50 @@ Les onglets sont disponibles depuis Vim 7.
 
 <!-- -->
 
-    :tabmomve          Déplacer l'onglet en cours à la fin
+    :tabmove           Déplacer l'onglet en cours à la fin
     :tabmove 0         Déplacer l'onglet en cours au début
 
 <!-- -->
 
     :tabdo cmd         Executer cmd sur tous les onglets ouverts
+
+---
+
+## Préférences
+
+### set
+
+Quelques commandes EX pour changer les options :
+
+    :set nu            Afficher le numéro des lignes
+    :set nonu          Ne pas afficher le numéro des lignes
+
+    :set ic            Rendre la recherche insensible à la casse
+    :set noic          Rendre la recherche sensible à la casse
+
+    :set ai            Activer l'auto-indentation
+    :set noai          Désactiver l'auto-indentation
+
+### vimrc
+
+Le fichier `~/.exrc` est automatiquement exécuté à l'ouverture de Vi.  
+Le fichier `~/.vimrc` est automatiquement exécuté à l'ouverture de Vim, et si vimrc n'existe pas alors vim utilise exrc.
+Placer dans ce fichier les commandes EX a exécuter au démarrage (sans les précéder de ":") — et ainsi définir des options à activer par défaut.
+
+* Créer (ou éditer) le fichier .vimrc
+
+  ```
+  vim ~/.vimrc
+  ```
+
+  Entrer les configurations à définir au lancement de vim:
+
+  ```
+  set expandtab
+  set tabstop=2
+  set shiftwidth=2
+  ```
+
+  Sauvegarder et quitter
+
+* À chaque fois que vim sera ouvert, ces configs seront utilisées

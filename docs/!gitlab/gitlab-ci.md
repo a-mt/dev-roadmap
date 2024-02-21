@@ -15,8 +15,8 @@ GitLab intègre une solution de CI/CD, permettant notamment d'effectuer des test
 * Le manifeste Gitlab spécifie a minima
 
   1. des **stages**:  
-     Il s'agit de la liste des étapes qui vont être déclenchées par GitlabCI, dans l'ordre spécifié,  
-     et dans lequel plusieurs jobs pourrons être ajoutés
+     C'est la liste des étapes qui vont être déclenchées par GitlabCI, dans l'ordre spécifié,  
+     et dans lesquelles plusieurs jobs peuvent être ajoutés
 
         ```
         stages:
@@ -29,9 +29,10 @@ GitLab intègre une solution de CI/CD, permettant notamment d'effectuer des test
 
   2. des **jobs**:
 
-        - Les noms des jobs doivent être uniques et ne doivent pas faire partie des mots réservés.  
-          (Ces mots réservés permettent de définir des configs pour l'ensemble des jobs  
-          et peuvent éventuellement être re-définies sur les différents jobs, au cas par cas)
+        - <ins>nom</ins>  
+          Les noms des jobs doivent être uniques et ne doivent pas faire partie des mots réservés.  
+          (les mots réservés permettent de définir des configs soit pour l'ensemble des jobs,  
+          soit éventuellement être (re-)définis sur des jobs)
 
           ```
           image
@@ -44,11 +45,16 @@ GitLab intègre une solution de CI/CD, permettant notamment d'effectuer des test
           cache
           ```
 
-       - Chaque job contient la propriété `script`, qui spécifie la ou les commandes à éxecuter — ce qui peut être pour lancer des tests, des builds, des déploiements, etc.
+       - <ins>script</ins>  
+         Chaque job contient la propriété `script`, pour spécifier la ou les commandes à éxecuter — peut être pour lancer des tests, des builds, des déploiements, etc.
 
-       - Généralement, un job spécifiera également une `image`, qui désigne l'image à utiliser pour lancer le script. Si l'image n'est pas spécifiée, alors l'image par défaut du runner (la machine qui éxecutera le job) sera utilisé
+       - <ins>image</ins>  
+         Généralement, un job spécifie également une `image`, qui désigne l'image à utiliser pour lancer le script.  
+         Si l'image n'est pas spécifiée, alors c'est l'image par défaut du runner (la machine qui executera le job) qui sera utilisée
 
-       - Le `stage` doit également être spécifié, qui est un label permettant de grouper des jobs ensemble dans l'interface
+       - <ins>stage</ins>  
+         Le `stage` doit également être spécifié.  
+         Ce label doit être définit dans les stages, et correspond à une des étapes de la pipeline.
 
           ``` yml
           pre-commit:
@@ -131,7 +137,7 @@ GitLab intègre une solution de CI/CD, permettant notamment d'effectuer des test
 ## Templates
 
 * Les templates sont des définitions abstraites de jobs, qui peuvent être héritées par les jobs.  
-  Un template ce distingue d'un job avec son nom, qui commence par un point.  
+  Un template se distingue d'un job avec son nom, qui commence par un point.  
 
   ``` diff
    # -- TEMPLATES
@@ -168,8 +174,8 @@ GitLab intègre une solution de CI/CD, permettant notamment d'effectuer des test
 
 ## rules, only, except
 
-* Permettent de restreindre l'execution du job à certaines conditions.  
-  Par exemple, déclencher le job si le commit est executé sur une branche donnée ou si un fichier donné existe.
+* rules, only et except permettent de contrôler quand un job sera déclenché: il ne sera exécuté que si les conditions spécifiées sont réunies.
+  On peut par exemple, déclencher le job si le commit est executé sur une branche donnée ou si un fichier donné existe.
 
   ``` yaml
   pre-commit:
@@ -184,7 +190,7 @@ GitLab intègre une solution de CI/CD, permettant notamment d'effectuer des test
     only:
       - master
 
-  build_branche:
+  build_branch:
     ...
     only:
       - branches
@@ -199,8 +205,7 @@ GitLab intègre une solution de CI/CD, permettant notamment d'effectuer des test
 
 ## workflow
 
-* Permet de contrôler quand la pipeline doit être déclenchée.  
-  Si le commit ne correspond à aucune règle du workflow, alors la pipeline n'est pas déclenchée — et donc aucun job n'est lancé. On peut également y définir des variables au passage.  
+* workflow permet de contrôler quand la pipeline doit être déclenchée: si le commit ne correspond pas aux règles du workflow, alors la pipeline n'est pas déclenchée — et donc aucun job n'est lancé. On peut également y définir des variables au passage.  
 
   ``` yaml
   # Only run pipelines for given branches
@@ -216,8 +221,8 @@ GitLab intègre une solution de CI/CD, permettant notamment d'effectuer des test
 
 ## before_script, after_script
 
-* Permettent d'ajouter des actions avant ou après les instructions de `script`.  
-  C'est particulièrement utile lorsqu'on se sert de l'héritage.
+* before_script et after_script permettent d'ajouter des actions avant ou après les instructions de `script`.  
+  C'est particulièrement utile lorsqu'on se sert des templates / de l'héritage.
 
   ``` diff
    .deploy:
@@ -242,7 +247,7 @@ GitLab intègre une solution de CI/CD, permettant notamment d'effectuer des test
 
 ## when
 
-* Permet de restreindre l'execution du job suivant l'état du job précédent
+* when permet de restreindre l'execution du job suivant l'état du job précédent
 
   ``` yaml
   stages:
@@ -272,19 +277,19 @@ GitLab intègre une solution de CI/CD, permettant notamment d'effectuer des test
   job:clean:
     stage: clean
     script:
-      - make clean # s'exécutera quoi qu'il se passe
-    when: always
+      - make clean
+    when: always # s'exécutera quoi qu'il se passe
 
   job:deploy:
     stage: deploy
     script:
       - echo "Deploy"
-    when: manual # s'executera quand on le demande (via l'UI)
+    when: manual # s'executera quand on le déclenche manuellement (via l'UI)
   ```
 
 ## allow_failure
 
-* Permet d'accepter qu'un job échoue sans faire échouer la pipeline — la pipeline passera quand même au stage suivant.
+* allow_failure permet d'accepter qu'un job échoue sans faire échouer la pipeline — la pipeline passera au stage suivant même si le job échoue.
 
   ``` yaml
   stage: clean
@@ -361,7 +366,7 @@ Sur GitLab,
 
 # Installer un Runner local
 
-Un *runner* est une machine a qui est envoyée les jobs Gitlab, qui exécute les scripts.  
+Un *runner* est une machine à qui est envoyée les jobs Gitlab, et qui exécutera les scripts.  
 Pour installer un runner sur une VM, suivre les instructions gut Gitlab: Settings > CI/CD > show runner installation instructions.  
 Pour utiliser sa propre machine locale comme runner:
 
@@ -403,23 +408,23 @@ Pour utiliser sa propre machine locale comme runner:
   docker start myproject-runner
   ```
 
-* Enregistrer le runner aurpès de Gitlab
+* Enregistrer le runner auprès de Gitlab
 
   ``` bash
   # cd myproject-runner
   docker run --rm -it -v "$(pwd)"/docker_volumes/config:/etc/gitlab-runner gitlab/gitlab-runner register
   ```
 
-  Une série de questions va être posée:
+  Une série de questions vont être posées:
 
   - **Enter the GitLab instance URL**:  
-    Entrer l'URL copiée précédemment sur GitLab
+    Entrer l'URL précédemment copiée sur GitLab
 
   - **Enter the registration token**:  
-    Entrer le token copié précédemment sur GitLab
+    Entrer le token précédemment copié sur GitLab
 
   - **Enter a description for the runner**:  
-    Un nom qui vous aidera à identifier le runner sur Gitlab — par exemple `YOUR-FIRSTNAME MyProject-Back`
+    Un nom qui aidera à identifier le runner sur Gitlab — par exemple `YOUR-FIRSTNAME MyProject-Back`
 
   - **Enter tags for the runner**:  
     Liste des tags que le runner accepte (ex `docker,deploy`).  
@@ -472,7 +477,7 @@ Pour utiliser sa propre machine locale comme runner:
     session_timeout = 1800
 
   [[runners]]
-    name = "Jean-Michel MyProject-Back"
+    name = "John MyProject-Back"
     url = "https://gitlab.ascan.io/"
     id = ...
     token = ...
@@ -491,7 +496,7 @@ Pour utiliser sa propre machine locale comme runner:
       shm_size = 0
 
   [[runners]]
-    name = "Jean-Michel MyProject-Front"
+    name = "John MyProject-Front"
     url = "https://gitlab.ascan.io/"
     id = ...
     token = ...
@@ -531,11 +536,11 @@ Pour utiliser sa propre machine locale comme runner:
 
   ![](https://i.imgur.com/zEUK2Xx.png)
 
-* Pusher sur Gitlab déclenchera la pipeline. Notons que si un `workflow` est spécifié dans le fichier .gitlab-ci.yml, alors la pipeline ne sera déclenchée que si le commit / branche correspond aux règles indiquées
+* Pusher sur Gitlab déclenchera la pipeline. Notons que si un `workflow` est spécifié dans le fichier .gitlab-ci.yml, alors la pipeline ne sera déclenchée que si le commit / la branche correspondent aux règles indiquées
 
 * Vérifier que la pipeline s'exécute correctement du début à la fin:  
   CI/CD > Pipelines.  
-  Cliquer sur l’id de la pipeline (ex: #12839 dans l'exemple ci-dessous) pour voir la liste des différents jobs et leurs status respectifs. Cliquer sur un job pour consulter ses logs.
+  Cliquer sur l’id de la pipeline (ex: #12839 dans l'exemple ci-dessous) pour voir la liste des différents jobs et leurs statuts respectifs. Cliquer sur un job pour consulter ses logs.
 
   ![](https://i.imgur.com/FViSK4J.png)
 

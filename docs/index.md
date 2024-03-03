@@ -192,6 +192,8 @@ roadmap: true
     * [Github Pages][github-pages]
 
 * ##### ![](/assets/img/devops.png) DevOps
+
+  * [Overview](devops.md){: .theory}
   * VM
     * LXC
     * VirtualBox

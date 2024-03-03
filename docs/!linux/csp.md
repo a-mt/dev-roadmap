@@ -9,14 +9,20 @@ category: Linux
 
 * Les différents types de services qu'on peut obtenir auprès de ces fournisseurs sont:
 
-  - **IAAS** (*Infrastructure As A Service*)  
-    Permet d'utiliser les ressources matérielles et réseau de quelqu'un d'autre
+  - **IaaS** (*Infrastructure As A Service*)  
+    Permet d'utiliser les ressources matérielles et réseau de quelqu'un d'autre.  
+    On a un accès direct au matériel via la ligne de commande, mais on doit s'occuper de tous les détails du déploiement.  
+    Ex: AWS, Joyent, Rackspace Cloud
 
-  - **PAAS** (*Platform As A Service*)  
-    Le CSP fournit non seulement le matériel physique, mais aussi le système d'exploitation. Il ne reste plus qu'à se concentrer sur l'application, le reste est géré par le CSP
+  - **PaaS** (*Platform As A Service*)  
+    Le CSP fournit non seulement le matériel physique, mais aussi le système d'exploitation: il ne reste plus qu'à se concentrer sur l'application, le reste est géré par le CSP.  
+    L'avantage est qu'on peut gagner du temps, l'inconvénient est que si on veut faire quelque chose qui n'est pas prévu par la plateforme, on doit revenir à la couche matérielle — et ce n'est pas toujours faisable.  
+    Ex: Heroku, DotCloud, Nodester, Google AppEngine
 
-  - **SAAS** (*Software As A Service*)  
-    Non seulement le matériel et le système d'exploitation sont gérés pour vous, mais l'application l'est également. Cette solution est utilisée lorsque vous avez besoin, par exemple, d'un serveur de BDD générique que vous ne souhaitez pas gérer vous-même. Il s'agit généralement du type de service le plus cher, mais on obtient beaucoup de services pour son argent.
+  - **SaaS** (*Software As A Service*)  
+    Non seulement le matériel et le système d'exploitation sont gérés par le fournisseur, mais l'application l'est également. On interragit uniquement avec une API ou une interface graphique, sans contrôle sur le matériel ou les configurations.  
+    On peut par exemple utiliser cette solution lorsqu'on a besoin d'un serveur de BDD générique qu'on ne souhaite pas gérer en interne. Il s'agit généralement du type de service le plus cher — mais qui fournit beaucoup de services.  
+    Ex: Salesforce, Google Apps, Mint.com
 
 * Le plupart des CSP facturent non seulement le type de service fournit, mais aussi le nombre d'instances et leur durée d'exécution — une instance étant une VM en cours d'exécution. Les CSP facturent également d'autres choses, comme par exemple la puissance du CPU.
 

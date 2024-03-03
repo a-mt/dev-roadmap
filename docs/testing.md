@@ -29,30 +29,50 @@ tests unitaires, tests d'intégration, tests fonctionnels, tests d'interface gra
 ### Tests unitaires
 
 Les tests unitaires (*unit tests* en anglais) testent une fonction.
-Ils appellent une fonction avec des valeurs en entrée et s'assurent que le résultat renvoyé est le bon.
+Ils appellent une fonction avec des valeurs en entrée et s'assurent que le résultat renvoyé est le bon.  
+Par exemple, qu'une fonction de tri retourne les valeurs dans l'ordre attendu
 
 Les tests unitaires sont les tests les plus rapides et se déroulent en quelques millisecondes.  
 Ils devraient constituer la plus grande majorité des tests.
 
+### Code hygiene
+
+Vérifie, en utilisant notamment des linters et formatters, que le format du code est normalisé.  
+Par exemple, qu'on utilise des espaces et non des tabulations
+
 ### Tests d'intégration
 
-Les tests d'intégration (*integration tests* ou *service-level tests*) testent simultanément
-de multiples services pour s'assurer que toutes les pièces du puzzle fonctionnent.
-Cela inclut par exemple de tester l'insertion en base de données, l'écriture de fichiers sur le disque
-ou encore l'appel vers une API. Contrairement aux tests unitaires, les tests d'intégration créent leurs propres données.
+Les tests d'intégration (*integration tests* ou *service-level tests*) effectuent des tests qui impliquent plusieurs services.  
+Cela peut inclure tester l'insertion en base de données, l'écriture de fichiers sur le disque
+ou encore l'appel vers une API. Contrairement aux tests unitaires, les tests d'intégration créent leurs propres données.  
+Par exemple, qu'un appel API censé créer un objet crée une nouvelle entité en BDD.  
 
 Les tests d'intégration prennent plus de temps que les tests unitaires, prenant généralement entre 10 et 100 millisecondes.
 
 ### Tests d'interface
 
-Les tests d'interface (*User Interface tests* ou *UI tests*) testent des workflows de bout en bout,
+Les tests d'interface (*User Interface tests*, *UI tests*, *acceptance tests* ou *end-to-end tests*) testent des workflows de bout en bout,
 non pas en appelant directement les fonctions mais en simulant les actions des utilisateurs dans le navigateur,
 comme cliquer et taper au clavier. Ils testent que l'ensemble de l'application fonctionne, de l'interface utiliseur
 à l'insertion en base de données.
 
 Les tests d'interface s'exécutent toujours dans un navigateur et peuvent donc durer plusieurs secondes,
 voire parfois quelques minutes suivant la fonctionnalité testée. Il ne devrait y avoir qu'une poignée de ces tests,
-pour ne couvrir que les cas utilisateur primordiaux.
+pour ne couvrir que les user case primordiaux.
+
+### Tests d'infrastructure
+
+Consiste à provisionner automatiquement une instance, exécuter tous les tests, puis l'arrêter
+
+### Tests de performance
+
+Load test, stress test, soak test et spike test.  
+Ces tests sont très utilise pour les exécutions nocturnes hors banqhe
+
+### Tests de sécurité  
+
+Consiste à vérifier que l'application n'est pas sensible à certaines attaques.  
+Par exemple, qu'il n'est pas être possible d'utiliser une faille XSS
 
 ---
 

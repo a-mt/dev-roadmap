@@ -113,7 +113,7 @@ Le premier bit de la table ASCII permet de définir des *jeux de caractères ét
 
 Dû aux différents encodages entre différents pays et différents systèmes d'exploitation (Windows utilise le code ANSI et non Latin-9), qui rendent difficiles les échanges de documents, UNICODE est largement préféré.
 
-[Comparaison encodage Latin vs ANSI](assets/encoding-latin-vs-ansi.html)
+[Comparaison encodage Latin vs ANSI](!assets/encoding-latin-vs-ansi.html)
 
 ### UNICODE
 

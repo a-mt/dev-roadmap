@@ -300,7 +300,7 @@ Les chaînes de caractères déclarées en Python utilisent le jeu d'encodage du
   ```
 
   [Liste complète des encodages acceptés](https://docs.python.org/3/library/codecs.html#standard-encodings)  
-  [Comparaison encodage Latin vs ANSI](https://a-mt.github.io/dev-roadmap/assets/encoding-latin-vs-ansi.html)
+  [Comparaison encodage Latin vs ANSI](../!assets/encoding-latin-vs-ansi.html)
 
 ## Constantes
 

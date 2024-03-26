@@ -1255,7 +1255,7 @@ Quelques points d'attention:
   Les encodages ISO-8859-1, ISO-8859-15 et CP1252 ne sont pas identiques.  
   Windows utilise nativement l'encodage ANSI (CP1252), lequel n'est pas reconnut par les autres systèmes d'exploitation (utilisation des ISO). L'encodage UTF-8 est donc généralement utilisé par les serveurs web pour éviter les confusions et problèmes d'encodage entre machines.
 
-  [Comparaison encodages Latin et ASCII](../assets/encoding-latin-vs-ansi.html).
+  [Comparaison encodages Latin et ASCII](../../www/encoding-latin-vs-ansi.html).
 
 * <ins>Byte Order Mark (BOM)</ins>:  
   La chaîne est encodée en UTF-8 sans BOM.  

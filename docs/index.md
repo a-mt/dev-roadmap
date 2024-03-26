@@ -6,14 +6,14 @@ roadmap: true
 
 ## Front-End
 
-* ##### ![](/assets/img/html.png) HTML
+* ##### ![](!assets/img/html.png) HTML
   * Langage
     * [HTML][html]{: .lang}
   * Syntaxe
     * [Accessiblité][accessibilite]{: .syntax}
     * [SVG][svg]{: .syntax}
 
-* ##### ![](/assets/img/css.png) CSS
+* ##### ![](!assets/img/css.png) CSS
   * Langage
     * [CSS][css]{: .lang}
   * Préprocesseurs
@@ -26,7 +26,7 @@ roadmap: true
   * Nommage
     * [BEM etc](!css/css-nommage.md){: .syntax}
 
-* ##### ![](/assets/img/js.png) JS
+* ##### ![](!assets/img/js.png) JS
   * Langage
     * [JS][js]{: .lang}
     * [JSX][jsx]{: .lang}
@@ -63,7 +63,7 @@ roadmap: true
     * Tape&#10;{: .test}
     * Mocha&#10;{: .test}
 
-* ##### ![](/assets/img/tools.png) Outils
+* ##### ![](!assets/img/tools.png) Outils
   * Builder
     * Bower [1 &#x21F2;](https://www.alsacreations.com/tuto/lire/1609-bower-pour-les-nuls.html)
     * Grunt
@@ -78,7 +78,7 @@ roadmap: true
 
 ## Back-End
 
-* ##### ![](/assets/img/python.png) Python
+* ##### ![](!assets/img/python.png) Python
   * Langage
     * [Python][python]{: .lang}
   * Pkg manager
@@ -94,7 +94,7 @@ roadmap: true
   * Tests
     * unittest
 
-* ##### ![](/assets/img/php.png) PHP
+* ##### ![](!assets/img/php.png) PHP
   * Langage
     * [PHP][php]{: .lang}
   * Pkg manager
@@ -105,7 +105,7 @@ roadmap: true
   * Tests
     * PHPUnit
 
-* ##### ![](/assets/img/nodejs.png) Node.js
+* ##### ![](!assets/img/nodejs.png) Node.js
   * Pkg manager
     * NPM [1 &#x21F2;](http://blog.npmjs.org/post/168978377570/new-package-moniker-rules)
     * Yarn
@@ -113,7 +113,7 @@ roadmap: true
   * Frameworks
     * Express.js
 
-* ##### ![](/assets/img/ruby.png) Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
+* ##### ![](!assets/img/ruby.png) Ruby [1 &#x21F2;](https://medium.freecodecamp.org/learning-ruby-from-zero-to-hero-90ad4eecc82d)
   * Frameworks
     * Ruby on Rails
   * Librairies
@@ -121,7 +121,7 @@ roadmap: true
   * Pkg Manager
     * RuByGems
 
-* ##### ![](/assets/img/bdd.png) BDD
+* ##### ![](!assets/img/bdd.png) BDD
   * [Théorie][bdd]{: .theory}
   * Relationnelle
     * [MySQL][mysql]{: .lang}
@@ -138,7 +138,7 @@ roadmap: true
     * Redis
     * Memcache
 
-* ##### ![](/assets/img/tools.png) Outils
+* ##### ![](!assets/img/tools.png) Outils
   * Templating
     * [Liquid][liquid]{: .syntax}
     * [Twig][twig]{: .syntax}
@@ -177,10 +177,10 @@ roadmap: true
 
 ## Operating
 
-* ##### ![](/assets/img/tux.png) Administration Système
+* ##### ![](!assets/img/tux.png) Administration Système
   - [Linux][linux]{: .cli}
 
-* ##### ![](/assets/img/cloud.png) Hébergement
+* ##### ![](!assets/img/cloud.png) Hébergement
   * Cloud Providers
     * AWS [1 &#x21F2;](https://medium.freecodecamp.org/how-to-create-your-first-safe-server-ready-for-production-f1cc60eec69a) [2 &#x21F2;](https://github.com/open-guides/og-aws)
     * Microsoft Azure [1 &#x21F2;](https://blogs.msdn.microsoft.com/mihansen/2018/07/03/open-emr-in-azure-paas-commercial-and-government/)
@@ -192,7 +192,7 @@ roadmap: true
     * [Google Drive][google-drive]
     * [Github Pages][github-pages]
 
-* ##### ![](/assets/img/devops.png) DevOps
+* ##### ![](!assets/img/devops.png) DevOps
 
   * [Overview](devops.md){: .theory}
   * VM
@@ -223,7 +223,7 @@ roadmap: true
     * Nexus Repository Manager
     * JFrog Artifactory
 
-* ##### ![](/assets/img/devops.png) DevSecOps
+* ##### ![](!assets/img/devops.png) DevSecOps
 
   - Scan codebase
     * CheckMarx
@@ -373,7 +373,7 @@ roadmap: true
 # Quick links
 
 - Caractères
-  - [Comparaison encodages Latin et ASCII](/assets/encoding-latin-vs-ansi.html)
+  - [Comparaison encodages Latin et ASCII](!assets/encoding-latin-vs-ansi.html)
   - [Caractères Unicode](http://www.fileformat.info/info/unicode/index.htm)  
   - [Emojis Unicode](https://emojipedia.org/)
   - [Encrypt mailto links](https://codepen.io/a-mt/pen/vYNaYmG)
@@ -463,40 +463,40 @@ roadmap: true
   - [Tests psychométriques](https://www.youtube.com/watch?v=ggJp7jOAmwM)
 
 
-[accessibilite]: !html/accessibilite.md
+[accessibilite]: html/accessibilite.md
 [agile]: agile.md
 [12-factor]: 12-factor.md
-[angular]: !angular/index.md
-[ansible]: !ansible/index.md
+[angular]: angular/index.md
+[ansible]: ansible/index.md
 [apache-vhost]: apache-vhost.md
 [api]: api.md
 [api-rest]: api-rest.md
 [bdd]: bdd.md
-[bitcoin]: !bitcoin/index.md
+[bitcoin]: bitcoin/index.md
 [bitwise]: bitwise-operations.md
-[chemistry]: !chemistry/index.md
+[chemistry]: chemistry/index.md
 [composer]: composer.md
 [crypto]: crypto.md
 [crypto-ec]: crypto-ec.md
-[css]: !index/css.md
-[design]: !design/index.md
-[dicom]: !health/dicom.md
-[digitalocean]: !digitalocean/index.md
-[host-ip]: !digitalocean/host-ip.md
-[host-domain]: !digitalocean/host-domain.md
-[django]: !django/index.md
-[docker]: !docker/index.md
-[docker-compose]: !docker/docker-compose.md
-[docker-swarm]: !docker/docker-swarm.md
-[elasticsearch]: !elasticsearch/index.md
-[electricite]: !electricity/index.md
-[ember]: !ember/index.md
+[css]: index/css.md
+[design]: design/index.md
+[dicom]: health/dicom.md
+[digitalocean]: digitalocean/index.md
+[host-ip]: digitalocean/host-ip.md
+[host-domain]: digitalocean/host-domain.md
+[django]: django/index.md
+[docker]: docker/index.md
+[docker-compose]: docker/docker-compose.md
+[docker-swarm]: docker/docker-swarm.md
+[elasticsearch]: elasticsearch/index.md
+[electricite]: electricity/index.md
+[ember]: ember/index.md
 [encoding]: encodages.md
 [gettext]: gettext.md
 [git]: git.md
-[gitlab-ci]: !gitlab/gitlab-ci.md
-[github]: !github/index.md
-[github-pages]: !github/github-pages.md
+[gitlab-ci]: gitlab/gitlab-ci.md
+[github]: github/index.md
+[github-pages]: github/github-pages.md
 [google-drive]: google-drive.md
 [graphql]: graphql.md
 [heroku]: heroku.md
@@ -505,50 +505,50 @@ roadmap: true
 [jekyll]: jekyll.md
 [jenkins]: jenkins.md
 [jquery]: jquery.md
-[js-webapi]: !jsapi/index.md
-[js]: !js/index.md
+[js-webapi]: jsapi/index.md
+[js]: js/index.md
 [json]: json.md
 [jsx]: jsx.md
-[kubernetes]: !kubernetes/index.md
-[latex]: !latex/index.md
-[linux]: !linux/index.md
+[kubernetes]: kubernetes/index.md
+[latex]: latex/index.md
+[linux]: linux/index.md
 [liquid]: liquid.md
 [markdown]: gfm.md
-[matplotlib]: !matplotlib/index.md
-[maths]: !maths/index.md
-[medical-imaging]: !health/imaging.md
-[ml]: !machine-learning/index.md
-[ml-algo]: !machine-learning/ml-algorithms.md
-[mongodb]: !mongo/index.md
+[matplotlib]: matplotlib/index.md
+[maths]: maths/index.md
+[medical-imaging]: health/imaging.md
+[ml]: machine-learning/index.md
+[ml-algo]: machine-learning/ml-algorithms.md
+[mongodb]: mongo/index.md
 [mustachejs]: mustachejs.md
-[mysql]: !mysql/index.md
-[numpy]: !numpy/index.md
-[pandas]: !pandas/index.md
+[mysql]: mysql/index.md
+[numpy]: numpy/index.md
+[pandas]: pandas/index.md
 [paradigm]: paradigm.md
 [peer-to-peer]: p2p.md
-[php]: !php/index.md
-[posix]: !linux/regex-posix.md
+[php]: php/index.md
+[posix]: linux/regex-posix.md
 [pre-commit]: pre-commit.md
-[puppet]: !puppet/index.md
-[python]: !python/index.md
-[react]: !react/index.md
+[puppet]: puppet/index.md
+[python]: python/index.md
+[react]: react/index.md
 [regex]: regex.md
 [sass]: sass.md
 [securite]: securite.md
 [semver]: semver.md
-[spirometry]: !health/spirometry.md
+[spirometry]: health/spirometry.md
 [ssh]: ssh.md
 [ssl]: ssl.md
-[svg]: !svg/index.md
-[terraform]: !terraform/index.md
+[svg]: svg/index.md
+[terraform]: terraform/index.md
 [testing]: testing.md
 [text-shortcut]: text-editing.md
 [threejs]: three.md
-[typescript]: !typescript/index.md
+[typescript]: typescript/index.md
 [twig]: twig.md
 [webdev]: web.md
 [webpack]: webpack.md
 [windows-task-scheduler]: windows-task-scheduler.md
-[xml]: !xml/index.md
+[xml]: xml/index.md
 [yaml]: yaml.md
-[vue]: !vue/index.md
+[vue]: vue/index.md

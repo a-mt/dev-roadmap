@@ -45,8 +45,8 @@ category: Webenv
 <!-- -->
 
 * Quelques exemples:
-  - Pour un projet Django: [.pre-commit-config.yaml](assets/django-pre-commit-config.yaml)
-  - Pour un projet Ember: [.pre-commit-config.yaml](assets/ember-pre-commit-config.yaml)
+  - Pour un projet Django: [.pre-commit-config.yaml](!assets/django-pre-commit-config.yaml)
+  - Pour un projet Ember: [.pre-commit-config.yaml](!assets/ember-pre-commit-config.yaml)
 
 <!-- -->
 

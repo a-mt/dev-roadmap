@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 {% seo %}
-    <link href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}" rel="stylesheet">
-    <script src="{{ '/assets/javascript/common.js?v=' | append: site.github.build_revision | relative_url }}"></script>
+    <link href="{{ '/!assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}" rel="stylesheet">
+    <script src="{{ '/!assets/javascript/common.js?v=' | append: site.github.build_revision | relative_url }}"></script>
     {% if page.latex %}
-      <link href="{{ '/assets/css/latex.css?v=' | append: site.github.build_revision | relative_url }}" rel="stylesheet">
+      <link href="{{ '/!assets/css/latex.css?v=' | append: site.github.build_revision | relative_url }}" rel="stylesheet">
     {% endif %}
     {% if page.roadmap %}
-      <link href="{{ '/assets/css/index.css?v=' | append: site.github.build_revision | relative_url }}" rel="stylesheet">
+      <link href="{{ '/!assets/css/index.css?v=' | append: site.github.build_revision | relative_url }}" rel="stylesheet">
     {% endif %}
   </head>
   <body class="{{ page.name | replace: '.md', '' }}">
@@ -84,12 +84,12 @@
       </script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
-      <link rel="stylesheet" type="text/css" href="{{ "assets/typejax/typejax.css" | relative_url }}">
-      <script type="text/javascript" src="{{ "assets/typejax/inliner.js" | relative_url }}"></script>
-      <script type="text/javascript" src="{{ "assets/typejax/typejax.js" | relative_url }}"></script>
-      <script type="text/javascript" src="{{ "assets/javascript/latex.js" | relative_url }}"></script>
+      <link rel="stylesheet" type="text/css" href="{{ "!assets/typejax/typejax.css" | relative_url }}">
+      <script type="text/javascript" src="{{ "!assets/typejax/inliner.js" | relative_url }}"></script>
+      <script type="text/javascript" src="{{ "!assets/typejax/typejax.js" | relative_url }}"></script>
+      <script type="text/javascript" src="{{ "!assets/javascript/latex.js" | relative_url }}"></script>
     {% endif %}
-    <script src="{{ "assets/javascript/anchor-js/anchor.min.js" | relative_url }}"></script>
+    <script src="{{ "!assets/javascript/anchor-js/anchor.min.js" | relative_url }}"></script>
     <script>anchors.add();</script>
   </body>
 </html>

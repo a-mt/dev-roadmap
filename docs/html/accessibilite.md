@@ -3,7 +3,7 @@ title: Accessibilité
 category: Other
 ---
 
-L'accessibilité (*accessibility* ou a11y) désigne l'ensemble des techniques et bonnes pratiques qui permettent de rendre un site web accessible à tous, donc en prenant en compte les personnes qui ont un handicap, celles qui utilisent d'anciens navigateurs ou ordinateurs, ont une connexion internet lente ou encore des contraintes de sécurités (pas de javascript par exemple).  
+L'accessibilité (*accessibility* ou a11y) désigne l'ensemble des techniques et bonnes pratiques qui permettent de rendre un site web accessible à tous, donc en prenant en compte les personnes qui ont un handicap, celles qui utilisent d'anciens navigateurs ou ordinateurs, ont une connexion internet lente ou encore ont des contraintes de sécurités (pas de javascript par exemple).  
 Toute personne devrait être capable d'accéder et d'utiliser le site, même si l'expérience est moins agréable.
 
 | Type de handicap | Exemple                                             | Techniques |
@@ -55,8 +55,6 @@ Les 12 principales recommandations sont :
 
 ![](https://i.imgur.com/gZDNCGI.png)
 
----
-
 ## WAI-ARIA
 
 Le WAI-ARIA (*Web Accessibility Initiative – Accessible Rich Internet Applications*) est une spécification du W3C qui décrit comment améliorer l'accessibilité du web pour le contenu dynamique (Ajax, JavaScript, HTML) — par exemple: identifier une liste de lien comme menu de navigation et indiquer si son état est plié ou déplié.
@@ -69,7 +67,7 @@ WAI-ARIA définit plusieurs attributs: `tabindex`, `role` et les attributs aria 
 ### Produire du code valide
 
 Le premier point est de s'assurer de produire du code HTML valide. Pour le vérifier, on peut utiliser le [validateur W3C](http://validator.w3.org/nu/).  
-Il est possible de créer des sites sans en tenir compte, mais cela faussera l'interprétation des technologies d’assistance telles que les lecteurs d'écran.
+Il est possible de créer des sites sans en tenir compte, mais ça pourrait fausser l'interprétation des technologies d’assistance telles que les lecteurs d'écran.
 
 ### Attribut lang
 
@@ -112,7 +110,9 @@ Si l'image fait partie du contenu mais qu'aucun équivalent textuel n'est dispon
 
 ### Buttons
 
-Utiliser des éléments `<button>` plutôt que `<a>` lorsqu'il s'agit d'actions à effectuer et non des liens vers d'autres page
+Utiliser des éléments `<button>` plutôt que `<a>` lorsqu'il s'agit d'actions à effectuer et non des liens vers d'autres page.  
+Ne pas non plus utiliser de div pour simuler un bouton
+
 * les lecteurs d'écrans les détectent comme des boutons
 * au clavier, la touche Entrée déclenche le clic (événement js)
 * un bouton qui ne peut pas être utilisé est identifié comme tel (attribut `disabled`)
@@ -121,7 +121,6 @@ Utiliser des éléments `<button>` plutôt que `<a>` lorsqu'il s'agit d'actions 
 <button class="btn" disabled>Button</button>
 ```
 
-Ne pas utiliser de `<div>` pour simuler un bouton, ou lui donner un `tabindex` pour qu'il soit accessible.  
 [CodePen button vs div](https://codepen.io/matuzo/full/xgwxNw/)  
 [Effet de l'élément button (vidéo)](https://www.youtube.com/watch?v=CZGqnp06DnI&index=4&list=PLNYkxOF6rcICWx0C9LVWWVqvHlYJyqw7g)
 
@@ -129,13 +128,11 @@ Ne pas utiliser de `<div>` pour simuler un bouton, ou lui donner un `tabindex` p
 
 Utiliser des éléments `<a>` pour tous les liens plutôt que des événements javascript.
 
-Les utilisateurs de leurs d'écran ont différentes options. Cela inclut sauter sur des éléments de répère: sauter au contenu principal ou obtenir un résumé de page à partir des en-têtes. Une autre option consiste à entendre uniquement les liens disponibles sur une page.
-
-Avoir une liste de liens "cliquez ici" ou "lisez plus" n'est pas utile. Au lieu de ça, vous devriez utiliser un texte bref mais description dans les balises `<a>` pour donner du sens.
+Les utilisateurs de lecteurs d'écran ont différentes options, dont aller directement à des éléments de répère (aller au contenu main par exemple), obtenir un résumé de page à partir des entêtes (heading) ou entendre uniquement les liens (a) disponibles sur une page. Avoir une liste de liens "cliquez ici" ou "lisez plus" n'est pas utile. À la place, il faudrait utiliser un texte bref mais descriptif dans les balises `<a>` pour donner du sens.
 
 ![](https://i.imgur.com/crhpdkX.png)
 
-Indiquer les liens qui pointent vers des documents en téléchargement, avec le format et le poids du document en question dans le lien. Par exemple: « Nom du document (PDF, 135ko) ».
+Indiquer les liens qui pointent vers des documents à télécharger, avec le format et le poids du document en question dans le lien. Par exemple: « Nom du document (PDF, 135ko) ».
 
 ### Headings
 
@@ -382,7 +379,7 @@ Les attributs aria sont préfixés par `aria-`. Ils définissent l'état ou les 
 
 ### Audio
 
-Utiliser une balise `audio` pour le contenu sonore. Avec l'attribut `controls`, les boutons lecture, pause, etc, et les fonctionnalité du clavier sont prises en charge par le navigateur.
+Utiliser une balise `audio` pour le contenu sonore. Avec l'attribut `controls`, les boutons lecture, pause, etc, et les fonctionnalités du clavier sont prises en charge par le navigateur.
 
 ``` html
 <audio id="meowClip" controls>
@@ -391,7 +388,7 @@ Utiliser une balise `audio` pour le contenu sonore. Avec l'attribut `controls`, 
 </audio>
 ```
 
-Le contenu audio nécessite également une alternative de texte pour être accessible aux sourds ou malentendants. Cela peut être fait avec du texte à proximité sur la page ou un lien vers une transcription.
+Le contenu audio nécessite également une alternative texte pour être accessible aux sourds ou malentendants, ce qui peut être fait avec du texte à proximité sur la page ou un lien vers une transcription.
 
 ### Video
 
@@ -448,11 +445,11 @@ Les lettres de a à z sont généralement utilisées pour les raccourcis logicie
 * Touche `0` : Liste des touches clavier utilisées. Cette liste peut se trouver en tête de la politique d'accessibilité du site, ou dans un document spécifique.
 * Touche `1` : Page d'accueil
 * Touche `2` : Page d'actualité du site
-* Touche `3` : Carte du site
+* Touche `3` : Sitemap du site
 * Touche `4` : Formulaire de recherche
 * Touche `5` : FAQ, glossaire, index thématiques
 * Touche `6` : Page d'aide à la navigation dans le site
-* Touche `7` : Contact par email
+* Touche `7` : Contact
 * Touche `8` : Copyright, conditions d'utilisation, licence...
 * Touche `9` : Livre d'or, feedback...
 
@@ -480,7 +477,7 @@ Si ce n'est pas possible, s'assurer que l'élément est navigable avec le clavie
 ### Contraste
 
 Le contraste est la différence de luminosité entre les couleurs claires et les couleurs sombres. Plus le contraste est élevé, plus il est facile de les distinguer.
-Si le contraste n'est pas assez élevé
+A contrario, si le contraste n'est pas assez élevé:
 1. certaines personnes ne pourront pas lire le contenu
 2. les personnes ne pourront pas accéder au site avec leur téléphone, dehors, pendant la journée
 
@@ -504,7 +501,7 @@ S'assurer que les input et boutons restent visibles quand ce mode est activé.
 
 ![](https://i.imgur.com/B6Oha8g.jpg)
 
-Les media queries peuvent être utilisées pour détecter si le mode contraste est activé.
+Les media queries peuvent être utilisées pour détecter si le mode contraste élevé est activé.
 
 ``` css
 /* High contrast mode active */
@@ -525,11 +522,11 @@ Les media queries peuvent être utilisées pour détecter si le mode contraste e
 
 ### Couleurs
 
-La couleur ne doit pas être utilisée comme seule façon de transmettre des informations importantes, car les utilisateurs de lecteurs d'écran ne la verront pas.
+La couleur ne doit pas être utilisée comme seule façon de transmettre des informations importantes, puisque les utilisateurs de lecteurs d'écran ne la verront pas.
 Par ailleurs, les couleurs de premier plan et de fond ont besoin d'un constrate suffisant pour que les utilisateurs facilement puissent les distinguer, plus encore pour les daltoniens.
 
-Il existe différentes formes de daltonisme. Cela peut aler d'une sensibilité réduite à une certaine longueur d'onde de la lumière, à l'incapacité de voir la couleur du tout. La forme la plus commune est une sensiblité réduite pour détecter les verts.
-Les couleurs proches, c'est à dire voisines sur la route des couleurs (comme le vert et le jaune), doivent être évitées lors de la transmission d'informations importantes.
+Il existe différentes formes de daltonisme. Ça peut aller d'une sensibilité réduite à une certaine longueur d'onde de la lumière, à l'incapacité totale de voir une certaine couleur. La forme la plus commune est une sensiblité réduite pour détecter les verts.
+Les couleurs proches, c'est à dire voisines sur la roue des couleurs (comme le vert et le jaune), doivent être évitées lors de la transmission d'informations importantes.
 
 ![](https://i.imgur.com/BLWAgMU.png)
 
@@ -640,7 +637,7 @@ line-height: 1.5;
 
 ### Alignement
 
-Ne jamais utiliser l'alignement justifié, cela modifie l'espacement entre les mots d'une ligne pour que le texte remplisse la largeur. Bien que cela puisse être visuellement plaisant, en pratique c'est plus difficile à lire.
+Ne jamais utiliser l'alignement justifié — qui modifie l'espacement entre les mots d'une ligne pour que le texte remplisse la largeur. Bien que ça puisse être visuellement plaisant, en pratique c'est plus difficile à lire.
 
 ![](https://i.imgur.com/GQmcnE3.png)
 
@@ -656,7 +653,7 @@ h2 {
 
 ### Impression
 
-Les pages doivent être accessibles et utilisables même lorsqu'elles sont imprimées. Pour ce faire, il suffit de peaufiner le style et masquer les éléments qui n'ont pas de sens sur le papier, comme la navigation ou les annonces.
+Les pages doivent être accessibles et utilisables même lorsqu'elles sont imprimées sur du papier. Pour ce faire, il suffit de peaufiner le style et masquer les éléments qui n'ont pas de sens sur le papier, comme la navigation ou les annonces.
 
 ``` css
 @media print {
@@ -704,9 +701,9 @@ Certaines propriétés CSS peuvent changer l'ordre dans lequel les éléments so
 ### Focus
 
 Beaucoup d'utilisateurs utilisent le clavier pour naviguer, en utilisant la touche tabulation. Pour savoir quel élément est actuellement sélectionné, un outline est affiché (un contour en pointillé, bleu ou orange).
-Il est important de ne pas supprimer l'outline (`outline: none`) - même si c'est pas joli ! - sinon les utilisateurs qui utilisent le clavier ne pourront pas utiliser le site.
+Il est important de ne pas supprimer l'outline (`outline: none`) — même si ce n'est pas joli ! — ou en tout ca squ'il soit tujours possible d'identifier où se situe le focus, autrement les utilisateurs qui naviguent au clavier ne pourront pas utiliser le site.
 
-La pseudo-classe `:focus` permet de sélectionner l'élément  qui a le focus.
+La pseudo-classe `:focus` permet de sélectionner l'élément qui a le focus.
 
 ``` css
 a:focus {
@@ -730,16 +727,20 @@ form:focus-within {
 
 ### Animations
 
-Pour chaque élément en mouvement (une vidéo qui se lance toute seule, une galerie d’images qui tourne sur elle-même, un texte qui défile, une animation...), doit pouvoir être arrêté et relancé. Un simple bouton lecteur/pause fait l'affaire, mais ce mécanisme doit être accessible au clavier.
+Chaque élément en mouvement (comme une vidéo qui se lance toute seule, une galerie d’images qui tourne sur elle-même, un texte qui défile, une animation...) doit pouvoir être arrêté et relancé. Un simple bouton lecteur/pause fait l'affaire, mais ce mécanisme doit être accessible au clavier.
 
 Une lumière clignotante ne devrait pas apparaître plus de trois fois par seconde. Ou le flash devrait être en dessous des seuils qui risquent de provoquer des crises épileptiques (general flash et red flash).
 
 <ins>Ressources</ins> :
 - [Photosensitive Epilepsy Analysis Tool](http://trace.umd.edu/peat)
 
-### Popup
+### Modale
 
-La page doit pouvoir être navigable avec le clavier (`Tab`, `Shift + Tab`, `Entrée`). Lorsqu'on ouvre une popup, il faut lui donner le focus pour que la navigation puisse être continuée dans le bon ordre.
+Pour que la page puisse être facilement navigable avec le clavier:
+
+- Lorsqu'on ouvre une modale, on lui donne le focus — on peut ainsi continuer de naviguer dans le bon ordre.
+
+- Et lorsqu'on ferme la modale, idéalement, le focus devrait être replacé à l'endroit où il était avant d'ouvrir la popup — donc redonner le focus à l'élément qui a ouvert la modale. Pour ce faire, il faut sauvegarder l'endroit où le focus est au moment d'ouvrir la modale.
 
 ``` html
 // Add tabindex="0"
@@ -747,9 +748,6 @@ La page doit pouvoir être navigable avec le clavier (`Tab`, `Shift + Tab`, `Ent
   ...
 </div>
 ```
-
-Lorsqu'on quitte la popup (`Esc`), le focus est perdu. Idéalement, le focus doit être replacé à l'endroit où il était avant d'ouvrir la popup. Pour ce faire, il faut sauvegarder l'endroit où le focus était au moment d'ouvrir la popup.
-
 
 ``` js
 // Variable for storing the last focused element
@@ -780,25 +778,26 @@ function removeModal() {
 
 [CodePen popup sans focus](https://codepen.io/matuzo/full/YNyPMj/), [CodePen popup avec focus](https://codepen.io/matuzo/full/pRNVJN/).
 
-Il est conseillé de s'assurer que le focus reste dans la popup tant qu'elle est ouverte.  
+Il est conseillé de s'assurer que le focus reste dans la modale tant qu'elle est ouverte.  
 [CodePen popup avec keyboard trap](https://codepen.io/matuzo/full/GrNdvK/)
 
 ### Changement de contenu
 
-Si du contenu est généré dynamiquement et inséré dans le DOM, seuls les utilisateurs qui voient l'écran le sauront.
-En ajoutant un role `status` ou `alert` à un élément, les lecteurs d'écran liront l'élément lorsque le texte qu'il contient change. Éviter des créer des messages qui disparaissent automatiquement — ils peuvent disparaître trop rapidement pour le lecteur d'écran.
+* Si du contenu est généré dynamiquement et inséré dans le DOM, seuls les utilisateurs qui voient l'écran le sauront.  
+  En ajoutant un role `status` ou `alert` à un élément, les lecteurs d'écran liront l'élément lorsque le texte qu'il contient change.  
+  Un role `alert` va interrompre le lecteur d'écran s'il est en train de lire autre chose, tandis que `status` va attendre que le lecteur d'écran ait finit de lire. [Voir effet role status (vidéo)](https://www.youtube.com/watch?v=YPOpIHUtkPo&feature=youtu.be)  
 
-``` html
-<div class="message" role="status">Changes saved!</div>
-```
+  ``` html
+  <div class="message" role="status">Changes saved!</div>
+  ```
 
-Un role `alert` va interrompre le lecteur d'écran s'il est en train de lire autre chose, tandis que `status` va attendre que le lecteur d'écran ait finit de lire. [Voir effet role status (vidéo)](https://www.youtube.com/watch?v=YPOpIHUtkPo&feature=youtu.be)  
+* Éviter des créer des messages qui disparaissent automatiquement — ils peuvent disparaître trop rapidement pour le lecteur d'écran.
 
-`aria-live="polite"` est l'équivalent de `role="status"` et `aria-live="assertive"` de `role="alert"`.  
-On peut utiliser les deux attributs pour un meilleur support du navigateur.
+* `aria-live="polite"` est l'équivalent ARIA de `role="status"` et `aria-live="assertive"` de `role="alert"`.  
+  On peut utiliser les deux attributs pour un meilleur support du navigateur.
 
-``` html
-<div role="alert" aria-live="assertive"></div>
-```
+  ``` html
+  <div role="alert" aria-live="assertive"></div>
+  ```
 
 [Exemple de composants accessibles](https://inclusive-components.design/) (onglets, slider, tooltips, etc)

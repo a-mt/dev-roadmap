@@ -5,7 +5,7 @@ category: Web, HTML
 
 ## DOCTYPE
 
-La DTD (Document Type Definition) est la première instruction de tout fichier HTML. Elle indique la version HTML utilisée.
+La DTD (*Document Type Definition*) est la première instruction de tout fichier HTML. Elle indique la version HTML utilisée.
 
 <table>
   <thead>
@@ -93,8 +93,8 @@ La balise `<body>` contient le contenu à proprement parler de la page.
 
 ### title
 
-Définit le titre de la page. Ce titre est affiché par le navigateur en titre d'onglet et en titre de fenêtre lorsque l'onglet est actif.
-Il est également affiché par les moteurs de recherche (Google, Yahoo, etc) et c'est le titre par défaut lorsqu'on ajoute la page dans ses bookmarks.
+Définit le titre de la page. Ce titre est affiché par le navigateur en titre d'onglet et en titre de fenêtre quand l'onglet est actif.
+Il est également affiché par les moteurs de recherche (Google, Yahoo, etc) et c'est le titre par défaut quand on ajoute la page dans ses bookmarks.
 
 La balise `<title>` est unique par page.
 
@@ -109,18 +109,23 @@ La balise `<title>` est unique par page.
 
 ### meta
 
-Définit les metadatas du document.  
-Ces metadatas sont majoritairement utilisées par les moteurs de recherche ou les réseaux sociaux (Tweeter, Facebook). 
+Définit diverses metadatas.  
 
-``` html
-<meta name="description" content="Free Web tutorials">
-<meta name="keywords" content="HTML,CSS,XML,JavaScript">
-<meta name="author" content="John Doe">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-```
+* Elles sont souvent utilisées pour donner des informations aux moteurs de recherche ou réseaux sociaux (Tweeter, Facebook). 
+
+  ``` html
+  <meta name="description" content="Free Web tutorials">
+  <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+  <meta name="author" content="John Doe">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  ```
 
 * La meta `viewport` permet de définir le comportement de la page par rapport à la taille de l'écran.  
 [What is the viewport](https://www.w3schools.com/css/css_rwd_viewport.asp)
+
+  ``` html
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  ```
 
 * Les metas `http-equiv` permettent de définir des entêtes HTTP:
 
@@ -129,14 +134,14 @@ Ces metadatas sont majoritairement utilisées par les moteurs de recherche ou le
   <meta http-equiv="refresh" content="30">
   ```
 
-* L'encodage du document est a priori déclaré par l'entête HTTP `Content-Type`:
+  L'encodage du document peut être déclaré par l'entête HTTP `Content-Type`:
 
   ``` html
   <!-- HTML4 -->
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   ```
 
-  Mais en HTML5, il existe une manière simplifiée de déclarer l'encodage du document:
+* En HTML5, il existe une manière simplifiée de déclarer l'encodage du document:
 
   ``` html
   <!-- HTML5 -->
@@ -170,7 +175,7 @@ Permet d'ajouter du code CSS dans la page (embedded style).
 
 ### link
 
-Permet de charger des ressources externes, comme des feuilles de style (CSS situé dans un fichier externe) ou une favicon (icône affichée par le navigateur devant le titre de l'onglet).
+Permet de charger des ressources externes, comme des feuilles de style (CSS situé dans un fichier externe et non dans une balise style) ou une favicon (icône affichée par le navigateur devant le titre de l'onglet).
 
 ``` html
 <link rel="icon" href="favicon.ico">
@@ -180,12 +185,12 @@ Permet de charger des ressources externes, comme des feuilles de style (CSS situ
 
 * Les ressources inclues peuvent être limités à un type de media donné, par exemple `media="print"` cible les imprimantes, ce qui permet notamment d'inclure une feuille de style d'impression.
 
-* En HTML5, il n'est pas nécessaire de préciser le `type` pour une feuille de style.
+* En HTML5, il n'est pas nécessaire de préciser le type pour une feuille de style (`type="text/css"`) — ce qui était auparavant obligatoire
 
 * L'attribut `rel` spécifie le type de ressource à charger.  
   [Valeurs de l'attribut rel](https://www.w3schools.com/tags/att_link_rel.asp)
 
-  `rel="prefetch"` permet de charger des pages avant que l'utilisateur ne les demande. Il est souvent possible de "deviner" la prochaine page que l'utilisateur voudra afficher: par exemple si l'utilisateur consulte la 2ème page d'une liste d'articles, il est très probable qu'il veuille afficher la 3ème juste après. On peut également précharger des images.  
+  `rel="prefetch"` permet de charger des pages avant que l'utilisateur ne les demande. Il est souvent possible de "deviner" la prochaine page que l'utilisateur voudra afficher: par exemple si l'utilisateur consulte la 2ème page d'une liste d'articles, il est très probable qu'il veuille afficher la 3ème après. On peut également précharger des images.  
   Pré-charger les ressources permet de les afficher plus rapidement lorsque l'utilisateur les demande. Bien évidemment, il ne faut pas non surcharger le navigateur en requêtant trop de pages, ce qui le ralentirait.
 
   ``` html
@@ -194,7 +199,7 @@ Permet de charger des ressources externes, comme des feuilles de style (CSS situ
 
 ### script
 
-Permet d'ajouter un script dans la page, comme du code JavaScript ou WebGL (embedded style).  
+Permet d'ajouter un script dans la page, notamment du code JavaScript ou WebGL (embedded style).  
 
 ``` html
 <script type="text/javascript">
@@ -204,9 +209,9 @@ Permet d'ajouter un script dans la page, comme du code JavaScript ou WebGL (embe
 </script>
 ```
 
-* En HTML5, le `type` par défaut est JavaScript, il n'est donc pas obligatoire de le spécifier.
+* En HTML5, le type par défaut est JavaScript, il n'est donc pas obligatoire de spécifier `type="text/javascript"`  — ce qui était auparavant obligatoire
 
-* La balise script permet d'importer des scripts externes, en utilisant l'attribut `src`.
+* La balise script peut aussi importer des scripts externes, avec l'attribut `src`.
 
   ``` html
   <script type="text/javascript" src="myscripts.js"></script> 
@@ -221,9 +226,9 @@ Permet d'ajouter un script dans la page, comme du code JavaScript ou WebGL (embe
   <!-- End Google Analytics -->
   ```
 
-* L'attribut `defer="true"` dit au navigateur de n'importer le script que lorsque la page aura fini de charger.
+* L'attribut `defer="true"` indique au navigateur de n'importer le script qu'une fois que la page aura fini de se charger
 
-* Et `async`, de charger le script de manière asynchrone pendant le chargement de la page.
+* L'attribut `async` permet de charger le script de manière asynchrone pendant le chargement de la page: les scripts suivants peuvent être chargés sans attendre que celui-ci n'ai fini d'être chargé
 
 Le navigateur lit le code HTML de haut en bas: en plaçant les scripts en haut de la page, la page mettra plus de temps à s'afficher, il est donc préférable de placer les scripts à la fin du code HTML ou d'utiliser l'attribut `defer`.
 
@@ -263,7 +268,7 @@ Avant HTML5, on utilisait des balises `script`:
 ```
 
 Voir [JSFiddle template](https://jsfiddle.net/amt01/wgtzahh2/).  
-Note: [mustacheJS](https://github.com/janl/mustache.js/) est une libraire JS souvent utilisée pour manipuler les templates (gestion des conditions, boucles, etc).
+Note: [mustacheJS](https://github.com/janl/mustache.js/) est une librairie JS qui permet de manipuler les templates plus facilement — avec la prise en charge des conditions, boucles, etc
 
 ---
 
@@ -272,8 +277,8 @@ Note: [mustacheJS](https://github.com/janl/mustache.js/) est une libraire JS sou
 ### Headings: h1 à h6
 
 Les balises de `<h1>` à `<h6>` sont des balises titre qui servent à hiérarchiser le contenu.  
-Il ne doit y avoir qu'une balise `<h1>` par page (le titre principal), qui peut être suivie de balises `<h2>` (sections), suivies de balises `<h3>` (sous-sections), etc.
-Il est important de respecter l'ordre numérique des titres, de sorte qu'un robot puisque construire une table des matières de la page qui ait du sens.
+Il ne doit y avoir qu'une balise `<h1>` par page (le titre principal), qui peut être suivie de balises `<h2>` (sections), suivies de balises `<h3>` (sous-sections), et ainsi de suite.
+Il est important de respecter l'ordre numérique des titres, de sorte qu'un robot puisque construire une table des matières qui ait du sens.
 
 ``` html
 <body>
@@ -305,7 +310,7 @@ non interdum urna. Suspendisse potenti.</p>
 
 ### pre
 
-Les éléments `<p>` délimitent un paragraphe préformatté.  
+Les éléments `<pre>` (*preformatted text*) délimitent un paragraphe préformatté.  
 Particulièrement utilisés pour ajouter des lignes de code.
 
 ``` html
@@ -342,7 +347,7 @@ Ils sont utilisés pour grouper des éléments dans un bloc, ce qui permet notam
 
 ### hr
 
-Un `<hr>` (horizontal rule) est un séparateur qui permet de délimiter deux thèmes différents.
+Un `<hr>` (*horizontal rule*) est un séparateur qui permet de délimiter deux thèmes différents.
 
 ``` html
  <h1>HTML</h1>
@@ -371,8 +376,8 @@ million globally.
 
 ### address
 
-Délimite les informations de contact pour une personne, un groupe ou une organisation: adresse, email, etc.  
-Par exemple pour l'auteur d'un article ou pour une entreprise.
+Délimite les informations de contact d'une personne, d'un groupe ou d'une organisation: adresse, email, etc.  
+Par exemple pour l'auteur d'un article ou pour une entreprise:
 
 ``` html
 <address>
@@ -418,7 +423,7 @@ Permet d'afficher une barre de progrès
 
 ### br
 
-Un `<br>` (break) permet d'ajouter un retour à la ligne entre deux éléments ou à l'intérieur d'un bloc de texte.
+Un `<br>` (*break*) permet d'ajouter un retour à la ligne entre deux éléments ou à l'intérieur d'un bloc de texte.
 
 ``` html
 <img src="img1.png">
@@ -428,7 +433,7 @@ Un `<br>` (break) permet d'ajouter un retour à la ligne entre deux éléments o
 
 ### wbr
 
-Un `<wbr>` (word break opportunity) spécifie où un retour à la ligne peut être ajouté à l'intérieur d'un mot.
+Un `<wbr>` (*word break opportunity*) spécifie un droit où un retour à la ligne peut être ajouté à l'intérieur d'un mot.
 
 ``` html
 <p>http://voici<wbr>.une<wbr>.très<wbr>.très<wbr>.longue<wbr>.URL<wbr>.com/</p>
@@ -454,59 +459,50 @@ Les éléments `<span>` délimitent des éléments en ligne. Ils permettent d'ap
 
 ### a
 
-Les éléments `<a>` définissent des ancres — ce peut être un lien vers une autre page (lien hypertexte), un lien vers un élément dans la page en cours (id), ou même un lien vers une autre application (un protocole autre que http).
+Les éléments `<a>` (*ancre*) définissent des liens (hypertexte ou autre)
 
-#### Cible
+#### Target
 
-* une autre page
+Ce peut être
 
-  ``` html
-  <a href="http://google.com">Lien vers Google</a>
-  ```
+  * un lien vers une autre page (lien hypertexte)
 
-  ``` html
-  <a href="/mapage.html">Lien relatif à la racine du site en cours</a>
-  <!-- http//monsite.com/path/index.html => http//monsite.com/mapage.html  -->
-  ```
+    ``` html
+    <a href="http://google.com">Lien vers Google</a>
 
-  ``` html
-  <a href="mapage.html">Lien relatif à la page en cours</a>
-  <!-- http//monsite.com/path/index.html => http//monsite.com/path/mapage.html  -->
-  ```
+    <a href="/mapage.html">Lien relatif à la racine du site en cours</a>
+    <!-- http//monsite.com/path/index.html => http//monsite.com/mapage.html  -->
 
-* un endroit de la page
+    <a href="mapage.html">Lien relatif à la page en cours</a>
+    <!-- http//monsite.com/path/index.html => http//monsite.com/path/mapage.html  -->
+    ```
 
-  ``` html
-  <a href="#mon-titre">Lien vers l'élément d'id "mon-titre"</a>
-  ```
+  * un lien vers un élément dans la page en cours (id)  
+    NB Cliquer sur un lien `#` n'aura d'effet que si l'URL choisie est différente de celle en cours (cliquer deux fois sur `#` ne marchera donc pas)
 
-  ``` html
-  <a href="#">Lien vers le haut de page</a>
-  ```
+    ``` html
+    <a href="#mon-titre">Lien vers l'élément d'id "mon-titre"</a>
 
-  NB Cliquer sur un lien `#` n'aura d'effet que si l'URL choisie est différente de celle en cours (cliquer deux fois sur `#` ne marchera donc pas).
+    <a href="#">Lien vers le haut de page</a>
+    ```
 
-* une autre application / autre protocole
+  * un lien vers une autre application (un protocole autre que http)
 
-  ``` html
-  <a href="mailto://contact@monsite.com">Contacter</a>
-  ```
+    ``` html
+    <a href="mailto://contact@monsite.com">Contacter</a>
 
-  ``` html
-  <a href="mailto:someone@example.com
-        ?cc=someoneelse@example.com
-        &bcc=andsomeoneelse@example.com
-        &subject=Summer%20Party
-        &body=You%20are%20invited%20to%20a%20big%20summer%20party!" target="_top">Send mail!</a>
-  ```
+    <a href="mailto:someone@example.com
+          ?cc=someoneelse@example.com
+          &bcc=andsomeoneelse@example.com
+          &subject=Summer%20Party
+          &body=You%20are%20invited%20to%20a%20big%20summer%20party!" target="_top">Send mail!</a>
 
-  ``` html
-  <a href="javascript:alert('Hello World!');">Execute JavaScript</a>
-  ```
+    <a href="javascript:alert('Hello World!');">Execute JavaScript</a>
+    ```
 
 #### Contenu
 
-Un lien ne contient pas forcemment du texte, on peut y mettre tout élément.
+Un lien ne contient pas forcemment du texte, on peut y mettre n'importe quel élément.
 
 ``` html
 <a href="http://google.com">
@@ -516,12 +512,12 @@ Un lien ne contient pas forcemment du texte, on peut y mettre tout élément.
 
 #### Attribut: target
 
-On peut préciser où ouvrir le lien:
+On peut préciser où le lien doit être ouvert:
 * `target="_self"`: la page en cours (par défaut)
-* `target="_blank"`: dans un nouvel onglet
-* `target="_parent"`: dans la page parente (lorsqu'on a ouvert une page avec `window.open`)
-* `target="_top"`: dans la page de plus haut niveau (généralement identique à _parent)
-* `target=framename`: dans la frame "framename"
+* `target="_blank"`: un nouvel onglet
+* `target="_parent"`: la page parente (lorsqu'on a ouvert une page avec `window.open`)
+* `target="_top"`: la page de plus haut niveau (généralement identique à _parent)
+* `target=framename`: la frame "framename"
 
 ``` html
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
@@ -561,8 +557,8 @@ Définit la relation entre la page courante et le lien. Les moteurs de recherche
 
 ### i
 
-En HTML4, `<i>` était une balise de formattage — mettre en italique.  
-En HTML5, cette balises a un nouveau sens: `<i>` représente une "voix alternative" — par exemple pour mettre en exergue les termes techniques, phrases idiomatiques dans une autre langue, translitération, etc
+En HTML4, `<i>` (*italic*) était une balise de formattage — mettre en italique.  
+En HTML5, cette balise a un nouveau sens: `<i>` représente une "voix alternative" — par exemple pour mettre en exergue les termes techniques, phrases idiomatiques dans une autre langue, translitération, etc
 
 ``` html
 <p><i>I hope this works</i>, he thought.</p>
@@ -570,7 +566,7 @@ En HTML5, cette balises a un nouveau sens: `<i>` représente une "voix alternati
 
 ### b
 
-En HTML4, `<b>` était une balise de formattage — mettre en gras (bold).  
+En HTML4, `<b>` (*bold*) était une balise de formattage — mettre en gra.  
 En HTML5, `<b>` représente un texte mis en avant — des mots clés, le nom d'un produit, un sous-titre...
 
 ``` html
@@ -579,7 +575,7 @@ En HTML5, `<b>` représente un texte mis en avant — des mots clés, le nom d'u
 
 ### em
 
-Indique une emphase.
+`<em>` (*emphasis*) indique une emphase.
 
 ``` html
 <p>Make sure to sign up <em>before</em> the day of the event, September 16, 2013</p>
@@ -603,7 +599,7 @@ Indique un texte de moindre importance.
 
 ### u
 
-En HTML4, `<u>` était une balise de formattage — souligner (underline).  
+En HTML4, `<u>` (*underline*) était une balise de formattage — souligner.  
 En HTML5, `<u>` indique un texte *différent* du texte normal — comme un mot mal orthographié par exemple.
 
 ``` html
@@ -612,7 +608,7 @@ En HTML5, `<u>` indique un texte *différent* du texte normal — comme un mot m
 
 ### s
 
-En HTML4, `<s>` était une balise de formattage — barrer (strike).  
+En HTML4, `<s>` (*strike*) était une balise de formattage — barrer.  
 En HTML5, `<s>` indique un texte qui n'est pas ou plus vrai.
 
 ``` html
@@ -621,7 +617,7 @@ En HTML5, `<s>` indique un texte qui n'est pas ou plus vrai.
 
 ### del
 
-Indique un texte supprimé ou remplacé.
+`<del>` (*delete*) indique un texte supprimé ou remplacé
 
 ``` html
 <p><del>This text has been deleted</del>,
@@ -630,7 +626,7 @@ here is the rest of the paragraph.</p>
 
 ### ins
 
-Indique un texte inséré. C'est l'inverse de la balise `<del>`.
+`<ins>` (*insert*) indique un texte inséré. C'est l'inverse de la balise `<del>`.
 
 ``` html
 This text has been <del>deleted</del><ins>inserted</ins>
@@ -654,7 +650,7 @@ Indique une référence — comme un nom d'auteur, de livre, de film, de produit
 
 ### q
 
-Délimite une citation à l'intérieur d'une phrase.  
+`<q>` (*quote*) délimite une citation à l'intérieur d'une phrase.  
 Il s'agit d'un élément en ligne, contrairement au `<blockquote>` qui est un élément en bloc.
 
 ``` html
@@ -679,7 +675,7 @@ Délimite une variable à l'intérieur d'une phrase.
 
 ### kbd
 
-Délimite une entrée clavier à l'intérieur d'une phrase (kbd = abréviation de keyboard).
+`<kbd>` (*keyboard*) délimite une entrée clavier à l'intérieur d'une phrase
 
 ``` html
 <kbd>Ctrl</kbd> + <kbd>s</kbd> permet de déclencher la sauvegarde du document pour la plupart des logiciels.
@@ -687,7 +683,7 @@ Délimite une entrée clavier à l'intérieur d'une phrase (kbd = abréviation d
 
 ### samp
 
-Délimite le résultat d'un programme informatique.
+`<samp>` (*sample*) délimite le résultat d'un programme informatique
 
 ``` html
 <p>It wasn't the most helpful of error messages as it simply said: <samp>An error has occurred</samp>.</p>
@@ -707,7 +703,7 @@ Délimite le résultat d'un calcul.
 
 ### dfn
 
-Délimite un terme définit.
+`dfn` (*define*) délimite un terme définit.
 
 ``` html
 <p>
@@ -732,7 +728,7 @@ Une balise `<ruby>` contient des balises `<rt>`, qui définissent la prononciati
 
 ### sup
 
-Délimite un exposant (superscript)
+`<sup>` (*superscript*) délimite un exposant
 
 ``` html
 <p>
@@ -743,7 +739,7 @@ Délimite un exposant (superscript)
 
 ### sub
 
-Délimite un indice (subscript)
+`<sub>` (*subscript*) délimite un indice
 
 ``` html
 <p>
@@ -795,7 +791,7 @@ Spécifie la direction du texte
 
 Isole une partie de texte pouvant être formattée dans une direction différente que celle du texte qui l'entoure. 
 
-Cet élément est utile lorsqu'on intègre du texte dont on ignore la directivité (provenant d'une base de données par exemple), au sein d'un autre texte dont la direction est connue.
+Cet élément est utile lorsqu'on intègre du texte dont on ignore la directivité (qui provient d'une base de données par exemple), au sein d'un autre texte dont la direction est connue.
 
 ``` html
 <ul>
@@ -811,7 +807,7 @@ Cet élément est utile lorsqu'on intègre du texte dont on ignore la directivit
 
 Les landmarks sont des éléments introduits en HTML5 qui permettent d'ajouter un sens sémantique à certaines divisions: main, section, article, aside, footer, header, nav. Ainsi `<div class="header"></div>` peut être remplacé par `<header></header>`.
 
-Les landmarks permettent de naviguer plus facilement pour les utilisateurs de lecteur d'écran, et c'est une bonne pratique de les utiliser. Pour utiliser des landmarks HTML5 dans un navigateur qui ne supporte pas HTML5, il suffit a priori d'ajouter du CSS:
+Les landmarks permettent de naviguer plus facilement pour les utilisateurs avec un lecteur d'écran, et c'est une bonne pratique de les utiliser. Pour utiliser des landmarks HTML5 dans un navigateur qui ne supporte pas HTML5, il suffit (sauf pour IE&lt;10) d'ajouter du CSS:
 
 ``` css
 main, section, article, aside, footer, header, nav {
@@ -819,7 +815,7 @@ main, section, article, aside, footer, header, nav {
 }
 ```
 
-Pour IE < 10, il est nécessaire de les créer en JavaScript :
+Pour IE < 10, il est nécessaire de créer les éléments en JavaScript :
 
 ``` html
 <!--[if lt IE 9]>
@@ -830,7 +826,7 @@ Pour IE < 10, il est nécessaire de les créer en JavaScript :
 ### main
 
 Contient le contenu principal du site. Il n'y en a qu'un par page.  
-Il ne contient pas les éléments qui sont répétés sur les différentes pages (navigation, bannière...)
+Les éléments répétés sur les différentes pages (navigation, bannière...) sont placés en dehors
 
 ``` html
 <header>
@@ -872,7 +868,7 @@ On peut également placer des header dans différentes sections.
 
 ### article
 
-Délimite les éléments qui ont du sens par eux-même, que l'on pourrait mettre dans un feed RSS : article d'un blog, posts d'un forum, commentaires, etc.
+Délimite les éléments qui ont du sens par eux-même, qu'on pourrait mettre dans un feed RSS: article d'un blog, posts d'un forum, commentaires, etc.
 
 ``` html
 <article class="film_review">
@@ -900,23 +896,33 @@ Délimite les éléments qui ont du sens par eux-même, que l'on pourrait mettre
 
 ### section
 
-Groupe les éléments qui ont le même thème.
-* si un livre est un article, chaque chapitre est une section
-* si chaque article d'un blog est un article, la liste des articles est une section
+Groupe les éléments qui ont le même thème. Par exemple:
 
-``` html
-<section class="list">
-  <article class="post">...</article>
-  <article class="post">...</article>
-</section>
-```
+* si l'article est un livre, chaque chapitre est une section
+
+  ``` html
+  <article class="book">
+    <section class="chapter">...</section>
+    <section class="chapter">...</section>
+  </section>
+  ```
+
+* si l'article est un post d'un blog, la liste des articles est une section
+
+  ``` html
+  <section class="list">
+    <article class="post">...</article>
+    <article class="post">...</article>
+  </section>
+  ```
 
 ### aside
 
-Contient des informations indirectement liées au contenu: glossaire, biographie, articles similaires, informations complémentaires, etc
+Contient des informations indirectement liées au contenu:  
+glossaire, biographie, articles similaires, informations complémentaires, etc
 
 ``` html
- <p>My family and I visited The Epcot center this summer.</p>
+<p>My family and I visited The Epcot center this summer.</p>
 <aside>
   <h4>Epcot Center</h4>
   <p>The Epcot Center is a theme park in Disney World, Florida.</p>
@@ -925,7 +931,7 @@ Contient des informations indirectement liées au contenu: glossaire, biographie
 
 ### footer
 
-Placé dans la balise `<body>`, le `<footer>` contient les informations de copyright, plan du site, et tout autre information et liens que l'on trouve en bas de page.
+Placé dans la balise `<body>`, le `<footer>` contient les informations de copyright, plan du site, et tout autre information et liens qu'on trouve en bas de page.
 
 ``` html
 <footer>&copy; 2018</footer>
@@ -949,8 +955,8 @@ On peut également trouver des footers dans différentes sections.
 
 ### nav
 
-Contient les liens de navigation de la page.
-Inutile de mettre un élément nav dans le footer, il se suffit par lui-même
+Contient les liens de navigation de la page.  
+Note: inutile de mettre un élément nav dans le footer, il se suffit par lui-même
 
 ``` html
 <nav class="menu">
@@ -962,13 +968,36 @@ Inutile de mettre un élément nav dans le footer, il se suffit par lui-même
 </nav>
 ```
 
+### search
+
+Contient la barre de recherche
+
+``` html
+ <search>
+  <form>
+    <input name="fsrch" id="fsrch" placeholder="Search W3Schools">
+  </form>
+</search>
+```
+
+### hgroup
+
+Un `<hgroup>` permet d'indiquer qu'un heading et paragraphe sont liés — un sous-titre par exemple
+
+``` html
+ <hgroup>
+  <h2>Norway</h2>
+  <p>The land with the midnight sun.</p>
+</hgroup>
+```
+
 ---
 
 ## Listes
 
 ### ol, li
 
-La balise `<ol>` permet de créer une liste ordonnée d'item `<li>`.
+La balise `<ol>` (*ordered list*) permet de créer une liste ordonnée d'item `<li>` (*list item*) — autrement dit, une liste numérotée
 
 ``` html
 <ol>
@@ -980,7 +1009,7 @@ La balise `<ol>` permet de créer une liste ordonnée d'item `<li>`.
 
 ### ul, li
 
-La balise `<ul>` permet de créer une liste non ordonnée d'item `<li>` (liste à puces).
+La balise `<ul>` (*unordered list*) permet de créer une liste non ordonnée d'item `<li>` — autrement dit, une liste à puces
 
 ``` html
 <ul>
@@ -992,8 +1021,8 @@ La balise `<ul>` permet de créer une liste non ordonnée d'item `<li>` (liste �
 
 ### dl, dt, dd
 
-La balise `<dl>` permet de créer une liste de définitions.  
-Elle contient des balises `<dt>` (definition term) et `<dd>` (definition description).
+La balise `<dl>` (*definition list*) permet de créer une liste de définitions.  
+Elle contient des balises `<dt>` (*definition term*) et `<dd>` (*definition description*).
 
 ``` html
  <dl>
@@ -1011,8 +1040,8 @@ Elle contient des balises `<dt>` (definition term) et `<dd>` (definition descrip
 ### table, tr, th, td
 
 La balise `<table>` permet de créer des tableaux.  
-Chaque ligne est déllimitée par une balise `<tr>` (table row).  
-Chaque ligne contient des balises `<td>` (table data) et/ou `<th>` (table header) pour créer des cellules.
+Chaque ligne est déllimitée par une balise `<tr>` (*table row*).  
+Chaque ligne contient des balises `<td>` (*table data*) et/ou `<th>` (*table header*) pour créer des cellules.
 
 ``` html
 <table>
@@ -1039,7 +1068,7 @@ Un tableau peut contenir des éléments
 * et `<tfoot>`, qui contient les lignes de fin (pour ajouter une somme des données par exemple).
 
 Si le tableau ne contient que des données (`<tbody>`), alors cette balise peut être omise.  
-L'ordre HTML entre `<thead>`, `<tbody>` et `<tfoot>` n'importe pas.
+L'ordre HTML entre `<thead>`, `<tbody>` et `<tfoot>` n'a pas d'importance — l'entête sera affichée au début et le footer à la fin.
 
 ``` html
 <table>
@@ -1071,7 +1100,7 @@ L'ordre HTML entre `<thead>`, `<tbody>` et `<tfoot>` n'importe pas.
 ### caption
 
 Permet d'ajouter un titre à un tableau.  
-La propriété CSS `caption-side` peut définir l'emplacement du titre (au-dessus ou au-dessous).
+La propriété CSS `caption-side` peut définir l'emplacement du titre — au-dessus ou au-dessous
 
 ``` html
 <table>
@@ -1117,7 +1146,8 @@ La balise `<colgroup>` contient une suite de balises `<col>` qui permettent de d
 ### img
 
 Permet d'insérer des images.  
-L'attribut `alt` définit un texte alternatif au cas où l'image ne peut pas être chargée. Ce texte est également utilisé par les moteurs de recherche.
+L'attribut `alt` définit un texte alternatif qui est affiché si l'image ne peut pas être chargée.  
+Il est aussi utilisé par les moteurs de recherche et lecteurs d'écran.
 
 ``` html
 <img src="image.png" alt="Mon chien dans le parc">
@@ -1125,7 +1155,7 @@ L'attribut `alt` définit un texte alternatif au cas où l'image ne peut pas êt
 
 #### Attribut: width, hight
 
-Les attributs `width` et `height` permettent de définir les dimensions affichées de l'image.
+Les attributs `width` et `height` permettent de définir les dimensions de l'image affichée.
 
 ``` html
 <img ... width="100px" height="auto">
@@ -1133,10 +1163,11 @@ Les attributs `width` et `height` permettent de définir les dimensions affiché
 
 #### Attribut: srcset
 
-L'attribut de base `src` pointe vers une URL mais il est également possible de donner le choix au navigateur entre plusieurs images en fonction de la densité en pixels de l'écran.
+L'attribut `src` pointe vers une URL, qui est l'emplacement de l'image à charger.
 
-Les anciens moniteurs ont une densité en pixel de 1. Mais comme les résolutions n'ont cessé d'augmenter le pixel d'un écran n'est plus égal au pixel CSS. Les images retina ont une densité de 2. Les appareils mobiles ont une densité encore supérieure, 3 ou même 4 (Samsung Galaxy S8+).
-On peut choisir de servir une image différente, d'une résolution supérieure pour ces appareils grâce à l'attribut `srcset`. L'attribut `src` sera alors ignoré.
+Avec l'attribut `srcset`, il est possible de donner le choix au navigateur entre plusieurs images en fonction de la densité en pixels de l'écran.
+Les anciens moniteurs ont une densité en pixel de 1, mais comme les résolutions n'ont cessé d'augmenter le pixel d'un écran n'est plus égal au pixel CSS: les images retina par exemple ont une densité de 2; et les appareils mobiles ont une densité encore supérieure, 3 ou même 4 (Samsung Galaxy S8+).
+On peut ainsi choisir de servir une image différente, d'une résolution supérieure pour ces appareils. Si le srcset est spécifié, et supporté par le navigateur, alors l'attribut `src` est ignoré.
 
 ``` html
 <img srcset="image_1x.jpg 1x,
@@ -1192,7 +1223,7 @@ Définit un container pour plusieurs images. Peut contenir des éléments `<img>
 ### source
 
 L'élément `<source>` permet de spécifier de multiples ressources pour les éléments media comme `<video>`, `<audio>` ou `<picture>`.
-Cela permet au navigateur de choisir parmis une liste la ressource en fonction des types / codecs supportés ou encore de media queries.
+Ça permet au navigateur de choisir parmi une liste la ressource en fonction des types / codecs supportés ou encore de media queries.
 
 ``` html
 <picture>
@@ -1228,15 +1259,22 @@ Permet d'inclure un lecteur audio pour lire des fichiers audio mp3, wav ou ogg.
 Le fichier à lire peut être donné via l'attribut `src` ou via une liste d'élements `<source>`.
 
 ``` html
-<audio controls>
+<audio src="sound.mp3"></audio>
+```
+``` html
+<audio>
   <source src="horse.ogg" type="audio/ogg">
   <source src="horse.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
 </audio> 
 ```
 
-Si l'attribut `controls` est spécifié, le navigateur affichera et gerera les contrôles du lecteur audio (play/pause, etc) mais il peuvent également être gérés manuellement en JavaScript.
+Si l'attribut `controls` est spécifié, le navigateur affichera et gerera les contrôles du lecteur audio (play/pause, etc).  
+Autrement, ils peuvent également être gérés manuellement en JavaScript.
 
+``` html
+<audio controls src="sound.mp3"></audio>
+```
 ``` html
 <audio id="player" src="sound.mp3"></audio>
 <div>
@@ -1273,7 +1311,7 @@ Pour les navigateurs ne supportant pas HTML5, un fallback Flash peut être ajout
 </video>
 ```
 
-L'attribut `poster`, qui permet d'afficher une vignette en attendant que la vidéo ait chargé.  
+L'attribut `poster` permet d'afficher une vignette en attendant que la vidéo ait chargé.  
 Pour le reste, `<video>` accepte les mêmes attributs que `<audio>`.
 
 [Evenements HTML5 video player](https://codepen.io/a-mt/pen/XaRZyX)
@@ -1295,7 +1333,7 @@ L'attribut `kind` accepte pour valeur `captions`, `chapters`, `descriptions`, `m
 
 ### figure, figcation
 
-`<figure>` est un container pour les éléments media audio, vidéo ou image. Il est utilisé pour englober le media avec un élément `<figcaption>`, le titre du media, et/ou pour formatter l'affichage (ajouter des bordures, padding, etc).
+Un élément `<figcaption>` permet de spécifier le titre d'un media (audio, vidéo ou image) et/ou formatter l'affichage — ajouter des bordures, padding, etc. Le figcaption doit être placé dans un élément `<figure>`, qui englobe également le media avec.
 
 ``` html
 <figure>
@@ -1306,10 +1344,11 @@ L'attribut `kind` accepte pour valeur `captions`, `chapters`, `descriptions`, `m
 
 ### map, area
 
-Définit des éléments cliquable sur une image. On lit un élément `<img>` à une `<map>` via l'attribut `usemap` (lié à `name`).
+Définit des éléments cliquable sur une image.  
+Pour faire le lien entre les deux éléments: l'attribut `usemap` de l'img fait référence à l'attribut `name` de la map.
 
 ``` html
- <img src="planets.gif" width="145" height="126" alt="Planets" usemap="#planetmap">
+<img src="planets.gif" width="145" height="126" alt="Planets" usemap="#planetmap">
 
 <map name="planetmap">
   <area shape="rect" coords="0,0,82,126" href="sun.htm" alt="Sun">
@@ -1321,7 +1360,7 @@ Définit des éléments cliquable sur une image. On lit un élément `<img>` à 
 ### embed
 
 Permet d'inclure un plugin à l'intérieur de la page.  
-NB la plupart des navigateurs ont déprécié voire retiré la prise en charge des plugins.
+Note: la plupart des navigateurs ont déprécié voire retiré la prise en charge des plugins.
 
 ``` html
 <embed type="video/quicktime" src="film.mov" width="640" height="480">
@@ -1329,7 +1368,7 @@ NB la plupart des navigateurs ont déprécié voire retiré la prise en charge d
 
 ### svg
 
-Container pour les graphiques SVG.
+Container pour les SVG (*Scalable Vector Graphics*).
 
 ``` html
 <svg width="100" height="100">
@@ -1337,13 +1376,13 @@ Container pour les graphiques SVG.
 </svg>
 ```
 
-Un svg peut également être importé comme ressource externe en tant qu'image:
+Un svg peut aussi être importé à partir d'un fichier .svg via une balise img. Lorsque le svg est inclut dans la page de cette manière, on ne peut pas interragir avec le contenu (il n'y a pas de hover) ou modifier les valeurs des propriétés avec du CSS
 
 ``` html
 <img src="img.svg" height="100" width="100">
 ```
 
-Ou en tant qu'object pour conserver les interractions (hover)
+Pour conserver les interractions (hover), on peut importer un svg à partir d'un fichier via une balise object
 
 ``` html
 <object data="your.svg" type="image/svg+xml"></object>
@@ -1351,7 +1390,7 @@ Ou en tant qu'object pour conserver les interractions (hover)
 
 ### canvas
 
-Container utilisé pour dessiner des graphiques en JavaScript. Utilisé pour créer des mini-jeux HTML5.
+Container utilisé pour dessiner des images via du JavaScript. Utilisé pour créer des mini-jeux HTML5.
 
 ``` html
 <canvas id="myCanvas" width="200" height="100"></canvas> 
@@ -1371,7 +1410,8 @@ ctx.stroke();
 
 ### mathml
 
-MathML est un language basé sur XML permettant l'affichage de formules mathématiques. Il ne fait pas partie intégrante du langage HTML, mais peut être inclu dans une page comme si tel était le cas.
+MathML est un language basé sur XML qui permet l'affichage de formules mathématiques. Il ne fait pas partie intégrante du langage HTML, mais peut être inclut dans une page comme si c'était le cas.  
+Peu utilisé puisque très verbeux par rapport à d'autres alternatives, comme le Latex
 
 ``` html
 <math>
@@ -1424,7 +1464,7 @@ Rendu:
 
 ### iframe
 
-Permet d'inclure une page à l'intérieur de la page en cours, par exemple pour inclure Google Maps.
+Permet d'inclure une page à l'intérieur de la page en cours. Par exemple pour inclure Google Maps.
 
 ``` html
 <iframe id="Example2"
@@ -1452,7 +1492,7 @@ Permet d'inclure une page à l'intérieur de la page en cours, par exemple pour 
 * L'attribut `srcodic` permet de définir le contenu de l'iframe
 
   ``` html
-  <iframe srcdoc="<p>Hello world!</p>" src="demo_iframe_srcdoc.htm"></iframe>
+  <iframe srcdoc="<p>Hello world!</p>" src="demo_iframe_srcdoc.html"></iframe>
   ```
 
 * L'attribut `allowfullscreen` autorise l'iframe à passer en plein écran
@@ -1461,6 +1501,16 @@ Permet d'inclure une page à l'intérieur de la page en cours, par exemple pour 
 * L'attribut `allowpaymentrequest` autorise l'iframe à appeler l'API Payment Request
 
 * L'attribut `sandbox` permet d'appliquer des restrictions sur le contenu pouvant appraître dans l'iframe
+
+  ``` html
+  <!-- Appliquer toutes les restrictions -->
+  <iframe src="demo_iframe_sandbox.htm" sandbox></iframe>
+  ```
+
+  ``` html
+  <!-- Autoriser les scripts, autoriser le contenu de même origine que le parent -->
+  <iframe src="demo_iframe_sandbox_origin.htm" sandbox="allow-same-origin allow-scripts"></iframe> 
+  ```
 
   | Valeur                   | Description
   |---                       |---
@@ -1476,49 +1526,46 @@ Permet d'inclure une page à l'intérieur de la page en cours, par exemple pour 
   | `allow-top-navigation`  | Peut charger du contenu depuis le contexte de navigation de plus haut niveau
   | `allow-top-navigation-by-user-activation` | Peut charger u contenu depuis le contexte de navigation de plus haut niveau si l'action provient de l'utilisateur
 
-  ``` html
-  <!-- Appliquer toutes les restrictions -->
-  <iframe src="demo_iframe_sandbox.htm" sandbox></iframe>
-  ```
-
-  ``` html
-  <!-- Autoriser les scripts, considérer le contenu de même origine que le parent -->
-  <iframe src="demo_iframe_sandbox_origin.htm" sandbox="allow-same-origin allow-scripts"></iframe> 
-  ```
-
 ---
 
 ## Formulaires
 
 ### form
 
-Un élément `<form>` permet de créer un formulaire, qui va contenir des champs que l'utillisateur doit remplir. Une fois le formulaire soumis (avec un bouton envoyer), les données sont envoyées au serveur, lequel peut alors les récupérer, les enregistrer, etc.
+Un élément `<form>` permet de créer un formulaire, contenant des champs que l'utillisateur doit remplir. Une fois le formulaire soumis (avec un bouton submit), les données sont envoyées au serveur, qui peut alors les récupérer, les enregistrer, etc.
 
-Les données sont envoyées via HTTP soit avec la méthode GET (paramètres visibles dans l'url, du style `?param1=value&param2=value2`), soit avec la méthode POST (paramètres visible uniquement dans la partie POST de la requête HTTP).  
-L'attribut `action` contient l'url où est envoyée le formulaire (url en cours si non précisé).
+* `method` définit la méthode HTTP utilisée pour envoyer les données au serveur  
+  - GET (par défaut): paramètres visibles dans l'url, du style `?param1=value&param2=value2`
+  - POST: paramètres visibles uniquement dans la partie POST de la requête HTTP
 
-``` html
-<form action="/action_page.php" method="get">
-  First name: <input type="text" name="fname"><br>
-  Last name: <input type="text" name="lname"><br>
-  <input type="submit" value="Submit">
-</form> 
-```
+  ``` html
+  <form method="post">
+  ```
 
-L'attribut `enctype` spécifie comment les données doivent être encodées avant d'être envoyées au serveur: urlencoded (par défaut) ou multipart - pour pouvoir envoyer des fichiers (POST uniquement).
+* L'attribut `action` définit l'url où envoyer le formulaire (url en cours si non précisé).
 
-``` html
-<form action="/submit_file.php" method="post" enctype="multipart/form-data">
-  Fichier: <input type="file" name="myfile"><br>
-  <input type="submit" value="Submit">
-</form>
-```
+  ``` html
+  <form action="/action_page.php" method="get">
+    First name: <input type="text" name="fname"><br>
+    Last name: <input type="text" name="lname"><br>
+    <input type="submit" value="Submit">
+  </form> 
+  ```
 
-L'attribut `autocomplete` spécifie si l'autocomplete est activé pour les champs du formulaire (suggestions de remplissage du champs avec les valeurs précedemment rentrées, enregistrés dans le cache du navigateur client).
+* L'attribut `enctype` spécifie la manière dont les données doivent être encodées avant d'être envoyées au serveur: urlencoded (par défaut) ou multipart — pour pouvoir envoyer des fichiers (POST uniquement).
 
-``` html
-<form autocomplete="off">
-```
+  ``` html
+  <form action="/submit_file.php" method="post" enctype="multipart/form-data">
+    Fichier: <input type="file" name="myfile"><br>
+    <input type="submit" value="Submit">
+  </form>
+  ```
+
+* L'attribut `autocomplete` spécifie si l'autocomplete est activé pour les champs du formulaire (suggestions de remplissage du champs avec les valeurs précedemment rentrées par l'utilisateur, qui sont enregistrées dans le cache du navigateur client).
+
+  ``` html
+  <form autocomplete="off">
+  ```
 
 ### input
 
@@ -1540,7 +1587,7 @@ Les attributs suivants sont acceptés sur tout type d'input:
 
 #### Attribut: type
 
-Il existe plusieurs type de champs différents.
+Il existe différents type de champs:
 
 <table>
   <thead>
@@ -1677,14 +1724,16 @@ L'attribut `pattern` rend la validation native pour les navigateurs qui supporte
 Pour valider une adresse email:
 
 ``` html
-<input type="email" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"
+<input type="email"
+   required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"
    title="email">
 ```
 
 Pour valider un mot de passe fort:
 
 ``` html
-<input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
+<input type="password"
+    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
     title="at least eight symbols containing at least one number, one lower, and one upper letter">
 ```
 
@@ -1730,13 +1779,17 @@ Un `<button>` est un élément cliquable qui permet de déclencher une action au
 <button class="delete">Supprimer</button>
 ```
 
-Contrairement à un `<input type="submit" />` un `<button>` peut contenir tout type de contenu, comme des icônes notamment.  
-Un élément `<button>` peut avoir un `type="submit"` (par défaut) ou `type="button"`. Un clic sur un élément `<button>` de type submit provoque l'envoi du formulaire dans lequel il se trouve, contrairement au type button.  
-L'attribut `disabled` est accepté.
+* Contrairement à un `<input type="submit" />`, un `<button>` peut contenir tout type de contenu — notamment des icônes.
+
+* Un élément button peut avoir un `type="submit"` (par défaut) ou `type="button"`.  
+  Un clic sur un élément button de type "submit" provoque l'envoi du formulaire dans lequel il se trouve, contrairement au type "button".
+
+* L'attribut `disabled` est accepté.
 
 ### select, optgroup, option
 
-L'élément `<select>` permet de créer une liste déroulante d'`<option>`. Les `<option>` peuvent, ou non, faire partie d'un groupe `<optgroup>`.
+L'élément `<select>` permet de créer une liste déroulante d'`<option>`.  
+Les `<option>` peuvent, ou non, faire partie d'un groupe `<optgroup>`.
 
 ``` html
 <select name="car">
@@ -1765,7 +1818,8 @@ Accepte également `autofocus`, `disabled`, `maxlength`, `placeholder`, `readonl
 
 ### label
 
-Définit un label pour un champs de formulaire (`<input>`, `<textarea>`, `<select>`, etc). On lie le label au champs grâce à l'attribut `for` - cliquer sur le label donne alors le focus au champs correspondant.
+Définit un label pour un champs de formulaire (`<input>`, `<textarea>`, `<select>`, etc).  
+On lie le label au champs grâce à l'attribut `for` — cliquer sur le label donne alors le focus au champs correspondant.
 
 ``` html
 <label for="myinput">Mon input

@@ -203,10 +203,10 @@ roadmap: true
     * [YAML][yaml]{: .syntax}
   * Orchestration
     * [Docker Swarm][docker-swarm]{: .cli}
-    * Kubernetes [1 &#x21F2;](https://godaddy.github.io/2018/05/02/kubernetes-introduction-for-developers/) [2 &#x21F2;](https://medium.freecodecamp.org/learn-kubernetes-in-under-3-hours-a-detailed-guide-to-orchestrating-containers-114ff420e882) [3 &#x21F2;](https://medium.freecodecamp.org/how-to-leverage-the-power-of-kubernetes-to-optimise-your-hosting-costs-c2e168a232a2)
+    * [Kubernetes][kubernetes]{: .cli}
     * Helm
   * Provisioning
-    * Terraform
+    * [Terraform][terraform]{: .cli}
   * Infra Monitoring
     * Prometheus
     * Grafana
@@ -507,6 +507,7 @@ roadmap: true
 [js]: js.md
 [json]: json.md
 [jsx]: jsx.md
+[kubernetes]: kubernetes.md
 [latex]: latex.md
 [linux]: linux.md
 [liquid]: liquid.md
@@ -537,6 +538,7 @@ roadmap: true
 [ssh]: ssh.md
 [ssl]: ssl.md
 [svg]: svg.md
+[terraform]: !terraform/index.md
 [testing]: testing.md
 [text-shortcut]: text-editing.md
 [threejs]: three.md

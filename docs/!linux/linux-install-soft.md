@@ -1214,14 +1214,19 @@ default  partial alphanumeric_keys
   sudo apt install mpv
   ```
 
+* Utilitaires shell
+
+  ``` bash
+  sudo apt install imagemagick ffmpeg
+  sudo apt install curl wget vim
+  ```
+
 ## Dev tools
 
-* Misc
+* Navigateur web 2: Chromium
 
   ``` bash
   sudo apt install chromium-browser
-  sudo apt install imagemagick ffmpeg
-  sudo apt install curl wget vim
   ```
 
 * Git

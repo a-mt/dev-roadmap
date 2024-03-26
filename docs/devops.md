@@ -123,7 +123,13 @@ category: Web
 ## Terminologie
 
 * **Provisionnement**  
-  Le provisionnement est le fait de rendre un serveur prêt à fonctionner, ce qui implique d'installer le matériel, le système d'exploitation, les services systèmes et la connectivité réseau.
+  Le provisionnement est le fait de rendre un serveur prêt à fonctionner, ce qui implique d'installer le matériel, le système d'exploitation, les services systèmes et la connectivité réseau. Lorsqu'on lance un service et qu'on le configure, on le *provisionne*
+
+* **Déploiement**  
+  Le déploiement est l'action de livrer une application (ou une nouvelle version de cette application) pour être exécutée sur un serveur provisionné.
+
+* **Orchestration**  
+  L'orchestration est l'action de coordonner plusieurs systèmes ou services. L'orchestration est un terme courant lorsqu'on travaille avec des microservices, containers et kubernetes.
 
 * **Gestion des configurations**  
   Contrôler les changements de configuration système après le provisionnement initial, la maintenance et la mise à niveau des applications et des dépendances des applications
@@ -140,12 +146,6 @@ category: Web
 * **Self-service**  
   Désigne le fait d'ajouter de nouvelles ressources (serveurs, applications, etc) à la volée, en fonction du besoin des utilisateurs, au lieu de les préparer à l'avance
 
-* **Déploiement**  
-  Le déploiement est le processus d'installer et mettre à jour une application sur un serveur
-
-* **Orchestration**  
-  L'orchestration consiste à exécuter des opérations coordonnées entre plusieurs systèmes
-
 * **Intégration continue** (*continuous integration*, CI)  
   Désigne le fait de construire et tester automatiquement l'application
 
@@ -159,6 +159,11 @@ category: Web
   Consiste à effectuer différents types de tests pour s'assurer de la qualité de l'aplication:  
   tests unitaires, code hygiene, tests d'intégration, d'acceptance, d'infrastructure, de performance, de sécurité
 
+* **GitOps**  
+  Quand on utilise de l'IaC (*Infrastructure as Code*) et qu'on utilise un repo git pour introduire un processus formel de review et d'acceptation des changements au code de l'infrastructure — lorsque le code est accepté, un déploiement est automatiquement déclenché
+
+  ![](https://i.imgur.com/E3U6Ra6.png)
+
 ## Toolbox DevOps
 
 1. **Versionnement**  
@@ -168,7 +173,7 @@ category: Web
    git checkout -b feature/new-user-interface
    ```
 
-2. **Infrastructure as Code**  
+2. **Provisionnement**  
    Créer et gérer l'infrastructure avec la même précision et suivi que le code de l'application  
    <ins>Terraform</ins>:
    ```
@@ -241,3 +246,35 @@ category: Web
    Garder une traces des événements qui se sont produits, peut être à différents fins allant de l'audit au troubleshooting
 
    <ins>Sentry, ELK stack</ins>
+
+![[](https://xmind.app/m/yJ2FFi/)](https://imgur.com/YlnVP4F)
+
+Magenta: les plus courants, en maîtriser au moins un,  
+Rouge: moins courant, en connaître le fonctionnement  
+Jaune: peu rencontrés, connaître de nom
+
+## Infrastructure as Code
+
+L'IaC (*Infrastructure as Code*) consiste à utiliser des outils pour créer des ressources de manière programmatique.  
+
+Les outils d'IaC peuvent être classifiés en 3 groupes principaux:
+
+- <ins>gestion de configuration</ins>.  
+  Ex: ansible, chef, puppet, salt stack
+
+  Ils ont généralement utilisés pour installer et gérer des logiciels sur des ressources d'infrastructure existantes — des serveurs, BDD, dispositifs de mise en réseau, etc.
+
+  Les outils de gestion de la configuration maintiennent une structure de code cohérente et standard, ce qui facilite la gestion et la mise à jour en cas de besoin.
+
+- <ins>templating de serveur</ins>  
+  Ex: docker, packer, vagrant
+
+  Ils sont utilisés pour créer une image de VM ou de container. Les images contiennent tous les logiciels et dépendances nécessaires, et éliminent la nécessité d'installer les serveurs après leur déploiement.
+
+  Les outils de templating de serveur favorisent également une infrastracture prédictible et immuable: lorsqu'une VM ou qu'un container est déployé, si des modifications doivent être effectuées, au lieu de mettre à jour l'instance en cours d'exécution, on met à jour l'image et on déploie une nouvelle instance à partir de la nouvelle image
+
+- <ins>outils de provisionnement</ins>  
+  Ex: terraform, cloudformation  
+  Alors que cloudformation est destiné à AWS, terraform est indépendant de toute platforme et utilise des plugins
+
+  Ils sont utilisés pour provisionner des composants d'infrastructure à l'aide de fichiers de configuration — ce peut être des des VM, des BDD, des VPC, des sous-réseaux, des groupes de sécurité, des solutions de stockage, et à peu près n'importe quel service — en fonction du fournisseur choisit

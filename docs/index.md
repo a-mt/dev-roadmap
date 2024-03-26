@@ -30,7 +30,7 @@ roadmap: true
   * Langage
     * [JS][js]{: .lang}
     * [JSX][jsx]{: .lang}
-    * [TypeScript][ts]{: .lang}
+    * [TypeScript][typescript]{: .lang}
     * Flow
 
   * Syntaxe
@@ -122,6 +122,7 @@ roadmap: true
     * RuByGems
 
 * ##### ![](/assets/img/bdd.png) BDD
+  * [Théorie][bdd]{: .theory}
   * Relationnelle
     * [MySQL][mysql]{: .lang}
     * Postgres
@@ -266,7 +267,7 @@ roadmap: true
     * [Raccourcis d'édition de texte][text-shortcut]
     * Sublime Text [1 &#x21F2;](https://gist.github.com/mrliptontea/4c793ebdf72ed145bcbf)
 
-  - [Github / Open Source][opensource]{: .theory}
+  - [Github / Open Source][github]{: .theory}
 
 * ##### Méthodes
   * Programmation
@@ -462,74 +463,75 @@ roadmap: true
   - [Tests psychométriques](https://www.youtube.com/watch?v=ggJp7jOAmwM)
 
 
-[accessibilite]: accessibilite.md0
+[accessibilite]: !html/accessibilite.md
 [agile]: agile.md
 [12-factor]: 12-factor.md
-[angular]: angular.md
-[ansible]: ansible.md
+[angular]: !angular/index.md
+[ansible]: !ansible/index.md
 [apache-vhost]: apache-vhost.md
 [api]: api.md
 [api-rest]: api-rest.md
 [bdd]: bdd.md
-[bitcoin]: bitcoin.md
+[bitcoin]: !bitcoin/index.md
 [bitwise]: bitwise-operations.md
-[chemistry]: chemistry.md
+[chemistry]: !chemistry/index.md
 [composer]: composer.md
 [crypto]: crypto.md
 [crypto-ec]: crypto-ec.md
-[css]: css.md
-[design]: design.md
+[css]: !index/css.md
+[design]: !design/index.md
 [dicom]: !health/dicom.md
-[digitalocean]: digitalocean.md
-[django]: django.md
-[docker]: docker.md
+[digitalocean]: !digitalocean/index.md
+[host-ip]: !digitalocean/host-ip.md
+[host-domain]: !digitalocean/host-domain.md
+[django]: !django/index.md
+[docker]: !docker/index.md
 [docker-compose]: !docker/docker-compose.md
 [docker-swarm]: !docker/docker-swarm.md
-[elasticsearch]: elasticsearch.md
-[electricite]: electricite.md
-[ember]: ember.md
+[elasticsearch]: !elasticsearch/index.md
+[electricite]: !electricity/index.md
+[ember]: !ember/index.md
 [encoding]: encodages.md
 [gettext]: gettext.md
 [git]: git.md
 [gitlab-ci]: !gitlab/gitlab-ci.md
-[github-pages]: github-pages.md
+[github]: !github/index.md
+[github-pages]: !github/github-pages.md
 [google-drive]: google-drive.md
 [graphql]: graphql.md
 [heroku]: heroku.md
-[host-domain]: host-domain.md
-[host-ip]: host-ip.md
 [html]: html.md
 [ipsec]: ipsec.md
 [jekyll]: jekyll.md
 [jenkins]: jenkins.md
 [jquery]: jquery.md
-[js-webapi]: js-webAPI.md
-[js]: js.md
+[js-webapi]: !jsapi/index.md
+[js]: !js/index.md
 [json]: json.md
 [jsx]: jsx.md
-[kubernetes]: kubernetes.md
-[latex]: latex.md
-[linux]: linux.md
+[kubernetes]: !kubernetes/index.md
+[latex]: !latex/index.md
+[linux]: !linux/index.md
 [liquid]: liquid.md
 [markdown]: gfm.md
-[matplotlib]: matplotlib.md
-[maths]: maths.md
+[matplotlib]: !matplotlib/index.md
+[maths]: !maths/index.md
 [medical-imaging]: !health/imaging.md
-[ml]: machine-learning.md
-[ml-algo]: !ml/ml-algorithms.md
-[mongodb]: mongodb.md
+[ml]: !machine-learning/index.md
+[ml-algo]: !machine-learning/ml-algorithms.md
+[mongodb]: !mongo/index.md
 [mustachejs]: mustachejs.md
-[mysql]: mysql.md
-[numpy]: numpy.md
-[opensource]: github.md
-[pandas]: pandas.md
+[mysql]: !mysql/index.md
+[numpy]: !numpy/index.md
+[pandas]: !pandas/index.md
 [paradigm]: paradigm.md
-[php]: php.md
+[peer-to-peer]: p2p.md
+[php]: !php/index.md
 [posix]: !linux/regex-posix.md
 [pre-commit]: pre-commit.md
-[puppet]: puppet.md
-[python]: python.md
-[react]: react.md
+[puppet]: !puppet/index.md
+[python]: !python/index.md
+[react]: !react/index.md
 [regex]: regex.md
 [sass]: sass.md
 [securite]: securite.md
@@ -537,16 +539,16 @@ roadmap: true
 [spirometry]: !health/spirometry.md
 [ssh]: ssh.md
 [ssl]: ssl.md
-[svg]: svg.md
+[svg]: !svg/index.md
 [terraform]: !terraform/index.md
 [testing]: testing.md
 [text-shortcut]: text-editing.md
 [threejs]: three.md
-[ts]: typescript.md
+[typescript]: !typescript/index.md
 [twig]: twig.md
 [webdev]: web.md
 [webpack]: webpack.md
 [windows-task-scheduler]: windows-task-scheduler.md
-[xml]: xml.md
+[xml]: !xml/index.md
 [yaml]: yaml.md
-[vue]: vue.md
+[vue]: !vue/index.md

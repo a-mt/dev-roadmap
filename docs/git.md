@@ -1180,4 +1180,4 @@ Ressources :
 - https://www.atlassian.com/git/tutorials
 - [Git-extras](https://github.com/tj/git-extras) permet d'ajouter des nouvelles fonctionnaliltés à Git
 
-Pour aller plus loin : [Github](github.md)
+Pour aller plus loin : [Github](!github/index.md)

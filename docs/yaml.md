@@ -862,4 +862,4 @@ stream = '''%TAG !foo! tag:foo.org,2017:
 `construct_mapping` construit un tableau associatif et appelle le constructeur avec, ce qui permet de créer facilement des objets.
 D'autres fonctions sont disponibles comme `construct_scalar`, `construct_sequence`. Voir la [liste des fonctions](http://web.mit.edu/6.863/devel2007/yaml/constructor.py).
 
-Rappel perso : Python basé sur un [exemple sur stackoverflow](https://stackoverflow.com/questions/19439765/#answer-35476888)
+Source: [exemple sur stackoverflow](https://stackoverflow.com/questions/19439765/#answer-35476888)

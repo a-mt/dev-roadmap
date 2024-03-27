@@ -3,112 +3,115 @@ title: "SVG: Animations"
 category: Web, HTML, SVG
 ---
 
-Il est possible d'animer le contenu SVG en utilisant le format SMIL (Synchronized Multimedia Integration Language). SMIL est un langage de la famille XML décrivant le déroulement temporel et spatial des différents composants intégrés (images, sons, textes, etc).  
+Il est possible d'animer le contenu SVG en utilisant le format SMIL (*Synchronized Multimedia Integration Language*). SMIL est un langage de la famille XML qui décrit le déroulement temporel et spatial des différents composants intégrés (images, sons, textes, etc).  
 
-On peut également utiliser les animations et transformations CSS, ainsi que l'API Web Animations, mais cet article ne présente que la syntaxe des animations SVG.
+On peut également utiliser les animations et transformations CSS, ainsi que l'API Web Animations, mais on ne s'intéresse ici qu'à la syntaxe des animations SVG natives.
 
 ## animate
 
-La balise `<animate>` permet d'animer un élément en incrémentant/décrementant un attribut numérique, tel que `x`.  
-Cet élément prend différent attributs:
+* La balise `<animate>` permet d'animer un élément en incrémentant/décrementant un des attributs numérique de son parent.  
+  Dans l'exemple suivant, animate modifie la valeur de l'attribut `stroke-dashoffset`
 
-| Attribut        | Description
-|---              |---
-| `attributeType` | Type d'attribut à animer, `CSS` ou `XML`
-| `attributeName` | Nom de l'attribut ou de la propriété CSS
-| `from`          | Valeur de départ, numérique dans le cas de `<animate>`
-| `to`            | Valeur finale
-| `dur`           | Durée de l'animation
-| `repeatCount`   | Un entier ou `indefinite`, nombre de répétition de l'animation (l'animation dure `repeatCount*dur`)
-| `repeatDur`     | Un entier ou `indefinite`, nombre de répétition de l'animation pendent le temps `dur` imparti
-| `fill`          | Spécifie si l'image doit garder son état au moment où l'animation se termine (`freeze`) ou reprendre son état d'origine (`remove`, *par défaut*)
-
-``` html
-<rect width="80" height="80" x="5" y="5"
-      stroke="black" stroke-width="5"
-      stroke-dasharray="10 5" stroke-dashoffset="0"
-      fill="none">
-  <animate
-    attributeType="XML"
-    attributeName="stroke-dashoffset"
-    from="-5" to="10"
-    dur="1s" repeatCount="indefinite" />
-</rect>
-```
-
-<svg with="100" height="100">
+  ``` html
   <rect width="80" height="80" x="5" y="5"
-    stroke="black" stroke-width="5" stroke-dasharray="10 5" stroke-dashoffset="0" fill="none">
+        stroke="black" stroke-width="5"
+        stroke-dasharray="10 5" stroke-dashoffset="0"
+        fill="none">
     <animate
       attributeType="XML"
       attributeName="stroke-dashoffset"
       from="-5" to="10"
       dur="1s" repeatCount="indefinite" />
   </rect>
-</svg>
+  ```
 
-### begin, end
+  <svg with="100" height="100">
+    <rect width="80" height="80" x="5" y="5"
+      stroke="black" stroke-width="5" stroke-dasharray="10 5" stroke-dashoffset="0" fill="none">
+      <animate
+        attributeType="XML"
+        attributeName="stroke-dashoffset"
+        from="-5" to="10"
+        dur="1s" repeatCount="indefinite" />
+    </rect>
+  </svg>
 
-Outre les attributs de base présentés ci-dessus, il est également possible de contrôler ce qui déclenche et stoppe l'animation grâce aux attributs `begin` et `end` respectivement.
-Différents types de valeurs sont possibles pour ces deux attributs:
-- un timer: `4s`
-- une base de synchronisation, qui est l'ID d'une autre animation, suivie de `.begin` ou `.end` pour indiquer de se synchroniser avec le commencement ou avec la fin de l'animation: `monanimation.end`
-- une répétition donnée, pour indiquer de se syncroniser au début de la xième répétition: `monanimation.repeat(2)`
-- un événement: `mouseover`, `mouseout`
-- un raccourci clavier: `accessKey(s)`
+* Les différents attributs possible (d'animate) sont:
 
-Il est possibles de spécifier de multiples valeurs, séparées par des point-virgules, pour spécifier de multiples éléments déclencheur. Par exemple, se déclencher au chargement de la page ainsi qu'à la fin d'une autre animation:
+  | Attribut        | Description
+  |---              |---
+  | `attributeType` | Type d'attribut à animer, `CSS` ou `XML`
+  | `attributeName` | Nom de l'attribut ou de la propriété CSS
+  | `from`          | Valeur de départ, numérique dans le cas de `<animate>`
+  | `to`            | Valeur finale
+  | `dur`           | Durée de l'animation
+  | `repeatCount`   | Un entier ou `indefinite`, nombre de répétition de l'animation (l'animation dure `repeatCount*dur`)
+  | `repeatDur`     | Un entier ou `indefinite`, nombre de répétition de l'animation pendent le temps `dur` imparti
+  | `fill`          | Spécifie si l'image doit garder son état au moment où l'animation se termine (`freeze`) ou reprendre son état d'origine (`remove`, *par défaut*)
+  | `begin`, `end`  | Contrôlent ce qui déclenche et stoppe l'animation
 
-``` html
-<rect width="80" height="80" x="5" y="5"
-      stroke="black" stroke-width="5"
-      stroke-dasharray="10 5" stroke-dashoffset="0"
-      fill="none">
-  <animate
-    attributeType="XML"
-    attributeName="stroke-dashoffset"
-    from="-5" to="10"
-    dur="1s" repeatCount="3"
-    id="dashLtr" begin="0s;dashRtl.end" />
-  <animate
-    attributeType="XML"
-    attributeName="stroke-dashoffset"
-    from="10" to="-5"
-    dur="1s" repeatCount="3"
-    id="dashRtt" begin="dashLtr.end" />
-</rect>
-```
+  La valeur de begin (ou end) peut être:
 
-<svg with="100" height="100">
+  - un timer: `4s`
+  - une autre animation (ID) suivie de .begin, .end, ou .repeat(x) pour indiquer de se synchroniser avec le début, la fin ou le début de la xème répétition de l'animation: `monanimation.begin`, `monanimation.end`, `monanimation.repeat(2)`
+  - un événement: `mouseover`, `mouseout`
+  - un raccourci clavier: `accessKey(s)`
+
+  On peut spécifier de multiples éléments déclencheurs, en spécifiant plusieurs valeurs séparées par des point-virgules.  
+  Par exemple, pour déclencher l'animation au chargement de la page (0s) et à la fin d'une autre animation(dashRtl.end):
+
+  ``` html
   <rect width="80" height="80" x="5" y="5"
-    stroke="black" stroke-width="5" stroke-dasharray="10 5" stroke-dashoffset="0" fill="none">
+        stroke="black" stroke-width="5"
+        stroke-dasharray="10 5" stroke-dashoffset="0"
+        fill="none">
     <animate
-      id="dashLr"
       attributeType="XML"
       attributeName="stroke-dashoffset"
       from="-5" to="10"
-      begin="0s;dashRl.end"
-      dur="1s" repeatCount="3"/>
+      dur="1s" repeatCount="3"
+      id="dashLtr" begin="0s;dashRtl.end" />
     <animate
-      id="dashRl"
       attributeType="XML"
       attributeName="stroke-dashoffset"
       from="10" to="-5"
-      begin="dashLr.end"
-      dur="1s" repeatCount="3"/>
+      dur="1s" repeatCount="3"
+      id="dashRtt" begin="dashLtr.end" />
   </rect>
-</svg>
+  ```
+
+  <svg with="100" height="100">
+    <rect width="80" height="80" x="5" y="5"
+      stroke="black" stroke-width="5" stroke-dasharray="10 5" stroke-dashoffset="0" fill="none">
+      <animate
+        id="dashLr"
+        attributeType="XML"
+        attributeName="stroke-dashoffset"
+        from="-5" to="10"
+        begin="0s;dashRl.end"
+        dur="1s" repeatCount="3"/>
+      <animate
+        id="dashRl"
+        attributeType="XML"
+        attributeName="stroke-dashoffset"
+        from="10" to="-5"
+        begin="dashLr.end"
+        dur="1s" repeatCount="3"/>
+    </rect>
+  </svg>
 
 ## animateTransform
 
-La balise `<animateTransform>` permet d'animer un élément en utilisant une transformation, tel que la rotation.  
-  Le type de transformation à utiliser est spécifié par l'attribut `type`.
+La balise `<animateTransform>` permet d'animer un élément en utilisant une transformation, comme la rotation.  
+Le type de transformation à utiliser est spécifié par l'attribut `type`.  
+Les paramètres de cette transformation sont spécifiés par les attributs `from` et `to` — qui accepterons différentes valeurs suivant le type de transformation choisie
 
-Les attributs `from` et `to` prennent différentes valeurs selon le `type` de transformation appliqué:
-* `translate` prend une ou deux valeurs: `x [y]`
-* `scale`: `x [y]`
-* `rotate`: `angle_degre [x y]` où x et y est la position du centre de rotation
-* `skewX` et `skewY`: `angle_degre`
+| Type de transformation | Valeur from/to
+|--- |---
+| `translate` | `x [y]` (= prend une ou deux valeurs)
+| `scale` | `x [y]`
+| `rotate` | `angle_degre [x y]` où x et y est la position du centre de rotation
+| `skewX`, `skewY` | `angle_degre`
 
 ``` html
 <svg with="100" height="100">

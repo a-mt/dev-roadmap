@@ -6,9 +6,9 @@ category: Web, HTML, SVG
 
 ## a
 
-La balise `a` permet d'ajouter des liens à l'intérieur du SVG, de la même manière qu'en HTML.
+La balise `a` permet d'ajouter des liens à l'intérieur du SVG, même chose qu'en HTML.
 
-En SVG 1.1, l'adresse cible est désignée par l'attribut `xlink:href`, attention en l'utilisant à bien définir le namespace xlink pour que le SVG soit valide en dehors d'une page HTML. En SVG 2, cet attribut devient obsolète et est remplacé par `href`, il n'y a pas de namespace dans ce cas.
+En SVG 1.1, l'adresse cible est désignée par l'attribut `xlink:href`: quand on l'utilise, il faut définir le namespace xlink pour que le SVG soit valide en dehors d'une page HTML. En SVG 2, cet attribut devient obsolète et est remplacé par `href`: il n'y a pas de namespace dans ce cas.
 
 ``` html
 <svg width="140" height="30"
@@ -34,7 +34,7 @@ En SVG 1.1, l'adresse cible est désignée par l'attribut `xlink:href`, attentio
 
 ## title
 
-La balise `title` permet d'ajouter une infobulle - du texte qui est affiché quand la souris passe sur l'élément parent.
+La balise `title` permet d'ajouter une infobulle — du texte qui est affiché quand la souris passe sur l'élément parent.
 
 ``` html
 <rect x="5" y="5" width="25" height="50" fill="white">
@@ -51,7 +51,7 @@ La balise `title` permet d'ajouter une infobulle - du texte qui est affiché qua
 ## desc
 
 La balise `desc` permet d'ajouter une description à tout élément composant le SVG.  
-Cela permet d'améliorer l'accessibilité de l'image.
+Ça permet d'améliorer l'accessibilité de l'image.
 
 ``` html
 <svg width="100" height="100">
@@ -68,8 +68,7 @@ Cela permet d'améliorer l'accessibilité de l'image.
 
 ## metadata
 
-La balise `metadata` permet d'ajouter des données structurées au SVG, qui peuvent être utilisée par une application.  
-Le contenu de l'élément `metadata` provient d'un autre namespace XML, tel que RDF, FOAF, etc.
+La balise `metadata` permet d'ajouter des données structurées au SVG, qui appartiennent à un autre namespace XML (tel que RDF, FOAF, etc), et qui peuvent être utilisées par une application.
 
 ``` html
 <svg width="100" height="100">
@@ -107,11 +106,10 @@ Le contenu de l'élément `metadata` provient d'un autre namespace XML, tel que 
 
 ## use
 
-La balise `<use>` permet de dupliquer un élément (via un identificateur de fragment). Pour des raisons de sécurité, certains navigateurs peuvent appliquer la politique *same-origin*: ils n'autorisent que les pages ayant le même domaine et port que la page en cours. En temps général, on duplique les éléments de la page en cours.
-
+La balise `<use>` permet d'importer un élément (qui peut appartenir à un autre SVG), via un href, dans le SVG en cours.  
 Il n'est pas possible d'écraser ses attributs mais il est possible d'en ajouter.
 
-
+Pour des raisons de sécurité, certains navigateurs peuvent appliquer la politique *same-origin*: une page ne peut utiliser des éléments SVG que de pages qui ont le même nom de domaine et port que la page en cours; en temps général, on duplique les éléments de la page en cours.
 
 ``` html
 <rect id="rect"
@@ -133,25 +131,20 @@ Il n'est pas possible d'écraser ses attributs mais il est possible d'en ajouter
 <use href="#svg-rect" x="60" y="60" fill="red" />
 </svg>
 
----
-
 ## defs
 
-SVG permet de définir des éléments pour une utilisation ultérieure. Bien qu'il soit possible de les spécifier en dehors, une bonne pratique est de placer ces éléments dans une section `<defs>` en haut du fichier SVG. Cela permet de rendre le code plus compréhensible. Les éléments placés dans `<defs>` sont déclarés mais ne sont pas affichés. Pour les afficher, il faut qu'un élément graphique les appelle.
-
----
+La balise `<defs>` permet de définir des éléments SVG sans les afficher — pour une utilisation ultérieure avec use.  
+Une bonne pratique est de placer ces éléments en haut du fichier SVG, ce qui permet de rendre le code plus compréhensible.
 
 ## symbol
 
-La balise `symbol` permet de définir un élément graphique qui n'est pas affiché directement, seule les instances crées, c'est à dire référencées par un élément tel que `use`, le sont. Tout ce qui sort du symbole est tronqué.
+La balise `<symbol>` permet également de définir un élément graphique qui n'est pas affiché directement, et peut être référencé par un élément tel que `use`. Tout ce qui sort du symbole est tronqué. Un des avantages du symbol par rapport à defs, est la possibilité de définir un viewbox dessus
 
 ``` html
-<defs>
-  <symbol id="svg-circle">
-    <circle r="10" transform="translate(12 12)"
-            stroke="red" stroke-width="2" />
-  </symbol>
-</defs>
+<symbol id="svg-circle">
+  <circle r="10" transform="translate(12 12)"
+          stroke="red" stroke-width="2" />
+</symbol>
 <use href="#svg-circle" x="15" y="15" />
 <use href="#svg-circle" x="30" y="30" />
 <use href="#svg-circle" x="45" y="45" stroke="blue" />
@@ -159,12 +152,10 @@ La balise `symbol` permet de définir un élément graphique qui n'est pas affic
 ```
 
 <svg width="100" height="100" style="background: black">
-  <defs>
-    <symbol id="svg-circle">
-      <circle r="10" transform="translate(12 12)"
-              stroke="red" stroke-width="2" />
-    </symbol>
-  </defs>
+  <symbol id="svg-circle">
+    <circle r="10" transform="translate(12 12)"
+            stroke="red" stroke-width="2" />
+  </symbol>
   <use href="#svg-circle" x="15" y="15" />
   <use href="#svg-circle" x="30" y="30" />
   <use href="#svg-circle" x="45" y="45" stroke="blue" />
@@ -173,20 +164,64 @@ La balise `symbol` permet de définir un élément graphique qui n'est pas affic
 
 ---
 
+## marker
+
+La balise `marker` permet de créer des marqueurs, comme par exemple une pointe de flèche, qui pourra être assigné à des sommets de formes.
+
+* À l'intérieur de la balise, est placé une liste d'éléments SVG qui formeront le marqueur.
+* Une fois le masque déclaré, il faut pour l'utiliser le référencer avec l'attribut `marker-start`, `marker-mid` ou `marker-end` d'un élément graphique — avec `url()` (même principe qu'en CSS).
+
+Les marqueurs peuvent être appliqués sur les éléments `path`, `line`, `polyline` et `polygon`.
+
+``` html
+<!-- Définit une pointe de flèche -->
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
+      markerWidth="6" markerHeight="6"
+      orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" />
+  </marker>
+</defs>
+
+<!-- Applique la pointe au début et à la fin de la polyline -->
+<polyline points="10,10 10,90 90,90" fill="none" stroke="black"
+          marker-start="url(#arrow)"
+          marker-end="url(#arrow)"  />
+```
+
+<!-- Dessine les axes des coordonnées avec des pointes de flèche à chaque bout -->
+<polyline points="10,10 10,90 90,90" fill="none" stroke="black"
+marker-start="url(#arrow)" marker-end="url(#arrow)"  />
+
+<svg width="100" height="100">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
+        markerWidth="6" markerHeight="6"
+        orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+  </defs>
+  <polyline points="10,10 10,90 90,90" fill="none" stroke="black"
+            marker-start="url(#arrow)"
+            marker-end="url(#arrow)"  />
+</svg>
+
+---
+
 ## gradient
 
-Il est possible de créer des gradients, qui pourront par la suite être utilisés comme remplissage ou contour d'une forme.
+Il est possible de créer des dégradés (*gradients* en anglais), qui peuvent par la suite être utilisés comme remplissage ou contour d'une forme.
 
 * Il existe deux types de gradients: linéaire et radial.  
   La balise `<linearGradient>` permet de créer un dégradé linéaire.  
   La balise `<radialGradient>`, un dégradé radial.  
 
 * À l'intérieur d'un gradient, on place une liste d'éléments `<stop>`.  
-  Un stop spécifie une couleur avec `stop-color` et une position avec `offset`.  
+  Pour chaque stop, l'attribut `stop-color` spécifie la couleur et `offset` la position.  
   On peut également rendre la couleur semi-transparente avec `stop-opacity`.
 
   Mis bout à bout, les stops créent un degradé de couleurs, avec des paliers.  
-  Les positions doivent être incrémentées de 0% (ou 0) à 100% (ou 1).
+  Les positions vont de 0% (ou 0) à 100% (ou 1).
 
 * Une fois que le dégradé est déclaré, on peut l'utiliser comme `fill` ou `stroke` d'un élément graphique avec `url()` (même principe qu'en CSS).
 
@@ -266,7 +301,8 @@ Il est possible de créer des gradients, qui pourront par la suite être utilis�
 
 Il est possible de définir différents arguments pour modifier l'apparence du dégradé radial.
 
-- `r` définit le rayon du dégradé (1 par défaut)
+- `r` définit le rayon du dégradé.  
+  Par défaut: 1
 
   ``` html
   <radialGradient id="RadialGradient2" xlink:href="#RadialGradient1" r="2" />
@@ -279,7 +315,8 @@ Il est possible de définir différents arguments pour modifier l'apparence du d
     <rect x="5" y="5" width="100" height="100" fill="url(#RadialGradient2)" />
   </svg>
 
-- `cx` et `cy` le point central du dégradé (par défaut: au centre de l'élément sur lequel il est appliqué, c'est à dire 0.5)
+- `cx` et `cy` le point central du dégradé.  
+  Par défaut: 0.5, c'est à dire le centre de l'élément sur lequel il est appliqué
 
   ``` html
   <radialGradient id="RadialGradient3" xlink:href="#RadialGradient1" cx="0.25" cy="0.25" />
@@ -292,7 +329,8 @@ Il est possible de définir différents arguments pour modifier l'apparence du d
     <rect x="5" y="5" width="100" height="100" fill="url(#RadialGradient3)" />
   </svg>
 
-- `fx` et `fy` le point focal du dégradé (par défaut: au centre du point central, c'est à dire 0.5)
+- `fx` et `fy` le point focal du dégradé  
+  Par défaut: 0.5, c'est à dire le centre du point central du degradé
 
   ``` html
   <radialGradient id="RadialGradient4" xlink:href="#RadialGradient1" fx="0.25" fx="0.25" />
@@ -305,10 +343,10 @@ Il est possible de définir différents arguments pour modifier l'apparence du d
     <rect x="5" y="5" width="100" height="100" fill="url(#RadialGradient4)" />
   </svg>
 
-- `spreadMethod` contrôle ce qu'il arrive quand le dégradé arrive à sa fin, mais que l'objet n'est pas encore remplit.
-  - `pad` (valeur par défaut) rempli le reste de l'objet avec la dernière couleur
-  - `repeat` répète le dégradé
-  - `reflect` répète le dégradé dans un sens puis dans l'autre (100% à 0%, 0% à 100%, etc)
+- `spreadMethod` définit ce qu'il advient lorsque le degradé arrive à sa fin, et que l'objet n'est pas totalement remplit.
+  - `pad` (valeur par défaut) remplir le reste de l'objet avec la dernière couleur du dégradé
+  - `repeat` répèter le dégradé
+  - `reflect` répèter le dégradé dans un sens puis dans l'autre (100% à 0%, 0% à 100%, etc)
 
   ``` html
   <radialGradient id="RadialGradient5" xlink:href="#RadialGradient1" spreadMethod="pad" cx="1" />
@@ -330,7 +368,7 @@ Il est possible de définir différents arguments pour modifier l'apparence du d
   </svg>
 
 - `gradientUnits` permet de définir l'unité utilisée pour décrire la taille et l'orientation du dégradé.
-  - `objectBoundingBox` (*par défaut*): la taille du dégradé est définie en pourcentage de la taille de l'objet sur lequel il est appliqué, c'est à dire entre 0 et 1 (ou 0% et 100%).
+  - `objectBoundingBox` (par défaut): la taille du dégradé est définie en pourcentage de la taille de l'objet sur lequel il est appliqué, c'est à dire entre 0 et 1 (ou 0% et 100%).
   - `userSpaceOnUse`: la taille du dégradé est définie avec des valeurs absolues.
 
   ``` html
@@ -356,13 +394,11 @@ Il est possible de définir différents arguments pour modifier l'apparence du d
     <rect x="5" y="5" width="100" height="100" fill="url(#RadialGradient8)" />
   </svg>
 
----
-
 ## pattern
 
-Il est également possible de créer des motifs, qui pourront par la suité être utilisés comme remplissage ou contour d'unforme.
+Il est également possible de créer des motifs, qui pourront par la suité être utilisés comme remplissage ou contour.
 
-* La balise `<pattern>` permet de créer un motif.
+* La balise `<pattern>` définit un motif.
 * À l'intérieur cette balise, on place une liste de formes SVG.
 * Une fois que le motif est déclaré, on peut l'utiliser comme `fill` ou `stroke` d'un élément graphique avec `url()` (même principe qu'en CSS).
 
@@ -507,53 +543,61 @@ La partie pouvant apporter le plus de confusion avec les motifs est le système 
 
 La balise `clipPath` permet de créer un détourage qui pourra être utilisé pour tronquer les bords d'un élément.
 
-* À l'intérieur de la balise, est placé une liste d'éléments SVG qui formeront la forme du détourage.
-* Une fois le détourage déclaré, il faut pour l'utiliser le référencer avec l'attribut `clip-path` d'un élément graphique — avec `url()` (même principe qu'en CSS).
+* À l'intérieur de la balise, est placé une liste d'éléments SVG qui formeront la forme du détourage.  
+  Une fois le détourage déclaré, il faut pour l'utiliser le référencer avec l'attribut `clip-path` d'un élément graphique — avec `url()` (même principe qu'en CSS).
 
-``` html
-<defs>
-  <clipPath id="myClip">
-    <circle cx="50" cy="50" r="30" />
-  </clipPath>
-</defs>
-<polygon fill="yellow" points="50,0 21,90 98,35 2,35 79,90" clip-path="url(#myClip)"/>
-```
-
-<svg width="100" height="100" style="background: black">
+  ``` html
   <defs>
     <clipPath id="myClip">
       <circle cx="50" cy="50" r="30" />
     </clipPath>
   </defs>
+  <!-- Une étoile avec les bords tronqués -->
   <polygon fill="yellow" points="50,0 21,90 98,35 2,35 79,90" clip-path="url(#myClip)"/>
-</svg>
+  ```
 
-L'attribut `clipPathUnits` spécifie l'unité utilisé par le contenu du détourage. Deux valeurs sont possibles:
-- `userSpaceOnUse` (par défaut), la taille des formes à l'intérieur est exprimée en valeur absolue.
-- `objectBoundingBox`, la taille des formes est exprimée relativement à la taille de l'objet sur lequel le détourage est appliqué.
+  <svg width="100" height="100" style="background: black">
+    <defs>
+      <clipPath id="myClip">
+        <circle cx="50" cy="50" r="30" />
+      </clipPath>
+    </defs>
+    <polygon fill="yellow" points="50,0 21,90 98,35 2,35 79,90" clip-path="url(#myClip)"/>
+  </svg>
 
-``` html
-<clipPath id="myClip" clipPathUnits="objectBoundingBox">
-  <circle cx=".5" cy=".5" r=".35" />
-</clipPath>
-```
+* L'attribut `clipPathUnits` spécifie l'unité utilisé par le contenu du détourage. Deux valeurs sont possibles:
+  - `userSpaceOnUse` (par défaut), la taille des formes à l'intérieur est exprimée en valeur absolue.
+  - `objectBoundingBox`, la taille des formes est exprimée relativement à la taille de l'objet sur lequel le détourage est appliqué.
 
-Il est également possbile de créer un détourage à la volée avec `clip-path` en utilisant une [fonction de forme](https://developer.mozilla.org/fr/docs/Web/CSS/basic-shape) comme `circle()`.
+  ``` html
+  <clipPath id="myClip" clipPathUnits="objectBoundingBox">
+    <circle cx=".5" cy=".5" r=".35" />
+  </clipPath>
+  ```
 
-``` html
-<polygon fill="yellow" points="50,0 21,90 98,35 2,35 79,90" clip-path="circle(35%)"/>
-```
+  <svg width="100" height="100" style="background: black">
+    <defs>
+      <clipPath id="myClip" clipPathUnits="objectBoundingBox">
+        <circle cx=".5" cy=".5" r=".35" />
+      </clipPath>
+    </defs>
+    <polygon fill="yellow" points="50,0 21,90 98,35 2,35 79,90" clip-path="url(#myClip)"/>
+  </svg>
 
-<svg width="100" height="100" style="background: black">
+* Il est également possbile de créer un détourage à la volée avec `clip-path` via une [fonction de forme](https://developer.mozilla.org/fr/docs/Web/CSS/basic-shape) comme `circle()`.
+
+  ``` html
   <polygon fill="yellow" points="50,0 21,90 98,35 2,35 79,90" clip-path="circle(35%)"/>
-</svg>
+  ```
 
----
+  <svg width="100" height="100" style="background: black">
+    <polygon fill="yellow" points="50,0 21,90 98,35 2,35 79,90" clip-path="circle(35%)"/>
+  </svg>
 
 ## mask
 
 La balise `<mask>` permet de créer un masque.
-À l'intérieur de ce masque vont être placées des formes qui permettrons d'indiquer les zones de l'élément qui sont visibles et celles qui ne le sont pas: tous les pixels blancs sont visibles, tous les pixels noirs ou ayant une opacité de 0 sont invisibles.
+À l'intérieur du masque vont être placées des formes qui permettrons d'indiquer les zones de l'élément qui sont visibles et celles qui ne le sont pas: tous les pixels blancs sont visibles, et tous les pixels noirs ou ayant une opacité de 0 sont invisibles.
 
 Là on le masque se différencie du détourage, c'est qu'il est possible de travailler avec des niveaux de gris ou des niveaux d'opacité et donc de rendre des zones semi-transparentes. On peut par exemple créer un effet de fondu en utilisant un dégradé, là où un détourage a une politique du tout-ou-rien.
 
@@ -591,50 +635,6 @@ Là on le masque se différencie du détourage, c'est qu'il est possible de trav
   </defs>
   <rect x="25" y="25" width="50" height="50" fill="red" />
   <rect width="50" height="50" fill="blue" mask="url(#myMask)" />
-</svg>
-
----
-
-## marker
-
-La balise `marker` permet de créer des marqueurs, comme par exemple une pointe de flèche, qui pourra être assigné à des sommets de formes.
-
-* À l'intérieur de la balise, est placé une liste d'éléments SVG qui formeront le marqueur.
-* Une fois le masque déclaré, il faut pour l'utiliser le référencer avec l'attribut `marker-start`, `marker-mid` ou `marker-end` d'un élément graphique — avec `url()` (même principe qu'en CSS).
-
-Les marqueurs peuvent être appliqués sur les éléments `path`, `line`, `polyline` et `polygon`.
-
-``` html
-<!-- Définit une pointe de flèche -->
-<defs>
-  <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
-      markerWidth="6" markerHeight="6"
-      orient="auto-start-reverse">
-    <path d="M 0 0 L 10 5 L 0 10 z" />
-  </marker>
-</defs>
-
-<!-- Applique la pointe au début et à la fin de la polyline -->
-<polyline points="10,10 10,90 90,90" fill="none" stroke="black"
-          marker-start="url(#arrow)"
-          marker-end="url(#arrow)"  />
-```
-
-<!-- Dessine les axes des coordonnées avec des pointes de flèche à chaque bout -->
-<polyline points="10,10 10,90 90,90" fill="none" stroke="black"
-marker-start="url(#arrow)" marker-end="url(#arrow)"  />
-
-<svg width="100" height="100">
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
-        markerWidth="6" markerHeight="6"
-        orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" />
-    </marker>
-  </defs>
-  <polyline points="10,10 10,90 90,90" fill="none" stroke="black"
-            marker-start="url(#arrow)"
-            marker-end="url(#arrow)"  />
 </svg>
 
 ---
@@ -706,12 +706,12 @@ La couleur et l'opacité sont spécifiées par `flood-color` et `flood-opacity`.
 
 ### feImage
 
-La primitive `feImage` importe une image, sur le même principe que la balise `image`, et accepte les mêmes arguments que cette dernière.
+La primitive `feImage` importe une image, sur le même principe que la balise `image` en HTML, et accepte les mêmes arguments que cette dernière.
 
 ``` html
 <defs>
   <filter id="image">
-    <feImage xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png"/>
+    <feImage xlink:href="https://i.imgur.com/yYMNQ1u.png"/>
   </filter>
 </defs>
 <rect width="100" height="100" filter="url(#image)" />
@@ -720,7 +720,7 @@ La primitive `feImage` importe une image, sur le même principe que la balise `i
 <svg width="100" height="100">
   <defs>
     <filter id="image">
-      <feImage xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png"/>
+      <feImage xlink:href="https://i.imgur.com/yYMNQ1u.png"/>
     </filter>
   </defs>
   <rect width="100" height="100" filter="url(#image)" />
@@ -733,12 +733,12 @@ Par défaut, l'unité des filtres est celle du SVG. Pour utiliser les unités re
   <filter id="image2">
     <feImage x="0" y="0"
              width="100%" height="100%"
-             xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png"/>
+             xlink:href="https://i.imgur.com/yYMNQ1u.png"/>
   </filter>
   <filter id="image3" primitiveUnits="objectBoundingBox">
     <feImage x="0" y="0"
              width="100%" height="100%"
-             xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png"/>
+             xlink:href="https://i.imgur.com/yYMNQ1u.png"/>
   </filter>
 </defs>
 ```
@@ -746,7 +746,7 @@ Par défaut, l'unité des filtres est celle du SVG. Pour utiliser les unités re
 <svg width="100" height="100" style="background: #eee">
   <defs>
     <filter id="image2">
-      <feImage x="0" y="0" width="100%" height="100%" xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png"/>
+      <feImage x="0" y="0" width="100%" height="100%" xlink:href="https://i.imgur.com/yYMNQ1u.png"/>
     </filter>
   </defs>
   <rect width="50" height="50" filter="url(#image2)" />
@@ -755,7 +755,7 @@ Par défaut, l'unité des filtres est celle du SVG. Pour utiliser les unités re
 <svg width="100" height="100" style="background: #eee">
   <defs>
     <filter id="image3" primitiveUnits="objectBoundingBox">
-      <feImage x="0" y="0" width="100%" height="100%" xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png"/>
+      <feImage x="0" y="0" width="100%" height="100%" xlink:href="https://i.imgur.com/yYMNQ1u.png"/>
     </filter>
   </defs>
   <rect width="50" height="50" filter="url(#image3)" />
@@ -769,7 +769,7 @@ La primitive `feTile` répéte horizontalement et verticalement l'image qu'elle 
 <defs>
   <filter id="pattern">
     <feImage
-      xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png"
+      xlink:href="https://i.imgur.com/yYMNQ1u.png"
       width="30" height="30"/>
     <feTile/>
   </filter>
@@ -780,7 +780,7 @@ La primitive `feTile` répéte horizontalement et verticalement l'image qu'elle 
 <svg width="100" height="100">
   <defs>
     <filter id="pattern2">
-      <feImage xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png" width="30" height="30"/>
+      <feImage xlink:href="https://i.imgur.com/yYMNQ1u.png" width="30" height="30"/>
       <feTile/>
     </filter>
   </defs>
@@ -893,7 +893,7 @@ Les différentes valeurs possibles sont
 
 <svg width="520" height="100">
   <defs>
-    <image id="mdn-color" width="100" height="100" xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png" />
+    <image id="mdn-color" width="100" height="100" xlink:href="https://i.imgur.com/yYMNQ1u.png" />
     <filter id="blend">
       <feFlood flood-color="green" result="blendLayer" />
       <feBlend in="SourceGraphic" in2="blendLayer" mode="normal" />
@@ -1098,7 +1098,7 @@ Par défaut, la matrice de convolution est de 3x3 mais il est possible de l'agra
 
 <svg width="300" height="100" viewBox="0 0 520 146">
   <defs>
-    <image id="mdn-logo" width="128" height="146" xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png" />
+    <image id="mdn-logo" width="128" height="146" xlink:href="https://i.imgur.com/yYMNQ1u.png" />
 
     <filter id="blur"><feConvolveMatrix kernelMatrix="1 1 1  1 1 1  1 1 1"/></filter>
     <filter id="gaussianBlur"><feConvolveMatrix kernelMatrix="1 2 1  2 4 2  1 2 1"/></filter>
@@ -1662,8 +1662,6 @@ Le CSS peut être définit
   ```
 
 * ou encore en dehors du fichier SVG, dans la page HTML qui inclut le SVG
-
----
 
 ## script
 

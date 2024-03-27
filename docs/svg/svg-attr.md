@@ -6,7 +6,7 @@ category: Web, HTML, SVG
 ## fill
 
 L'attribut `fill` définit la couleur de remplissage.  
-Vous pouvez utiliser la même convention de nommage des couleurs que CSS, que ce soit les noms (comme `red`), les valeurs rgb (comme `rgb(255,0,0)`) ou les valeurs hexadécimales (comme `#FF0000`).
+On utilise la même convention de nommage des couleurs qu'en CSS: des noms (comme `red`), des valeurs rgb (comme `rgb(255,0,0)`) ou des valeurs hexadécimales (comme `#FF0000`).
 
 ``` html
 <rect x="20" y="20" width="50" height="50" fill="#f00" />
@@ -18,7 +18,7 @@ Vous pouvez utiliser la même convention de nommage des couleurs que CSS, que ce
 
 ## fill-opacity
 
-Dans un certain nombre de navigateur, il est possible d'utiliser des couleurs rgba pour rendre les formes semi-transparentes. Les spécifications définissent quant à elle l'attribut `fill-opacity` pour obtenir cet effet. Si vous spécifiez à la fois une valeur rgba et `fill-opacity`, les deux seront appliquées.
+Dans un certain nombre de navigateur, il est possible d'utiliser des couleurs rgba pour rendre les formes semi-transparentes. Les spécifications définissent quant à elle l'attribut `fill-opacity` pour obtenir cet effet. Si on spécifie à la fois une valeur rgba et `fill-opacity`, les deux seront appliquées.
 
 ``` html
 <rect x="20" y="20" width="50" height="50"
@@ -32,12 +32,7 @@ Dans un certain nombre de navigateur, il est possible d'utiliser des couleurs rg
 
 ## fill-rule
 
-`fill-rule` spécifie la règle de remplissage pour les formes où des chemins se chevauchent.  
-Cet attribut peut prendre deux valeurs:
-* `nonzero` (*par défaut*),
-  le nombre de croisements d’une ligne correspond au nombre total de fois où une ligne croise une partie du tracé allant de gauche à droite moins le nombre total de fois où une ligne croise une partie du tracé allant de droite à gauche. Si une ligne tracée dans une direction quelconque à partir du point possède un nombre de croisements égal à zéro, le point est à l'extérieur, sinon, il est à l'intérieur.
-* `evenodd`,
-  si une ligne tracée depuis un point et dans une direction quelconque croise le tracé selon un nombre impair, le point est à l'intérieur, dans le cas contraire, le point est à l'extérieur.
+`fill-rule` spécifie la règle de remplissage (quelles parties sont remplies ou non) quand les segments d'une forme se chevauchent. Cet attribut peut prendre deux valeurs: nonzero (par défaut) ou evenodd
 
 ``` html
 <polygon fill-rule="nonzero" points="50,0 21,90 98,35 2,35 79,90"/>
@@ -48,6 +43,18 @@ Cet attribut peut prendre deux valeurs:
   <polygon fill-rule="nonzero" points="50,0 21,90 98,35 2,35 79,90"/>
   <polygon fill-rule="evenodd" points="150,0 121,90 198,35 102,35 179,90"/>
 </svg>
+
+<br>
+
+* `evenodd`:  
+  Pour savoir si un point P est à l'intérieur de la forme, on trace une ligne horizontale (x0,yP) jusqu'au point P (xP,yP) et on compte le nombre d'intersections avec la forme: un nombre pair (ex 2), c'est que le point est à l'extérieur; impair (ex 3), qu'il est à l'intérieur
+
+* `nonzero` (*par défaut*):  
+  On trace une ligne horizontale (x0,yP) jusqu'au point P (xP,yP), à chaque fois que la ligne coupe un segment descendant on compte +1, si c'est l'inverse on compte -1. Si le total vaut 0, le point est à l'extérieur; sinon, il est à l'intérieur
+
+  ![](https://i.imgur.com/onRXoyZ.png)
+
+  [Winding Number / Non-Zero Algorithm](https://iq.opengenus.org/inside-outside-test/#windingnumbernonzeroalgorithm)
 
 ---
 
@@ -69,36 +76,55 @@ L'attribut `stroke` définit la couleur du contour.
 ## stroke-width
 
 `stroke-width` définit l'épaisseur du contour.  
-La ligne du contour est centrée autour du remplissage: si le contour vaut 10px, 5px du contour chevauchent le remplissage.
+La ligne du contour est centrée autour du contour: si la largeur du contour est 10px, 5px du contour est à l'intérieur de la forme et 5px à l'extérieur. Si la largeur est de 1px, 1px est à l'intérieur
 
 ``` html
-<rect x="25" y="25" width="50" height="50"
+<rect  x="0" y="0" width="90" height="90"
       fill="white"
-      stroke="red" stroke-width="10" />
+      stroke="blue" stroke-width="10" />
+
+<rect x="0" y="0" width="100" height="100"
+      fill="none"
+      stroke="red" stroke-width="1" />
 ```
 
-<svg width="100" height="100" style="background: black">
-  <rect x="25" y="25" width="50" height="50"
+<svg width="100" height="100" style="background: white">
+  <rect x="0" y="0" width="90" height="90"
         fill="white"
-        stroke="red" stroke-width="10" />
+        stroke="blue" stroke-width="10" />
+
+  <rect x="0" y="0" width="100" height="100"
+        fill="none"
+        stroke="red" stroke-width="1" />
 </svg>
 
 ## stroke-opacity
 
 `stroke-opacity` définit l'opacité du contour.
 
-Il est important de savoir que le contour recouvre partiellement le remplissage de la forme. Ainsi, un contour avec une opacité différente de 1 affichera partiellement le remplissage du dessous. Pour éviter cet effet, il est possible d'appliquer une opacité globale avec l'attribut `opacity` ou placer le contour derrière le remplissage avec `paint-order`.
+Il est important de savoir que le contour recouvre partiellement le remplissage de la forme. Ainsi, un contour avec une opacité différente de 1 affichera partiellement le remplissage du dessous.
+Pour éviter cet effet, il est possible de placer le contour derrière le remplissage avec `paint-order`.
 
 ``` html
 <rect x="25" y="25" width="50" height="50"
       fill="white"
       stroke="red" stroke-width="10" stroke-opacity="0.7" />
 ```
+``` html
+<rect x="25" y="25" width="50" height="50"
+      fill="white"
+      stroke="red" stroke-width="10" stroke-opacity="0.7" paint-order="stroke fill" />
+```
 
 <svg width="100" height="100" style="background: black">
   <rect x="25" y="25" width="50" height="50"
         fill="white"
         stroke="red" stroke-width="10" stroke-opacity="0.7" />
+</svg>
+<svg width="100" height="100" style="background: black">
+  <rect x="25" y="25" width="50" height="50"
+        fill="white"
+        stroke="red" stroke-width="10" stroke-opacity="0.7" paint-order="stroke fill"  />
 </svg>
 
 ## stroke-linecap
@@ -199,7 +225,7 @@ Il est important de savoir que le contour recouvre partiellement le remplissage 
 ## stroke-dasharray
 
 `stroke-dasharray` permet de créer des lignes pointillées.  
-Il prend pour valeur une suite de nombres qui définissent successivement la longueur du trait puis celle de l'espace.  
+La valeur est une suite de nombres qui définissent successivement la longueur du trait puis celle de l'espace.  
 Si une seule valeur est donné, alors l'espace a la même taille que le trait.
 
 ``` html
@@ -450,7 +476,7 @@ L'attribut `pointer-events` définit quand l'élément peut recevoir des événe
 ## visibility
 
 L'attribut `visibility` définit si l'élément est visible ou non.
-Un élément invisible prend toujours de la place.
+Un élément invisible prend tout de même de la place.
 
 ``` html
 <text x="5" y="30">

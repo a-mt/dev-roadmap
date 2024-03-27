@@ -14,17 +14,15 @@ Le prologue est la première instruction de tout fichier SVG. Il indique la vers
 </svg>
 ```
 
----
-
 ## SVG
 
 Une image SVG est entièrement contenue dans une balise `svg`.  
 À l'intérieur de la balise `svg`, on peut placer différentes formes, comme des rectangles, lignes, cercles, etc.  
 
 * Les éléments sont dessinés dans l'ordre dans lequel ils apparaissent dans le code:  
-  les premiers se trouvent en dessous des derniers.
+  les derniers éléments seront dessinés au-dessus des premiers éléments s'ils sont au même emplacement.
 
-* Contrairement au HTML, la syntaxe SVG est sensible à la casse et les valeurs des attributs doivent toujours être placées entre guillemets, même si ce sont des nombres.
+* Contrairement au HTML, la syntaxe SVG est sensible à la casse et les valeurs des attributs doivent toujours être placées entre guillemets, même pour des nombres.
 
 * Pour placer les éléments à l'intérieur du SVG, on précise les coordonnées `x` et `y` de la forme.  
   Le point d'origine (0,0) est le coin supérieur gauche du SVG.  
@@ -46,7 +44,7 @@ Par exemple, pour créer une image SVG (vide) de 100px par 100px:
 ### Attribut: viewBox
 
 L'attribut `viewBox` définit les dimensions du dessin.  
-Les dimensions du viewbox n'ont pas d'unité, pas plus que les attributs de largeur et de hauteur des éléments à l'intérieur du SVG. La raison est simple: un SVG peut être agrandit ou rétrécit à l'envie — notamment avec `width` et `height`.
+Les dimensions du viewbox n'ont pas d'unité, pas plus que les attributs de largeur et de hauteur des éléments à l'intérieur du SVG. La raison est simple: un SVG peut être agrandit ou rétrécit à volonté — notamment avec `width` et `height`.
 
 Le viewBox définit les valeurs suivantes (séparées par des espaces ou des virgules):
 
@@ -54,13 +52,13 @@ Le viewBox définit les valeurs suivantes (séparées par des espaces ou des vir
 viewBox="min-x min-y width height"
 ```
 
-Dans l'exemple suivant, les attributs `width` et `height` spécifient que le SVG doit être affiché sur 200px par 200px. L'attribut `viewBox` spécifie que les dimensions du SVG est 100 par 100, chaque unité du SVG vaut donc deux pixels — on double la taille du contenu.
+Par exemple, pour spécifier que le SVG doit être affiché sur 200px par 200px, on utilise les attributs `width` et `height`; et pour spécifier que les dimensions du SVG est 100 par 100, on utilise l'attribut `viewBox` — chaque unité du SVG vaut donc deux pixels, on double la taille du contenu.
 
 ``` html
 <svg width="200" height="200" viewBox="0 0 100 100">
 ```
 
-Si l'on ne définit pas le viewbox, les dimensions du SVG sont considérés être la taille d'affichage.  
+Si on ne définit pas de viewbox, les dimensions du SVG sont considérés être la taille d'affichage.  
 [JSFiddle viewbox](https://jsfiddle.net/amt01/0ycvsbn6/)
 
 ### Attribut: preserveAspectRatio
@@ -201,8 +199,7 @@ Les différents points peuvent être séparés par des virgules ou des espaces.
 
 ## polygon
 
-La balise `polygon` permet de tracer des lignes droites entre plusieurs `points`, de même que `polyline`,
-mais contrairement à cette dernière cela crée une forme fermée.
+La balise `polygon` permet de tracer des lignes droites entre plusieurs `points`, même principe que `polyline` à la différence près qu'on crée une forme fermée.
 
 ``` html
 <polygon points="10 10, 15 20, 20 15, 25 30, 30 25, 35 40, 40 35, 45 50, 50 45, 80 10"
@@ -218,11 +215,11 @@ mais contrairement à cette dernière cela crée une forme fermée.
 
 ## path
 
-La balise `path` permet de créer des formes complexes à partir d'une série de lignes droites et courbes définie par `d`.  
-L'attribut `d` définit une liste de commandes a exécuter. Chaque commande est appelée par une lettre spécifique et est suivit de paramètres.
+La balise `path` permet de créer des formes complexes à partir d'une série de lignes droites et courbes.  
+L'attribut `d` définit la liste des commandes a exécuter. Chaque commande est représentée par une lettre spécifique et est suivit de paramètres.
 Par exemple, `M20,30` déplace le curseur à la position (20,30)
 
-Deux nombres peuvent être séparés par une virgule ou un espace.
+Les deux nombres de chaque point peuvent être séparés par une virgule ou un espace.
 
 ``` html
 <path d="M20,30 Q40,5 50,30 T90,30" stroke="white" stroke-width="5" />
@@ -256,7 +253,8 @@ Les <ins>différentes commandes</ins> sont:
 ## text
 
 La balise `text` permet d'ajouter du texte dans le SVG.  
-Par défaut, le point (`x`,`y`) désigne la position du coin inférieur gauche du texte. Il est possible de modifier ce comportement. avec les attributs `text-anchor` et `alignment-baseline`.
+Par défaut, le point (`x`,`y`) désigne la position du coin inférieur gauche du texte.  
+Il est possible de modifier ce comportement, et modifier l'alignement horizontal de l'élément, avec l'attribut `text-anchor`
 
 ``` html
 <text x="5" y="15" fill="white">Hello World</text>
@@ -265,6 +263,7 @@ Par défaut, le point (`x`,`y`) désigne la position du coin inférieur gauche d
 <svg width="100" height="100" style="background: black">
     <text x="5" y="15" fill="white">Hello World</text>
 </svg>
+[text-anchor](svg-attr.md#text-anchor)
 
 ## tspan
 
@@ -282,8 +281,8 @@ La balise `tspan` doit être un enfant de `text` ou `tspan`. Elle permet de bali
   </text>
 </svg>
 
-Les attributs `dx` et `dy` permettent de décaler l'élément par rapport à sa position calculée.  
-Cela permet par exemple d'ajouter des retours à la ligne.
+Les attributs `dx` et `dy` permettent de décaler l'élément par rapport à sa position d'origine.  
+Ça permet par exemple d'ajouter des retours à la ligne.
 
 ``` html
 <text x="5" y="15" fill="white">
@@ -359,14 +358,14 @@ La balise `image` permet d'insérer une image (vectorielle ou bitmap) dans le do
 ```
 
 <svg width="100" height="100" viewBox="0 0 128 146">
-  <image width="128" height="146" xlink:href="https://mdn.mozillademos.org/files/6457/mdn_logo_only_color.png" />
+  <image width="128" height="146" xlink:href="https://i.imgur.com/yYMNQ1u.png" />
 </svg>
 
 ---
 
 ## foreignObject
 
-La balise `foreignObject` permet d'inclure des éléments d'un espace de noms XML différent à l'intérieur du SVG. Dans le contexte d'un navigateur, il s'agit généralement d'inclure du XHTML/HTML. Dans le cas d'un SVG intégré dans du HTML, le namespace XHTML peut être omis, mais il est obligatoire dans le contexte d'un document SVG standalone.
+La balise `foreignObject` permet d'inclure à l'intérieur du SVG des éléments d'un espace de noms XML différent. Dans le contexte d'un navigateur web, il s'agit généralement d'inclure du XHTML/HTML. Dans le cas d'un SVG intégré dans du HTML, le namespace XHTML peut être omis, mais il est obligatoire dans le contexte d'un document SVG standalone.
 
 ``` html
 <foreignObject x="20" y="20" width="160" height="160">
@@ -390,7 +389,7 @@ La balise `foreignObject` permet d'inclure des éléments d'un espace de noms XM
 
 ## switch
 
-La balise `switch` affiche le premier élément enfant dont les attributs `requiredFeatures`, `requiredExtensions` et `systemLanguage` sont évalués à vrai. Les attributs non spécifiés valent vrai, ainsi un élément sans aucun attribut sera forcemment affiché si aucun élément n'a été affiché avant lui (revient à définir une valeur par défaut).
+La balise `switch` affiche le premier élément enfant dont les attributs `requiredFeatures`, `requiredExtensions` et `systemLanguage` sont évalués à vrai. Les attributs non spécifiés valent vrai: un élément sans aucun attribut sera forcemment affiché si aucun élément n'a été affiché avant lui — ce qui revient à définir une valeur par défaut.
 
 L'exemple suivant affiche un texte différent suivant les paramètres de langue du navigateur, ou affiche un emoji si la langue de l'utilisateur n'est pas dans la liste:
 

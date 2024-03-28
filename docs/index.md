@@ -478,7 +478,7 @@ roadmap: true
 [composer]: composer.md
 [crypto]: crypto.md
 [crypto-ec]: crypto-ec.md
-[css]: index/css.md
+[css]: css/index.md
 [design]: design/index.md
 [dicom]: health/dicom.md
 [digitalocean]: digitalocean/index.md

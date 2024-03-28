@@ -135,7 +135,10 @@ Par exemple: `p.myclass` pour cibler les tags `<p>` qui ont la classe `myclass`.
 
 ## Spécificité des sélecteurs
 
-Si deux sélecteurs ciblent le même élément, les déclarations se cumulent.
+### Héritage
+
+Si deux sélecteurs ciblent le même élément, les déclarations se cumulent.  
+Exemple: les paragraphes qui ont la classe "myclass" ont la police "Arial" et la couleur "gray"
 
 ``` css
 p {
@@ -148,40 +151,41 @@ p.myclass {
 
 ### Score
 
-Mais si une même propriété est définie deux fois, alors le sélecteur le plus spécifique l'emporte.  
-Un ID a une spécificité de 100, une classe 10, un tag 1 — plus le score est élevé, plus il est spécifique.  
+* Si une même propriété est définie deux fois, alors le sélecteur le plus spécifique l'emporte.  
+  Un ID a une spécificité de 100, une classe 10, un tag 1 — plus le score est élevé, plus il est spécifique.  
 
-| Sélecteur  | ID    | Classe | Tag   | Score total |
-|---         |---    |---     |---    |---    |
-| body       | 0     | 0      | 1     | 1     |
-| .quote     | 0     | 1*10   | 0     | 10    |
-| #content   | 1*100 | 0      | 0     | 100   |
-| div p      | 0     | 0      | 2     | 2     |
-| #sidebar p | 1*100 | 0      | 1     | 101   |
+  | Sélecteur  | ID    | Classe | Tag   | Score total |
+  |---         |---    |---     |---    |---    |
+  | body       | 0     | 0      | 1     | 1     |
+  | .quote     | 0     | 1*10   | 0     | 10    |
+  | #content   | 1*100 | 0      | 0     | 100   |
+  | div p      | 0     | 0      | 2     | 2     |
+  | #sidebar p | 1*100 | 0      | 1     | 101   |
 
-``` css
-p {
-  color: black;
-}
-#myid {
-  color: red;  /* l'emporte */
-}
-p.myclass {
-  color: gray;
-}
-```
+  Exemple: les paragraphes qui ont l'ID "myid" et la classe "myclass" ont la couleur "red"
 
-### Ordre d'inclusion
+  ``` css
+  p {
+    color: black;
+  }
+  #myid {
+    color: red;  /* l'emporte */
+  }
+  p.myclass {
+    color: gray;
+  }
+  ```
 
-Si les deux sélecteurs ont le même score, alors la dernière règle déclarée l'emporte.
+* En cas de match nul, que les deux sélecteurs ont le même score:
 
-* 1/ Le style inclut en ligne (inline style) l'emporte sur
-* 2/ Le style de la balise `<style>` (embedded style), qui l'emporte sur
-* 3/ Le style dans un fichier stylesheet (external style). 
+  * 1/ Le CSS inline (`style="..."`) l'emporte sur
+  * 2/ Le CSS embedded `<style>...</style>` qui l'emporte sur
+  * 3/ Le CSS external (`<link rel="stylesheet" ...`)
+  * 4/ En dernier recours, si aucun de ces cas ne s'applique, la dernière règle déclarée l'emporte
 
 ### !important
 
-On peut passer outre la spécificité / l'ordre d'inclusion en utilisant la flag `!important`: une propriété notée importante remplace les autres déclarations de cette propriété sur l'élément. Ainsi, on peut écraser un style en ligne dans un fichier externe en utilisant `!important`.
+On peut passer outre la spécificité / l'ordre d'inclusion en utilisant le flag `!important`: une propriété notée importante remplace les autres déclarations de cette propriété sur l'élément. Ainsi, on peut écraser un style en ligne dans un fichier externe avec le suffixe `!important`.
 
 ``` css
 p { color: lightgrey !important; }
@@ -191,7 +195,7 @@ p { color: lightgrey !important; }
 
 ## Pseudo-classes
 
-Les pseudo-classes permettent de cibler un élément dans un état particulier. Elles s'ajoutent au sélecteur.
+Les pseudo-classes permettent de cibler un élément dans un état particulier. Elles s'ajoutent au sélecteur en suffixe.
 
 ``` css
 /* CSS des liens lorsque la souris passe dessus */
@@ -523,8 +527,6 @@ nav li:not(:first-child)::before {
 ## CSS level 4
 
 Les spécifications stipulent également des sélecteurs niveau 4.  
-En revanche, la plupart sont peu voire pas du tout supportés.
+Mais la plupart sont peu voire pas du tout supportés.
 
-[Intriguing CSS Level 4 Selectors](https://webdesign.tutsplus.com/tutorials/intriguing-css-level-4-selectors--cms-29499)  
-[Les nouveautés de CSS4](https://blog.groupe-sii.com/les-nouveautes-de-css-level-4/)
-
+[Intriguing CSS Level 4 Selectors](https://webdesign.tutsplus.com/tutorials/intriguing-css-level-4-selectors--cms-29499)

@@ -230,7 +230,7 @@ Plutôt que la moyenne, on peut également choisir d'utiliser
   <pre lang="python">np.sqrt(np.var(X))</pre>
   </details>
 
-  Ça nous permet de ramener la variance dans la même unité/même interval que les valeurs dont on mesure la dispersion et dire qu'en moyenne, les points s'écartent de k de la moyenne.
+  Ça nous permet de ramener la variance dans la même unité/même intervalle que les valeurs dont on mesure la dispersion et dire qu'en moyenne, les points s'écartent de k fois la moyenne. Par exemple, un écart-type de 2 indique qu'en moyenne, les points s'écartent de 2 fois la moyenne (2 fois plus ou 2 fois moins)
 
   ``` python
   np.std([9,11]) # 1.0
@@ -322,7 +322,7 @@ Pour visualiser la distribution des données, on utilise typiquement
 
 ### Modalité
 
-Lorsqu'une distribution contient un seul pic, c'est à dire un intervalle qui contient la majorité des valeurs, la distribution dite **unimodale**. Lorsqu'elle en contient deux, elle est dite **bimodale**.
+Lorsqu'une distribution contient un seul pic, la distribution dite **unimodale**. Lorsqu'elle en contient deux, elle est dite **bimodale**.
 
 Typiquement, la bimodalité se produit lorsque deux populations distinctes sont présentes dans l'échantillon, ce qui donne un mélange de distributions.  
 Ex: si on trace l'histogramme des temps de course d'une population, on constate une bimodalité entre hommes et femmes.
@@ -376,7 +376,8 @@ S &= \frac{\mu_3}{\sigma^3} \\ \\
 &= \frac{ \left(X_1 - \mu\right)^3 + \ldots + \left(X_n - \mu\right)^3}{n} \div \sigma^3
 \end{aligned}$$
 
-Pour chaque valeur, soustraire la moyenne, diviser par l'écart-type et porter le résultat au cube. Finalement, calculer la moyenne des valeurs obtenues.
+Pour chaque valeur, soustraire la moyenne, diviser par l'écart-type et porter le résultat au cube.  
+Finalement, calculer la moyenne des valeurs obtenues.
 
 * <ins>coef = 0</ins>  
   La distribution est symmétrique, en forme de cloche.

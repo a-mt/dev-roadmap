@@ -28,15 +28,15 @@ Une fois que les données ont été préparées, on peut créer un modèle à pa
     ```
 
 3. <ins>**Effectuer des prédictions**</ins> (*predict*)  
-   Il s'agit tout simplement de calculer *f(x)* sur les données de test.
+   Effectuer une prédiction consiste tout simplement à calculer *f(x)* sur des données — ici, sur les données de test.
 
     ``` python
     predict_y = model.predict(test_X)
     ```
 
 4. <ins>**Évaluer**</ins>  
-   Comparer les valeurs prédites aux valeurs réelles des données de test.  
-   Il existe différentes méthodes pour juger la performance d'un modèl. En fonction des problèmes constatés, on va pouvoir optimiser le modèle — changer les hyperparamètres, changer les données ou carrément changer d'algorithme.
+   Comparer les valeurs prédites sur les données de tests aux valeurs réelles.  
+   Il existe différentes méthodes pour juger la performance d'un modèle. En fonction des problèmes constatés, on va pouvoir optimiser le modèle — changer les hyperparamètres, changer les données ou carrément changer d'algorithme.
 
    ``` python
    print("MEA:", mean_absolute_error(test_y, predict_y))

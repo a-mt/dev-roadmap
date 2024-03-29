@@ -11,7 +11,7 @@ Pour commencer, il faut aller chercher les données là où elles sont.
 
 1. Dans le meilleur des cas, on a déjà toutes les données qu'on veut en format structuré.
 2. Deuxième possibilité, les données sont stockées dans un data lake, dans un format non structuré — auquel cas il va falloir les formatter.
-3. On peut éventuellement aller chercher des données dans des datasets publics. Exemples:
+3. On peut éventuellement aller chercher des données dans des datasets publics. Par exemple:
 
    * [Kaggle](https://www.kaggle.com/datasets)
    * [AI hub](https://aihub.cloud.google.com/u/0/s?category=data)
@@ -21,8 +21,8 @@ Pour commencer, il faut aller chercher les données là où elles sont.
    * [opendatanetwork](https://www.opendatanetwork.com/)
 
 4. Dernière possibilité, extraire les données sur le web.  
-   C'est ce qu'on appelle du *web scraping*, ce qui consiste à
-   1. parcourir les pages web avec un *crawler*, un bot qui se charge d'explorer les différents liens et récupérer le contenu des pages (aussi couramment appelé *spider*)
+   On appelle ce procédé du *web scraping*, et il consiste à  
+   1. parcourir les pages web avec un *crawler*, aussi couramment appelé *spider* — un bot qui se charge d'explorer les différents liens et récupérer le contenu des pages  
    2. extraire le contenu des pages avec un *scraper*, un bot qui se charge d'extraire les données dans le HTML.
 
    Packages Python: BeautifulSoup, LXML, MechanicalSoup, Requests, Scrapy, Selenium, Urllib  
@@ -44,7 +44,7 @@ Pour être exploitables, les données doivent être
 
    [![](https://i.imgur.com/z6MIrGMm.jpg?1)](https://www.instagram.com/p/B70qA64D1mV/)
 
-4. <ins>uniques</ins>: il n'y a pas de cas dupliqués. Typiquement, des doublons surviennent lorsqu'on combine différents datasets ou qu'on scrape le web. Il est important de comprendre l'origine des doublons car ils peuvent parfois être légitimes. Exemple: si, lors du transfert de la base de données, les données ont été anonymisées (on a plus de nom, ID, etc).
+4. <ins>uniques</ins>: il n'y a pas de cas dupliqués. Typiquement, des doublons surviennent lorsqu'on combine différents datasets ou qu'on scrape le web. Il est important de comprendre l'origine des doublons car ils peuvent parfois être légitimes. Exemple: si, lors du transfert de la base de données, les données ont été anonymisées (on n'a plus de nom, ID, etc).
 
 5. <ins>précises</ins>: il n'y a pas de valeurs en dehors de l'intervalle autorisé.  
    Exemple: âge > 200
@@ -68,20 +68,14 @@ Selon le besoin, on peut éventuellement générer des caractéristiques (*featu
   * combiner le type d'appareil et l'OS — mobile_android, desktop_linux
   * combiner le pays d'origine et le genre de musique — fr_pop, uk_pop
 
-  <br>
-
-  <details>
-  <summary>python</summary>
-
   <pre lang="python">
   interactions = ks['category'] + "_" + ks['country']
   </pre>
-  </details>
 
 * un <ins>**compteur numérique**</ins>. Exemples:
   * le nombre d'événements provenant d'une même adresse IP au cours des 6 dernières heures
   * le temps écoulé depuis le dernier événement
-  * le nombre de fois que l'application a été téléchargée (+1 à chaque ligne)
+  * le nombre de fois que l'application a été téléchargée
   * le nombre de commandes passées au cours des 7 derniers jours
 
   [Notebook: Feature Generation](https://www.kaggle.com/matleonard/feature-generation)

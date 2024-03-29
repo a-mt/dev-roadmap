@@ -6,15 +6,15 @@ category: Machine Learning, NLP
 * Le pré-traitement des données textuelles est la première étape du NLP.  
   Le but: réduire le texte aux mots dont on a besoin pour comprendre le texte. Ce qui peut impliquer:
 
-  * supprimer les caractères et le formattage inutiles
-  * segmenter le texte (tokenize)
-  * supprimer les mots non significatifs (stopwords)
+  * supprimer les caractères inutiles et le formattage
+  * segmenter le texte (*tokenize*)
+  * supprimer les mots non significatifs (*stopwords*)
   * rectifier les fautes d'orthographe
-  * normaliser le texte (stemming ou lemmatisation)
+  * normaliser le texte (*stemming* ou *lemmatisation*)
 
-* Il peut également être utile de connaître les relations entre les mots. L'analyse de texte (*parsing* en anglais) consiste à segmenter le texte en se basant sur sa syntaxe. Elle est souvent effectuée en complément du pré-traitement, pour améliorer la normalisation ou exclure davantage de mots par exemple.
+* Il peut également être utile de connaître les relations entre les mots — sujet, verbe, COD. L'analyse de texte (*parsing* en anglais) consiste à segmenter le texte en se basant sur son rôle. Elle est souvent effectuée en complément du pré-traitement, pour améliorer la normalisation ou exclure davantage de mots par exemple.
 
-* Souvent, un algorithme ne peut pas manipuler du texte à proprement parler, il va falloir d'une manière ou d'une autre associer des valeurs numériques aux mots pour analyser les données ou pour les donner à un modèle. Il existe différents modèles NLP pour parvenir à ce but, tels que bag-of-words ou one-hot-encoding.
+* Souvent, un algorithme ne peut pas manipuler du texte à proprement parler, il va falloir d'une manière ou d'une autre associer des valeurs numériques aux mots pour analyser les données ou pour les donner à un modèle. Il existe différentes techniques NLP pour parvenir à ce but, tels que bag-of-words ou one-hot-encoding.
 
 ---
 
@@ -81,207 +81,222 @@ category: Machine Learning, NLP
   * le formattage HTML
   * les URLs, hashtags, mentions
 
-Pour ce faire, on utilise des expressions régulières (regex).
+  Pour ce faire, on utilise des expressions régulières (regex).
 
-<details>
-<summary>python</summary>
+  <details>
+  <summary>python</summary>
 
-<pre lang="python">
-import re
+  <pre lang="python">
+  import re
 
-def cleanup(txt):
-    txt = re.sub('@\w+',' ', txt)             # remove @mentions
-    txt = re.sub('\w+:\/\/\S+', ' ', txt)     # remove link://...
-    txt = re.sub('[^0-9a-zA-Z \t]', ' ', txt) # remove punctuation
-    return txt.strip().lower()
+  def cleanup(txt):
+      txt = re.sub('@\w+',' ', txt)             # remove @mentions
+      txt = re.sub('\w+:\/\/\S+', ' ', txt)     # remove link://...
+      txt = re.sub('[^0-9a-zA-Z \t]', ' ', txt) # remove punctuation
+      return txt.strip().lower()
 
-cleanup('@Craig_Spur @kev_g1 @davspurs You think people are gonna go out an exercise when we tell them 17m die globally a year through crap lifestyles?')
-# you think people are gonna go out an exercise when we tell them 17m die globally a year through crap lifestyles
-</pre>
-</details>
+  cleanup('@Craig_Spur @kev_g1 @davspurs You think people are gonna go out an exercise when we tell them 17m die globally a year through crap lifestyles?')
+  # you think people are gonna go out an exercise when we tell them 17m die globally a year through crap lifestyles
+  </pre>
+  </details>
 
 ### Tokenization
 
-* La plupart des tâches de traitement de texte nécessitent que le texte soit découpé en composantes individuelles, dit *tokens*. Le fait de segmenter le texte en tokens est appelé *tokenisation* de texte. On découpe généralement le texte mot par mot, mais on peut aussi découper en sections ou phrases suivant l'usage.
+* La plupart des tâches de traitement de texte nécessitent que le texte soit découpé en composantes individuelles, dit *tokens*. Le fait de segmenter le texte en tokens est appelé la *tokenisation* de texte. On découpe généralement le texte mot par mot, mais on peut aussi découper en sections ou phrases suivant l'usage.
 
-<details>
-<summary>python</summary>
+  <details>
+  <summary>python</summary>
 
-<pre lang="python">
-from nltk.tokenize import word_tokenize, sent_tokenize
+  <pre lang="python">
+  from nltk.tokenize import word_tokenize, sent_tokenize
 
-txt = 'An electrocardiogram is used to record the electrical conduction through a person\'s heart. The readings can be used to diagnose cardiac arrhythmias.'
+  txt = 'An electrocardiogram is used to record the electrical conduction through a person\'s heart. The readings can be used to diagnose cardiac arrhythmias.'
 
-# Split on spaces
-print(txt.split(' '))
-'''
-['An', 'electrocardiogram', 'is', 'used', 'to', 'record', 'the', 'electrical', 'conduction', 'through', 'a', "person's", 'heart.', 'The', 'readings', 'can', 'be', 'used', 'to', 'diagnose', 'cardiac', 'arrhythmias.']
-'''
+  # Split on spaces
+  print(txt.split(' '))
+  '''
+  ['An', 'electrocardiogram', 'is', 'used', 'to', 'record', 'the', 'electrical', 'conduction', 'through', 'a', "person's", 'heart.', 'The', 'readings', 'can', 'be', 'used', 'to', 'diagnose', 'cardiac', 'arrhythmias.']
+  '''
 
-# Split on words
-print(word_tokenize(txt))
-'''
-['An', 'electrocardiogram', 'is', 'used', 'to', 'record', 'the', 'electrical', 'conduction', 'through', 'a', 'person', "'s", 'heart', '.', 'The', 'readings', 'can', 'be', 'used', 'to', 'diagnose', 'cardiac', 'arrhythmias', '.']
-'''
+  # Split on words
+  print(word_tokenize(txt))
+  '''
+  ['An', 'electrocardiogram', 'is', 'used', 'to', 'record', 'the', 'electrical', 'conduction', 'through', 'a', 'person', "'s", 'heart', '.', 'The', 'readings', 'can', 'be', 'used', 'to', 'diagnose', 'cardiac', 'arrhythmias', '.']
+  '''
 
-# Split on sentences
-print(sent_tokenize(txt))
-'''
-["An electrocardiogram is used to record the electrical conduction through a person's heart.", 'The readings can be used to diagnose cardiac arrhythmias.']
-'''
-</pre>
-</details>
+  # Split on sentences
+  print(sent_tokenize(txt))
+  '''
+  ["An electrocardiogram is used to record the electrical conduction through a person's heart.", 'The readings can be used to diagnose cardiac arrhythmias.']
+  '''
+  </pre>
+  </details>
 
 ### Stopwords removal
 
-* Les *mots vides* (*stopwords* en anglais) sont des mots qui apportent une structure aux phrases mais ne changent pas leur signification. Typiquement, il s'agit des mots les plus courants comme "un", "le", "de". On peut comprendre le message d'une phrase même après avoir supprimé les mots vides — ex: sortir chien, aller supermarché, etc. Supprimer les mots vides, donc ne donner que les données essentielles à l'algorithme, permet d'accélerer l'apprentissage.
+* Les *mots vides* (*stopwords* en anglais) sont des mots qui apportent une structure aux phrases mais ne changent pas leur signification. Typiquement, il s'agit des mots les plus courants comme "un", "le", "de". On peut comprendre le message d'une phrase même après avoir supprimé les mots vides — ex: sortir chien, aller supermarché, etc. Supprimer les mots vides, et ne donner à l'algorithme que les données essentielles, permet d'accélerer l'apprentissage.
 
-<details>
-<summary>python</summary>
+  <details>
+  <summary>python</summary>
 
-<pre lang="python">
-from nltk.corpus import stopwords 
-stopwords_eng = set(stopwords.words('english')) 
+  <pre lang="python">
+  from nltk.corpus import stopwords 
+  stopwords_eng = set(stopwords.words('english')) 
 
-txt = "NBC was founded in 1926 making it the oldest major broadcast network in the USA"
+  txt = "NBC was founded in 1926 making it the oldest major broadcast network in the USA"
 
-" ".join([w for w in word_tokenize(txt)
-            if w not in stopwords_eng])
-# 'NBC founded 1926 making oldest major broadcast network USA'
-</pre>
+  " ".join([w for w in word_tokenize(txt)
+              if w not in stopwords_eng])
+  # 'NBC founded 1926 making oldest major broadcast network USA'
+  </pre>
 
-<pre lang="python">
-from nltk.corpus import stopwords
+  <pre lang="python">
+  from nltk.corpus import stopwords
 
-# Liste des languages supportées
-print(stopwords.fileids())
-'''
-[
-  'arabic',
-  'azerbaijani',
-  'danish', 'dutch',
-  'english',
-  'finnish',
-  'french',
-  'german',
-  'greek',
-  'hungarian',
-  'indonesian',
-  'italian',
-  'kazakh',
-  'nepali',
-  'norwegian',
-  'portuguese',
-  'romanian',
-  'russian',
-  'slovene',
-  'spanish',
-  'swedish',
-  'tajik',
-  'turkish'
-]
-'''
-</pre>
-</details>
+  # Liste des languages supportées
+  print(stopwords.fileids())
+  '''
+  [
+    'arabic',
+    'azerbaijani',
+    'danish', 'dutch',
+    'english',
+    'finnish',
+    'french',
+    'german',
+    'greek',
+    'hungarian',
+    'indonesian',
+    'italian',
+    'kazakh',
+    'nepali',
+    'norwegian',
+    'portuguese',
+    'romanian',
+    'russian',
+    'slovene',
+    'spanish',
+    'swedish',
+    'tajik',
+    'turkish'
+  ]
+  '''
+  </pre>
+  </details>
 
 ### Spelling correction
 
 * Corriger les fautes d'orthographe peut également aider l'algorithme à comprendre le sens de la phrase plus facilement.  
   Il n'est pas toujours souhaitable de corriger les fautes: dans certains cas, les fautes d'orthographe peuvent apporter des informations supplémentaires — par exemple: les mails de scam contiennent souvent des fautes d'orthographe volontaires.
 
-<details>
-<summary>python</summary>
+  <details>
+  <summary>python</summary>
 
-<pre lang="python">
-from spellchecker import SpellChecker
+  <pre lang="python">
+  from spellchecker import SpellChecker
 
-txt = 'The qiuck brown fox jmps over the lazy dog'
+  txt = 'The qiuck brown fox jmps over the lazy dog'
 
-spell = SpellChecker()
-" ".join([spell.correction(w)
-            for w in word_tokenize(txt)])
-# 'The quick brown fox mps over the lazy dog'
-</pre>
-</details>
+  spell = SpellChecker()
+  " ".join([spell.correction(w)for w in word_tokenize(txt)])
+  # 'The quick brown fox jumps over the lazy dog'
+  </pre>
+  </details>
 
 ### Stemming
 
-* Le *stemming* (*word-stem*: *racine du mot* en français) consiste à tronquer un mot pour n'en garder que l'information principale — "globalisé", "globalement" et "globales" deviennent "global".
+* Le *stemming* (*word-stem*: *racine du mot* en français) consiste à tronquer un mot pour n'en garder que l'information principale. Par exemple: "globalisé", "globalement" et "globales" deviennent "global".
 
-  On coupe les terminaisons des mots pour réduire la variation des mots (singulier/pluriel, genre, temps, etc), ce qui utile dans la plupart des cas. Cette méthode est couramment utilisée pour améliorer la correspondance entre une recherche utilisateur et un corpus de texte. Il faut cependant être prudent, le stemming peut parfois faire perdre tout sens au mot — en anglais "sing" et "sung" deviennent "s".
+  On coupe les terminaisons des mots pour réduire la variation des mots (singulier/pluriel, genre, temps, etc), ce qui est utile dans la plupart des cas. Cette méthode est couramment utilisée pour améliorer la correspondance entre une recherche utilisateur et un corpus de texte. Il faut cependant être prudent, le stemming peut parfois faire perdre tout sens au mot: par exemple, en anglais "sing" et "sung" deviennent "s".
 
-<details>
-<summary>python</summary>
+  <details>
+  <summary>python</summary>
 
-<pre lang="python">
-from nltk.stem import PorterStemmer
+  <pre lang="python">
+  from nltk.stem import PorterStemmer
 
-txt = "NBC was founded in 1926 making it the oldest major broadcast network in the USA"
+  txt = "NBC was founded in 1926 making it the oldest major broadcast network in the USA"
 
-stemmer = PorterStemmer()
-" ".join([stemmer.stem(w)
-            for w in word_tokenize(txt)])
-# 'nbc wa found in 1926 make it the oldest major broadcast network in the usa'
-</pre>
-</details>
+  stemmer = PorterStemmer()
+  " ".join([stemmer.stem(w) for w in word_tokenize(txt)])
+  # 'nbc wa found in 1926 make it the oldest major broadcast network in the usa'
+  </pre>
+  </details>
 
 ### Lemmatization
 
-* La *lemmatisation* consiste à transformer un mot en sa forme singulier/masculin/infinitif: on se débarrasse  de l'information de temps, genre et nombre.
+* La *lemmatisation* consiste à transformer un mot en sa forme singulier-masculin-infinitif: on se débarrasse de l'information de temps, genre et nombre.
 
-* Pour être fiable, la lemmatisation nécessite de connaître le rôle du mot — un nom, un adjectif, un adverbe, etc. Pour augmenter la performance de la lemmatisation il faut utiliser un algorithme de Part-Of-Speech (POS).
+  Pour être fiable, la lemmatisation nécessite de connaître le rôle du mot — un nom, un adjectif, un adverbe, etc. Pour augmenter la performance de la lemmatisation, il faut utiliser un algorithme de Part-Of-Speech (POS).
 
-<details>
-<summary>python</summary>
+  <details>
+  <summary>python</summary>
 
-<pre lang="python">
-# Lemmatisation nominale
-from nltk.stem import WordNetLemmatizer
+  <pre lang="python">
+  # Lemmatisation nominale
+  from nltk.stem import WordNetLemmatizer
 
-txt = "NBC was founded in 1926 making it the oldest major broadcast network in the USA"
+  txt = "NBC was founded in 1926 making it the oldest major broadcast network in the USA"
 
-lemmatizer = WordNetLemmatizer()
-" ".join([lemmatizer.lemmatize(w)
-            for w in word_tokenize(txt)])
-# 'NBC wa founded in 1926 making it the oldest major broadcast network in the USA'
-</pre>
+  lemmatizer = WordNetLemmatizer()
+  " ".join([lemmatizer.lemmatize(w)
+              for w in word_tokenize(txt)])
+  # 'NBC wa founded in 1926 making it the oldest major broadcast network in the USA'
+  </pre>
 
-<pre lang="python">
-# Lemmatisation avec Part-Of-Speech tags
-from nltk import pos_tag
+  <pre lang="python">
+  # Lemmatisation avec Part-Of-Speech tags
+  from nltk import pos_tag
 
-treebank_wordnet_pos = {
-    'J': 'a', # adjective
-    'V': 'v', # verb
-    'N': 'n', # noun
-    'R': 'r', # adverb
-}
-def get_wordnet_pos(treebank_pos, default='n'):
-    return treebank_wordnet_pos.get(treebank_pos[0], default)
+  treebank_wordnet_pos = {
+      'J': 'a', # adjective
+      'V': 'v', # verb
+      'N': 'n', # noun
+      'R': 'r', # adverb
+  }
+  def get_wordnet_pos(treebank_pos, default='n'):
+      return treebank_wordnet_pos.get(treebank_pos[0], default)
 
-" ".join([lemmatizer.lemmatize(w[0], get_wordnet_pos(w[1]))
-            for w in pos_tag(word_tokenize(txt))])
-# 'NBC be found in 1926 make it the old major broadcast network in the USA'
-</pre>
+  " ".join([lemmatizer.lemmatize(w[0], get_wordnet_pos(w[1]))
+              for w in pos_tag(word_tokenize(txt))])
+  # 'NBC be found in 1926 make it the old major broadcast network in the USA'
+  </pre>
 
-<pre lang="python">
-# Lemmatization d'autres langues qu'anglais
-# https://spacy.io/models/de
+  <pre lang="python">
+  # Lemmatization d'autres langues qu'anglais
+  # https://spacy.io/models/de
 
-!pip install spacy
-!python -m spacy download de_core_news_md
+  !pip install spacy
+  !python -m spacy download de_core_news_md
 
-import spacy
-lemmatizer_de = spacy.load('de_core_news_md')
+  import spacy
+  lemmatizer_de = spacy.load('de_core_news_md')
 
-[(x.lemma_, x.pos_) for x in lemmatizer_de("Leid")]
-# [('Leid', 'NOUN')]
-</pre>
-</details>
+  [(x.lemma_, x.pos_) for x in lemmatizer_de("Leid")]
+  # [('Leid', 'NOUN')]
+  </pre>
+  </details>
 
 ### Synonymes
 
-* On peut remplacer les mots peu courants par leur synonyme le plus commun — ex "cependant", "néanmoins" et "malgré tout" deviennent "mais".
+* On peut remplacer les mots peu courants par leur synonyme le plus commun.  
+  Par exemple: "cependant", "néanmoins" et "malgré tout" deviennent "mais".
+
+  <details>
+  <summary>python</summary>
+
+  <pre lang="python">
+  from nltk.corpus import wordnet as wn
+
+  synonyms = wn.synsets('nonetheless')
+
+  if len(synonyms) != 0:
+      syn = synonyms[0]
+
+      print(syn.pos(), syn._lemma_names[0])
+      # r however
+  </pre>
+  </details>
 
 [Text Preprocessing.ipynb](notebooks/Text Preprocessing.html)
 
@@ -291,53 +306,51 @@ lemmatizer_de = spacy.load('de_core_news_md')
 
 ### Part-of-Speech Tagging
 
-* Part-of-speech tagging [POS] (*étiquetage de la catégorie grammaticale* en français) consiste à identifier le rôle de chaque mot (verbes, noms, adjectifs, etc) suivant le contexte. C'est particulièrement utile pour améliorer la performance de la lemmatisation.
+* Part-of-speech tagging [POS] (*étiquetage de la catégorie grammaticale* en français) consiste à identifier le rôle de chaque mot (verbes, noms, adjectifs, etc) suivant le contexte. C'est particulièrement utile pour améliorer la performance de la lemmatisation.  
+  <ins>Catégories grammaticales</ins>:
 
-  <details>
-  <summary>Catégories grammaticales</summary>
-
-  * <ins>Nom</ins>:  
+  * **Nom**:  
     désigne une personne/endroit (nom propre) ou une chose (nom commun).  
     Ex: France, Napoléon
 
-  * <ins>Pronom</ins>:  
+  * **Pronom**:  
     utilisé pour remplacer un nom  
     Ex: il, lui
 
-  * <ins>Déterminant</ins>:  
+  * **Déterminant**:  
     précise le genre et le nombre d'un mot  
     Ex: un, le, ta, quelques
 
-  * <ins>Verbe</ins>:  
+  * **Verbe**:  
     exprime une action ou un état  
     Ex: étudier, être, avoir
 
-  * <ins>Adjectif</ins>:  
+  * **Adjectif**:  
     modifie ou décrit un nom/pronom  
     Ex: nouveau, bleu
 
-  * <ins>Adverbe</ins>:  
+  * **Adverbe**:  
     modifie ou décrit un verbe, adjectif ou un autre adverbe  
     Ex: tout de suite, vivement
 
-  * <ins>Préposition</ins>:  
+  * **Préposition**:  
     exprime une relation spatialle ou temporelle  
     Ex: sur, vers
 
-  * <ins>Conjonction</ins>:  
+  * **Conjonction**:  
     relie des mots ou phrases  
     Ex: mais, et
 
-  * <ins>Interjection</ins>:  
+  * **Interjection**:  
     exprime une émotion  
     Ex: wow, aïe
 
+  <!--
   [9 parts of speech](https://s3.amazonaws.com/codecademy-content/courses/nlp-regex-parsing/nlp_regex_parsing_part_of_speech_table.pdf)  
+-->
   [upenn_tagset tags examples](https://stackoverflow.com/a/38264311)
-  </details>
 
 * Il existe de nombreux outils pour effectuer un POS automatiquement: NLTK, Spacy, TextBlob, Standford CoreNLP...  
-
   La fonction `pos_tag` de NLTK prend en argument une liste de tokens, dans l'ordre où ils apparaissent dans la phrase, et renvoie la liste de tokens associés à leur [tag POS](https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html) — on a notamment NN pour les noms, VB pour les verbes, RB pour les adverbes, JJ pour les adjectifs et DT pour les déterminants.
 
   <details>
@@ -413,11 +426,9 @@ lemmatizer_de = spacy.load('de_core_news_md')
 
 * Une autre application du POS est le *chunking* (*segmentation* en français):
 
-  * on peut avoir un aperçu du sens d'un texte, en se débarassant des informations superflue.
-
-  * on peut effectuer une analyse de fréquence et identifier les termes importants et récurrents.
-
-  * on peut examiner les choix d'adjectif pour différents sujets et mettre en lumière des biais.
+  * On peut avoir un aperçu du sens d'un texte, en se débarassant des informations superflue.
+  * On peut effectuer une analyse de fréquence et identifier les termes importants et récurrents.
+  * On peut examiner les choix d'adjectif pour différents sujets et mettre en lumière des biais.
 
   Bien qu'on puisse segmenter le texte comme on veut, certains types de segmentation particulièrement utilisés:
 
@@ -458,66 +469,89 @@ lemmatizer_de = spacy.load('de_core_news_md')
 
 ### Named entity recognition
 
-* Named Entity Recognition [NER] (*reconnaissance des entités nommées* en français) consiste à classer les enttiés nommées dans des catégories prédéfinies telles que des noms de personne, d'organisation, de lieux, des expressions de temps, des quantités, etc. NER joue un rôle essentiel dans les chat-box et autres assistants.
+* Named Entity Recognition [NER] (*reconnaissance des entités nommées* en français) consiste à classer les entités nommées dans des catégories prédéfinies telles que des noms de personne, d'organisation, de lieux, des expressions de temps, des quantités, etc. NER joue un rôle essentiel dans les chat-box et autres assistants.
 
   ![](https://i.imgur.com/spw0kxF.jpg)
 
-<details>
-<summary>python</summary>
+  <details>
+  <summary>python</summary>
 
-<pre lang="python">
-from nltk import ne_chunk
+  <pre lang="python">
+  from nltk import pos_tag
+  from nltk.tokenize import word_tokenize
+  from nltk import ne_chunk
 
-res = ne_chunk(tokens_pos, binary=False)
-res
-</pre>
+  txt = 'Prime Minister Narendra Modi on Tuesday announced the 20 Lakh Crore package for the India to fight against the coronavirus pandemic.'
 
-<pre lang="python">
-import spacy
-nlp = spacy.load('en_core_web_sm')
-doc = nlp(txt)
+  tokens_pos = pos_tag(word_tokenize(txt))
+  res = ne_chunk(tokens_pos, binary=False)
+  res
+  '''
+  (S
+    Prime/NNP
+    Minister/NNP
+    (PERSON Narendra/NNP Modi/NNP)
+    on/IN
+  ...
+  '''
+  </pre>
 
-for ent in doc.ents:
-    print(ent.text, ent.label_)
-</pre>
-</details>
+  <pre lang="python">
+
+  !python -m spacy download en_core_web_sm
+
+  import spacy
+  nlp = spacy.load('en_core_web_sm')
+  doc = nlp(txt)
+
+  for ent in doc.ents:
+      print(ent.text, ent.label_)
+  '''
+  Narendra Modi PERSON
+  Tuesday DATE
+  20 CARDINAL
+  Lakh Crore ORG
+  India GPE
+  '''
+  </pre>
+  </details>
 
 ### Dependency grammar trees
 
 * Les Dependency Grammar Trees (*arbres de grammaire de dépendance* en français) permettent de représenter les relations entre les différents mots d'une phrase pour facilement les identifier.
 
-<details>
-<summary>python</summary>
+  <details>
+  <summary>python</summary>
 
-<pre lang="python">
-# Named entity recognition
-import spacy
-nlp = spacy.load('en_core_web_sm')
-doc = nlp(txt)
+  <pre lang="python">
+  # Named entity recognition
+  import spacy
+  nlp = spacy.load('en_core_web_sm')
+  doc = nlp(txt)
 
-# Dependency grammar tree
-from nltk import Tree
+  # Dependency grammar tree
+  from nltk import Tree
 
-def to_nltk_tree(node):
-    if node.n_lefts + node.n_rights > 0:
-        parsed_child_nodes = [to_nltk_tree(child) for child in node.children]
-        return Tree(node.orth_, parsed_child_nodes)
-    else:
-        return node.orth_
+  def to_nltk_tree(node):
+      if node.n_lefts + node.n_rights > 0:
+          parsed_child_nodes = [to_nltk_tree(child) for child in node.children]
+          return Tree(node.orth_, parsed_child_nodes)
+      else:
+          return node.orth_
 
-for sent in doc.sents:
-    to_nltk_tree(sent.root).pretty_print()
+  for sent in doc.sents:
+      to_nltk_tree(sent.root).pretty_print()
 
-'''
-      is
-  ____|_________
- |    |      sentence
- |    |    _____|_______
- |    |   |           simple
- |    |   |             |
-This  !   a           fairly
-'''
-</pre>
-</details>
+  '''
+        is
+    ____|_________
+   |    |      sentence
+   |    |    _____|_______
+   |    |   |           simple
+   |    |   |             |
+  This  !   a           fairly
+  '''
+  </pre>
+  </details>
 
 [Parsing.ipynb](notebooks/Parsing.html)

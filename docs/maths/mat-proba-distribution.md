@@ -137,7 +137,7 @@ binom(5,3) = C(5,3) (0.5)**3 &times; (1 - 0.5)**(5-3)
 
 <pre>
 Ex: Lucas a 20% de chance de réussir un lancer franc.
-Il vaut en faire 4. Quelle est la probabilité  qu'il en réussise exactement 2 sur les 4?
+Il vaut en faire 4. Quelle est la probabilité qu'il en réussise exactement 2 sur les 4?
 
 binom(2,4) = C(4,2) 0.2**2 0.8**2
            = 4!/(2!(4-2)!) &times; 0.04 &times; 0.64

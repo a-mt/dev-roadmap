@@ -97,7 +97,8 @@ Cov(Y,X) & Cov(Y,Y)
 
 ## Corrélation vs Causation
 
-Une *corrélation* signifie que deux variables bougent dans la même direction. Une *causation* signifie que l'une des variables fait changer l'autre.
+Une *corrélation* signifie que deux variables bougent dans la même direction.  
+Une *causation* signifie que l'une des variables fait changer l'autre.
 
 Une corrélation n'implique pas un lien de causalilté. On peut notamment citer 4 cas où causation et corrélation sont souvent mélangées:
 

@@ -22,16 +22,17 @@ Le modèle est entraîné et maintenant quoi?
 
 * Quand on a deux caractéristiques, il est relativement facile de vérifier si le modèle a trouvé un bon compromis entre les deux: il suffit de tracer les données et les valeurs prédites pour évaluer le modèle (comme ci-dessus). Mais quand on a un nombre important de données ou de caractéristiques, ce n'est plus vraiment possible.
 
-  Dans ce cas, on regarde l'erreur des données d'entraînement et l'erreur des données de validation. Si le modèle est mauvais sur les données d'entraînement, c'est qu'il n'a pas réussi à apprendre la tendance (underfit). Si le modèle est performant sur les données d'entraînement mais mauvais sur les données de validation, c'est qu'il a appris du bruit (overfit).
+  Dans ce cas, on regarde l'erreur des données d'entraînement et l'erreur des données de validation. Si le modèle est mauvais sur les données d'entraînement, c'est qu'il n'a pas réussi à apprendre la tendance (*underfit*). Si le modèle est performant sur les données d'entraînement mais mauvais sur les données de validation, c'est qu'il a appris du bruit (*overfit*).
 
+  <br>
   ![](https://i.imgur.com/9HRWJhn.jpg?1)
 
-* Il n'est pas rare que les courbes suivent une courbe "en crosse de hockey": une amélioration rapide au début suivit d'une amélioration graduelle. Ça rend la dernière partie difficile à voir — masquée par le fait que l'échelle utilisée est très grande. Commencer le graphique à partir de l'epoch 10 pour une meilleure visibilité.
-
-  Dans l'exemple ci-dessous, l'écart entre les deux est assez faible et le coût sur les données de validation n'augmente jamais: le modèle est sous-ajusté mais ne parvient pas à apprendre les données.
+* Il n'est pas rare que les courbes suivent une courbe "en crosse de hockey": une amélioration rapide au début suivit d'une amélioration graduelle. Ça rend la dernière partie, celle de l'amélioration graduelle, plus difficile à voir — masquée par le fait que l'échelle utilisée est très grande. Commencer le graphique à partir de l'epoch 10 pour une meilleure visibilité.
 
   ![](https://i.imgur.com/jti3HLam.png)
   ![](https://i.imgur.com/Y7J6Rjem.png)
+
+  Note: dans cet exemple, on peut voir qu'il y a eu une amélioration initiale mais qu'entrainer le modèle plus longtemps n'a pas amélioré les prédictions — le modèle est sous-ajusté mais ne parvient pas à apprendre la tendance.
 
   <details>
   <summary>python</summary>
@@ -53,17 +54,15 @@ Le modèle est entraîné et maintenant quoi?
 
 * Pour mesurer et comparer la performance d'un modèle, il est important de n'utiliser qu'une seule métrique. On peut vérifier que le coût d'un modèle (résultat de la fonction coût, que l'algorithme cherche à minimiser) pour s'assurer qu'il diminue bien, mais c'est une métrique difficile à interpréter — une erreur importante peut être acceptable suivant l'échelle des données.
 
-  On va généralement préférer utiliser l'exactitude (*accuracy* en anglais), qui est le rapport entre les prédictions correctes et le total des prédictions
+  On va généralement préférer utiliser l'exactitude (*accuracy* en anglais), qui est le rapport entre le nombre de prédictions correctes et le nombre total de prédictions. Une exactitude de 1.0 (100%) indique que le modèle ne se trompe jamais.
 
   $$
   \text{Accuracy} = \frac{\text{nb correct}}{\text{nb total}}
   $$
 
-   Une exactitude de 1.0 (100%) indique que le modèle ne se trompe jamais.
-
 * Il existe un cas qui rend les choses plus difficiles: les classes asymmétriques — quand une classe est sur-représentée par rapport à une autre.
 
-  Exemple: on veut prédire si les patients ont un cancer. Notre modèle a une exactitude de 99.5%, ça semble impressionant, sauf que seul 0.5% des patients du dataset ont un cancer. Le modèle suivant a une exactitude de 99.5 (il échoue toujours à prédire un cancer):
+  Exemple: on veut prédire si les patients ont un cancer, et on trouve un modèle avec une exactitude de 99.5%. Ça semble impressionant, sauf que seul 0.5% des patients du dataset ont un cancer: un modèle qui prédira toujours que le patient n'a pas de cancer a une exactitude de 99.5% — mais il échoue toujours à prédire un cancer
 
   ``` matlab
   function y = predictCancer(x)
@@ -71,102 +70,132 @@ Le modèle est entraîné et maintenant quoi?
   return
   ```
 
+  Pour cette raison, quand on mesure la performance d'un modèle de classification où les classes ne sont pas réparties uniformément, on utilisera non plus l'exactitude du modèle mais le f-score — qui prend en compte les faux-positifs et faux-négatifs.
+
+### Faux-positif & cie
+
+* Tout d'abord, il faut comprendre ce qu'est un faux-positif et un faux-négatif.  
+  "Positif" désigne ce qu'on cherche à prédire: si on veut détecter les spams, un spam sera "positif" et un non-spam sera "négatif".
+  Si la prédiction est correcte on a "vrai", et sinon "faux". On aura donc par exemple:
+
+  - des Vrai positifs: 45 emails spam sont classifiés spam (correct)
+  - des Vrai négatifs: 30 emails non-spam sont classifiés non-spam (correct)
+  - des Faux positifs: 5 emails non-spam sont classifiés spam (incorrect)
+  - des Faux négatifs: 20 emails spam sont classifiés non-spam (incorrect)
+
+* On représente généralement les différents cas dans une <ins>matrice de confusion</ins>:  
+
+  ![](https://i.imgur.com/ASJCZrIm.png)
+
 ### F-score
 
-* Pour cette raison, quand on mesure la performance d'un modèle de classification où les classes ne sont pas réparties uniformément, on utilisera non plus l'exactitude du modèle mais le f-score — qui prend en compte les faux-positifs et faux-négatifs:
+* On dispose de différentes formules pour calculer la susceptibilité d'un modèle  
+  à produire des faux-positifs, vrai-positifs, etc
 
-  * Exactitude  
-    *Accuracy*  
-    Un modèle qui prédit toujours la bonne valeur a une exactitude de 1.0
+  ![](https://i.imgur.com/J2ou1rWl.png)
 
-    $$
-    \text{Accuracy} \\[5pt]
-    \begin{aligned}
-    &= P(\text{Prédire vrai | Vrai}) + P(\text{Prédire faux | Faux}) \\[5pt]
-    &= \frac{\text{Vrai Positif} + \text{Vrai Négatif}}{\text{Vrai Positif + Faux Positif} + \text{Vrai Negatif + Faux Negatif}} \\[5pt]
-    &= \frac{VP + VN}{VP + FP + VN + FN}
-    \end{aligned}
-    $$
+* Exactitude (*Accuracy*)  
+  Correctement prédits / total  
+  Un modèle qui prédit toujours la bonne valeur a une exactitude de 1.0
 
-  * Sensibilité, rappel  
-    *Recall* (*Sensitivity*, *True positive rate*)  
-    Probabilité que le test soit positif si une personne est malade. Les tests très sensibles sont surtout utiles pour s'assurer qu'une maladie n'est pas présente (peu de faux négatifs)  
-    Un modèle qui ne produit aucun faux-négatif a un rappel de 1.0
+  $$
+  \text{Accuracy} \\[5pt]
+  \begin{aligned}
+  &= P(\text{Prédire vrai | Vrai}) + P(\text{Prédire faux | Faux}) \\[5pt]
+  &= \frac{\text{Vrai Positif} + \text{Vrai Négatif}}{\text{Vrai Positif + Faux Positif} + \text{Vrai Negatif + Faux Negatif}} \\[5pt]
+  &= \frac{VP + VN}{VP + FP + VN + FN}
+  \end{aligned}
+  $$
 
-    $$
-    \text{Recall} \\[5pt]
-    \begin{aligned}
-    &= P(\text{Prédire vrai | Vrai}) \\[5pt]
-    &= \frac{\text{Vrai Positif}}{\text{Vrai Positif + Faux Negatif}} \\[5pt]
-    &= \frac{VP}{VP + FN}
-    \end{aligned}
-    $$
+* Sensibilité, rappel (*Recall*, *Sensitivity*, *True positive rate*)  
+  Correctement prédits positifs / véritablement positifs
 
-  * Spécificité  
-    *Specificity* (*True negative rate*)  
-    Probabilité que le test soit négatif si une personne n'est pas malade. Les tests très spécifiques sont utiles pour s'assurer qu'une maladie est bien présente (peu de faux positifs)
+  La sensibilité consiste à calculer le nombre de cas correctement prédits positifs (Vrai positif) parmi le nombre de cas véritablement positifs.
+  Le nombre de cas véritablement positifs est la somme des cas correctement prédits positifs + les cas incorrectement prédits négatifs (Vrai positif + Faux négatif).  
+  Un modèle qui ne produit aucun faux-négatif a une sensibilité de 1.0
 
-    $$
-    \text{Specificity} \\[5pt]
-    \begin{aligned}
-    &= P(\text{Prédire faux | Faux}) \\[5pt]
-    &= \frac{\text{Vrai Negatif}}{\text{Vrai Negatif + Faux Positif}} \\[5pt]
-    &= \frac{VN}{VN + FP}
-    \end{aligned}
-    $$
+  $$
+  \text{Recall} \\[5pt]
+  \begin{aligned}
+  &= P(\text{Prédire vrai | Vrai}) \\[5pt]
+  &= \frac{\text{Vrai Positif}}{\text{Vrai Positif + Faux Negatif}} \\[5pt]
+  &= \frac{VP}{VP + FN}
+  \end{aligned}
+  $$
 
-  * Précision, fidélité, valeur prédictive positive  
-    *Precision* (*Positive predicted value*)  
-    Probabilité qu'une personne soit malade si le test est positif.  
-    Un modèle qui ne produit aucun faux-positif a une précision de 1.0
+* Spécificité (*Specificity*, *True negative rate*)  
+  Correctement prédits négatifs / véritablement négatifs
 
-    $$
-    \text{Precision} \\[5pt]
-    \begin{aligned}
-    &= P(\text{Vrai | Prédit vrai}) \\[5pt]
-    &= \frac{\text{Vrai Positif}}{\text{Vrai Positif + Faux Positif}} \\[5pt]
-    &= \frac{VP}{VP + FP}
-    \end{aligned}
-    $$
+  La spécificité calcule le nombre de cas correctement prédits négatifs (Vrai négatif) parmi le nombre de cas véritablement négatifs.
+  Le nombre de cas véritablement négatifs est la somme des cas correctement prédits négatifs + les cas incorrectement prédits positifs (Vrai négatif + Faux positif).
 
-  * Valeur prédictive négative  
-    *Negative predicted value*  
-    Probabilité qu'une personne ne soit pas malade si le test est négatif.
+  $$
+  \text{Specificity} \\[5pt]
+  \begin{aligned}
+  &= P(\text{Prédire faux | Faux}) \\[5pt]
+  &= \frac{\text{Vrai Negatif}}{\text{Vrai Negatif + Faux Positif}} \\[5pt]
+  &= \frac{VN}{VN + FP}
+  \end{aligned}
+  $$
 
-    $$
-    \text{Valeur prédictive négative} \\[5pt]
-    \begin{aligned}
-    &= P(\text{Faux | Prédit faux}) \\[5pt]
-    &= \frac{\text{Vrai Negatif}}{\text{Vrai Negatif + Faux Negatif}} \\[5pt]
-    &= \frac{VN}{VN + FN}
-    \end{aligned}
-    $$
+* Précision, fidélité, valeur prédictive positive (*Precision*, *Positive predicted value*)  
+  Correctement prédits positifs / prédits positifs
 
-  * F-score  
-    *F-score* (*Harmonic mean of precision and recall*)  
-     Moyenne harmonique de la précision et du rappel.  
-     Un modèle qui ne commet aucune erreur a un score de 1.0
+  La précision calcule le nombre de cas correctement prédits positifs (Vrai positif) parmi le nombre de cas prédits positifs.
+  Le nombre de cas prédits positifs est la somme des cas correctement prédits positifs + les cas incorrectement prédits positifs (Vrai positif + Faux positif).  
+  Un modèle qui ne produit aucun faux-positif a une précision de 1.0
 
-     &beta; est un facteur qui vaudra typiquement 0.5, 1 ou 2 — on donne &beta; fois plus d'importance au rappel qu'à la précision.  
-    Si les faux-positif sont pires que les faux-négatif, viser une plus grande précision.  
-    Si les faux-négatif sont pires que les faux-positif, viser un plus grand rappel.
+  $$
+  \text{Precision} \\[5pt]
+  \begin{aligned}
+  &= P(\text{Vrai | Prédit vrai}) \\[5pt]
+  &= \frac{\text{Vrai Positif}}{\text{Vrai Positif + Faux Positif}} \\[5pt]
+  &= \frac{VP}{VP + FP}
+  \end{aligned}
+  $$
 
-    $$
-    \text{F beta score} \\
-    \begin{aligned}
-    &= \frac{(1 + \beta^2)(\text{Precision} \cdot \text{Recall})}{\beta^2 \text{Precision} + \text{Recall}} \\
-    &= \frac{(1 + \beta^2) VP}{(1 + \beta^2) VP + \beta^2 FN + FP}
-    \end{aligned}
-    $$
+* Valeur prédictive négative (*Negative predicted value*)   
+  Correctement prédits négatifs / prédits négatifs
 
-    Si &beta; = 1, alors on donne autant d'importance au rappel qu'à la précision, c'est ce qu'on appelle le F1-score.
+  La Valeur prédictive négative calcule le nombre de cas correctement prédits négatifs (Vrai négatif) parmi le nombre de cas prédits négatifs.
+  Le nombre de cas prédits négatifs est la somme des cas correctement prédits négatifs + les cas incorrectement prédits négatifs (Vrai négatif + Faux négatif)
 
-    $$
-    \text{F1 score} \\
-    = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
-    $$
+  $$
+  \text{Valeur prédictive négative} \\[5pt]
+  \begin{aligned}
+  &= P(\text{Faux | Prédit faux}) \\[5pt]
+  &= \frac{\text{Vrai Negatif}}{\text{Vrai Negatif + Faux Negatif}} \\[5pt]
+  &= \frac{VN}{VN + FN}
+  \end{aligned}
+  $$
 
-  [International vocabulary of metrology — Vocabulaire international de métrologie](https://www.bipm.org/utils/common/documents/jcgm/JCGM_200_2008.pdf)
+* On cherche des valeurs élevées de précision et de valeur prédictive négative (= une valeur élevée de correctement prédit / total prédit) quand on veut limiter le nombre de mauvaises prédictions (limiter les faux-positif) — on ne veut pas dire pas à une personne qu'elle a un cancer alors que ce n'est pas le cas, donc on choisit une précision élevée.
+
+  On cherche des valeurs élevées de sensibilité et spécificité (= une valeur élevée de correctement prédit / total vérité) quand on veut limiter le nombre de mauvaises exclusions (limiter les faux-négatif) — on veut s'assurer qu'une maladie n'est pas présente, donc on choisit une sensibilité elevée.
+
+  Lorsqu'on augmente le taux de sensibilité, le taux de précision diminue: il faut choisir un compromis entre les deux.  
+  Si les faux-positif sont pires que les faux-négatif, viser une plus grande précision.  
+  Si les faux-négatif sont pires que les faux-positif, viser un plus grand rappel / plus grande sensibilité.
+
+* F-score (*F-score*, *Harmonic mean of precision and recall*)  
+  Moyenne harmonique de la précision et du rappel.  
+  Un modèle qui ne commet aucune erreur a un score de 1.0
+
+  $$
+  \text{F beta score} \\
+  \begin{aligned}
+  &= \frac{(1 + \beta^2)(\text{Precision} \cdot \text{Recall})}{\beta^2 \text{Precision} + \text{Recall}} \\
+  &= \frac{(1 + \beta^2) VP}{(1 + \beta^2) VP + \beta^2 FN + FP}
+  \end{aligned}
+  $$
+
+  &beta; est un facteur qui vaudra typiquement 0.5, 1 ou 2 — on donne &beta; fois plus d'importance au rappel qu'à la précision.  
+  Si &beta; = 1, alors on donne autant d'importance au rappel qu'à la précision, c'est ce qu'on appelle le F1-score.
+
+  $$
+  \text{F1 score} \\
+  = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+  $$
 
   <details>
   <summary>python</summary>
@@ -181,16 +210,15 @@ Le modèle est entraîné et maintenant quoi?
 ## Vérifier les erreurs commises
 
 * Deuxième étape pour évaluer le modèle: vérifier les erreurs commises.  
-  Dans le cas de données catégoriques, on utilise une matrice de confusion.
-
-* On liste généralement les valeurs cibles possibles en ordonnée (à la verticale) et les valeurs prédites en abscisse (à l'horizontale) — mais ce n'est pas toujours le cas, vérifier la légende des axes. À l'intersection des deux, on indique le nombre de fois que cette combinaison prédiction/réalité s'est produit.
+  On liste généralement les valeurs cibles possibles en ordonnée (à la verticale) et les valeurs prédites en abscisse (à l'horizontale) — mais ce n'est pas toujours le cas, vérifier la légende des axes. À l'intersection des deux, on indique le nombre de fois que cette combinaison prédiction/réalité s'est produit.
 
   Dans l'exemple ci-dessous, le modèle a prédit 17 fois le label "3" alors que le véritable label était "5".  
-  Sur la diagonale principale (&LowerRightArrow;), on trouve le nombre de fois que le modèle a prédit les bonnes valeurs.
+  Sur la diagonale principale (➘), on trouve le nombre de fois que le modèle a prédit les bonnes valeurs.
 
   ![](https://i.imgur.com/ubURMBe.png)
 
-  Si certaines erreurs se produisent souvent, vérifier si ces erreurs sont légitimes.
+  Si certaines erreurs se produisent souvent, vérifier si ces erreurs sont légitimes.  
+  Par exemple: est-ce qu'un humain aurait pu confondre le 4 pour un 9?
 
   ![](https://i.imgur.com/oYnLVHx.png)
 

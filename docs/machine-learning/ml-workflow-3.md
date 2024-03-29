@@ -8,39 +8,39 @@ latex: true
 
 (*Data cleaning* ou *data cleansing* en anglais)
 
-Après une première phase de nettoyage "en superficie" — formattage — des données, l'analyse des données (*exploratory data analysis [EDA]*) va nous permettre de creuser plus en profondeur et s'assurer que les données utilisées sont correctes pour construire le modèle.
+Après une première phase de nettoyage "en superficie" — le formattage — des données, l'analyse des données (*exploratory data analysis [EDA]*) consiste à creuser plus en profondeur et à s'assurer que les données utilisées sont correctes pour construire le modèle.
 
 ### Données manquantes
 
 Vérifier la présence de <ins>données manquantes</ins>. Les valeurs manquantes peuvent fausser les outils statistiques tels que la moyenne, la variance et le pourcentage, ce qui peut mener à des conclusions trompeuses et expliquer un modèle peu performant.
 
-* Si la plupart des valeurs d'une caractéristique sont manquantes, on peut juste <ins>supprimer</ins> la caractéristique.
+* Si la plupart des valeurs d'une caractéristique sont manquantes, on peut juste <ins>supprimer la caractéristique</ins>.
 
   ![](https://i.imgur.com/HioR3o6.png)
 
     <details>
     <summary>python</summary>
 
-    <pre lang="python>
+    <pre lang="python">
     # Supprimer les colonnes données
     reduced_X_train = X_train.drop(cols_with_missing, axis=1)
     reduced_X_valid = X_valid.drop(cols_with_missing, axis=1)
     </pre>
     </details>
 
-* Si certaines valeurs d'une caractéristique sont manquantes, et qu'une valeur manquante n'a pas de signification particulière, on peut juste supprimer les lignes qui ont des valeurs manquantes.
+* Si certaines valeurs d'une caractéristique sont manquantes, et qu'une valeur manquante n'a pas de signification particulière, on peut juste <ins>supprimer les cas</ins> qui ont des valeurs manquantes.
 
     <details>
     <summary>python</summary>
 
-    <pre lang="python>
+    <pre lang="python">
     # Supprimer les lignes avec des données manquantes
     melbourne_data = melbourne_data.dropna(axis=0)
     </pre>
     </details>
 
 * On peut aussi <ins>imputer</ins> les valeurs manquantes, c'est à dire les remplacer avec une valeur donnée — ce peut être une constante (comme 0) mais aussi le mode, la moyenne ou la valeur la plus fréquente.  
-Ça permet généralement d'obtenir des modèles plus précis que si on supprime complètement la caractéristique — c'est souvent la médiane qui donne les meilleurs résultats.
+Ça permet généralement d'obtenir des modèles plus précis que si on supprime complètement la caractéristique — et c'est souvent la médiane qui donne les meilleurs résultats.
 
   ![](https://i.imgur.com/PD10qMp.png)
 
@@ -53,7 +53,7 @@ Vérifier la présence de <ins>données manquantes</ins>. Les valeurs manquantes
     df['glucose'] = df['glucose'].fillna(med)
     </pre>
 
-    <pre lang="python>
+    <pre lang="python">
     from sklearn.impute import SimpleImputer
 
     # Imputation
@@ -67,7 +67,7 @@ Vérifier la présence de <ins>données manquantes</ins>. Les valeurs manquantes
     </pre>
     </details>
 
-* Dernière alternative, <ins>marquer</ins> les lignes pour lesquelles la valeur est manquante.
+* Dernière alternative, <ins>marquer</ins> les cas pour lesquelles la valeur est manquante avec une nouvelle caractéristique.
 
   ![](https://i.imgur.com/AbLnxWC.png)
 
@@ -78,7 +78,7 @@ Vérifier la présence de <ins>données manquantes</ins>. Les valeurs manquantes
     df['sub_area'] = df['sub_area'].fillna('_MISSING_')
     </pre>
 
-    <pre lang="python>
+    <pre lang="python">
     # Copier les données originales
     X_train_plus = X_train.copy()
     X_valid_plus = X_valid.copy()
@@ -101,7 +101,7 @@ Vérifier la présence de <ins>données manquantes</ins>. Les valeurs manquantes
 
 ### Données catégoriques
 
-1. Identifier toutes les caractéristiques catégoriques comme telles. Une colonne contenant des valeurs 1,2,3,etc sera a priori considérée comme numérique. Si les numéros sont des labels (ex: siège 1,2,3), alors il faut caster la caractéristique — puisque ça n'aurait pas de sens de calculer la moyenne de valeurs catégoriques.
+1. Identifier toutes les caractéristiques catégoriques comme telles. Une colonne contenant des valeurs 1,2,3,etc sera a priori considérée comme numérique. Si les numéros sont des labels (ex: siège 1,2,3), alors il faut caster cette caractéristique — puisque ça n'aurait pas de sens de calculer la moyenne de valeurs catégoriques.
 
 2. Certains algorithmes ne peuvent gérer que des valeurs numériques. En cas de valeurs catégoriques, on peut:
 
@@ -110,14 +110,16 @@ Vérifier la présence de <ins>données manquantes</ins>. Les valeurs manquantes
 
    * <ins>Encoder les labels</ins> (*label encoding*)  
      Assigner un entier à chaque valeur différente.  
-    Cette approche est appropriée s'il existe un ordre logique entre les différentes catégories. Exemple: non (0), oui (1) / jamais (0), rarement (1), la plupart du temps (2), tous les jours (3)
+     Cette approche est appropriée s'il existe un ordre logique entre les différentes catégories. Par exemple:  
+     non (0), oui (1)  
+     jamais (0), rarement (1), la plupart du temps (2), tous les jours (3)
 
      ![](https://i.imgur.com/poo8NDm.png)
 
      <details>
      <summary>python</summary>
 
-     <pre lang="python>
+     <pre lang="python">
      from sklearn.preprocessing import LabelEncoder
      label_encoder = LabelEncoder()
      labels = {}
@@ -128,7 +130,7 @@ Vérifier la présence de <ins>données manquantes</ins>. Les valeurs manquantes
          labels[col]  = list(encoder.classes_)
      </pre>
 
-     <pre lang="python>
+     <pre lang="python">
      values        = df.sex.astype('category')
      df['sex']     = values.cat.codes
      labels['sex'] = values.cat.categories
@@ -171,7 +173,7 @@ Vérifier la présence de <ins>données manquantes</ins>. Les valeurs manquantes
       </pre>
       </details>
 
-   * <ins>Encoder le compte</ins> (*count encoding*)  
+   * <ins>Encoder le décompte</ins> (*count encoding*)  
      Remplacer chaque valeur catégorique par le nombre de fois qu'elle apparaît dans les données. Si la valeur "GB" apparaît 10 fois dans la colonne "pays", "GB" sera remplacée par 10.
 
       <details>
@@ -248,23 +250,29 @@ data['second'] = data['click_time'].dt.second.astype('uint8')
   ![](https://i.imgur.com/7S5qPUam.jpg?1)
 
 * Typiquement, on considère comme extrêmes
-  * les valeurs inférieures au 1er quartile (Q1) moins une déviation standard de 1,5 de l'écart interquartile (IQR = Q3 - Q1):
+  * les valeurs inférieures au 1er quartile moins une déviation standard de 1.5 fois l'écart interquartile (IQR = Q3 - Q1):
 
     ```
-    Extrême si > Q1 - 1.5 × IQR
+    Seuil min = Q1 - 1.5 × IQR
+    Extrême si < seuil min
     ```
 
-  * les valeurs supérieures au 3ème quartile (Q3) plus une déviation standard de 1,5 de l'écart interquartile:
+  * les valeurs supérieures au 3ème quartile plus une déviation standard de 1.5 fois l'écart interquartile:
 
     ```
-    Extrême si < Q3 + 1.5 × IQR
+    Seuil max = Q3 + 1.5 × IQR
+    Extrême si > seuil max
     ```
 
-* Les données extrêmes peuvent résulter d'erreurs de traitement (auquel cas on peut simplement les supprimer) ou peuvent être légitimes. Si elles représentent moins de 2% de l'ensemble de données, généralement on va simplement les supprimer, mais tout dépend de la solution qu'on cherche à développer:
+* Les données extrêmes peuvent résulter
 
-  * Si on regarde le salaire moyen d'une population, le revenus des millionaires doit-il être exclus?
+  - d'une erreur de traitement.  
+    Si elles représentent moins de 2% de l'ensemble de données, on va généralement simplement les supprimer
 
-  * Si on regarde les logs d'un site web et qu'un ID de session revient sans cesse (sûrement un bot) faut-il considérer ces logs?
+  - ou être légitimes.  
+    Auquel cas, les garder ou non dépendra de la solution qu'on cherche à développer:  
+    - Si on regarde le salaire moyen d'une population, le revenus des millionaires doit-il être exclu?  
+    - Si on regarde les logs d'un site web et qu'un ID de session revient sans cesse (sûrement un bot) faut-il considérer ces logs?
 
 ### Corrélations
 
@@ -286,10 +294,10 @@ data['second'] = data['click_time'].dt.second.astype('uint8')
 
   Si la déviation standard des données est de plus de 30%, il y a beaucoup de bruit dans les données, le modèle ne s'entraînera pas bien.
 
-* Vérifier les corrélations entre les différentes caractéristiques.  
+* Vérifier les corrélations entre les différentes entrées.  
   La plupart des modèles requièrent que les caractéristiques ne soient pas corrélées pour fonctionner correctement. S'il y a une corrélation, ne garder qu'une des deux caractéristiques (ex: soit l'âge soit l'année de naissance, soit le pays soit la ville, etc).
 
-* Notons que le coefficient de corrélation de Pearson (méthode utilisée par défaut par Pandas, le package usuellement utilisé pour analyser les données) ne permet de vérifier que les relations linéaires.
+* Notons que le coefficient de corrélation de Pearson (méthode utilisée par défaut par Pandas, package souvent utilisé pour analyser les données) ne permet de vérifier que les relations linéaires.
 
   ![](https://i.imgur.com/mVvshnu.png)
 
@@ -355,12 +363,13 @@ On prend un peu d'avance, mais après avoir entraîné le modèle on devra égal
 
 (*Feature scaling* en anglais)
 
-Il est parfois nécessaire de mettre les données à l'échelle pour que l'algorithme utilisé fonctionne correctement.
+Il est parfois nécessaire de mettre les données à l'échelle pour que l'algorithme utilisé fonctionne correctement.  
+Une bonne pratique est de tester le modèle avec et sans mise à échelle, et comparer leurs performances.
 
 * <ins>**Normaliser**</ins>  
-  Un dollar américain vaut environ 100 yens, si on ne change pas l'échelle des données alors des méthodes telles que SVM ou KNN considérerons une différence de 1 yen comme aussi importante qu'une différence de 1 USD.
+  Un dollar américain vaut environ 100 yens, si on ne change pas l'échelle des données alors des méthodes telles que SVM ou KNN vont considérer qu'une différence de 1 yen est aussi importante qu'une différence de 1 USD.
 
-  La normalisation consiste à mettre les valeurs dont on dispose dans une plage resteinte — typiquement [0,1] ou [-1,1]. On change l'intervalle des données.
+  La normalisation consiste à modifier l'intervalle des données: on met les valeurs dont on dispose dans une plage resteinte — typiquement [0,1] ou [-1,1].
 
   $$
   \text{Normalisation moyenne (-1, 1)} \\
@@ -378,7 +387,6 @@ Il est parfois nécessaire de mettre les données à l'échelle pour que l'algor
   <summary>python</summary>
 
   <pre lang="python">
-  # for min_max scaling
   from mlxtend.preprocessing import minmax_scaling
 
   # generate 1000 data points randomly drawn from an exponential distribution
@@ -404,15 +412,12 @@ Il est parfois nécessaire de mettre les données à l'échelle pour que l'algor
   <summary>python</summary>
 
   <pre lang="python">
-  # for Box-Cox Transformation
   from scipy import stats
 
-  # normalize the exponential data with boxcox
+  # normalize the exponential data with a Box-Cox Transformation
   normalized_data = stats.boxcox(original_data)
   </pre>
   </details>
-
-Une bonne pratique est de tester le modèle avec et sans mise à échelle, et comparer leurs performances.
 
 Pour aller plus loin:
 [Data Cleaning in Python: the Ultimate Guide (2020)](https://towardsdatascience.com/data-cleaning-in-python-the-ultimate-guide-2020-c63b88bf0a0d)

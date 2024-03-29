@@ -430,6 +430,6 @@ P(homme | sein cancer) = (P(cancer sein | homme) &times; P(homme)) / P(cancer se
                        = (0.001 &times; 0.5) / 0.063
                        &asymp; 0.0079 &asymp; 0.79%
 
-C'est donc assez peu probable — mais la probabilité que ce soit un homme
+C'est donc assez peu probable (moins de 1%) — mais la probabilité que ce soit un homme
 est peut-être plus élevée que vous ne l'auriez anticipé.
 </pre>

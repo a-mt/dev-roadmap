@@ -13,7 +13,7 @@ Certaines techniques d'optimisations sont spécifiques aux différents algorithm
 * ?NN: régularisation batchnorm, dropout, early stopping, transfer learning
 * CNN: augmentation des images
 
-D'autres vont pouvoir être applicable dans la majorité si ce n'est tous les algorithmes:
+D'autres vont pouvoir être applicable dans la majorité des algorithmes, si ce n'est tous:
 
 * Cross-validation
 * Classification: Réequilibrer les classes
@@ -24,9 +24,9 @@ D'autres vont pouvoir être applicable dans la majorité si ce n'est tous les al
 
 ## Cross-validation
 
-* Pour pouvoir évaluer les performances du modèle, on partitionne l'ensemble de données de départ en deux: train/test set. Si entre les deux, on veut adjuster le modèle (par exemple modifier les hyperparamètres pour améliorer les performances du modèle), alors on utilise un troisième groupe: validation set.
+* Pour rappeler l'intérêt du dataset de validation:  
+  Pour pouvoir évaluer les performances du modèle, on partitionne l'ensemble de données de départ en deux: train/test set. Si entre les deux, on veut adjuster le modèle (par exemple modifier les hyperparamètres pour améliorer les performances du modèle), alors on utilise un troisième groupe: le validation set. On a donc
 
-  On a donc
   * un <ins>train set</ins>,  
     utilisé pour entraîner le modèle,
 
@@ -36,13 +36,12 @@ D'autres vont pouvoir être applicable dans la majorité si ce n'est tous les al
   * un <ins>test set</ins>,  
     utilisé pour vérifier les performances du modèle sur des données qu'il n'a jamais vu auparavant.
 
-* Sauf qu'en partitionnant l'ensemble de données en trois sous-ensembles, on réduit considérablement le nombre de données qui peuvent être utilisées pour entraîner le modèle. Si l'ensemble de données de départ était déjà relativement petit, le train set sera probablement trop  petit pour pouvoir construire un bon modèle.
+* Sauf qu'en partitionnant l'ensemble de données en trois sous-ensembles, on réduit considérablement le nombre de données qui peuvent être utilisées pour entraîner le modèle. Si l'ensemble de données de départ était déjà relativement petit, le *train set* sera probablement trop  petit pour pouvoir construire un bon modèle.
 
-  Autre risque: si le validation set est petit, il risque de ne pas être fiable — si on utilise 2-3 données pour comparer les performances de différents modèle, le choix de celui qui aura les meilleures prédictions sera surtout une question de chance.
+  Autre risque: si le *validation set* est petit, il risque de ne pas être fiable — si on utilise 2-3 données pour comparer les performances de différents modèle, que l'un ait de meilleures prédictions que l'autre sera surtout une question de chance.
 
-  Pour parer à ce problème, on peut utiliser la *cross-validation* (*validation croisée* en français).
-
-* La cross-validation K-fold consiste à exécuter l'algorithme et évaluer ses performances sur différents sous-ensembles de données comme suit:
+* Pour parer ce problème, on peut utiliser la *cross-validation* (*validation croisée* en français).  
+  La cross-validation K-fold consiste à exécuter l'algorithme et évaluer ses performances sur différents sous-ensembles de données comme suit:
 
   * On sépare les données en K segments
   * On entraîne les données sur K-1 segments et on mesure les performances du modèle sur le segment restant. On répète ce processus K fois, en utilisant un segment différent à chaque fois pour mesurer les performances.
@@ -50,9 +49,9 @@ D'autres vont pouvoir être applicable dans la majorité si ce n'est tous les al
 
   ![](https://i.imgur.com/j9V3l8P.png)
 
-  En additionnant toutes ces itérations, 100% des données sont utilisées pour l'entraînement, et le score de performance est plus fiable, puisque c'est une moyenne calculée sur différents sous-ensembles.
+  En additionnant toutes ces itérations, 100% des données (hormi le test set) sont utilisées pour l'entraînement, et le score de performance est plus fiable, puisque c'est une moyenne calculée sur différents sous-ensembles.
 
-* Si l'ensemble de données a un ordre chronologique, alors on ne peut pas utiliser la cross-validation K-fold, mais on peut utiliser une technique de forward chaining: on entraîne le modèle sur des données passées puis on teste ses performances sur des données futures:
+* Si l'ensemble de données a un ordre chronologique, alors on ne peut pas utiliser la cross-validation K-fold, mais on peut utiliser une technique de *forward chaining*: on entraîne le modèle sur des données passées puis on teste ses performances sur des données futures:
 
   * fold 1: train [1], test [2]
   * fold 2: train [1 2], test [3]
@@ -67,7 +66,7 @@ D'autres vont pouvoir être applicable dans la majorité si ce n'est tous les al
 
 ### Up-sampling de la classe minoritaire
 
-* *Up-sampling* (*sur-échantillonage* en français) consiste à dupliquer aléatoirement des observations d'une classe minoritaire pour renforcer son signal.
+* Le *up-sampling* (*sur-échantillonage* en français) consiste à dupliquer aléatoirement des observations d'une classe minoritaire pour renforcer son signal.
 
   * <ins>avec remplacement</ins>:  
     La probabilité de choisir l'élément x après avoir tiré l'élément y est 1/n: chaque tirage est indépendant, l'un n'influence pas l'autre. Mathématiquement, ça veut dire que la covariance entre les deux est 0.
@@ -122,11 +121,11 @@ df_up.balance.value_counts()
 
 ### SMOTE
 
-* SMOTE (Synthetic Minority Oversampling Technique) consiste à créer de nouvelles données minoritaires entre les données minoritaires existantes.
+* La technique SMOTE (*Synthetic Minority Oversampling Technique*) consiste à créer de nouvelles données minoritaires entre les données minoritaires existantes.
 
   1. Sélectionner une donnée minoritaire (a)
   2. Sélectionner k données minoritaires les plus proches de a (B)
-  3. Pour chacunes de données voisines (b):
+  3. Pour chacunes des données voisines sélectionnées (b):
 
      * Calculer la distance entre a et b (pour chacun des attributs)
      * Multiplier la distance par un nombre aléatoire entre 0 et 1
@@ -188,7 +187,7 @@ df_down.balance.value_counts()
 
 ### NearMiss
 
-* NearMiss consiste à supprimer des données majoritaires les plus éloignées de la classe minoritaire — pour garder un maximum de points proches de la limite de décision.
+* Le NearMiss consiste à supprimer les données majoritaires les plus éloignées de la classe minoritaire — pour garder un maximum de points proches de la limite de décision.
 
   1. Calculer les distances entre les observations de la classe majoritaire et les observations de la classe minoritaire (en utilisant K-Nearest Neighbors).
 
@@ -205,7 +204,7 @@ Pour aller plus loin:
 
 ## Ajuster les hyperparamètres
 
-Différents algorithmes vont avoir différents hyperparamètres, des paramètres qui ne sont pas appris par l'algorithme mais définis par le développeur — par exemple, la fonction d'hypothèse, la fonction coût, la fonction d'optimisation, le nombre K à utiliser pour K-means, etc.  
+Différents algorithmes vont avoir différents hyperparamètres, des paramètres qui ne sont pas appris par l'algorithme mais définis par le développeur — par exemple: la fonction d'hypothèse, la fonction coût, la fonction d'optimisation, le nombre K à utiliser dans K-means, etc.  
    Quand on utilise un framework tel que Keras ou scikit-learn, les hyperparamètres ont une valeur par défaut. On commence généralement avec les valeurs par défaut et, après évaluation, on vient modifier les hyperparamètres. Le but étant de trouver la combinaison d'hyperparamètes avec laquelle le modèle est le plus performant. Pour ce faire, on peut utiliser:
 
 * <ins>L'approche manuelle</ins>  
@@ -312,13 +311,13 @@ Pour aller plus loin:
 
 ## Techniques d'ensemble
 
-Un modèle aura toujours ses forces et ses faiblesses — il reconnaîtra certains modèles, mais passera à côté des autres. Pour rendre les prédictions plus fiables, on peut construire différents modèles et les laisser "voter" la prédiction finale. Ça permet d'exploiter les points forts de différents modèles et les résultats seront généralement meilleurs que les résultats d'un seul modèle. Plusieurs approches existent pour parvenir à ce but.
+Un modèle aura toujours ses forces et ses faiblesses — il reconnaîtra certaines tendances, mais passera à côté des autres. Pour rendre les prédictions plus fiables, on peut construire différents modèles et les laisser "voter" la prédiction finale. Ça permet d'exploiter les points forts de différents modèles et les résultats seront généralement meilleurs que les résultats d'un seul modèle. Plusieurs approches existent pour parvenir à ce but.
 
 ### Bagging
 
-(aka boostrap aggregating, parallel ensemble learning)
+(aka *boostrap aggregating*, *parallel ensemble learning*)
 
-On divise l'ensemble de données en différents sous-ensembles, on s'en sert pour entraîner parallélement différents modèles du même type, et on utilise une méthode statistique (typiquement la moyenne) pour combiner les différentes prédictions en une seule.
+On divise l'ensemble de données en différents sous-ensembles, et on s'en sert pour entraîner parallélement différents modèles du même type. On utilise une méthode statistique (typiquement la moyenne) pour combiner les différentes prédictions en une seule.
 
 Ex: Bagged Decision Trees, Extra Trees
 
@@ -386,7 +385,7 @@ df_rank.sort_values(by=['Importance'], ascending=False)
 
 ### Boosting
 
-(aka sequential ensemble learning)
+(aka *sequential ensemble learning*)
 
 On entraîne un modèle, détermine quelles observations ont été mal prédites, puis on entraîne un nouveau modèle sur ces observations, en espérant qu'il leur accorde plus d'attention et que ses prédictions soient correctes. Chaque modèle apprend à partir des erreurs des précedents.
 
@@ -425,13 +424,13 @@ print('Accuracy Score:', accuracy_score(y_test, y_pred))
 
 ### Bucket of models
 
-Ce n'est pas une technique d'ensemble — mais on entend généralement parler dans ce contexte. On entraîne différents types de modèles en parallèle et on choisit celui qui a les meilleures performances.
+Ce n'est pas une technique d'ensemble — mais on en entend généralement parler dans ce contexte. On entraîne différents types de modèles en parallèle et on choisit celui qui a les meilleures performances.
 
 ### Stacking
 
-(aka voting)
+(aka *voting*)
 
-On entraîne différents types de modèles en parallèle et on combine leur résultat via une méthode statistique (ex moyenne ou mode).
+On entraîne différents types de modèles en parallèle et on combine leur résultat via une méthode statistique (comme la moyenne ou le mode).
 
   ![](https://i.imgur.com/n6Y8b9ql.png)
 

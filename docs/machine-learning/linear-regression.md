@@ -4,7 +4,7 @@ category: Machine learning, algo
 latex: true
 ---
 
-* Une régression linéaire est un algorithme supervisé de regression.
+Une régression linéaire est un algorithme supervisé de regression.
 
 ## Qu'est-ce que c'est
 

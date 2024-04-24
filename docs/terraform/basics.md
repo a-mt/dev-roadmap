@@ -37,9 +37,9 @@ category: Terraform
 
 ### Commentaires
 
-* Une bonne pratique est commenter le code pour expliquer le "pourquoi" derrière certaines configurations complexes, et ainsi permettre aux développeurs qui arrivent sur le projet de facilement comprendre ce quo'n fait
+* Une bonne pratique est commenter le code pour expliquer le "pourquoi" derrière certaines configurations complexes, et ainsi permettre aux développeurs qui arrivent sur le projet de facilement comprendre ce qu'on fait
 
-* Il est possible d'ajouter des commentaires de différentes manières:
+* On peut ajouter des commentaires de 3 manières:
 
   - Commentaire sur une ligne: `# ...` ou `\\ ...`
   - Commentaire sur plusieurs lignes: `/* ... */`
@@ -51,8 +51,8 @@ category: Terraform
 
 ### Conventions
 
-* Indentier avec deux espaces
-* Lorsque plusieurs arguments en une seule ligne apparaissent sur des lignes consécutives, on aligne le signe égal
+* Indenter avec deux espaces  
+* Quand des arguments en une seule ligne apparaissent sur des lignes consécutives, on aligne le signe égal
 
   ```
   ami           = "abc123"
@@ -64,8 +64,8 @@ category: Terraform
 * Terraform supporte une syntaxe alternative compatible JSON.  
   Ces fichiers ont l'extension .tf.json
 
-* On utilise typiquement cette syntaxe quand on génère des configurations Terraform  avec un programme,  
-  puisque ça permet de tirer parti des libraries JSON existantes pour générer les fichiers de configuration.
+* Typiquement, on utilise cette syntaxe quand on génère des Terraform  avec un programme —  
+  ça permet de tirer parti des packages JSON existants pour générer les fichiers de configuration.
 
   ``` json
   {
@@ -119,8 +119,8 @@ category: Terraform
 - La liste des plugins installés est sauvegardée dans le fichier `.terraform.lock.hcl`  
   Le fichier lock des dépendances utilise la même syntaxe que le language principal de Terraform, mais il n'est pas en lui-même un fichier de configuration de Terraform, il est nommé avec le suffixe .hcl au lieu de .tf pour indiquer cette différence
 
-- Les plugins sont enregistrés dans le répertoire ``.terraform`. On y retrouvera  
-  1/ le nom du registry, qui sera registry.terraform.io par défaut,  
+- Les plugins sont enregistrés dans le répertoire `.terraform`. On y retrouvera  
+  1/ le nom du registry, qui est registry.terraform.io par défaut,  
   2/ le nom de l'organisation à l'origine du plugin, par exemple hashicorp,  
   3/ le nom du plugin, par exemple google 
 
@@ -477,9 +477,9 @@ $ terraform destroy
 
     ``` bash
     provider "google" {
-        credentials = file(var.gcp_svc_key)
-        project = var.gcp_project
-        region = var.gcp_region
+      credentials = file(var.gcp_svc_key)
+      project = var.gcp_project
+      region = var.gcp_region
     }
     ```
 

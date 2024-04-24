@@ -189,7 +189,7 @@ Notons que déployer un contrôleur se fait typiquement via Helm, la liste des �
   ...
   spec:
     rules:
-    - host: wear.my-onlone-store
+    - host: wear.my-online-store
       http:
         paths:
         - backend:

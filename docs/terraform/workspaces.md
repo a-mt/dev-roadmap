@@ -39,6 +39,8 @@ $ terraform workspace select default
 Switched to workspace "default".
 ```
 
+Le fichier d'état du workspace "ProjectA" est `terraform.tfstate.d/ProjectA`
+
 ## Supprimer
 
 ``` bash

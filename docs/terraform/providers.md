@@ -20,6 +20,8 @@ category: Terraform
     les plugins sont publiés et maintenus par des contributeurs invididuels.  
     Les providers sont développés en Go, en utilisant le Terraform Plugin SDK
 
+  ![](https://i.imgur.com/UwW2FEq.png)
+
 * Les types de ressources autorisées et leurs arguments dépendent du fournisseur.  
   Se référer à la [documentation](https://registry.terraform.io/providers/hashicorp/local/latest/docs)
 
@@ -75,9 +77,9 @@ category: Terraform
 
     ``` bash
     provider "google" {
-        credentials = file(var.gcp_svc_key)
-        project = var.gcp_project
-        region = var.gcp_region
+      credentials = file(var.gcp_svc_key)
+      project = var.gcp_project
+      region = var.gcp_region
     }
     resource "google_artifact_registry_repository" "testing_tf_registry" {
       location      = "us-west1"
@@ -183,6 +185,16 @@ category: Terraform
   }
   ```
 
+* La commande `terraform version` affiche la version de Terraform ainsi que les versions des plugins de provider téléchargés dans le répertoire en cours
+
+  ``` bash
+  $ terraform version
+  Terraform v0.13.3
+
+      provider registry.terraform.io/hashicorp/aws v3.69.0
+      provider registry.terraform.io/hashicorp/local v2.1.0
+  ```
+
 ### Opérateurs
 
 * Pour sélectionner la version à installer, on peut utiliser différents opérateurs de comparaison:
@@ -249,7 +261,7 @@ category: Terraform
     ```
 
   - `provider_meta`  
-    Pour chaque provider, le bloc terraform peut avoir un bloc `provider_meta` imbriqué — si le provider définit un schema pour. Ça permet au provider de recevoir des informations spécifiques au module
+    Le bloc terraform peut également contenir un bloc `provider_meta`, qui permet aux modules de modifier le comportement du provider.
 
     ``` bash
     terraform {

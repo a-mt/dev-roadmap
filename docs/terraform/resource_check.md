@@ -74,7 +74,7 @@ category: Terraform
 * On se sert principalement des checks pour
 
   - <ins>la détection d'un drift</ins>.  
-    Par exemple, si Terraform gère un groupe et des règles de sécurité, il ne se préoccupe pas des règles autres que celles définies — uniquement celles qu'il gère. Ainsi, si on ouvre le port 22 en dehors de Terraform pour résoudre un problème et qu'oublie de supprimer la règle, du point de vue de Terraform il n'y a aucun changement à effectuer. Ajouter un check permet de détecter ce changement
+    Par exemple, si Terraform gère un groupe et des règles de sécurité, il ne se préoccupe pas des règles autres que celles définies — uniquement celles qu'il gère. Ainsi, si on ouvre le port 22 en dehors de Terraform pour résoudre un problème et qu'on oublie de supprimer la règle, du point de vue de Terraform il n'y a aucun changement à effectuer. Ajouter un check permet de détecter ce changement
 
     ``` bash
     $ cat checks.tf

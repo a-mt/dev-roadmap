@@ -127,13 +127,24 @@ Plutôt que la moyenne, on peut également choisir d'utiliser
 
 ### Quartile
 
-* le k-ème **quartile**: Trier les données par ordre croissant et prendre la valeur située à la position k/4.
+* le k-ème **quartile**: Trier les données par ordre croissant et prendre la valeur située à la position k/4  
+  La position k/4 se calcule (kn + (4-k))/4, on aura donc:
 
-  * Q0: 0/4 = valeur minimale
-  * Q1: 1/4 = 25ème percentile
-  * Q2: 2/4 = 50ème percentile, médiane
-  * Q3: 3/4 = 75ème percentile
-  * Q4: 4/4 = valeur maximale
+  * Q0 = 0 : valeur minimale
+  * Q1 = (n+3)/4 : 25ème percentile
+  * Q2 = (2n+2)/4 : 50ème percentile, médiane
+  * Q3 = (3n+1)/4 : 75ème percentile
+  * Q4 = n : valeur maximale
+
+  Si la position trouvée n'est pas un nombre entier, calculer la moyenne de deux valeurs.  
+* Ex: pour les points 5, 5, 7, 20:
+
+  - Le premier quartile est à la position (4+3)/4 = 1.75, ce sera donc la moyenne du 1er et du 2ème point.  
+    Q1 = (5+5)/2 = 5
+  - La médiane est à la position (8+2)/4 = 2.5, donc la moyenne du 2ème et du 3ème.  
+    Q2 = (5+7)/2 = 6
+  - Le troisième quartile à la position (12+1)/4 = 3.25, la moyenne du 3ème et du 4ème.  
+    Q3 = (7+20)/2 = 13.5
 
 ### p-quantile
 
@@ -202,6 +213,7 @@ Plutôt que la moyenne, on peut également choisir d'utiliser
   <pre lang="python">np.mean((X - X.mean())**2)</pre>
   </details>
 
+  La variance est utilisée pour déterminer la répartition de l'ensemble des valeurs (déterminer si elles sont plutôt centrées autour de la moyenne ou très dispersées).  
   Plus les valeurs sont concentrées autour de la moyenne, plus la variance est basse. Et inversemment, plus les valeurs s'éloignent de la moyenne, plus la variance est élevée.
 
   ``` python
@@ -230,7 +242,7 @@ Plutôt que la moyenne, on peut également choisir d'utiliser
   <pre lang="python">np.sqrt(np.var(X))</pre>
   </details>
 
-  Ça nous permet de ramener la variance dans la même unité/même intervalle que les valeurs dont on mesure la dispersion et dire qu'en moyenne, les points s'écartent de k fois la moyenne. Par exemple, un écart-type de 2 indique qu'en moyenne, les points s'écartent de 2 fois la moyenne (2 fois plus ou 2 fois moins)
+  Ça nous permet de ramener la variance dans la même unité/même intervalle que les valeurs dont on mesure la dispersion et dire qu'en moyenne, les points s'écartent de k fois la moyenne. Par exemple, un écart-type de 2 indique qu'en moyenne, les points s'écartent de 2 fois la moyenne (2 fois plus ou 2 fois moins).
 
   ``` python
   np.std([9,11]) # 1.0
@@ -250,8 +262,7 @@ Plutôt que la moyenne, on peut également choisir d'utiliser
 
 ### Écart-réduit
 
-* l'**écart-réduit** (ou *variable centrée réduite* ou *z-score*) calcule le nombre d'écart-type entre une valeur donnée et la moyenne.  
-  L'écart-type est utilisé pour déterminer la répartition de l'ensemble des valeurs (déterminer si elles sont plutôt centrées autour de la moyenne ou très dispersées). A contrario, le z-score ne s'intéresse qu'à une valeur donnée.
+* l'**écart-réduit** (ou *variable centrée réduite* ou *z-score*) calcule l'écart-type entre une valeur donnée et la moyenne.
 
   $$
   z = \frac{x - \mu}{\sigma}
@@ -268,24 +279,26 @@ Plutôt que la moyenne, on peut également choisir d'utiliser
 
 ## Valeurs extrêmes
 
-* On considère généralement qu'une valeur est inhabituelle quand elle s'écarte de plus d'1 fois la déviation standard de la moyenne.
+* On considère généralement qu'une valeur est inhabituelle quand elle s'écarte de la moyenne de plus d'1 fois la déviation standard.
 
   Ex: Si la moyenne vaut 4.4 et la déviation standard 2.24,  
   1 (4.4 - 2.24 = 2.16) et 8 (4.4 + 2.24 = 6.64) sont des valeurs inhabituelles.
 
-* Une valeur sera considére comme extrême (*outlier* en anglais) lorsqu'elle s'écarte de plus de 3 fois l'écart-type de la moyenne.
+* Une valeur sera considére comme extrême (*outlier* en anglais) soit
 
-  $$x \lt \mu - 3\sigma \\ ou \\ x \gt \mu + 3\sigma$$
+  - lorsqu'elle s'écarte de la moyenne de plus de 3 fois l'écart-type.
 
-  Ou lorsque l'écart-réduit est supérieur à 3 ou inférieur à -3.
+    $$x \lt \mu - 3\sigma \\ ou \\ x \gt \mu + 3\sigma$$
 
-  $$
-  z \lt -3 \\ ou \\ z \gt 3
-  $$
+  - lorsque l'écart-réduit est supérieur à 3 ou inférieur à -3.
 
-  Ou lorsque la valeur est inférieure au 1er quartile moins 1.5 l'intervalle interquartile ou supérieure au 3ème quartile plus 1.5 l'intervalle interquartile.
+    $$
+    z \lt -3 \\ ou \\ z \gt 3
+    $$
 
-  $$x \lt Q1 - 1.5 × IQR \\ ou \\ x\gt Q3 + 1.5 × IQR$$
+  - ou lorsque la valeur est inférieure au 1er quartile moins 1.5 l'intervalle interquartile ou supérieure au 3ème quartile plus 1.5 l'intervalle interquartile.
+
+    $$x \lt Q1 - 1.5 × IQR \\ ou \\ x\gt Q3 + 1.5 × IQR$$
 
 * Pour visualiser les données extrêmes, on peut utiliser un boxplot (1D) ou scatterplot (2D)
 

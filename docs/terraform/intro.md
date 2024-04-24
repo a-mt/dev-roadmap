@@ -47,9 +47,9 @@ Si on veut provisionner un registry Docker sur Google Cloud Platform (GCP), on a
 
     Déclarer dans des fichiers de configurations les ressources qui doivent exister et laisser Terraform comparer l'état qu'il connaît avec les déclarations qui existent au moment de (re)lancer le provisionnement pour 1. déterminer quelles actions doivent être lancées (ajout, modification, supression) et 2. les effectuer
 
-    Une ressource est un objet pouvant être géré via une API — ce peut être un fichier, une VM, un service tel que dynamodb, un utilisateur ou groupe iam, un rôle, politiques réseau, etc. Il existe littéralement des centaines de ressources pouvant être provisionnées dans la plupart des infrastructures sur le cloud et on-premise à l'aide de Terraform.
+    Une ressource est un objet pouvant être géré via une API — ce peut être un fichier, une VM, un service (tel que dynamodb), un utilisateur ou groupe iam, un rôle, une politique réseau, etc. Il existe des centaines de ressources pouvant être provisionnées dans la plupart des infrastructures sur le cloud et on-premise à l'aide de Terraform.
 
-    Terraform s'occupe d'effectuer les actions pour passer de l'état actuel à l'état souhaité sans qu'on ait a se préocupper de la manière d'y parvenir.
+    Terraform s'occupe d'effectuer les actions pour passer de l'état actuel à l'état souhaité sans qu'on ait à se préocupper de la manière d'y parvenir.
 
 ## Pourquoi Terraform
 
@@ -68,7 +68,7 @@ Si on veut provisionner un registry Docker sur Google Cloud Platform (GCP), on a
   ![](https://i.imgur.com/mzncnH2l.png)
  
 * CloudFormation est destiné à AWS.  
-  Terraform quant à lui un outil indépendant de toute plateforme, qui utilise des plugins lui permettant de supporter les APIs de différents fournisseurs
+  Terraform quant à lui un outil indépendant de toute plateforme, qui utilise des plugins qui lui permettent de supporter les APIs de différents fournisseurs
 
   ![](https://i.imgur.com/4RSwjlG.png)
 

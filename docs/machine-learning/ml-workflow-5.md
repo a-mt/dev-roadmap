@@ -169,9 +169,13 @@ Le modèle est entraîné et maintenant quoi?
   \end{aligned}
   $$
 
-* On cherche des valeurs élevées de précision et de valeur prédictive négative (= une valeur élevée de correctement prédit / total prédit) quand on veut limiter le nombre de mauvaises prédictions (limiter les faux-positif) — on ne veut pas dire pas à une personne qu'elle a un cancer alors que ce n'est pas le cas, donc on choisit une précision élevée.
+* Quand on veut limiter le nombre de mauvaises prédictions (limiter les faux-positif):  
+  on cherche des valeurs élevées de précision et de valeur prédictive négative (= une valeur élevée de correctement prédit / total prédit).  
+  Par exemple, on ne veut pas dire pas à une personne qu'elle a un cancer alors que ce n'est pas le cas, donc on choisit une précision élevée
 
-  On cherche des valeurs élevées de sensibilité et spécificité (= une valeur élevée de correctement prédit / total vérité) quand on veut limiter le nombre de mauvaises exclusions (limiter les faux-négatif) — on veut s'assurer qu'une maladie n'est pas présente, donc on choisit une sensibilité elevée.
+  Quand on veut limiter le nombre de mauvaises exclusions (limiter les faux-négatif):  
+  on cherche des valeurs élevées de sensibilité et spécificité (= une valeur élevée de correctement prédit / total vérité).  
+  Par exemple, on veut s'assurer qu'une maladie n'est pas présente, donc on choisit une sensibilité elevée
 
   Lorsqu'on augmente le taux de sensibilité, le taux de précision diminue: il faut choisir un compromis entre les deux.  
   Si les faux-positif sont pires que les faux-négatif, viser une plus grande précision.  

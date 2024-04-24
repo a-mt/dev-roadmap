@@ -176,3 +176,19 @@ mais aussi plusieurs avec les meta-arguments `count` et `for_each`
     }
   }
   ```
+
+* Plutôt que d'utiliser le nom du bloc comme variable d'itération, on peut spécifier une variable différente avec iterator
+
+  ``` bash
+  dynamic "ingress" {
+    for_each = var.ingress_rules
+    iterator = port
+
+    content {
+      from_port   = port.value["from_port"]
+      to_port     = port.value["to_port"]
+      protocol    = port.value["protocol"]
+      cidr_blocks = port.value["cidr_blocks"]
+    }
+  }
+  ```

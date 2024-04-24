@@ -144,9 +144,9 @@ Il peut être difficile de prouver une relation de causalité. Pour appuyer nos 
 
 * Il n'est pas rare qu'une ou plusieurs autres variables (Z) viennent fausser la corrélation entre deux variables (X et Y), laissant penser à tort à l'existance (ou l'absence) d'une liaison.
 
-  Lorsque Z est qualitative, la stratégie est simple: on distingue explicitement les groupes et on calcule *r* pour chaque groupe.
+  Lorsque la variable Z est qualitative, la stratégie est simple: on distingue explicitement les groupes et on calcule *r* (le coefficient de corrélation) pour chaque groupe. Par exemple, pour contrôler l'impact du sexe sur la relation XY, on calcule séparément *r* pour le groupe "homme" et pour le groupe "femme"
 
-  Lorsque Z est quantitative, il faut retrancher de X et Y la variance expliquée par Z puis calculer la corrélation en utilisant l'information résiduelle. C'est ce que fait le coefficient de corrélation partielle.
+  Lorsque la variable Z est quantitative, on utilise le coefficient de corrélation partielle.
 
 ### Ordre 1
 
@@ -173,9 +173,8 @@ Il peut être difficile de prouver une relation de causalité. Pour appuyer nos 
 
 * Exemple: On veut utiliser la relation entre puissance (X) et consommation (Y) d'une voiture en contrôlant le rôle de la cylindrée (Z).
 
-  La cylindrée exprime le volume de la chambre des pistons en litres. Plus la cylindrée d’un moteur est importante, plus sa capacité à tirer le poids total de la voiture sera grande. La voiture aura donc une accélération plus importante et plus lisse. Une grosse cylindrée a tendance à être puissance mais elle a aussi tendance à consommer plus que de raison.
-
-  Notons qu'il est extrêmement rare de voir des moteurs diesels avec de grosses cylindrées tout simplement parce qu’une voiture diesel, à l’instar d’un moteur essence, n’est pas à vocation sportive et l’industrie automobile n’a donc aucune raison de construire des véhicules diesel à grosse cylindrée.
+  Note: La cylindrée exprime le volume de la chambre des pistons en litres. Plus la cylindrée d’un moteur est importante, plus sa capacité à tirer le poids total de la voiture sera grande — la voiture aura donc une accélération plus importante et plus lisse. Une grosse cylindrée a tendance à être plus puissante mais aussi à consommer plus que de raison.  
+  Il est très rare de voir des moteurs diesels avec de grosses cylindrées tout simplement parce qu’une voiture diesel, à l’instar d’un moteur essence, n’est pas à vocation sportive et l’industrie automobile n’a donc aucune raison de construire des véhicules diesel à grosse cylindrée.
 
   On calcule les corrélations suivantes: r<sub>xy</sub> = 0.88781, r<sub>xz</sub> = 0.94755, r<sub>yz</sub> = 0.89187.  
 
@@ -183,7 +182,7 @@ Il peut être difficile de prouver une relation de causalité. Pour appuyer nos 
   r_{XY \cdot Z} = \frac{0.88781 - 0.94755 \cdot 0.89187}{\sqrt{(1 - 0.94755^2)(1 - 0.89187^2)}} = 0.29553
   $$
 
-  On trouve donc que "cylindrée" joue beaucoup dans la liaison entre "puissance" et "consommation". En d'autres termes, à cylindrée égale, la consommation ne varie pas avec la puissance.
+  On trouve donc que "cylindrée" joue beaucoup dans la relation observée entre "puissance" et "consommation". En d'autres termes, à cylindrée égale, la consommation ne varie pas avec la puissance.
 
 [Analyse de Correlation](http://www.info.univ-angers.fr/~gh/wstat/Eda/Analyse_de_Correlation.pdf)
 
@@ -223,4 +222,4 @@ On appelle *ordre* le nombre de variable contrôlées.
 * Plusieurs critères sont possibles pour définir ce qu'on entend par "le plus près possible".  
   La méthode la plus employée est celle des "moindres carrés".
 
-  Exemple: [Régression linéaire](../!ml/linear-regression)
+  Exemple: [Régression linéaire](../machine-learning/linear-regression)

@@ -356,10 +356,9 @@ category: Terraform
 
   ``` bash
   output "ip" {
-      value = libvirt_domain.domain-ubuntu.*.network_interface.0.addresses
-      description = "The public IP address of the server instance."
-      sensitive   = true
-
+    value = libvirt_domain.domain-ubuntu.*.network_interface.0.addresses
+    description = "The public IP address of the server instance."
+    sensitive   = true
   }
   ```
 

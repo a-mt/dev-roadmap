@@ -93,6 +93,8 @@ Le type de token utilisé donne accès à différentes permissions.
 * Settings > Policy sets > create a new policy set  
   Policies > [Create a new policy](https://developer.hashicorp.com/sentinel/docs/terraform)
 
+  [Examples](https://github.com/kodekloud-terraform-demo-user/terraform-guides)
+
 ## Run Environment
 
 * Un *run environment* est une VM ou container crée pour l'exécution du code terraform.  

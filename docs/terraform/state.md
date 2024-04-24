@@ -89,7 +89,7 @@ category: Terraform
 ### -replace=NAME
 
 * L'option `-replace=NAME` marque une ressource pour suppression suivit de création, le tout dans une opération atomique: ainsi il n'est pas nécessaire de supprimer la ressource du fichier de config, appliquer, remettre la ressource, appliquer.  
-  Ça évite les risques liés à des race conditions dans un environnement hautement collaboratif — que différentes personnes qui travaillent sur l'infrastructure en même temps se marchent sur les pieds
+  Ça évite les risques liés à des race conditions dans un environnement hautement collaboratif — que différentes personnes qui travaillent sur l'infrastructure en même temps ne se marchent sur les pieds
 
   ``` bash
   $ terraform apply -auto-approve -refresh=false -replace="aws_subnet.us-east-1a"
@@ -102,8 +102,11 @@ category: Terraform
 * Parfois, Terraform détecte qu'un objet est dans un état incomplet ou dégradé. Par exemple, si la création d'un objet complexe échoue et que cet objet existe en partie dans le système distant mais qu'une des étapes de provisionnement a par la suite échoué, alors Terrraform doit se souvenir que l'objet existe mais qu'il n'est peut-être pas entièrement fonctionnel.
   Terraform représente cette situation en marquant l'état de l'objet comme "tainted".
 
+  ![](https://i.imgur.com/vghBetRl.png)
+  ![](https://i.imgur.com/RqmhXC5l.png)
+
 * Si un objet a l'état *tainted*, le plan suivant forcera le remplacement de cet objet,  
-  de la même manière qui si on avait spécifié un `-replace=NAME`
+  de la même manière qui si on avait utilisé un `-replace=NAME`
 
 * Si Terraform a marqué un objet comme *tainted* mais qu'on considère qu'il fonctionne correctement (qu'il n'est pas nécessaire de le remplacer), alors on peut utiliser la commande `untaint`
 
@@ -196,7 +199,7 @@ category: Terraform
 
 ### Bloc moved
 
-* Une autre manière de s'y prendre, introduite à partir de Terraform 1.1., est d'utiliser un bloc `moved`. Cette approche est recommendée et a l'avantage de ne pas modifier le fichier d'état
+* Une autre manière de s'y prendre, introduite à partir de Terraform 1.1., est d'utiliser un bloc `moved`. Cette approche est recommandée et a l'avantage de ne pas modifier le fichier d'état
 
   <!--Si une ressource est déplacée (par exemple si on déplace une ressource du module root vers un module enfant), on peut informer Terraform du changement d'adresse de cette ressource via un bloc `moved` — ce qui évite que Terraform ne détruise l'ancienne ressource pour en recréer une nouvelle-->
 
@@ -247,6 +250,8 @@ category: Terraform
 
   Cette commande ne peut importer qu'une ressource à la fois
 
+  ![](https://i.imgur.com/lKjBGkol.png)
+
   [Command: import](https://developer.hashicorp.com/terraform/cli/commands/import)
 
 ### Bloc import
@@ -268,7 +273,7 @@ Une autre alternative est de
 
 2. générer la configuration.  
    Terraform peut générer le code des ressources définie dans les blocs d'import,  
-   il estimera quelle est la valeur appropriée pour chaque argument de ressource.
+   la valeur appropriée pour chaque argument de ressource sera estimé.
 
     ``` bash
     $ terraform plan -generate-config-out=generated_resources.tf

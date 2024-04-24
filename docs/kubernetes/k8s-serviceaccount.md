@@ -45,7 +45,7 @@ category: Workflow, Containers, Kubernetes
   serviceaccount "dashboard-sa" created
   ```
 
-* On peut ajouter des permissions supplémentaires pour le compte service nouvellement crée en utilisant RBAC — dont on discutera dans une section séparée
+* On peut ajouter des permissions supplémentaires pour le compte service nouvellement crée en utilisant [RBAC](k8s-rbac.md)
 
   ``` bash
   $ ls /var/rbac
@@ -188,3 +188,10 @@ token:      eyJh...
   ```
 
   ![](https://i.imgur.com/dA7NkXl.png)
+
+* L'option `--service-account-extend-token-expiration=true` permet d'augmenter la durée des tokens jusqu'à 365 jours au lieu d'1 heure.
+
+  ``` bash
+  # 1 year
+  kubectl create token cicd-user --duration=8760h
+  ```

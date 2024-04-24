@@ -233,6 +233,29 @@ Il existe deux types de stratégies de déploiement:
 
   ![](https://i.imgur.com/5fagGGb.png)
 
+## Annoter
+
+Les annotations permettent de modifier le message affiché
+
+``` bash
+$ kubectl set image deploy/webapp api="$DESTINATION:$CI_COMMIT_SHA"
+deployment.apps/webapp image updated
+$ kubectl rollout history deploy/webapp
+deployment.apps/webapp 
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+```
+``` bash
+$ kubectl annotate deploy webapp kubernetes.io/change-cause="version change to $CI_PIPELINE/django:$CI_COMMIT_SHA" --overwrite=true
+deployment.apps/webapp annotate
+$ kubectl rollout history deploy/webapp
+deployment.apps/webapp 
+REVISION  CHANGE-CAUSE
+1         <none>
+2         version change to staging/django:6139eb956cf307d941bda846e98c94752028e52c
+```
+
 ## Annuler une mise à jour
 
 * Pour déclencher un rollback de la mise à jour:

@@ -162,19 +162,18 @@ Terraform distingue deux types de backends:
 
 ### lock.hcl
 
-* Le backend local supporte le lock:  
+* Le backend local supporte les locks:  
 
   - <ins>lock de l'état</ins>  
-    Lorsqu'on lance un terraform apply, le fichier de lock `.terraform.tfstate.lock.hcl` est crée
+    Lorsqu'on lance un terraform apply, le fichier de lock `.terraform.tfstate.lock.hcl` est créé
 
   - <ins>lock des mises à jour de dépendances</ins>  
-    Lorsqu'on lance un terraform init, le fichier de lock `.terraform.lock.hcl` est crée
+    Lorsqu'on lance un terraform init, le fichier de lock `.terraform.lock.hcl` est créé
 
-* Si le déverrouillage automatique échoue, Terraform affichera l'identifiant du lock (lockID) et on pourra supprimer ce lock avec la commande `force-unlock`. Le déverrouillage manuel ne doit être utilisé que pour supprimer votre propre lock, lorsque la suppression automatique a échoué; l'identifiant agit comme un nonce qui garantit la suppression du bon lock
+* Si le déverrouillage automatique échoue, Terraform affiche l'identifiant du lock (lockID) et on peut supprimer ce lock avec la commande `force-unlock`. Le déverrouillage manuel ne doit être utilisé que pour supprimer votre propre lock, lorsque la suppression automatique a échoué; l'identifiant agit comme un nonce qui garantit la suppression du bon lock
 
   ``` bash
-  $ terraform force-unlock 
-  9141a539b-ff25-76ed-92d-547an37b24d -force
+  $ terraform force-unlock 9141a539b-ff25-76ed-92d-547an37b24d -force
   ```
 
 * Pour la plupart des commandes, on peut désactiver le lock avec le flag `-lock` — mais ce n'est pas recommendé

@@ -204,7 +204,7 @@ category: Terraform
 ## Terraform ou Ansible
 
 * Pour lancer une tâche au démarrage, on peut utiliser un provisioner ou Ansible.  
-  Pour lancer des tâches répétivies, utiliser Ansible
+  Pour lancer des tâches répétives, utiliser Ansible
 
   ![](https://i.imgur.com/J33RIpw.png)
 

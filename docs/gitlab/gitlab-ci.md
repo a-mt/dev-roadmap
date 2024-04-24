@@ -94,6 +94,27 @@ GitLab intègre une solution de CI/CD, permettant notamment d'effectuer des test
        - echo This job does not need any variables
   ```
 
+### dotenv
+
+* Pour passer une variable d'un job à l'autre, utiliser un artefact de type [artifacts:reports:dotenv](https://docs.gitlab.com/ee/ci/yaml/artifacts_reports.html#artifactsreportsdotenv)
+
+  ``` bash
+  build-job:
+    stage: build
+    script:
+      - echo "BUILD_VARIABLE=value_from_build_job" >> build.env
+    artifacts:
+      reports:
+        dotenv: build.env
+
+  test-job:
+    stage: test
+    script:
+      - echo "$BUILD_VARIABLE"  # Output is: 'value_from_build_job'
+  ```
+
+### Variables prédéfinies
+
 * Gitlab pré-définit un certain nombre de variable d'environnement, dont notamment
 
   * Des variables d'authentification: CI_REGISTRY, CI_REGISTRY_USER, CI_REGISTRY_PASSWORD
@@ -101,6 +122,8 @@ GitLab intègre une solution de CI/CD, permettant notamment d'effectuer des test
   * Des variables du registry: CI_REGISTRY_IMAGE
 
     [Liste des varialbes CI/CD prédéfinies](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html)
+
+### Secrets
 
 * On peut également ajouter des variables d'environnement depuis l’interface web de GitLab, ce qui est notamment utile pour stocker des informations sensibles — comme une clé SSH. Les variables peuvent être définies à l'échelle d'une instance Gitlab (pour l'ensemble des projets), ou pour un projet spécifique.
 

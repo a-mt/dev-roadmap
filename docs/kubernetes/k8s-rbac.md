@@ -256,7 +256,7 @@ Pour utiliser l'authentification Basic:
     verbs: ["create"]
   ```
 
-  ![](https://i.imgur.com/XdS1jakl.png)
+  ![](https://i.imgur.com/XdS1jak.png)
 
 * Les roles et (rolebindings) sont limité à un namespace. S'il n'est pas spécifié, alors il s'agit du namespace par défaut. On peut spécifier un namespace différent dans les metadata du fichier de définition
 
@@ -272,12 +272,25 @@ Pour utiliser l'authentification Basic:
 
   ![](https://i.imgur.com/ErqLcoHl.png)
 
-* On peut également créer un rôle via un eocmmande impérative:
+* On peut également créer un rôle via une commande impérative:
 
   ``` bash
   $ kubectl create role developer --namespace=default --verb=list,create,delete --resource=pods
   role.rbac.authorization.k8s.io/developer created
   ```
+
+* Les différents verbes sont:
+
+  | Verb | HTTP | Description
+  |--- |--- |---
+  | create | POST | Créer une nouvelle ressource
+  | delete | DELETE | Supprimer une ressource
+  | get | GET | Récupérer une ressource
+  | list | LIST | Lister des ressources
+  | patch | PATCH | Modifier une ressource existante via une mise à jour partielle
+  | update | PUT | Modifier une ressource existante via un objet complet
+  | watch | GET | Streamer les mises à jour d'une ressource
+  | proxy | GET | Se connecter à une ressource via un streaming WebSocket proxy.
 
 #### Lister
 

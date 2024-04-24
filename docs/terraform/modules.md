@@ -382,11 +382,11 @@ category: Terraform
 ## Modules publics
 
 * Le [registry public de Terraform](https://registry.terraform.io/) permet de récupérer des modules.  
-  Seuls les modules officiels et vérifiés seront affichés
+  Seuls les modules officiels et vérifiés seront retournés par la recherche
 
   ![](https://i.imgur.com/PC1k6Lp.png)
 
-* Quand on importe un module, si une organisation est spécifiée mais pas le nom de domaine,  
+* Quand on importe un module, si une organisation est spécifiée sans nom de domaine,  
   alors terraform ira chercher sur registry.terraform.io
 
   ``` bash
@@ -397,14 +397,14 @@ category: Terraform
   ```
 
 * Quand on utilise un module externe, une bonne pratique est  
-  le verrouiller sa version pour éviter des changements inattendus.
+  de verrouiller sa version pour éviter des changements inattendus.
 
-* Pour publier un module sur le registry public,  
-  il faut respecter certaines conventions:
+* Pour publier un module sur le registry public,
+  il faut respecter quelques conventions:
 
   - Le nom du module suit le format `terraform-<PROVIDER>-<NAME>`
-  - Il est publié dans un repository de même nom que le module (par exemple sur Github)
-  - Il est taggé en suivant un versionnement sémantique (semver.org).  
-    Un nouveau tag publie une nouvelle version. Ce tag peut être préfixé d'un `v`
+  - Le module est publié (par exemple sur Github) dans un repository de même nom que le module
+  - Il est taggé en suivant un versionnement sémantique (semver.org). Le tag peut être préfixé d'un `v`.   
+    Un nouveau tag publie une nouvelle version.
 
   ![](https://i.imgur.com/3jUDc0x.png)

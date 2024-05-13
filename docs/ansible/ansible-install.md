@@ -1,267 +1,199 @@
 ---
-title: Installer Ansible
-category: Ansible
+title: Installer
+category: DevOps, Ansible
 ---
 
-{% raw %}
-## Installer Ansible sur le serveur principal
+## Installer un serveur Ansible
 
-Source: [How to Install and Configure Ansible on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-18-04)
+* Ansible peut être installé sous un système Linux uniquement. Soit à partir du repository de la distribution, du repository d'Ansible (pour récupérer la dernière version) ou via pip (package manager de python).  
+  Les fichiers par défaut (ansible.cfg, hosts) ne sont crées que lorsqu'on installe ansible via un package manager système et non pip — en cas d'installation via pip, les créer manuellement
 
-* Installer les dépendances
+  ``` bash
+  # RedHat or CentOS
+  sudo yum install ansible
 
-  ```
-  sudo apt-get update
-  sudo apt-get install software-properties-common
-  ```
+  # Fedora
+  sudo dnf install ansible
 
-* Ajouter le repo aux sources PPA
-
-  ```
-  sudo apt-add-repository ppa:ansible/ansible
-  sudo apt-get update
-  ```
-
-* Installer Ansible
-
-  ```
+  # Ubuntu
   sudo apt-get install ansible
+
+  # Pip
+  sudo pip install ansible
   ```
 
----
+* <ins>Exemple d'installation sous Ubuntu</ins>:
 
-## Configurer les hôtes contrôlés
+  ``` bash
+  $ docker run -it --rm ubuntu:latest bash
 
-### Créer des clés SSH
+  # add-apt-repository ansible
+  $ apt update
+  $ apt install software-properties-common
+  $ add-apt-repository --yes --update ppa:ansible/ansible
 
-Source: [How to Set Up SSH Keys on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1804)
+  # install ansible
+  $ apt-cache policy ansible
+  $ apt install ansible less
 
-* Afficher la clé SSH du serveur principal
+  # check version
+  $ ansible --version
+  ansible [core 2.16.6]
+    config file = /etc/ansible/ansible.cfg
+    configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+    ansible python module location = /usr/lib/python3/dist-packages/ansible
+    ansible collection location = /root/.ansible/collections:/usr/share/ansible/collections
+    executable location = /usr/bin/ansible
+    python version = 3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0] (/usr/bin/python3)
+    jinja version = 3.0.3
+    libyaml = True
 
-  ```
-  cat ~/.ssh/id_rsa.pub
-  ```
-
-* Si elle n'existe pas, la créer
-
-  ```
-  ssh-keygen
-  ```
-
-* Copier la clé privée vers l'hôte distant que vous voulez contrôler — pour le compte que vous souhaitez contrôler
-
-  ```
-  ssh-copy-id username@remote_host
-  ```
-
-* Essayer de se connecter à l'hôte  
-  Vous devriez pouvoir vous connecter à l'hôte sans entrer de mot de passe
-
-  ```
-  ssh username@remote_host
+  # init ansible.cfg
+  $ cat /etc/ansible/ansible.cfg
+  $ ansible-config init --disabled -t all > /etc/ansible/ansible.cfg
   ```
 
-### Installer Python
+## Configurer les Agents contrôlés par Ansible
 
-Ansible utilise l'interpréteur Python pour faire tourner ses modules.  
-S'assurer que Python (2 ou 3) est installé sur la machine distante.  
-Sinon, l'installer.
+De nombreux outils d'orchestration nécessitent d'installer un agent sur les systèmes cibles, mais ce n'est pas le cas d'Ansible. Pour fonctionner avec des serveurs distants, Ansible doit simplement
 
-```
-python --version
-```
+1. pouvoir établir une connectivité avec ces serveurs.
+2. pouvoir récolter des informations sur le serveur et exécuter les modules Ansible.  
 
-On peut forcer l'[utilisation de Python3](https://docs.ansible.com/ansible/latest/reference_appendices/python_3_support.html#using-python-3-on-the-managed-machines-with-commands-and-playbooks)  lorsqu'on lance Ansible
+### Connexion
 
-```
- ansible-playbook sample-playbook.yml -e "ansible_python_interpreter=/usr/bin/python3"
-```
+* Pour établir une connection avec les serveurs:  
+  Ansible utilise SSH sous Linux (ssh) ou Powershell remoting sous Windows (winrm).   
+  Le type de connection utilisé est spécifié dans l'inventaire dans la variable `ansible_connection` (ou ssh par défaut)
 
-Il est possible d'utiliser Ansible sans avoir installé Python sur l'hôte distant, à la condition de n'utiliser que le module `raw` (qui se contente d'exécuter une commande shell) et de désactiver la création de *facts* avec `gather_facts: no`.
-
-```
-- hosts: development
-  become: yes
-  gather_facts: no
-  pre_tasks:
-  - name: 'install python'
-    raw: 'sudo apt-get -y install python'
-```
-
----
-
-## Inventory
-
-### Inventory par défaut
-
-La liste des serveurs gérés par le manager est stocké dans le INI fichier `/etc/ansible/hosts`.  
-Ajoutez votre hôte distant à cette liste.
-
-```
-[web]
-server1 ansible_host=203.0.113.1
-server2 ansible_host=203.0.113.2
-server3 ansible_host=203.0.113.3
-```
-
-<ins>Format</ins>:
-
-```
-[GROUPNAME]
-HOSTNAME ansible_host=remote_host
-```
-
-* `GROUPNAME` permet de lancer Ansible pour l'ensemble des serveurs listés dans ce groupe — en un seul mot.  
-  On peut créer des groupes de groupe, en utilisant le suffixe `:children`.  
-  Par exemple, pour créer un groupe `southeast` qui contient le groupe `atlanta` et `raleigh`:
-
-  ```
-  [atlanta]
-  host1
-  host2
-
-  [raleigh]
-  host2
-  host3
-
-  [southeast:children]
-  atlanta
-  raleigh
+  ``` bash
+  web  ansible_host=server1.company.com ansible_connection=ssh
+  db   ansible_host=server2.company.com ansible_connection=winrm
+  mail ansible_host=server3.company.com ansible_connection=ssh
+  web2 ansible_host=server4.company.com ansible_connection=winrm
+  localhost ansible_connection=localhost
   ```
 
-* `HOSTNAME`  permet de lancer Ansible sur un hôte spécifique.  
-  La variable de configuration `ansible_host` remplace `ansible_ssh_host` depuis Ansible 2.0.  
-  Si vous ajoutez beaucoup d'hôtes qui suivent un même motif, vous pouvez les déclarer comme suit:
+#### Créer et distribuer des clés SSH
+
+* Une première possibilité pour se connecter en SSH est d'utiliser une authentification username/password.  
+  Note: utiliser `ansible_ssh_pass` est deprécié en faveur de `ansible_password`
 
   ```
-  [webservers]
-  www[01:50].example.com
+  web1 ansible_host=172.20.1.180 ansible_user=bob ansible_password=Passw0rd
   ```
 
-### Utiliser un autre inventory
+* En production, il est recommendé d'utiliser des clés RSA et non des mots de passe.  
+  Pour mettre en place une authentification par clé:
 
-On peut désigner un ou plusieurs inventory à appliquer, autre que l'inventory par défaut, au moment de lancer Ansible
+  1. Créer des clés RSA sur l'hôte Ansible
 
-* Soit en spécifiant le fichier à utiliser depuis la ligne de commande
+      ``` bash
+      $ mkdir .ssh
+      $ ssh-keygen
+      Generating public/private rsa key pair.
+      Enter file in which to save the key (/home/ansible/.ssh/id_rsa): /home/ansible/.ssh/web1
+      Enter passphrase (empty for no passphrase): 
+      Enter same passphrase again: 
+      Your identification has been saved in /home/ansible/.ssh/web1.
+      Your public key has been saved in /home/ansible/.ssh/web1.pub.
+      The key fingerprint is:
+      SHA256:ghk0j5TvjtKqPtRIwlkmeixfqqDDkjCOit/i9rI433Q ansible@ansible-controller
+      The key's randomart image is:
+      +---[RSA 2048]----+
+      |    +.           |
+      | . =.+           |
+      |o.= o..          |
+      |++o .+.          |
+      |o+ooo.. S        |
+      |+oo.  ..         |
+      |O+ ..oE          |
+      |X==+o..          |
+      |OXBB+            |
+      +----[SHA256]-----+
+      ```
 
-  ```
-  ansible-playbook get_logs.yml -i staging -i production
-  ```
+  2. Placer la clé RSA publique créée dans le fichier authorized_keys de l'hôte distant. Les clés sont associées à un utilisateur donné: pour autoriser l'authentification en tant qu'utilisateur "bob" via clé RSA, ajouter la clé RSA (publique) dans les clés autorisées pour bob — <ins>/home/bob/.ssh/authorized_keys</ins>
 
-* Soit en définissant la variable d'environement [`ANSIBLE_INVENTORY`](https://docs.ansible.com/ansible/latest/reference_appendices/config.html)
+      On peut le faire manuellement: se connecter à l'hôte distant et modifier le fichier authorized_keys.  
+      Ou on peut ajouter une clé dans le fichier authorized_keys d'un serveur distant via `ssh-copy-id`
 
-### Définir des variables (optionnel)
+      ``` bash
+      $ ssh-copy-id -i .ssh/web1 bob@web1
+      /bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ansible/.ssh/web1.pub"
+      /bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+      /bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+      bob@web1's password: 
 
-Les variables de configuration peuvent être définies à différents endroits:
+      Number of key(s) added: 1
 
-* `/etc/ansible/hosts`  
-  Définit les configurations hôte par hôte, en ligne
+      Now try logging into the machine, with:   "ssh 'bob@web1'"
+      and check to make sure that only the key(s) you wanted were added.
+      ```
 
-  ```
-  server1 ansible_host=203.0.113.1 ansible_user=root
-  ```
+  3. Vérifier qu'on peut se connecter en SSH avec la clé RSA (privée)
 
-  Ou groupe par groupe
+      ``` bash
+      $ ssh bob@web1 -i .ssh/web1
 
-  ```
-  [atlanta]
-  host1
-  host2
+      [bob@web1 ~]$ cat ~/.ssh/authorized_keys 
+      ssh-rsa AAAA[...]d ansible@ansible-controller
+      ```
 
-  [atlanta:vars]
-  ntp_server=ntp.atlanta.example.com
-  proxy=proxy.atlanta.example.com
-  ```
+  4. Modifier l'inventaire.  
+     Spécifier le path de la clé RSA privé dans la variable `ansible_ssh_private_key_file`
 
-* `/etc/ansible/HOSTNAME`  
-  Définit les configurations d'un hôte donné, au format YAML  
-  À l'avantage d'être plus lisible lorsqu'il y a beaucoup de variables
+      ``` bash
+      $ vi inventory 
+      web1 ansible_host=172.20.1.180 ansible_user=bob ansible_ssh_private_key_file=/home/ansible/.ssh/web1
+      ```
 
-  ```
-  ---
-  ansible_user: root
-  ```
+  5. Tester la connectivité vers web1.  
+     Note: le module ping n'effectue pas un ping ICMP, mais vérifie si Ansible peut se connecter à la machine cible via SSH en utilisant les informations d'identification configurées
 
-* `/etc/ansible/group_vars/GROUPNAME`  
-  Définit les configurations d'un groupe donné
+      ``` bash
+      $ ansible -m ping -i inventory web1
+      web1 | SUCCESS => {
+          "changed": false, 
+          "ping": "pong"
+      }
+      ```
 
-* `/etc/ansible/group_vars/all`  
-  Définit les configurations de tous les groupes
+      Utiliser les deux-points et non les virgules pour spécifier plusieurs hôtes / groupes
 
-Lorsqu'une même variables est définie à plusieurs endroits, la valeur la plus spécifique est appliquée, on peut donc définir des variables au niveau du groupe et les écraser au niveau de l'hôte.
+      ``` bash
+      $ ansible -m ping host1:host2
+      ```
 
-### Utilité des variables
+### Interpréteur Python
 
-Les variables peuvent être utilisées
+Pour récolter des informations sur le serveur et exécuter les modules Ansible,  
+Python doit être installé sur l'hôte distant
 
-* dans les définitions des tâches d'un playbook
-  ```
-  pip:
-    name: {{ foo }}
-  ```
+- S'assurer que Python (2 ou 3) est installé sur la machine distante
 
-* dans les templates
-
-  ```
-  [database]
-  conn = {{ db }}
-  ```
-
-* ou pour modifier le comportement d'Ansible  
-  <ins>Exemple</ins>: Par défaut, Ansible essaiera de se connecter aux hôtes distants avec le même nom d'utilisateur que celui que vous utilisez sur le manager: si vous utilisez `sammy`, Ansible essaiera de se connecter avec `ssh sammy@server`.  
-  Pour changer ça, définir la variable de configuration `ansible_user`  (`ansible_ssh_user` pour Ansible < 2.0)
-
-  ```
-  ansible_user=fred
-  ```
-
-### Inventory dynamique
-
-Un inventory statique est simple à utiliser mais nécessite des mises à jour manuelles au fur et à mesure que les machines déployées changent. Ansible fournit des scripts pour récupérer l'inventory dynamiquement à partir de services du cloud comme OpenStack, Amazon AWS, Google Compute, Microsoft Azure ou DigitalOcean, ou bien à partir d'outils pour containers / VM tels que Docker, VMware, VirtualBox ou Vagrant.
-
-[Working With Dynamic Inventory](https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#intro-dynamic-inventory)
-
----
-
-## Tester l'installation
-
-### Essayer d'envoyer un ping
-
-* Lancer le module `ping` sur tous les serveurs configurés:
-
-  ```
-  ansible -m ping all
+  ``` bash
+  $ python --version
   ```
 
-  Exemple de résultat:
+- Si ce n'est pas le cas:  
+  On peut utiliser Ansible à condition de n'utiliser que le module `raw` (qui se contente d'exécuter une commande shell) et de désactiver la récolte d'informations avec `gather_facts: no`
 
-  ```
-  host1 | SUCCESS => {
-      "ansible_facts": {
-          "discovered_interpreter_python": "/usr/bin/python3"
-      }, 
-      "changed": false, 
-      "ping": "pong"
-  }
-  ```
+  <ins>Installer python sur les hôtes contrôlés par Ansible</ins>:  
+  Note: `become: yes` revient à effectuer un `sudo su`
 
-* On peut cibler des hôtes spécifiques (liste séparée par des deux-points)
-
-  ```
-  ansible -m ping host1
+  ``` yml
+  - hosts: all
+    become: yes
+    gather_facts: no
+    pre_tasks:
+    - name: 'install python'
+      raw: 'apt-get -y install python'
   ```
 
-  ```
-  ansible -m ping host1:host2
-  ```
+- Si plusieurs version Python sont installées:  
+  On peut [forcer l'utilisation de Python3](https://docs.ansible.com/ansible/latest/reference_appendices/python_3_support.html#using-python-3-on-the-managed-machines-with-commands-and-playbooks) avec la variable `ansible_python_interpreter`
 
-### Afficher la mémoire utilisée
-
-* Lancer le module `shell` pour exécuter une commande shell. 
-  Ajouter des arguments avec l'option `-a`
-
+  ``` bash
+  $ ansible-playbook sample-playbook.yml -e "ansible_python_interpreter=/usr/bin/python3"
   ```
-  ansible -m shell -a 'free -m' host1
-  ```
-
-{% endraw %}

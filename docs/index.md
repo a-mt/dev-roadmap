@@ -216,7 +216,7 @@ roadmap: true
     * Github Actions
     * [Jenkins][jenkins]{: .pkg}
   * Automatisation
-    * [Ansible][ansible]{: .pkg}
+    * [Ansible][ansible]{: .cli}
     * Chef
     * [Puppet][puppet]{: .pkg}
   * Binary manager

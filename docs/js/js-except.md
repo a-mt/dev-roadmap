@@ -37,10 +37,10 @@ try {
   throwSpecificError();
   ...
 }
-catch (e if e instanceof SpecificError) {
+catch (SpecificError e) {
   specificHandler(e);
 }
-catch (e if e instanceof UnspecificError) {
+catch (UnspecificError e) {
   unspecificHandler(e);
 }
 catch (e) {

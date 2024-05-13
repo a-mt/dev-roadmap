@@ -31,7 +31,7 @@ category: Python
 [drf-auth]: django-drf-auth.md
 [drf-parser]: django-drf-parser.md
 [drf-query]: django-drf-query.md
-[drf-serializer]: !drf-serializer/django-drf-serializer.md
+[drf-serializer]: django-drf-serializer.md
 
 [celery]: django-celery.md
 [sentry]: django-sentry.md

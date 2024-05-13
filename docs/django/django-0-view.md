@@ -226,14 +226,18 @@ category: Python, Django
 * `HttpResponseBadRequest` retourne une erreur 400
 
     ``` python
-    @list_route(methods=['post'])
-    def upload_file(self, request):
+    from rest_framework.decorators import list_route
 
-        form = UploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            ...
+    class UserViewSet(ModelViewSet):
 
-        return HttpResponseBadRequest()
+        @list_route(methods=['post'])
+        def upload_file(self, request):
+
+            form = UploadFileForm(request.POST, request.FILES)
+            if form.is_valid():
+                ...
+
+            return HttpResponseBadRequest()
     ```
 
 ### JsonResponse

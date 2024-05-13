@@ -54,9 +54,9 @@ Concepts: intervalles, ensembles, sous-ensembles, quantificateurs, connecteurs
   |---           |---
   | ℕ            | Naturels (0,1,2,...): servent à dénombrer 
   | ℤ            | Entiers ou relatifs (-2,1,0,...): nombres naturels et leurs opposés
-  | ℝ            | Réels (√2, 1.68, π): nombres admettant des chiffres après la virgule<br>ℝ<sup>\*</sup> réels non nuls <br>ℝ<sub>+</sub> réels positifs <br>ℝ<sub>+</sub><sup>\*</sup> réeels strictement positifs
+  | ℝ            | Réls (√2, 1.68, π): nombres admettant des chiffres après la virgule<br>ℝ<sup>\*</sup> réels non nuls <br>ℝ<sub>+</sub> réels positifs <br>ℝ<sub>+</sub><sup>\*</sup> réeels strictement positifs
   | ℚ            | Rationnels (1/3,0.2,...): nombres réels pouvant s'exprimer en fraction
-  | ℚ'           | Irrationnels (√11,e;,...): nombres réels ne pouvant pas s'exprimer en fraction
+  | ℚ'           | Irrationnels (√11,e,...): nombres réels ne pouvant pas s'exprimer en fraction
   | ⅅ            | Décimaux (3.12,4/7,...): nombres rationnels ayant un nombre fini de chiffres
   | ℂ            | Complexes (ex 1 + 1i): nombres composés d'une partie réelle et imaginaire
   | ∅ ou {}      | Ensemble vide

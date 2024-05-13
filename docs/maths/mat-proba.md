@@ -76,14 +76,15 @@ latex: true
   Quelle est la probabilité qu'une main contienne les quatre 1?
 
   Nombre de mains de 9 cartes parmis 36:
-  36!/((36-9!)9!)
+  36!/((36-9!)9!) = 36*35*34*33*32*31*30*29*28/9*8*7*6*5*4*3*2*1
 
   Nombres de mains de 9 cartes avec 4 as:
   4 as + 5 cartes parmis (36-4)
-  32!/((32-5)!5!)
+  32!/((32-5)!5!) = 32*31*30*29*28/5*4*3*2*1
 
   P(main avec 4 as):
-    32*31*30*29*28/5*4*3*2*1 &div; 36*35*34*33*32*31*30*29*28/9*8*7*6*5*4*3*2*1
+  = P(mains de 9 cartes avec 4 as) &div; P(mains de 9 cartes parmis 36)
+  = 32*31*30*29*28/5*4*3*2*1 &div; 36*35*34*33*32*31*30*29*28/9*8*7*6*5*4*3*2*1
   = 32*31*30*29*28/5*4*3*2*1 &times; 9*8*7*6*5*4*3*2*1/36*35*34*33*32*31*30*29*28
   = 9*8*7*6/36*35*34*33
   = 2/935

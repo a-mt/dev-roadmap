@@ -80,9 +80,13 @@ Ensemble de théorèmes mathématiques qui permettent de calculer le nombre tota
   <pre>
   Ex: On tire 6 cartes dans un paquet de 52 cartes.  
   Combien de mains différentes sont possibles?
-
-  C<sub>52,6</sub> = (52!)/((52 - 6)! 6!) = 20358520
+  C<sub>52,6</sub>
+  = (52!)/((52 - 6)! 6!)
+  = (52*51*50*49*48*47)/(6*5*4*3*2)
+  = 20 358 520
   </pre>
+
+  [Mathsolver](https://mathsolver.microsoft.com/en/solve-problem/%60frac%7B%2032%20!%20%20%20%20%7D%7B%20(32-4)%20!%20%204%20!%20%20%20%20%7D)
 
 ## Ensemble non ordonné avec répétition
 

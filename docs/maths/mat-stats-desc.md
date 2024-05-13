@@ -270,7 +270,7 @@ Plutôt que la moyenne, on peut également choisir d'utiliser
 
   Soustraire la valeur par la moyenne, diviser le tout par l'écart-type.
 
-  L'écart-type nous donne la distance entre la moyenne et un point donné en écart-type.  
+  Le z-score (ou écart-réduit) nous donne le nombre d’écart-type entre une valeur donnée et la moyenne.  
   Un écart-réduit positif signifie que l'observation est supérieure à la moyenne.  
   Proche de 0: proche de la moyenne.   
   Négatif: inférieur à la moyenne

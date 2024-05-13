@@ -8,15 +8,14 @@ latex: true
 
 * Un **test statistique** repose sur un raisonnement par l'absurde (*reductio ad absurdum*): plutôt que de chercher à prouver qu'une hypothèse est vraie, on montre que l'inverse nous mènerai à une situation absurde — prouvant ainsi son contraire.
 
-* Ex: Avec les données de 60 personnes, on constate que le nombre moyen de calories consommées par jour est 2400kcal, avec un écart-type de 500kcal. Notre hypothèse est qu'une activité intellectuelle intense dépense une quantité importante de calories.
-
+* Ex: Avec les données de 60 personnes, on constate que le nombre moyen de calories consommées par jour est 2400kcal, avec un écart-type de 500kcal. Notre hypothèse est qu'une activité intellectuelle intense dépense une quantité importante de calories.  
   On demande à 60 personnes de réaliser une tâche complexe pendant 2h et on constate une consommation moyenne de 3000kcal. On doit se demander à quel point il serait rare ou "absurde" d'obtenir ces résultats s'il n'y avait pas de rapport entre calories et activité intellectuelle. Et si on obtenait 2500kcal?
 
 * Intuitivement, on sait que la réponse à cette question dépend 1. de la taille des groupes utilisés, 2. de la différence de moyenne observée, 3. de la dispersion des données.
 
   Les tests statistiques vont nous permettre de définir à partir de quand on considerera comme absurde de penser qu'une différence est dû au hasard (des fluctuations d'échantillonage) et qu'il s'agit donc d'un réel effet dans la population représentée par l'échantillon.
 
-* On ne peut pas prouver que quelque chose n'existe pas, uniquement que quelque chose existe. Il n'est donc pas possible de prouver l'hypothèse nulle avec un échantillon, on peut uniquement dire qu'on ne peut pas rejeter cette hypothèse.
+* Il n'est pas possible de *prouver* l'hypothèse nulle avec un échantillon (= prouver que quelque chose n'existe pas, qu'il n'y a pas d'effets ou de relations), on peut uniquement dire qu'on ne peut pas rejeter cette hypothèse. Par contre, on peut *rejeter* l'hypothèse nulle (= prouver que quelque chose existe, qu'il y a une relation).
 
   Ex: On déclare qu'il n'y a pas de cygnes noirs en Chine. Vous allez en Chine regarder les cygnes et aucun d'entre eux n'est noir. Vous pouvez, au bout d'un certain moment, décider qu'il est peu probable qu'il y en ait... mais vous ne pouvez pas prouver qu'il n'y en a pas avant d'avoir vu tous les cygnes qui existent.
 
@@ -178,7 +177,7 @@ Le seuil de significativité est une probabilité (une valeur entre 0 et 1) et o
   * le risque &alpha; consenti
   * le risque &beta; consenti
 
-  Le risque &beta; est souvent de l'ordre de 20 ou 25%, d'une part parce qu'on considère comme moins grave de ne pas voir une proposition qui existerait que d'affirmer une proposition qui n'existe pas, d'autre part parce que plus beta est petit, plus l'échantillon devra être grand (grandit de taille exponentielle).
+  Le risque &beta; est souvent de l'ordre de 20 ou 25%, d'une part parce qu'on considère comme moins grave de ne pas voir qu'une proposition existe que d'affirmer qu'une proposition n'existe pas, d'autre part parce que plus beta est petit, plus l'échantillon devra être grand (il grandit de taille exponentielle).
 
 ---
 
@@ -186,12 +185,12 @@ Le seuil de significativité est une probabilité (une valeur entre 0 et 1) et o
 
 * Un *intervalle de confiance* (*confidence interval*) est une fourchette de valeurs considérées comme raisonnables sur la base de nos observations.
 
-  * <ins>bilatéral</ins> (*two-tailed*)  
-    Son centre est toujours la moyenne de l'échantillon mais avec une certaine marge de part et d'autre pour réfleter notre incertitude. Si on utilise un alpha de 5%, alors l'intervalle de confiance sera de 95% et la marge de part est d'autre sera de 2.5% (&alpha;/2).
+  * Un intervalle de confiance est <ins>bilatéral</ins> (*two-tailed*) si:  
+    Le centre de l'intervalle est la moyenne de l'échantillon mais avec une certaine marge de part et d'autre pour refléter notre incertitude. Si on utilise un alpha de 5%, alors l'intervalle de confiance sera de 95% et la marge de part et d'autre sera de 2.5% (&alpha;/2).
 
     ![](https://i.imgur.com/xetJUYl.png)
 
-  * <ins>unilatéral</ins> (*one-tailed*)  
+  * <ins>unilatéral</ins> (*one-tailed*):  
     Dans certains cas, on peut considérer que notre incertitude ne peut aller que dans un seul sens — la moyenne sera forcemment supérieure à celle observée, ou inversemment, forcemment inférieure. Dans ce cas, la marge ne sera que d'un seul côté (&alpha;). L'intéret de poser une hypothèse unilatérale va être d'augmenter la puissance du test.
 
     ![](https://i.imgur.com/BLxjTgSm.png)
@@ -200,38 +199,51 @@ Le seuil de significativité est une probabilité (une valeur entre 0 et 1) et o
 * Les *valeurs critiques* sont les bornes de l'intervalle de confiance.  
   Pour déterminer les valeurs critiques:
 
-  1. Chercher à quel z-score correspond les percentiles (&alpha;/2) et (1 - &alpha;/2) dans la distribution Z — ou (&alpha;) pour un intervalle unilatéral avec zone de rejection à gauche, (1 - &alpha;) pour à droite. Pour rappel, le z-score (ou écart-réduit) est le nombre d'écart-type entre une valeur donnée et la moyenne.
+  1. Chercher à quel z-score correspond les percentiles (&alpha;/2) et (1 - &alpha;/2) dans la distribution Z — ou (&alpha;) pour un intervalle unilatéral avec zone de rejection à gauche, et (1 - &alpha;) pour un intervalle unilatéral avec zone de rejection à droite. Pour rappel, le z-score (ou écart-réduit) est le nombre d'écart-type entre une valeur donnée et la moyenne.
 
-     Pour un alpha de 5%, on cherche le z-score correspondant à +2.5+ et +97.5% sur la distribution cumulative Z. On lit sur la table Z une valeur de 1.96.
+     * Par exemple, pour un alpha de 5%:
 
-    ![](https://i.imgur.com/wFHstId.png)
+       - On cherche le z-score correspondant à +2.5 (&alpha;/2) et +97.5% (1 - &alpha;/2) sur la distribution cumulative Z.
 
-    * La distribution normale est symmétrique, on peut donc dire que
+       - Pour la première valeur critique, +2.5%:  
+         On utilise le tableau en Z pour trouver le nombre 0.025. On trouve les premiers chiffres de la valeur critique, -1.9, et les derniers chiffres, -0.06. On obtient la valeur critique -1.96
 
-      $$
-      \begin{aligned}
-      z &=  CDF(1 - \frac{\alpha}{2}) \\
-        &= -CDF(\frac{\alpha}{2})
-      \end{aligned}
-      $$
+       - Pour la deuxième valeur critique, +97.5%.  
+         On cherche le nombre 0.975. On trouve les premiers chiffres 1.9 et les derniers chiffres 0.06. La deuxième valeur critique est 1.96
 
-      Et on aura la relation suivante:
+       ![](https://i.imgur.com/wFHstId.png)
 
-      $$
-      \begin{aligned}
-      P(Z < 1.96)  &= .9750 \\
-      P(Z < -1.96) &= 1 - .9750 = .0250
-      \end{aligned}
-      $$
+       <!--![](https://i.imgur.com/2XFXrojl.png)
+      ![](https://i.imgur.com/Ks4vpI6l.png)-->
 
-    * Les valeurs de Z pour les intervalles de confiance usuels sont:
+     * La distribution normale est symmétrique, on peut donc dire que  
+       la valeur de la fonction de distribution cumulative (CDF = *cumulative distribution function*) pour 1-&alpha;/2  
+       est égale à l'opposé de la CDF pour &alpha;/2
 
-      | C   | z
-      |---  |---
-      | 99% | 2.576
-      | 98% | 2.326
-      | 95% | 1.96
-      | 90% | 1.645
+        $$
+        \begin{aligned}
+        z &=  CDF(1 - \frac{\alpha}{2}) \\
+          &= -CDF(\frac{\alpha}{2})
+        \end{aligned}
+        $$
+
+        Et on aura la relation suivante:
+
+        $$
+        \begin{aligned}
+        P(Z < 1.96)  &= .9750 \\
+        P(Z < -1.96) &= 1 - .9750 = .0250
+        \end{aligned}
+        $$
+
+     * Les valeurs de Z pour les intervalles de confiance usuels sont:
+
+        | C   | z
+        |---  |---
+        | 99% | 2.576
+        | 98% | 2.326
+        | 95% | 1.96
+        | 90% | 1.645
 
   2. Ce n'est pas nécessaire pour un test statistique puisque le résultat d'un test statistique sera sur l'échelle de la distribution choisie, mais connaissant le z-score (valeur sur une distribution normale centrée réduite), on peut calculer les valeurs critiques sur notre distribution (valeur sur une distribution normale dont on connaît la moyenne et l'écart-type):
 

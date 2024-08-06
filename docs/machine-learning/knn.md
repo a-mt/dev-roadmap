@@ -22,7 +22,7 @@ category: Machine learning, algo
 
   ![](https://i.imgur.com/PDFsHJR.png)
 
-[KNN.ipynb](algo/KNN.html)
+[KNN.ipynb](notebooks/KNN.html)
 
 ## Comment choisir K
 

@@ -30,6 +30,8 @@ category: Python, Library, Pandas
 
   ``` python
   df['Username'] = df['Username'].replace("@kerinokeefe", "@kerino")
+
+  car_sales['Price'] = car_sales['Price'].str.replace('[$,.]', '', regex=True)
   ```
 
   On peut l'appliquer sur le dataset entier:

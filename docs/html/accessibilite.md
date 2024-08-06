@@ -134,6 +134,14 @@ Les utilisateurs de lecteurs d'écran ont différentes options, dont aller direc
 
 Indiquer les liens qui pointent vers des documents à télécharger, avec le format et le poids du document en question dans le lien. Par exemple: « Nom du document (PDF, 135ko) ».
 
+<div class="download-links">
+  <a href="#" target="_blank" class="download-links__link">
+    <span class="download-links__icon cnop-launch"></span>
+    <span class="download-links__label">Formulaire de gestion de droits</span>
+    <span class="download-links__weight">767 Ko</span>
+  </a>
+</div>
+
 ### Headings
 
 Utiliser les balises headings, de `<h1>` à `<h6>`, pour nommer les sections du site

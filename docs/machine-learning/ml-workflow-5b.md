@@ -58,6 +58,8 @@ D'autres vont pouvoir être applicable dans la majorité des algorithmes, si ce 
   * fold 3: train [1 2 3], test [4]
   * etc
 
+* La méthode jackknife (ou leave-one-out, LOO) est un cas extrême du k-fold où K=n: on utilise n sous-ensembles, en supprimant une seule valeur à la fois — on calcule l'ajustement en utilisant n-1 données et on vérifie la fiabilité des résultat avec la valeur qu'on a mise de côté.
+
 [Notebook: Cross-validation](https://www.kaggle.com/alexisbcook/cross-validation)
 
 ---

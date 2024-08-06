@@ -6,7 +6,7 @@ category: Machine Learning, Processus
 Une fois que le modèle est fini, ce qu'on en fait dépend du but pour lequel il a été développé:
 
 1. <ins>Analyses ponctuelles: pipeline</ins>  
-   On a développé un modèle pour analyser les données. Certains projets requièrement de répéter le processus à plusieurs reprises, lorsqu'on obtient de nouvelles données par exemple. Dans ce cas, automatiser l'apprentissage va permettre de gagner du temps: créer une *pipeline* pour automatiser le preprocessing et traitement des données.
+   On a développé un modèle pour analyser les données. Certains projets requièrent de répéter le processus à plusieurs reprises, lorsqu'on obtient de nouvelles données par exemple. Dans ce cas, automatiser l'apprentissage va permettre de gagner du temps: créer une *pipeline* pour automatiser le preprocessing et traitement des données.
 
     [Notebook: Pipelines](https://www.kaggle.com/alexisbcook/pipelines)
 
@@ -19,7 +19,7 @@ Une fois que le modèle est fini, ce qu'on en fait dépend du but pour lequel il
 
    * soit on ajoute la fonctionnalité à une application Python (typiquement, on s'appuie le framework Flask ou Django).
 
-   * soit on crée un webservice, qui pourra être requêté par des applications non Python (typiquement, uvicorn pour gérer les requêtes HTTP et FastAPI pour créer une API rapidement).
+   * soit on crée un webservice, qui pourra être requêté par des applications non Python (typiquement, unicorn pour gérer les requêtes HTTP et FastAPI pour créer une API rapidement).
 
    Exemples:  
    ① [Entraîner & exporter un modèle](https://github.com/a-mt/fcc-sms-text-classification/blob/deploy/fcc_sms_text_classification.ipynb)  

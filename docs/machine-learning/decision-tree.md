@@ -31,14 +31,27 @@ On veut prédire si une personne va décrocher un CDI ou non. Après avoir lanc�
 
   4. <ins>S'il s'agit d'un noeud</ins> (si le bloc contient une condition, comme ça aurait le cas si on avait pris la branche de gauche), alors on reprend le processus à partir de l'étape 1 avec la nouvelle condition — et on répète jusqu'à finir sur une feuille.
 
+## Terminologie
+
+![](https://i.imgur.com/n8qKS7Cl.png)
+
 ---
 
 ## Construire un arbre
 
+* Lorsqu'on construit un arbre, une des décisions à prendre est quel algorithme utiliser pur effectuer les divisions. On a plusieurs options:
+
+ - ID3 (Iterative Dichotomiser 3)
+ - C5 (Classifier)
+ - CART (Classification And Regression Tree)
+ - CHAID (CHi-squared Automatic Interaction Detectior)
+ - MARS (Multivariate Adaptive Regression Qplines)
+
+### CART
+
 * Si on a les caractéristiques "{Experience, Employed, Previous jobs, Education level, Top-tier school, Interned}", comment décider quelle condition viendra en premier — en haut?
 
-* L'index Gini est une métrique permettant de mesurer la qualité d'un partitionnement — ex: combien si on sépare Interned 0 vs Interned 1, combien pour Years Experience <10 vs >=10, etc (plus d'infos dans la section ci-dessous).  
-
+* L'index Gini est une métrique décrite par l'algorithme Classification and Regression Tree (CART), qui permet de mesurer la qualité d'un partitionnement — ex: combien si on sépare Interned 0 vs Interned 1, combien pour Years Experience <10 vs >=10, etc (plus d'infos dans la section ci-dessous).  
    On calcule l'index Gini pour l'ensemble des partitionnements possibles. Le partitionnement qui a l'index Gini le plus bas est considéré comme le meilleur: on le met en premier. Puis on répète l'opération pour les sous-partitions jusqu'à avoir traité l'ensemble du dataset.
 
   [Decision Tree Classifier.ipynb](notebooks/Decision Tree Classifier.html)  
@@ -53,8 +66,6 @@ On veut prédire si une personne va décrocher un CDI ou non. Après avoir lanc�
   ![](https://i.imgur.com/5bx1QSI.png)
 
 ### Gini
-
-Métrique décrite par l'algorithme Classification and Regression Tree (CART).
 
 * Gini est une valeur entre 0 et 0.5 qui mesure l'"impureté" d'une catégorie. 0 indique une catégorie complètement homogène (ne contient qu'une seule valeur), 0.5 indique une catégorie très hétérogène.
 

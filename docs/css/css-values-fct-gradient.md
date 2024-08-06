@@ -250,7 +250,7 @@ category: Web, CSS, Valeurs
 
 * Un gradient radial (*radial-gradient*) commence à partir d'un point et s'étend jusqu'aux bords.
 
-  - Plutôt que de contrôler la taille, on peut contrôler jsuqu'où le dégradé s'étend: s'arrêter lorsque le cercle touche un côté ou un coin
+  - Plutôt que de contrôler la taille, on peut contrôler jusqu'où le dégradé s'étend: s'arrêter lorsque le cercle touche un côté ou un coin
 
     - farthest-side: s'arrêter lorsque le cercle touche le bord le plus éloigné du centre
     - closest-side: ...le bord le plus proche du centre

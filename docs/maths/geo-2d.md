@@ -184,7 +184,7 @@ On distingue différents types de triangles:
   <details>
   <summary>Pourquoi cette formule</summary>
 
-  ```
+  <pre>
   Soit
   - b la petite base
   - b1 la base du triangle de gauche
@@ -197,7 +197,7 @@ On distingue différents types de triangles:
   2b×h/2 + (B-b)×h/2
   (2b+B-b)×h/2
   (b+B)×h/2
-  ```
+  </pre>
   </details>
 
 ### Cerf-volant
@@ -211,6 +211,33 @@ On distingue différents types de triangles:
 * L'aire d'un disque est &pi; fois le rayon au carré.
 
   ![](https://i.imgur.com/FVU1c8R.png)
+
+<details>
+  <summary>Valeur de pi</summary>
+
+  <ul>
+  <li>Énoncé du problème: on prend une corde de longueur x, attachée à un piquet, et on l'utilise pour tracer un cercle autour. On aimerait connaître la quantité de surface à l'intérieur du cercle ainsi obtenu (c'est à dire l'aire du disque).</li>
+
+  <li>Dans le papyrus d'Ahmès, la formule suivante était utilisée: A = (d - d/9)² = (8d/9)². Donc pour un rayon de 1, diamètre de 2, (8×2/9)² &asymp; 3.16. Cette formule n'est pas tout à fait juste, et plus le rayon est grand et plus l'erreur est importante.</li>
+
+  <li>C'est à Archimède qu'on doit les premières grandes avancées en la matière. Pour calculer l'aide d'un disque, on trace un polygone plus grand que le cercle et un polygone plus petit que le cercle. En calculant l'aire de ces polygones, on obtient un encadrement de la véritable valeur:<br><br>
+
+  <ul>
+  <li>En traçant un carré à l'extérieur, on peut déterminer que l'aire du disque de diamètre 1 est inférieure à 4. En traçant un hexagone (polygones à 6 côtés) à l'intérieur, que l'aire est supérieure à (6×0.5=) 3<br><br></li>
+
+  <li>Pour resserer l'estimation, on augmente le nombre de côtés des polygones. Avec un dodécagone (polygone à 12 côtés), l'aire est supérieure à 3.11. En divisant chacun des côtés en deux, on obtient 24, puis 48 pour enfin arriver à un polygoner à 96 côtés: à 96, les côtés du polygone collent si bien au cercle qu'il en devient presque impossible de les distinguer à l'oeil nu et l'aire est ici plus grande que 3.1408. En utilisant ce processus avec des polygones extérieurs au cercle, l'aire est plus petite que 3.1428.<br><br></li>
+
+  <li>La méthode d'Archimède peut se prolonger: on peut donc, en théorie, obtenir une approximation aussi précise que l'on veut de ce nombre, pourvu d'avoir le courage d'affronter les calculs. On devient ainsi sûr d'un certain nombre de chiffres après la virgule, et le calcul peut se prolonger presque indéfiniment pour trouver une valeur de plus en plus précise et de plus en plus longue.<br><br>
+
+  <img src="https://i.imgur.com/pfZb0x4l.png" />
+  </li>
+  </ul>
+
+  </li>
+
+  <li>Plutôt que d'effectuer des calculs avec une approximation de cette valeur, ce qui introduirait des erreurs de calculs liés à l'imprécision, on utilise une variable qu'on nomme par convention &pi; (pi) et une fois avoir réduit l'équation au maximum, on remplace pi par sa valeur approximative (3.14 et des poussières)</li>
+  </ul>
+</details>
 
 ### Secteur circulaire
 

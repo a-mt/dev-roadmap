@@ -429,6 +429,31 @@ on peut se servir de `as_serializer_error`
     current_step_number = serializers.IntegerField(source='current_step_number_formatted', read_only=True)
     ```
 
+    Et `format` de modifier le format d'une date
+
+    ``` python
+    class DicomStudySerializer(serializers.ModelSerializer):
+        class Meta:
+            model = DicomStudy
+            fields = (
+                'id',
+                'StudyDate',
+                'StudyTime',
+            )
+            extra_kwargs = {
+                'StudyDate': {
+                    'source': 'date',
+                    'format': '%Y%m%d',
+                    'help_text': 'YYYYMMDD',
+                },
+                'StudyTime': {
+                    'source': 'time',
+                    'format': '%H%M%S.000000',
+                    'help_text': 'hhmmss.ffffff',
+                },
+            }
+    ```
+
 * On peut aussi ajouter des champs qui ne sont pas déclarés sur le modèle.
 
     ``` python
@@ -450,7 +475,7 @@ on peut se servir de `as_serializer_error`
             created_by=self.request.user,
             doctor_referring=self.request.user,
         )
-        ```
+    ```
 
 * Utiliser un champ `SerializerMethodField` permet de retourner une valeur calculée — en lecture seule.
 

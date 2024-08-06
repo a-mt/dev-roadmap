@@ -212,10 +212,10 @@ roadmap: true
     * Prometheus
     * Grafana
   * CI/CD
-    * [Gitlab Auto DevOps][gitlab-ci]{: .cli}
+    * [Gitlab CI][gitlab-ci]{: .cli}
     * Github Actions
     * [Jenkins][jenkins]{: .pkg}
-  * Automatisation
+  * Config management
     * [Ansible][ansible]{: .cli}
     * Chef
     * [Puppet][puppet]{: .pkg}
@@ -418,7 +418,6 @@ roadmap: true
   - [Image Placeholder](http://placehold.it/350x150)
   - [CSV Placeholder](https://mockaroo.com/)
   - [GAN Generated profile photo](https://thispersondoesnotexist.com/)
-  - Website report: [Lighthouse](https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=fr&pli=1)
 
 - Codes  
   - Norme BCP 47 (ex: en_GB)
@@ -444,6 +443,7 @@ roadmap: true
   - [Google My Business](https://www.google.co.uk/business/)
   - [Structured Data Markup Helper](https://www.google.com/webmasters/markup-helper/u/0/?hl=fr), [Rich Snippet doc](https://developers.google.com/search/docs/guides/search-gallery), [SEOquake](https://www.seoquake.com/)
   - Web templates: [BootstrapMade](https://bootstrapmade.com/), [WrapBootstrap](https://wrapbootstrap.com/), [StartBootstrap](https://startbootstrap.com/), [carrd.co](carrd.co)
+  - Website report: [Lighthouse](https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=fr&pli=1)
 
 - Diagram
   - [UML](https://plantuml.com/)

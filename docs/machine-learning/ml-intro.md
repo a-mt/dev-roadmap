@@ -65,7 +65,7 @@ On distingue généralement 3 grands types d'algorithmes de machine learning: su
   * pour <ins>**réduire les dimensions**</ins> (*dimensionality reduction* en anglais)  
     Si vous avez un grand nombre de caractéristiques/dimensions (des milliers), il est difficile de les passer toutes en revue pour identifier celles qui sont pertinentes ou non — c'est ce qu'on appelle la "malédiction de la dimensionalité" (*curse of dimensionality* en anglais).
 
-    On peut utiliser des algorithmes pour supprimer automatiquement les dimensions qui ne sont pas pertinentes — par exemple celles qui on un trop grand nombre de valeurs manquantes, celles qui n'ont aucunes corrélations avec la valeur qu'on cherche à prédire (l'hopital du patient vs la durée de rémission) ou sont trop fortemment correlées à d'autres (l'âge et la date de naissance).
+    On peut utiliser des algorithmes pour supprimer automatiquement les dimensions qui ne sont pas pertinentes — par exemple celles qui ont un trop grand nombre de valeurs manquantes, celles qui n'ont aucunes corrélations avec la valeur qu'on cherche à prédire (l'hopital du patient vs la durée de rémission) ou sont trop fortemment correlées à d'autres (l'âge et la date de naissance).
 
   * pour <ins>**détecter des anomalies**</ins> (*anomaly detection* en anglais)  
     Identifier tout ce qui sort de l'ordinaire.

@@ -174,7 +174,7 @@ Pour ce faire, on utilise des *media queries*.
 ## Navigateurs
 
 * Chaque navigateur à son propre moteur de rendu (*Rendering Engine*), parseur, politique de rendu et style par défaut.  
-  Les principaux Rending Engine sont
+  Les principaux Rendering Engine sont
   - Trident (IE<10)
   - Edge (IE10)
   - Presto (Opera)

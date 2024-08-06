@@ -1,0 +1,387 @@
+a.external-link:before {
+  content: "\e965";
+  font-family: cnopIcon;
+}
+@font-face {
+  font-family: cnopIcon;
+  font-style: normal;
+  font-weight: 400;
+  src: url("../cnop.4736dbfd.eot");
+  src: url("../cnop.4736dbfd.eot?#iefix") format("embedded-opentype"),
+    url("../cnop.94d4cd45.ttf") format("truetype"),
+    url("../cnop.58e6d207.svg#cnopIcon") format("svg");
+}
+
+[class*=" cnop-"],
+[class^="cnop-"] {
+  speak: never;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: cnopIcon !important;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: none;
+}
+.cnop-pharmacien-adj:before {
+  color: #65b231;
+  content: "\e935";
+}
+.cnop-pharmacien-bio:before {
+  color: #e43516;
+  content: "\e936";
+}
+.cnop-pharmacien-distri:before {
+  color: #e3a001;
+  content: "\e937";
+}
+.cnop-pharmacien-hosp:before {
+  color: #0c80c3;
+  content: "\e938";
+}
+.cnop-pharmacien-indus:before {
+  color: #864d97;
+  content: "\e939";
+}
+.cnop-pharmacien-outremer:before {
+  color: #b11f33;
+  content: "\e93a";
+}
+.cnop-pharmacien-titul:before {
+  color: #00a664;
+  content: "\e93b";
+}
+.cnop-TelechargerRdVert:before {
+  content: "\e944";
+}
+.cnop-corbeille:before {
+  content: "\e943";
+}
+.cnop-alerte:before {
+  content: "\e941";
+}
+.cnop-circle-star2:before {
+  content: "\e942";
+}
+.cnop-MonCompteId:before {
+  content: "\e940";
+}
+.cnop-circle-star-hover:before {
+  content: "\e93f";
+}
+.cnop-moins:before {
+  content: "\e93e";
+}
+.cnop-light-arrow:before {
+  content: "\e93d";
+}
+.cnop-download:before {
+  content: "\e93c";
+}
+.cnop-full-star:before {
+  content: "\e933";
+}
+.cnop-plus:before {
+  content: "\e932";
+}
+.cnop-arrow-bottom-pagination:before {
+  content: "\e92f";
+}
+.cnop-arrow-top-pagination:before {
+  content: "\e930";
+}
+.cnop-infinite-scroll-pagination:before {
+  content: "\e931";
+}
+.cnop-arborescence:before {
+  content: "\e90a";
+}
+.cnop-arrow-bottom:before {
+  content: "\e90b";
+}
+.cnop-arrow-left:before {
+  content: "\e90c";
+}
+.cnop-arrow-right:before {
+  content: "\e90d";
+}
+.cnop-arrow-top:before {
+  content: "\e90e";
+}
+.cnop-circle-facebook:before {
+  content: "\e90f";
+}
+.cnop-circle-letter:before {
+  content: "\e910";
+}
+.cnop-circle-linkedin:before {
+  content: "\e911";
+}
+.cnop-circle-print:before {
+  content: "\e912";
+}
+.cnop-circle-star:before {
+  content: "\e913";
+}
+.cnop-circle-twitter:before {
+  content: "\e914";
+}
+.cnop-flag-star:before {
+  content: "\e915";
+}
+.cnop-hands:before {
+  content: "\e916";
+}
+.cnop-letter:before {
+  content: "\e917";
+}
+.cnop-light:before {
+  content: "\e918";
+}
+.cnop-lock:before {
+  content: "\e919";
+}
+.cnop-marker:before {
+  content: "\e91a";
+}
+.cnop-medicine:before {
+  content: "\e91b";
+}
+.cnop-megaphone:before {
+  content: "\e91c";
+}
+.cnop-money:before {
+  content: "\e91d";
+}
+.cnop-notes:before {
+  content: "\e91e";
+}
+.cnop-numeric:before {
+  content: "\e91f";
+}
+.cnop-patient:before {
+  content: "\e959";
+}
+.cnop-pharmacienne:before {
+  content: "\e921";
+}
+.cnop-play:before {
+  content: "\e922";
+}
+.cnop-read:before {
+  content: "\e923";
+}
+.cnop-scroll:before {
+  content: "\e924";
+}
+.cnop-search:before {
+  content: "\e925";
+}
+.cnop-star:before {
+  content: "\e926";
+}
+.cnop-student:before {
+  content: "\e927";
+}
+.cnop-user:before {
+  content: "\e928";
+}
+.cnop-wc:before {
+  content: "\e929";
+}
+.cnop-alert:before {
+  content: "\e903";
+}
+.cnop-launch:before {
+  content: "\e965";
+}
+.cnop-error:before {
+  content: "\e964";
+}
+.cnop-info:before {
+  content: "\e962";
+}
+.cnop-markunread_mailbox:before {
+  content: "\e95b";
+}
+.cnop-dashboard:before {
+  content: "\e95c";
+}
+.cnop-menu_book:before {
+  content: "\e95d";
+}
+.cnop-chrome_reader_mode:before {
+  content: "\e95e";
+}
+.cnop-library_books:before {
+  content: "\e95f";
+}
+.cnop-update:before {
+  content: "\e960";
+}
+.cnop-gps_fixed:before,
+.cnop-my_location:before {
+  content: "\e920";
+}
+.cnop-map:before {
+  content: "\e934";
+}
+.cnop-location_pin:before {
+  content: "\e949";
+}
+.cnop-settings:before {
+  content: "\e94a";
+}
+.cnop-article:before {
+  content: "\e961";
+}
+.cnop-create:before,
+.cnop-edit:before,
+.cnop-mode_edit:before {
+  content: "\e94b";
+}
+.cnop-contact_mail:before {
+  content: "\e94c";
+}
+.cnop-school:before {
+  content: "\e94d";
+}
+.cnop-help_outline:before {
+  content: "\e94e";
+}
+.cnop-help:before {
+  content: "\e94f";
+}
+.cnop-work_outline:before {
+  content: "\e950";
+}
+.cnop-work:before {
+  content: "\e951";
+}
+.cnop-work1:before {
+  content: "\e952";
+}
+.cnop-insert_link:before,
+.cnop-link:before {
+  content: "\e953";
+}
+.cnop-contacts:before {
+  content: "\e954";
+}
+.cnop-perm_contact_calendar:before {
+  content: "\e955";
+}
+.cnop-date_range:before {
+  content: "\e956";
+}
+.cnop-calendar_today:before {
+  content: "\e957";
+}
+.cnop-notifications_on:before {
+  content: "\e958";
+}
+.cnop-menu1:before {
+  content: "\e945";
+}
+.cnop-videocam:before {
+  content: "\e946";
+}
+.cnop-mic:before {
+  content: "\e947";
+}
+.cnop-ondemand_video:before {
+  content: "\e948";
+}
+.cnop-menu:before {
+  content: "\e95a";
+}
+.cnop-add:before {
+  content: "\e92e";
+}
+.cnop-visibility_off:before {
+  content: "\e92c";
+}
+.cnop-visibility_on:before {
+  content: "\e92d";
+}
+.cnop-clear:before,
+.cnop-close:before {
+  content: "\e92a";
+}
+.cnop-notifications_none:before {
+  content: "\e92b";
+}
+.cnop-add_circle_outline:before {
+  content: "\e904";
+}
+.cnop-keyboard_arrow_up:before {
+  content: "\e905";
+}
+.cnop-keyboard_arrow_down:before {
+  content: "\e906";
+}
+.cnop-chevron_right:before,
+.cnop-navigate_next:before {
+  content: "\e907";
+}
+.cnop-chevron_left:before,
+.cnop-navigate_before:before {
+  content: "\e908";
+}
+.cnop-sort-alphabetically:before {
+  content: "\e963";
+}
+.cnop-social-linkedin:before {
+  content: "\e900";
+}
+.cnop-social-twitter:before {
+  content: "\e901";
+}
+.cnop-social-facebook:before {
+  content: "\e902";
+}
+.cnop-youtube:before {
+  content: "\e909";
+}
+
+[class*=" cnop-"], [class^="cnop-"] {
+  font-family: cnopIcon !important;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: none;
+}
+.cnop-launch::before {
+  content: "\e965";
+}
+.download-links {
+  margin: 10px 0;
+  padding: 0 !important;
+}
+.download-links a {
+  background-color: inherit;
+  color: #000;
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+}
+a.download-links__link {
+  align-items: baseline;
+  display: inline-flex;
+  gap: 10px;
+}
+.download-links__link:focus .download-links__label,
+.download-links__link:hover .download-links__label {
+  text-decoration: underline !important;
+}
+.download-links__icon,
+.download-links__weight {
+  color: #27827d;
+}
+.download-links__weight {
+  flex: 0 0 auto;
+}
+.download-links__label {
+  text-decoration: none;
+}

@@ -477,6 +477,28 @@ category: Python, Django, Docs
 
     ```
 
+* JSON
+
+    ``` python
+    class EmailMessageField(serializers.JSONField):
+        class Meta:
+            swagger_schema_fields = {
+                "type": openapi.TYPE_OBJECT,
+                "title": "Email",
+                "properties": {
+                    "subject": openapi.Schema(
+                        title="Email subject",
+                        type=openapi.TYPE_STRING,
+                    ),
+                    "body": openapi.Schema(
+                        title="Email body",
+                        type=openapi.TYPE_STRING,
+                    ),
+                },
+                "required": ["subject", "body"],
+             }
+    ```
+
 ### read_only
 
 * Si un champ est `read_only` alors ce champ est affiché en sortie et non en entrée

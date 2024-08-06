@@ -246,7 +246,7 @@ Il existe des unités de longueur relatives et absolues:
   ```
 
 * La *résolution* (resolution) est la densité de pixels d'un appareil.  
-  Un écran compte habituellement 72 ou 96 dpi, tandis qu'un document imprimé en compte généralement une résolution beaucoup plus élevée. 
+  Un écran compte habituellement 72 ou 96 dpi, tandis qu'un document imprimé compte généralement une résolution beaucoup plus élevée. 
   Elle peut être utilisée dans les media queries.
 
   ```

@@ -181,6 +181,7 @@ print(f'Hello there {name1} and {name2}')
 1. La fonction [format](https://www.w3schools.com/python/ref_string_format.asp)
 
     Paramètres non nommés:
+
     ``` python
     tu = (12,45,22222,103,6)
     print('{0} {2} {1} {2} {3} {2} {4} {2}'.format(*tu))
@@ -190,6 +191,7 @@ print(f'Hello there {name1} and {name2}')
     ```
 
     Paramètres nommés:
+
     ``` python
     print("{track:03d}. {artist:>8s} - {title:s}.mp3".format(track=1, artist="Bob", title="My song"))
     # 001.      Bob - My song.mp3
@@ -200,6 +202,7 @@ print(f'Hello there {name1} and {name2}')
 2. La syntaxe `%`
 
     Paramètres non nommés:
+
     ``` python
     myvar = "value"
     print("val = %s" % myvar) # val = value
@@ -217,6 +220,7 @@ print(f'Hello there {name1} and {name2}')
     ```
 
     Paramètres nommés:
+
     ``` python
     print('invalid %(type)s value: %(value)r' % {'type': "name", 'value': 10})
     # invalid name value: 10

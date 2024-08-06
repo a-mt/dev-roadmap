@@ -352,7 +352,7 @@ Une fois la requête construite, il y a différentes manières de récupérer le
 
 ### update or create
 
-* `update_or_create` permet de créer ou mettre à jour des instances
+* `update_or_create` permet de créer ou mettre à jour (upsert) des instances
 
   ``` python
   PatientACL.objects.update_or_create(

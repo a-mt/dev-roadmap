@@ -48,7 +48,25 @@ Le modèle est entraîné et maintenant quoi?
   </pre>
   </details>
 
-## Métriques
+* Les principales raisons d'un underfitting sont:
+
+  - un *data leakage*: une partie des données du test set se retrouvent dans les données du train set.
+
+  - un *data mismatch*: les données testées sont différentes des données sur lequel le modèle est entrâine. Par exemple les caractéristiques sont différentes
+
+  D'autres manières de lutter contre l'underfitting sont:
+
+  - utiliser un modèle plus avancé
+  - modifier les hyperparamètres du modèle (ajouter des couches)
+  - réduire le nombre de caractéristiques
+  - entraîner plus longtemps
+
+* Pour ce qui est de l'overfitting:
+
+  - collecter davantage de données
+  - essayer un modèle moins avancé
+
+## Métriques d'une classification
 
 ### Accuracy
 
@@ -232,3 +250,11 @@ Le modèle est entraîné et maintenant quoi?
   <img src="https://i.imgur.com/hRagA8qt.jpg" title="Chihuaha vs blueberry muffin">
   <img src="https://i.imgur.com/nVShm7Qt.jpg" title="Owl vs apple slice">
   </details>
+
+## Autres Métriques
+
+* Pour une régression, on utilisera au choix
+
+  - Mean absolute erorr (MAE)
+  - Mean squared error (MSE)
+  - Root mean squared error (RMSE)

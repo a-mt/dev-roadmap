@@ -127,10 +127,15 @@ reviews.rename(index={0: 'firstEntry', 1: 'secondEntry'})
 * On peut aussi directement assigner des valeurs à une colonne qui n'existe pas encore:
 
   ``` python
-  df['day']    = df['click_time'].dt.day.astype('uint8')
-  df['hour']   = df['click_time'].dt.hour.astype('uint8')
-  df['minute'] = df['click_time'].dt.minute.astype('uint8')
-  df['second'] = df['click_time'].dt.second.astype('uint8')
+  df['day']     = df['date'].dt.day.astype('uint8')    # 05
+  df['hour']    = df['date'].dt.hour.astype('uint8')   # 23
+  df['minute']  = df['date'].dt.minute.astype('uint8') # 59
+  df['second']  = df['date'].dt.second.astype('uint8') # 59
+
+  df['year']    = df['date'].dt.year.astype(int)       # 2016
+  df['week']    = df['date'].dt.strftime('%Y-W%V')     # 2016-W31
+  df['month']   = df['date'].dt.strftime('%Y-%m')      # 2016-08
+  df['quarter'] = df['date'].dt.to_period('Q').dt.strftime('%Y-Q%q') # 2016-Q3
   ```
 
 ## Append
@@ -207,6 +212,11 @@ reviews.rename(index={0: 'firstEntry', 1: 'secondEntry'})
 
   ``` python
   pd.concat([canadian_youtube, british_youtube])
+  ```
+  ``` py
+  # Create a new dataframe combining 2016–2017 data with 2018 data.
+  union_df = pd.concat([df.drop(['weekday','week'], axis=1), df_2], ignore_index=True)
+  union_df.head()
   ```
 
 * Joindre (se base sur l'index si colonne non précisée).  

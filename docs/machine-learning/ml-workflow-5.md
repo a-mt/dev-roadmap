@@ -52,12 +52,13 @@ Le modèle est entraîné et maintenant quoi?
 
   - un *data leakage*: une partie des données du test set se retrouvent dans les données du train set.
 
-  - un *data mismatch*: les données testées sont différentes des données sur lequel le modèle est entrâine. Par exemple les caractéristiques sont différentes
+  - un *data mismatch*: les données testées sont différentes des données sur lequel le modèle est entraîné.  
+    Par exemple les caractéristiques / intervalles de valeurs sont différents
 
   D'autres manières de lutter contre l'underfitting sont:
 
   - utiliser un modèle plus avancé
-  - modifier les hyperparamètres du modèle (ajouter des couches)
+  - modifier les hyperparamètres du modèle (ajouter des layers)
   - réduire le nombre de caractéristiques
   - entraîner plus longtemps
 

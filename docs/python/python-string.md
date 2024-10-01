@@ -188,6 +188,8 @@ print(f'Hello there {name1} and {name2}')
     # 12 22222 45 22222 103 22222 6 22222
 
     print("{0:b}".format(9)) # 1001
+
+    print("Base price: ${:.2f} USD".format(price))
     ```
 
     Paramètres nommés:
@@ -234,6 +236,15 @@ print(f'Hello there {name1} and {name2}')
     origin = "London"
     destination = "Paris"
     print(f"from {origin} to {destination}") # from London to Paris
+
+    num = 1000.987123
+    f'{num:.2f}'
+
+    num = 1000.987123
+    print(f'{num:.3e}')
+
+    decimal = 0.2497856
+    print(f'{decimal:.4%}')
     ```
 
 ## Caractères spéciaux

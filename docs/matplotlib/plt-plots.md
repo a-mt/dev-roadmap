@@ -447,7 +447,25 @@ colors = np.random.rand(100)
 plt.scatter(x, y, s=size, c=colors, alpha=0.8, cmap='Spectral')
 plt.colorbar()
 </pre>
+
+<pre lang="python">
+colors = np.where(df['number_of_strikes'] < lower_limit, 'r', 'b')
+
+fig, ax = plt.subplots(figsize=(16,8))
+ax.scatter(df['year'], df['number_of_strikes'], c=colors)
+</pre>
 </details>
+
+``` py
+import plotly.express as px
+
+px.scatter_geo(
+    national_valuations_no_big4,
+    locations='Country/Region',
+    locationmode='country names', 
+    size='Valuation_num',
+)
+```
 
 ---
 
@@ -506,6 +524,23 @@ y = ((1 / (np.sqrt(2 * np.pi) * std))
 plt.plot(bins, y, '--')
 </pre>
 </details>
+
+``` py
+plt.hist(df['seconds'], bins=range(40, 101, 5))
+plt.xticks(range(35, 101, 5))
+plt.yticks(range(0, 61, 10))
+plt.xlabel('seconds')
+plt.ylabel('count')
+plt.title('Old Faithful geyser - time between eruptions')
+plt.show()
+```
+``` py
+ax = sns.histplot(df['seconds'], binrange=(40, 100), binwidth=5, color='#4285F4', alpha=1)
+ax.set_xticks(range(35, 101, 5))
+ax.set_yticks(range(0, 61, 10))
+plt.title('Old Faithful geyser - time between eruptions')
+plt.show();
+```
 
 ---
 
@@ -980,3 +1015,26 @@ m.fillcontinents(color="#FFDDCC", lake_color='#DDEEFF')
 </details>
 
 [Basemap.ipynb](Basemap.html)
+
+---
+
+## Heatmap
+
+![](https://i.imgur.com/MJwTrcP.png)
+
+<details>
+<summary>python ↑</summary>
+<pre lang="python">
+df_by_month = df.groupby(['year', 'month']).sum(numeric_only=True).reset_index()
+
+# Create new df that pivots the data
+df_by_month_plot = df_by_month.pivot(index='year', columns='month', values='strike_level_code')
+df_by_month_plot.head()
+
+ax = sns.heatmap(df_by_month_plot, cmap = 'Blues')
+colorbar = ax.collections[0].colorbar
+colorbar.set_ticks([0, 1, 2, 3])
+colorbar.set_ticklabels(['Mild', 'Scattered', 'Heavy', 'Severe'])
+plt.show()
+</pre>
+</details>

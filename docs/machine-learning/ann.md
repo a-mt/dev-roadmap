@@ -27,7 +27,7 @@ latex: true
 
 * En 1943, McCulloch & Pitts proposent le premier modèle mathématique du neurone artificiel:
 
-  * N entrées binaires exitatoires, x<sub>i</sub> &in; {0,1}
+  * N entrées binaires excitatoires, x<sub>i</sub> &in; {0,1}
   * M entrées binaires inhibitoires, x<sub>n+j</sub> &in; {0,1}
   * Un seuil Θ
   * Une sortie binaire, y &in; {0,1}
@@ -56,7 +56,7 @@ latex: true
 
 ## Linear Threshold Unit (LTU)
 
-* Un LTU s'appuie sur la même idée que le neurone MCP mais attribue des poids aux différentes entrées plutôt que de désigner des entrées exitatoires et inhibitoires
+* Un LTU s'appuie sur la même idée que le neurone MCP mais attribue des poids aux différentes entrées plutôt que de désigner des entrées excitatoires et inhibitoires
 
   $$
   f(x) = \begin{cases}
@@ -112,7 +112,7 @@ latex: true
   L(w,b) = \frac{1}{2} \sum_{i=1}^n (y_i - \phi(w^T x_i + b))^2
   $$
 
-  Et puisqu'on cherche à minimiser cette erreur, met à jour les poids proportionnellement à la derivée de la fonction coût
+  Et puisqu'on cherche à minimiser cette erreur, on met à jour les poids proportionnellement à la derivée de la fonction coût
 
   $$
   \text{Dérivée fonction coût} \\

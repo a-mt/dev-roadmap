@@ -23,6 +23,74 @@ category: Python, Library, Matploblib, Préférences
 
  ![](https://i.imgur.com/UUvwIRJ.png)
 
+## Text / annotate
+
+``` py
+def addlabels(x, y, labels):
+    '''
+    Iterates over data and plots text labels above each bar of bar graph.
+    '''
+    for i in range(len(x)):
+        plt.text(i, y[i], labels[i], ha = 'center', va = 'bottom')
+
+df_by_quarter = df['number_of_strikes'].div(1000000)
+df_by_quarter['number_of_strikes_formatted'] = df_by_quarter['number_of_strikes'].div(1000000).round(1).astype(str) + 'M'
+
+plt.figure(figsize = (15, 5))
+plt.bar(x = df_by_quarter['quarter'], height = df_by_quarter['number_of_strikes'])
+addlabels(df_by_quarter['quarter'], df_by_quarter['number_of_strikes'], df_by_quarter['number_of_strikes_formatted'])
+plt.plot()
+plt.xlabel('Quarter')
+plt.ylabel('Number of lightning strikes')
+plt.title('Number of lightning strikes per quarter (2016-2018)')
+plt.show()
+```
+
+![](https://i.imgur.com/QJ0FTSV.png)
+
+``` py
+plt.figure(figsize = (15, 5))
+
+p = sns.barplot(
+    data = df_by_quarter,
+    x = 'quarter_number',
+    y = 'number_of_strikes',
+    hue = 'year',
+)
+
+for b in p.patches:
+    p.annotate(
+      str(round(b.get_height()/1000000, 1))+'M', 
+     (b.get_x() + b.get_width() / 2., b.get_height() + 1.2e6), 
+     ha = 'center', va = 'bottom', 
+     xytext = (0, -12), 
+     textcoords = 'offset points',
+)
+plt.xlabel("Quarter")
+plt.ylabel("Number of lightning strikes")
+plt.title("Number of lightning strikes per quarter (2016-2018)")
+plt.show()
+```
+
+![](https://i.imgur.com/NDDuM2N.png)
+
+``` py
+month_order = ['January', 'February', 'March', 'April', 'May', 'June', 
+               'July', 'August', 'September', 'October', 'November', 'December']
+
+sns.barplot(
+    data = percentage_lightning,
+    x = 'month_txt',
+    y = 'percentage_lightning_per_month',
+    hue = 'year',
+    order = month_order );
+plt.xlabel("Month");
+plt.ylabel("% of lightning strikes");
+plt.title("% of lightning strikes each Month (2016-2018)");
+```
+
+![](https://i.imgur.com/7VrkUg3.png)
+
 ## Position
 
 * On peut changer la position de la légende de différentes manières

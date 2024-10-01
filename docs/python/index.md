@@ -25,4 +25,5 @@ category: Web
 * [Divers](python-misc.md)
 
 [Sharing data between processes](https://superfastpython.com/numpy-share-array-processes/)  
-[Python best practices](https://peps.python.org/)
+[Python best practices](https://peps.python.org/)  
+[Python CLI API example](https://github.com/Kaggle/kaggle-api): `kaggle competitions download -c dog-breed-identification`

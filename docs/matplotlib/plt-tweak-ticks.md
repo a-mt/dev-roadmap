@@ -219,6 +219,27 @@ category: Python, Library, Matploblib
 
   ![](https://i.imgur.com/vowwgyb.png)
 
+* `set_xticklabels` permet de modifier les labels
+
+  ``` py
+  def readable_numbers(x):
+      """takes a large number and formats it into K,M to make it more readable"""
+      if x >= 1e6:
+          s = '{:1.1f}M'.format(x*1e-6)
+      else:
+          s = '{:1.0f}K'.format(x*1e-3)
+      return s
+
+  # Create boxplot
+  box = sns.boxplot(x=df['number_of_strikes'])
+  g = plt.gca()
+  box.set_xticklabels(np.array([readable_numbers(x) for x in g.get_xticks()]))
+  plt.xlabel('Number of strikes')
+  plt.title('Yearly number of lightning strikes');
+  ```
+
+  ![](https://i.imgur.com/csXVxLu.png)
+
 ### Position
 
 * On peut modifier l'emplacement de la graduation:

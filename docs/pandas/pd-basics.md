@@ -396,9 +396,28 @@ category: Python, Library, Pandas
   reviews.groupby('category').price.min()
   ```
 
+* agg permet d'appliquer plusieurs fonctions d'aggrégation par groupe
+
   ``` python
   # Le plus cher et le moins cher par variété
   reviews.groupby('variety').price.agg([min, max])
+  ```
+  ``` py
+  df.groupby(['type', 'magnetic_field']).agg(['mean', 'median'])
+  ```
+  ``` py
+  clothes.groupby('color').agg({
+    'price_usd': ['mean', 'max'],
+    'mass_g': ['mean', 'max'],
+  })
+  ```
+  ``` py
+  # Calculate total lightning strikes for each month of each year.
+  lightning_by_month = union_df.groupby(['month_txt','year']).agg(
+      number_of_strike=pd.NamedAgg(column='number_of_strikes', aggfunc=sum)
+  ).reset_index()
+
+  lightning_by_month.head()
   ```
 
 ## sort_values

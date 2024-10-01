@@ -138,7 +138,7 @@ On distingue différents types de triangles:
   ![](https://i.imgur.com/3h7UFuV.png)
 
 * On appelle *circonférence* le périmètre d'un cercle.  
-  Sa valeur exacte est &pi; (pi) fois diamètre.
+  Sa valeur exacte est &pi; (pi) fois diamètre — plus d'infos sur pi dans la partie [aire d'un disque](#disque).
 
   ![](https://i.imgur.com/nELZRkc.png?1)
 

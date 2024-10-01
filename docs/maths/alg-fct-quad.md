@@ -9,6 +9,8 @@ Concepts: sommet, convexe, concave, taux de variation moyen, intersection avec l
 
 * Une fonction quadratique ou fonction de second degré s'écrit sous la forme `f(x) = ax² + bx + c` et représente une relation courbe — quand on la trace sur un graphique, on obtient une parabole.
 
+  ![](https://i.imgur.com/NPNhq1d.png)
+
   <ins>Exemple</ins>:
 
   ![](https://i.imgur.com/BupC4nD.png)
@@ -39,6 +41,9 @@ Concepts: sommet, convexe, concave, taux de variation moyen, intersection avec l
 * Dans un repère orthogonal, la courbe est symétrique par rapport à l'axe des ordonnées car deux nombres opposés ont le même carré, quelque soit le réel — (x)² = (-x)². On dit que la fonction carré est *paire*
 
   ![](https://i.imgur.com/HvCXkF5m.jpg)
+
+* Les courbes représentant les fonctions carré et racine carrée sur [0; +∞[  
+  sont symétriques l'une de l'autre par rapport à la droite d'équation y = x.
 
 ---
 

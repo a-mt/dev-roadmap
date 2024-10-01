@@ -15,8 +15,6 @@ Concepts: distance entre deux points, coordonnées du milieu, équation de droit
 
   ![](https://i.imgur.com/LXbp81d.png)
 
----
-
 ## Coordonnées du milieu du segment
 
 * Les coordonnées du milieu d'un segment est la moyenne des deux points qui le délimitent.  
@@ -28,8 +26,6 @@ Concepts: distance entre deux points, coordonnées du milieu, équation de droit
 
   ![](https://i.imgur.com/2sM8fyC.png)
 
----
-
 ## Équations de droites parallèles
 
 * Des droites parallèles sont des équations d'ordonnée à l'origine différente  
@@ -38,8 +34,6 @@ Concepts: distance entre deux points, coordonnées du milieu, équation de droit
   <ins>Exemple</ins>:
 
   ![](https://i.imgur.com/bYejoPY.png)
-
----
 
 ## Équations de droites perpendiculaires
 
@@ -50,3 +44,10 @@ Concepts: distance entre deux points, coordonnées du milieu, équation de droit
   <ins>Exemple</ins>:
 
   ![](https://i.imgur.com/3w8tG3s.png)
+
+## Théorème de la médiane
+
+* Soit A et B deux points du plan, et I le milieu de [AB].  
+  Pour tout point M du plan, MA² + MB² = 2MI² + (AB²)/2
+
+  ![](https://i.imgur.com/62X8pYl.png)

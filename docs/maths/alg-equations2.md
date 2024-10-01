@@ -117,102 +117,9 @@ Des opérations *réciproques* sont des opérations qui se neutralisent l'une l'
 
 Il y a différentes manières de procéder:
 
-### Forme canonique
-
-*  Écrire l'équation sous <ins>forme x² = a²</ins>:  
-   x²=a² équivaut à x=a ou x=-a.
-
-   Le symbole ± (plus ou moins) est un raccourci pour noter deux nombres opposés.  
-   Ex: ±6 signifie 6 ou -6.
-
-    ```
-    Résoudre l'équation 3x² - 7 = 5:
-
-    3x² - 7 = 5
-        3x² = 12
-         x² = 4
-         x² = 2²
-
-    L'équation a deux solutions: x=±2
-    ```
-
-    ```
-    Résoudre l'équation (x - 3)² - 81 = 0:
-
-    (x - 3)² - 81 = 0
-         (x - 3)² = 81
-         (x - 3)² = 9
-
-    Solution 1:
-      x - 3 = 9
-          x = 12
-
-    Solution 2:
-      x - 3 = -9
-          x = -6
-
-    L'équation a deux solutions: x=12 et x=-6
-    ```
-
-    ```
-    Résoudre x² + 6x + 2 = 0:
-
-    x² + 6x + 9 - 9 + 2 = 0
-           (x + 3)² - 7 = 0
-               (x + 3)² = 7
-                  x + 3 = ±√7
-
-    Solution 1:
-      x + 3 = √7
-          x = √7 - 3
-            ≈ -0.35
-
-    Solution 2:
-      x + 3 = -√7
-          x = -√7 - 3
-            ≈ -5.65
-    ```
-
-### Forme factorisée
-
-*  Écrire l'équation sous <ins>forme de produits</ins>:  
-   Pour qu'un produit soit égal à 0, il faut qu'un des deux termes soit égal à 0.
-
-    ```
-    Résoudre l'équation (2x - 1)(x + 4) = 0:
-
-    Solution 1:
-      2x - 1 = 0
-          2x = 1
-           x = 1/2
-
-    Solution 2:
-      x + 4 = 0
-          x = -4
-
-    L'équation a deux solutions: x=1/2 et x=-4
-    ```
-
-    ```
-    Résoudre l'équation x² - 5x + 6 = 0:
-
-       x² - 5x + 6 = 0
-    (x - 2)(x - 3) = 0
-
-    Solution 1:
-      x - 2 = 0
-          x = 2
-
-    Solution 2:
-      x - 3 = 0
-          x = 3
-
-    L'équation a deux solutions: x=2 et x=3
-    ```
-
 ### Forme réduite
 
-*  Écrire l'équation sous <ins>forme réduite</ins> et utiliser la formule des racines:
+*  Si l'équation est écrite sous <ins>forme réduite</ins>, utiliser la formule des racines:
 
    ![](https://i.imgur.com/Iwo2rtH.png)
 
@@ -293,6 +200,99 @@ Il y a différentes manières de procéder:
   La solution de l'équation est x=-7
   ```
 
+### Forme canonique
+
+*  Si l'équation est écrite sous <ins>forme x² = a²</ins>:  
+   x²=a² équivaut à x=a ou x=-a.
+
+   Le symbole ± (plus ou moins) est un raccourci pour noter deux nombres opposés.  
+   Ex: ±6 signifie 6 ou -6.
+
+    ```
+    Résoudre l'équation 3x² - 7 = 5:
+
+    3x² - 7 = 5
+        3x² = 12
+         x² = 4
+         x² = 2²
+
+    L'équation a deux solutions: x=±2
+    ```
+
+    ```
+    Résoudre l'équation (x - 3)² - 81 = 0:
+
+    (x - 3)² - 81 = 0
+         (x - 3)² = 81
+         (x - 3)² = 9
+
+    Solution 1:
+      x - 3 = 9
+          x = 12
+
+    Solution 2:
+      x - 3 = -9
+          x = -6
+
+    L'équation a deux solutions: x=12 et x=-6
+    ```
+
+    ```
+    Résoudre x² + 6x + 2 = 0:
+
+    x² + 6x + 9 - 9 + 2 = 0
+           (x + 3)² - 7 = 0
+               (x + 3)² = 7
+                  x + 3 = ±√7
+
+    Solution 1:
+      x + 3 = √7
+          x = √7 - 3
+            ≈ -0.35
+
+    Solution 2:
+      x + 3 = -√7
+          x = -√7 - 3
+            ≈ -5.65
+    ```
+
+### Forme factorisée
+
+*  Si l'équation est écrite sous <ins>forme de produits</ins>:  
+   Pour qu'un produit soit égal à 0, il faut qu'un des deux termes soit égal à 0.
+
+    ```
+    Résoudre l'équation (2x - 1)(x + 4) = 0:
+
+    Solution 1:
+      2x - 1 = 0
+          2x = 1
+           x = 1/2
+
+    Solution 2:
+      x + 4 = 0
+          x = -4
+
+    L'équation a deux solutions: x=1/2 et x=-4
+    ```
+
+    ```
+    Résoudre l'équation x² - 5x + 6 = 0:
+
+       x² - 5x + 6 = 0
+    (x - 2)(x - 3) = 0
+
+    Solution 1:
+      x - 2 = 0
+          x = 2
+
+    Solution 2:
+      x - 3 = 0
+          x = 3
+
+    L'équation a deux solutions: x=2 et x=3
+    ```
+
 ### Autres
 
 *  Passer par un changement de variable.
@@ -325,22 +325,6 @@ Il y a différentes manières de procéder:
     ```
 
 ---
-
-## Théorème fondamental
-
-* Tout polynome de degré *n* peut se factoriser sous la forme de *n* produits de polynomes de premier degré fois une constante *k*. Ainsi, un polynome de degré *n* a *n* racines — mais toutes les racines ne sont pas forcemment distinctes. Ces racines appartiennent à l'ensemble complexe, ou autrement dit, on inclut les nombres imaginaires.
-
-  ![](https://i.imgur.com/i1cBLbS.png)
-
-  <ins>Exemple</ins>:  
-  *x² - 1* a deux racines réelles: ±1  
-  *x²* a deux racines réelles: ±0  
-  *x² + 1* a deux racines complexes: ±i
-
-  ![](https://i.imgur.com/SSnBQTS.png)
-
-* Les racines complexes viennent toujours par paire:  
-  si *a + bi* est solution, alors *a - bi* est également solution.
 
 ## Résoudre une équation de degré > 2
 
@@ -402,3 +386,20 @@ Il y a différentes manières de procéder:
          x = (-5)^(1/3)
          x ≈ -1.71
   ```
+
+## Théorème fondamental
+
+* Tout polynome de degré *n* peut se factoriser sous la forme de *n* produits de polynomes de premier degré fois une constante *k*. Ainsi, un polynome de degré *n* a *n* racines — mais toutes les racines ne sont pas forcemment distinctes. Ces racines appartiennent à l'ensemble complexe, ou autrement dit, on inclut les nombres imaginaires.
+
+  ![](https://i.imgur.com/i1cBLbS.png)
+
+  <ins>Exemple</ins>:  
+  Un polynome de degré 2 a deux racines.  
+  *x² - 1* a deux racines réelles: ±1  
+  *x²* a deux racines réelles: ±0  
+  *x² + 1* a deux racines complexes: ±i
+
+  ![](https://i.imgur.com/SSnBQTS.png)
+
+* Les racines complexes viennent toujours par paire:  
+  si *a + bi* est solution, alors *a - bi* est également solution.

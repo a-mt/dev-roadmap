@@ -19,36 +19,69 @@ title: Maths
 * Algèbre élémentaire
   * [Lexique algébrique](alg-intro.md)
   * [Éléments de notation](mat-ensemble.md)
+
   * Équations
     * [Développer, factoriser](alg-equations.md)
     * [Résoudre](alg-equations2.md)
-    * [Systèmes d'équations](alg-eq-system.md)
+
   * Fonctions
     * [Notions de base](alg-fonction.md)
     * [Fonctions affines](alg-fct-affine.md)
     * [Fonctions quadratiques](alg-fct-quad.md)
     * [Fonctions polynômiales](alg-fct-poly.md)
     * [Fonctions par morceaux](alg-fct-morceau.md)
-    * [Fonctions avec valeur absolue](alg-fct-abs.md)
+    * [Fonctions valeur absolue](alg-fct-abs.md)
     * [Fonctions inverse](alg-fct-power.md)
     * [Fonctions composées](alg-fct-composee.md)
 
 <!-- -->
 
 * Géométrie classique
-  * [Introduction](geo-intro.md)
-  * [Éléments de base](geo-basics.md)
-  * [Repère & transformations](geo-transform.md)
-  * [Géométrie analytique](geo-analyse.md)
-  * [Formes 2D](geo-2d.md)
-  * [Formes 3D](geo-3d.md)
-  * [Angles](geo-angles.md)
-  * [Triangles](geo-triangle.md)
-  * [Cercles](geo-cercle.md)
+    * [Introduction](geo-intro.md)
+    * [Éléments de base](geo-basics.md)
+    * [Repère & transformations](geo-transform.md)
+    * [Géométrie analytique](geo-analyse.md)
+    * [Formes 2D](geo-2d.md)
+    * [Formes 3D](geo-3d.md)
+    * [Angles](geo-angles.md)
+    * [Triangles](geo-triangle.md)
+    * [Cercles](geo-cercle.md)
+
+* Géométrie du triangle (trigonométrie)
   * [Trigonométrie euclidienne](geo-trigo.md)
   * [Trigonométrie sphérique](geo-trigo2.md)
   * [Résoudre un triangle quelconque](geo-triangle2.md)
 
+<!-- -->
+
+* Algèbre intermédiaire
+  * [Opérations sur les polynômes](alg-equations3.md)
+  * [Systèmes d'équations](alg-eq-system.md)
+  * [Suites](alg-suite.md)
+
+  * Algèbre linéaire
+    * [Vecteurs](geo-vecteurs.md)
+
+<!--
+    * Matrice
+    * Espace vectoriel
+-->
+
+  * Fonctions
+    * [Fonction exponentielle](alg-fct-exp.md)
+
+<!--
+    * Fonction logarithme népérien
+-->
+
+* Analyse
+  * [Limites](alg-limits.md)
+  * [Dérivées](alg-derivation.md)
+
+<!--
+  * Primitives
+  * Intégrales
+-->
 <!-- -->
 
 * Stats

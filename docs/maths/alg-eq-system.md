@@ -72,7 +72,7 @@ Concepts: système d'équation, systèmes équivalents, résoudre
 
 ## Résoudre un système d'équation
 
-Pour résoudre un résoudre d'équations, on peut:
+Pour résoudre un système d'équations, on peut:
 
 * Utiliser la méthode des substitution:
 

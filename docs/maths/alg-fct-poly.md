@@ -1,5 +1,5 @@
 ---
-title: Fonction pôlynomiale
+title: Fonction polynômiale
 category: Maths, Algèbre, Fonction
 ---
 

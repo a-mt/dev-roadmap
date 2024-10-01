@@ -15,6 +15,8 @@ category: Maths, Algèbre, Fonction
 
   ![](https://i.imgur.com/U29QTnP.png?1)
 
+* On notera que pour tout réel x, √x² = \|x\|
+
 ## Résoudre
 
 * Pour résoudre une équation avec valeur absolue, on isole la valeur absolue et on traite les deux cas possibles: si la valeur avant d'appliquer la valeur absolue était positive ou si elle était négative.

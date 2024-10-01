@@ -55,14 +55,14 @@ Concepts: angle inscrit, angle au centre, arc de cercle intercepté, théorème 
 
 ## Équation d'un cercle
 
-* L'équation cartésienne d'un cercle de centre *(h, k)* est de rayon *r* est:
+* L'équation cartésienne d'un cercle de rayon *r* et de centre *(a, b)* est *(x - a)² + (y - b) = r²*
 
   ![(x - h)² + (y - k) = r²](https://i.imgur.com/7RMjbe6.png)
 
   On peut aussi l'écrire sous forme développée, en développent les carrés et en réduisant les termes semblables.
 
   <ins>Exemple</ins>:  
-  L'équation cartésienne du cercle de centre (1, 2) et de rayon 3 est (x - 1)² + (y - 2)² = 3². Si on la développe:
+  (x - 1)² + (y - 2)² = 3² est une équation du cercle de centre (1, 2) et de rayon 3. Si on la développe:
 
   ![](https://i.imgur.com/AISDZ42.png)
 

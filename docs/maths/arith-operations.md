@@ -197,7 +197,7 @@ Le nombre divisé est le *dividende* (10), le nombre qui divise est le *diviseur
 
 ### Règles des signes
 
-* La reste des signes pour la division est la même que pour la multiplication.
+* Le reste des signes pour la division est la même que pour la multiplication.
 
   ![](https://i.imgur.com/xSXdYIW.png)
 
@@ -283,7 +283,7 @@ Pour diviser des nombres sur plusieurs chiffres,
 
    ![](https://i.imgur.com/fXHYrsL.png)
 
-   Si la divisionc contient des nombres décimaux, on multiplie le dividende et le diviseur par le même nombre pour obtenir des nombres entiers. Ex: 0.72/0.08 = 72/8 = 9
+   Si la division contient des nombres décimaux, on multiplie le dividende et le diviseur par le même nombre pour obtenir des nombres entiers. Ex: 0.72/0.08 = 72/8 = 9
 
 2. Prendre le chiffre de plus haut rang du dividende. Si ce chiffre est inférieur au diviseur, prendre le second chiffre, ou troisième, etc, jusqu'à ce que le diviseur soit inférieur ou égal au nombre considéré.  
    Exemple: Si on divise 70 par 4, on prend 7.

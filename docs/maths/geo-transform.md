@@ -20,6 +20,8 @@ Concepts: axe, repère, orthonormé, coordonnées, abscisse, ordonnée, côte, q
   * On construit un repère à partir d'un point, appelé l'*origine du repère*, où passent des axes gradués.  
     L'origine du repère correspond à la graduation 0 des axes.
 
+  ![](https://i.imgur.com/7BmLw3x.png)
+
   * Il y a autant d'axes qu'il y a de dimensons:  
     si on travaille en deux dimensions (longueur et largeur), alors on a deux axes.
 
@@ -27,7 +29,7 @@ Concepts: axe, repère, orthonormé, coordonnées, abscisse, ordonnée, côte, q
     Si dans un repère orthogonal, l'unité est la même sur chacun des axes, le repère est *orthonormé*.  
     Le repère orthonormé est le type de repère le plus utilisé.
 
-  ![](https://i.imgur.com/7BmLw3x.png)
+    ![](https://i.imgur.com/ypU4kyA.png)
 
 ### Coordonnées
 
@@ -76,7 +78,7 @@ Concepts: axe, repère, orthonormé, coordonnées, abscisse, ordonnée, côte, q
 
   <ins>Exemple</ins>:  
   La translation ci-dessous est notée (5, -4):  
-  on déplace le point de 5 unités vers la droite et de 4 unités vers le ba.
+  on déplace le point de 5 unités vers la droite et de 4 unités vers le bas.
 
   ![](https://i.imgur.com/fHkNEn1.png)
 

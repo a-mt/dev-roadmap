@@ -7,7 +7,7 @@ Concepts: coefficient directeur, ordonnée à l'origine, abscisse à l'origine, 
 
 ## Allure générale
 
-* Une fonction affine ou fonction de premier degré s'écrit sous la forme `f(x) = ax + b` et représente une relation linéaire — quand on la trace sur un graphique, on obtient une droite.
+* Une fonction affine ou fonction de premier degré s'écrit sous la forme `f(x) = ax + b`. La représentation graphique d’une fonction affine est une droite. Dans le cas d’une fonction linéaire, la droite passe par l’origine O du répère.
 
   <ins>Exemple</ins>:
 
@@ -116,7 +116,7 @@ Concepts: coefficient directeur, ordonnée à l'origine, abscisse à l'origine, 
   y: salaire en euros
 
   a = Δy / Δx
-    = (108-54)/(8/4)
+    = (108-54)/(8-4)
     = 54/4
     = 13,5
 

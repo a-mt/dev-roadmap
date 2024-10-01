@@ -7,7 +7,7 @@ Concepts: nombre, chiffre, système numérique, base, rang
 
 ## Nombre
 
-* Un *nombre* est une valeur représentant une une quantité. Il peut être écrit avec des lettres (vingt et un) ou avec des chiffres (21).
+* Un *nombre* est une valeur représentant une quantité. Il peut être écrit avec des lettres (vingt et un) ou avec des chiffres (21).
 
 * Il est communément admis que les mathématiques sont nés du besoin de compter et de garder une trace de nombres — pour énumérer le bétail, marquer le passage de jours, échanges des objets, etc.
 

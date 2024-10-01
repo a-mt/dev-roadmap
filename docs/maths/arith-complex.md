@@ -15,7 +15,9 @@ Concepts: nombre imaginaire, imaginaire pur, nombre complexe, conjugué
 
   Le nombre *i* est dit *imaginaire* puisqu'il ne peut pas réellement exister: il est définit par une propriété qu'aucun nombre réel ne possède.
 
-### Propriétés
+* Note: L'histoire des nombres complexes commence vers le milieu du XVe sicèle avec une première apparition en 1545, dans l'oeuvre de Cardan, d'une expression contenant la racine carrée d'un nombre négatif, nombre qu'il appelle *sophistiqué*. C'est Raphaël Bombelli qui met en place les règles de calcul sur ces quantités qu'on appelle alors *impossibles* avant de leur donner le nom d'i*imaginaires*.
+
+## Propriétés de *i*
 
 * *i* suit un schéma régulier:
 
@@ -46,7 +48,7 @@ Concepts: nombre imaginaire, imaginaire pur, nombre complexe, conjugué
       = -1
   </pre>
 
-### Imaginaires purs
+## Imaginaires purs
 
 * Si on multiplie le nombre *i* par un nombre réel différent de 0, on obtient ce qu'on appelle un *imaginaire pur*. Les imaginaires purs sont des nombres dont le carré est négatif.
 
@@ -58,7 +60,7 @@ Concepts: nombre imaginaire, imaginaire pur, nombre complexe, conjugué
 
   ![](https://i.imgur.com/3I4D8so.png?1)
 
-### Nombres complexes
+## Nombres complexes
 
 * Un *nombre complexe* est un nombre composé d'une partie réelle et d'une partie imaginaire.  
   Ex: 4 + 2i
@@ -93,15 +95,19 @@ Concepts: nombre imaginaire, imaginaire pur, nombre complexe, conjugué
   = 7i - 4
   ```
 
+## Conjugué d'un nombre complexe
+
 * Par définition, si on multiplie un nombre complexe par son *conjugué*,  
   alors on obtient un nombre réel (donc on se débarrasse des nombres imaginaires):  
   ainsi <code>a + bi</code> est le conjugué de <code>a - bi</code> et inversemment.
 
   ![](https://i.imgur.com/GLzYEx8.png)
 
+## Diviser par un nombre complexe
+
 * Pour effectuer une divison par un nombre complexe,  
-  1/ on considère la division par une multiplication par l'inverse  
-  2/ sur cet inverse, on multiplie le numérateur et le dénominateur par le conjugué du dénominateur:
+  1/ on considère la division comme une multiplication par l'inverse  
+  2/ sur cet inverse, on multiplie le numérateur et le dénominateur par le conjugué du dénominateur. On obtient alors un nombre réel en tant que diviseur (en simplifiant l'expression) et un nombre complexe en dividende
 
   ![](https://i.imgur.com/FP6g3oO.png)
 
@@ -124,3 +130,30 @@ Concepts: nombre imaginaire, imaginaire pur, nombre complexe, conjugué
   = (10 + 15i)/5
   = 2 + 3i
   ```
+
+## Affixe d'un point
+
+* Pour tout nombre complexe *z = x + iy*, on peut associer un point *M(x; y)* dans le plan complexe.  
+  Le nombre complexe, associé aux coordonnées de M, est appelé l'*affixe* du point.  
+  Par exemple, 3 - 2i est l'affixe du point M(3; 2) représenté dans le plan complexe représenté ci-dessous:
+
+  ![](https://i.imgur.com/m384ZZo.png)
+
+* Dans le plan complexe, l'axe des abscisses est appeé *axe des réels* et l'axe des ordonnées est l'*axe des imaginaires*.  
+  Si *x = 0* alors *z* est un imaginaire pur (puisque *z = iy*)
+
+  ![](https://i.imgur.com/KEOllMv.png)
+
+## Conjugué
+
+* Soit *z = a + ib* avec *a* et *b* réels.  
+  Le nombre complexe conjugué de *z*, noté z&#x0305;, est le nombre complete *z&#x0305; = a - ib = a + i(-b)*.  
+  Les points d'affixes z et z&#x0305; sont symétriques par rapport à l'axe des réels.
+
+  ![](https://i.imgur.com/8rSfOSe.png)
+
+## Solution d'une Équation de second degré
+
+* Dans ℂ, comme dans ℝ, un produit est nul si et seulement si l’un de ses facteurs est nul.  
+  Ainsi l’équation 𝑧² = −4, d’inconnue 𝑧 n’a pas de solution réelle mais équivaut à 𝑧² = (2𝑖)².  
+  Et (𝑧 − 2𝑖)(𝑧 + 2𝑖) = 0 a donc deux solutions dans ℂ : 2𝑖 et −2𝑖.

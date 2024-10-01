@@ -40,6 +40,8 @@ Toute fonction a
   C'est la variable calculée à partir des variables indépendantes — c'est à dire le résultat de la fonction.  
   Traditionnelllement, on nomme la variable dépendante *y*.
 
+  ![](https://i.imgur.com/uvSZj12.png)
+
 ### Calculer l'image d'un nombre
 
 * Pour calculer *y* sachant *x*, on remplace la valeur de *x* dans l'équation et *y* est le résultat de la fonction.
@@ -84,6 +86,8 @@ Toute fonction a
 
 * On peut éventuellement lire les valeurs sur un graphique — si elles sont entières.  
   Par convention, *x* est en abscisse (horizontal) et *y* en ordonnée (vertical).
+
+  ![](https://i.imgur.com/gv9sp4h.png)
 
   <ins>Exemple</ins>:  
 
@@ -168,18 +172,32 @@ Toute fonction a
 
 ### Sens de variation
 
+<!--
 * Étudier le sens de variation de f, c'est découper son ensemble de définition D en intervalles sur lesquels f est soit croissante soit décroissante soit constante. On consigne les résultats dans un tableau de variation de f.
 
   ![](https://i.imgur.com/qVKWAHc.png)
+-->
+
+* Etudier le sens de variation d’une fonction c’est repérer les intervalles sur lesquels la fonction est
+strictement croissante ou décroissante (voire constante).
+  On consigne les résultats dans un tableau de variation de f.
+
+  <ins>Exemple de fonction</ins>:
+
+  ![](https://i.imgur.com/DlzzfNq.png)
+
+  Et son tableau de variation:
+
+  ![](https://i.imgur.com/HF87AeL.png)
 
 ---
 
 ## Nomenclature
 
-* Une fonction qui ne contient aucune inconnue est dite *constante*.  
-* Une fonction contenant des inconnues dont le plus haut degré est 1, est dit *affine*.  
-* Si le plus haut degré est 2, elle est dite *quadratique*.  
-* Et si le plus haut degré est 3, elle est dite *cubique*.
+* Une fonction qui ne contient aucune inconnue est dite *constante*. Ex: f(x) = 3.  
+* Une fonction contenant des inconnues dont le plus haut degré est 1, est dit *affine*. Ex: f(x) = 3x = 1.  
+* Si le plus haut degré est 2, elle est dite *quadratique*. Ex: f(x) = 2x² + 3x + 1.  
+* Et si le plus haut degré est 3, elle est dite *cubique*. Ex: f(x) = x³ + 2x² + 3x + 1
 
 | Degré | Nom      | Formule générale            | Exemple graphique
 |--- |---          |---                          |---

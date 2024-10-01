@@ -219,15 +219,17 @@ Clic droit: `Show Math As` > `TeX Commands` pour afficher le code Latex d'une fo
 
 ---
 
-En mode maths, les espaces sont ignorés, utiliser
-- `\;` pour forcer un petit espace
-- `\quad` pour un espace moyen
-- `\qquad` pour un grand espace
+## Espaces
+
+* En mode maths, les espaces sont ignorés; Utiliser
+
+  - `\;` pour forcer un petit espace
+  - `\quad` pour un espace moyen
+  - `\qquad` pour un grand espace
 
 <!-- -->
-Pour écrire du texte, utiliser `\mbox{texte}`.  
 
----
+* Pour écrire du texte, utiliser `\mbox{texte}` ou `\text{Lorem}`.  
 
 ## Lettres grecques
 

@@ -50,7 +50,22 @@ category: Linux, Network
 * Il existe également des switchs capables d'opérer sur la couche 3 du modèle OSI: on parle de *layer-3 switch*.  
   Un L-3 switch peut non seulement connecter des hôtes directement, en prenant les décisions à partir des adresses MAC pour transférer des trames Ethernet entre ses ports, mais également prendre des décisions de routage sur la base d'une table de routage et adresses IP — catégorisés dans la couche 3.
 
-* Un switch n'utilise que des ports Ethernet (avec des connecteurs RJ-45), le routeur quant à lui peut supporter différents types de ports, tels que des ports ADSL, le câble, la fibre, etc.
+* Un switch n'utilise que des ports Ethernet (avec des connecteurs RJ-45), le routeur quant à lui peut supporter différents types de ports, tels que des ports ADSL, le câble, la fibre etc.
+
+### Modem
+
+* Un *modem* (contraction de modulation + démodulation) est un appareil conçu pour envoyer et recevoir des signaux sur un type d'infrastructure ou de support spécifique. On trouve par exemple
+
+  - les <ins>modems DSL</ins>:  
+    conçus pour transmettre des données sur des lignes téléphoniques standard en cuivre,
+
+  - les <ins>modems câble</ins>:  
+    conçus pour transférer des données sur des lignes de câble coaxial, généralement utilisés pour les service de télévision par câble
+
+  - les <ins>modems à fibre optique</ins>:  
+    conçus pour fonctionner avec des lignes à fibre optique, qui transmettent les données à l'aide de signaux lumineux
+
+* Un modem agit comme un traducteur entre le réseau du fournisseur d'accès à Internet (FAI) et le réseau du particulier. Le boitier qu'on loue à un FAI est à la fois routeur et modem DSL — souvent, pour accéder à la fibre optique, il faudra un modem externe (modem fibre) en plus du boitier
 
 ---
 
@@ -268,20 +283,19 @@ category: Linux, Network
 
 ## Sous-réseau
 
-* Un sous-réseau (*subnet* en anglais) consiste à diviser un réseau en différents réseaux plus petits.  
-  La plage d'adresses d'un sous-réseau est toujours contigue
+* Créer un sous-réseau (un *subnet* en anglais) consiste à diviser un réseau en au moins deux réseaux plus petits.  
+  L'usage premier des sous-réseaux est de diviser l'espace d'adresses IP disponibles pour le distribuer.  
+  Par exemple, un fournisseur d'accès à Internet peut fournir une adresse IP ou une plage d'adresses d'IP, c'est à dire un sous-réseau qui est un sous-ensemble des adresses IP qui a de disponibles. Notons que la plage d'adresses d'un sous-réseau est toujours contigue
 
-* La création de sous-réseaux peut répondre à deux objectifs distincts:
+* Les sous-réseaux présentent d'autres avantages, on peut notamment citer
 
-  1. Diviser l'espace d'adressage IP (adresses IP disponibles) pour le distribuer.  
-     Par exemple, fournir à un fournisseur d'accès Internet ou à une entreprise un sous-ensemble des adresses IP disponibles
+  - la sécurité. En divisant le réseau en sous-réseaux, on peut contrôler le fux de traffic de l'aide d'ACL, de QoS et de route-maps, permettant d'identifier l'origine des menaces, de fermer les points d'entrées et d'y répondre plus facilement.
 
-  2. Contrôler le traffic sur un segment du réseau  
-     Par exemple: On a une petite entreprise, qui ne compte que des employés de bureau et quelques ingénieurs. Les employés de bureau font du traitement de texte et utilisent des logiciels de bureautique simples, tandis que les ingénieurs font beaucoup d'activités qui créent beaucoup de traffic réseau.
+  - l'amélioration des performances du réseau par segment. 
+    Si par exemple on a une petite entreprise, qui a d'une part des employés de bureau qui font du traitement de texte et utilisent des logiciels de bureautique simples, et d'autre part quelques ingénieurs qui effectuent beaucoup d'activités informatique créant beaucoup de traffic réseau:
+    on peut séparer le réseau en deux sous-réseau, avec d'un côté les machines des employés de bureau et de l'autre celles des ingérieurs; ainsi, le traffic des employés de bureau ne sera pas affecté par celui des ingénieurs et vice versa.
 
-     On peut séparer le réseau en deux sous-réseau, avec d'un côté les machines des employés de bureau et de l'autre celles des ingérieurs. Ainsi, le traffic des employés de bureau n'est pas affecté par celui des ingénieurs et vice versa.
-
-* On entend souvent dire qu'il n'est pas nécessaire de créer des sous-réseaux pour des adresses IPv6. Ce n'est vrai que pour diviser l'espace disponible; pour les questions de traffic sur les segments de réseaux, il est nécessaire de créer des sous-réseaux.
+* On entend souvent dire qu'il n'est pas nécessaire de créer des sous-réseaux pour des adresses IPv6. Ce n'est vrai que pour ce qui est de diviser l'espace disponible; pour les questions de traffic et de sécurité sur les segments de sous-réseaux, il est nécessaire de créer des sous-réseaux.
 
 ### Masque de sous-réseau
 

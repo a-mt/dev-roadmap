@@ -93,6 +93,8 @@ roadmap: true
     * Flask [1 &#x21F2;](https://medium.freecodecamp.org/how-to-build-a-web-application-using-flask-and-deploy-it-to-the-cloud-3551c985e492)
   * Tests
     * unittest
+  * Visualisations
+    * Tableau [1 &#x21F2;](https://public.tableau.com/app/profile/bill.yost/viz/SuperstoreELVTR/SuperstoreDashboard)
 
 * ##### ![](!assets/img/php.png) PHP
   * Langage
@@ -461,6 +463,7 @@ roadmap: true
   - [Commandes Windows](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands#command-line-reference-a-z)
   - [Stacks](https://stackshare.io/stacks)
   - [Tests psychométriques](https://www.youtube.com/watch?v=ggJp7jOAmwM)
+  - [Hackatons](https://devpost.com/)
 
 
 [accessibilite]: html/accessibilite.md

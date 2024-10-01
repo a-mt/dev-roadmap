@@ -86,23 +86,23 @@ h3 + ul {
 
         // yellow
         a.tests {
-            color: hsl(37,96,52);
-            background-color: hsla(37,96,61,0.4);
+            color: hsl(37,96%,52%);
+            background-color: hsla(37,96%,61%,0.4);
         }
         // orange
         a.pkg {
-            color: hsl(29,65,53);
+            color: hsl(29,65%,53%);
             background-color: #E4832A55;
         }
         // purple
         a.syntax {
             color: #6c2b51;
-            background-color: hsla(325,55,58,0.35);
+            background-color: hsla(325,55%,58%,0.35);
         }
         // red
         a.lib {
-            color: hsl(341,55,48);
-            background-color: hsla(341,65,48,0.25); 
+            color: hsl(341,55%,48%);
+            background-color: hsla(341,65%,48%,0.25); 
         }
         // blue
         a.framework {
@@ -111,18 +111,18 @@ h3 + ul {
         }
         // cyan
         a.lang {
-            color: hsl(189,90,36);
-            background-color: hsla(189,100,39,0.25);
+            color: hsl(189,90%,36%);
+            background-color: hsla(189,100%,39%,0.25);
         }
         // green
         a.theory {
-            color: hsl(156,40,36);
+            color: hsl(156,40%,36%);
             background-color: #47bf8f55;
         }
         // lavender
         a.cli {
-            color: hsl(238,50,33);
-            background-color: hsla(238,86,32,0.3);
+            color: hsl(238,50%,33%);
+            background-color: hsla(238,86%,32%,0.3);
         }
     }
 }

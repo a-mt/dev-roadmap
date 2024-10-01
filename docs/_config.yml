@@ -6,7 +6,6 @@ kramdown:
   input: GFM
   hard_wrap: false
 
-theme: jekyll-theme-primer
 defaults:
   -
     scope:
@@ -18,3 +17,7 @@ defaults:
 plugins:
   - jekyll-seo-tag
   - jekyll-github-metadata
+
+theme: jekyll-theme-primer
+sass:
+  quiet_deps: true  # don't print warnings caused by dependencies

@@ -5,7 +5,7 @@ category: Web, Python
 
 ## Nombres relatifs
 
-| Code        | Example | Valeur décimale
+| Code        | Exemple | Valeur décimale
 |---          |---      |---
 | Décimal     | `10`    | `10`
 | Octal       | `0o10`  | `8`

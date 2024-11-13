@@ -1,8 +1,7 @@
 ---
-title: Conventions de nommage CSS
+title: Conventions de nommage des sélecteurs CSS
 category: Web > CSS
 ---
-
 
 ## Problèmes fréquemment rencontrés en CSS
 
@@ -31,25 +30,25 @@ category: Web > CSS
 
 C'est pour éviter ces problèmes qu'il existe des guidelines pour structurer le CSS.
 
----
-
 ## CSS modulaire
 
 Il existe différentes conventions, les trois principales sont OCCSS, BEM et SMACSS.  
-Toutes s'articulent autour d'une idée de base: écrire le CSS de manière modulaire.
+Toutes s'articulent autour d'une idée de base: écrire les sélecteurs CSS de manière modulaire.
 
-On a tendance à penser à une page avec une approche *top-down*: un bandeau haut, une barre de navigation verticale, une liste d'articles, etc. Le problème est que cela conduit à écrire du code qui n'est pas réutilisable.
+On a tendance à penser à une page avec une approche *top-down*: un bandeau haut, une barre de navigation verticale, une liste d'articles, etc. Le problème est que ça conduit à écrire du code qui n'est pas réutilisable.
 
 ![](https://i.imgur.com/5WA4Ma7.jpg)
 
 Le principe du CSS modulaire est de prendre du recul et de décomposer la page en morceaux de blocs discrets: un logo, une barre de recherche, des onglets, une liste de photos, un lecteur vidéo, etc.
 Ces éléments peuvent être utilisés sur différentes pages à différents endroits. Il se trouve juste qu'ils sont assemblés de cette manière sur cette page mais qu'ils pourraient être disposés autrement sur une autre page.
 
-Écrire du CSS de manière modulaire requiert de réfléchir avec une approche *bottom-up*: on commence avec des blocs réutilisables puis on les dispose, un peu comme des legos.
+Écrire du CSS de manière modulaire nécessite de réfléchir avec une approche *bottom-up*: on commence avec des blocs réutilisables puis on les dispose, un peu comme des legos.
 
 ![](https://i.imgur.com/RIxrHDx.png)
 
-### OOCSS
+---
+
+## OOCSS
 
 OOCSS, pour *Object-Oriented CSS*, a été créé en 2009 par Nicole Sullivan suite à son travail chez Yahoo. C'est le point d'origine du CSS modulaire.
 
@@ -61,7 +60,7 @@ OOCSS, pour *Object-Oriented CSS*, a été créé en 2009 par Nicole Sullivan su
 * <ins>Classes réutilisables</ins>:  
   Utiliser des classes réutilisables pour les modèles visuels courants.
 
-  Par exemple sur Amazon en 2009, il y avait des ombres portées sur presque tout, et elles étaient toutes un peu différentes. En normalisant ces ombres portées, vous pouvez optimiser le code et rendre le site plus performant.
+  Par exemple sur Amazon en 2009, il y avait des ombres portées sur presque tout, et elles étaient toutes un peu différentes. En normalisant ces ombres portées, on peut optimiser le code et rendre le site plus performant.
 
 * <ins>Ne pas utiliser d'ID pour sélecteur</ins>:  
   Un ID est unique par page. Utiliser des ID pour sélecteur empêche de pouvoir réutiliser le code ailleurs et est donc à éviter.
@@ -93,57 +92,89 @@ OOCSS, pour *Object-Oriented CSS*, a été créé en 2009 par Nicole Sullivan su
 .bd {}
 ```
 
-### BEM
+---
+
+## BEM
 
 BEM, pour *Block, Element, Modifier*, a été en 2009 à Yandex (moteur de recherche et serveur email Russe).
+
+### Bloc, Element, Modifier
 
 Le concept de base est le suivant:
 
 * une page est composée *blocs*  
-  Les blocs sont indépendants des page et ils peuvent être imbriqués les uns dans les autres.  
-  Par exemple, vous pouvez avoir un bloc  qui est une liste d'onglet et placer à l'intérieur de ce bloc des boutons, qui est un type de bloc distinct. Les styles des deux blocs n'interagissent pas, il se trouve juste qu'il y en a un imbriqué dans l'autre.
+  Les blocs sont indépendants des pages et ils peuvent être imbriqués les uns dans les autres.  
+  Par exemple, on peut avoir un bloc qui est une liste d'onglets et placer à l'intérieur de ces onglets des boutons, qui est un nouveau type de bloc distinct. Les styles des deux blocs n'interagissent pas, il se trouve juste qu'il y en a un imbriqué dans l'autre.
+
+  ``` html
+  <div class="tab">
+    <button class="btn">Open</button>
+  </div>
+  ```
 
 * les blocs contiennent des *éléments*  
   Les éléments sont les parties constituantes d'un bloc et ils ne peuvent pas être utilisées en dehors.  
   Par exemple, les items d'un menu de navigation —
  cela n'a pas de sens de créer un bloc pour un item du menu: on crée un bloc pour le menu lui-même et les items du menu sont des éléments enfants.
 
+ ``` html
+ <div class="nav">
+   <a class="nav__item">Item 1</a>
+   <span class="nav__separator">/</span>
+   <a class="nav__item">Item 2</a>
+ </div>
+ ```
+
 * les blocs ou les éléments peuvent être *modifiés*  
   Les modificateurs définissent l'apparence et le comportement d'un bloc.  
   Par exemple, le fait que le menu soit horizontal ou vertical ou qu'un bouton est bleu ou orange.
 
-BEM définit la convention de nommage suivante:
+  ``` html
+  <btn class="btn btn--danger">Delete</btn>
+  ```
 
-    .block-name__element--modifier
+### Notation
 
-<ins>Par exemple</ins>:
+Différentes conventions BEM existent.
 
-``` html
-<button class="btn btn--big btn--orange">
-  <span class="btn__price">$9.99</span>
-  <span class="btn__text">Subscribe</span>
-</button>
-```
+* La première, la plus courante est la suivante:
 
-Notez que cette recommendation à changé en 2017: le double-tiret est remplacé par un simple underscore, et ce, pour pouvoir écrire des noms de classe dans les commentaires HTML — qui n'autorisent pas l'usage des doubles-tirets.
+  ```
+  .block-name__element--modifier
+  ```
 
-    .block-name__element_modifier
+  <ins>Par exemple</ins>:
 
-> Release 2.3.1 - May 25, 2017  
-  BEM Naming Change  
-  Initially we used the double dash style for BEM notation (--). Due to the fact that double dashes are problematic in an XML environment (which doesn't allow double dashes within comments), we have upgraded our syntax to use the single underscore style (_). This change is backward compatible for 18 months. But all components going forward are built with the single underscore BEM style.
-  
+  ``` html
+  <button class="btn btn--big btn--orange">
+    <span class="btn__price">$9.99</span>
+    <span class="btn__text">Subscribe</span>
+  </button>
+  ```
+
+* La recommendation a changé en 2017: le double-tiret est remplacé par un simple underscore, et ce, pour pouvoir écrire des noms de classe dans les commentaires HTML — qui n'autorisent pas l'usage des doubles-tirets.
+
+  ```
+  .block-name__element_modifier
+  ```
+
+  > Release 2.3.1 - May 25, 2017  
+    BEM Naming Change  
+    Initially we used the double dash style for BEM notation (--). Due to the fact that double dashes are problematic in an XML environment (which doesn't allow double dashes within comments), we have upgraded our syntax to use the single underscore style (_). This change is backward compatible for 18 months. But all components going forward are built with the single underscore BEM style.
+
+### Guidelines
+
 Les guidelines données par BEM sont les suivantes:
 
 * <ins>Utiliser des tirets pour les noms de bloc</ins>  
   En JavaScript, utiliser du camelCase pour nommer les variables est une pratique courante.  
-  Cela permet de rester cohérent avec les méthodes Javascript, qui sont écrites elles aussi en camelCase.
+  Ça permet de rester cohérent avec les méthodes Javascript, qui sont écrites elles aussi en camelCase.
   
   ``` js
   var redBox = document.getElementById('...');
   ```
   
-  De la même manière, BEM préconise d'utiliser des tirets en CSS. Cela permet rester cohérent avec les propriétés CSS et d'éviter de mixer deux notations.
+  De la même manière, BEM préconise d'utiliser des tirets en CSS. Ça permet rester cohérent avec les propriétés CSS et d'éviter de mixer deux notations.
   
   ``` css
   .some-class {
@@ -152,7 +183,7 @@ Les guidelines données par BEM sont les suivantes:
   ```
 
 * <ins>Séparer les sélecteurs CSS des sélecteurs JavaScript</ins>.  
-  Il existe différentes conventions pour parvenir à ce but:
+  Pour parvenir à ce but:
 
   * Préfixer les noms de classe utilisé dans le code JavaScript par `js-`, de cette manière toute personne comprend immédiatement pourquoi cette classe existe.
 
@@ -160,7 +191,7 @@ Les guidelines données par BEM sont les suivantes:
     <div class="site-navigation js-site-navigation">
     ```
 
-  * Une autre alternative est d'utiliser l'attribut `rel` pour définir la relation entre un élément HTML et JavaScript.
+    Ou alors, utiliser l'attribut `rel` pour définir la relation entre un élément HTML et JavaScript.
 
     ``` html
     <div class="site-navigation" rel="js-site-navigation">
@@ -178,7 +209,7 @@ Les guidelines données par BEM sont les suivantes:
 * <ins>Utiliser des sélecteurs simples</ins>.  
   Les sélecteurs doivent toujours être suffisamment spécifiques pour ne pas avoir à être imbriqués. Par exemple, on utilise `.btn__price` et non `.btn .btn__price`.
 
-* <ins>Utiliser des mixes de sélecteurs</ins> pour éviter de dupliquer le code CSS.  
+* <ins>Utiliser des ensembles de sélecteurs</ins> lorsqu'un élément a plusieurs rôles, pour éviter de dupliquer le code CSS.  
   Par exemple, pour appliquer une ombre portée ou le style d'un lien, utiliser une classe spécifique plutôt que de dupliquer le CSS.
 
   ``` html
@@ -189,7 +220,7 @@ Les guidelines données par BEM sont les suivantes:
   </nav>
   ```
 
-<ins>Exemple BEM</ins>:
+### Exemple
 
 ``` html
 <div class="media media--inverted">
@@ -221,7 +252,9 @@ Les guidelines données par BEM sont les suivantes:
 
 Voir aussi: [Official BEM Methodology Quick Start](https://en.bem.info/methodology/quick-start/)
 
-### SMACSS
+---
+
+## SMACSS
 
 SMACSS, pour *Scalable & Modular Architecture for CSS*, a été crée en 2011 par Jonathan Snook suite à son travail chez Yahoo Mail. SMACSS ajoute le concept de **catégories** de composants. Il existe 5 catégories:
 
@@ -277,10 +310,10 @@ SMACSS, pour *Scalable & Modular Architecture for CSS*, a été crée en 2011 pa
 
   ``` html
   <div class="box">
-      <div class="box--label">This is box label</div>
-      <ul class="box--list list">
-          <li class="list--li">Box list element</li>
-      </ul>
+    <div class="box--label">This is box label</div>
+    <ul class="box--list list">
+      <li class="list--li">Box list element</li>
+    </ul>
   </div>
   ```
 
@@ -298,10 +331,10 @@ SMACSS, pour *Scalable & Modular Architecture for CSS*, a été crée en 2011 pa
 
   ``` html
   <header id="header">
-      <ul class="nav">
-          <li class="nav--item is-selected">Contact</li>
-          <li class="nav--item">About</li>
-      </ul>
+    <ul class="nav">
+      <li class="nav--item is-selected">Contact</li>
+      <li class="nav--item">About</li>
+    </ul>
   </header>
   ```
   
@@ -326,208 +359,12 @@ SMACSS, pour *Scalable & Modular Architecture for CSS*, a été crée en 2011 pa
   }
   ```
 
-### En conclusion
 
-Toutes ces conventions de nommage sont différentes mais similaires.  
-De manière générale, on distingue 3 types d'items
-* les modules (objects, blocs ou composants) sont indépendants du contexte et réutilisables partout dans la page
-* les éléments enfant sont les parties constituantes du module et qui ne peuvent pas exister en dehors
-* les modifieurs (ou thèmes) altèrent l'apparence du module et son placement
+* Pour conclure: toutes ces conventions de nommage sont différentes mais similaires.  
+  Dans tous les cas, les principales conventions à respecter sont
+  * ne pas utiliser les ID, sauf pour les éléments qui ne peuvent pas se répéter comme le layout de la page
+  * ne pas imbriquer le CSS (.a .b .c)
+  * préfixer les noms de classes pour indiquer à quoi elles servent (.l-, .js-)
+  * choisir un format de nommage et le garder dans tout le projet
  
- Les styles des éléments peuvent être organisés en différentes catégories:
- * les règles de base définissent le style par défaut des éléments HTML.  
-   `a`, `li`, `h1`
-
- * les règles de layout définissent comment les éléments sont placés mais pas leur apparence visuelle.  
-   `.l-centered`, `.l-grid`, `.l-fixed-top`
-
- * les règles des modules définissent l'apparence des éléments.  
-   `.m-profile`, `.m-card`, `.m-modal`
-
- * les règles d'état sont ajoutées par JavaScript.  
-   `.is-hidden`, `.is-collapsed`, `.is-active`
-
- * les règles utilitaires (helpers) modifient l'apparence d'un élément.  
-   `.h-uppercase`, `.h-nowrap`, `.h-muted`
- 
- Les principales conventions à respecter sont
- * ne pas utiliser les ID, sauf pour les éléments qui ne peuvent pas se répéter comme le layout de la page
- * ne pas imbriquer le CSS
- * préfixer les noms de classes pour indiquer à quoi elles servent
- * choisir un format de nommage et le garder dans tout le projet
- 
- Source: [What is Modular CSS?](https://spaceninja.com/2018/09/17/what-is-modular-css/)
- 
----
-
-## Variables CSS
-
-De la même manière que les sélecteurs CSS, vos variables CSS (natives ou celles de préprocesseurs comme Sass ou Less)
-devraient être sémantiques et faciles à comprendre. Il n'existe pas de préconisation sur le sujet mais pour rendre vos variables facilement compréhensible, vous pouvez suivre le format suivant:
-
-    type-importance
-
-* <ins>type</ins>:   
-  par exemple `clr` pour les couleurs, `fs` pour les tailles de polices, `grid` pour les tailles de grilles, etc.
-
-* <ins>importance</ins>:  
-  `base` pour la valeur par défaut (du corps de texte), puis de manière logique `primary`/`secondary` ou `alpha`/`beta` ou encore `giga`/`micro` suivant le type de variable.
-
-### Couleur
-
-* La plupart des marques ont une <ins>couleur dominante</ins> pour leur marque, puis des <ins>couleurs subsidiaires</ins> qui complètent cette couleur.
-
-* Outre les couleurs de la marque, il y a couramment des <ins>couleurs neutres</ins> utilisées pour former la base de tout contenu.
-
-* Une couleur particulière peut avoir une <ins>gamme de teintes et de nuances</ins>, par exemple une couleur de fond, une couleur pour l'écriture et une pour la bordure.
-
-En gardant ces éléments en têtes, on peut constituer une liste de noms de variables de couleur facilement compréhensibles:
-
-``` scss
-/* couleur de base, avec une teinte et une nuance
-   - typiquement utilisé pour la couleur fond du site et la typographie */
-$clr-base:    #666;
-$clr-base-lt: #999;
-$clr-base-dk: #333;
-
-/* couleur dominante - skyblue
-   - avec des teintes et nuances via des fonctions Sass */
-$clr-primary:     skyblue;
-$clr-primary-lt:  lighten($clr-primary, 5%);
-$clr-primary-ltr: lighten($clr-primary, 10%);
-$clr-primary-dk:  darken($clr-primary, 5%);
-$clr-primary-dkr: darken($clr-primary, 10%);
-
-/* couleur secondaire - hotpink
-   - avec des teintes et nuances via des fonctions Sass */
-$clr-secondary:     hotpink;
-$clr-secondary-lt:  lighten($clr-secondary, 5%);
-$clr-secondary-ltr: lighten($clr-secondary, 10%);
-$clr-secondary-dk:  darken($clr-secondary, 5%);
-$clr-secondary-dkr: darken($clr-secondary, 10%);
-
-/* couleurs neutres */
-$clr-ntrl-min: #fff;
-$clr-ntrl-max: #000;
-```
-
-1. Toutes les variables de couleur sont préfixées de `clr-`.
-
-2. Les couleurs de la marque sont ordonnées par ordre d'importance: `primary`, `secondary`, `tertiary`, `quaternary`, etc.
-
-3. Les teintes et nuances sont indiquées en suffixe du nom de la couleur dont elles dérivent:
-   * `lt` pour light,
-   * `ltr` por lighter,
-   * `ltst` pour lightest, etc.
-
-4. Vous pouvez également ajouter des couleurs telles que `$clr-success`, `$clr-warning`, etc, en ajoutant les teintes et nuances de ces couleurs toujours sur le même schéma.
-
-### Taille de police
-
-Toutes les variables de taille de police sont préfixées de `fs-` (pour font-size) puis sont ordonnées de grandes tailles (pour le logo par exemple) à petites tailles (pour les éléments sub par exemple).
-
-``` scss
-/* taille de base - appliqué au contenu de la page */
-$fs-base: 16px;
-
-/* tailles plus grandes que les éléments de heading */
-$fs-giga: 80px;
-$fs-mega: 70px;
-$fs-kilo: 60px;
-
-/* tailles des éléments de heading */
-$fs-h1: 36px;
-$fs-h2: 32px;
-$fs-h3: 28px;
-$fs-h4: 24px;
-$fs-h5: 20px;
-$fs-h6: 18px;
-
-/* tailles plus petites que le corps de texte */
-$fs-milli: 14px;
-$fs-micro: 10px;
-$fs-nano:  8px;
-```
-
-### Famille de police
-
-Toutes les variables de famille de police sont préfixées de `ff-` (pour font-family) puis sont ordonnées par ordre de prépondérance: contenu, titre, sous-titre, icone.
-
-``` scss
-$ff-base:      'Helvetica Neue', Helvetica, Arial, sans-serif;
-$ff-alt-alpha: 'Open Sans', sans-serif;
-$ff-alt-beta:  'Roboto', sans-serif;
-$ff-icon:      'My Icon Font';
-```
-
-Source: [Make Your CSS Variable Names Suck Less](https://fixate.it/blog/make-your-css-variable-names-suck-less)
-
-### Material Design pour Android
-
-* La convention de nommation de Material Design pour Android est comme suit:
-
-    ``` xml
-    <style name="Theme.MyApp" parent="Theme.MaterialComponents.*">
-
-        <!-- Couleur -->
-        <item name="colorPrimary">#6200EE</item>
-        <item name="colorPrimaryVariant">#3700B3</item>
-        <item name="colorOnPrimary">#FFFFFF</item>
-        <item name="colorSecondary">#03DAC6</item>
-        <item name="colorSecondaryVariant">#018786</item>
-        <item name="colorOnSecondary">#000000</item>
-        <item name="colorError">#B00020</item>
-        <item name="colorOnError">#FFFFFF</item>
-        <item name="colorSurface">#FFFFFF</item>
-        <item name="colorOnSurface">#000000</item>
-        <item name="colorBackground">#FFFFFF</item>
-        <item name="colorOnBackground">#000000</item>
-
-        <!-- Typographie -->
-        <item name="textAppearanceHeadline1">Light 96sp</item>
-        <item name="textAppearanceHeadline2">Light 60sp</item>
-        <item name="textAppearanceHeadline3">Regular 48sp</item>
-        <item name="textAppearanceHeadline4">Regular 34sp</item>
-        <item name="textAppearanceHeadline5">Regular 24sp</item>
-        <item name="textAppearanceHeadline6">Medium 20sp</item>
-        <item name="textAppearanceSubtitle1">Regular 16sp</item>
-        <item name="textAppearanceSubtitle2">Medium 14sp</item>
-        <item name="textAppearanceBody1">Regular 16sp</item>
-        <item name="textAppearanceBody2">Regular 14sp</item>
-        <item name="textAppearanceCaption">Regular 12sp</item>
-        <item name="textAppearanceButton">Medium all caps 14sp</item>
-        <item name="textAppearanceOverline">Regular all caps 10sp</item>
-
-        <!-- Forme -->
-        <item name="shapeAppearanceSmallComponent">4dp rounded</item>
-        <item name="shapeAppearanceMediumComponent">4dp rounded</item>
-        <item name="shapeAppearanceLargeComponent">0dp rounded</item>
-    </style>
-    ```
-
-* La valeur par défaut des attributs de typographie et de forme a été abrégé en une ligne.  
-  La structure interne est comme suit:
-
-    ``` xml
-    <style name="TextAppearance.MyApp.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
-      <item name="fontFamily">@font/custom_font</item>
-      <item name="textStyle">normal</item>
-      <item name="textAllCaps">false</item>
-      <item name="textSize">64sp</item>
-      <item name="letterSpacing">0</item>
-    </style>
-
-    <style name="ShapeAppearance.MyApp.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
-      <item name="cornerFamily">cut</item>
-      <item name="cornerSize">4dp</item>
-    </style>
-    ```
-
-*  Liens utiles:  
-
-   * Plus d'infos sur l'utilisation des différentes variables: [Material Components for Android](https://material.io/develop/android/theming/color/)
-   * Create color schemes with the [color tool](https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=6300ee&secondary.color=03dac4)  
-   * Create shape schemes with the [shape customization tool](https://material.io/design/shape/about-shape.html?utm_source=Medium&utm_campaign=TE-post#shape-customization-tool)  
-   * Create typography with the [type scale generator](https://material.io/design/typography/the-type-system.html?utm_source=Medium&utm_campaign=TE-post#type-scale)  
-   * [Material Design color palettes](https://material.io/design/color/the-color-system.html#tools-for-picking-colors)  
-   * [Specs Components: Buttons](https://material.io/develop/android/components/buttons/) ([.xml](https://github.com/material-components/material-components-android/tree/master/lib/java/com/google/android/material/button/res/values))
+  Source: [What is Modular CSS?](https://spaceninja.com/2018/09/17/what-is-modular-css/)

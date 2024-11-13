@@ -107,7 +107,7 @@ if (!isset($_ENV['DEBUG'])) {
 
 <ins>Format INI</ins>:
 
-| Type         | Example
+| Type         | Exemple
 |---           |---
 | Section      | `[MYSECTION]`
 | Commentaire  | `; My comment`

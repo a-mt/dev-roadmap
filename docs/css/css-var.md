@@ -66,13 +66,13 @@ Utiliser des variables (aussi appelées propriétés personnalisées *CSS custom
       window.CSS.supports && window.CSS.supports('--a', 0);
 ```
 
-## Variables CSS vs préprocesseur
+## Variables CSS et préprocesseur
 
-* Quand on utilise une préprocesseur, on peut également définir des variables. Cependant
+* Notons que quand on utilise un préprocesseur, on peut définir des variables. Cependant
 
-  - on ne peut pas changer les valeurs des variables dynamiquement
-  - elles ne peuvent pas être lues ou modifiés à partir de JavaScript
-  - elles ne dépendent pas du DOM
+  - On ne peut pas changer les valeurs des variables dynamiquement
+  - Elles ne peuvent pas être lues ou modifiés à partir de JavaScript
+  - Elles ne dépendent pas du DOM
 
 <!--
 [It's Time To Start Using CSS Custom Properties](https://www.smashingmagazine.com/2017/04/start-using-css-custom-properties/)

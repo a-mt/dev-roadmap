@@ -5,21 +5,15 @@ category: Web
 
 * [Les bases](css-intro.md)
 * [Sélecteurs](css-selecteurs.md)
+* [Variables](css-var.md): \-\-var, val(var)
+* [At-rules](css-atrules.md)
+* [Conventions de nommage des sélecteurs (OOCSS, BEM, SMACSS)](css-nommage.md)
+* [Conventions de nommades des variables](css-nommage2.md)
+* [Frameworks & Préprocesseurs](css-extend.md)
 
-<!-- -->
+---
 
-* Valeurs
-  * [Types](css-values-types.md): string, color, time, absolute-size, relative-size, percentage, number, length, resolution, image
-  * [Fonctions globales](css-values-fct-global.md): url, calc, attr
-  * [Gradients](css-values-fct-gradient.md): linear-gradient, repeating-linear-gradient, radial-gradient, repeating-radial-gradient
-  * [Listes](css-values-fct-list.md): counter, counters, symbols
-  * [Colonnes](css-values-fct-column.md): minmax, repeat
-  * [Transitions](css-values-fct-transition.md): cubic-bezier, steps
-  * [Variables](css-var.md): \-\-var, val(var)
-
-<!-- -->
-
-* Propriétés
+* Liste des Propriétés
   * [all, content](css-proprietes.md)
   * [Box Model](css-prop-box-model.md):
     display
@@ -248,9 +242,15 @@ category: Web
     animation
     will-change
 
-* [At-rules](css-atrules.md)
-* [Conventions de nommage (OOCSS, BEM, SMACSS)](css-nommage.md)
-* [Frameworks & Préprocesseurs](css-extend.md)
+* Spécification des Valeurs: types et fonctions  
+  * [Types](css-values-types.md): string, color, time, absolute-size, relative-size, percentage, number, length, resolution, image
+  * [Fonctions globales](css-values-fct-global.md): url, calc, attr
+  * [Gradients](css-values-fct-gradient.md): linear-gradient, repeating-linear-gradient, radial-gradient, repeating-radial-gradient
+  * [Listes](css-values-fct-list.md): counter, counters, symbols
+  * [Colonnes](css-values-fct-column.md): minmax, repeat
+  * [Transitions](css-values-fct-transition.md): cubic-bezier, steps
+
+---
 
 Pour aller plus loin:  
 [A Look Back at the History of CSS](https://css-tricks.com/look-back-history-css/)  

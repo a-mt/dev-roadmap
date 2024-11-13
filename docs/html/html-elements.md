@@ -89,7 +89,7 @@ La balise `<body>` contient le contenu à proprement parler de la page.
 
 ---
 
-## Metadatas
+## Metadata
 
 ### title
 
@@ -109,7 +109,7 @@ La balise `<title>` est unique par page.
 
 ### meta
 
-Définit diverses metadatas.  
+Définit diverses metadata.  
 
 * Elles sont souvent utilisées pour donner des informations aux moteurs de recherche ou réseaux sociaux (Tweeter, Facebook). 
 
@@ -134,14 +134,14 @@ Définit diverses metadatas.
   <meta http-equiv="refresh" content="30">
   ```
 
-  L'encodage du document peut être déclaré par l'entête HTTP `Content-Type`:
+* L'encodage du document peut être déclaré par l'entête http-equiv "Content-Type":
 
   ``` html
   <!-- HTML4 -->
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   ```
 
-* En HTML5, il existe une manière simplifiée de déclarer l'encodage du document:
+  Ou en HTML5, il existe une manière simplifiée de déclarer l'encodage du document:
 
   ``` html
   <!-- HTML5 -->
@@ -154,7 +154,7 @@ Définit l'URL de base ainsi que la cible par défaut pour les liens de la page.
 Si non spécifiée, l'URL de base de la page est l'URL en cours.
 
 ``` html
- <head>
+<head>
   <base href="https://www.w3schools.com/images/" target="_blank">
 </head>
 <body>
@@ -209,13 +209,42 @@ Permet d'ajouter un script dans la page, notamment du code JavaScript ou WebGL (
 </script>
 ```
 
-* En HTML5, le type par défaut est JavaScript, il n'est donc pas obligatoire de spécifier `type="text/javascript"`  — ce qui était auparavant obligatoire
+* En HTML5, le type par défaut est JavaScript, il n'est donc pas obligatoire de spécifier `type="text/javascript"` — ce qui était auparavant obligatoire.  
+  L'attribut type est uniquement nécessaire pour déclarer des bouts de texte qu'on pourra charger dans une variable JS ultérieurement (grâce à l'id) — comme pour du WebGL ou des templates.
+
+  ``` html
+  <script type="text/template" id="articlestpl">
+      {{#articles}}                       # For each articles
+          <div class="article">
+              <h1>{{title}}</h1>          # Display the title attribute
+              <p>{{description}}</p>
+          </div>
+      {{/articles}}
+  </script>
+  ```
+
+  ``` html
+  <script id="shader-fs" type="x-shader/x-fragment">
+    #ifdef GL_ES
+    precision highp float;
+    #endif
+
+    void main(void) {
+      gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+    }
+  </script>
+  ```
 
 * La balise script peut aussi importer des scripts externes, avec l'attribut `src`.
 
   ``` html
-  <script type="text/javascript" src="myscripts.js"></script> 
+  <script type="text/javascript" src="myscripts.js"></script>
+  ```
 
+* L'attribut `defer="true"` indique au navigateur de n'importer le script qu'une fois la page totalement chargée.  
+  L'attribut `async` permet de charger le script de manière asynchrone pendant le chargement de la page: les scripts suivants peuvent être chargés sans attendre que celui-ci n'ai fini d'être chargé
+
+  ``` html
   <!-- Google Analytics -->
   <script>
     window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -226,11 +255,7 @@ Permet d'ajouter un script dans la page, notamment du code JavaScript ou WebGL (
   <!-- End Google Analytics -->
   ```
 
-* L'attribut `defer="true"` indique au navigateur de n'importer le script qu'une fois que la page aura fini de se charger
-
-* L'attribut `async` permet de charger le script de manière asynchrone pendant le chargement de la page: les scripts suivants peuvent être chargés sans attendre que celui-ci n'ai fini d'être chargé
-
-Le navigateur lit le code HTML de haut en bas: en plaçant les scripts en haut de la page, la page mettra plus de temps à s'afficher, il est donc préférable de placer les scripts à la fin du code HTML ou d'utiliser l'attribut `defer`.
+* Le navigateur lit le code HTML de haut en bas: en plaçant les scripts en haut de la page, la page mettra plus de temps à s'afficher, il est donc préférable de placer les scripts à la fin du code HTML ou d'utiliser l'attribut `defer`.
 
 ### noscript
 

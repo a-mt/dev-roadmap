@@ -58,30 +58,23 @@ title: Maths
   * [Opérations sur les polynômes](alg-equations3.md)
   * [Systèmes d'équations](alg-eq-system.md)
   * [Suites](alg-suite.md)
+  * [Nombres complexes dans l'espace](arith-complex2.md)
 
   * Algèbre linéaire
-    * [Vecteurs](geo-vecteurs.md)
-
-<!--
-    * Matrice
-    * Espace vectoriel
--->
+  * [Vecteurs](geo-vecteurs.md)
+  * Matrice
+  * Espace vectoriel
 
   * Fonctions
     * [Fonction exponentielle](alg-fct-exp.md)
-
-<!--
     * Fonction logarithme népérien
--->
 
 * Analyse
   * [Limites](alg-limits.md)
   * [Dérivées](alg-derivation.md)
-
-<!--
   * Primitives
   * Intégrales
--->
+
 <!-- -->
 
 * Stats

@@ -7,23 +7,44 @@ CSS (*Cascading Style Sheets*) est le langage utilisé pour mettre en page les d
 
 ## Appliquer du CSS
 
-Il existe différentes manières d'appliquer du CSS sur du HTML. On peut mettre le CSS
+### Inline style
 
-* dans une balise `<style>` directement à l'intérieur de la page HTML (*embedded style*)
+* La manière la plus simple d'appliquer du CSS sur de HTLM est de définir un attribut style directement sur la balise (*inline style*).
+  L'utilisation de l'attribut style pour définir du CSS est généralement considérée comme une mauvaise pratique, mais est utile lorsqu'on doit modifier dynamiquement du CSS via du JavaScript.  
+  NB: lorsque le CSS est appliqué via un attribut HTML il n'y a pas de sélecteur utilisé, on ne pourra donc pas utiliser de pseudo-éléments, pseudo-classes ou media queries ici.
+
+  ``` html
+  <p style="background-color: lightgrey">Lorem ipsum</p>
+  ```
+
+  <ins>Exemple</ins>:
+
+  <p style="background-color: lightgrey">Lorem ipsum</p>
+
+### Embedded CSS
+
+* Une deuxième manière d'appliquer du CSS sur du HTML est de déclarer une balise `<style>` directement à l'intérieur de la page HTML (*embedded style*).  
+  Dans ce cas, un sélecteur doit être utilisé pour désigner l'élément sur lequel le CSS est appliqué.
 
   ``` html
   <style>
     p { background-color: lightgrey; }
   </style>
+
   <p>Lorem ipsum</p>
   ```
 
-* dans un document `.css` qu'on importe dans la page HTML via une balise link placée dans le head (*external style*).  
-  Note: on appelle un document .css une *feuille de style* (*stylesheet* en anglais).
+### External style
+
+* La troisième manière d'appliquer du CSS sur du HTML, et qui est la manière considérée comme la meilleure pratique, est de créer un fichier .css (ce qu'on appelle une *feuille de style*, ou *stylesheet* en anglais) et d'inclure ce fichier dans la page via une balise link présente dans le head (*external style*).  
+
+  <ins>main.css</ins>:
 
   ``` css
   p { background-color: lightgrey; }
   ```
+
+  <ins>index.html</ins>:
 
   ``` html
   <head>
@@ -34,29 +55,27 @@ Il existe différentes manières d'appliquer du CSS sur du HTML. On peut mettre 
   </body>
   ```
 
-* ou directement sur un élément HTML via un attribut style (*inline style*)  
-  Note: Le CSS inline n'utilise pas de sélecteur, on ne peut donc pas utiliser de pseudo-éléments, pseudo-classes ou media queries ici.
+## Structure des blocs CSS
 
-  ``` html
-  <p style="background-color: lightgrey">Lorem ipsum</p>
-  ```
-
-## Structure
-
-* Lorsque les règles CSS ne sont pas placées directement sur un élément HTML (*inline style*), alors on utilise un *sélecteur* pour désigner le ou les éléments cibles. Ce sélecteur préfixe un bloc, délimité par des accolades `{}`, et qui contient un ensemble de *propriétés et valeurs*.
+* Un fichier CSS, ou un script style, contient une liste de blocs CSS.  
+  Chaque bloc est délimité par des accolades `{}` et préfixé d'un *sélecteur* CSS, qui désigne le ou les éléments sur lesquels on veut appliquer du CSS. À l'intérieur de chaque bloc, on définit une liste de *propriétés et valeurs*.
 
   ``` css
   #mon-selecteur {
     color: white;
     background-color: black;
   }
+  .mon-selecteur2 {
+    color: black;
+    background-color: pink;
+  }
   ```
 
   ![](https://i.imgur.com/vrNT5GT.png)
 
-* Le CSS n'est pas sensible à l'indentation, espaces et retours chariots — on s'en sert pour rendre le code plus lisible.
+* Le CSS n'est pas sensible à l'indentation, espaces et retours chariots — ils servent uniquement à rendre le code plus lisible.
 
-* Les éléments héritent du style de leur parent (à moins d'écraser la propriété) — d'où le nom de *Cascading* Style Sheets.  
+* Les éléments HTML héritent du style de leur parent: si un élément *b* est présent dans un élément *p*, alors le style du *p* s'applique également à tous les *b* à l'intérieur (à moins de ré-ecraser le style de cet élément) — d'où le nom de *Cascading* Style Sheets.  
   Dans l'exemple suivant tous les éléments placés dans le tag `<html>` aurons la police d'écriture "Times" sauf les h1, qui aurons "Georgia"
 
   ``` css
@@ -82,9 +101,7 @@ span.thickspace {
 }
 ```
 
-## Insertion conditionnelle d'une feuille de style
-
-### Internet Explorer
+## Legacy: Insertion conditionnelle pour Internet Explorer
 
 Les documents CSS et JS peuvent être inclus de manière conditionnelle
 * si le navigateur utilisé est Internet Explorer <10:
@@ -116,12 +133,11 @@ Les documents CSS et JS peuvent être inclus de manière conditionnelle
   <!--[endif]-->
   ```
 
-### Media
+## Application conditionnelle suivant le Media
 
-Le CSS peut être appliqué à un type d'appareil particulier (imprimante, écran, lecteur audio) et à des dimensions d'écran particulières.
-Pour ce faire, on utilise des *media queries*.
+* On peut restreindre le CSS a un media en particulier (imprimante, écran, lecteur audio) et à des dimensions d'écran particulières, en utilisant des *media queries*.
 
-* Pour inclure une feuille de style sous condition:
+* Soit en incluant la feuille de style de manière conditionnelle, avec l'attribut `media`:
 
   ``` html
   <!-- CSS2 -->
@@ -133,7 +149,7 @@ Pour ce faire, on utilise des *media queries*.
   <link href="main.css" rel="stylesheet" type="text/css" media="screen and (min-width: 721px)">
   ```
 
-* Pour exécuter des instructions CSS sous condition, à l'intérieur d'une feuille CSS ou d'une balise `<style>`:
+* Soit en déclarant des blocs CSS de manière conditionnelle (à l'intérieur d'une feuille CSS ou d'une balise `<style>`), avec la at-rule `@media`:
 
   ``` css
   /* CSS3 */
@@ -147,8 +163,6 @@ Pour ce faire, on utilise des *media queries*.
     button { display: none; }
   }
   ```
-
----
 
 ## Versions CSS
 
@@ -173,8 +187,7 @@ Pour ce faire, on utilise des *media queries*.
 
 ## Navigateurs
 
-* Chaque navigateur à son propre moteur de rendu (*Rendering Engine*), parseur, politique de rendu et style par défaut.  
-  Les principaux Rendering Engine sont
+* Chaque navigateur à son propre moteur de rendu (*Rendering Engine*), parseur, politique de rendu et style par défaut. Les principaux Rendering Engine sont
   - Trident (IE<10)
   - Edge (IE10)
   - Presto (Opera)
@@ -185,8 +198,7 @@ Pour ce faire, on utilise des *media queries*.
 * Ça implique aussi que tous les navigateurs ne supportent pas tous au même moment toutes les propriétés CSS, ou les appliquent de la même manière — tout particulièrement les anciens navigateurs.  
   Le site [caniuse](https://caniuse.com/) permet de vérifier quels navigateurs supportent une propriété CSS donnée.
 
-* Un effort de standardisation a été fournit et les moteurs modernes respectent pour la plupart les standards du web (W3C).  
-  Les navigateurs considérés comme modernes sont
+* Un effort de standardisation a été fournit et les moteurs modernes respectent pour la plupart les standards du web (W3C). Les navigateurs historiques sont considérés comme standardisés à partir des versions suivantes:
   - Safari 4+
   - Firefox 4+
   - Opera 10+
@@ -213,9 +225,3 @@ Les préfixes (*vendor prefixes*) permettent au navigateur de supporter des fonc
 | -khtml-  | Konqueror |
 | -webkit- | WebKit    |
 
-## CSS reset
-
-Parce que différents navigateurs ont différents styles par défaut, il est d'usage courant de "remettre à zéro" (*reset*) le style en début de feuille de style. Ça permet de s'assurer que le style appliqué les éléments HTML sera le même sur tous les navigateurs.
-
-Les principales propriétés concernées sont `margin`, `padding`, `border`, `font-size` et `line-height`.  
-Les CSS reset les plus utilisés sont listés sur [cssreset](https://cssreset.com/).

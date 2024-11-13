@@ -109,7 +109,7 @@ category: Terraform
   - <ins>des health checks</ins>.  
     Par exemple, si le certificat doit être renouvellé manuellement, on peut utiliser un check pour vérifier s'il arrive bientôt à expiration.
 
-    [Autres examples](https://unfriendlygrinch.info/posts/terraform-check-block/#checks)
+    [Autres exemples](https://unfriendlygrinch.info/posts/terraform-check-block/#checks)
 
 * Exporter le plan au format JSON permet de vérifier avec un script si des checks échouent
 

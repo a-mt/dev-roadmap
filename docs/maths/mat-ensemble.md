@@ -37,7 +37,7 @@ Concepts: intervalles, ensembles, sous-ensembles, quantificateurs, connecteurs
 * Lorsque les deux bornes de l'intervalle sont des nombres réels, l'intervalle est dit *borné*.  
   Lorsqu'une ou deux bornes sont l'infini, alors l'intervalle est dit *non borné*.
 
-  <ins>Examples d'intervalles non bornés</ins>:
+  <ins>Exemples d'intervalles non bornés</ins>:
   <pre>
   [13; +∞[ 
   ]-∞; 13]  

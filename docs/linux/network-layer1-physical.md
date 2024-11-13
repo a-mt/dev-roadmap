@@ -182,6 +182,8 @@ Les transmissions peuvent être transmises en mode simplex ou duplex.
 
   ![](https://i.imgur.com/mBQNOJJt.jpg)
 
+  Le connecteur est d'un câble coaxial est le connecteur BNC
+
 * Il autorise des débits plus élevés et est peu sensible aux perturbations électromagnétiques extérieures.  
   Il est utilisé pour les liaisons téléphoniques inter-urbaines, les câbles sous-marins, la télévision par câble et la connexion des radios à leurs antennes.
   À partir de la fin du XXe siècle, le câble coaxial est progressivement remplacé par la fibre optique pour les utilisations sur de longues distances (distances supérieures à un kilomètre).
@@ -194,6 +196,10 @@ Les transmissions peuvent être transmises en mode simplex ou duplex.
 
 * La *fibre optique* est un câble qui contient des brins de fibres de verre.  
   Ils sont conçus pour les réseaux à longue distance et à haute performance.
+
+  Le connecteur est d'une fibre optique est le connecteur ST
+
+  ![](https://i.imgur.com/I0brpgb.png)
 
 * Il existe deux grands types de câbles à fibre optique:
 

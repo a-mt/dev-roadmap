@@ -262,7 +262,7 @@ category: Chimie
 
   ![](https://i.imgur.com/gcActri.png)
 
-  <ins>Example</ins>:  
+  <ins>Exemple</ins>:  
   Le carbone a deux isotopes stables: C-12 et C-13.
   *  98,9% des atomes de carbone trouvés dans la nature sont des carbone-12 et 1,1% des carbone-13.
   * La carbone-12 a une masse de 12u.

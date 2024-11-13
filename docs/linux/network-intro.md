@@ -270,6 +270,8 @@ category: Linux, Network
   - <ins>*Wide Area Network* (WAN)</ins>: les réseaux étendus  
     Réseau de grande envergure. Par exemple des réseaux à l’échelle de continents
 
+  ![](https://i.imgur.com/lpJw09u.png)
+
   Récemment, d'autres termes ont été ajoutés pour mieux classer et décrire la taille du réseau:
 
   - <ins>*Personal Area Network* (PAN)</ins>: les réseaux personnels  
@@ -312,7 +314,7 @@ category: Linux, Network
 
 ## Topologie de réseau
 
-* La *topologie* est l'étude des structures.  
+* On appelle *topologie* la manière de relier les équipements entre eux (physique ou logique).  
   Il existe différentes topologies physiques possibles pour les LAN filaires:
 
   - <ins>Topologie en *bus*</ins>.  

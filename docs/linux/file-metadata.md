@@ -58,7 +58,7 @@ category: Linux, Fichiers
     | b | (bloc) fichier virtuel, utilisé pour communiquer avec le matériel
     | c | (characters) fichier virtuel, utilisé pour communiquer avec le matériel
   
-   Dans l'example `-rw-r-----`:
+   Dans l'exemple `-rw-r-----`:
 
     ```
     -

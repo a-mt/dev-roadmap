@@ -6,8 +6,8 @@ category: Web, HTML
 HTML (HyperText Markup Langage) est le langage de balisage utilisé pour créer des pages web.
 - Il définit la structure de la page.  
   Par exemple pour indiquer au navigateur qu'un texte doit être considéré comme un paragraphe et qu'un autre est un titre.
-- on peut inclure des objets externes: images, sons, vidéos, etc
-- on peut également inclure des liens hypertextes.  
+- On peut inclure des objets externes: images, sons, vidéos, etc
+- On peut également inclure des liens hypertextes.  
   Quand un utilisateur clique sur un lien, il est redirigé vers une autre page
 
 [Cheatsheet HTML](https://medium.com/level-up-web/the-mega-html5-cheatsheet-e8c479b1c521)
@@ -46,7 +46,7 @@ Un document complet, bien formatté, contient
 ```
 
 HTML est insensible à la casse, aux espaces et retours chariots (hormis la DTD).  
-Une bonne pratique est d'écrire en minuscule et d'indenter le code — pour améliorer la lisibilité du code.
+Une bonne pratique est d'écrire les balises et attributs en minuscule et d'indenter le code — pour améliorer la lisibilité du code.
 
 ## Commentaires
 
@@ -72,8 +72,7 @@ Des commentaires peuvent être ajoutés en HTML, ils seront pas affichés par le
   Certains éléments n'ont pas de balise fermante, on dit que la balise est *orpheline*: `<img src="image.png">` ou `<br>` par exemple.
 
 * Les navigateurs donnent un style par défaut aux différentes balises: `h1` est un titre de niveau 1, il est affiché en gros; `h2` est un titre de niveau 2, il est affiché en moins gros.
-  Il ne faut cependant pas utiliser les différentes balises pour modifier l'affichage du contenu: HTML est un langage *sémantique*, il donne du sens au contenu. 
-
+  Une bonne pratique est de ne pas utiliser les différentes balises pour modifier l'affichage du contenu: HTML est un langage *sémantique*, il donne du sens au contenu.   
   La sémantique aide les robots (comme le crawler de Google ou un lecteur d'écran destiné aux personnes malvoyantes) à comprendre le contenu de la page. Pour modifier l'apparence du HTML, on utilise un autre langage: CSS.
 
 ---
@@ -81,8 +80,7 @@ Des commentaires peuvent être ajoutés en HTML, ils seront pas affichés par le
 ## Attributs
 
 Chaque balise peut éventuellement avoir des *attributs* pour ajouter des propriétés à l'élément.
-Les balises ouvrantes peuvent contenir des attributs (et c'est parfois même obligatoire), tandis que les balises fermantes non.
-
+Seules les balises ouvrantes peuvent contenir des attributs (et c'est parfois même obligatoire), les balises fermantes non.  
 Lorsqu'un élément a plusieurs attributs, l'ordre n'a pas d'importance.
 
 ### Attributs sans valeur
@@ -104,7 +102,7 @@ Les valeurs d'attributs peuvent être entourées de doubles ou simples quotes. L
 <p title="John 'ShotGun' Nelson"></p>
 ```
 
-Ou on peut utiliser une entité pour ajouter une quote à l'intérieur de quotes.
+Un autre alternative est d'utiliser une entité HTML (comme &amp;quot;) pour ajouter une quote à l'intérieur de quotes.
 
 ``` html
 <p title="John &quot;ShotGun&quot; Nelson"></p> <!-- John "ShotGun" Nelson -->
@@ -114,7 +112,7 @@ Ou on peut utiliser une entité pour ajouter une quote à l'intérieur de quotes
 ### Attributs globaux
 
 Différents éléments acceptent différents attributs.  
-Mais certains attributs sont *globaux*, c'est à dire qu'ils peuvent être placés sur n'importe quel élément:
+Seuls certains attributs sont *globaux*, c'est à dire qu'ils peuvent être placés sur n'importe quel élément:
 
 <table>
   <thead>
@@ -127,12 +125,12 @@ Mais certains attributs sont *globaux*, c'est à dire qu'ils peuvent être plac�
   <tbody>
     <tr>
       <th align="left">id</th>
-      <td>Définit l'identifiant de l'élément. Un identifiant est unique par page. <br />Il peut être utilisé en CSS ou JS (sélecteur #ID) ou comme cible pour un lien (<code>&lt;a href="#id"&gt;</code>).</td>
+      <td>Définit l'identifiant de l'élément. Un identifiant est unique par page. <br />Il peut être utilisé en CSS ou JS (avec le sélecteur #ID) ou comme cible pour un lien (<code>&lt;a href="#id"&gt;</code>).</td>
         <td><pre lang="html">&lt;div id="main"&gt;</pre></td>
     </tr>
     <tr>
       <th align="left">class</th>
-      <td>Définit la classe de l'élément. <br />Elle peut être utilisée en CSS ou JS (sélecteur .CLASS)</td>
+      <td>Définit la classe de l'élément. <br />Elle peut être utilisée en CSS ou JS (avec le sélecteur .CLASS)</td>
       <td><pre lang="html">&lt;button class="btn-primary"&gt;</pre></td>
     </tr>
     <tr>
@@ -153,7 +151,7 @@ Mais certains attributs sont *globaux*, c'est à dire qu'ils peuvent être plac�
     </tr>
     <tr>
       <th align="left">lang</th>
-      <td>Définit la langue dans laquelle le contenu de l’élément est écrit (`en`), ou éventuellement le dialecte (`en-US`).
+      <td>Définit la langue dans laquelle le contenu de l’élément est écrit (<code>en</code>), ou éventuellement le dialecte (<code>en-US</code>).
       <br><a href="accessibilite#attribut-lang">Cf accessibilite</a></td>
       <td><pre lang="html">&lt;html lang="en"&gt;</pre></td>
     </tr>
@@ -191,6 +189,11 @@ Nouveaux attributs globaux depuis HTML5:
       <th align="left">hidden</th>
       <td>Permet de cacher un élément (même principe que <code>display: none</code>)</td>
       <td><pre lang="html">&lt;main hidden&gt;</pre></td>
+    </tr>
+    <tr>
+      <th align="left">inert</th>
+      <td>Permet de désactiver les interactions souris (même principe que <code>pointer-events: none</code>)</td>
+      <td><pre lang="html">&lt;div inert&gt;</pre></td>
     </tr>
     <tr>
       <th align="left">spellcheck</th>
@@ -249,7 +252,7 @@ Une entité HTML est une suite de caractères qui commence par `&` et finit `;` 
 | `&amp;`  | `&`       |
 | `&quot;` | `"`       |
 | `&apos;` | `'`       |
-| `&nbsp;` | ` `       |
+| `&nbsp;` | ` `       |
 
 Outre les entités HTML définies, on peut afficher n'importe quel caractère Unicode, dès lord qu'on connaît son code décimal ou hexadécimal: le caractère <code>&bull;</code> par exemple peut être affiché avec
 * `&bull;` (entité)
@@ -325,20 +328,20 @@ HTML est une des trois inventions à la base du World Wide Web, avec le HTTP (*H
 
 * HTML1  
   Le langage HTML est issu du projet SGML (*Standard Generalized Markup Language*, initié en 1979 par IBM et publié comme norme en 1986 — dans la norme ISO 8879:1986). 
-  HTML a été mis au point par Tim Berners-Lee, alors chercheur au CERN, et à partir de 1989, et qui annonce officiellement la création du "web" en août 1991 sur Usenet.
+  HTML a été mis au point par Tim Berners-Lee, alors chercheur au CERN, à partir de 1989. Il annonce officiellement la création du "web" en août 1991 sur Usenet.
 
 * HTML2  
-  Directement suite à ça, Tim Berners-Lee continue d'améliorer le langage.
+  Par la suite, Tim Berners-Lee continue d'améliorer le langage.
   Une fois les améliorations jugées suffisantes et suffisamment nombreuses, il partage publiquement la nouvelle "version" de son langage, le HTML2, en 1994.
 
 * HTML3  
-  Après la brêve apparition d'un HTML 3.0, qui ne vit jamais officiellement le jour, le HTML 3.2 devient le standard officiel le 14 janvier 1997. Les apports les plus marquants du HTML 3.2 sont la standardisation des tableaux et un grand nombre d'éléments de présentation.
+  Après la brêve apparition d'un HTML 3.0, qui ne voit jamais officiellement le jour, le HTML 3.2 devient le standard officiel le 14 janvier 1997. Les apports les plus marquants du HTML 3.2 sont la standardisation des tableaux et un grand nombre d'éléments de présentation.
 
 * HTML4  
   Le 18 décembre 1997, le HTML 4.0 est publié. La version 4.0 du langage HTML standardise notamment les feuilles de style, apporte quelques modifications aux tables et aux formulaires. La version HTML 4.01, apparue le 24 décembre 1999 apporte quelques modifications mineures au HTML 4.0 et ajoute 3 variantes: Transitional, Strict et Frameset.  
-  La version strict est celle recommandée par le W3C.  
-  La version transitional permet l'utilisation de balises classées comme dépréciée.  
-  La version frameset permet l'utilisation de cadres (frames): éléménts frameset, frame, noframe.
+  La version "strict" est celle recommandée par le W3C.  
+  La version "transitional" permet l'utilisation de balises classées comme dépréciées.  
+  La version "frameset" permet l'utilisation de cadres (frames): éléments frameset, frame et noframe.
 
 * XHTML1  
   Pour tirer parti des avantages du XML, tout en conservant la compatibilité avec le HTML, le W3C définit en 2000 un format XHTML1.0, qui reformule simplement HTML 4 en application de XML 1.0. Les 3 variantes HTML 4.01 (Transitional, Strict et Frameset) existent également en XHTML 1.0.
@@ -350,11 +353,13 @@ HTML est une des trois inventions à la base du World Wide Web, avec le HTTP (*H
   En mars 2007, le W3C relance le développement de HTML, et c'est le point de départ d'une nouvelle spécification HTML5.
   HTML5 simplifie notamment l'insertion de contenus audio et vidéo et améliore la sémantique: la distinction des différents contenus est meilleure que jamais. HTML5 a son équivalent en XHTML nommé XHTML5.
 
-  En janvier 2011, des divergences entre le WHATWG et le W3C conduisent à la création du HTML Living Standard.  
+  En janvier 2011, des divergences entre le WHATWG (*Web Hypertext Application Technology Working Group*) et le W3C conduisent à la création du HTML Living Standard.  
   Le HTML Living Standard développe en permanence le HTML5, tandis que le W3C prend des snapshots de WHATWG à des moments donnés pour en créer des spécifications fixes:  
   HTML5 en octobre 2014  
   HTML5.1 en novembre 2016  
-  HTML5.2 en décembre 2017
+  HTML5.2 en décembre 2017  
+
+  Le versionnement mineur de HTML5 (le .x) n'est plus respecté depuis, toutes les fonctionnalités se déclarent comme HTML5, et les navigateurs sont libres de les implémenter ou non.
 
 [HTML4.01, XHTML1.0 et HTML5 : quel doctype choisir](https://www.alsacreations.com/article/lire/560-dtd-doctype-html-xhtml-comment-choisir.html)
 
@@ -362,8 +367,9 @@ HTML est une des trois inventions à la base du World Wide Web, avec le HTTP (*H
 
 Conçu initialement comme un langage simplifié par rapport au SGML, le HTML doit en partie son succès à sa tolérance syntaxique, qui en facilite l'usage pour un  débutant — par exemple, ce n'est pas grave si les balises ne sont pas toutes fermées, l'écriture du code est indifférente à la casse, les valeurs d'attributs peuvent dans certains cas ne pas être entourées de guillemets, etc. Cette facilité apparente a par contre son revers: le code HTML ne se prête pas très bien aux traitements automatisés, qui sont un des atouts des formats XML.
 
-* En XHTML, une barre de fraction `/` est obligatoire à la fin des balises isolées, comme `<br />`, `<hr />`.  
-  Ce n'est pas nécessaire en HTML. Note: pour la compatibilité, il est conseillé de mettre un espace avant la barre de fraction.
+* En XHTML, un slash `/` est obligatoire à la fin des balises isolées, comme `<br />`, `<hr />`.  
+  Ce n'est pas nécessaire en HTML.
+  Pour la compatibilité, il est conseillé de mettre un espace avant le slash.
 
 * En XHTML, il faut toujours mettre les valeurs des attributs entre guillemets : `<input type="text" />`.  
   En HTML on peut parfois s'en passer.

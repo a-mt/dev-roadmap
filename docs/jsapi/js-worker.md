@@ -297,7 +297,7 @@ this.addEventListener('fetch', event => {
 });
 ```
 
-### Example 2
+### Exemple 2
 
 ``` js
 // app.js

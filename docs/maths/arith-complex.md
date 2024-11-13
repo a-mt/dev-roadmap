@@ -130,30 +130,3 @@ Concepts: nombre imaginaire, imaginaire pur, nombre complexe, conjugué
   = (10 + 15i)/5
   = 2 + 3i
   ```
-
-## Affixe d'un point
-
-* Pour tout nombre complexe *z = x + iy*, on peut associer un point *M(x; y)* dans le plan complexe.  
-  Le nombre complexe, associé aux coordonnées de M, est appelé l'*affixe* du point.  
-  Par exemple, 3 - 2i est l'affixe du point M(3; 2) représenté dans le plan complexe représenté ci-dessous:
-
-  ![](https://i.imgur.com/m384ZZo.png)
-
-* Dans le plan complexe, l'axe des abscisses est appeé *axe des réels* et l'axe des ordonnées est l'*axe des imaginaires*.  
-  Si *x = 0* alors *z* est un imaginaire pur (puisque *z = iy*)
-
-  ![](https://i.imgur.com/KEOllMv.png)
-
-## Conjugué
-
-* Soit *z = a + ib* avec *a* et *b* réels.  
-  Le nombre complexe conjugué de *z*, noté z&#x0305;, est le nombre complete *z&#x0305; = a - ib = a + i(-b)*.  
-  Les points d'affixes z et z&#x0305; sont symétriques par rapport à l'axe des réels.
-
-  ![](https://i.imgur.com/8rSfOSe.png)
-
-## Solution d'une Équation de second degré
-
-* Dans ℂ, comme dans ℝ, un produit est nul si et seulement si l’un de ses facteurs est nul.  
-  Ainsi l’équation 𝑧² = −4, d’inconnue 𝑧 n’a pas de solution réelle mais équivaut à 𝑧² = (2𝑖)².  
-  Et (𝑧 − 2𝑖)(𝑧 + 2𝑖) = 0 a donc deux solutions dans ℂ : 2𝑖 et −2𝑖.

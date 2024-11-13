@@ -22,10 +22,9 @@ Un site accessible est un site facile à percevoir (à lire), à utiliser, à co
 ## Ressources
 
 - Évaluer l'accessibilité d'un site web : 
-  - [Tota11y](http://khan.github.io/tota11y/) (script js)
   - [Wave](http://wave.webaim.org/) (site web)
-  - [Accessibilité Developer Tools](https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb) (plugin Chrome)
   - [Pa11y Dashboard](https://github.com/pa11y/pa11y-dashboard) (logiciel)
+  - DevTools > Accessibilité
 
 - Tester un lecteur d'écran
   - [NVDA](https://www.nvaccess.org/) pour Windows
@@ -66,7 +65,7 @@ WAI-ARIA définit plusieurs attributs: `tabindex`, `role` et les attributs aria 
 
 ### Produire du code valide
 
-Le premier point est de s'assurer de produire du code HTML valide. Pour le vérifier, on peut utiliser le [validateur W3C](http://validator.w3.org/nu/).  
+Le premier point est de s'assurer qu'on produit du code HTML valide. Pour le vérifier, on peut utiliser le [validateur W3C](http://validator.w3.org/nu/).  
 Il est possible de créer des sites sans en tenir compte, mais ça pourrait fausser l'interprétation des technologies d’assistance telles que les lecteurs d'écran.
 
 ### Attribut lang
@@ -115,7 +114,7 @@ Ne pas non plus utiliser de div pour simuler un bouton
 
 * les lecteurs d'écrans les détectent comme des boutons
 * au clavier, la touche Entrée déclenche le clic (événement js)
-* un bouton qui ne peut pas être utilisé est identifié comme tel (attribut `disabled`)
+* un bouton qui ne peut pas être utilisé est identifié comme désactivé (attribut `disabled`)
 
 ``` html
 <button class="btn" disabled>Button</button>
@@ -154,7 +153,7 @@ Visuellement, la page comporte des titres, mis en valeur et reconnaissables grâ
 <body>
   <h1>My website</h1>
   <h2>Heading</h2>
-    <h3>Subheading</h3>
+  <h3>Subheading</h3>
   <h2>Heading</h2>
 </body>
 ```
@@ -164,7 +163,7 @@ Visuellement, la page comporte des titres, mis en valeur et reconnaissables grâ
 Remplacer les `<div>` par des landmarks HTML5, quand c'est possible
 * permettent de comprendre le contenu
 * de naviguer
-* l'élément `<main>` done la possibilité à certains lecteurs d'écran d'aller directement au contenu de la page
+* l'élément `<main>` donne la possibilité à certains lecteurs d'écran d'aller directement au contenu de la page
 
 ``` html
 
@@ -494,9 +493,8 @@ Un ratio 3:1 est suffisant pour les tailles supérieures.
 Les rapports de contraste vont de 1:1 (même couleur) à 21:1 (noir et blanc).
 
 <ins>Ressources</ins> :
-- [Contraste minimum](http://jxnblk.com/grays/) en fonction de la taille du texte
+- [Contraste minimum](http://web.archive.org/web/20170225175049/http://jxnblk.com/grays/) en fonction de la taille du texte
 - [WCAG Contrast Checker](https://addons.mozilla.org/fr/firefox/addon/wcag-contrast-checker/) (plugin Firefox)
-- [Contrast ratio](http://leaverou.github.io/contrast-ratio/#blue-on-red) (site web)
 - [Accessible Color Spaces](http://kevingutowski.github.io/color.html) (site web)
 
 ### High contrast mode
@@ -539,8 +537,7 @@ Les couleurs proches, c'est à dire voisines sur la roue des couleurs (comme le 
 ![](https://i.imgur.com/BLWAgMU.png)
 
 <ins>Ressources</ins> :
-* [I want to see like the colour blind](https://chrome.google.com/webstore/detail/i-want-to-see-like-the-co/jebeedfnielkcjlcokhiobodkjjpbjia?hl=en-GB) (plugin Chrome)
-* [Colorblinding](https://chrome.google.com/webstore/detail/colorblinding/dgbgleaofjainknadoffbjkclicbbgaa?hl=en) (plugin Chrome)
+* [Let's get colour blind](https://chromewebstore.google.com/detail/lets-get-color-blind/bkdgdianpkfahpkmphgehigalpighjck) (plugin Chrome)
 
 ### Masquer des éléments
 

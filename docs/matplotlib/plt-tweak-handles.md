@@ -8,7 +8,7 @@ category: Python, Library, Matploblib, Préférences
 * L'attribut `color` permet de spécifier la couleur de remplissage (des lignes, du titre, etc)  
   Matploblib reconnaît différents formats:
 
-  | Format | Spécifie | Example
+  | Format | Spécifie | Exemple
   |---     |---       |---
   | tuple (3,) de valeurs entre 0 et 1 | couleur RGB  | `color=(1,0,0)`
   | tuple (4,) de valeurs entre 0 et 1 | couleur RGBA | `color=(1,0,0,0.5)`

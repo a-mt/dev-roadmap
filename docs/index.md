@@ -280,7 +280,7 @@ roadmap: true
 
 * ##### Culture
   * Informatique
-    * [Développement web][webdev]{: .theory}
+    * [Web][webdev]{: .theory}
     * [Encodages][encoding]{: .theory} Caractères BOM [1 &#x21F2;](https://medium.freecodecamp.org/a-quick-tale-about-feff-the-invisible-character-cd25cd4630e7)
     * [Base de données][bdd]{: .theory}
     * [Testing][testing]{: .theory}

@@ -114,7 +114,7 @@ $var = "Hello\n";
     <td>(Carriage&nbsp;Return)<br><code>\r\n</code> (mnénotech.: <code>return</code>) marque les fins de lignes Windows</td>
   </tr>
   <tr>
-    <td><code>\t</code>
+    <td><code>\t</code></td>
     <td>Tabulation</td>
     <td>9</td>
     <td></td>

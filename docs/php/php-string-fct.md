@@ -1255,12 +1255,11 @@ Quelques points d'attention:
   Les encodages ISO-8859-1, ISO-8859-15 et CP1252 ne sont pas identiques.  
   Windows utilise nativement l'encodage ANSI (CP1252), lequel n'est pas reconnut par les autres systèmes d'exploitation (utilisation des ISO). L'encodage UTF-8 est donc généralement utilisé par les serveurs web pour éviter les confusions et problèmes d'encodage entre machines.
 
-  [Comparaison encodages Latin et ASCII](../../www/encoding-latin-vs-ansi.html).
+  [Comparaison encodages Latin et ASCII](../../!assets/encoding-latin-vs-ansi.html).
 
 * <ins>Byte Order Mark (BOM)</ins>:  
-  La chaîne est encodée en UTF-8 sans BOM.  
-  Certains logiciels requièrent le BOM pour utiliser l'encodage UTF-8 (Excel par exemple).   D'autres, au contraire, ne le comprennent pas et afficheront en dur les caractères correspondants (`ï»¿` pour le BOM UTF-8).  
-  Il est donc recommandé de ne jamais encoder un script avec BOM, de l'ajouter manuellement en début de réponse lorsque nécessaire.
+  PHP encode la chaîne en UTF-8 sans BOM.  
+  Certains logiciels (Excel par exemple) requièrent l'ajout du BOM pour détecter l'encodage Unicode correctement.
 
   ``` php
   <?php
@@ -1268,15 +1267,7 @@ Quelques points d'attention:
   echo chr(239) . chr(187) . chr(191) . $data;
   ```
 
-  BOM (Byte Order Mark) UTF:
-
-  | Version UTF | Caractères en hexa | Caractères en décimal
-  |---          |---                 |---
-  |	UTF-8       | EF BB BF    | 239 187 191
-  | UTF-16 (BE) | FE FF       | 254 255
-  | UTF-16 (LE) | FF FE       | 255 254
-  | UTF-32 (BE) | 00 00 FE FF | 0 0 254 255
-  | UTF-32 (LE) | FF FE 00 00 | 255 254 0 0 
+  [Encodage Unicode](../../encodages.md#unicode)
 
 ### utf8_decode
 

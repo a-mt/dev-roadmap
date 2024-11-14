@@ -129,6 +129,23 @@ ou ajouter un préfixe à l'unité (10 kilooctets, aussi abbrégé 10 ko).
 
   ![](https://i.imgur.com/4c6xVsu.png)
 
+* On trouve parfois en début de document un caractère spécial couramment appelé BOM (*Byte Order mark*).  
+	U+FEFF (ZERO WIDTH NO-BREAK SPACE) est utilisé pour indiquer qu'il sagit d'un document en UTF-16.  
+
+	![](https://i.imgur.com/E1RlSupl.png)
+
+	Certains logiciels requièrent le BOM pour utiliser le bon encodage (Excel par exemple).  
+	D'autres, au contraire, ne le comprennent pas et afficheront en dur les caractères correspondants (`ï»¿` pour le BOM UTF-8).  
+	Il est donc recommandé de ne jamais encoder un script avec BOM, de l'ajouter manuellement en début de réponse lorsque nécessaire.
+
+  | Version UTF | Caractères en hexa | Caractères en décimal
+  |---          |---                 |---
+  |	UTF-8       | EF BB BF    | 239 187 191
+  | UTF-16 (BE) | FE FF       | 254 255
+  | UTF-16 (LE) | FF FE       | 255 254
+  | UTF-32 (BE) | 00 00 FE FF | 0 0 254 255
+  | UTF-32 (LE) | FF FE 00 00 | 255 254 0 0 
+
 * Certains caractères Unicode ont deux représentations possibles: texte ou emoji.
 	On peut choisir une variante ou l'autre avec un sélecteur de variation: U+FE0E pour texte (VS-15) ou U+FE0F pour emoji (VS-16).
 

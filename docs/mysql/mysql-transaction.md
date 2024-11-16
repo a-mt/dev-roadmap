@@ -5,29 +5,6 @@ category: BDD, MySQL
 
 ## Propriétés ACID
 
-Un SGBD doit fournir des mécanismes pour assurer l'intégrité, la confidentialité mais aussi les accès concurrents (autoriser les accès simultanés à la BD par plusieurs utilisateurs) et la sureté de fonctionnement (assurer la cohérence des données en dépit des pannes matérielles et logicielles qui peuvent se produire).
-
-Une *transaction* est une séquence d'actions à réaliser sur la BD, qui a les propriétés suivantes (ACID):
-
-<table>
-  <tr>
-    <th>Atomicité</th>
-    <td>Tout est exécuté ou rien</td>
-  </tr>
-  <tr>
-    <th>Cohérence</th>
-    <td>Une transaction fait passer la BD d'un état cohérent à un autre été cohérent</td>
-  </tr>
-  <tr>
-    <th>Isolation</th>
-    <td>Les mises à jour faites par une transaction ne sont pas visibles de l'extérieur tant que la transaction n'est pas terminée</td>
-  </tr>
-  <tr>
-    <th>Durabilité</th>
-    <td>Les actions effectuées par une transaction terminée sont définitives</td>
-  </tr>
-</table>
-
 Les actions à l'intérieur d'une transaction sont effectuées en mémoire.  
 Lorsque la transaction atteint son point de validation (`COMMIT`), les modifications sont enregistrées sur le disque.  
 Si la transaction est annulée (`ROLLBACK`), la transaction se supprime en effaçant toute trace de son passage.

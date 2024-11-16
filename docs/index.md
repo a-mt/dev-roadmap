@@ -281,8 +281,8 @@ roadmap: true
 * ##### Culture
   * Informatique
     * [Web][webdev]{: .theory}
-    * [Encodages][encoding]{: .theory} Caractères BOM [1 &#x21F2;](https://medium.freecodecamp.org/a-quick-tale-about-feff-the-invisible-character-cd25cd4630e7)
-    * [Base de données][bdd]{: .theory}
+    * [Encodages][encoding]{: .theory}
+    * [Base de données][bdd]{: .theory} [Opérations en BDD][bdd-operations]{: .theory}
     * [Testing][testing]{: .theory}
 
   * Machine Learning
@@ -475,6 +475,7 @@ roadmap: true
 [api]: api.md
 [api-rest]: api-rest.md
 [bdd]: bdd.md
+[bdd-operations]: bdd-operations.md
 [bitcoin]: bitcoin/index.md
 [bitwise]: bitwise-operations.md
 [chemistry]: chemistry/index.md

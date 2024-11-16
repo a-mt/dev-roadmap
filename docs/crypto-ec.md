@@ -7,9 +7,9 @@ category: Sécurité, Cryptographie
 
 * Les algorithmes de cryptographie à clé assymétrique se basent sur des opérations mathématiques faciles à traiter dans un sens mais difficile à résoudre dans l'autre sens. Par exemple, dans le cas de RSA, il est facile de multiplier deux nombres premiers (multiplier est une opération facile) mais il est difficile de retrouver les deux nombres premiers utilisés à partir du produit (factoriser est une opération difficile). Ainsi, on peut facilement calculer une clé publique mais on peut difficilement retrouver la clé privée.
 
-  Les algorithmes ayant cette caractéristiques, facile dans un sens mais difficile dans l'autre, sont connus sous le nom de fonctions *trap door*. Plus l'écart est grand entre la difficulté d'aller dans un sens et celle d'aller dans l'autre sens, plus l'algorithme sera sûr.
+  Les algorithmes ayant cette caractéristique, facile dans un sens mais difficile dans l'autre, sont connus sous le nom de fonctions *trap door*. Plus l'écart est grand entre la difficulté d'aller dans un sens et celle d'aller dans l'autre sens, plus l'algorithme sera sûr.
 
-* Les algorithmes se basant sur la factorisation (comme RSA) sont d'autant plus efficaces que la taille des nombres utilisés est importante. La taille des clés doit augmenter à mesure que les ressources disponibles pour décrypter les nombres augmentent. Pour pallier à ce problème, il faut trouver une meilleure *trap door*. C'est en 1985, que l'utilisation des courbes elliptiques à été proposé.
+* Les algorithmes se basant sur la factorisation (comme RSA) sont d'autant plus efficaces que la taille des nombres utilisés est importante. La taille des clés doit augmenter au fur et à mesure que les ressources disponibles pour décrypter les nombres augmentent. Pour pallier à ce problème, il faut trouver une meilleure *trap door*. C'est en 1985, que l'utilisation des courbes elliptiques a été proposé.
 
 ## Une courbe elliptique, c'est quoi
 
@@ -35,7 +35,7 @@ Les types de données utilisés doivent avoir certaines caractéristiques:
 
 On peut par exemple utiliser les courbes elliptiques avec des entiers et non des matrices.
 
-En cryptographie, on limite *x*, *y*, *a* et *b* a un champ fini: on ne va donc pas utiliser l'ensemble des entiers (-&infin; ; +&infin;) mais un sous-ensemble (0 ; *p*):
+En cryptographie, on limite *x*, *y*, *a* et *b* à un champ fini: on ne va donc pas utiliser l'ensemble des entiers (-&infin; ; +&infin;) mais un sous-ensemble (0 ; *p*):
 
 ```
 y² = x³ + ax + b  mod p
@@ -76,7 +76,7 @@ Soit la courbe elliptique `E: y² = x³ + 5x + 7` et les points `P: (2,5)` et `Q
 
 * On calcule la ligne qui relie P et Q:
 
-  <pre lang="python">
+  <pre>
   y = ax + b
 
   # Calcul de a:
@@ -94,7 +94,7 @@ Soit la courbe elliptique `E: y² = x³ + 5x + 7` et les points `P: (2,5)` et `Q
 
 * On résout x
 
-  <pre lang="python">
+  <pre>
   (2x + 1)²    = x³ + 5x + 7
   4x² + 4x + 1 = x³ + 5x + 7
              0 = x³ -4x² + x + 6
@@ -126,7 +126,7 @@ Plutôt que de calculer la ligne / les points d'intersection / la réflection du
   * Si *y<sub>1</sub> = 0* alors P<sub>1</sub> + P<sub>2</sub> = 𝓞
   * Si *y<sub>1</sub> ≠ 0* alors
 
-    <pre lang="python">
+    <pre>
     λ = (3x² + a) / 2y
 
     x<sub>3</sub> = λ² - x<sub>1</sub> - x<sub>2</sub>
@@ -138,7 +138,7 @@ Plutôt que de calculer la ligne / les points d'intersection / la réflection du
   * Si *x<sub>1</sub> = x<sub>2</sub>* alors P<sub>1</sub> + P<sub>2</sub> = 𝓞
   * Si *x<sub>1</sub> ≠ x<sub>2</sub>* alors 
 
-    <pre lang="python">
+    <pre>
     λ = (y<sub>2</sub> - y<sub>1</sub>) / (x<sub>2</sub> - x<sub>1</sub>)
 
     x<sub>3</sub> = λ² - x<sub>1</sub> - x<sub>2</sub>
@@ -147,7 +147,7 @@ Plutôt que de calculer la ligne / les points d'intersection / la réflection du
 
 Soit la courbe elliptique `E: y² = x³ + 5x + 7` et les points `P: (2,5)` et `Q: (3,7)`:
 
-<pre lang="python">
+<pre>
 λ = (7-5) / (3-2) = 2
 
 x<sub>3</sub> = 2² - 2 - 3 = -1

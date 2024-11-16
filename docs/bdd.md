@@ -3,190 +3,178 @@ title: Bases de données
 category: Web
 ---
 
-## Vocabulaire
+## SGBD
 
-### Base de données
+* Une *base de données* (BDD) est un ensemble de données stockées de façon organisée, souvent dans des tables mais pas forcemment, de manière être facilement accessibles.
 
-Une *base de données* est un ensemble de données stockées de façon organisée, souvent dans des tables - mais par forcemment.
+* Le logiciel qui s'occupe de stocker la BDD est appelé un *système de gestion de base de données* (SGBD). Un SGBD doit fournir des mécanismes pour assurer l'intégrité, la confidentialité mais aussi les accès concurrents (autoriser les accès simultanés à la BDD par plusieurs utilisateurs) et la sureté de fonctionnement (assurer la cohérence des données en dépit des pannes matérielles et logicielles qui peuvent se produire).
 
-### Modèle de données
+  Par abus de language, on utilise généralement les deux comme synonyme
 
-La manière dont sont organisées les données dans la base de données est ce qu'on appelle un *modèle de données*.
-Le plus utilisé est le modèle de données *relationnel* :
-- La base de données est une collection de *tables* ou *relations*.
-  - Un peu comme un stylesheet Excel, le contenu est organisé en lignes et colonnes
-  - Sur chaque ligne est stocké une entité, qu'on appelle un *n-uplet*
-  - À chaque colonnes sont associées des valeurs, des *attributs* de n-uplet
-- Les tables peuvent avoir des *relations* entre elles. Par exemple, un étudiant a une note pour différents cours: la table "étudiant" est liée à la table "notes", qui est liée à la table "cours".
+## Modèle de données relationnel
 
-  ![Exemple BDD](https://i.imgur.com/I48BLJn.png)
+* La manière dont sont organisées les données dans la base de données est ce qu'on appelle un *modèle de données*.
 
-Il existe d'autres [modèle de données](https://www.lucidchart.com/pages/fr/quest-ce-quun-mod%C3%A8le-de-base-de-donn%C3%A9es).
+* Le modèle le plus utilisé est le modèle de données *relationnel*:
 
-### Schéma
+  - La base de données est une collection de *tables*.  
+    Un peu comme un stylesheet Excel, le contenu de chaque table est organisé en lignes et colonnes.
 
-Chaque colonne a des propriétés : type de données (nombre, chaîne de caractères, booléen, etc), valeur par défaut, etc. Le *schéma* d'une table est la définition des colonnes de cette table.
+  - Chaque ligne d'une table, appelé un *n-uplet*, stocke les données d'une entité donnée en associant des valeurs dans les différentes colonnes, appelés *attributs*.
 
-    +-------------+--------------+
-    | Field       | Type         |
-    +-------------+--------------+
-    | Nom         | varchar(255) |
-    | Prenom      | varchar(255) |
-    | No_etudiant | int(11)      |
-    | Groupe      | varchar(2)   |
-    +-------------+--------------+
+    ```
+    N-uplet (aka valeurs):
+    +--------+--------+-----------------+--------+
+    | Durant | Paul   | 17              | A1     |
+    +--------+--------+-----------------+--------+
 
-### N-uplet
+    Attributs:
+    +--------+--------+-----------------+--------+
+    | Nom    | Prénom | Numéro étudiant | Groupe |
+    +--------+--------+-----------------+--------+
 
-Un *n-uplet* est un ensemble de valeurs, une ligne de la table.
+    Attribut-valeur:
+    Nom: Durant
+    ```
 
-    +--------+------+----+----+
-    | Durant | Paul | 17 | A1 |
-    +--------+------+----+----+
+    - Une *clé primaire* (*primary key* en anglais) est ce qui permet d'identifier un n-uplet dans une table de manière unique. Par exemple, No_etudiant dans la table étudiant
 
-### Clé
+    - Une *clé étrangère* (*foreign key* en anglais) est une clé qui désigne la clé primaire d'une autre table, et qui crée donc une relation. Par exemple, No_etudiant dans la table note est une référence vers la clé primaire de la table étudiant
 
-Une *clé primaire* (primary key) est ce qui permet d'identifier un n-uplet dans une table de manière unique.  
-Une *clé étrangère* (foreign key) est une clé qui désigne la clé primaire d'une autre table, et qui crée donc une relation.  
+    - Dans certains cas, une clé primaire peut être une combinaison de clés étrangères: par exemple (No_etudiant, Code_cours) dans la table cours, si un étudiant ne peut avoir qu'une seule note par cours.
 
-Par exemple,
-- La <ins>clé primaire</ins> de la table "étudiant" est `No_etudiant`.
-- La <ins>clé primaire</ins> de la table "note" est la combinaison `(No_etudiant,Code_cours)` (si un étudiant ne peut avoir qu'une seule note par cours).
-- `No_etudiant` dans la table "note" est une <ins>clé étrangère</ins> qui pointe vers "étudiant".
+      Utiliser plusieurs colonnes comme clé primaire est généralement considéré comme une mauvaise pratique, mais est parfois nécessaire pour assurer la non-duplicité des clés — par exemple (code postal, commune) puisqu'un code postal (tel que 01330) peut être associé à plusieurs communes 
 
-### SGBD
+    ![Exemple BDD](https://i.imgur.com/I48BLJn.png)
 
-Un *système de gestion de bases de données* (SGBD) est un logiciel qui permet de créer, maintenir et interroger une base de données (effectuer une recherche ou un tri par exemple).  
-Les SGDB les plus connus de bases de données relationnelles sont
-- Oracle, SQLServer, DB2 et Sybase pour les produits commerciaux
-- SQLite, MySQL et PostgreSQL pour les systèmes libres
+* Il existe d'autres [modèle de données](https://www.lucidchart.com/pages/fr/quest-ce-quun-mod%C3%A8le-de-base-de-donn%C3%A9es).  
+  Par exemple le modèle entité-attribut-valeur est souvent utilisé pour mettre en cache des données (comme avec Redis),  
+  ou le modèle document est souvent utilisé dans les BDD NoSQL (comme avec Mongo), qui permet notamment de stocker un grand nombre de données sur différents serveurs sans garder de références inter-document — ce qui nécessiterait de requêter différents serveurs.
 
-### MySQL
+## Schéma
 
-MySQL est un SGBD de base de données relationnelle utilisé avec Lamp, une stack de développement très populaire (Linux, Apache, MySQL, PHP).
+* Dans le cas d'une BDD relationnelle, il est nécessaire de définir le *schéma* des données, qui est la définition des colonnes de cette table: à chaque colonne est associé un type de données (nombre, chaîne de caractères, booléen, etc), avec éventuellement une valeur par défaut, un encodage donné, etc.
 
-On peut executer des commandes SQL dans la console en ouvrant MySQL (`mysql -u root -p`).  
-Ou dans le navigateur en utilsant phpMyAdmin.  
-[MySQL Workbench](https://www.mysql.com/fr/products/workbench/) est un logiciel de visualisation pour créer, executer et optimiser les requêtes SQL.
-
-### SQL
-
-On donne des instructions à effectuer au SGBD en utilisant le *langage SQL*. Chaque SGBD implémente une variante de SQL qui lui est propre (mais les commandes basiques sont identiques entre tous les SGBD).
-
-Voir [MySQL](mysql.md) pour la description du langage SQL de MySQL.
-
-### NoSQL
-
-NoSQL (Not Only SQL) est un terme assez vague qui désigne un ensemble de SGBD alternatifs qui cherchent à fournir soit
-- des modèles de données différents des modèles de données classiques en tables  
-  Stocker et requêter des données au format JSON par exemple
-- des performances extrêmes
-- un passage à l'échelle transparent qui permet de gérer de gigantesques volumes de données  
-  De l'ordre du Tera ou Petaoctet
-
-Pour permettre ces fonctionnalités, les bases de données NoSQL abandonnent une ou des propriétés des bases de données classiques et ne permettent pas les requêtes complexes des bases de données classiques.
-
----
+  ```
+  +-------------+--------------+
+  | Field       | Type         |
+  +-------------+--------------+
+  | Nom         | varchar(255) |
+  | Prenom      | varchar(255) |
+  | No_etudiant | int(11)      |
+  | Groupe      | varchar(2)   |
+  +-------------+--------------+
+  ```
 
 ## Propriétés des bases de données classiques
 
-1. Persistance des données  
+1. <ins>Persistance des données</ins>  
    Les données sont sauvegardées sur le disque
 
-2. Partage des données  
+2. <ins>Partage des données</ins>  
    Les utilisateurs accèdent en même temps aux mêmes données  
    Il existe des mécanismes de contrôle de la concurrence
 
-3. Redondance faible  
+3. <ins>Redondance faible</ins>  
    Chaque information n'est stockée qu'une seule fois  
    Dans le cas contraire, les informations dupliquées doivent rester valides
 
-4. Sécurité  
+4. <ins>Sécurité</ins>  
    Il faut gérer les reprises en cas de pannes logicielles ou matérielles
 
-5. Confidentialité  
+5. <ins>Confidentialité</ins>  
    Les données sensibles doivent être protégées  
    Il y a des mécanismes de sécurité et d'autorisation
 
-6. Contraintes d'intégrité  
+6. <ins>Contraintes d'intégrité</ins>  
    Contraintes sur le type de données (ex: le nombre d'heures d'un cours est un entier positif)  
    Contraintes sur les données (ex: la note d'un étudiant est comprise entre 0 et 20)
    Contraintes sur les relations (ex: une seule occurence d'un identifiant est précent)
 
----
+## Propriétés ACID
 
-## Opérations
+* Une BDD relationnelle assure les propriétés ACID des données: lorsqu'on exécute plusieurs requêtes (ce qu'on appelle une *transaction*) — par exemple pour retirer de l'argent d'un côté et en ajouter de l'autre — le logiciel s'assure que les conditions suivantes soient bien remplies:
 
-Un modèle de donnée offre un ensemble d'opérateurs pour effectuer des recherches et des modifications sur la base de données.
+  <table>
+    <tr>
+      <th>Atomicité</th>
+      <td>Tout est exécuté ou rien</td>
+    </tr>
+    <tr>
+      <th>Cohérence</th>
+      <td>Une transaction fait passer la BD d'un état cohérent à un autre été cohérent</td>
+    </tr>
+    <tr>
+      <th>Isolation</th>
+      <td>Les mises à jour faites par une transaction ne sont pas visibles de l'extérieur tant que la transaction n'est pas terminée</td>
+    </tr>
+    <tr>
+      <th>Durabilité</th>
+      <td>Les actions effectuées par une transaction terminée sont définitives</td>
+    </tr>
+  </table>
 
-### Sélection
+## SQL
 
-<ins>Notation algébrique</ins>: R1 / C  
-<ins>Définition</ins>: Un sous-ensemble de lignes de R1 vérifiant la condition C  
-<ins>Exemple</ins>: `pomme / (couleur == jaune)`
+* Le SQL (*Structured Query Language*) est le language qui permet de requêter une BDD relationnelle.  
+  Chaque SGBD implémente une variante de SQL qui lui est propre, comme par exemple [MySQL](mysql.md) — souvent les commandes SQL de base sont identiques entre les différents SGBD.
 
-![Sélection](https://i.imgur.com/5G0Kh54.png)
+  ```
+  SELECT * FROM mytable
+  ```
 
-### Projection
+* Pour le SGBD MySQL, on peut executer des commandes SQL
 
-<ins>Notation algébrique</ins>: R1[VA,...]  
-<ins>Définition</ins>: Un sous-ensemble de colonnes de R1 (VA, ...)  
-<ins>Exemple</ins>: `pomme[identifiant,nom_variété]`
+  - dans la console en ouvrant MySQL (`mysql -u root -p`)
+  - via une application web telle que phpMyAdmin
+  - via un logiciel tel que [MySQL Workbench](https://www.mysql.com/fr/products/workbench/)
 
-![Projection](https://i.imgur.com/5viyTWg.png)
+* Une BDD tel que Mongo (qui est une BDD NoSQL) ne dispose a priori pas d'un language SQL, uniquement d'une API,  
+  mais il existe souvent des layers de compatibilité qui permettent d'utiliser le language SQL avec une BDD NoSQL.
 
-### Produit cartésien
+  ```
+  db.mytable.find({});
+  ```
 
-<ins>Notation algébrique</ins>: R1 X R2  
-<ins>Définition</ins>: Combinaison de R1 et R2  
-<ins>Exemple</ins>: `goûteur x variété = dégustation`
+<ins>Exemples de SGBD SQL</ins>:
 
-![Produit cartésien](https://i.imgur.com/9hqx9KI.png)
+- Oracle, SQLServer, DB2 et Sybase pour les produits commerciaux
+- SQLite, MySQL et PostgreSQL pour les systèmes libres
 
-### Jointure
+## NoSQL
 
-<ins>Notation algébrique</ins>: R1 * (VA = VB) R2  
-<ins>Définition</ins>: Combinaison de R1 et R2 dont la valeur d'un attribut est la même  
-<ins>Exemple</ins>: `pomme * (nom_variété = libellé) variété`
+* NoSQL (*Not Only SQL*) désigne un ensemble de SGBD alternatifs qui cherchent à fournir soit
 
-![Jointure](https://i.imgur.com/7Nfp5ek.png)
+  - Des modèles de données différents des modèles de données classiques en ligne (systèmes clé-valeur, systèmes orientés document, systèmes orientés colonnes)
+  - Stocker et requêter des données au format JSON par exemple
+  - Des performances extrêmes
+  - Un passage à l'échelle transparent qui permet de gérer de gigantesques volumes de données, de l'ordre du Tera ou Petaoctet
 
-### Différence ensembliste
+* Pour permettre ces fonctionnalités, les bases de données NoSQL abandonnent une ou des propriétés des bases de données classiques et ne permettent pas les requêtes complexes des bases de données classiques.
 
-<ins>Notation algébrique</ins>: R1 - R2  
-<ins>Définition</ins>: Ensemble des n-uplets de R1 qui ne sont pas dans R2  
-<ins>Exemple</ins>: `pomme1 - pomme2`
+<ins>Exemples de SGBD NoSQL</ins>:
 
-![Différence](https://i.imgur.com/7HhJ3Hs.png)
+| Type  | Organisation | Requêtes | Exemples de systèmes |
+|---     |---                |---          |---                            |
+| XML   | Donnés arborescentes, hiérarchiques | XQuery | XBase, existdb |
+| Objet | Donnés complexes, avec propriétés et méthodes | OQL, VQL | 02, Versant |
+| Graphe | Graphe avec noeuds, arêtes, propriétés | Cypher, Gremlin | Neo4j |
+| Triplets | Triplets RDF du Web sémantique (sujet, prédicat, objet) | SPARQL | Apache Jena, Sesame |
 
-### Union
+## NewSQL
 
-<ins>Notation algébrique</ins>: R1 ∪ R2  
-<ins>Définition</ins>: Ensemble des n-uplets de R1 ou de R2  
-<ins>Exemple</ins>: `pomme1 + pomme2`
+* Au délà des systèmes NoSQL, sont apparus récemment des systèmes NewSQL. La motivation de NewSQL est que certaines applications ne peuvent pas se contenter des compromis faits par NoSQL et ont besoin
 
-![Union](https://i.imgur.com/0m4T27l.png)
+  - De langages de requêtes riches (jointure, aggrégation)
+  - D'une conformité aux propriétés ACID
+  - De performances supérieures à celles des SGBD classiques
+ 
+* Les solutions possibles sont d'essayer de se débarrasser de ce qui fait la lenteur des SGBD classiques
 
-### Intersection
+  - Les goulots d'étranglements des SGBD : verrous, journalisation, gestion des caches
+  - Bases de données en mémoire vive, avec copie sur disque asynchrone
+  - Gestion de concurrence sans verrou (MVCC)
+  - Architecture distribuée sans partage d'information (*shared nothing*) et avec équilibrage de charge transparent
 
-<ins>Notation algébrique</ins>: R1 ∩ R2  
-<ins>Définition</ins>: Ensemble des n-uplets de R1 qui sont aussi dans R2  
-<ins>Exemple</ins>: `pomme ∩ pomme`
-
-![Intersection](https://i.imgur.com/k4YTd46.png)
-
-### Division
-
-<ins>Notation algébrique</ins>: R1 ÷ R2  
-<ins>Définition</ins>: Ensemble des n-uplets dont la concaténation avec tous les n-uplets de R2 appartient à R1  
-<ins>Exemple</ins>: `dégustation ÷ variété = goûteur`
-
-![Division](https://i.imgur.com/43KD5mg.png)
-
-### Agrégation
-
-L'agrégation n'est pas une opération faisant partie de l'algèbre relationnelle mais n'en reste pas moins très utile.
-On utilise une agrégation pour calculer le résultat d'un ensemble de lignes (on dit qu'on forme des agrégats).  
-<ins>Exemple</ins>: calculer la masse moyenne des pommes par groupes de pommes jaunes, rouges et vertes abîmées ou non.
-
-![Agrégation](https://i.imgur.com/WezbjsO.png)
+<ins>Exemples de SGBD NewSQL</ins>:  
+Google Soanner, Clustrix, VoltDB

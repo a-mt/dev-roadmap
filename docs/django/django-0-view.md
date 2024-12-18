@@ -181,6 +181,9 @@ category: Python, Django
         import zipstream
 
         with zipstream.ZipFile(mode='w', compression=zipstream.ZIP_DEFLATED) as zf:
+            # zf.writestr('example.xml', b'content')
+
+            # Add all .dcm files present in path
             iterator = Path(path).rglob('*.dcm')
             try:
                 for dcm in iterator:
@@ -190,7 +193,7 @@ category: Python, Django
                     name = dcm.relative_to(path)
                     zf.write(dcm, name)
 
-                    # Yield chunks
+                    # Yield chunks (zipstream-new >= 1.1.8)
                     yield from zf.flush()
 
             except PermissionError:

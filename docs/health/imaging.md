@@ -1,5 +1,6 @@
 ---
 title: Imagerie médicale
+category: E-santé
 ---
 
 # Modalités

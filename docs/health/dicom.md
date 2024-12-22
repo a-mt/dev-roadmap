@@ -1,5 +1,6 @@
 ---
 title: DICOM
+category: E-santé
 ---
 
 # Résumé d'Imagerie médicale

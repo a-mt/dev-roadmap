@@ -1,5 +1,6 @@
 ---
 title: Spirométrie
+category: E-santé
 ---
 
 # Qu'est ce que c'est

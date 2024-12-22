@@ -302,8 +302,8 @@ roadmap: true
     - [Maths][maths]{: .theory}
 
   * Médecine
-    - [Imagerie médicale][medical-imaging]{: .theory}
-    - [DICOM][dicom]{: .theory}
+    - [Imagerie médicale][medical-imaging]{: .theory} [DICOM][dicom]{: .theory}
+    - [Ségur][medical-segur]{: .theory} [Dossier Médical Partagé (DMP)][medical-dmp]{: .theory} [Mon Espace Santé (MES)][medical-mes]{: .theory} [Health Data Hub][mes-pds]{: .theory}
     - [Spirométrie][spirometry]{: .theory}
 
   - Rubiks
@@ -540,6 +540,10 @@ roadmap: true
 [regex]: regex.md
 [sass]: sass.md
 [securite]: securite.md
+[medical-segur]: health/segur.md
+[medical-dmp]: health/dmp.md
+[medical-mes]: health/mes.md
+[mes-pds]: health/pds.md
 [semver]: semver.md
 [spirometry]: health/spirometry.md
 [ssh]: ssh.md

@@ -464,6 +464,7 @@ roadmap: true
   - [Stacks](https://stackshare.io/stacks)
   - [Tests psychométriques](https://www.youtube.com/watch?v=ggJp7jOAmwM)
   - [Hackatons](https://devpost.com/)
+  - [Calendar sharing](https://www.addevent.com/)
 
 
 [accessibilite]: html/accessibilite.md

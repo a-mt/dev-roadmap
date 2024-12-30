@@ -157,3 +157,25 @@ BaseException
 ```
 
 [Built-in Exceptions in Python](https://www.geeksforgeeks.org/built-exceptions-python/)
+
+## Créer une classes personnalisée
+
+* Créer une classe qui hérite d'Exception
+
+  ``` python
+  class Phrase:
+    def __init__(self, ma_phrase):
+      if not ma_phrase:
+        raise PhraseVideError('phrase vide', 18)
+
+      self.ma_phrase = ma_phrase
+      self.mots = ma_phrase.split()
+
+  class PhraseVideError(Exception):
+    pass
+
+  try:
+    Phrase('')
+  except PhraseVideError as e:
+    print(e.args)
+  ```

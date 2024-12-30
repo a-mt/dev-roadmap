@@ -38,7 +38,39 @@ category: Web, Python
     file.py
     ```
 
-* Un fichier `.pyc` est un fichier précompilé — ça permet d'accélérer le chargement d'un module python après qu'il ait été chargé une première fois. Il est généré automatiquement par le moteur python et n'est pas destiné à être distribué.
+* Un fichier `.pyc` est un fichier précompilé (en bytecode) — permet d'accélérer le chargement d'un module python après qu'il ait été chargé une première fois. Il est généré automatiquement par le moteur python et n'est pas destiné à être distribué.
+
+* Note: on peut utiliser le module `dis` pour voir les instructions bytecode d'un morceau de code python:
+
+  ``` python
+  import dis
+
+  def f1():
+      a = "test"
+      return f"{a}"
+
+  def f2():
+      return "{a}".format(a='test')
+
+  print(dis.dis(f1))
+  print(dis.dis(f2))
+  ```
+  ``` txt
+   11           0 LOAD_CONST               1 ('test')
+                2 STORE_FAST               0 (a)
+
+   12           4 LOAD_FAST                0 (a)
+                6 FORMAT_VALUE             0
+                8 RETURN_VALUE
+  None
+   15           0 LOAD_CONST               1 ('{a}')
+                2 LOAD_ATTR                0 (format)
+                4 LOAD_CONST               2 ('test')
+                6 LOAD_CONST               3 (('a',))
+                8 CALL_FUNCTION_KW         1
+               10 RETURN_VALUE
+  None
+  ```
 
 ### Executer Python en ligne de commande
 

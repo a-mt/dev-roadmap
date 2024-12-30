@@ -150,6 +150,9 @@ def main(args):
     parser.add_argument('--run-tests',
         action='store_true',
         help='run module tests')
+    parser.add_argument(default=1, type=int, dest='groupnb', nargs='?',
+                        choices=(1, 2, 3, 4),
+                        help="select predefined group 1 or 2")
     args = parser.parse_args(args)
 
     if args.run_tests:

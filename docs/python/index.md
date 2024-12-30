@@ -15,6 +15,8 @@ category: Web
   * [Tuples](python-tuple.md)
   * [Sets](python-set.md)
   * [Dictionnaires](python-dict.md)
+  * [Notes sur les types complexes](python-complex-types.md)
+
 * [Fonctions](python-function.md)
 * [Modules](python-import.md)
 * [Fichiers](python-file.md)
@@ -22,7 +24,9 @@ category: Web
 * [Date](python-date.md)
 * [Exceptions](python-except.md)
 * [Classes & objets](python-object.md)
+* [Itérateurs & générateurs](python-iter.md)
 * [Divers](python-misc.md)
+* [Programmation asynchrone](python-asyncio.md)
 
 [Sharing data between processes](https://superfastpython.com/numpy-share-array-processes/)  
 [Python best practices](https://peps.python.org/)  

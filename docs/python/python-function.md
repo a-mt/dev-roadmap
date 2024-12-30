@@ -53,6 +53,8 @@ category: Web, Python
   print(x) # 1
   ```
 
+## Closure
+
 * Les variables locales sont accessibles aux sous-fonctions définies à l'intérieur de la fonction
 
   ``` python
@@ -112,6 +114,26 @@ category: Web, Python
       print(x) # 200
 
   myfunc()
+  ```
+
+* Techniquement, une variable est dite *libre* si elle n'est ni locale ni globale, donc contenue dans une fonction englobante.  
+  Une fonction qui référence des variables libres est appelée une *closure* (clotûre en français)
+
+  ``` python
+  def plus_n(y):
+    def incremente(x):
+      return x + y
+    return incremente
+
+  plus3 = plus_n(3)
+  plus3(10)
+  ```
+
+  Pour récupérer un tuple des variables libres:
+
+  ``` python
+  plus3.__closure__
+  plus3.__closure__[0].cell_contents  # 3
   ```
 
 ## Pointeur
@@ -326,78 +348,9 @@ print("Your value is:", text)
 ![](https://i.imgur.com/WaG6e5h.png)  
 ![](https://i.imgur.com/0wAPumF.png)
 
-## Générateurs
-
-* Plutôt que de retourner une valeur (avec `return`), une fonction peut retourner un générateur.
-
-  ``` python
-  # return: retourne une valeur
-  # Le code après return ne sera jamais évalué
-  def f1():
-    print("Before")
-    return "a"
-
-    print("After")
-    return "b"
-
-  res = f1() # Before
-  print(res) # a
-  ```
-
-  ``` python
-  # yield: retourne un générateur
-  # Le code est évalué au fur et à mesure des appels à next()
-  def f2():
-    print("Before")
-    yield "a"
-
-    print("After")
-    yield "b"
-
-  res = f1()
-  print(res) # <generator object f at 0x7f2428e79b10>
-  res1 = next(res) # Before
-  print(res1)      # a
-  print(next(res)) # After b
-  ````
-
-* Le `yield` peut également récupérer un argument
-
-  ``` python
-  def sayHello():
-      name = yield "What is your name ?";
-      yield "Hello " + name;
-
-      color = yield "What is your favorite color ?";
-      yield "Well it don't like it";
-
-  it = sayHello()
-  print(next(it))         # What is your name ?
-  print(it.send("Bob"));  # Hello Bob
-
-  print(next(it));        # What is your favorite color ?
-  print(it.send("black")) # Well it don't like it
-  ```
-
-* Et on peut renvoyer le générateur d'une autre fonction avec `yield from`
-
-  ``` python
-  def switchboard():
-      while True:
-          choice = yield "1 for PL, 2 for support, 3 to exit"
-          if choice == 1:
-              yield from pig_latin_translator()
-          elif choice == 2:
-              yield from bad_service_chatbot()
-          elif choice == 3:
-              return
-          else:
-              print('Bad choice; try again')
-  ```
-
 ## Décorateurs
 
-* Un décorateur est une fonction qui prend pour seul argument une fonction et y ajoute des fonctionnalités. Les décorateurs sont notamment utilisés pour ajouter des logs ou du cache sur une fonction.
+* Un décorateur est une fonction qui prend pour seul argument une fonction, peut y ajoute des fonctionnalités, et retourne une fonction. Les décorateurs sont notamment utilisés pour ajouter des logs ou du cache sur une fonction.
 
   ``` python
   from datetime import datetime
@@ -433,6 +386,7 @@ print("Your value is:", text)
     return wrapper
 
   # Fonction avec décorateur
+  # hello n'est plus la fonction, mais l'objet retourné par time_decorator(hello)
   @time_decorator
   def hello(name):
     print("Hello " + name)
@@ -471,9 +425,44 @@ print("Your value is:", text)
   # revient à chatty(limit(2)(greet))
   ```
 
-### functools.wrap
+## Propriétés d'un décorateur
 
-* Le décorateur `wrap` du module functools permet de recopier le nom de la fonction et sa description sur une autre fonction — ce qui permet notamment de préserver la documentation d'une fonction sur laquelle on applique un wrapper.
+* On peut créer un décorateur avec une classe, si cette classe est un callable (implémente \_\_call\_\_):
+
+  ``` python
+  class NbAppels:
+      def __init__(self, f):
+          self.appels = 0
+          self.f = f
+
+      def __call__(self, *t, **d):
+          self.appels += 1
+          s = f"{self.f.__name__} : {self.appels}"
+          print(s)
+          return self.f(*t, **d)
+
+  @NbAppels
+  def f(a, b):
+      print(a, b)
+  ```
+
+* Une autre alternative est de déclarer un attribut sur la fonction retournée:
+
+  ``` python
+  def trace_call(f):
+    def wrapper(*args, **kwargs):
+      wrapper.called = wrapper.called + 1
+
+      print(f'{wrapper.called} appels de {f.__name__}')
+      return f(*args, **kwargs)
+
+    wrapper.called = 0
+    return wrapper
+  ```
+
+## functools.wrap
+
+* Le décorateur `wrap` du module functools permet de recopier les métadonnées de la fonction décorée (le nom de la fonction et sa description)
 
   ``` python
   from functools import wraps
@@ -500,7 +489,7 @@ print("Your value is:", text)
   '''
   ```
 
-### functools.partial
+## functools.partial
 
 * `partial` permet de définir une fonction (ou classe) à partir d'une autre en lui spécifiant des paramètres — avant l'appel ou l'instanciation
 
@@ -547,6 +536,26 @@ def addMatrix(a : Matrix, b : Matrix) -> Matrix:
 x = [[1.0, 0.0], [0.0, 1.0]]
 y = [[2.0, 1.0], [0.0, -2.0]]
 z = addMatrix(x, y)
+```
+
+## Builtins
+
+Le module builtins contient une référence de toutes les fonctions natives python. Ainsi, après avoir écrasé une fonction il est toujours possible de récupérer l'originale
+
+``` python
+>>> print(1)
+1
+>>> print = 10
+>>> print(1)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'int' object is not callable
+```
+``` python
+>>> import builtins
+>>> print = builtins.print
+>>> print(1)
+1
 ```
 
 {% endraw %}

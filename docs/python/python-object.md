@@ -30,9 +30,22 @@ category: Web, Python
   getattr(obj, "hello")("Bob") # Hello Bob
   ```
 
+* Lorsqu'on crée une instance, python lie toutes les fonctions que la classe contient à cet objet.  
+  Et quand on appelle cette fonction, l'objet est passé en premier argument.  
+  Ainsi appeler `obj.hello("Bob")` revient à appeler `Test.hello(obj, "bob")`
+
+  ``` python
+  print(obj.hello)
+  <bound method Test.hello of <__main__.Test object at 0x7f344f9889a0>>
+  ```
+
+  Par convention, le premier argument d'une méthode est appelé `self`. On pourrait importer quel identificateur à la place, ce n'est pas un mot-clé ni une variable *built-in*.
+
+  Ceci est à mettre en contraste avec le choix fait dans d'autres langages, comme par exemple en C++ où l'instance est référencée par le mot-clé `this`, qui n'est pas mentionné dans la signature de la méthode. En Python, selon le manifeste, *explicit is better than implicit*, c'est pourquoi on mentionne l'instance dans la signature, sous le nom `self`.
+
 ## Constructeur, attributs
 
-* La méthode `__init__` est une méthode magique appelée à l'instanciation d'un objet — autrement dit, c'est le constructeur. Elle va permettre de définir des attributs sur l'objet:
+* La méthode `__init__` est une méthode magique appelée à l'instanciation d'un objet — autrement dit, c'est le constructeur. Elle va par exemple permettre de définir des attributs sur l'objet:
 
   ``` python
   class Test:
@@ -100,22 +113,6 @@ category: Web, Python
   print(obj.__class__.__name__) # Test
   ```
 
-## String casting
-
-* La méthode `__str__` est une méthode magique appellée lorsqu'on convertit un objet en chaîne de caractères.
-
-  ``` python
-  class Test:
-    def __init__(self, name):
-      self.name = name
-
-    def __str__(self):
-      return "Test: " + self.name
-
-  obj = Test("Bob")
-  print(str(obj))  # Test: Bob
-  ```
-
 ## Opérateurs
 
 * <ins>Assign (=)</ins>  
@@ -170,6 +167,8 @@ help(Point)
 
 ![](https://i.imgur.com/f6BN7Nb.png)
 
+---
+
 ## Méthodes de classe
 
 * Une méthode de classe peut accéder et modifier les attributs de classe. On crée une méthode de classe en ajoutant l'annotation `@classmethod` devant la ligne de spécification de la méthode. On déclare un attribut de classe en le mettant directement dans la classe.
@@ -205,6 +204,397 @@ help(Point)
 
   print(Test.is_adult(14)) # False
   ```
+
+## Ajouter des méthodes à la volée
+
+* Les méthodes sont implémentées comme des attributs de l’objet classe. On peut donc étendre l’objet classe lui-même dynamiquement:
+
+  ``` python
+  def sendmail(self, subject, body):
+      "Envoie un mail à la personne"
+      print(f"To: {self.email}")
+      print(f"Subject: {subject}")
+      print(f"Body: {body}")
+      
+  Personne.sendmail = sendmail
+  ```
+
+## Méthodes magiques
+
+Les méthodes magiques permettent de surcharger les opérateurs appliqués sur les objets, ou plus généralement les mécanismes disponibles pour étendre le langage et donner un sens à des fragments de code comme:
+
+  ```
+  objet1 + objet2
+  item in objet
+  objet[key]
+  objet.key
+  for i in objet:
+  if objet:
+  objet(arg1, arg2)
+  etc...
+  ```
+
+### Len
+
+La méthode `__len__` est invoquée quand on utilise la fonction `len(obj)`
+
+``` python
+class Test:
+    def __init__(self, mots):
+      self.mots = mots
+
+    def __len__(self):
+      return len(self.mots)
+
+obj = Test(["a", "b", "c"])
+len(obj)  # 3
+```
+
+### Call
+
+La méthode `__call__` est invoquée quand on utilise une instance de classe comme une fonction
+
+``` python
+class Test:
+    def __init__(self, name):
+      self.name = name
+
+    def __call__(self):
+      print("Hello " + self.name)
+
+obj = Test("Bob")
+obj() # Hello Bob
+```
+
+### Del
+
+La méthode magique `__del__` est appelée quand toute les références vers l'objet ont été supprimées (l'objet va être libéré de la mémoire par le garbage collector).
+
+``` python
+class Test:
+    def __init__(self):
+        print('Constructor called')
+
+    def __del__(self):
+        print('Destructor called')
+
+obj = Test() # Constructor called
+del obj      # Destructor called
+```
+
+Si l'objet n'est jamais supprimé, le destructeur sera appelé après la fin du programme.
+
+``` python
+obj = Test()             # Constructor called
+print('Program End...')  # Program End
+                         # Destructor called
+```
+
+### Add & cie
+
+Quand on utilise l'opérateur `+` sur un objet, la méthode magique `__add__` est invoquée.  
+Cette méthode peut retourner n'importe quel type de donnée — une instance de classe, un entier, etc.
+
+``` python
+class Test:
+    def __init__(self, n):
+        self.n = n
+
+    def __add__(self, obj):
+        return Test(self.n + obj.n)
+
+obj1 = Test(1)
+obj2 = Test(2)
+obj3 = obj1 + obj2
+
+print(obj3.n) # 3
+```
+
+Il existe tout un tas de méthodes magiques permettant de surcharger le résultat des opérateurs mathématiques:
+
+| Opérateur | Méthode magique
+|---        |---
+| `+`       | `__add__(self, other)`
+| `-`       | `__sub__(self, other)`
+| `*`       | `__mul__(self, other)`
+| `/`       | `__truediv__(self, other)`
+| `//`      | `__floordiv__(self, other)`
+| `%`       | `__mod__(self, other)`
+| `**`      | `__pow__(self, other)`
+| |
+| `-=`      | `__isub__(self, other)`
+| `+=`      | `__iadd__(self, other)`
+| `*=`      | `__imul__(self, other)`
+| `/=`      | `__idiv__(self, other)`
+| `//=`     | `__ifloordiv__(self, other)`
+| `%=`      | `__imod__(self, other)`
+| `**=`     | `__ipow__(self, other)`
+| |
+| `-` (unaire) | `__neg__(self)`
+| `+` (unaire) | `__pos__(self)`
+| `~` (unaire) | `__invert__(self)`
+| |
+| `<`       | `__lt__(self, other)`
+| `>`       | `__gt__(self, other)`
+| `<=`      | `__le__(self, other)`
+| `>=`      | `__ge__(self, other)`
+| `==`      | `__eq__(self, other)`
+| `!=`      | `__ne__(self, other)`
+
+### Hash
+
+`__hash__` retourne la clé de hachage sur un objet.  
+`__eq__` sert à évaluer p == q. Ces deux méthodes doivent être cohérentes: si deux objets sont égaux, il faut que leurs hashs soient égaux
+
+``` python
+class Point2(Point1):
+
+    # l'égalité va se baser naturellement sur x et y
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+    # du coup la fonction de hachage 
+    # dépend aussi de x et de y
+    def __hash__(self):
+        return hash((self.x, self.y))
+```
+
+### Str, repr
+
+* La méthode `__str__` est une méthode magique appellée lorsqu'on convertit un objet en chaîne de caractères.
+
+  ``` python
+  class Test:
+    def __init__(self, name):
+      self.name = name
+
+    def __str__(self):
+      return "Test: " + self.name
+
+  obj = Test("Bob")
+  print(str(obj))  # Test: Bob
+  ```
+
+* `__repr__` est voisine à `__str__`, elle retourne également une chaîne de caractère mais est utilisée par `repr`.  
+  `__repr__` est utilisée **aussi** par `print` si `__str__` n'est pas définie.
+
+  ``` python
+  class Point:
+      def __init__(self, x, y):
+          self.x = x
+          self.y = y
+
+  class Point1(Point):
+      def __repr__(self):
+          return f"Pt[{self.x}, {self.y}]"
+
+  class Point2(Point):
+      def __str__(self):
+          return f"Pt[{self.x}, {self.y}]"
+
+  p1 = Point1(1, 2)
+  print(repr(p1))  # Pt[1, 2]
+  print(str(p1))   # Pt[1, 2]
+
+  p2 = Point2(3, 4)
+  print(repr(p2))  # <__main__.Point2 object at 0x7f4984a5e3d0>
+  print(str(p2))   # Pt[3, 4]
+  ```
+
+### Enter, exit
+
+* Les méthodes magiques `__enter__` et `__exit__` permettent d'implémenter des objets qui peuvent être utilisés avec le mot-clé `with`. On dit que l'objet implémente le protocole de *context manager*.
+
+  * La méthode `__enter__` est invoquée au début du bloc `with`.  
+    Elle peut retourner ou non une valeur, que l'on peut récupérer avec `as`.
+
+  * La méthode `__exit__` est invoquée à la fin du bloc `with`, qu'une exception ait été levée ou non, et peut "manger" des exceptions.
+
+  ``` python
+  class Test:
+      def __enter__(self):
+          # retourne la valeur récupérée par "as"
+          print("__enter__")
+          return "Tout va bien"
+
+      def __exit__(self, err_type, err_value, err_traceback):
+          print("__exit__")
+
+          # Ignorer les exceptions de type "Exception"
+          return err_type == Exception
+
+  with Test() as val:
+      print(val)
+      raise Exception("whatever")
+      print("Inside, après raise")
+
+  print("Outside")
+  '''
+  __enter__
+  Tout va bien
+  __exit__
+  Outside
+  '''
+  ```
+
+  ``` python
+  import time
+
+  class Timer:
+    def __enter__(self):
+      self.start = time.time()
+
+    def __exit__(self, *args):
+      duree = time.time() - self.start
+      print(str(duree) + 's')
+      return False
+
+    def __str__(self):
+      duree = time.time() - self.start
+      print('intermediaire', str(duree) + 's')
+
+  with Timer() as t:
+    print(t)  # Appelle __str__
+
+  # Appelle __exit__ à la sortie du "with"
+  ```
+
+* Un des exemple les plus connus de cas d'utilisation du bloc `with` est avec `open`, ce qui permet d'ouvrir un fichier en lecture et "manger" les exceptions de type FileNotFoundError.
+
+  ``` python
+  with open("x.txt") as f:
+      data = f.read()
+      print(data)
+  ```
+
+* On peut également implémenter un context manager en utilisant contextlib. Les deux exemples suivants sont équivalents:
+
+  ``` python
+  class CustomOpen(object):
+      def __init__(self, filename):
+          self.file = open(filename)
+
+      def __enter__(self):
+          return self.file
+
+      def __exit__(self, ctx_type, ctx_value, ctx_traceback):
+          self.file.close()
+
+  with CustomOpen('file') as f:
+      contents = f.read()
+  ```
+
+  ``` python
+  from contextlib import contextmanager
+
+  @contextmanager
+  def custom_open(filename):
+      f = open(filename)
+      try:
+          yield f
+      finally:
+          f.close()
+
+  with custom_open('file') as f:
+      contents = f.read()
+  ```
+
+### Contains
+
+`__contains__` permet de donner un sens à `item in object`
+
+``` python
+class DualQueue:
+    def __init__(self):
+        self.inputs = []
+        self.outputs = []
+
+    def __repr__ (self):
+        return f"<DualQueue, inputs={self.inputs}, outputs={self.outputs}>"
+
+    # la partie qui nous intéresse ici
+    def __contains__(self, item):
+        return item in self.inputs or item in self.outputs
+    
+    def __len__(self):
+        return len(self.inputs) + len(self.outputs)
+
+    ...
+```
+
+### Getattr
+
+\_\_setattr\_\_, \_\_getattr\_\_ et \_\_getattribute\_\_ permettent de contrôler l'accès et la modification de n'importe quel attribut
+
+- getattribute: tous les accès à des attributs passerons par cette méthode, même si attr n'est pas défini dans obj.  
+
+- setattr: sera appelé lorsqu'on modifie un attribut. Méthode symétrique à getattribute  
+
+  ``` python
+  class Temperature:
+    def __get__(self, inst, instype):
+      print('desc __get__')
+      return inst._temperature
+
+    def __set__(self, inst, t):
+      print(f'desc __set__ {t}')
+      inst._temperature = t
+
+  class Maison:
+    def __init__(self, t=0):
+      self.temperature = t
+
+    def __getattribute__(self, a):
+      print(f'__getattribute__ {a}')
+      return object.__getattribute__(self, a)
+
+    def __setattr__(self, a, v):
+      print(f'__setattr__ {a} = {v}')
+      return object.__setattr__(self, a, v)
+
+    temperature = Temperature()
+
+  obj = Maison()
+  # __setattr__ temperature = 0
+  # desc __set__ 0
+  # __setattr__ _temperature = 0
+
+  print(obj.temperature)
+  # __getattribute__ temperature
+  # desc __get__
+  # __getattribute__ _temperature
+  # 0
+
+  obj.temperature = 2
+  # __setattr__ temperature = 2
+  # desc __set__ 2
+  # __setattr__ _temperature = 2
+
+  obj.nope = 3
+  # __setattr__ nope = 3
+  ```
+
+- getattr: si getattribute n'est pas implémenté et si l'attribut auquel on essaie d'accéder n'existe pas, getattr est appelé en dernier ressort
+
+``` python
+class RPCProxy:
+    
+    def __init__(self, url, login, password):
+        self.url = url
+        self.login = login
+        self.password = password
+        
+    def __getattr__(self, function):
+        """
+        Crée à la volée une méthode sur RPCProxy qui correspond
+        à la fonction distante 'function'
+        """
+        def forwarder(*args):
+            print(f"Envoi à {self.url}...")
+            print(f"de la fonction {function} -- args= {args}")
+            return "retour de la fonction " + function
+        return forwarder
+```
 
 ---
 
@@ -267,6 +657,13 @@ help(Point)
   obj = Derived()
   obj.printStrs() # #1 #2
   ```
+
+* Si un même attribut est définit sur plusieurs classes:  
+  l'ordre de résolution des attributs dépend de l'ordre dans lequel les super-classes ont été définies.  
+  On va parcourir les classes de bas en haut et de gauche à droite: (D, B, A, object) + (D, C, A, object),  
+  et si des classes sont dupliquées, en enlève toutes les classes dupliquées sauf la dernière: D, B, C, A, object
+
+  ![](https://i.imgur.com/6tU2JUfm.png)
 
 ## Mangling
 
@@ -405,265 +802,84 @@ help(Point)
                 self.__x = x
     ```
 
+  * utiliser un descripteur: une version plus générale du getter et setter, qui passe par une classe implémentant les méthode \_\_get\_\_ et \_\_set\_\_
+
+    ``` python
+    class Temperature:
+      def __get__(self, inst, instype):
+        return inst.temperature
+
+      def __set__(self, inst, t):
+        if 5 < t < 25:
+          inst._temperature = t
+          return
+        raise TemperatureError()
+
+    class TemperatureError(Exception):
+      pass
+
+    class Maison:
+      def __init__(self, t):
+        self.temperature  =t
+
+      temperature = Temperature
+    ```
+
 ## Vérifier une instance de classe
 
 ``` python
 class Base(object):  pass
 class Derived(Base): pass
 
+# Vérifier une classe
 print(issubclass(Derived, Base)) # True
 
+# Lister les superclasses
+print(Derived.__bases__)  # (<class '__main__.Base'>,)
+print(Base.__bases__)     # (<class 'object'>,)
+
+# Vérifier une instance de classe
 objDerived = Derived() 
 print(isinstance(objDerived, Derived)) # True
 print(isinstance(objDerived, Base))    # True
 ```
 
----
-
-## Méthodes magiques
-
-### Call
-
-La méthode `__call__` est invoquée quand on utilise une instance de classe comme une fonction
-
-``` python
-class Test:
-    def __init__(self, name):
-      self.name = name
-
-    def __call__(self):
-      print("Hello " + self.name)
-
-obj = Test("Bob")
-obj() # Hello Bob
-```
-
-### Destructeur
-
-La méthode magique `__del__` est appelée quand toute les références vers l'objet ont été supprimées (l'objet va être libéré de la mémoire par le garbage collector).
-
-``` python
-class Test:
-    def __init__(self):
-        print('Constructor called')
-
-    def __del__(self):
-        print('Destructor called')
-
-obj = Test() # Constructor called
-del obj      # Destructor called
-```
-
-Si l'objet n'est jamais supprimé, le destructeur sera appelé après la fin du programme.
-
-``` python
-obj = Test()             # Constructor called
-print('Program End...')  # Program End
-                         # Destructor called
-```
-
-### Itérateurs
-
-Les listes, tuples, dictionnaires et sets sont des objets itérables (on peut utiliser la fonction `for` dessus). On peut également les convertir en itérateurs avec la fonction `iter`:
-
-``` python
-l  = [1,2,3]
-it = iter(l)
-
-print(next(it)) # 1
-print(next(it)) # 2
-print(next(it)) # 3
-print(next(it)) # StopIteration error
-```
-
-Pour obtenir ce même comportement avec un objet, il faut implémenter les méthodes magiques `__iter__` et `__next__`
-
-``` python
-class MyRange:
-    def __init__(self, _from, _to=None, _step=1):
-        if _to==None:
-            self._to   = _from
-            self._from = 0 
-        else:
-            self._from = _from
-            self._to   = _to
-
-        self._step = _step if _step != 0 else 1
-
-    def __iter__(self):
-        self.i = self._from
-        return self
-
-    def __next__(self):
-        if self._step > 0:
-            if self.i >= self._to: raise StopIteration
-        elif self.i <= self._to:
-            raise StopIteration
-
-        i = self.i
-        self.i += self._step
-        return i
-```
-
-``` python
-obj = MyRange(5)
-
-for i in obj:
-    print(i)
-# 0 1 2 3 4
-```
-
-``` python
-obj = MyRange(1,4)
-it  = iter(obj)
-
-print(next(it)) # 1
-print(next(it)) # 2
-print(next(it)) # 3
-print(next(it)) # StopIteration error
-```
-
-### Opérateurs
-
-Quand on utilise l'opérateur `+` sur un objet, la méthode magique `__add__` est invoquée. Cette méthode peut retourner n'importe quel type de donnée — une instance de classe, un entier, etc.
-
-``` python
-class Test:
-    def __init__(self, n):
-        self.n = n
-
-    def __add__(self, obj):
-        return Test(self.n + obj.n)
-
-obj1 = Test(1)
-obj2 = Test(2)
-obj3 = obj1 + obj2
-
-print(obj3.n) # 3
-```
-
-Il existe tout un tas de méthodes magiques permettant de surcharger le résultat des opérateurs:
-
-| Opérateur | Méthode magique
-|---        |---
-| `+`       | `__add__(self, other)`
-| `-`       | `__sub__(self, other)`
-| `*`       | `__mul__(self, other)`
-| `/`       | `__truediv__(self, other)`
-| `//`      | `__floordiv__(self, other)`
-| `%`       | `__mod__(self, other)`
-| `**`      | `__pow__(self, other)`
-| |
-| `-=`      | `__isub__(self, other)`
-| `+=`      | `__iadd__(self, other)`
-| `*=`      | `__imul__(self, other)`
-| `/=`      | `__idiv__(self, other)`
-| `//=`     | `__ifloordiv__(self, other)`
-| `%=`      | `__imod__(self, other)`
-| `**=`     | `__ipow__(self, other)`
-| |
-| `-` (unaire) | `__neg__(self)`
-| `+` (unaire) | `__pos__(self)`
-| `~` (unaire) | `__invert__(self)`
-| |
-| `<`       | `__lt__(self, other)`
-| `>`       | `__gt__(self, other)`
-| `<=`      | `__le__(self, other)`
-| `>=`      | `__ge__(self, other)`
-| `==`      | `__eq__(self, other)`
-| `!=`      | `__ne__(self, other)`
-
-### Enter
-
-* Les méthodes magiques `__enter__` et `__exit__` permettent d'implémenter des objets qui peuvent être utilisés avec le mot-clé `with`.
-
-  * La méthode `__enter__` est invoquée au début du bloc `with`.  
-    Elle peut retourner ou non une valeur, que l'on peut récupérer avec `as`.
-
-  * La méthode `__exit__` est invoquée à la fin du bloc `with`, qu'une exception ait été levée ou non, et peut "manger" des exceptions.
-
-  ``` python
-  class test:
-      def __enter__(self):
-          print("__enter__")
-          return "Tout va bien"
-
-      def __exit__(self, err_type, err_value, err_traceback):
-          print("__exit__")
-
-          # Ignorer les exceptions de type "Exception"
-          return err_type == Exception
-
-  with test() as val:
-      print(val)
-      raise Exception("whatever")
-      print("Inside, après raise")
-
-  print("Outside")
-  '''
-  __enter__
-  Tout va bien
-  __exit__
-  Outside
-  '''
-  ```
-
-* Un des exemple les plus connus de cas d'utilisation du bloc `with` est avec `open`, ce qui permet d'ouvrir un fichier en lecture et "manger" les exceptions de type FileNotFoundError.
-
-  ``` python
-  with open("x.txt") as f:
-      data = f.read()
-      print(data)
-  ```
-
-* On peut également implémenter un context manager en utilisant contextlib. Les deux exemples suivants sont équivalents:
-
-  ``` python
-  class CustomOpen(object):
-      def __init__(self, filename):
-          self.file = open(filename)
-
-      def __enter__(self):
-          return self.file
-
-      def __exit__(self, ctx_type, ctx_value, ctx_traceback):
-          self.file.close()
-
-  with CustomOpen('file') as f:
-      contents = f.read()
-  ```
-
-  ``` python
-  from contextlib import contextmanager
-
-  @contextmanager
-  def custom_open(filename):
-      f = open(filename)
-      try:
-          yield f
-      finally:
-          f.close()
-
-  with custom_open('file') as f:
-      contents = f.read()
-  ```
-
 ## Metaclass
 
-* Une metaclasse fonctionne comme un template pour la création de classes, on les appelle parfois des *class factories*.
+* `object` est la super classe de toutes les classes.  
+  object est instancié par `type`
+
+  ```
+  >>> type(object)
+  type
+  >>> type.__bases__
+  (object,)
+  ```
+
+* Une metaclasse fonctionne comme un template pour la création de classes, on les appelle parfois des *class factories*. Pour déclarer une métaclasse, on crée une classe qui hérite de `type`
+
+  Ça permet d'ajouter une couche de logique au processus de création des autres classes: modifier l'arbre d'héritage et espace de nommage (bases) de la classe, ajouter la validation d'argumments, création de propriétés ou descripteurs automatiques
 
   ``` python
   class Meta(type):
-     def __new__(cls, name, bases, dct):
-         x = super().__new__(cls, name, bases, dct)
-         x.attr = 100
-         return x
+     def __new__(cls, name, bases, dict):
+      """
+      Crée la classe
+      """
+      x = super().__new__(cls, name, bases, dct)
+      x.attr = 100
+      return x
 
   class Foo(metaclass=Meta):
        pass
 
   Foo.attr
   100
+  ```
+
+  ```
+  cls = type.__new__(type, name, bases, dict)
+  type.__init__(cls, name, bases, dict)
   ```
 
 * L'avantage de la metaclasse, c'est qu'on peut vérifier les attributs qui ont été définis sur la classe et agir en fonction
@@ -748,7 +964,7 @@ Il existe tout un tas de méthodes magiques permettant de surcharger le résulta
       pass
   ```
 
-* Le même effet peut être obtenu soit via
+* Le même effet peut parfois être obtenu soit via
 
   - l'héritage simple
 

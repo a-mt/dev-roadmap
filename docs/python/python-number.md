@@ -99,7 +99,9 @@ print(1e-3) # 0.001
   Comme `i` est souvent le nom utilisé pour désigner une variable incrémentée dans une boucle — `for i in range(n)` — les nombres complexes utilisent `j` pour éviter de porter à confusion.
 
   ``` python
-  print(1j)       # 1j
+  print(2j)       # 2j
+  print(2.j)      # 2j
+  print(2 * 1.j)  # 2j
   print(1 + 1j)   # (1+1j)
   ```
 

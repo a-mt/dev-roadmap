@@ -3,22 +3,31 @@ title: Ségur
 category: E-santé
 ---
 
-## Qu'est-ce que c'est
+## Doctrine du numérique en santé
 
-* Le ségur du numérique est un programme national, initié par le ministère des Solidarités et de la Santé en 2020,  
-  qui a pour objectif de mettre le numérique au service de la santé.  
-  L'origine du nom « Ségur » est l'adresse du ministère de la Santé, avenue de Ségur à Paris.
+* La *doctrine du numérique en santé* est une directive (un document de référence et non une loi ou un décret) pour guider les politiques publiques et les projets liés au numérique en santé, comme par exemple le Ségur de la santé.  
+  Établie en 2019 dans le cadre de la feuille de route du numérique en santé par la Direction générale de la santé, elle définit les principes et objectifs pour développer le numérique en santé en France, et vise à encourager l’innovation, la collaboration et l’utilisation responsable des technologies numériques pour améliorer la qualité des soins et la santé de la population. Elle est mis à jour tous les ans
 
-  ![](ministere_roadmap_esante.png)
+## Le Ségur de la santé
+
+* Le *Ségur de la santé* est un plan d'action lancé le 25 mai 2020 par le gouvernement français, qui s'appuie sur les principes généraux établis par la doctrine du numérique en santé, pour proposer des mesures concrètes et des financements pour mettre en oeuvre ces objectifs.  
+
+* Il inclut des mesures pour répondre aux défis du système de santé, notamment en termes d’accès aux soins, de qualité des soins et de rémunération des professionnels de santé, mais aussi pour favoriser la transformation numérique du système de santé, en mettant en place des solutions de télémédecine, de téléconsultation et d’accès aux données médicales.
+
+* L'origine du nom « Ségur » est l'adresse du ministère de la Santé, avenue de Ségur à Paris.
+
+  ![](images/ministere_roadmap_esante.png)
 
 ## Task forces & couloirs
 
-* L'Etat a fait le choix de s'appuyer sur des "task force" pour co-construire une feuille de route.  
+* La feuille de route du Ségur de la santé est co-construit par le gouvernement et des groupes de travail, souvent appelés "task force".
   Ces task forces réunissent des professionels de santé, du médico-social et du social, des experts, des directeurs de systèmes d'information, des représentants institutionnels, des fédérations (hôpitaux pubics, hôpitaux privés, industriels, etc) et des éditeurs de logiciels de santé.
 
-* La première consultation s'est déroulée du 25 mai 2020 au 10 juillet 2020, avec pour mission d'identifier les données à échanger ou partager entre les acteurs du domaine
+* La première concertation s'est déroulée du 25 mai 2020 au 10 juillet 2020, avec pour mission d'identifier les données à échanger ou partager entre les acteurs du domaine
 
-* Chaque secteur possède ses particularités propres (logiciels, flux de travail, données, organisations), mais le but est de mettre en oeuvre une logique commune à l'ensemble des secteurs d'activité de la santé et du médico-social. Pour parvenir à ce but, les secteurs ont été regroupés en différents "couloir", qui aurons chacun des exigences et des délais assignés:
+* Un investissement historique de 2 milliards d'euros, financé par le Plan de Relance et de Résilience Européen, a été placé pour accélérer la feuille de route de la transformation numérique. 1,4 milliards sont dédiés à la problématique du partage des données de santé Sanitaire à horizon 3 ans, et 600 millions pour le secteur médico-social à horizon 5 ans.
+
+* Chaque secteur possède ses particularités propres (logiciels, flux de travail, données, organisations), mais le but est de mettre en oeuvre une logique commune à l'ensemble des secteurs d'activité de la santé et du médico-social. Pour y parvenir, les secteurs ont été regroupés en différents "couloirs" qui auront chacun des exigences et des délais assignés:
 
     - Hôpital
     - Médecine de ville
@@ -32,78 +41,69 @@ category: E-santé
 
    cf [Les attendus par couloir (p.18)](https://esante.gouv.fr/sites/default/files/media_entity/documents/Segur_ChantierD_DocCommun_VF.pdf),  
   [Le Ségur du numérique en santé](https://esante.gouv.fr/segur),  
-      [Le Ségur du numérique pour les entreprises du numérique en santé](https://industriels.esante.gouv.fr/segur-numerique-sante),  
+      [Le Ségur du numérique pour les entreprises du numérique en santé](https://industriels.esante.gouv.fr/segur-numerique-sante)
 
-## Plateformes
+## Urbanisation des systèmes d'information
 
-* 3 grandes plateformes bénéficierons de la centralisation des données via des services nationaux:
+* Tout part d'un constat simple: la prise en charge des patients est fragmentée. Est en cause un grand nombre d'acteurs, structures et systèmes d'information qui ne communiquent pas entre eux. Pour y remédier, les pouvoirs publics proposent de s'inspirer du mode de gouvernance d'une ville:
 
-    - <ins>Mon Espace Santé (MES)</ins>,  
-      à destination des citoyens
+  - construire les règles  
+    Ex: le code de la route, le code de l'urbanisme
+
+  - développer des infrastructures de base qui permettent les échanges  
+    Ex: les routes, les ponts, le réseau des eaux usées
+
+  - laisser l'écosystème créer les infrastructures individuelles à destination des citoyens  
+    Ex: les maisons
+
+  - vérifier que les infrastructures respectent les règles  
+    et se raccordent aux infrastructures de base
+
+  Et donc d'*urbaniser* les systèmes d'information en santé.
+  Chaque système d'information dédié à la santé (qu'on pourra comparer à une maison) devra respecter les mêmes règles et utiliser les mêmes services, en se raccordant aux socles nationaux, pour assurer des fonctionnalités de base identiques et permettre aux professionnels de santé de facilement changer de logiciel, exporter ou partager des données, ou aux patients de changer de professionnel sans perte d'information et perte de qualité de soin
+
+* La doctrine du numérique en santé décrit le cadre technique et d'urbanisation dans lequel les diférents services numériques d’échange et de partage de données de santé doivent s'inscrire
+
+  * Deux socles sont utilisés pour créer des fondations solides:
+
+    - les <ins>référentiels socles</ins>,  
+      sont les règles à respecter. Elles s'articulent autour de 3 pilliers: éthique, sécurité et interopérabilité.  
+      Constitué d'un ensemble de documents de référence et de gisements de données, tous les services numériques de santé disposent de règles et fondations communes — par exemple, les médecins s'identifient en utilisant leur carte CPS ou e-CPS via Pro Santé Connect
+
+    - les <ins>services socles</ins> (aussi appelés *communs numériques*):  
+      sont les infrastructures de base, des services maintenus par des agences et opérateurs nationaux — par exemple des messageries sécurisées de santé (MSSanté)
+
+  * L'État lui-même, via les agences et opérateurs nationaux, construit des plateformes numériques nationales, "une maison" constituée de 3 étages:
+
+    - <ins>Mon Espace Santé (MES)</ins>, auparavant appelé l'<ins>Espace Numérique en Santé (ENS)</ins>  
+      Plateforme numérique à destination des citoyens.  
+      Pour permettre aux citoyens d'accéder à leurs données médicales et d'accèder à divers services de santé — agenda, messagerie, store d'applications
 
     - <ins>le bouquet de service pro</ins>,  
-      à destination des professionnels du sanitaire, du médico-social et du social.   
-      Avec dans un premier temps les Logiciels de Professionels de Santé (LPS)
+      Plateforme numérique à destination des professionnels du sanitaire, du médico-social et du social.  
+      Pour simplifier l'accès aux différents services numériques et rendre leurs offres plus lisibles, via un store d'applications qui
+      référence les applications (privées ou publiques) qui respectent les règles de la doctrine technique.
 
     - <ins>la Plateforme des données de santé (PDS)</ins>, aussi appelé le Health Data Hub  
-      à destination de la recherche
+      Plateforme numérique à destination de la recherche.  
+      Pour favoriser l’analyse des données à grande échelle qui bénéficient à tous,  
+      en facilitant l’accès aux données de santé à des projets d’intérêt général innovants. 
 
-    ![](segur_plateformes.png)
+  * Enfin on trouve "des nuages", différents dispositifs d'accompagnement et de stimulation de l'écosystème
 
-## Services & réfentiels socles
-
-* Six référentiels et services socles ont été identifiés par l'ensemble des task forces comme nécessaires à l'objectif l'échange et le partage fluide et sécurisé des données de santé:
-
-    - l'[Identité Nationale de Santé (INS)](https://industriels.esante.gouv.fr/produits-et-services/referentiel-ins)  
-      Référentiel partagé par l'ensemble des professionnels de santé, visant à fiabiliser l'identité numérique des usagers.  
-      L’INS est composée d’un numéro – le matricule INS – et de 5 traits d’identités issus des bases de référence de l’Etat-Civil: nom de naissance, prénom(s) de naissance, date de naissance, sexe et code du lieu de naissance de l’usager. 
-
-    - [Pro Santé Connect (PSC)](https://industriels.esante.gouv.fr/produits-et-services/pro-sante-connect)  
-      Service développé et maintenu par l'Agence du Numérique en Santé (ANS) qui permet aux professionnels de santé recensés dans l’Annuaire Santé de s'identifier (via le protocole OpenID) avec leur Cartes de Professionnels de Santé (CPS) ou l'appli e-CPS.
-
-    - la [Messagerie Sécurisée de Santé (MSSanté)](https://industriels.esante.gouv.fr/produits-et-services/mssante-referentiel-operateur-et-client-de-messagerie)  
-      Système de messageries électroniques qui permet l'échange de données de santé entre professionnels habilités, dans le cadre de la prise en charge d'un patient, et l'échange d'informations et de documents de santé entre un citoyen et un professionel de santé.  
-
-    - [Mon Espace Santé (MES)](https://esante.gouv.fr/strategie-nationale/mon-espace-sante)  
-      Carnet de santé numérique pour le partage des informations entre professionnels et usagers
-
-    - l'[Appli Carte Vitale (ApCV)](https://www.sesam-vitale.fr/web/sesam-vitale/enjeux-appli-carte-vitale)  
-      Application pour smartphone qui permet la dématérialisation la carte Vitale physique
-
-    - l'[ordonnance numérique](https://www.sesam-vitale.fr/e-prescription)  
-      Service intégré dans le logiciel des professionnels de santé qui permet la dématérialisation des prescription entre médecins libéraux et professionels prescrits (ex pharmacien)
-
-  ![](segur_services_mes.min.png)
-
-## Espace de Confiance MSSanté
-
-La Messagerie Sécurisée de Santé (MSSanté) s’inscrit dans un espace fermé et sécurisé garantissant la confidentialité, l’intégrité et la traçabilité des données, nommé "l’Espace de Confiance MSSanté", qui se compose
-
-- d'<ins>opérateurs de messagerie</ins>  
-  qui ont contractualisé avec l'ANS (établissements de santé, opérateurs, administration…). Mailiz est l'un des services de messagerie sécurisée de santé, opéré par l'ANS, et proposé par les Ordres de Santé aux professionnels qu'ils regroupent
-
-- de <ins>clients de messagerie</ins>  
-  ou logiciels de professionnels de santé (LPS) qui viennent s’interfacer avec les opérateurs MSSanté
-
-- d'une <ins>liste blanche</ins>  
-  maintenue par l’ANS et qui contient un enregistrement de tous les domaines de messagerie des opérateurs autorisés
-
-- d'un <ins>annuaire national MSSanté</ins>  
-  alimenté par chacun des opérateurs et qui recense l’ensemble des utilisateurs ayant une adresse de messagerie disponible à l’adresse https://annuaire.sante.fr/
-
-  ![](mssante_espace_confiance.png)
+  ![](images/segur_house_v1.png)
 
 ## Vagues
 
 * La "vague 1" du programme Ségur s'est concentrée sur l'alimentation de Mon espace santé, avec
 
-    1. l'engagement de la part des entreprises du numérique et éditeurs de logiciels de rendre conforme
+    1. l'engagement des entreprises et éditeurs de Logiciels de Professionels de Santé (LPS) pour rendre conforme les logiciels
 
-        - les logiciels des médecins de ville:  
+        - des médecins de ville:  
           LGC (Logiciel de Gestion de Cabinet)
 
         - des établissements de santé:  
-          DPI (Dossier Patient Informatise) et PFI (Plateforme d'Intermédiation)
+          DPI (Dossier Patient Informatisé) et PFI (Plateforme d'Intermédiation)
 
         - des biologistes médicales:  
           SGL (Système de Gestion pour les Laboratoires)
@@ -114,10 +114,10 @@ La Messagerie Sécurisée de Santé (MSSanté) s’inscrit dans un espace fermé
         - et des officines de ville:  
           LGO (Logiciel de Gestion d'Officine)  
 
-    2. la mise en place divers moyens de financement par l'Etat. Le plus connu est le Système Ouvert et Non Sélectif (SONS): il permet aux établissements ou professionnels de santé de financer directement aux éditeurs la prestation de passage à une solution disposant d'une référencement "Ségur".  
-        Cf [Leviers de financement pour atteindre les objectifs de la feuille de route numérique](https://esante.gouv.fr/sites/default/files/media_entity/documents/Segur_ChantierD_DocCommun_VF.pdf)
+    2. la mise en place divers moyens de financement par l'Etat. Le plus connu est le Système Ouvert et Non Sélectif (SONS), qui permet aux établissements ou professionnels de santé de financer directement les éditeurs pour une prestation de passage à une solution disposant d'une référencement "Ségur".  
+        Cf [Leviers de financement pour atteindre les objectifs de la feuille de route numérique (p.11)](https://esante.gouv.fr/sites/default/files/media_entity/documents/Segur_ChantierD_DocCommun_VF.pdf)
 
-        ![](segur_financement.png)
+        ![](images/segur_financement.png)
 
 * La "vague 2" vient enrichir ce premier socle pour
 
@@ -131,12 +131,13 @@ La Messagerie Sécurisée de Santé (MSSanté) s’inscrit dans un espace fermé
         - des chirurgiens-dentistes (LGC CD)
         - et des paramédicaux (LGC P)
 
-![](segur_vagues.png)
+![](images/segur_vagues.png)
 
+<!--
 ## Acteurs institutionnels
 
 * La **Délégation ministérielle au Numérique en Santé (DNS)**  
-  assure le pilotage de l'ensemble des chantiers.
+  assure le pilotage de l'ensemble des chantiers
 
 * L'**Agence de Numérique en Santé (ANS)**  
   pose les cadres et bonnes pratiques,   
@@ -163,3 +164,4 @@ La Messagerie Sécurisée de Santé (MSSanté) s’inscrit dans un espace fermé
 
 * Les **Groupements Régionaux d'Appuis au Développement de l'e-Santé (GRADeS)**  
   sont les opérateurs préférentiels des ARS, pour animer et fédérer les acteurs de la région
+-->

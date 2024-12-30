@@ -8,7 +8,7 @@ category: E-santé
 * La *spirométrie* est un test à l'effort visant à mesurer les gaz inhalés & expiré d'un patient.  
   Pendant le test, on va mesurer les gaz 1. au repos, 2. en augmentant l'effort demandé (pallier par pallier) et 3. de nouveau au repos (en récupération).
 
-  ![](spirometry-cycle.png)
+  ![](images/spirometry-cycle.png)
 
 * L'effort demandé peut être mesuré
   - en watts lorsqu'on utilise un vélo,

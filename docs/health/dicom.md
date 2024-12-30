@@ -58,7 +58,7 @@ category: E-santé
     1. un header, qui décrit le type de l'objet
     2. un dataset, qui est une liste d’éléments
     
-    ![](dicom-file.png)
+    ![](images/dicom-file.png)
 
 ## Element
 
@@ -176,7 +176,7 @@ category: E-santé
 
 - Pour s’y retrouver, les attributs de l’IOD sont regroupés par IE. Une **IE** (*Information Entity*) est simplement un ensemble d’attributs portant sur une entité donnée dans un IOD donné. Par exemple l'IE patient de l’IOD CT image = nom du patient, ID du patient, etc.
 
-    ![](dicom-ie.png)
+    ![](images/dicom-ie.png)
 
 * Une IE peut contenir différents **modules**, qui sont des sous-groupes d'IE.  
   Un module est ni plus ni moins qu'un label donné à un groupe d'attributs pour faciliter la lecture de la documentation.  
@@ -223,7 +223,7 @@ category: E-santé
 * Lorsqu'un DIMSE est associé à un objet, on parle de **SOP** (*Service Object Pair*).  
   Par exemple, si on utilise un C-MOVE sur un object CTimage (pour déplacer une image CT d'un endroit à un autre), alors il s'agit du SOP "CTimage move".
 
-  ![](dicom-sop.png)
+  ![](images/dicom-sop.png)
 
     En général, les termes "classe SOP" (SOP Class) et "syntaxe abstraite" (Abstract Syntax) sont interchangeables, la seule différence étant que que le terme "syntaxe abstraite" est davantage utilisé quand on parle de négociation des échanges: elles sont l'unité négociée lors de l'établissement de l'échange.
 

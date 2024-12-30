@@ -47,7 +47,7 @@ category: E-santé
       - et d'un workflow manager, aussi appelé RIS (*Radiology Information System*),  
         notamment pour gérer la prise de rendez-vous patient
 
-  ![](pacs.png)
+  ![](images/pacs.png)
 
 ## Workflow PACSS
 
@@ -79,7 +79,7 @@ Un workflow PACS suit généralement ces différentes étapes:
 5. <ins>Transcription</ins>.  
    Le ou la radiologue crée un rapport. Parfois, un logiciel de reconnaissance vocale est utilisé pour transcrire le diagnostic. Le rapport est relu et des corrections peuvent être effectuées. Le radiologue signe ensuite le rapport, ce qui le rend définitif.
 
-![](pacs-workflow.png)
+![](images/pacs-workflow.png)
 
 ---
 
@@ -106,7 +106,7 @@ Un workflow PACS suit généralement ces différentes étapes:
 
   - HTTP (*Hypertext transfer protocol*): utilisé pour la transmission d'informations sur Internet et sur les réseaux locaux
 
-  ![](pacs-standards2.png)
+  ![](images/pacs-standards2.png)
 
 ---
 
@@ -118,7 +118,7 @@ Un workflow PACS suit généralement ces différentes étapes:
 
 * Une radiographie conventionnelle mesure l'intensité des rayons X parvenant au détecteur après avoir traversé le patient. L'image obtenue est une projection 2D d'un volume en 3D, ce qui pose plusieurs problèmes: A/ Les dimensions de l'objet sur l'image obtenue changent en fonction de la distance de l'objet par rapport à la source des rayons X et aux détecteurs, ce qui donne un effet d'agrandissement ou de réduction des dimensions. B/ Des objets à différentes profondeurs seront projetés sur un même plan, les informations contenues dans l'image seront ainsi masquées par superposition. C/ Il est difficile de situer les éléments les uns par rapport aux autres.
 
-  ![](imaging-radio.png)
+  ![](images/imaging-radio.png)
 
 ## Scanner
 
@@ -126,18 +126,18 @@ Un workflow PACS suit généralement ces différentes étapes:
 
 * L'objet (c'est à dire la partie du corps du patient, ce qu'on appelle également le *champ de vue*) est découpé en petits éléments réguliers: les *voxels*. Le voxel est la plus petite unité de mesure d'un objet en 3D. Le scanner va tourner autour de l'objet et mesurer la quantité de rayons X absorbée par chaque voxel à partir de différents angles.
 
-  ![](imaging-ct-voxel.png)
+  ![](images/imaging-ct-voxel.png)
 
   La valeur du pixel sera la somme de toutes les mesures effectuées pour le voxel associé. Le pixel constitue alors le plus petit élément surface de l'image numérique. Plus ces pixels sont petits et que la taille de la matrice est élevée, plus la visualisation des détails sera meilleure. Il peut y avoir plusieurs artéfacts lors de la conversion analogique/numérique — c'est à dire lors du passage d'un signal réel continu à une image composée de valeurs discrètes.
 
-  ![](imaging-ct-pixel.png)
+  ![](images/imaging-ct-pixel.png)
 
 * La *reconstruction* de l'image fait référence au processus de convertion, à partir de la projection des rayons du X du patient irradié, à une image numérique. La reconstruction d'image est une tâche intensive en calculs, et une des étapes les plus cruciales du processus d'imagerie par TDM.
 
 * L'image finale obtenue par le scanner est enregistrée sous la forme d'une image numérique, autrement dit d'une matrice (un tableau en 2 dimensions), qui contient des valeurs discrètes.
   L'image correspond à la distribution des atténuations causées par chacun des tissus traversés. Pour faire simple, le principe de la tomographie est de remplacer chaque point dans l'espace contenu dans le volume exploré de l'être humain par une valeur numérique spécifique aux tissus occupant ce point. Ce n'est plus l'ombre des structures superposées, mais une coupe précise dans laquelle les organes apparaissent non superposés et clairement situés les uns par rapport aux autres.
 
-  ![](imaging-matrice.png)
+  ![](images/imaging-matrice.png)
 
 # Images obtenues
 
@@ -153,7 +153,7 @@ Un workflow PACS suit généralement ces différentes étapes:
 
 * Le **coefficient d'atténuation** linéaire, noté &mu;, quantifie l'atténuation occasionné par un matériau (et est proportionnel à la quantité d'énergie en entrée comme son nom l'indique). Parce que ce n'est pas très important, on peut considérer que le coefficient d'atténuation est juste la différence entre la quantité d'énergie en entrée I0 et la quantité d'énergie en sortie I1.
 
-  ![](imaging-mu.png)
+  ![](images/imaging-mu.png)
 
 * C'est le coefficient d'atténuation qui est sauvegardé en binaire dans le fichier. Bien que le coefficient d'atténuation soit typiquement exprimé en /cm, pour éviter les imprécisions liées aux puissances de 2 inférieures à 0, les valeurs enregistrées ne sont pas des nombres décimaux mais des entiers. 
 
@@ -178,7 +178,7 @@ Un workflow PACS suit généralement ces différentes étapes:
 
 * Pour un même objet, le coefficient d'atténuation peut varier — en fonction de la puissance en keV utilisée et des filtres qui peuvent être ajoutés. Au lieu d'utiliser directement ces coefficients, Hounsfield (un ingénieur britannique) a eu l'idée de normaliser ces valeurs par rapport au coefficient d'atténuation de l'eau.
 
-  ![](imaging-hounsfield.png)
+  ![](images/imaging-hounsfield.png)
 
 * Lorsque le coefficient d'atténuation est converti avec la méthode de Hounsfield,  
   on parle d'**unité Hounsfield**, abbrégé HU (pour *Hounsfield Unit*). 
@@ -223,8 +223,8 @@ Un workflow PACS suit généralement ces différentes étapes:
   À gauche, une image qui montre les 2000 unité de Hounsfield sur 256 nuances de gris:  
   aucun diagnostic ne peut en être tiré.
 
-  ![](imaging-without-window.png)
-  ![](imaging-with-window.png)
+  ![](images/imaging-without-window.png)
+  ![](images/imaging-with-window.png)
 
 ## Fenêtrage
 
@@ -254,9 +254,9 @@ Un workflow PACS suit généralement ces différentes étapes:
      Cela détermine le nombre de niveaux de densité: en augmentant la fenêtre, l'image s'enrichit de niveaux de gris mais le contraste est diminué entre les structures de l'image; en diminuant la fenêtre, le contraste augmente.  
      Ainsi la largeur de la fenêtre définit le <ins>contraste</ins> de l'image restituée.
 
-  ![](imaging-window.png)
+  ![](images/imaging-window.png)
 
 * Généralement, dans les logiciels de radiologie et visualiseuses DICOM, ces deux valeurs (le centre et la largeur de la fenêtre), s'ajustent à l'aide de la souris.
   Et pour aller plus vite, il y a des fenêtres pré-configurées (*presets*) pour différents usages courants: os, cerveau, poumons, etc.
 
-  ![](imaging-default-windows.png)
+  ![](images/imaging-default-windows.png)

@@ -304,7 +304,7 @@ roadmap: true
   * Médecine
     - [Imagerie médicale][medical-imaging]{: .theory} [DICOM][dicom]{: .theory}
     - [Programmes nationaux][medical-national]{: .theory} [Ségur][medical-segur]{: .theory} [Dossier Médical Partagé (DMP)][medical-dmp]{: .theory} [Mon Espace Santé (MES)][medical-mes]{: .theory} [Health Data Hub][mes-hbh]{: .theory}
-    - [ROR][medical-ror]{: .theory}
+    - [ROR][medical-ror]{: .theory} [INS][medical-ins]{: .theory}
     - [Spirométrie][spirometry]{: .theory}
 
   - Rubiks
@@ -543,6 +543,7 @@ roadmap: true
 [securite]: securite.md
 [medical-segur]: health/segur.md
 [medical-dmp]: health/dmp.md
+[medical-ins]: health/ins.md
 [medical-mes]: health/mes.md
 [medical-ror]: health/ror.md
 [medical-national]: health/politics.md
